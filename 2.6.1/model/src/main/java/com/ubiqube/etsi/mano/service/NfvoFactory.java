@@ -18,6 +18,8 @@ package com.ubiqube.etsi.mano.service;
 
 import java.util.UUID;
 
+import com.ubiqube.etsi.mano.model.EventMessage;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -25,7 +27,7 @@ import java.util.UUID;
  */
 public interface NfvoFactory {
 
-	Object createNotificationVnfPackageOnboardingNotification(final UUID subscriptionId, final UUID vnfPkgId);
+	Object createNotificationVnfPackageOnboardingNotification(UUID subscriptionId, EventMessage event);
 
-	Object createVnfPackageChangeNotification(final UUID subscriptionId, final UUID vnfPkgId);
+	Object createVnfPackageChangeNotification(UUID subscriptionId, EventMessage event);
 }
