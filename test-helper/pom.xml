@@ -91,6 +91,29 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<artifactSet>
+								<excludes>
+									<exclude>org.springframework:*</exclude>
+									<exclude>org.springframework.security:*</exclude>
+									<exclude>org.springframework.boot:*</exclude>
+									<exclude>org.junit.jupiter:*</exclude>
+									<exclude>org.hibernate.search:*</exclude>
+								</excludes>
+							</artifactSet>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
