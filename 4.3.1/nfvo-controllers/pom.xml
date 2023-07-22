@@ -4,22 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
-		<artifactId>etsi-models-parent</artifactId>
+		<artifactId>etsi-model-431-aggregator</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
-		<relativePath/>
 	</parent>
 	<artifactId>etsi-nfvo-431-controllers</artifactId>
 	<packaging>jar</packaging>
 	<name>etsi-nfvo-431-controllers</name>
-	<repositories>
-		<repository>
-			<id>nexus</id>
-			<url>http://nexus.ubiqube.com/repository/maven-public/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -34,7 +24,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>nfvo-front-controller</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.hateoas</groupId>
@@ -78,7 +67,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-orika</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -127,25 +115,13 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.openrewrite.maven</groupId>
-				<artifactId>rewrite-maven-plugin</artifactId>
-				<version>5.2.1</version>
-				<configuration>
-					<activeRecipes>
-						<recipe>org.ubiqube.Sw3ResponseRecipe</recipe>
-					</activeRecipes>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.vignaudo</groupId>
-						<artifactId>swagger</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-        </plugins>
-    </build>
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<url>http://nexus.ubiqube.com/repository/maven-public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 </project>

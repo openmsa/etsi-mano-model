@@ -4,26 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
-		<artifactId>mano-super-pom</artifactId>
+		<artifactId>etsi-model-351-aggregator</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
-		<relativePath/>
 	</parent>
 	<artifactId>etsi-model-351</artifactId>
 	<packaging>jar</packaging>
 	<name>etsi-model-351</name>
-	<properties>
-		<maven.compiler.target>17</maven.compiler.target>
-		<maven.compiler.source>17</maven.compiler.source>
-	</properties>
-	<repositories>
-		<repository>
-			<id>nexus</id>
-			<url>http://nexus.ubiqube.com/repository/maven-public/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
@@ -72,7 +58,15 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-commons</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<url>http://nexus.ubiqube.com/repository/maven-public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 </project>

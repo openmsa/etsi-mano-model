@@ -4,9 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
-		<artifactId>etsi-models-parent</artifactId>
+		<artifactId>etsi-model-281-aggregator</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
-		<relativePath/>
 	</parent>
 	<artifactId>etsi-nfvo-281-controllers</artifactId>
 	<packaging>jar</packaging>
@@ -24,7 +23,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-orika</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -37,7 +35,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>nfvo-front-controller</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>

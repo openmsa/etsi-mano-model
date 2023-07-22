@@ -4,23 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
-		<artifactId>etsi-models-parent</artifactId>
+		<artifactId>etsi-model-431-aggregator</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
-		<relativePath/>
 	</parent>
 	<artifactId>etsi-vnfm-431-controllers</artifactId>
 	<packaging>jar</packaging>
 	<name>etsi-vnfm-431-controllers</name>
 	<url>http://maven.apache.org</url>
-	<repositories>
-		<repository>
-			<id>nexus</id>
-			<url>http://nexus.ubiqube.com/repository/maven-public/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>jakarta.validation</groupId>
@@ -44,7 +34,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>vnfm-front-controller</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -120,4 +109,13 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<url>http://nexus.ubiqube.com/repository/maven-public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 </project>

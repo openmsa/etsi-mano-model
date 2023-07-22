@@ -12,6 +12,54 @@
 	<artifactId>etsi-models-parent</artifactId>
 	<packaging>pom</packaging>
 	<description>Build document for ETSI-MANO model.</description>
+	<properties>
+		<version.em-front-controller>3.0.0-SNAPSHOT</version.em-front-controller>
+		<version.mano-commons>3.0.0-SNAPSHOT</version.mano-commons>
+		<version.event-api>3.0.0-SNAPSHOT</version.event-api>
+		<version.nfv-front-controller>3.0.0-SNAPSHOT</version.nfv-front-controller>
+		<version.nfvo-front-controller>3.0.0-SNAPSHOT</version.nfvo-front-controller>
+		<version.mano-orika>3.0.0-SNAPSHOT</version.mano-orika>
+		<version.vnfm-front-controller>3.0.0-SNAPSHOT</version.vnfm-front-controller>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.ubiqube.mano</groupId>
+				<artifactId>nfvo-front-controller</artifactId>
+				<version>${version.nfvo-front-controller}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ubiqube.mano</groupId>
+				<artifactId>mano-orika</artifactId>
+				<version>${version.mano-orika}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ubiqube.mano</groupId>
+				<artifactId>vnfm-front-controller</artifactId>
+				<version>${version.vnfm-front-controller}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ubiqube.mano</groupId>
+				<artifactId>nfv-front-controller</artifactId>
+				<version>${version.nfv-front-controller}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ubiqube.mano</groupId>
+				<artifactId>mano-commons</artifactId>
+				<version>${version.mano-commons}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ubiqube.mano.event</groupId>
+				<artifactId>event-api</artifactId>
+				<version>${version.event-api}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ubiqube.mano</groupId>
+				<artifactId>em-front-controller</artifactId>
+				<version>${version.em-front-controller}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>
