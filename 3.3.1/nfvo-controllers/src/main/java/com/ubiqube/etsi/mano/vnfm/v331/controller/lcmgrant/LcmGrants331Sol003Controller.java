@@ -31,7 +31,7 @@ import com.ubiqube.etsi.mano.vnfm.v331.model.grant.Grant;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

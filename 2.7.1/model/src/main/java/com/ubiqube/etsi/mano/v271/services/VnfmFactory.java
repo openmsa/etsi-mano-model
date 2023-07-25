@@ -20,7 +20,7 @@ import com.ubiqube.etsi.mano.model.v271.sol003.lcmgrant.GrantRequest;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public interface VnfmFactory {

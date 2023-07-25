@@ -55,7 +55,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RequestMapping(value = "/sol003/vnflcm/v2/vnf_instances", headers = "Version=2.1.0")

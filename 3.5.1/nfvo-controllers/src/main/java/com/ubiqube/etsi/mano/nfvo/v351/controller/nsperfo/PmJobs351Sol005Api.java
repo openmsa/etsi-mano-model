@@ -46,7 +46,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RequestMapping(value = "/sol005/nspm/v2", headers = { "Version=2.2.0" })

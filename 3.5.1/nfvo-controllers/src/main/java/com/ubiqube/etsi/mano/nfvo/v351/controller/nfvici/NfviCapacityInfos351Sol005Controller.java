@@ -28,7 +28,7 @@ import com.ubiqube.etsi.mano.nfvo.v351.model.nfvici.NfviCapacityInfo;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

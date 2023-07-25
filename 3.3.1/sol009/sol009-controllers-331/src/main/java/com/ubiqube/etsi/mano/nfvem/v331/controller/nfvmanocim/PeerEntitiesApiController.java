@@ -30,7 +30,7 @@ import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModific
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

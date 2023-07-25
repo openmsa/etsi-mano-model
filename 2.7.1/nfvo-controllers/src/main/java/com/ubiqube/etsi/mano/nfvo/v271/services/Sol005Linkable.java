@@ -33,7 +33,7 @@ import com.ubiqube.etsi.mano.nfvo.v271.model.vnf.PkgmLinks;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class Sol005Linkable {

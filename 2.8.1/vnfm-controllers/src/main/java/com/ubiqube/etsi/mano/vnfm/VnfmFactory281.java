@@ -28,7 +28,7 @@ import com.ubiqube.etsi.mano.vnfm.v281.model.grant.GrantRequestLinks;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class VnfmFactory281 implements VnfmFactory {

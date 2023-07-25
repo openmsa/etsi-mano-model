@@ -32,7 +32,7 @@ import com.ubiqube.etsi.mano.em.v361.model.vnfpm.PmJobModifications;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

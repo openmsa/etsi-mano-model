@@ -43,7 +43,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RequestMapping(value = "/sol005/vnfpkgm/v2", headers = { "Version=2.1.0" })

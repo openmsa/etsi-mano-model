@@ -41,7 +41,7 @@ import com.ubiqube.etsi.mano.em.v271.model.vnflcm.VnfLcmOpOcc;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  * @version 1.4.0
  */
 @Tag(name= "vnf_lcm_op_occs")

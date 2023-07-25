@@ -52,7 +52,7 @@ import jakarta.validation.constraints.NotNull;
 
 /**
  *
- * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
+ * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
  *
  */
 @RequestMapping(value = "/sol005/nsfm/v1/subscriptions")

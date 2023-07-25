@@ -43,7 +43,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RequestMapping(value = "/sol012/nfvpolicy/v1", headers = { "Version=3.3.1" })

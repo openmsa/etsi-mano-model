@@ -26,7 +26,7 @@ import com.ubiqube.etsi.mano.vnfm.v331.controller.vnf.VnfPackages331Sol003Api;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class LinksSol003 {

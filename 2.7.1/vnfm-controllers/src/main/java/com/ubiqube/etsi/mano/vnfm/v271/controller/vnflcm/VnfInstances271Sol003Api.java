@@ -60,7 +60,7 @@ import jakarta.validation.Valid;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  * @version 1.4.0
  */
 @Tag(name = "vnf_instances")

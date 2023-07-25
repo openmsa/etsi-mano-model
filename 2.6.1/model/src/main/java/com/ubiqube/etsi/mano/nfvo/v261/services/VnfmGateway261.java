@@ -69,7 +69,7 @@ import ma.glasnost.orika.MapperFacade;
 
 /**
  *
- * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
+ * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
  *
  */
 @Service

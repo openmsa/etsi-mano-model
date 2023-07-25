@@ -44,7 +44,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 /**
  *
- * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
+ * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
  *
  */
 @RequestMapping("/sol005/vnfpkgm/v1/subscriptions")

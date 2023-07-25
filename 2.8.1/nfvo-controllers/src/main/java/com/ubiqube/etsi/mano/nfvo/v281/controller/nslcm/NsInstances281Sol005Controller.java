@@ -39,7 +39,7 @@ import com.ubiqube.etsi.mano.nfvo.v281.model.nslcm.UpdateNsRequest;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

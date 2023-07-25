@@ -87,7 +87,7 @@ public class VnfStateSnapshotInfo   {
   }
 
   /**
-   * The metadata with additional information such as content type, size, creation date, etc. $ref: \"../definitions/SOL002SOL003_def.yaml#/definitions/Map<String, String>\" 
+   * The metadata with additional information such as content type, size, creation date, etc. $ref: \"../definitions/SOL002SOL003_def.yaml#/definitions/Map&gt;String, String&lt;\" 
    * @return metadata
    **/
   @Schema(description = "The metadata with additional information such as content type, size, creation date, etc. $ref: \"../definitions/SOL002SOL003_def.yaml#/definitions/Map<String, String>\" ")

@@ -44,7 +44,7 @@ import com.ubiqube.etsi.mano.em.v271.model.vnfind.ThresholdModifications;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @Tag(name= "thresholds")

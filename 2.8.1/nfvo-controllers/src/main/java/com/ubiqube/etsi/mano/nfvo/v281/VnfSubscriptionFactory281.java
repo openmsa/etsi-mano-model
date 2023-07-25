@@ -28,7 +28,7 @@ import com.ubiqube.etsi.mano.nfvo.v281.model.vnfconfig.VnfPackageOnboardingNotif
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class VnfSubscriptionFactory281 {

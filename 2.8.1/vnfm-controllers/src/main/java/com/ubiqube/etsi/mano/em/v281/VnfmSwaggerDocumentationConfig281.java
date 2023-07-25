@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @Configuration

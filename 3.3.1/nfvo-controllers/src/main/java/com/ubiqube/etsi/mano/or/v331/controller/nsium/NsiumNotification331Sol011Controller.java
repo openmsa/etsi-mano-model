@@ -25,7 +25,7 @@ import com.ubiqube.etsi.mano.or.v331.model.nsium.NsInstanceUsageNotification;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

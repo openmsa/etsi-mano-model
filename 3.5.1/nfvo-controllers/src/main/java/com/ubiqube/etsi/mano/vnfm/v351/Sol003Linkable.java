@@ -32,7 +32,7 @@ import com.ubiqube.etsi.mano.vnfm.v351.controller.vnf.VnfPackages351Sol003Api;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class Sol003Linkable implements Linkable {

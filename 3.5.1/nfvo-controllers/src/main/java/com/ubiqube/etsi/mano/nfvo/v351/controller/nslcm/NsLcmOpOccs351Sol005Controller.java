@@ -32,7 +32,7 @@ import com.ubiqube.etsi.mano.nfvo.v351.model.nslcm.NsLcmOpOccLinks;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

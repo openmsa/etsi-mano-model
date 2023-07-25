@@ -53,7 +53,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @Tag(name= "vnf_instances")

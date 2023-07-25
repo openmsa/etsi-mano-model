@@ -54,7 +54,7 @@ import com.ubiqube.etsi.mano.exception.GenericException;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class VnfLcmOpOcc351Deserializer extends StdDeserializer<VnfLcmOpOcc> {

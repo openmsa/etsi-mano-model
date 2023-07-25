@@ -50,7 +50,7 @@ import com.ubiqube.etsi.mano.vnfm.v361.controller.vnfind.Indicators361Sol003Api;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

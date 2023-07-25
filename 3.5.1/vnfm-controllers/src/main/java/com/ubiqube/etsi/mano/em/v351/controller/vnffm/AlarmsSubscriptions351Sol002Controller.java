@@ -36,7 +36,7 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @ConditionalOnMissingClass("com.ubiqube.etsi.mano.em.v331.controller.vnffm.FaultMngtSubscriptions331Sol002Api")

@@ -28,7 +28,7 @@ import com.ubiqube.etsi.mano.em.v331.model.vnffm.AlarmModifications;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

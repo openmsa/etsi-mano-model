@@ -64,7 +64,7 @@ public class ScaleInfo   {
 	}
 
 	/**
-	* Indicates the scale level. The minimum value shall be 0 and the maximum value shall be <= maxScaleLevel as described in the VNFD. 
+	* Indicates the scale level. The minimum value shall be 0 and the maximum value shall be &gt;= maxScaleLevel as described in the VNFD. 
 	* @return scaleLevel
 	*/
 	@Schema(required = true , description = "Indicates the scale level. The minimum value shall be 0 and the maximum value shall be <= maxScaleLevel as described in the VNFD. ")

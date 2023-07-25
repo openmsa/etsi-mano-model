@@ -33,7 +33,7 @@ import com.ubiqube.etsi.mano.vnfm.v271.OrikaMapperVnfm271;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 class MappingTest extends TestHelper {

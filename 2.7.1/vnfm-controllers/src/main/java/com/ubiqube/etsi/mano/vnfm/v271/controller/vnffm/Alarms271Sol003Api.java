@@ -43,7 +43,7 @@ import com.ubiqube.etsi.mano.em.v271.model.vnffm.AlarmModifications;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @Tag(name= "alarms")

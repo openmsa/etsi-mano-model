@@ -48,7 +48,7 @@ import jakarta.validation.constraints.NotNull;
 
 /**
  *
- * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
+ * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
  *
  */
 @RequestMapping("/sol005/nspm/v1/subscriptions")

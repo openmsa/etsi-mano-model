@@ -53,7 +53,7 @@ import jakarta.validation.Valid;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RequestMapping(value = "/sol002/vnfpm/v2", headers = { "Version=2.1.0" })

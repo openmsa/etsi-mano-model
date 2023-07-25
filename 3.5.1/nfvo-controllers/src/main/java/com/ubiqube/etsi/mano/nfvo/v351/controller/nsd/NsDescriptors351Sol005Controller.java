@@ -37,7 +37,7 @@ import com.ubiqube.etsi.mano.nfvo.v351.model.nsd.NsdInfoModifications;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

@@ -50,7 +50,7 @@ import jakarta.validation.Valid;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RequestMapping(value = "/sol003/vnfind/v1", headers = "Version=1.3.1")

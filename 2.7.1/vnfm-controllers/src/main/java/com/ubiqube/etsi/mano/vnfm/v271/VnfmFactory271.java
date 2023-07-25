@@ -30,7 +30,7 @@ import com.ubiqube.etsi.mano.v271.services.VnfmFactory;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @Service

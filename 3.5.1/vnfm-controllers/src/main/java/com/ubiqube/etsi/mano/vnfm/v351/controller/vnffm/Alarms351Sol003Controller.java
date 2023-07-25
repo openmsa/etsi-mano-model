@@ -35,7 +35,7 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnffm.AlarmFrontController;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @ConditionalOnMissingClass("com.ubiqube.etsi.mano.vnfm.v331.controller.vnffm.Alarms331Sol003Api")

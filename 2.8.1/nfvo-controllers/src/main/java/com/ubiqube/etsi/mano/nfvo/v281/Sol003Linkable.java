@@ -33,7 +33,7 @@ import com.ubiqube.etsi.mano.vnfm.v281.controller.vnf.VnfSubscriptions281Sol003A
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class Sol003Linkable implements Linkable {

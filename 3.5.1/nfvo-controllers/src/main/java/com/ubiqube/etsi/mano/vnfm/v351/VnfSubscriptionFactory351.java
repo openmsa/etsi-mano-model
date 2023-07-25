@@ -29,7 +29,7 @@ import com.ubiqube.etsi.mano.v351.services.Linkable;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class VnfSubscriptionFactory351 {

@@ -34,7 +34,7 @@ import jakarta.validation.Valid;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @ConditionalOnMissingClass("com.ubiqube.etsi.mano.em.v331.controller.vnfind.Indicators331Sol002Api")

@@ -51,7 +51,7 @@ import com.ubiqube.etsi.mano.vnfm.v331.controller.vnflcm.VnfLcmOpOccs331Sol003Ap
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

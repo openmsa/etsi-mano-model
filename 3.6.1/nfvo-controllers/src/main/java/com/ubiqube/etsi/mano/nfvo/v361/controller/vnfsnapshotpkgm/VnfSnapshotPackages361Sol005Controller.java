@@ -44,7 +44,7 @@ import com.ubiqube.etsi.mano.nfvo.v361.model.vnfsnapshotpkgm.VnfSnapshotPkgInfoM
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @Conditional(SingleControllerCondition.class)

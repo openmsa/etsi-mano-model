@@ -60,7 +60,7 @@ import jakarta.validation.Valid;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @Tag(name = "vnf_packages", description = "the vnf_packages API")

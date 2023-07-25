@@ -34,7 +34,7 @@ import com.ubiqube.etsi.mano.vnfm.v351service.LinksSol003;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @RestController

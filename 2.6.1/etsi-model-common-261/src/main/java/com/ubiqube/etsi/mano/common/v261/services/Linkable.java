@@ -31,7 +31,7 @@ import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPkgInfo;
  * This is a technical interface for creating live links from VNF common
  * package.
  *
- * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
+ * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
  *
  */
 public interface Linkable {
