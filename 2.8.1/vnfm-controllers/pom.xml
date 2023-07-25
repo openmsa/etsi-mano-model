@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
 		<artifactId>etsi-model-281-aggregator</artifactId>
-		<version>3.0.0</version>
+		<version>3.1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>etsi-vnfm-281-controllers</artifactId>
 	<packaging>jar</packaging>
@@ -56,7 +56,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-test-helper</artifactId>
-			<version>${project.version}</version>
+			<version>3.1.0-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
