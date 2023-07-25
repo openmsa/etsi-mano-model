@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
 		<artifactId>mano-super-pom</artifactId>
-		<version>3.0.0-SNAPSHOT</version>
+		<version>3.0.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<artifactId>etsi-models-parent</artifactId>
@@ -26,37 +24,37 @@
 			<dependency>
 				<groupId>com.ubiqube.mano</groupId>
 				<artifactId>nfvo-front-controller</artifactId>
-				<version>${version.nfvo-front-controller}</version>
+				<version>3.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>com.ubiqube.mano</groupId>
 				<artifactId>mano-orika</artifactId>
-				<version>${version.mano-orika}</version>
+				<version>3.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>com.ubiqube.mano</groupId>
 				<artifactId>vnfm-front-controller</artifactId>
-				<version>${version.vnfm-front-controller}</version>
+				<version>3.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>com.ubiqube.mano</groupId>
 				<artifactId>nfv-front-controller</artifactId>
-				<version>${version.nfv-front-controller}</version>
+				<version>3.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>com.ubiqube.mano</groupId>
 				<artifactId>mano-commons</artifactId>
-				<version>${version.mano-commons}</version>
+				<version>3.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>com.ubiqube.mano.event</groupId>
 				<artifactId>event-api</artifactId>
-				<version>${version.event-api}</version>
+				<version>3.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>com.ubiqube.mano</groupId>
 				<artifactId>em-front-controller</artifactId>
-				<version>${version.em-front-controller}</version>
+				<version>3.0.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -89,4 +87,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+  <scm>
+    <tag>etsi-models-aggregator-3.0.0</tag>
+  </scm>
 </project>
