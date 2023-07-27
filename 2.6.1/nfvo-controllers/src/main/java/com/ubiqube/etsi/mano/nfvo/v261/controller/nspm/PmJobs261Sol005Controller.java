@@ -75,7 +75,7 @@ public class PmJobs261Sol005Controller implements PmJobs261Sol005Api {
 	 *
 	 * This method terminates an individual PM job.
 	 *
-	 * @return
+	 * @return Void response.
 	 *
 	 */
 	@Override
