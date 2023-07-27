@@ -20,9 +20,6 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,6 +28,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.Checksum;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents an artifact contained in or external to a VNF package
@@ -176,13 +175,13 @@ public class VnfPackageSoftwareImageInfo {
 	private OffsetDateTime createdAt = null;
 
 	@JsonProperty("minDisk")
-	private Integer minDisk = null;
+	private Long minDisk = null;
 
 	@JsonProperty("minRam")
-	private Integer minRam = null;
+	private Long minRam = null;
 
 	@JsonProperty("size")
-	private Integer size = null;
+	private Long size = null;
 
 	@JsonProperty("userMetadata")
 	private Map<String, String> userMetadata = null;
@@ -394,7 +393,7 @@ public class VnfPackageSoftwareImageInfo {
 		this.createdAt = createdAt;
 	}
 
-	public VnfPackageSoftwareImageInfo minDisk(final Integer minDisk) {
+	public VnfPackageSoftwareImageInfo minDisk(final Long minDisk) {
 		this.minDisk = minDisk;
 		return this;
 	}
@@ -406,15 +405,15 @@ public class VnfPackageSoftwareImageInfo {
 	 **/
 	@Schema(description = "The minimal disk for this software image in bytes. See note 4. ")
 
-	public Integer getMinDisk() {
+	public Long getMinDisk() {
 		return minDisk;
 	}
 
-	public void setMinDisk(final Integer minDisk) {
+	public void setMinDisk(final Long minDisk) {
 		this.minDisk = minDisk;
 	}
 
-	public VnfPackageSoftwareImageInfo minRam(final Integer minRam) {
+	public VnfPackageSoftwareImageInfo minRam(final Long minRam) {
 		this.minRam = minRam;
 		return this;
 	}
@@ -426,15 +425,15 @@ public class VnfPackageSoftwareImageInfo {
 	 **/
 	@Schema(description = "The minimal RAM for this software image in bytes. See note 3. ")
 
-	public Integer getMinRam() {
+	public Long getMinRam() {
 		return minRam;
 	}
 
-	public void setMinRam(final Integer minRam) {
+	public void setMinRam(final Long minRam) {
 		this.minRam = minRam;
 	}
 
-	public VnfPackageSoftwareImageInfo size(final Integer size) {
+	public VnfPackageSoftwareImageInfo size(final Long size) {
 		this.size = size;
 		return this;
 	}
@@ -447,11 +446,11 @@ public class VnfPackageSoftwareImageInfo {
 	@Schema(required = true, description = "Size of this software image in bytes. ")
 	@NotNull
 
-	public Integer getSize() {
+	public Long getSize() {
 		return size;
 	}
 
-	public void setSize(final Integer size) {
+	public void setSize(final Long size) {
 		this.size = size;
 	}
 
