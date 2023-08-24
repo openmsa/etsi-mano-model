@@ -310,6 +310,10 @@ public class OrikaMapperVnfm361 implements OrikaMapperFactoryConfigurer {
 				.field("clientPassword", "clientSecret")
 				.byDefault()
 				.register();
+		orikaMapperFactory.classMap(InstantiateVnfRequest.class, VnfInstantiate.class)
+				.field("vimConnectionInfo{value}", "vimConnectionInfo")
+				.byDefault()
+				.register();
 		/*
 		 * Fault management.
 		 */
