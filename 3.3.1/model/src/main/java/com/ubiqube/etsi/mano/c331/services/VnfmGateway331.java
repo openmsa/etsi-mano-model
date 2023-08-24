@@ -94,12 +94,12 @@ public class VnfmGateway331 extends AbstractHttpGateway {
 	public Class<?> getPkgmSubscriptionRequest() {
 		return PkgmSubscriptionRequest.class;
 	}
-	
+
 	@Override
 	public Class<?> getVnfIndicatorValueChangeSubscriptionClass() {
 		return VnfIndicatorSubscription.class;
 	}
-	
+
 	@Override
 	public Class<?> getVnfIndicatorValueChangeSubscriptionRequest() {
 		return VnfIndicatorSubscriptionRequest.class;
@@ -213,8 +213,10 @@ public class VnfmGateway331 extends AbstractHttpGateway {
 	}
 
 	@Override
-	public Class<?> createVnfPackageRequest(final Map<String, String> userDefinedData) {
-		return CreateVnfPkgInfoRequest.class;
+	public Object createVnfPackageRequest(final Map<String, String> userDefinedData) {
+		final CreateVnfPkgInfoRequest req = new CreateVnfPkgInfoRequest();
+		req.setUserDefinedData(userDefinedData);
+		return req;
 	}
 
 	@Override
@@ -263,13 +265,13 @@ public class VnfmGateway331 extends AbstractHttpGateway {
 	}
 
 	@Override
-	public Object createVnfInstanceScaleRequest(ScaleTypeEnum scaleTypeEnum, String aspectId, Integer numberOfSteps) {
+	public Object createVnfInstanceScaleRequest(final ScaleTypeEnum scaleTypeEnum, final String aspectId, final Integer numberOfSteps) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Object createVnfInstanceHealRequest(String cause) {
+	public Object createVnfInstanceHealRequest(final String cause) {
 		// TODO Auto-generated method stub
 		return null;
 	}
