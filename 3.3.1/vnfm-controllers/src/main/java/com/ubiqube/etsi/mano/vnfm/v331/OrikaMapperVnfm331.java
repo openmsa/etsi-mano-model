@@ -51,6 +51,7 @@ import com.ubiqube.etsi.mano.em.v331.model.vnflcm.AffectedVnfc;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.ExtManagedVirtualLinkInfo;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.ExtVirtualLinkInfo;
+import com.ubiqube.etsi.mano.em.v331.model.vnflcm.InstantiateVnfRequest;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.VnfExtCpData;
@@ -58,6 +59,7 @@ import com.ubiqube.etsi.mano.em.v331.model.vnflcm.VnfInfoModifications;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.VnfInstanceInstantiatedVnfInfo;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.VnfcResourceInfo;
+import com.ubiqube.etsi.mano.model.VnfInstantiate;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPackageSoftwareImageInfo;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPackageSoftwareImageInfo.ContainerFormatEnum;
@@ -295,6 +297,10 @@ public class OrikaMapperVnfm331 implements OrikaMapperFactoryConfigurer {
 				.register();
 		orikaMapperFactory.classMap(SubscriptionAuthenticationParamsOauth2ClientCredentials.class, AuthParamOauth2.class)
 				.field("clientPassword", "clientSecret")
+				.byDefault()
+				.register();
+		orikaMapperFactory.classMap(InstantiateVnfRequest.class, VnfInstantiate.class)
+				.field("vimConnectionInfo{value}", "vimConnectionInfo")
 				.byDefault()
 				.register();
 		/*
