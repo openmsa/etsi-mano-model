@@ -40,6 +40,7 @@ import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedVirtualLink;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfLcmOpOccs;
 import com.ubiqube.etsi.mano.dao.mano.v2.BlueprintParameters;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
+import com.ubiqube.etsi.mano.model.VnfInstantiate;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.Checksum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.service.rest.model.AuthParamOauth2;
@@ -63,6 +64,7 @@ import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.AffectedVirtualStorage;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.AffectedVnfc;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ExtManagedVirtualLinkInfo;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ExtVirtualLinkInfo;
+import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.InstantiateVnfRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfInfoModifications;
@@ -306,6 +308,10 @@ public class OrikaMapperVnfm431 implements OrikaMapperFactoryConfigurer {
 				.register();
 		orikaMapperFactory.classMap(SubscriptionAuthenticationParamsOauth2ClientCredentials.class, AuthParamOauth2.class)
 				.field("clientPassword", "clientSecret")
+				.byDefault()
+				.register();
+		orikaMapperFactory.classMap(InstantiateVnfRequest.class, VnfInstantiate.class)
+				.field("vimConnectionInfo{value}", "vimConnectionInfo")
 				.byDefault()
 				.register();
 		/*
