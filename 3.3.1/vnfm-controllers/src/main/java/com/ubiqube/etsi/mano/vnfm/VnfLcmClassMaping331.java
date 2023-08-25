@@ -32,7 +32,7 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
 
 /**
  *
- * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
+ * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
  *
  */
 public class VnfLcmClassMaping331 implements VnfLcmClassMaping {
