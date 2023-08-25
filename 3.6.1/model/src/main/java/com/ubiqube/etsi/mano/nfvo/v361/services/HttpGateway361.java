@@ -31,7 +31,6 @@ import com.ubiqube.etsi.mano.dao.mano.GrantInterface;
 import com.ubiqube.etsi.mano.dao.mano.ScaleTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
-import com.ubiqube.etsi.mano.dao.mano.common.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.mano.pm.PmJob;
 import com.ubiqube.etsi.mano.dao.mano.pm.Threshold;
 import com.ubiqube.etsi.mano.em.v361.model.vnfind.VnfIndicatorSubscription;
@@ -119,21 +118,6 @@ public class HttpGateway361 extends AbstractHttpGateway {
 		if (manoGrant instanceof final GrantRequest grant) {
 			// vnfmFactory.makeGrantRequestLink(grant);
 		}
-	}
-
-	@Override
-	public String getUrlFor(final ApiVersionType type) {
-		return switch (type) {
-		case SOL003_VNFFM -> "vnffm/v1/";
-		case SOL003_VNFIND -> "vnfind/v1/";
-		case SOL003_VNFPM -> "vnfpm/v1/";
-		case SOL003_VNFSNAPSHOTPKGM -> "vnfsnapshotpkgm/v1/";
-		case SOL003_VNFLCM -> "vnflcm/v1/";
-		case SOL003_VRQAN -> "vrqan/v1/";
-		case SOL003_GRANT -> "grant/v1/";
-		case SOL003_VNFPKGM -> "vnfpkgm/v1/";
-		default -> throw new IllegalArgumentException("Unexpected value: " + type);
-		};
 	}
 
 	@Override
