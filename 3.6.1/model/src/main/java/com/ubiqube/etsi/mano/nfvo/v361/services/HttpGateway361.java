@@ -227,8 +227,10 @@ public class HttpGateway361 extends AbstractHttpGateway {
 	}
 
 	@Override
-	public Class<?> createVnfPackageRequest(final Map<String, String> userDefinedData) {
-		return CreateVnfPkgInfoRequest.class;
+	public Object createVnfPackageRequest(final Map<String, String> userDefinedData) {
+		final CreateVnfPkgInfoRequest req = new CreateVnfPkgInfoRequest();
+		req.setUserDefinedData(userDefinedData);
+		return req;
 	}
 
 	@Override
