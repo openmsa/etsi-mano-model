@@ -96,7 +96,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	private String vnfSnapshotInfoId = null;
 
 	@JsonProperty("_links")
-	private VnfLcmOpOccLinks _links = null;
+	private VnfLcmOpOccLinks links = null;
 
 	public VnfLcmOpOcc id(final String id) {
 		this.id = id;
@@ -476,7 +476,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	}
 
 	public VnfLcmOpOcc _links(final VnfLcmOpOccLinks _links) {
-		this._links = _links;
+		this.links = _links;
 		return this;
 	}
 
@@ -489,11 +489,11 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 
 	@Valid
 	public VnfLcmOpOccLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final VnfLcmOpOccLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -522,12 +522,12 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 				Objects.equals(this.changedExtConnectivity, vnfLcmOpOcc.changedExtConnectivity) &&
 				Objects.equals(this.modificationsTriggeredByVnfPkgChange, vnfLcmOpOcc.modificationsTriggeredByVnfPkgChange) &&
 				Objects.equals(this.vnfSnapshotInfoId, vnfLcmOpOcc.vnfSnapshotInfoId) &&
-				Objects.equals(this._links, vnfLcmOpOcc._links);
+				Objects.equals(this.links, vnfLcmOpOcc.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, operationState, stateEnteredTime, startTime, vnfInstanceId, grantId, operation, isAutomaticInvocation, operationParams, isCancelPending, cancelMode, error, resourceChanges, changedInfo, changedExtConnectivity, modificationsTriggeredByVnfPkgChange, vnfSnapshotInfoId, _links);
+		return Objects.hash(id, operationState, stateEnteredTime, startTime, vnfInstanceId, grantId, operation, isAutomaticInvocation, operationParams, isCancelPending, cancelMode, error, resourceChanges, changedInfo, changedExtConnectivity, modificationsTriggeredByVnfPkgChange, vnfSnapshotInfoId, links);
 	}
 
 	@Override
@@ -552,7 +552,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 		sb.append("    changedExtConnectivity: ").append(toIndentedString(changedExtConnectivity)).append("\n");
 		sb.append("    modificationsTriggeredByVnfPkgChange: ").append(toIndentedString(modificationsTriggeredByVnfPkgChange)).append("\n");
 		sb.append("    vnfSnapshotInfoId: ").append(toIndentedString(vnfSnapshotInfoId)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
