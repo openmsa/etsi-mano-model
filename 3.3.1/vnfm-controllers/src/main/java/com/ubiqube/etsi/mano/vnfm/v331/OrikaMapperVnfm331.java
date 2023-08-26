@@ -241,8 +241,8 @@ public class OrikaMapperVnfm331 implements OrikaMapperFactoryConfigurer {
 				.byDefault()
 				.register();
 		orikaMapperFactory.classMap(ResourceDefinition.class, GrantInformationExt.class)
-				.exclude("id")
-				.field("id", "resourceDefinitionId")
+				.field("id", "id")
+				// .field("id", "resourceDefinitionId")
 				.field("type", "type")
 				.field("vduId", "vduId")
 				.field("resource.vimConnectionId", "vimConnectionId")
