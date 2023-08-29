@@ -18,11 +18,11 @@ package com.ubiqube.etsi.mano.nfvo.v261.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import uk.co.jemos.podam.api.AttributeMetadata;
 import uk.co.jemos.podam.api.DataProviderStrategy;
+import uk.co.jemos.podam.common.ManufacturingContext;
 import uk.co.jemos.podam.typeManufacturers.StringTypeManufacturerImpl;
 
 public class UUIDManufacturer extends StringTypeManufacturerImpl {
@@ -47,11 +47,11 @@ public class UUIDManufacturer extends StringTypeManufacturerImpl {
 	}
 
 	@Override
-	public String getType(final DataProviderStrategy strategy, final AttributeMetadata attributeMetadata, final Map genericTypesArgumentsMap) {
+	public String getType(final DataProviderStrategy strategy, final AttributeMetadata attributeMetadata, final ManufacturingContext manufacturingCtx) {
 		if (list.contains(attributeMetadata.getAttributeName())) {
 			return UUID.randomUUID().toString();
 		}
-		return super.getType(strategy, attributeMetadata, genericTypesArgumentsMap);
+		return super.getType(strategy, attributeMetadata, manufacturingCtx);
 	}
 
 }
