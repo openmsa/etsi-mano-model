@@ -20,9 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,6 +28,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.vnfm.v331.model.grant.VimConnectionInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a VNF instance.
@@ -114,7 +113,7 @@ public class VnfInstance {
 	private Map<String, String> extensions = null;
 
 	@JsonProperty("_links")
-	private VnfInstanceLinks _links = null;
+	private VnfInstanceLinks links = null;
 
 	public VnfInstance id(final String id) {
 		this.id = id;
@@ -449,7 +448,7 @@ public class VnfInstance {
 	}
 
 	public VnfInstance _links(final VnfInstanceLinks _links) {
-		this._links = _links;
+		this.links = _links;
 		return this;
 	}
 
@@ -462,11 +461,11 @@ public class VnfInstance {
 
 	@Valid
 	public VnfInstanceLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final VnfInstanceLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -492,12 +491,12 @@ public class VnfInstance {
 				Objects.equals(this.instantiatedVnfInfo, vnfInstance.instantiatedVnfInfo) &&
 				Objects.equals(this.metadata, vnfInstance.metadata) &&
 				Objects.equals(this.extensions, vnfInstance.extensions) &&
-				Objects.equals(this._links, vnfInstance._links);
+				Objects.equals(this.links, vnfInstance.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, vnfInstanceName, vnfInstanceDescription, vnfdId, vnfProvider, vnfProductName, vnfSoftwareVersion, vnfdVersion, vnfConfigurableProperties, vimConnectionInfo, instantiationState, instantiatedVnfInfo, metadata, extensions, _links);
+		return Objects.hash(id, vnfInstanceName, vnfInstanceDescription, vnfdId, vnfProvider, vnfProductName, vnfSoftwareVersion, vnfdVersion, vnfConfigurableProperties, vimConnectionInfo, instantiationState, instantiatedVnfInfo, metadata, extensions, links);
 	}
 
 	@Override
@@ -519,7 +518,7 @@ public class VnfInstance {
 		sb.append("    instantiatedVnfInfo: ").append(toIndentedString(instantiatedVnfInfo)).append("\n");
 		sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
 		sb.append("    extensions: ").append(toIndentedString(extensions)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
