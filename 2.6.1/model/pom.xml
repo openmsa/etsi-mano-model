@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-commons</artifactId>
-			<version>3.0.0</version>
+			<version>${version.mano-commons}</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.annotation</groupId>
