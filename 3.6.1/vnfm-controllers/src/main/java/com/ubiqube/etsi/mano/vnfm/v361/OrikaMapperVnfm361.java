@@ -24,12 +24,10 @@ import org.springframework.stereotype.Service;
 import com.ubiqube.etsi.mano.dao.mano.ExtManagedVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.ExtVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
-import com.ubiqube.etsi.mano.dao.mano.SoftwareImage;
 import com.ubiqube.etsi.mano.dao.mano.VnfCompute;
 import com.ubiqube.etsi.mano.dao.mano.VnfExtCpDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
-import com.ubiqube.etsi.mano.dao.mano.VnfStorage;
 import com.ubiqube.etsi.mano.dao.mano.alarm.Alarms;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInfoModificationsDto;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedCompute;
@@ -39,6 +37,8 @@ import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedVirtualLink;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfLcmOpOccs;
 import com.ubiqube.etsi.mano.dao.mano.v2.BlueprintParameters;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
+import com.ubiqube.etsi.mano.dao.mano.vim.SoftwareImage;
+import com.ubiqube.etsi.mano.dao.mano.vim.VnfStorage;
 import com.ubiqube.etsi.mano.em.v361.model.vnffm.Alarm;
 import com.ubiqube.etsi.mano.em.v361.model.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.em.v361.model.vnffm.FmSubscriptionRequest;
@@ -68,9 +68,9 @@ import com.ubiqube.etsi.mano.nfvo.v361.model.vnf.VnfPackageSoftwareImageInfo.Con
 import com.ubiqube.etsi.mano.nfvo.v361.model.vnf.VnfPackageSoftwareImageInfo.DiskFormatEnum;
 import com.ubiqube.etsi.mano.nfvo.v361.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v361.model.vnfsnapshotpkgm.Checksum;
+import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
+import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.service.rest.model.AuthParamOauth2;
-import com.ubiqube.etsi.mano.service.rest.model.AuthentificationInformations;
 import com.ubiqube.etsi.mano.vnfm.v361.model.grant.ResourceDefinition;
 import com.ubiqube.orika.OrikaMapperFactoryConfigurer;
 
@@ -166,7 +166,7 @@ public class OrikaMapperVnfm361 implements OrikaMapperFactoryConfigurer {
 						return ret;
 					}
 
-					private Checksum mapChecksum(final com.ubiqube.etsi.mano.dao.mano.common.Checksum checksum) {
+					private Checksum mapChecksum(final com.ubiqube.etsi.mano.dao.mano.vim.Checksum checksum) {
 						final Checksum ret = new Checksum();
 						ret.setAlgorithm(checksum.getAlgorithm());
 						ret.setHash(checksum.getHash());
