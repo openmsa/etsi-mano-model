@@ -29,17 +29,17 @@ import org.junit.jupiter.api.Test;
 
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPackageSoftwareImageInfo;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPkgInfo;
+import com.ubiqube.etsi.mano.dao.audit.Audit;
 import com.ubiqube.etsi.mano.dao.mano.AdditionalArtifact;
-import com.ubiqube.etsi.mano.dao.mano.Audit;
-import com.ubiqube.etsi.mano.dao.mano.ContainerFormatType;
 import com.ubiqube.etsi.mano.dao.mano.PkgChecksum;
-import com.ubiqube.etsi.mano.dao.mano.SoftwareImage;
 import com.ubiqube.etsi.mano.dao.mano.VnfCompute;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
-import com.ubiqube.etsi.mano.dao.mano.VnfStorage;
-import com.ubiqube.etsi.mano.dao.mano.common.Checksum;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfLcmOpOccs;
+import com.ubiqube.etsi.mano.dao.mano.vim.Checksum;
+import com.ubiqube.etsi.mano.dao.mano.vim.ContainerFormatType;
+import com.ubiqube.etsi.mano.dao.mano.vim.SoftwareImage;
+import com.ubiqube.etsi.mano.dao.mano.vim.VnfStorage;
 import com.ubiqube.etsi.mano.factory.VnfPackageFactory;
 import com.ubiqube.etsi.mano.vnfm.v261.OrikaMapperVnfm261;
 
@@ -88,7 +88,7 @@ public class VnfPackageTest {
 		final AdditionalArtifact addP[] = add.toArray(new AdditionalArtifact[0]);
 		assertEquals(1, add.size());
 		assertEquals("/path", addP[0].getArtifactPath());
-		final com.ubiqube.etsi.mano.dao.mano.common.Checksum check = addP[0].getChecksum();
+		final Checksum check = addP[0].getChecksum();
 
 		final Map<String, String> udd = vnfDao.getUserDefinedData();
 		assertEquals(1, udd.size());

@@ -21,13 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import com.ubiqube.etsi.mano.dao.mano.ContainerFormatType;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.OnboardingStateType;
 import com.ubiqube.etsi.mano.dao.mano.PackageOperationalState;
-import com.ubiqube.etsi.mano.dao.mano.SoftwareImage;
 import com.ubiqube.etsi.mano.dao.mano.UsageStateEnum;
-import com.ubiqube.etsi.mano.dao.mano.common.Checksum;
+import com.ubiqube.etsi.mano.dao.mano.vim.Checksum;
+import com.ubiqube.etsi.mano.dao.mano.vim.ContainerFormatType;
+import com.ubiqube.etsi.mano.dao.mano.vim.SoftwareImage;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
 import com.ubiqube.etsi.mano.nfvo.v261.NsdFactories;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.NsdOnboardingStateType;

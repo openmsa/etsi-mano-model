@@ -26,7 +26,7 @@ import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackageNsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackageVnfPackage;
 import com.ubiqube.etsi.mano.dao.mano.PnfDescriptor;
-import com.ubiqube.etsi.mano.dao.mano.common.FailureDetails;
+import com.ubiqube.etsi.mano.dao.rfc7807.FailureDetails;
 import com.ubiqube.etsi.mano.nfvo.v261.OrikaConfigurationNfvo261;
 import com.ubiqube.etsi.mano.nfvo.v261.factory.TestFactory;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.NsdOnboardingStateType;
