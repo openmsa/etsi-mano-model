@@ -16,6 +16,7 @@
  */
 package com.ubiqube.etsi.mano.vnfm.v261;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.stereotype.Component;
@@ -133,13 +134,15 @@ public class OrikaMapperVnfm261 implements OrikaMapperFactoryConfigurer {
 					private VnfPackageSoftwareImageInfo mapSoftwareImage(final SoftwareImage img) {
 						final VnfPackageSoftwareImageInfo ret = new VnfPackageSoftwareImageInfo();
 						ret.setChecksum(mapChecksum(img.getChecksum()));
-						if (null != img.getContainerFormat()) {
-							ret.setContainerFormat(ContainerFormatEnum.fromValue(img.getContainerFormat().toString()));
-						}
-						// ret.setCreatedAt(img.get);
-						if (null != img.getDiskFormat()) {
-							ret.setDiskFormat(DiskFormatEnum.valueOf(img.getDiskFormat().toString()));
-						}
+						ret.setContainerFormat(Optional.ofNullable(img.getContainerFormat())
+								.map(Object::toString)
+								.map(ContainerFormatEnum::fromValue)
+								.orElse(null));
+						// ret.setCreatedAt(img.get)
+						ret.setDiskFormat(Optional.ofNullable(img.getDiskFormat())
+								.map(Object::toString)
+								.map(DiskFormatEnum::valueOf)
+								.orElse(null));
 						if (null != img.getId()) {
 							ret.setId(img.getId().toString());
 						}
