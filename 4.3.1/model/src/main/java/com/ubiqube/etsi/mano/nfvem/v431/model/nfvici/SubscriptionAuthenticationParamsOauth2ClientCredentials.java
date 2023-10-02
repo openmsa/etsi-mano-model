@@ -14,7 +14,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
+package com.ubiqube.etsi.mano.nfvem.v431.model.nfvici;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -85,10 +85,10 @@ public class SubscriptionAuthenticationParamsOauth2ClientCredentials   {
   }
 
   /**
-   * String formatted according to IETF RFC 3986. 
+   * Get tokenEndpoint
    * @return tokenEndpoint
    **/
-  @Schema(description = "String formatted according to IETF RFC 3986. ")
+  @Schema(description = "")
   
     public String getTokenEndpoint() {
     return tokenEndpoint;

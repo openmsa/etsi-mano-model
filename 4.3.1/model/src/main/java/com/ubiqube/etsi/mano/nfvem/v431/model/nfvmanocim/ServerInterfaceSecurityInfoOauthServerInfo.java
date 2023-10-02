@@ -12,150 +12,147 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ServerInterfaceSecurityInfoOauthServerInfoDynamicDiscovery;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ServerInterfaceSecurityInfoOauthServerInfoProvidedConfiguration;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 /**
- * OAuth 2.0 authorization server information and configuration.
+ * OAuth 2.0 authorization server information and configuration. 
  */
 @Schema(description = "OAuth 2.0 authorization server information and configuration. ")
 @Validated
 
-public class ServerInterfaceSecurityInfoOauthServerInfo {
-	@JsonProperty("dynamicDiscovery")
-	private ServerInterfaceSecurityInfoOauthServerInfoDynamicDiscovery dynamicDiscovery = null;
 
-	@JsonProperty("providedConfiguration")
-	private ServerInterfaceSecurityInfoOauthServerInfoProvidedConfiguration providedConfiguration = null;
 
-	@JsonProperty("tlsCipherSuites")
-	@Valid
-	private List<String> tlsCipherSuites = new ArrayList<>();
+public class ServerInterfaceSecurityInfoOauthServerInfo   {
+  @JsonProperty("dynamicDiscovery")
+  private ServerInterfaceSecurityInfoOauthServerInfoDynamicDiscovery dynamicDiscovery = null;
 
-	public ServerInterfaceSecurityInfoOauthServerInfo dynamicDiscovery(final ServerInterfaceSecurityInfoOauthServerInfoDynamicDiscovery dynamicDiscovery) {
-		this.dynamicDiscovery = dynamicDiscovery;
-		return this;
-	}
+  @JsonProperty("providedConfiguration")
+  private ServerInterfaceSecurityInfoOauthServerInfoProvidedConfiguration providedConfiguration = null;
 
-	/**
-	 * Get dynamicDiscovery
-	 *
-	 * @return dynamicDiscovery
-	 **/
-	@Schema(description = "")
+  @JsonProperty("tlsCipherSuites")
+  @Valid
+  private List<String> tlsCipherSuites = new ArrayList<>();
 
-	@Valid
-	public ServerInterfaceSecurityInfoOauthServerInfoDynamicDiscovery getDynamicDiscovery() {
-		return dynamicDiscovery;
-	}
+  public ServerInterfaceSecurityInfoOauthServerInfo dynamicDiscovery(ServerInterfaceSecurityInfoOauthServerInfoDynamicDiscovery dynamicDiscovery) {
+    this.dynamicDiscovery = dynamicDiscovery;
+    return this;
+  }
 
-	public void setDynamicDiscovery(final ServerInterfaceSecurityInfoOauthServerInfoDynamicDiscovery dynamicDiscovery) {
-		this.dynamicDiscovery = dynamicDiscovery;
-	}
+  /**
+   * Get dynamicDiscovery
+   * @return dynamicDiscovery
+   **/
+  @Schema(description = "")
+  
+    @Valid
+    public ServerInterfaceSecurityInfoOauthServerInfoDynamicDiscovery getDynamicDiscovery() {
+    return dynamicDiscovery;
+  }
 
-	public ServerInterfaceSecurityInfoOauthServerInfo providedConfiguration(final ServerInterfaceSecurityInfoOauthServerInfoProvidedConfiguration providedConfiguration) {
-		this.providedConfiguration = providedConfiguration;
-		return this;
-	}
+  public void setDynamicDiscovery(ServerInterfaceSecurityInfoOauthServerInfoDynamicDiscovery dynamicDiscovery) {
+    this.dynamicDiscovery = dynamicDiscovery;
+  }
 
-	/**
-	 * Get providedConfiguration
-	 *
-	 * @return providedConfiguration
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  public ServerInterfaceSecurityInfoOauthServerInfo providedConfiguration(ServerInterfaceSecurityInfoOauthServerInfoProvidedConfiguration providedConfiguration) {
+    this.providedConfiguration = providedConfiguration;
+    return this;
+  }
 
-	@Valid
-	public ServerInterfaceSecurityInfoOauthServerInfoProvidedConfiguration getProvidedConfiguration() {
-		return providedConfiguration;
-	}
+  /**
+   * Get providedConfiguration
+   * @return providedConfiguration
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	public void setProvidedConfiguration(final ServerInterfaceSecurityInfoOauthServerInfoProvidedConfiguration providedConfiguration) {
-		this.providedConfiguration = providedConfiguration;
-	}
+    @Valid
+    public ServerInterfaceSecurityInfoOauthServerInfoProvidedConfiguration getProvidedConfiguration() {
+    return providedConfiguration;
+  }
 
-	public ServerInterfaceSecurityInfoOauthServerInfo tlsCipherSuites(final List<String> tlsCipherSuites) {
-		this.tlsCipherSuites = tlsCipherSuites;
-		return this;
-	}
+  public void setProvidedConfiguration(ServerInterfaceSecurityInfoOauthServerInfoProvidedConfiguration providedConfiguration) {
+    this.providedConfiguration = providedConfiguration;
+  }
 
-	public ServerInterfaceSecurityInfoOauthServerInfo addTlsCipherSuitesItem(final String tlsCipherSuitesItem) {
-		this.tlsCipherSuites.add(tlsCipherSuitesItem);
-		return this;
-	}
+  public ServerInterfaceSecurityInfoOauthServerInfo tlsCipherSuites(List<String> tlsCipherSuites) {
+    this.tlsCipherSuites = tlsCipherSuites;
+    return this;
+  }
 
-	/**
-	 * List of cipher suites that shall be declared as supported by the API producer
-	 * when performing the SSL or TLS negotiation with the authorization server.
-	 * Valid values of cipher suites are defined in IETF RFC 8447.
-	 *
-	 * @return tlsCipherSuites
-	 **/
-	@Schema(required = true, description = "List of cipher suites that shall be declared as supported by the API producer when performing the SSL or TLS negotiation with the authorization server. Valid values of cipher suites are defined in IETF RFC 8447. ")
-	@NotNull
+  public ServerInterfaceSecurityInfoOauthServerInfo addTlsCipherSuitesItem(String tlsCipherSuitesItem) {
+    this.tlsCipherSuites.add(tlsCipherSuitesItem);
+    return this;
+  }
 
-	public List<String> getTlsCipherSuites() {
-		return tlsCipherSuites;
-	}
+  /**
+   * List of cipher suites that shall be declared as supported by the API producer when performing the SSL or TLS negotiation with the authorization server. Valid values of cipher suites are defined in IETF RFC 8447. 
+   * @return tlsCipherSuites
+   **/
+  @Schema(required = true, description = "List of cipher suites that shall be declared as supported by the API producer when performing the SSL or TLS negotiation with the authorization server. Valid values of cipher suites are defined in IETF RFC 8447. ")
+      @NotNull
 
-	public void setTlsCipherSuites(final List<String> tlsCipherSuites) {
-		this.tlsCipherSuites = tlsCipherSuites;
-	}
+    public List<String> getTlsCipherSuites() {
+    return tlsCipherSuites;
+  }
 
-	@Override
-	public boolean equals(final java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if ((o == null) || (getClass() != o.getClass())) {
-			return false;
-		}
-		final ServerInterfaceSecurityInfoOauthServerInfo serverInterfaceSecurityInfoOauthServerInfo = (ServerInterfaceSecurityInfoOauthServerInfo) o;
-		return Objects.equals(this.dynamicDiscovery, serverInterfaceSecurityInfoOauthServerInfo.dynamicDiscovery) &&
-				Objects.equals(this.providedConfiguration, serverInterfaceSecurityInfoOauthServerInfo.providedConfiguration) &&
-				Objects.equals(this.tlsCipherSuites, serverInterfaceSecurityInfoOauthServerInfo.tlsCipherSuites);
-	}
+  public void setTlsCipherSuites(List<String> tlsCipherSuites) {
+    this.tlsCipherSuites = tlsCipherSuites;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(dynamicDiscovery, providedConfiguration, tlsCipherSuites);
-	}
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("class ServerInterfaceSecurityInfoOauthServerInfo {\n");
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ServerInterfaceSecurityInfoOauthServerInfo serverInterfaceSecurityInfoOauthServerInfo = (ServerInterfaceSecurityInfoOauthServerInfo) o;
+    return Objects.equals(this.dynamicDiscovery, serverInterfaceSecurityInfoOauthServerInfo.dynamicDiscovery) &&
+        Objects.equals(this.providedConfiguration, serverInterfaceSecurityInfoOauthServerInfo.providedConfiguration) &&
+        Objects.equals(this.tlsCipherSuites, serverInterfaceSecurityInfoOauthServerInfo.tlsCipherSuites);
+  }
 
-		sb.append("    dynamicDiscovery: ").append(toIndentedString(dynamicDiscovery)).append("\n");
-		sb.append("    providedConfiguration: ").append(toIndentedString(providedConfiguration)).append("\n");
-		sb.append("    tlsCipherSuites: ").append(toIndentedString(tlsCipherSuites)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(dynamicDiscovery, providedConfiguration, tlsCipherSuites);
+  }
 
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(final java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ServerInterfaceSecurityInfoOauthServerInfo {\n");
+    
+    sb.append("    dynamicDiscovery: ").append(toIndentedString(dynamicDiscovery)).append("\n");
+    sb.append("    providedConfiguration: ").append(toIndentedString(providedConfiguration)).append("\n");
+    sb.append("    tlsCipherSuites: ").append(toIndentedString(tlsCipherSuites)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

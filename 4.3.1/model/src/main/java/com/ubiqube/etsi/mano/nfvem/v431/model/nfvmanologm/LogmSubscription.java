@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
 
@@ -31,6 +31,7 @@ import jakarta.validation.constraints.*;
  */
 @Schema(description = "This type represents a subscription. It shall comply with the provisions defined in table 8.6.2.3-1.")
 @Validated
+
 
 
 public class LogmSubscription   {

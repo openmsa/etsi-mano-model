@@ -12,214 +12,198 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.AdministrativeStateEnumType;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ConsumedManoInterfaceInfo;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.OperationalStateEnumType;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 /**
- * This type represents attribute modifications that were performed on an
- * \&quot;Individual peer entity\&quot; resource. The attributes that can be
- * included consist of those requested to be modified explicitly in the
- * \&quot;PeerEntityConfigModificationRequest\&quot; data structure. If
- * applicable, additional attributes of the \&quot;PeerEntity\&quot; data
- * structure that were modified implicitly shall also be provided. * NOTE: Due
- * to the security sensitive information contained within the attribute (refer
- * to \&quot;securityInfo\&quot; within the
- * \&quot;ConsumedManoInterfaceInfo\&quot;), based on access control policies,
- * the API consumer might have read only, write only, read/write, or no access
- * at all to the attribute&#x27;s value. In case the API consumer is not allowed
- * to read the value of the security sensitive attribute, the attribute shall be
- * omitted when the information is to be provided in a response message.
+ * This type represents attribute modifications that were performed on an \&quot;Individual peer entity\&quot; resource. The attributes that can be included consist of those requested to be modified explicitly in the \&quot;PeerEntityConfigModificationRequest\&quot; data structure. If applicable, additional attributes of the \&quot;PeerEntity\&quot; data structure that were modified implicitly shall also be provided. * NOTE: Due to the security sensitive information contained within the attribute (refer to \&quot;securityInfo\&quot;         within the \&quot;ConsumedManoInterfaceInfo\&quot;), based on access control policies, the API consumer might have         read only, write only, read/write, or no access at all to the attribute&#x27;s value. In case the         API consumer is not allowed to read the value of the security sensitive attribute, the attribute shall         be omitted when the information is to be provided in a response message. 
  */
 @Schema(description = "This type represents attribute modifications that were performed on an \"Individual peer entity\" resource. The attributes that can be included consist of those requested to be modified explicitly in the \"PeerEntityConfigModificationRequest\" data structure. If applicable, additional attributes of the \"PeerEntity\" data structure that were modified implicitly shall also be provided. * NOTE: Due to the security sensitive information contained within the attribute (refer to \"securityInfo\"         within the \"ConsumedManoInterfaceInfo\"), based on access control policies, the API consumer might have         read only, write only, read/write, or no access at all to the attribute's value. In case the         API consumer is not allowed to read the value of the security sensitive attribute, the attribute shall         be omitted when the information is to be provided in a response message. ")
 @Validated
 
-public class PeerEntityConfigModifications {
-	@JsonProperty("name")
-	private String name = null;
 
-	@JsonProperty("description")
-	private String description = null;
 
-	@JsonProperty("consumedManoInterfaces")
-	@Valid
-	private Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces = null;
+public class PeerEntityConfigModifications   {
+  @JsonProperty("name")
+  private String name = null;
 
-	@JsonProperty("operationalState")
-	private OperationalStateEnumType operationalState = null;
+  @JsonProperty("description")
+  private String description = null;
 
-	@JsonProperty("administrativeState")
-	private AdministrativeStateEnumType administrativeState = null;
+  @JsonProperty("consumedManoInterfaces")
+  @Valid
+  private Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces = null;
 
-	public PeerEntityConfigModifications name(final String name) {
-		this.name = name;
-		return this;
-	}
+  @JsonProperty("operationalState")
+  private OperationalStateEnumType operationalState = null;
 
-	/**
-	 * If present, this attribute signals modifications of the \"name\" attribute in
-	 * \"PeerEntity\", as defined in clause 5.6.2.15.
-	 *
-	 * @return name
-	 **/
-	@Schema(description = "If present, this attribute signals modifications of the \"name\" attribute in \"PeerEntity\", as defined in clause 5.6.2.15. ")
+  @JsonProperty("administrativeState")
+  private AdministrativeStateEnumType administrativeState = null;
 
-	public String getName() {
-		return name;
-	}
+  public PeerEntityConfigModifications name(String name) {
+    this.name = name;
+    return this;
+  }
 
-	public void setName(final String name) {
-		this.name = name;
-	}
+  /**
+   * If present, this attribute signals modifications of the \"name\" attribute in \"PeerEntity\", as defined in clause 5.6.2.15. 
+   * @return name
+   **/
+  @Schema(description = "If present, this attribute signals modifications of the \"name\" attribute in \"PeerEntity\", as defined in clause 5.6.2.15. ")
+  
+    public String getName() {
+    return name;
+  }
 
-	public PeerEntityConfigModifications description(final String description) {
-		this.description = description;
-		return this;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	/**
-	 * If present, this attribute signals modifications of the \"description\"
-	 * attribute in \"PeerEntity\", as defined in clause 5.6.2.15.
-	 *
-	 * @return description
-	 **/
-	@Schema(description = "If present, this attribute signals modifications of the \"description\" attribute in \"PeerEntity\", as defined in clause 5.6.2.15. ")
+  public PeerEntityConfigModifications description(String description) {
+    this.description = description;
+    return this;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  /**
+   * If present, this attribute signals modifications of the \"description\" attribute in \"PeerEntity\", as defined in clause 5.6.2.15. 
+   * @return description
+   **/
+  @Schema(description = "If present, this attribute signals modifications of the \"description\" attribute in \"PeerEntity\", as defined in clause 5.6.2.15. ")
+  
+    public String getDescription() {
+    return description;
+  }
 
-	public void setDescription(final String description) {
-		this.description = description;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public PeerEntityConfigModifications consumedManoInterfaces(final Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces) {
-		this.consumedManoInterfaces = consumedManoInterfaces;
-		return this;
-	}
+  public PeerEntityConfigModifications consumedManoInterfaces(Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces) {
+    this.consumedManoInterfaces = consumedManoInterfaces;
+    return this;
+  }
 
-	public PeerEntityConfigModifications putConsumedManoInterfacesItem(final String key, final ConsumedManoInterfaceInfo consumedManoInterfacesItem) {
-		if (this.consumedManoInterfaces == null) {
-			this.consumedManoInterfaces = new HashMap<>();
-		}
-		this.consumedManoInterfaces.put(key, consumedManoInterfacesItem);
-		return this;
-	}
+  public PeerEntityConfigModifications putConsumedManoInterfacesItem(String key, ConsumedManoInterfaceInfo consumedManoInterfacesItem) {
+    if (this.consumedManoInterfaces == null) {
+      this.consumedManoInterfaces = new HashMap<>();
+    }
+    this.consumedManoInterfaces.put(key, consumedManoInterfacesItem);
+    return this;
+  }
 
-	/**
-	 * If present, this attribute signals modifications of the
-	 * \"consumedManoInterfaces\" attribute in \"PeerEntity\", as defined in clause
-	 * 5.6.2.15. See note.
-	 *
-	 * @return consumedManoInterfaces
-	 **/
-	@Schema(description = "If present, this attribute signals modifications of the \"consumedManoInterfaces\" attribute in \"PeerEntity\", as defined in clause 5.6.2.15. See note. ")
-	@Valid
-	public Map<String, ConsumedManoInterfaceInfo> getConsumedManoInterfaces() {
-		return consumedManoInterfaces;
-	}
+  /**
+   * If present, this attribute signals modifications of the \"consumedManoInterfaces\" attribute in \"PeerEntity\", as defined in clause 5.6.2.15. See note. 
+   * @return consumedManoInterfaces
+   **/
+  @Schema(description = "If present, this attribute signals modifications of the \"consumedManoInterfaces\" attribute in \"PeerEntity\", as defined in clause 5.6.2.15. See note. ")
+      @Valid
+    public Map<String, ConsumedManoInterfaceInfo> getConsumedManoInterfaces() {
+    return consumedManoInterfaces;
+  }
 
-	public void setConsumedManoInterfaces(final Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces) {
-		this.consumedManoInterfaces = consumedManoInterfaces;
-	}
+  public void setConsumedManoInterfaces(Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces) {
+    this.consumedManoInterfaces = consumedManoInterfaces;
+  }
 
-	public PeerEntityConfigModifications operationalState(final OperationalStateEnumType operationalState) {
-		this.operationalState = operationalState;
-		return this;
-	}
+  public PeerEntityConfigModifications operationalState(OperationalStateEnumType operationalState) {
+    this.operationalState = operationalState;
+    return this;
+  }
 
-	/**
-	 * Get operationalState
-	 *
-	 * @return operationalState
-	 **/
-	@Schema(description = "")
+  /**
+   * Get operationalState
+   * @return operationalState
+   **/
+  @Schema(description = "")
+  
+    @Valid
+    public OperationalStateEnumType getOperationalState() {
+    return operationalState;
+  }
 
-	@Valid
-	public OperationalStateEnumType getOperationalState() {
-		return operationalState;
-	}
+  public void setOperationalState(OperationalStateEnumType operationalState) {
+    this.operationalState = operationalState;
+  }
 
-	public void setOperationalState(final OperationalStateEnumType operationalState) {
-		this.operationalState = operationalState;
-	}
+  public PeerEntityConfigModifications administrativeState(AdministrativeStateEnumType administrativeState) {
+    this.administrativeState = administrativeState;
+    return this;
+  }
 
-	public PeerEntityConfigModifications administrativeState(final AdministrativeStateEnumType administrativeState) {
-		this.administrativeState = administrativeState;
-		return this;
-	}
+  /**
+   * Get administrativeState
+   * @return administrativeState
+   **/
+  @Schema(description = "")
+  
+    @Valid
+    public AdministrativeStateEnumType getAdministrativeState() {
+    return administrativeState;
+  }
 
-	/**
-	 * Get administrativeState
-	 *
-	 * @return administrativeState
-	 **/
-	@Schema(description = "")
+  public void setAdministrativeState(AdministrativeStateEnumType administrativeState) {
+    this.administrativeState = administrativeState;
+  }
 
-	@Valid
-	public AdministrativeStateEnumType getAdministrativeState() {
-		return administrativeState;
-	}
 
-	public void setAdministrativeState(final AdministrativeStateEnumType administrativeState) {
-		this.administrativeState = administrativeState;
-	}
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    PeerEntityConfigModifications peerEntityConfigModifications = (PeerEntityConfigModifications) o;
+    return Objects.equals(this.name, peerEntityConfigModifications.name) &&
+        Objects.equals(this.description, peerEntityConfigModifications.description) &&
+        Objects.equals(this.consumedManoInterfaces, peerEntityConfigModifications.consumedManoInterfaces) &&
+        Objects.equals(this.operationalState, peerEntityConfigModifications.operationalState) &&
+        Objects.equals(this.administrativeState, peerEntityConfigModifications.administrativeState);
+  }
 
-	@Override
-	public boolean equals(final java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if ((o == null) || (getClass() != o.getClass())) {
-			return false;
-		}
-		final PeerEntityConfigModifications peerEntityConfigModifications = (PeerEntityConfigModifications) o;
-		return Objects.equals(this.name, peerEntityConfigModifications.name) &&
-				Objects.equals(this.description, peerEntityConfigModifications.description) &&
-				Objects.equals(this.consumedManoInterfaces, peerEntityConfigModifications.consumedManoInterfaces) &&
-				Objects.equals(this.operationalState, peerEntityConfigModifications.operationalState) &&
-				Objects.equals(this.administrativeState, peerEntityConfigModifications.administrativeState);
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, description, consumedManoInterfaces, operationalState, administrativeState);
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name, description, consumedManoInterfaces, operationalState, administrativeState);
-	}
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class PeerEntityConfigModifications {\n");
+    
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    consumedManoInterfaces: ").append(toIndentedString(consumedManoInterfaces)).append("\n");
+    sb.append("    operationalState: ").append(toIndentedString(operationalState)).append("\n");
+    sb.append("    administrativeState: ").append(toIndentedString(administrativeState)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("class PeerEntityConfigModifications {\n");
-
-		sb.append("    name: ").append(toIndentedString(name)).append("\n");
-		sb.append("    description: ").append(toIndentedString(description)).append("\n");
-		sb.append("    consumedManoInterfaces: ").append(toIndentedString(consumedManoInterfaces)).append("\n");
-		sb.append("    operationalState: ").append(toIndentedString(operationalState)).append("\n");
-		sb.append("    administrativeState: ").append(toIndentedString(administrativeState)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
-
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(final java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

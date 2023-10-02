@@ -12,111 +12,113 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.Link;
-import io.swagger.v3.oas.annotations.media.Schema;
+
 import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanofm.Link;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * LoggingJobLogReports
  */
 @Validated
 
+public class LoggingJobLogReports {
+	@JsonProperty("logReportId")
+	private String logReportId = null;
 
-public class LoggingJobLogReports   {
-  @JsonProperty("logReportId")
-  private String logReportId = null;
+	@JsonProperty("logReportLoc")
+	private Link logReportLoc = null;
 
-  @JsonProperty("logReportLoc")
-  private Link logReportLoc = null;
+	public LoggingJobLogReports logReportId(final String logReportId) {
+		this.logReportId = logReportId;
+		return this;
+	}
 
-  public LoggingJobLogReports logReportId(String logReportId) {
-    this.logReportId = logReportId;
-    return this;
-  }
+	/**
+	 * An identifier with the intention of being globally unique.
+	 *
+	 * @return logReportId
+	 **/
+	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@NotNull
 
-  /**
-   * An identifier with the intention of being globally unique. 
-   * @return logReportId
-   **/
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
-      @NotNull
+	public String getLogReportId() {
+		return logReportId;
+	}
 
-    public String getLogReportId() {
-    return logReportId;
-  }
+	public void setLogReportId(final String logReportId) {
+		this.logReportId = logReportId;
+	}
 
-  public void setLogReportId(String logReportId) {
-    this.logReportId = logReportId;
-  }
+	public LoggingJobLogReports logReportLoc(final Link logReportLoc) {
+		this.logReportLoc = logReportLoc;
+		return this;
+	}
 
-  public LoggingJobLogReports logReportLoc(Link logReportLoc) {
-    this.logReportLoc = logReportLoc;
-    return this;
-  }
+	/**
+	 * Get logReportLoc
+	 *
+	 * @return logReportLoc
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  /**
-   * Get logReportLoc
-   * @return logReportLoc
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	@Valid
+	public Link getLogReportLoc() {
+		return logReportLoc;
+	}
 
-    @Valid
-    public Link getLogReportLoc() {
-    return logReportLoc;
-  }
+	public void setLogReportLoc(final Link logReportLoc) {
+		this.logReportLoc = logReportLoc;
+	}
 
-  public void setLogReportLoc(Link logReportLoc) {
-    this.logReportLoc = logReportLoc;
-  }
+	@Override
+	public boolean equals(final java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if ((o == null) || (getClass() != o.getClass())) {
+			return false;
+		}
+		final LoggingJobLogReports loggingJobLogReports = (LoggingJobLogReports) o;
+		return Objects.equals(this.logReportId, loggingJobLogReports.logReportId) &&
+				Objects.equals(this.logReportLoc, loggingJobLogReports.logReportLoc);
+	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(logReportId, logReportLoc);
+	}
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    LoggingJobLogReports loggingJobLogReports = (LoggingJobLogReports) o;
-    return Objects.equals(this.logReportId, loggingJobLogReports.logReportId) &&
-        Objects.equals(this.logReportLoc, loggingJobLogReports.logReportLoc);
-  }
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("class LoggingJobLogReports {\n");
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(logReportId, logReportLoc);
-  }
+		sb.append("    logReportId: ").append(toIndentedString(logReportId)).append("\n");
+		sb.append("    logReportLoc: ").append(toIndentedString(logReportLoc)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LoggingJobLogReports {\n");
-    
-    sb.append("    logReportId: ").append(toIndentedString(logReportId)).append("\n");
-    sb.append("    logReportLoc: ").append(toIndentedString(logReportLoc)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }

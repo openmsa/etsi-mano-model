@@ -14,12 +14,12 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
+package com.ubiqube.etsi.mano.nfvem.v431.model.nfvici;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.ApiVersionInformationApiVersions;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvici.ApiVersionInformationApiVersions;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,10 +73,10 @@ public class ApiVersionInformation   {
   }
 
   /**
-   * Version(s) supported for the API signaled by the uriPrefix attribute. 
+   * Version(s) supported for the API signalled by the uriPrefix attribute. 
    * @return apiVersions
    **/
-  @Schema(required = true, description = "Version(s) supported for the API signaled by the uriPrefix attribute. ")
+  @Schema(required = true, description = "Version(s) supported for the API signalled by the uriPrefix attribute. ")
       @NotNull
     @Valid
     public List<ApiVersionInformationApiVersions> getApiVersions() {

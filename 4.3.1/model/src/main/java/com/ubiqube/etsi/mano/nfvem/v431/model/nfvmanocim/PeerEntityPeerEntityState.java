@@ -12,116 +12,115 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.AdministrativeStateEnumType;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.OperationalStateEnumType;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 /**
- * State of the peer functional entity as provided by the API consumer when
- * creating the resource or when updating it with the PATCH method.
+ * State of the peer functional entity as provided by the API consumer when creating the resource or when updating it with the PATCH method. 
  */
 @Schema(description = "State of the peer functional entity as provided by the API consumer when creating the resource or when updating it with the PATCH method. ")
 @Validated
 
-public class PeerEntityPeerEntityState {
-	@JsonProperty("operationalState")
-	private OperationalStateEnumType operationalState = null;
 
-	@JsonProperty("administrativeState")
-	private AdministrativeStateEnumType administrativeState = null;
 
-	public PeerEntityPeerEntityState operationalState(final OperationalStateEnumType operationalState) {
-		this.operationalState = operationalState;
-		return this;
-	}
+public class PeerEntityPeerEntityState   {
+  @JsonProperty("operationalState")
+  private OperationalStateEnumType operationalState = null;
 
-	/**
-	 * Get operationalState
-	 *
-	 * @return operationalState
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  @JsonProperty("administrativeState")
+  private AdministrativeStateEnumType administrativeState = null;
 
-	@Valid
-	public OperationalStateEnumType getOperationalState() {
-		return operationalState;
-	}
+  public PeerEntityPeerEntityState operationalState(OperationalStateEnumType operationalState) {
+    this.operationalState = operationalState;
+    return this;
+  }
 
-	public void setOperationalState(final OperationalStateEnumType operationalState) {
-		this.operationalState = operationalState;
-	}
+  /**
+   * Get operationalState
+   * @return operationalState
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	public PeerEntityPeerEntityState administrativeState(final AdministrativeStateEnumType administrativeState) {
-		this.administrativeState = administrativeState;
-		return this;
-	}
+    @Valid
+    public OperationalStateEnumType getOperationalState() {
+    return operationalState;
+  }
 
-	/**
-	 * Get administrativeState
-	 *
-	 * @return administrativeState
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  public void setOperationalState(OperationalStateEnumType operationalState) {
+    this.operationalState = operationalState;
+  }
 
-	@Valid
-	public AdministrativeStateEnumType getAdministrativeState() {
-		return administrativeState;
-	}
+  public PeerEntityPeerEntityState administrativeState(AdministrativeStateEnumType administrativeState) {
+    this.administrativeState = administrativeState;
+    return this;
+  }
 
-	public void setAdministrativeState(final AdministrativeStateEnumType administrativeState) {
-		this.administrativeState = administrativeState;
-	}
+  /**
+   * Get administrativeState
+   * @return administrativeState
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	@Override
-	public boolean equals(final java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if ((o == null) || (getClass() != o.getClass())) {
-			return false;
-		}
-		final PeerEntityPeerEntityState peerEntityPeerEntityState = (PeerEntityPeerEntityState) o;
-		return Objects.equals(this.operationalState, peerEntityPeerEntityState.operationalState) &&
-				Objects.equals(this.administrativeState, peerEntityPeerEntityState.administrativeState);
-	}
+    @Valid
+    public AdministrativeStateEnumType getAdministrativeState() {
+    return administrativeState;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(operationalState, administrativeState);
-	}
+  public void setAdministrativeState(AdministrativeStateEnumType administrativeState) {
+    this.administrativeState = administrativeState;
+  }
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("class PeerEntityPeerEntityState {\n");
 
-		sb.append("    operationalState: ").append(toIndentedString(operationalState)).append("\n");
-		sb.append("    administrativeState: ").append(toIndentedString(administrativeState)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    PeerEntityPeerEntityState peerEntityPeerEntityState = (PeerEntityPeerEntityState) o;
+    return Objects.equals(this.operationalState, peerEntityPeerEntityState.operationalState) &&
+        Objects.equals(this.administrativeState, peerEntityPeerEntityState.administrativeState);
+  }
 
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(final java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(operationalState, administrativeState);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class PeerEntityPeerEntityState {\n");
+    
+    sb.append("    operationalState: ").append(toIndentedString(operationalState)).append("\n");
+    sb.append("    administrativeState: ").append(toIndentedString(administrativeState)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

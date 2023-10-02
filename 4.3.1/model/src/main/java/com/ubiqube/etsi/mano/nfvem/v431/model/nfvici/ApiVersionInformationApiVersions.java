@@ -14,7 +14,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
+package com.ubiqube.etsi.mano.nfvem.v431.model.nfvici;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -47,10 +47,10 @@ public class ApiVersionInformationApiVersions   {
   }
 
   /**
-   * Identifies a supported version. The value of the version attribute shall be a version identifier as specified in clause 9.1 (SOL013). 
+   * Identifies a supported version. The value of the version attribute shall be a version identifier as specified in clause 4.6.1. 
    * @return version
    **/
-  @Schema(required = true, description = "Identifies a supported version. The value of the version attribute shall be a version identifier as specified in clause 9.1 (SOL013). ")
+  @Schema(required = true, description = "Identifies a supported version. The value of the version attribute shall be a version identifier as specified in clause 4.6.1. ")
       @NotNull
 
     public String getVersion() {
@@ -67,12 +67,12 @@ public class ApiVersionInformationApiVersions   {
   }
 
   /**
-   * If such information is available, this attribute indicates whether use of the version signaled by the version attribute is deprecated (true) or not (false). A deprecated version is still supported by the API producer but is recommended not to be used any longer. When a version is no longer supported, it does not appear in the response body. 
+   * Get isDeprecated
    * @return isDeprecated
    **/
-  @Schema(description = "If such information is available, this attribute indicates whether use of the version signaled by the version attribute is deprecated (true) or not (false). A deprecated version is still supported by the API producer but is recommended not to be used any longer. When a version is no longer supported, it does not appear in the response body. ")
+  @Schema(description = "")
   
-    public Boolean isIsDeprecated() {
+    public Boolean getIsDeprecated() {
     return isDeprecated;
   }
 
@@ -86,10 +86,10 @@ public class ApiVersionInformationApiVersions   {
   }
 
   /**
-   * Date-time stamp. Representation: String formatted according to IETF RFC 3339. 
+   * Get retirementDate
    * @return retirementDate
    **/
-  @Schema(description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+  @Schema(description = "")
   
     @Valid
     public OffsetDateTime getRetirementDate() {

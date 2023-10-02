@@ -12,201 +12,184 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.VimSpecificInfoImageDigestAlgorithms;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.VimSpecificInfoImageSignatureVerification;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 /**
- * This type represents information attributes specific to a VIM entity, and
- * that can be relevant to more than one NFV MANO service offered by a VIM
- * entity. It shall comply with the provisions defined in table 5.6.3.6-1. The
- * present document version does not specify the support for \&quot;maximum
- * number of virtualised resources (attribute
- * \&quot;maxVirtualResourceNum\&quot;)\&quot; as specified in clause 7.2.9.2 of
- * ETSI GS NFV IFA 031 [1]. NOTE: Recommendations on appropriate algorithms and
- * key lengths are given e.g., in NIST Special Publication 800-57 Part 3
- * Revision 1 [i.26] or in documents related to local legislation.
+ * This type represents information attributes specific to a VIM entity, and that can be relevant to more than one NFV MANO service offered by a VIM entity. It shall comply with the provisions defined in table 5.6.3.6-1. The present document version does not specify the support for \&quot;maximum number of virtualised resources (attribute \&quot;maxVirtualResourceNum\&quot;)\&quot; as specified in clause 7.2.9.2 of ETSI GS NFV IFA 031 [1]. NOTE: Recommendations on appropriate algorithms and key lengths are given e.g., in NIST Special Publication 800-57 Part 3 Revision 1 [i.26] or in documents related to local legislation. 
  */
 @Schema(description = "This type represents information attributes specific to a VIM entity, and that can be relevant to more than one NFV MANO service offered by a VIM entity. It shall comply with the provisions defined in table 5.6.3.6-1. The present document version does not specify the support for \"maximum number of virtualised resources (attribute \"maxVirtualResourceNum\")\" as specified in clause 7.2.9.2 of ETSI GS NFV IFA 031 [1]. NOTE: Recommendations on appropriate algorithms and key lengths are given e.g., in NIST Special Publication 800-57 Part 3 Revision 1 [i.26] or in documents related to local legislation. ")
 @Validated
 
-public class VimSpecificInfo {
-	@JsonProperty("imageContainerFormats")
-	@Valid
-	private List<String> imageContainerFormats = new ArrayList<>();
 
-	@JsonProperty("imageDiskFormats")
-	@Valid
-	private List<String> imageDiskFormats = new ArrayList<>();
 
-	@JsonProperty("imageSignatureVerification")
-	private VimSpecificInfoImageSignatureVerification imageSignatureVerification = null;
+public class VimSpecificInfo   {
+  @JsonProperty("imageContainerFormats")
+  @Valid
+  private List<String> imageContainerFormats = new ArrayList<>();
 
-	@JsonProperty("imageDigestAlgorithms")
-	@Valid
-	private List<VimSpecificInfoImageDigestAlgorithms> imageDigestAlgorithms = new ArrayList<>();
+  @JsonProperty("imageDiskFormats")
+  @Valid
+  private List<String> imageDiskFormats = new ArrayList<>();
 
-	public VimSpecificInfo imageContainerFormats(final List<String> imageContainerFormats) {
-		this.imageContainerFormats = imageContainerFormats;
-		return this;
-	}
+  @JsonProperty("imageSignatureVerification")
+  private VimSpecificInfoImageSignatureVerification imageSignatureVerification = null;
 
-	public VimSpecificInfo addImageContainerFormatsItem(final String imageContainerFormatsItem) {
-		this.imageContainerFormats.add(imageContainerFormatsItem);
-		return this;
-	}
+  @JsonProperty("imageDigestAlgorithms")
+  @Valid
+  private List<VimSpecificInfoImageDigestAlgorithms> imageDigestAlgorithms = new ArrayList<>();
 
-	/**
-	 * List of supported image container formats. Container format indicates whether
-	 * a software image is in a file that also contains metadata about the actual
-	 * software. Valid values are all values for \"container_format\" as defined in
-	 * ETSI GS NFV-SOL 001 [16] and all values for \"container-format\" as defined
-	 * in ETSI GS NFV-SOL 006 [i.17].
-	 *
-	 * @return imageContainerFormats
-	 **/
-	@Schema(required = true, description = "List of supported image container formats. Container format indicates whether a software image is in a file that also contains metadata about the actual software. Valid values are all values for \"container_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values for \"container-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. ")
-	@NotNull
+  public VimSpecificInfo imageContainerFormats(List<String> imageContainerFormats) {
+    this.imageContainerFormats = imageContainerFormats;
+    return this;
+  }
 
-	public List<String> getImageContainerFormats() {
-		return imageContainerFormats;
-	}
+  public VimSpecificInfo addImageContainerFormatsItem(String imageContainerFormatsItem) {
+    this.imageContainerFormats.add(imageContainerFormatsItem);
+    return this;
+  }
 
-	public void setImageContainerFormats(final List<String> imageContainerFormats) {
-		this.imageContainerFormats = imageContainerFormats;
-	}
+  /**
+   * List of supported image container formats. Container format indicates whether a software image is in a file that also contains metadata about the actual software. Valid values are all values for \"container_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values for \"container-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. 
+   * @return imageContainerFormats
+   **/
+  @Schema(required = true, description = "List of supported image container formats. Container format indicates whether a software image is in a file that also contains metadata about the actual software. Valid values are all values for \"container_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values for \"container-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. ")
+      @NotNull
 
-	public VimSpecificInfo imageDiskFormats(final List<String> imageDiskFormats) {
-		this.imageDiskFormats = imageDiskFormats;
-		return this;
-	}
+    public List<String> getImageContainerFormats() {
+    return imageContainerFormats;
+  }
 
-	public VimSpecificInfo addImageDiskFormatsItem(final String imageDiskFormatsItem) {
-		this.imageDiskFormats.add(imageDiskFormatsItem);
-		return this;
-	}
+  public void setImageContainerFormats(List<String> imageContainerFormats) {
+    this.imageContainerFormats = imageContainerFormats;
+  }
 
-	/**
-	 * List of supported image disk formats. The Disk format of a software image is
-	 * the format of the underlying disk image. Valid values are all values for
-	 * \"disk_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values of
-	 * \"disk-format\" as defined in ETSI GS NFV-SOL 006 [i.17].
-	 *
-	 * @return imageDiskFormats
-	 **/
-	@Schema(required = true, description = "List of supported image disk formats. The Disk format of a software image is the format of the underlying disk image. Valid values are all values for \"disk_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values of \"disk-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. ")
-	@NotNull
+  public VimSpecificInfo imageDiskFormats(List<String> imageDiskFormats) {
+    this.imageDiskFormats = imageDiskFormats;
+    return this;
+  }
 
-	public List<String> getImageDiskFormats() {
-		return imageDiskFormats;
-	}
+  public VimSpecificInfo addImageDiskFormatsItem(String imageDiskFormatsItem) {
+    this.imageDiskFormats.add(imageDiskFormatsItem);
+    return this;
+  }
 
-	public void setImageDiskFormats(final List<String> imageDiskFormats) {
-		this.imageDiskFormats = imageDiskFormats;
-	}
+  /**
+   * List of supported image disk formats. The Disk format of a software image is the format of the underlying disk image. Valid values are all values for \"disk_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values of \"disk-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. 
+   * @return imageDiskFormats
+   **/
+  @Schema(required = true, description = "List of supported image disk formats. The Disk format of a software image is the format of the underlying disk image. Valid values are all values for \"disk_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values of \"disk-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. ")
+      @NotNull
 
-	public VimSpecificInfo imageSignatureVerification(final VimSpecificInfoImageSignatureVerification imageSignatureVerification) {
-		this.imageSignatureVerification = imageSignatureVerification;
-		return this;
-	}
+    public List<String> getImageDiskFormats() {
+    return imageDiskFormats;
+  }
 
-	/**
-	 * Get imageSignatureVerification
-	 *
-	 * @return imageSignatureVerification
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  public void setImageDiskFormats(List<String> imageDiskFormats) {
+    this.imageDiskFormats = imageDiskFormats;
+  }
 
-	@Valid
-	public VimSpecificInfoImageSignatureVerification getImageSignatureVerification() {
-		return imageSignatureVerification;
-	}
+  public VimSpecificInfo imageSignatureVerification(VimSpecificInfoImageSignatureVerification imageSignatureVerification) {
+    this.imageSignatureVerification = imageSignatureVerification;
+    return this;
+  }
 
-	public void setImageSignatureVerification(final VimSpecificInfoImageSignatureVerification imageSignatureVerification) {
-		this.imageSignatureVerification = imageSignatureVerification;
-	}
+  /**
+   * Get imageSignatureVerification
+   * @return imageSignatureVerification
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	public VimSpecificInfo imageDigestAlgorithms(final List<VimSpecificInfoImageDigestAlgorithms> imageDigestAlgorithms) {
-		this.imageDigestAlgorithms = imageDigestAlgorithms;
-		return this;
-	}
+    @Valid
+    public VimSpecificInfoImageSignatureVerification getImageSignatureVerification() {
+    return imageSignatureVerification;
+  }
 
-	public VimSpecificInfo addImageDigestAlgorithmsItem(final VimSpecificInfoImageDigestAlgorithms imageDigestAlgorithmsItem) {
-		this.imageDigestAlgorithms.add(imageDigestAlgorithmsItem);
-		return this;
-	}
+  public void setImageSignatureVerification(VimSpecificInfoImageSignatureVerification imageSignatureVerification) {
+    this.imageSignatureVerification = imageSignatureVerification;
+  }
 
-	/**
-	 * List of supported digest algorithms that can be used for digital signatures.
-	 *
-	 * @return imageDigestAlgorithms
-	 **/
-	@Schema(required = true, description = "List of supported digest algorithms that can be used for digital signatures. ")
-	@NotNull
-	@Valid
-	public List<VimSpecificInfoImageDigestAlgorithms> getImageDigestAlgorithms() {
-		return imageDigestAlgorithms;
-	}
+  public VimSpecificInfo imageDigestAlgorithms(List<VimSpecificInfoImageDigestAlgorithms> imageDigestAlgorithms) {
+    this.imageDigestAlgorithms = imageDigestAlgorithms;
+    return this;
+  }
 
-	public void setImageDigestAlgorithms(final List<VimSpecificInfoImageDigestAlgorithms> imageDigestAlgorithms) {
-		this.imageDigestAlgorithms = imageDigestAlgorithms;
-	}
+  public VimSpecificInfo addImageDigestAlgorithmsItem(VimSpecificInfoImageDigestAlgorithms imageDigestAlgorithmsItem) {
+    this.imageDigestAlgorithms.add(imageDigestAlgorithmsItem);
+    return this;
+  }
 
-	@Override
-	public boolean equals(final java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if ((o == null) || (getClass() != o.getClass())) {
-			return false;
-		}
-		final VimSpecificInfo vimSpecificInfo = (VimSpecificInfo) o;
-		return Objects.equals(this.imageContainerFormats, vimSpecificInfo.imageContainerFormats) &&
-				Objects.equals(this.imageDiskFormats, vimSpecificInfo.imageDiskFormats) &&
-				Objects.equals(this.imageSignatureVerification, vimSpecificInfo.imageSignatureVerification) &&
-				Objects.equals(this.imageDigestAlgorithms, vimSpecificInfo.imageDigestAlgorithms);
-	}
+  /**
+   * List of supported digest algorithms that can be used for digital signatures. 
+   * @return imageDigestAlgorithms
+   **/
+  @Schema(required = true, description = "List of supported digest algorithms that can be used for digital signatures. ")
+      @NotNull
+    @Valid
+    public List<VimSpecificInfoImageDigestAlgorithms> getImageDigestAlgorithms() {
+    return imageDigestAlgorithms;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(imageContainerFormats, imageDiskFormats, imageSignatureVerification, imageDigestAlgorithms);
-	}
+  public void setImageDigestAlgorithms(List<VimSpecificInfoImageDigestAlgorithms> imageDigestAlgorithms) {
+    this.imageDigestAlgorithms = imageDigestAlgorithms;
+  }
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("class VimSpecificInfo {\n");
 
-		sb.append("    imageContainerFormats: ").append(toIndentedString(imageContainerFormats)).append("\n");
-		sb.append("    imageDiskFormats: ").append(toIndentedString(imageDiskFormats)).append("\n");
-		sb.append("    imageSignatureVerification: ").append(toIndentedString(imageSignatureVerification)).append("\n");
-		sb.append("    imageDigestAlgorithms: ").append(toIndentedString(imageDigestAlgorithms)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    VimSpecificInfo vimSpecificInfo = (VimSpecificInfo) o;
+    return Objects.equals(this.imageContainerFormats, vimSpecificInfo.imageContainerFormats) &&
+        Objects.equals(this.imageDiskFormats, vimSpecificInfo.imageDiskFormats) &&
+        Objects.equals(this.imageSignatureVerification, vimSpecificInfo.imageSignatureVerification) &&
+        Objects.equals(this.imageDigestAlgorithms, vimSpecificInfo.imageDigestAlgorithms);
+  }
 
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(final java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(imageContainerFormats, imageDiskFormats, imageSignatureVerification, imageDigestAlgorithms);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class VimSpecificInfo {\n");
+    
+    sb.append("    imageContainerFormats: ").append(toIndentedString(imageContainerFormats)).append("\n");
+    sb.append("    imageDiskFormats: ").append(toIndentedString(imageDiskFormats)).append("\n");
+    sb.append("    imageSignatureVerification: ").append(toIndentedString(imageSignatureVerification)).append("\n");
+    sb.append("    imageDigestAlgorithms: ").append(toIndentedString(imageDigestAlgorithms)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

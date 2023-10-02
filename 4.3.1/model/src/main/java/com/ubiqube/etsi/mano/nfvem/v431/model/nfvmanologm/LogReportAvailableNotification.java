@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
 
@@ -32,6 +32,7 @@ import jakarta.validation.constraints.*;
  */
 @Schema(description = "This notification informs the receiver that the log report of the NFV-MANO functional entity is available. It shall comply with the provisions defined in table 8.6.2.4-1. The notification shall be triggered by the NFV-MANO functional entity when log information has been collected by the logging job and the log report is available.")
 @Validated
+
 
 
 public class LogReportAvailableNotification   {

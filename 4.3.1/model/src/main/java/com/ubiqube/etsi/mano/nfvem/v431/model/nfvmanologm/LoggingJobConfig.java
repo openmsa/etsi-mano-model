@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
 
@@ -32,6 +32,7 @@ import jakarta.validation.constraints.*;
  */
 @Schema(description = "This type represents configuration data for a logging job. It shall comply with the provisions defined in table 8.6.3.6-1. NOTE: The present document version does not specify the support for \"log compilation and reporting based on events\" as specified in clause 6.6.2.2 of ETSI GS NFV-IFA 031. * NOTE 1: The minimumReportingPeriod is used to throttle possible flooding of reports by providing a lower             limit on the gap between two log availability notification to be emitted by the same logging job.   NOTE 2: More than one logCompilingCondition is possible to provide a combination of different conditions             for the compilation. This covers use cases when the compilation of the log can be based on, e.g.             a timer value and a size value, whichever first condition is met first. For instance, compile a             log every 3 600 seconds, or whenever during the 3 600 seconds period the log grows in             size to 1 000 000 bytes.   NOTE 3: The value is indicative, as the actual size of the compiled log files might not match the provided             compileBySizeValue due to possible deviations in the tracking of the size of the log data by the             API producer, and the size of individual logged data entries when these are collected.")
 @Validated
+
 
 
 public class LoggingJobConfig   {

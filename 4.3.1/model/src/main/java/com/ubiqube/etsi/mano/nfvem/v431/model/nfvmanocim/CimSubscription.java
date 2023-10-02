@@ -12,167 +12,164 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.CimNotificationsFilter;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.CimSubscriptionLinks;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 /**
- * This type represents a subscription related to notifications about NFV-MANO
- * configuration and information management changes
+ * This type represents a subscription related to notifications about NFV-MANO configuration and information management changes 
  */
 @Schema(description = "This type represents a subscription related to notifications about NFV-MANO configuration and information management changes ")
 @Validated
 
-public class CimSubscription {
-	@JsonProperty("id")
-	private String id = null;
 
-	@JsonProperty("filter")
-	private CimNotificationsFilter filter = null;
 
-	@JsonProperty("callbackUri")
-	private String callbackUri = null;
+public class CimSubscription   {
+  @JsonProperty("id")
+  private String id = null;
 
-	@JsonProperty("_links")
-	private CimSubscriptionLinks _links = null;
+  @JsonProperty("filter")
+  private CimNotificationsFilter filter = null;
 
-	public CimSubscription id(final String id) {
-		this.id = id;
-		return this;
-	}
+  @JsonProperty("callbackUri")
+  private String callbackUri = null;
 
-	/**
-	 * An identifier with the intention of being globally unique.
-	 *
-	 * @return id
-	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
-	@NotNull
+  @JsonProperty("_links")
+  private CimSubscriptionLinks _links = null;
 
-	public String getId() {
-		return id;
-	}
+  public CimSubscription id(String id) {
+    this.id = id;
+    return this;
+  }
 
-	public void setId(final String id) {
-		this.id = id;
-	}
+  /**
+   * An identifier with the intention of being globally unique. 
+   * @return id
+   **/
+  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+      @NotNull
 
-	public CimSubscription filter(final CimNotificationsFilter filter) {
-		this.filter = filter;
-		return this;
-	}
+    public String getId() {
+    return id;
+  }
 
-	/**
-	 * Get filter
-	 *
-	 * @return filter
-	 **/
-	@Schema(description = "")
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	@Valid
-	public CimNotificationsFilter getFilter() {
-		return filter;
-	}
+  public CimSubscription filter(CimNotificationsFilter filter) {
+    this.filter = filter;
+    return this;
+  }
 
-	public void setFilter(final CimNotificationsFilter filter) {
-		this.filter = filter;
-	}
+  /**
+   * Get filter
+   * @return filter
+   **/
+  @Schema(description = "")
+  
+    @Valid
+    public CimNotificationsFilter getFilter() {
+    return filter;
+  }
 
-	public CimSubscription callbackUri(final String callbackUri) {
-		this.callbackUri = callbackUri;
-		return this;
-	}
+  public void setFilter(CimNotificationsFilter filter) {
+    this.filter = filter;
+  }
 
-	/**
-	 * String formatted according to IETF RFC 3986.
-	 *
-	 * @return callbackUri
-	 **/
-	@Schema(required = true, description = "String formatted according to IETF RFC 3986. ")
-	@NotNull
+  public CimSubscription callbackUri(String callbackUri) {
+    this.callbackUri = callbackUri;
+    return this;
+  }
 
-	public String getCallbackUri() {
-		return callbackUri;
-	}
+  /**
+   * String formatted according to IETF RFC 3986. 
+   * @return callbackUri
+   **/
+  @Schema(required = true, description = "String formatted according to IETF RFC 3986. ")
+      @NotNull
 
-	public void setCallbackUri(final String callbackUri) {
-		this.callbackUri = callbackUri;
-	}
+    public String getCallbackUri() {
+    return callbackUri;
+  }
 
-	public CimSubscription _links(final CimSubscriptionLinks _links) {
-		this._links = _links;
-		return this;
-	}
+  public void setCallbackUri(String callbackUri) {
+    this.callbackUri = callbackUri;
+  }
 
-	/**
-	 * Get _links
-	 *
-	 * @return _links
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  public CimSubscription _links(CimSubscriptionLinks _links) {
+    this._links = _links;
+    return this;
+  }
 
-	@Valid
-	public CimSubscriptionLinks getLinks() {
-		return _links;
-	}
+  /**
+   * Get _links
+   * @return _links
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	public void setLinks(final CimSubscriptionLinks _links) {
-		this._links = _links;
-	}
+    @Valid
+    public CimSubscriptionLinks getLinks() {
+    return _links;
+  }
 
-	@Override
-	public boolean equals(final java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if ((o == null) || (getClass() != o.getClass())) {
-			return false;
-		}
-		final CimSubscription cimSubscription = (CimSubscription) o;
-		return Objects.equals(this.id, cimSubscription.id) &&
-				Objects.equals(this.filter, cimSubscription.filter) &&
-				Objects.equals(this.callbackUri, cimSubscription.callbackUri) &&
-				Objects.equals(this._links, cimSubscription._links);
-	}
+  public void setLinks(CimSubscriptionLinks _links) {
+    this._links = _links;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, filter, callbackUri, _links);
-	}
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("class CimSubscription {\n");
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CimSubscription cimSubscription = (CimSubscription) o;
+    return Objects.equals(this.id, cimSubscription.id) &&
+        Objects.equals(this.filter, cimSubscription.filter) &&
+        Objects.equals(this.callbackUri, cimSubscription.callbackUri) &&
+        Objects.equals(this._links, cimSubscription._links);
+  }
 
-		sb.append("    id: ").append(toIndentedString(id)).append("\n");
-		sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
-		sb.append("    callbackUri: ").append(toIndentedString(callbackUri)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, filter, callbackUri, _links);
+  }
 
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(final java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CimSubscription {\n");
+    
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
+    sb.append("    callbackUri: ").append(toIndentedString(callbackUri)).append("\n");
+    sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

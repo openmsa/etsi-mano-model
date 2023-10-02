@@ -12,141 +12,138 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ChangeOperationalStateEnumType;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.StopEnumType;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 /**
- * A change of operational state. Shall be present if the state change request
- * refers to the operational state. See note 1. but not both.
+ * A change of operational state. Shall be present if the state change request refers to the operational state. See note 1. but not both. 
  */
 @Schema(description = "A change of operational state. Shall be present if the state change request refers to the operational state. See note 1. but not both. ")
 @Validated
 
-public class ChangeStateRequestOperationalStateChange {
-	@JsonProperty("operationalStateAction")
-	private ChangeOperationalStateEnumType operationalStateAction = null;
 
-	@JsonProperty("stopType")
-	private StopEnumType stopType = null;
 
-	@JsonProperty("gracefulStopTimeout")
-	private Integer gracefulStopTimeout = null;
+public class ChangeStateRequestOperationalStateChange   {
+  @JsonProperty("operationalStateAction")
+  private ChangeOperationalStateEnumType operationalStateAction = null;
 
-	public ChangeStateRequestOperationalStateChange operationalStateAction(final ChangeOperationalStateEnumType operationalStateAction) {
-		this.operationalStateAction = operationalStateAction;
-		return this;
-	}
+  @JsonProperty("stopType")
+  private StopEnumType stopType = null;
 
-	/**
-	 * Get operationalStateAction
-	 *
-	 * @return operationalStateAction
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  @JsonProperty("gracefulStopTimeout")
+  private Integer gracefulStopTimeout = null;
 
-	@Valid
-	public ChangeOperationalStateEnumType getOperationalStateAction() {
-		return operationalStateAction;
-	}
+  public ChangeStateRequestOperationalStateChange operationalStateAction(ChangeOperationalStateEnumType operationalStateAction) {
+    this.operationalStateAction = operationalStateAction;
+    return this;
+  }
 
-	public void setOperationalStateAction(final ChangeOperationalStateEnumType operationalStateAction) {
-		this.operationalStateAction = operationalStateAction;
-	}
+  /**
+   * Get operationalStateAction
+   * @return operationalStateAction
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	public ChangeStateRequestOperationalStateChange stopType(final StopEnumType stopType) {
-		this.stopType = stopType;
-		return this;
-	}
+    @Valid
+    public ChangeOperationalStateEnumType getOperationalStateAction() {
+    return operationalStateAction;
+  }
 
-	/**
-	 * Get stopType
-	 *
-	 * @return stopType
-	 **/
-	@Schema(description = "")
+  public void setOperationalStateAction(ChangeOperationalStateEnumType operationalStateAction) {
+    this.operationalStateAction = operationalStateAction;
+  }
 
-	@Valid
-	public StopEnumType getStopType() {
-		return stopType;
-	}
+  public ChangeStateRequestOperationalStateChange stopType(StopEnumType stopType) {
+    this.stopType = stopType;
+    return this;
+  }
 
-	public void setStopType(final StopEnumType stopType) {
-		this.stopType = stopType;
-	}
+  /**
+   * Get stopType
+   * @return stopType
+   **/
+  @Schema(description = "")
+  
+    @Valid
+    public StopEnumType getStopType() {
+    return stopType;
+  }
 
-	public ChangeStateRequestOperationalStateChange gracefulStopTimeout(final Integer gracefulStopTimeout) {
-		this.gracefulStopTimeout = gracefulStopTimeout;
-		return this;
-	}
+  public void setStopType(StopEnumType stopType) {
+    this.stopType = stopType;
+  }
 
-	/**
-	 * The time internal (in seconds) to wait for the entity to be taken out of
-	 * service during graceful stop. See note 2.
-	 *
-	 * @return gracefulStopTimeout
-	 **/
-	@Schema(description = "The time internal (in seconds) to wait for the entity to be taken out of service during graceful stop. See note 2. ")
+  public ChangeStateRequestOperationalStateChange gracefulStopTimeout(Integer gracefulStopTimeout) {
+    this.gracefulStopTimeout = gracefulStopTimeout;
+    return this;
+  }
 
-	public Integer getGracefulStopTimeout() {
-		return gracefulStopTimeout;
-	}
+  /**
+   * The time internal (in seconds) to wait for the entity to be taken out of service during graceful stop. See note 2. 
+   * @return gracefulStopTimeout
+   **/
+  @Schema(description = "The time internal (in seconds) to wait for the entity to be taken out of service during graceful stop. See note 2. ")
+  
+    public Integer getGracefulStopTimeout() {
+    return gracefulStopTimeout;
+  }
 
-	public void setGracefulStopTimeout(final Integer gracefulStopTimeout) {
-		this.gracefulStopTimeout = gracefulStopTimeout;
-	}
+  public void setGracefulStopTimeout(Integer gracefulStopTimeout) {
+    this.gracefulStopTimeout = gracefulStopTimeout;
+  }
 
-	@Override
-	public boolean equals(final java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if ((o == null) || (getClass() != o.getClass())) {
-			return false;
-		}
-		final ChangeStateRequestOperationalStateChange changeStateRequestOperationalStateChange = (ChangeStateRequestOperationalStateChange) o;
-		return Objects.equals(this.operationalStateAction, changeStateRequestOperationalStateChange.operationalStateAction) &&
-				Objects.equals(this.stopType, changeStateRequestOperationalStateChange.stopType) &&
-				Objects.equals(this.gracefulStopTimeout, changeStateRequestOperationalStateChange.gracefulStopTimeout);
-	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(operationalStateAction, stopType, gracefulStopTimeout);
-	}
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ChangeStateRequestOperationalStateChange changeStateRequestOperationalStateChange = (ChangeStateRequestOperationalStateChange) o;
+    return Objects.equals(this.operationalStateAction, changeStateRequestOperationalStateChange.operationalStateAction) &&
+        Objects.equals(this.stopType, changeStateRequestOperationalStateChange.stopType) &&
+        Objects.equals(this.gracefulStopTimeout, changeStateRequestOperationalStateChange.gracefulStopTimeout);
+  }
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("class ChangeStateRequestOperationalStateChange {\n");
+  @Override
+  public int hashCode() {
+    return Objects.hash(operationalStateAction, stopType, gracefulStopTimeout);
+  }
 
-		sb.append("    operationalStateAction: ").append(toIndentedString(operationalStateAction)).append("\n");
-		sb.append("    stopType: ").append(toIndentedString(stopType)).append("\n");
-		sb.append("    gracefulStopTimeout: ").append(toIndentedString(gracefulStopTimeout)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ChangeStateRequestOperationalStateChange {\n");
+    
+    sb.append("    operationalStateAction: ").append(toIndentedString(operationalStateAction)).append("\n");
+    sb.append("    stopType: ").append(toIndentedString(stopType)).append("\n");
+    sb.append("    gracefulStopTimeout: ").append(toIndentedString(gracefulStopTimeout)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
 
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(final java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

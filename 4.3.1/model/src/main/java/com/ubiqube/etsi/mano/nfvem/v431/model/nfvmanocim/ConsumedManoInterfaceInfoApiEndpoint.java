@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
@@ -29,6 +29,7 @@ import jakarta.validation.constraints.*;
  */
 @Schema(description = "Consumable API endpoint of the interface. It provides the information relevant about the protocol, host and port, and path where the interface API can be accessed. ")
 @Validated
+
 
 
 public class ConsumedManoInterfaceInfoApiEndpoint   {

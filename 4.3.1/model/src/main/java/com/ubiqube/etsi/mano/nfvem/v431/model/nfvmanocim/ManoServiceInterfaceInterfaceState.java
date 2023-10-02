@@ -12,142 +12,142 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.AdministrativeStateEnumType;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.InterfaceOperationalStateEnumType;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.UsageStateEnumType;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 /**
- * State of the NFV-MANO service interface.
+ * State of the NFV-MANO service interface. 
  */
 @Schema(description = "State of the NFV-MANO service interface. ")
 @Validated
 
-public class ManoServiceInterfaceInterfaceState {
-	@JsonProperty("operationalState")
-	private InterfaceOperationalStateEnumType operationalState = null;
 
-	@JsonProperty("administrativeState")
-	private AdministrativeStateEnumType administrativeState = null;
 
-	@JsonProperty("usageState")
-	private UsageStateEnumType usageState = null;
+public class ManoServiceInterfaceInterfaceState   {
+  @JsonProperty("operationalState")
+  private InterfaceOperationalStateEnumType operationalState = null;
 
-	public ManoServiceInterfaceInterfaceState operationalState(final InterfaceOperationalStateEnumType operationalState) {
-		this.operationalState = operationalState;
-		return this;
-	}
+  @JsonProperty("administrativeState")
+  private AdministrativeStateEnumType administrativeState = null;
 
-	/**
-	 * Get operationalState
-	 *
-	 * @return operationalState
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  @JsonProperty("usageState")
+  private UsageStateEnumType usageState = null;
 
-	@Valid
-	public InterfaceOperationalStateEnumType getOperationalState() {
-		return operationalState;
-	}
+  public ManoServiceInterfaceInterfaceState operationalState(InterfaceOperationalStateEnumType operationalState) {
+    this.operationalState = operationalState;
+    return this;
+  }
 
-	public void setOperationalState(final InterfaceOperationalStateEnumType operationalState) {
-		this.operationalState = operationalState;
-	}
+  /**
+   * Get operationalState
+   * @return operationalState
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	public ManoServiceInterfaceInterfaceState administrativeState(final AdministrativeStateEnumType administrativeState) {
-		this.administrativeState = administrativeState;
-		return this;
-	}
+    @Valid
+    public InterfaceOperationalStateEnumType getOperationalState() {
+    return operationalState;
+  }
 
-	/**
-	 * Get administrativeState
-	 *
-	 * @return administrativeState
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  public void setOperationalState(InterfaceOperationalStateEnumType operationalState) {
+    this.operationalState = operationalState;
+  }
 
-	@Valid
-	public AdministrativeStateEnumType getAdministrativeState() {
-		return administrativeState;
-	}
+  public ManoServiceInterfaceInterfaceState administrativeState(AdministrativeStateEnumType administrativeState) {
+    this.administrativeState = administrativeState;
+    return this;
+  }
 
-	public void setAdministrativeState(final AdministrativeStateEnumType administrativeState) {
-		this.administrativeState = administrativeState;
-	}
+  /**
+   * Get administrativeState
+   * @return administrativeState
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	public ManoServiceInterfaceInterfaceState usageState(final UsageStateEnumType usageState) {
-		this.usageState = usageState;
-		return this;
-	}
+    @Valid
+    public AdministrativeStateEnumType getAdministrativeState() {
+    return administrativeState;
+  }
 
-	/**
-	 * Get usageState
-	 *
-	 * @return usageState
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  public void setAdministrativeState(AdministrativeStateEnumType administrativeState) {
+    this.administrativeState = administrativeState;
+  }
 
-	@Valid
-	public UsageStateEnumType getUsageState() {
-		return usageState;
-	}
+  public ManoServiceInterfaceInterfaceState usageState(UsageStateEnumType usageState) {
+    this.usageState = usageState;
+    return this;
+  }
 
-	public void setUsageState(final UsageStateEnumType usageState) {
-		this.usageState = usageState;
-	}
+  /**
+   * Get usageState
+   * @return usageState
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	@Override
-	public boolean equals(final java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if ((o == null) || (getClass() != o.getClass())) {
-			return false;
-		}
-		final ManoServiceInterfaceInterfaceState manoServiceInterfaceInterfaceState = (ManoServiceInterfaceInterfaceState) o;
-		return Objects.equals(this.operationalState, manoServiceInterfaceInterfaceState.operationalState) &&
-				Objects.equals(this.administrativeState, manoServiceInterfaceInterfaceState.administrativeState) &&
-				Objects.equals(this.usageState, manoServiceInterfaceInterfaceState.usageState);
-	}
+    @Valid
+    public UsageStateEnumType getUsageState() {
+    return usageState;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(operationalState, administrativeState, usageState);
-	}
+  public void setUsageState(UsageStateEnumType usageState) {
+    this.usageState = usageState;
+  }
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("class ManoServiceInterfaceInterfaceState {\n");
 
-		sb.append("    operationalState: ").append(toIndentedString(operationalState)).append("\n");
-		sb.append("    administrativeState: ").append(toIndentedString(administrativeState)).append("\n");
-		sb.append("    usageState: ").append(toIndentedString(usageState)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ManoServiceInterfaceInterfaceState manoServiceInterfaceInterfaceState = (ManoServiceInterfaceInterfaceState) o;
+    return Objects.equals(this.operationalState, manoServiceInterfaceInterfaceState.operationalState) &&
+        Objects.equals(this.administrativeState, manoServiceInterfaceInterfaceState.administrativeState) &&
+        Objects.equals(this.usageState, manoServiceInterfaceInterfaceState.usageState);
+  }
 
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(final java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(operationalState, administrativeState, usageState);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ManoServiceInterfaceInterfaceState {\n");
+    
+    sb.append("    operationalState: ").append(toIndentedString(operationalState)).append("\n");
+    sb.append("    administrativeState: ").append(toIndentedString(administrativeState)).append("\n");
+    sb.append("    usageState: ").append(toIndentedString(usageState)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

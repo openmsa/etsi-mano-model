@@ -12,269 +12,251 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ConsumedManoInterfaceInfo;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.PeerEntityEnumType;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.PeerEntityPeerEntityState;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 /**
- * This type represents an individual peer entity. * NOTE 1: The value of the
- * \&quot;peerEntityId\&quot; attribute is the same as the value of the
- * \&quot;id\&quot; attribute in the \&quot;ManoEntity\&quot; of the
- * corresponding NFV-MANO functional entity that acts as peer entity, and shall
- * follow the uniqueness requirements set out in clause 5.6.2.2 for the
- * \&quot;id\&quot; attribute. * NOTE 2: ETSI GS NFV-IFA 031 [1] defines an
- * additional attribute named \&quot;apiDiscoveryEndpoint\&quot; in the
- * PeerManoEntity. The modelling of this attribute is not specified in the
- * present document version.
+ * This type represents an individual peer entity. * NOTE 1: The value of the \&quot;peerEntityId\&quot; attribute is the same as the value of the \&quot;id\&quot; attribute in the             \&quot;ManoEntity\&quot; of the corresponding NFV-MANO functional entity that acts as peer entity, and shall             follow the uniqueness requirements set out in clause 5.6.2.2 for the \&quot;id\&quot; attribute. * NOTE 2: ETSI GS NFV-IFA 031 [1] defines an additional attribute named \&quot;apiDiscoveryEndpoint\&quot; in the             PeerManoEntity. The modelling of this attribute is not specified in the present document version. 
  */
 @Schema(description = "This type represents an individual peer entity. * NOTE 1: The value of the \"peerEntityId\" attribute is the same as the value of the \"id\" attribute in the             \"ManoEntity\" of the corresponding NFV-MANO functional entity that acts as peer entity, and shall             follow the uniqueness requirements set out in clause 5.6.2.2 for the \"id\" attribute. * NOTE 2: ETSI GS NFV-IFA 031 [1] defines an additional attribute named \"apiDiscoveryEndpoint\" in the             PeerManoEntity. The modelling of this attribute is not specified in the present document version. ")
 @Validated
 
-public class PeerEntity {
-	@JsonProperty("id")
-	private String id = null;
 
-	@JsonProperty("peerEntityId")
-	private String peerEntityId = null;
 
-	@JsonProperty("name")
-	private String name = null;
+public class PeerEntity   {
+  @JsonProperty("id")
+  private String id = null;
 
-	@JsonProperty("type")
-	private PeerEntityEnumType type = null;
+  @JsonProperty("peerEntityId")
+  private String peerEntityId = null;
 
-	@JsonProperty("description")
-	private String description = null;
+  @JsonProperty("name")
+  private String name = null;
 
-	@JsonProperty("consumedManoInterfaces")
-	@Valid
-	private Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces = null;
+  @JsonProperty("type")
+  private PeerEntityEnumType type = null;
 
-	@JsonProperty("peerEntityState")
-	private PeerEntityPeerEntityState peerEntityState = null;
+  @JsonProperty("description")
+  private String description = null;
 
-	public PeerEntity id(final String id) {
-		this.id = id;
-		return this;
-	}
+  @JsonProperty("consumedManoInterfaces")
+  @Valid
+  private Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces = null;
 
-	/**
-	 * An identifier with the intention of being globally unique.
-	 *
-	 * @return id
-	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
-	@NotNull
+  @JsonProperty("peerEntityState")
+  private PeerEntityPeerEntityState peerEntityState = null;
 
-	public String getId() {
-		return id;
-	}
+  public PeerEntity id(String id) {
+    this.id = id;
+    return this;
+  }
 
-	public void setId(final String id) {
-		this.id = id;
-	}
+  /**
+   * An identifier with the intention of being globally unique. 
+   * @return id
+   **/
+  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+      @NotNull
 
-	public PeerEntity peerEntityId(final String peerEntityId) {
-		this.peerEntityId = peerEntityId;
-		return this;
-	}
+    public String getId() {
+    return id;
+  }
 
-	/**
-	 * An identifier with the intention of being globally unique.
-	 *
-	 * @return peerEntityId
-	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
-	@NotNull
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public String getPeerEntityId() {
-		return peerEntityId;
-	}
+  public PeerEntity peerEntityId(String peerEntityId) {
+    this.peerEntityId = peerEntityId;
+    return this;
+  }
 
-	public void setPeerEntityId(final String peerEntityId) {
-		this.peerEntityId = peerEntityId;
-	}
+  /**
+   * An identifier with the intention of being globally unique. 
+   * @return peerEntityId
+   **/
+  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+      @NotNull
 
-	public PeerEntity name(final String name) {
-		this.name = name;
-		return this;
-	}
+    public String getPeerEntityId() {
+    return peerEntityId;
+  }
 
-	/**
-	 * Human-readable name of the peer functional entity. This attribute can be
-	 * modified with the PATCH method.
-	 *
-	 * @return name
-	 **/
-	@Schema(required = true, description = "Human-readable name of the peer functional entity. This attribute can be modified with the PATCH method. ")
-	@NotNull
+  public void setPeerEntityId(String peerEntityId) {
+    this.peerEntityId = peerEntityId;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public PeerEntity name(String name) {
+    this.name = name;
+    return this;
+  }
 
-	public void setName(final String name) {
-		this.name = name;
-	}
+  /**
+   * Human-readable name of the peer functional entity. This attribute can be modified with the PATCH method. 
+   * @return name
+   **/
+  @Schema(required = true, description = "Human-readable name of the peer functional entity. This attribute can be modified with the PATCH method. ")
+      @NotNull
 
-	public PeerEntity type(final PeerEntityEnumType type) {
-		this.type = type;
-		return this;
-	}
+    public String getName() {
+    return name;
+  }
 
-	/**
-	 * Get type
-	 *
-	 * @return type
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	@Valid
-	public PeerEntityEnumType getType() {
-		return type;
-	}
+  public PeerEntity type(PeerEntityEnumType type) {
+    this.type = type;
+    return this;
+  }
 
-	public void setType(final PeerEntityEnumType type) {
-		this.type = type;
-	}
+  /**
+   * Get type
+   * @return type
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	public PeerEntity description(final String description) {
-		this.description = description;
-		return this;
-	}
+    @Valid
+    public PeerEntityEnumType getType() {
+    return type;
+  }
 
-	/**
-	 * Human-readable description of the peer functional entity. This attribute can
-	 * be modified with the PATCH method.
-	 *
-	 * @return description
-	 **/
-	@Schema(description = "Human-readable description of the peer functional entity. This attribute can be modified with the PATCH method. ")
+  public void setType(PeerEntityEnumType type) {
+    this.type = type;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public PeerEntity description(String description) {
+    this.description = description;
+    return this;
+  }
 
-	public void setDescription(final String description) {
-		this.description = description;
-	}
+  /**
+   * Human-readable description of the peer functional entity. This attribute can be modified with the PATCH method. 
+   * @return description
+   **/
+  @Schema(description = "Human-readable description of the peer functional entity. This attribute can be modified with the PATCH method. ")
+  
+    public String getDescription() {
+    return description;
+  }
 
-	public PeerEntity consumedManoInterfaces(final Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces) {
-		this.consumedManoInterfaces = consumedManoInterfaces;
-		return this;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public PeerEntity putConsumedManoInterfacesItem(final String key, final ConsumedManoInterfaceInfo consumedManoInterfacesItem) {
-		if (this.consumedManoInterfaces == null) {
-			this.consumedManoInterfaces = new HashMap<>();
-		}
-		this.consumedManoInterfaces.put(key, consumedManoInterfacesItem);
-		return this;
-	}
+  public PeerEntity consumedManoInterfaces(Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces) {
+    this.consumedManoInterfaces = consumedManoInterfaces;
+    return this;
+  }
 
-	/**
-	 * Information of the interface consumed by the NFV-MANO functional entity from
-	 * the peer functional entity. This attribute can be modified with the PATCH
-	 * method. The keys of the map, each of which identifies information about a
-	 * particular consumed NFV-MANO interface, are managed by the API consumer and
-	 * referenced from other data structures via the \"consumedManoInterfaceIds\"
-	 * attribute.
-	 *
-	 * @return consumedManoInterfaces
-	 **/
-	@Schema(description = "Information of the interface consumed by the NFV-MANO functional entity from the peer functional entity. This attribute can be modified with the PATCH method. The keys of the map, each of which identifies information about a particular consumed NFV-MANO interface, are managed by the API consumer and referenced from other data structures via the \"consumedManoInterfaceIds\" attribute. ")
-	@Valid
-	public Map<String, ConsumedManoInterfaceInfo> getConsumedManoInterfaces() {
-		return consumedManoInterfaces;
-	}
+  public PeerEntity putConsumedManoInterfacesItem(String key, ConsumedManoInterfaceInfo consumedManoInterfacesItem) {
+    if (this.consumedManoInterfaces == null) {
+      this.consumedManoInterfaces = new HashMap<>();
+    }
+    this.consumedManoInterfaces.put(key, consumedManoInterfacesItem);
+    return this;
+  }
 
-	public void setConsumedManoInterfaces(final Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces) {
-		this.consumedManoInterfaces = consumedManoInterfaces;
-	}
+  /**
+   * Information of the interface consumed by the NFV-MANO functional entity from the peer functional entity. This attribute can be modified with the PATCH method. The keys of the map, each of which identifies information about a particular consumed NFV-MANO interface, are managed by the API consumer and referenced from other data structures via the \"consumedManoInterfaceIds\" attribute. 
+   * @return consumedManoInterfaces
+   **/
+  @Schema(description = "Information of the interface consumed by the NFV-MANO functional entity from the peer functional entity. This attribute can be modified with the PATCH method. The keys of the map, each of which identifies information about a particular consumed NFV-MANO interface, are managed by the API consumer and referenced from other data structures via the \"consumedManoInterfaceIds\" attribute. ")
+      @Valid
+    public Map<String, ConsumedManoInterfaceInfo> getConsumedManoInterfaces() {
+    return consumedManoInterfaces;
+  }
 
-	public PeerEntity peerEntityState(final PeerEntityPeerEntityState peerEntityState) {
-		this.peerEntityState = peerEntityState;
-		return this;
-	}
+  public void setConsumedManoInterfaces(Map<String, ConsumedManoInterfaceInfo> consumedManoInterfaces) {
+    this.consumedManoInterfaces = consumedManoInterfaces;
+  }
 
-	/**
-	 * Get peerEntityState
-	 *
-	 * @return peerEntityState
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  public PeerEntity peerEntityState(PeerEntityPeerEntityState peerEntityState) {
+    this.peerEntityState = peerEntityState;
+    return this;
+  }
 
-	@Valid
-	public PeerEntityPeerEntityState getPeerEntityState() {
-		return peerEntityState;
-	}
+  /**
+   * Get peerEntityState
+   * @return peerEntityState
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	public void setPeerEntityState(final PeerEntityPeerEntityState peerEntityState) {
-		this.peerEntityState = peerEntityState;
-	}
+    @Valid
+    public PeerEntityPeerEntityState getPeerEntityState() {
+    return peerEntityState;
+  }
 
-	@Override
-	public boolean equals(final java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if ((o == null) || (getClass() != o.getClass())) {
-			return false;
-		}
-		final PeerEntity peerEntity = (PeerEntity) o;
-		return Objects.equals(this.id, peerEntity.id) &&
-				Objects.equals(this.peerEntityId, peerEntity.peerEntityId) &&
-				Objects.equals(this.name, peerEntity.name) &&
-				Objects.equals(this.type, peerEntity.type) &&
-				Objects.equals(this.description, peerEntity.description) &&
-				Objects.equals(this.consumedManoInterfaces, peerEntity.consumedManoInterfaces) &&
-				Objects.equals(this.peerEntityState, peerEntity.peerEntityState);
-	}
+  public void setPeerEntityState(PeerEntityPeerEntityState peerEntityState) {
+    this.peerEntityState = peerEntityState;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, peerEntityId, name, type, description, consumedManoInterfaces, peerEntityState);
-	}
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("class PeerEntity {\n");
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    PeerEntity peerEntity = (PeerEntity) o;
+    return Objects.equals(this.id, peerEntity.id) &&
+        Objects.equals(this.peerEntityId, peerEntity.peerEntityId) &&
+        Objects.equals(this.name, peerEntity.name) &&
+        Objects.equals(this.type, peerEntity.type) &&
+        Objects.equals(this.description, peerEntity.description) &&
+        Objects.equals(this.consumedManoInterfaces, peerEntity.consumedManoInterfaces) &&
+        Objects.equals(this.peerEntityState, peerEntity.peerEntityState);
+  }
 
-		sb.append("    id: ").append(toIndentedString(id)).append("\n");
-		sb.append("    peerEntityId: ").append(toIndentedString(peerEntityId)).append("\n");
-		sb.append("    name: ").append(toIndentedString(name)).append("\n");
-		sb.append("    type: ").append(toIndentedString(type)).append("\n");
-		sb.append("    description: ").append(toIndentedString(description)).append("\n");
-		sb.append("    consumedManoInterfaces: ").append(toIndentedString(consumedManoInterfaces)).append("\n");
-		sb.append("    peerEntityState: ").append(toIndentedString(peerEntityState)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, peerEntityId, name, type, description, consumedManoInterfaces, peerEntityState);
+  }
 
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(final java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class PeerEntity {\n");
+    
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    peerEntityId: ").append(toIndentedString(peerEntityId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    consumedManoInterfaces: ").append(toIndentedString(consumedManoInterfaces)).append("\n");
+    sb.append("    peerEntityState: ").append(toIndentedString(peerEntityState)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

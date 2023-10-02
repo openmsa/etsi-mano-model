@@ -12,9 +12,9 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
+package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanofm;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -29,6 +29,7 @@ import jakarta.validation.constraints.*;
  */
 @Schema(description = "Parameters for authentication/authorization using OAUTH2_CLIENT_CREDENTIALS. Shall be present if authType is \"OAUTH2_CLIENT_CREDENTIALS\" and the contained information has not been provisioned out of band. Shall be absent otherwise. ")
 @Validated
+
 
 
 public class SubscriptionAuthenticationParamsOauth2ClientCredentials   {

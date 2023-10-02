@@ -12,232 +12,214 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ClientInterfaceSecurityInfo;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ConsumedManoInterfaceInfoApiEndpoint;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 /**
- * This type represents an interface consumed by the producer NFV MANO
- * functional entity from another peer functional entity. * NOTE 1: The
- * information to be provided in this attribute shall relate to the
- * specification and its version. For instance, \&quot;ETSI GS NFV-SOL 003
- * (V2.4.1)\&quot;. * NOTE 2: Due to the security sensitive information
- * associated to the attribute, based on access control policies, the API
- * consumer might have read only, write only, read/write, or no access at all to
- * the attribute&#x27;s value. In case the API consumer is not allowed to read
- * the value of the security sensitive attribute, the attribute shall be omitted
- * when the information is to be provided in a response message, and shall be
- * provided otherwise. In case the API consumer is not allowed to modify the
- * value of the security sensitive attribute, and the modification request
- * includes new attribute values, the whole modification request shall be
- * rejected, and proper error information returned.
+ * This type represents an interface consumed by the producer NFV MANO functional entity from another peer functional entity. * NOTE 1: The information to be provided in this attribute shall relate to the specification and its version.             For instance, \&quot;ETSI GS NFV-SOL 003 (V2.4.1)\&quot;. * NOTE 2: Due to the security sensitive information associated to the attribute, based on access control             policies, the API consumer might have read only, write only, read/write, or no access at all to             the attribute&#x27;s value. In case the API consumer is not allowed to read the value of the security             sensitive attribute, the attribute shall be omitted when the information is to be provided in a             response message, and shall be provided otherwise. In case the API consumer is not allowed to             modify the value of the security sensitive attribute, and the modification request includes new             attribute values, the whole modification request shall be rejected, and proper error information returned. 
  */
 @Schema(description = "This type represents an interface consumed by the producer NFV MANO functional entity from another peer functional entity. * NOTE 1: The information to be provided in this attribute shall relate to the specification and its version.             For instance, \"ETSI GS NFV-SOL 003 (V2.4.1)\". * NOTE 2: Due to the security sensitive information associated to the attribute, based on access control             policies, the API consumer might have read only, write only, read/write, or no access at all to             the attribute's value. In case the API consumer is not allowed to read the value of the security             sensitive attribute, the attribute shall be omitted when the information is to be provided in a             response message, and shall be provided otherwise. In case the API consumer is not allowed to             modify the value of the security sensitive attribute, and the modification request includes new             attribute values, the whole modification request shall be rejected, and proper error information returned. ")
 @Validated
 
-public class ConsumedManoInterfaceInfo {
-	@JsonProperty("name")
-	private String name = null;
 
-	@JsonProperty("type")
-	private String type = null;
 
-	@JsonProperty("standardVersion")
-	private String standardVersion = null;
+public class ConsumedManoInterfaceInfo   {
+  @JsonProperty("name")
+  private String name = null;
 
-	@JsonProperty("apiVersion")
-	private String apiVersion = null;
+  @JsonProperty("type")
+  private String type = null;
 
-	@JsonProperty("apiEndpoint")
-	private ConsumedManoInterfaceInfoApiEndpoint apiEndpoint = null;
+  @JsonProperty("standardVersion")
+  private String standardVersion = null;
 
-	@JsonProperty("securityInfo")
-	private ClientInterfaceSecurityInfo securityInfo = null;
+  @JsonProperty("apiVersion")
+  private String apiVersion = null;
 
-	public ConsumedManoInterfaceInfo name(final String name) {
-		this.name = name;
-		return this;
-	}
+  @JsonProperty("apiEndpoint")
+  private ConsumedManoInterfaceInfoApiEndpoint apiEndpoint = null;
 
-	/**
-	 * Human-readable name of the NFV-MANO interface.
-	 *
-	 * @return name
-	 **/
-	@Schema(required = true, description = "Human-readable name of the NFV-MANO interface. ")
-	@NotNull
+  @JsonProperty("securityInfo")
+  private ClientInterfaceSecurityInfo securityInfo = null;
 
-	public String getName() {
-		return name;
-	}
+  public ConsumedManoInterfaceInfo name(String name) {
+    this.name = name;
+    return this;
+  }
 
-	public void setName(final String name) {
-		this.name = name;
-	}
+  /**
+   * Human-readable name of the NFV-MANO interface. 
+   * @return name
+   **/
+  @Schema(required = true, description = "Human-readable name of the NFV-MANO interface. ")
+      @NotNull
 
-	public ConsumedManoInterfaceInfo type(final String type) {
-		this.type = type;
-		return this;
-	}
+    public String getName() {
+    return name;
+  }
 
-	/**
-	 * Type of the NFV-MANO service interface consumed by the NFV-MANO functional
-	 * entity. Valid values are defined in clause 5.6.4.3.
-	 *
-	 * @return type
-	 **/
-	@Schema(required = true, description = "Type of the NFV-MANO service interface consumed by the NFV-MANO functional entity. Valid values are defined in clause 5.6.4.3. ")
-	@NotNull
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public String getType() {
-		return type;
-	}
+  public ConsumedManoInterfaceInfo type(String type) {
+    this.type = type;
+    return this;
+  }
 
-	public void setType(final String type) {
-		this.type = type;
-	}
+  /**
+   * Type of the NFV-MANO service interface consumed by the NFV-MANO functional entity. Valid values are defined in clause 5.6.4.3. 
+   * @return type
+   **/
+  @Schema(required = true, description = "Type of the NFV-MANO service interface consumed by the NFV-MANO functional entity. Valid values are defined in clause 5.6.4.3. ")
+      @NotNull
 
-	public ConsumedManoInterfaceInfo standardVersion(final String standardVersion) {
-		this.standardVersion = standardVersion;
-		return this;
-	}
+    public String getType() {
+    return type;
+  }
 
-	/**
-	 * A version.
-	 *
-	 * @return standardVersion
-	 **/
-	@Schema(required = true, description = "A version. ")
-	@NotNull
+  public void setType(String type) {
+    this.type = type;
+  }
 
-	public String getStandardVersion() {
-		return standardVersion;
-	}
+  public ConsumedManoInterfaceInfo standardVersion(String standardVersion) {
+    this.standardVersion = standardVersion;
+    return this;
+  }
 
-	public void setStandardVersion(final String standardVersion) {
-		this.standardVersion = standardVersion;
-	}
+  /**
+   * A version. 
+   * @return standardVersion
+   **/
+  @Schema(required = true, description = "A version. ")
+      @NotNull
 
-	public ConsumedManoInterfaceInfo apiVersion(final String apiVersion) {
-		this.apiVersion = apiVersion;
-		return this;
-	}
+    public String getStandardVersion() {
+    return standardVersion;
+  }
 
-	/**
-	 * A version.
-	 *
-	 * @return apiVersion
-	 **/
-	@Schema(required = true, description = "A version. ")
-	@NotNull
+  public void setStandardVersion(String standardVersion) {
+    this.standardVersion = standardVersion;
+  }
 
-	public String getApiVersion() {
-		return apiVersion;
-	}
+  public ConsumedManoInterfaceInfo apiVersion(String apiVersion) {
+    this.apiVersion = apiVersion;
+    return this;
+  }
 
-	public void setApiVersion(final String apiVersion) {
-		this.apiVersion = apiVersion;
-	}
+  /**
+   * A version. 
+   * @return apiVersion
+   **/
+  @Schema(required = true, description = "A version. ")
+      @NotNull
 
-	public ConsumedManoInterfaceInfo apiEndpoint(final ConsumedManoInterfaceInfoApiEndpoint apiEndpoint) {
-		this.apiEndpoint = apiEndpoint;
-		return this;
-	}
+    public String getApiVersion() {
+    return apiVersion;
+  }
 
-	/**
-	 * Get apiEndpoint
-	 *
-	 * @return apiEndpoint
-	 **/
-	@Schema(required = true, description = "")
-	@NotNull
+  public void setApiVersion(String apiVersion) {
+    this.apiVersion = apiVersion;
+  }
 
-	@Valid
-	public ConsumedManoInterfaceInfoApiEndpoint getApiEndpoint() {
-		return apiEndpoint;
-	}
+  public ConsumedManoInterfaceInfo apiEndpoint(ConsumedManoInterfaceInfoApiEndpoint apiEndpoint) {
+    this.apiEndpoint = apiEndpoint;
+    return this;
+  }
 
-	public void setApiEndpoint(final ConsumedManoInterfaceInfoApiEndpoint apiEndpoint) {
-		this.apiEndpoint = apiEndpoint;
-	}
+  /**
+   * Get apiEndpoint
+   * @return apiEndpoint
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
 
-	public ConsumedManoInterfaceInfo securityInfo(final ClientInterfaceSecurityInfo securityInfo) {
-		this.securityInfo = securityInfo;
-		return this;
-	}
+    @Valid
+    public ConsumedManoInterfaceInfoApiEndpoint getApiEndpoint() {
+    return apiEndpoint;
+  }
 
-	/**
-	 * Get securityInfo
-	 *
-	 * @return securityInfo
-	 **/
-	@Schema(description = "")
+  public void setApiEndpoint(ConsumedManoInterfaceInfoApiEndpoint apiEndpoint) {
+    this.apiEndpoint = apiEndpoint;
+  }
 
-	@Valid
-	public ClientInterfaceSecurityInfo getSecurityInfo() {
-		return securityInfo;
-	}
+  public ConsumedManoInterfaceInfo securityInfo(ClientInterfaceSecurityInfo securityInfo) {
+    this.securityInfo = securityInfo;
+    return this;
+  }
 
-	public void setSecurityInfo(final ClientInterfaceSecurityInfo securityInfo) {
-		this.securityInfo = securityInfo;
-	}
+  /**
+   * Get securityInfo
+   * @return securityInfo
+   **/
+  @Schema(description = "")
+  
+    @Valid
+    public ClientInterfaceSecurityInfo getSecurityInfo() {
+    return securityInfo;
+  }
 
-	@Override
-	public boolean equals(final java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if ((o == null) || (getClass() != o.getClass())) {
-			return false;
-		}
-		final ConsumedManoInterfaceInfo consumedManoInterfaceInfo = (ConsumedManoInterfaceInfo) o;
-		return Objects.equals(this.name, consumedManoInterfaceInfo.name) &&
-				Objects.equals(this.type, consumedManoInterfaceInfo.type) &&
-				Objects.equals(this.standardVersion, consumedManoInterfaceInfo.standardVersion) &&
-				Objects.equals(this.apiVersion, consumedManoInterfaceInfo.apiVersion) &&
-				Objects.equals(this.apiEndpoint, consumedManoInterfaceInfo.apiEndpoint) &&
-				Objects.equals(this.securityInfo, consumedManoInterfaceInfo.securityInfo);
-	}
+  public void setSecurityInfo(ClientInterfaceSecurityInfo securityInfo) {
+    this.securityInfo = securityInfo;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name, type, standardVersion, apiVersion, apiEndpoint, securityInfo);
-	}
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("class ConsumedManoInterfaceInfo {\n");
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ConsumedManoInterfaceInfo consumedManoInterfaceInfo = (ConsumedManoInterfaceInfo) o;
+    return Objects.equals(this.name, consumedManoInterfaceInfo.name) &&
+        Objects.equals(this.type, consumedManoInterfaceInfo.type) &&
+        Objects.equals(this.standardVersion, consumedManoInterfaceInfo.standardVersion) &&
+        Objects.equals(this.apiVersion, consumedManoInterfaceInfo.apiVersion) &&
+        Objects.equals(this.apiEndpoint, consumedManoInterfaceInfo.apiEndpoint) &&
+        Objects.equals(this.securityInfo, consumedManoInterfaceInfo.securityInfo);
+  }
 
-		sb.append("    name: ").append(toIndentedString(name)).append("\n");
-		sb.append("    type: ").append(toIndentedString(type)).append("\n");
-		sb.append("    standardVersion: ").append(toIndentedString(standardVersion)).append("\n");
-		sb.append("    apiVersion: ").append(toIndentedString(apiVersion)).append("\n");
-		sb.append("    apiEndpoint: ").append(toIndentedString(apiEndpoint)).append("\n");
-		sb.append("    securityInfo: ").append(toIndentedString(securityInfo)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, type, standardVersion, apiVersion, apiEndpoint, securityInfo);
+  }
 
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(final java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ConsumedManoInterfaceInfo {\n");
+    
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    standardVersion: ").append(toIndentedString(standardVersion)).append("\n");
+    sb.append("    apiVersion: ").append(toIndentedString(apiVersion)).append("\n");
+    sb.append("    apiEndpoint: ").append(toIndentedString(apiEndpoint)).append("\n");
+    sb.append("    securityInfo: ").append(toIndentedString(securityInfo)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

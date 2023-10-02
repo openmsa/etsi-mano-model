@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim;
 
@@ -31,6 +31,7 @@ import jakarta.validation.constraints.*;
  */
 @Schema(description = "This type represents subscription filter criteria to match NFV-MANO functional  entities and their associated managed objects.  ")
 @Validated
+
 
 
 public class ManoEntitySubscriptionFilter   {

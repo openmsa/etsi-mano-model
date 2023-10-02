@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
 
@@ -33,6 +33,7 @@ import jakarta.validation.constraints.*;
  */
 @Schema(description = "This type represents collection criteria for logging jobs. * NOTE: The value of the loggingType has dependency on the object that is requested to be logged         (refer to the CreateLoggingJobRequest): a) the logging of messages is only applicable to         ManoServiceInterface and ConsumedManoInterface objects.")
 @Validated
+
 
 
 public class LoggingJobCriteria   {
