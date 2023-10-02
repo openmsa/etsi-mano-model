@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.*;
 import com.ubiqube.etsi.mano.em.v431.model.vnffm.Alarm;
 import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmModifications;
 import com.ubiqube.etsi.mano.em.v431.model.vnffm.PerceivedSeverityRequest;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.ProblemDetails;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvici.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

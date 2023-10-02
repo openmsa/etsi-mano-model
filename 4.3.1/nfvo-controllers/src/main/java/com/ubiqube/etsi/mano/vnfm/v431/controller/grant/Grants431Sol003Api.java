@@ -27,7 +27,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.ProblemDetails;
+
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvici.ProblemDetails;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantRequest;
 
