@@ -40,10 +40,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
 @Validated
 @RequestMapping(value = { "/sol002/nfvmanopm/v2", "/sol003/nfvmanopm/v2", "/sol005/nfvmanopm/v2" }, headers = { "Version=2.0.0" })
+@RolesAllowed({ "ROLE_EM", "ROLE_NFVO", "ROLE_VNFM" })
 public interface PmJobs431Sol009Api {
 
 	@Operation(summary = "", description = "The client can use this method to retrieve information about PM jobs. See clause 6.5.3.3.2. ", tags = {})
