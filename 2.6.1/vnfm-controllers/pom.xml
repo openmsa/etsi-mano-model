@@ -3,11 +3,11 @@
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
 		<artifactId>etsi-models-parent</artifactId>
-		<version>3.1.0-SNAPSHOT</version>
+		<version>3.2.0</version>
 		<relativePath />
 	</parent>
 	<artifactId>etsi-vnfm-261-controllers</artifactId>
-  <version>3.1.0-SNAPSHOT</version>
+  <version>3.2.0</version>
 	<packaging>jar</packaging>
 	<name>etsi-vnfm-261-controllers</name>
 	<url>http://maven.apache.org</url>
@@ -95,7 +95,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-test-helper</artifactId>
-			<version>3.1.0-SNAPSHOT</version>
+			<version>3.2.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

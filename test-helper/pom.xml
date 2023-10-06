@@ -121,4 +121,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+  <scm>
+    <tag>etsi-models-aggregator-3.2.0</tag>
+  </scm>
 </project>
