@@ -7,6 +7,7 @@
 		<relativePath />
 	</parent>
 	<artifactId>etsi-model-261</artifactId>
+  <version>3.2.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>etsi-model-261</name>
 	<distributionManagement>
