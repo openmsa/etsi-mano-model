@@ -3,11 +3,10 @@
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
 		<artifactId>mano-super-pom</artifactId>
-		<version>3.2.0</version>
+		<version>4.0.0-SNAPSHOT</version>
 		<relativePath />
 	</parent>
 	<artifactId>etsi-model-261</artifactId>
-  <version>3.2.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>etsi-model-261</name>
 	<distributionManagement>
