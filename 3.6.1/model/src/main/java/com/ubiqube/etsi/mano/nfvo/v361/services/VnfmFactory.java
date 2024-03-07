@@ -16,21 +16,8 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v361.services;
 
-import java.util.UUID;
-
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
-import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 
-/**
- *
- * @author olivier
- *
- */
-public interface NfvoFactory {
-
-	Object createNotificationVnfPackageOnboardingNotification(final UUID subscriptionId, EventMessage eventMessage);
-
-	Object createVnfPackageChangeNotification(final UUID subscriptionId, EventMessage eventMessage);
-
+public interface VnfmFactory {
 	String createSubscriptionLink(final ApiAndType at, final String id);
 }

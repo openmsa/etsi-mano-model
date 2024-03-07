@@ -21,16 +21,20 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nslcm.NsLcmSubscriptionsGenericFrontController;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.LccnSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.nfvo.v361.service.SubscriptionLinkable361Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+
+import jakarta.validation.Valid;
 
 /**
  *
@@ -38,7 +42,7 @@ import com.ubiqube.etsi.mano.em.v361.model.vnflcm.Link;
  *
  */
 @RestController
-public class NsLcmSubscriptions361Sol005Controller implements NsLcmSubscriptions361Sol005Api {
+public class NsLcmSubscriptions361Sol005Controller implements NsLcmSubscriptions361Sol005Api, SubscriptionLinkable361Nfvo {
 	private final NsLcmSubscriptionsGenericFrontController nsLcmSubscriptionsGenericFrontController;
 
 	public NsLcmSubscriptions361Sol005Controller(final NsLcmSubscriptionsGenericFrontController nsLcmSubscriptionsGenericFrontController) {
@@ -75,6 +79,16 @@ public class NsLcmSubscriptions361Sol005Controller implements NsLcmSubscriptions
 
 	private static String getSelfLink(final LccnSubscription lccnSubscription) {
 		return linkTo(methodOn(NsLcmSubscriptions361Sol005Api.class).subscriptionsSubscriptionIdGet(lccnSubscription.getId())).withSelfRel().getHref();
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(NsLcmSubscriptions361Sol005Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.NSLCM);
 	}
 
 }

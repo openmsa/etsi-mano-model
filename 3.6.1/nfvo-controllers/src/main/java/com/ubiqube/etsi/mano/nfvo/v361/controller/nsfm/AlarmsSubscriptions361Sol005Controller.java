@@ -18,19 +18,23 @@ package com.ubiqube.etsi.mano.nfvo.v361.controller.nsfm;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.SingleControllerCondition;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v361.model.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.em.v361.model.vnffm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.nfvo.v361.service.SubscriptionLinkable361Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+
+import jakarta.validation.Valid;
 
 @Conditional(SingleControllerCondition.class)
 @RestController
-public class AlarmsSubscriptions361Sol005Controller implements AlarmsSubscriptions361Sol005Api {
+public class AlarmsSubscriptions361Sol005Controller implements AlarmsSubscriptions361Sol005Api, SubscriptionLinkable361Nfvo {
 
 	@Override
 	public ResponseEntity<List<FmSubscription>> subscriptionsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
@@ -54,6 +58,17 @@ public class AlarmsSubscriptions361Sol005Controller implements AlarmsSubscriptio
 	public ResponseEntity<FmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.NSFM);
 	}
 
 }

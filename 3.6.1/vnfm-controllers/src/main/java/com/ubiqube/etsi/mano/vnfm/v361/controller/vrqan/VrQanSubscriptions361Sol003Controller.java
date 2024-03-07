@@ -28,11 +28,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.controller.SubscriptionFrontController;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.v361.model.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.vnfm.v361.model.vrqan.VrQuotaAvailSubscriptionLinks;
 import com.ubiqube.etsi.mano.vnfm.v361.model.vrqan.VrQuotaAvailSubscriptionRequest;
+import com.ubiqube.etsi.mano.vnfm.v361.service.SubscriptionLinkable361Vnfm;
 
 import jakarta.validation.Valid;
 
@@ -43,7 +47,7 @@ import jakarta.validation.Valid;
  */
 @RestController
 @Conditional(SingleControllerCondition.class)
-public class VrQanSubscriptions361Sol003Controller implements VrQanSubscriptions361Sol003Api {
+public class VrQanSubscriptions361Sol003Controller implements VrQanSubscriptions361Sol003Api, SubscriptionLinkable361Vnfm {
 	private final SubscriptionFrontController subscriptionService;
 
 	public VrQanSubscriptions361Sol003Controller(final SubscriptionFrontController subscriptionService) {
@@ -52,22 +56,22 @@ public class VrQanSubscriptions361Sol003Controller implements VrQanSubscriptions
 
 	@Override
 	public ResponseEntity<List<VrQuotaAvailSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, VrQuotaAvailSubscription.class, VrQanSubscriptions361Sol003Controller::makeLinks, SubscriptionType.VRQAN);
+		return subscriptionService.search(requestParams, VrQuotaAvailSubscription.class, VrQanSubscriptions361Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override
 	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsPost(@Valid final VrQuotaAvailSubscriptionRequest vrQuotaAvailSubscriptionRequest) {
-		return subscriptionService.create(vrQuotaAvailSubscriptionRequest, VrQuotaAvailSubscription.class, VrQanSubscriptions361Sol003Api.class, VrQanSubscriptions361Sol003Controller::makeLinks, VrQanSubscriptions361Sol003Controller::makeSelf, SubscriptionType.VRQAN);
+		return subscriptionService.create(vrQuotaAvailSubscriptionRequest, VrQuotaAvailSubscription.class, VrQanSubscriptions361Sol003Api.class, VrQanSubscriptions361Sol003Controller::makeLinks, VrQanSubscriptions361Sol003Controller::makeSelf, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override
 	public ResponseEntity<Void> subscriptionsSubscriptionIdDelete(final String subscriptionId) {
-		return subscriptionService.deleteById(subscriptionId, SubscriptionType.VRQAN);
+		return subscriptionService.deleteById(subscriptionId, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override
 	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, VrQuotaAvailSubscription.class, VrQanSubscriptions361Sol003Controller::makeLinks, SubscriptionType.VRQAN);
+		return subscriptionService.findById(subscriptionId, VrQuotaAvailSubscription.class, VrQanSubscriptions361Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
 	}
 
 	private static String makeSelf(final VrQuotaAvailSubscription subscription) {
@@ -80,6 +84,16 @@ public class VrQanSubscriptions361Sol003Controller implements VrQanSubscriptions
 		link.setHref(linkTo(methodOn(VrQanSubscriptions361Sol003Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref());
 		links.setSelf(link);
 		subscription.setLinks(links);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VrQanSubscriptions361Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VRQAN);
 	}
 
 }
