@@ -16,6 +16,7 @@
  */
 package com.ubiqube.etsi.mano.v271.services;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.model.v271.sol003.lcmgrant.GrantRequest;
 
 /**
@@ -26,4 +27,6 @@ import com.ubiqube.etsi.mano.model.v271.sol003.lcmgrant.GrantRequest;
 public interface VnfmFactory {
 
 	<T> void makeGrantRequestLink(final GrantRequest manoGrant);
+
+	String createSubscriptionLink(ApiAndType at, String id);
 }

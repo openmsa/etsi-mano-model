@@ -21,17 +21,21 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nsd.NsdSubscriptionFrontController;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.model.v271.sol005.nsd.NsdmSubscription;
 import com.ubiqube.etsi.mano.model.v271.sol005.nsd.NsdmSubscriptionLinks;
 import com.ubiqube.etsi.mano.model.v271.sol005.nsd.NsdmSubscriptionRequest;
+import com.ubiqube.etsi.mano.nfvo.v271.services.SubscriptionLinkable271Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+
+import jakarta.validation.constraints.NotNull;
 
 /**
  *
@@ -39,7 +43,7 @@ import com.ubiqube.etsi.mano.model.v271.sol005.nsd.NsdmSubscriptionRequest;
  *
  */
 @RestController
-public class NsdSubscriptions271Sol005Controller implements NsdSubscriptions271Sol005Api {
+public class NsdSubscriptions271Sol005Controller implements NsdSubscriptions271Sol005Api, SubscriptionLinkable271Nfvo {
 	private final NsdSubscriptionFrontController nsdSubscriptionFrontController;
 
 	public NsdSubscriptions271Sol005Controller(final NsdSubscriptionFrontController nsdSubscriptionFrontController) {
@@ -58,8 +62,8 @@ public class NsdSubscriptions271Sol005Controller implements NsdSubscriptions271S
 	 *
 	 */
 	@Override
-	public ResponseEntity<List<NsdmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams,final String nextpageOpaqueMarker) {
-		return nsdSubscriptionFrontController.search(requestParams,NsdmSubscription.class,NsdSubscriptions271Sol005Controller::makeLink);
+	public ResponseEntity<List<NsdmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
+		return nsdSubscriptionFrontController.search(requestParams, NsdmSubscription.class, NsdSubscriptions271Sol005Controller::makeLink);
 	}
 
 	/**
@@ -84,7 +88,7 @@ public class NsdSubscriptions271Sol005Controller implements NsdSubscriptions271S
 	 */
 	@Override
 	public ResponseEntity<NsdmSubscription> subscriptionsPost(final NsdmSubscriptionRequest body) {
-		return nsdSubscriptionFrontController.create(body,NsdmSubscription.class,NsdSubscriptions271Sol005Api.class,NsdSubscriptions271Sol005Controller::makeLink,NsdSubscriptions271Sol005Controller::getSelfLink);
+		return nsdSubscriptionFrontController.create(body, NsdmSubscription.class, NsdSubscriptions271Sol005Api.class, NsdSubscriptions271Sol005Controller::makeLink, NsdSubscriptions271Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -115,7 +119,7 @@ public class NsdSubscriptions271Sol005Controller implements NsdSubscriptions271S
 	 */
 	@Override
 	public ResponseEntity<NsdmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return nsdSubscriptionFrontController.findById(subscriptionId,NsdmSubscription.class,NsdSubscriptions271Sol005Controller::makeLink);
+		return nsdSubscriptionFrontController.findById(subscriptionId, NsdmSubscription.class, NsdSubscriptions271Sol005Controller::makeLink);
 	}
 
 	private static void makeLink(@NotNull final NsdmSubscription subs) {
@@ -127,6 +131,16 @@ public class NsdSubscriptions271Sol005Controller implements NsdSubscriptions271S
 
 	private static String getSelfLink(@NotNull final NsdmSubscription subs) {
 		return linkTo(methodOn(NsdSubscriptions271Sol005Api.class).subscriptionsSubscriptionIdGet(subs.getId())).withSelfRel().getHref();
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(NsdSubscriptions271Sol005Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.NSD);
 	}
 
 }

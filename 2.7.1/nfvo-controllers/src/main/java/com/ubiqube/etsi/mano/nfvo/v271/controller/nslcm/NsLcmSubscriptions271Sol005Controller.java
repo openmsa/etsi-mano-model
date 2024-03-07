@@ -25,10 +25,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nslcm.NsLcmSubscriptionsGenericFrontController;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.LccnSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.nfvo.v271.services.SubscriptionLinkable271Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 
 /**
  *
@@ -36,7 +40,7 @@ import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
  *
  */
 @RestController
-public class NsLcmSubscriptions271Sol005Controller implements NsLcmSubscriptions271Sol005Api {
+public class NsLcmSubscriptions271Sol005Controller implements NsLcmSubscriptions271Sol005Api, SubscriptionLinkable271Nfvo {
 	private final NsLcmSubscriptionsGenericFrontController nsLcmSubscriptionsGenericFrontController;
 
 	public NsLcmSubscriptions271Sol005Controller(final NsLcmSubscriptionsGenericFrontController nsLcmSubscriptionsGenericFrontController) {
@@ -44,13 +48,13 @@ public class NsLcmSubscriptions271Sol005Controller implements NsLcmSubscriptions
 	}
 
 	@Override
-	public ResponseEntity<List<LccnSubscription>> subscriptionsGet(final String filter,final String nextpageOpaqueMarker) {
-		return nsLcmSubscriptionsGenericFrontController.search(filter,LccnSubscription.class,NsLcmSubscriptions271Sol005Controller::makeLink);
+	public ResponseEntity<List<LccnSubscription>> subscriptionsGet(final String filter, final String nextpageOpaqueMarker) {
+		return nsLcmSubscriptionsGenericFrontController.search(filter, LccnSubscription.class, NsLcmSubscriptions271Sol005Controller::makeLink);
 	}
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsPost(final LccnSubscriptionRequest body) {
-		return nsLcmSubscriptionsGenericFrontController.create(body,LccnSubscription.class,NsLcmSubscriptions271Sol005Api.class,NsLcmSubscriptions271Sol005Controller::makeLink,NsLcmSubscriptions271Sol005Controller::getSelfLink);
+		return nsLcmSubscriptionsGenericFrontController.create(body, LccnSubscription.class, NsLcmSubscriptions271Sol005Api.class, NsLcmSubscriptions271Sol005Controller::makeLink, NsLcmSubscriptions271Sol005Controller::getSelfLink);
 	}
 
 	@Override
@@ -60,7 +64,7 @@ public class NsLcmSubscriptions271Sol005Controller implements NsLcmSubscriptions
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return nsLcmSubscriptionsGenericFrontController.findById(subscriptionId,LccnSubscription.class,NsLcmSubscriptions271Sol005Controller::makeLink);
+		return nsLcmSubscriptionsGenericFrontController.findById(subscriptionId, LccnSubscription.class, NsLcmSubscriptions271Sol005Controller::makeLink);
 	}
 
 	private static void makeLink(final LccnSubscription lccnSubscription) {
@@ -73,6 +77,16 @@ public class NsLcmSubscriptions271Sol005Controller implements NsLcmSubscriptions
 
 	private static String getSelfLink(final LccnSubscription lccnSubscription) {
 		return linkTo(methodOn(NsLcmSubscriptions271Sol005Api.class).subscriptionsSubscriptionIdGet(lccnSubscription.getId())).withSelfRel().getHref();
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(NsLcmSubscriptions271Sol005Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.NSLCM);
 	}
 
 }

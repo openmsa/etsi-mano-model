@@ -21,20 +21,24 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v271.model.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.em.v271.model.vnffm.FmSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v271.model.vnffm.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
+import com.ubiqube.etsi.mano.vnfm.v271.SubscriptionLinkable271Vnfm;
+
+import jakarta.validation.Valid;
 
 @RestController
-public class AlarmsSubscriptions271Sol002Controller implements AlarmsSubscriptions271Sol002Api {
+public class AlarmsSubscriptions271Sol002Controller implements AlarmsSubscriptions271Sol002Api, SubscriptionLinkable271Vnfm {
 	private final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController;
 
 	public AlarmsSubscriptions271Sol002Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController) {
@@ -42,13 +46,13 @@ public class AlarmsSubscriptions271Sol002Controller implements AlarmsSubscriptio
 	}
 
 	@Override
-	public ResponseEntity<List<FmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams,@Valid final String nextpageOpaqueMarker) {
-		return faultMngtSubscriptionsFrontController.search(requestParams,FmSubscription.class,AlarmsSubscriptions271Sol002Controller::makeLinks);
+	public ResponseEntity<List<FmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+		return faultMngtSubscriptionsFrontController.search(requestParams, FmSubscription.class, AlarmsSubscriptions271Sol002Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest fmSubscriptionRequest) {
-		return faultMngtSubscriptionsFrontController.create(fmSubscriptionRequest,FmSubscription.class,AlarmsSubscriptions271Sol002Api.class,AlarmsSubscriptions271Sol002Controller::makeLinks,AlarmsSubscriptions271Sol002Controller::makeSelf);
+		return faultMngtSubscriptionsFrontController.create(fmSubscriptionRequest, FmSubscription.class, AlarmsSubscriptions271Sol002Api.class, AlarmsSubscriptions271Sol002Controller::makeLinks, AlarmsSubscriptions271Sol002Controller::makeSelf);
 	}
 
 	@Override
@@ -58,7 +62,7 @@ public class AlarmsSubscriptions271Sol002Controller implements AlarmsSubscriptio
 
 	@Override
 	public ResponseEntity<FmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return faultMngtSubscriptionsFrontController.findById(subscriptionId,FmSubscription.class,AlarmsSubscriptions271Sol002Controller::makeLinks);
+		return faultMngtSubscriptionsFrontController.findById(subscriptionId, FmSubscription.class, AlarmsSubscriptions271Sol002Controller::makeLinks);
 	}
 
 	private static void makeLinks(final FmSubscription subscription) {
@@ -71,5 +75,15 @@ public class AlarmsSubscriptions271Sol002Controller implements AlarmsSubscriptio
 
 	private static String makeSelf(final FmSubscription subscription) {
 		return linkTo(methodOn(AlarmsSubscriptions271Sol002Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref();
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(AlarmsSubscriptions271Sol002Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.ALARM);
 	}
 }

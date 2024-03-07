@@ -26,6 +26,7 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.mano.CancelModeTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.GrantInterface;
 import com.ubiqube.etsi.mano.dao.mano.ScaleTypeEnum;
@@ -58,6 +59,7 @@ import com.ubiqube.etsi.mano.model.v271.sol003.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.model.v271.sol005.nsd.CreateNsdInfoRequest;
 import com.ubiqube.etsi.mano.model.v271.sol005.nsd.NsdInfo;
 import com.ubiqube.etsi.mano.service.AbstractHttpGateway;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.utils.Version;
 
@@ -193,9 +195,9 @@ public class HttpGateway271 extends AbstractHttpGateway {
 	@Override
 	public Object createEvent(final UUID subscriptionId, final EventMessage event) {
 		return switch (event.getNotificationEvent()) {
-			case VNF_PKG_ONCHANGE, VNF_PKG_ONDELETION -> nfvoFactory.createVnfPackageChangeNotification(subscriptionId, event);
-			case VNF_PKG_ONBOARDING -> nfvoFactory.createNotificationVnfPackageOnboardingNotification(subscriptionId, event);
-			default -> null;
+		case VNF_PKG_ONCHANGE, VNF_PKG_ONDELETION -> nfvoFactory.createVnfPackageChangeNotification(subscriptionId, event);
+		case VNF_PKG_ONBOARDING -> nfvoFactory.createNotificationVnfPackageOnboardingNotification(subscriptionId, event);
+		default -> null;
 		};
 	}
 
@@ -290,4 +292,11 @@ public class HttpGateway271 extends AbstractHttpGateway {
 		return HealVnfRequest.class;
 	}
 
+	@Override
+	public String getSubscriptionUriFor(final ApiAndType at, final String id) {
+		if (at.api() == ApiTypesEnum.SOL003) {
+			return vnfmFactory.createSubscriptionLink(at, id);
+		}
+		return nfvoFactory.createSubscriptionLink(at, id);
+	}
 }

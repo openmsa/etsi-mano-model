@@ -24,11 +24,15 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.controller.vnf.VnfSubscriptionSol003FrontController;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.model.v271.sol003.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.model.v271.sol003.vnf.PkgmSubscriptionLinks;
 import com.ubiqube.etsi.mano.model.v271.sol003.vnf.PkgmSubscriptionRequest;
+import com.ubiqube.etsi.mano.nfvo.v271.services.SubscriptionLinkable271Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 
 /**
  *
@@ -36,11 +40,10 @@ import com.ubiqube.etsi.mano.model.v271.sol003.vnf.PkgmSubscriptionRequest;
  *
  */
 @RestController
-public class VnfSubscriptions271Sol003Controller implements VnfSubscriptions271Sol003Api {
+public class VnfSubscriptions271Sol003Controller implements VnfSubscriptions271Sol003Api, SubscriptionLinkable271Nfvo {
 	private final VnfSubscriptionSol003FrontController vnfSubscriptionSol003FrontController;
 
 	public VnfSubscriptions271Sol003Controller(final VnfSubscriptionSol003FrontController vnfSubscriptionSol03FrontController) {
-		super();
 		this.vnfSubscriptionSol003FrontController = vnfSubscriptionSol03FrontController;
 	}
 
@@ -55,7 +58,7 @@ public class VnfSubscriptions271Sol003Controller implements VnfSubscriptions271S
 	 */
 	@Override
 	public ResponseEntity<List<PkgmSubscription>> subscriptionsGet(final String filter) {
-		return vnfSubscriptionSol003FrontController.search(filter,PkgmSubscription.class,VnfSubscriptions271Sol003Controller::makeLinks);
+		return vnfSubscriptionSol003FrontController.search(filter, PkgmSubscription.class, VnfSubscriptions271Sol003Controller::makeLinks);
 	}
 
 	/**
@@ -79,7 +82,7 @@ public class VnfSubscriptions271Sol003Controller implements VnfSubscriptions271S
 	 */
 	@Override
 	public ResponseEntity<PkgmSubscription> subscriptionsPost(final PkgmSubscriptionRequest subscriptionsPostQuery) {
-		return vnfSubscriptionSol003FrontController.create(subscriptionsPostQuery,PkgmSubscription.class,VnfSubscriptions271Sol003Controller::makeLinks);
+		return vnfSubscriptionSol003FrontController.create(subscriptionsPostQuery, PkgmSubscription.class, VnfSubscriptions271Sol003Controller::makeLinks);
 	}
 
 	/**
@@ -102,7 +105,7 @@ public class VnfSubscriptions271Sol003Controller implements VnfSubscriptions271S
 	 */
 	@Override
 	public ResponseEntity<PkgmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return vnfSubscriptionSol003FrontController.findById(subscriptionId,PkgmSubscription.class,VnfSubscriptions271Sol003Controller::makeLinks);
+		return vnfSubscriptionSol003FrontController.findById(subscriptionId, PkgmSubscription.class, VnfSubscriptions271Sol003Controller::makeLinks);
 	}
 
 	public static void makeLinks(final PkgmSubscription pkgmSubscription) {
@@ -111,5 +114,15 @@ public class VnfSubscriptions271Sol003Controller implements VnfSubscriptions271S
 		self.setHref(linkTo(methodOn(VnfSubscriptions271Sol003Api.class).subscriptionsSubscriptionIdGet(pkgmSubscription.getId())).withSelfRel().getHref());
 		subscriptionsPkgmSubscriptionLinks.setSelf(self);
 		pkgmSubscription.setLinks(subscriptionsPkgmSubscriptionLinks);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VnfSubscriptions271Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VNF);
 	}
 }

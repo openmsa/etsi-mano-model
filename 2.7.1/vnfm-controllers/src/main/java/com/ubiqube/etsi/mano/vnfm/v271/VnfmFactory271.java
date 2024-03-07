@@ -19,8 +19,11 @@ package com.ubiqube.etsi.mano.vnfm.v271;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
 import com.ubiqube.etsi.mano.em.v271.controller.vnflcm.VnfInstances271Sol002Api;
 import com.ubiqube.etsi.mano.em.v271.controller.vnflcm.VnfInstances271Sol002Controller;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
@@ -34,7 +37,12 @@ import com.ubiqube.etsi.mano.v271.services.VnfmFactory;
  *
  */
 @Service
-public class VnfmFactory271 implements VnfmFactory {
+public class VnfmFactory271 extends AbstractSubscriptionFactory implements VnfmFactory {
+
+	public VnfmFactory271(final List<SubscriptionLinkable271Vnfm> subs) {
+		super(subs);
+	}
+
 	@Override
 	public void makeGrantRequestLink(final GrantRequest manoGrant) {
 		final GrantRequestLinks links = new GrantRequestLinks();

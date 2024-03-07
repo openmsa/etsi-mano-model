@@ -18,11 +18,15 @@ package com.ubiqube.etsi.mano.nfvo.v271.controller.nsfm;
 
 import java.util.Optional;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
+import com.ubiqube.etsi.mano.nfvo.v271.services.SubscriptionLinkable271Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -30,14 +34,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
  */
 @RestController
-public class NsFaultSubscriptions271Sol005Controller implements NsFaultSubscriptions271Sol005Api {
+public class NsFaultSubscriptions271Sol005Controller implements NsFaultSubscriptions271Sol005Api, SubscriptionLinkable271Nfvo {
 
 	private final ObjectMapper objectMapper;
 
 	private final HttpServletRequest request;
 
 	@org.springframework.beans.factory.annotation.Autowired
-	public NsFaultSubscriptions271Sol005Controller(final ObjectMapper objectMapper,final HttpServletRequest request) {
+	public NsFaultSubscriptions271Sol005Controller(final ObjectMapper objectMapper, final HttpServletRequest request) {
 		this.objectMapper = objectMapper;
 		this.request = request;
 	}
@@ -50,6 +54,17 @@ public class NsFaultSubscriptions271Sol005Controller implements NsFaultSubscript
 	@Override
 	public Optional<HttpServletRequest> getRequest() {
 		return Optional.ofNullable(request);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.NSFM);
 	}
 
 }
