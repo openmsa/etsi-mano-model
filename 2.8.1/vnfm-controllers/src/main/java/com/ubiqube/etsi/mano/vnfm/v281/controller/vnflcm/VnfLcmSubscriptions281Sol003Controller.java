@@ -21,17 +21,21 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.LccnSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.vnfm.SubscriptionLinkable281Vnfm;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
+
+import jakarta.validation.Valid;
 
 /**
  *
@@ -39,7 +43,7 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
  *
  */
 @RestController
-public class VnfLcmSubscriptions281Sol003Controller implements VnfLcmSubscriptions281Sol003Api {
+public class VnfLcmSubscriptions281Sol003Controller implements VnfLcmSubscriptions281Sol003Api, SubscriptionLinkable281Vnfm {
 	private final VnfLcmSubscriptionFrontController frontController;
 
 	public VnfLcmSubscriptions281Sol003Controller(final VnfLcmSubscriptionFrontController frontController) {
@@ -47,13 +51,13 @@ public class VnfLcmSubscriptions281Sol003Controller implements VnfLcmSubscriptio
 	}
 
 	@Override
-	public ResponseEntity<List<LccnSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams,@Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams,nextpageOpaqueMarker,LccnSubscription.class,VnfLcmSubscriptions281Sol003Controller::makeLinks);
+	public ResponseEntity<List<LccnSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+		return frontController.search(requestParams, nextpageOpaqueMarker, LccnSubscription.class, VnfLcmSubscriptions281Sol003Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsPost(@Valid final LccnSubscriptionRequest body) {
-		return frontController.create(body,LccnSubscription.class,VnfLcmSubscriptions281Sol003Api.class,VnfLcmSubscriptions281Sol003Controller::makeLinks,VnfLcmSubscriptions281Sol003Controller::getSelfLink);
+		return frontController.create(body, LccnSubscription.class, VnfLcmSubscriptions281Sol003Api.class, VnfLcmSubscriptions281Sol003Controller::makeLinks, VnfLcmSubscriptions281Sol003Controller::getSelfLink);
 	}
 
 	@Override
@@ -63,7 +67,7 @@ public class VnfLcmSubscriptions281Sol003Controller implements VnfLcmSubscriptio
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return frontController.findById(subscriptionId,LccnSubscription.class,VnfLcmSubscriptions281Sol003Controller::makeLinks);
+		return frontController.findById(subscriptionId, LccnSubscription.class, VnfLcmSubscriptions281Sol003Controller::makeLinks);
 	}
 
 	private static String getSelfLink(final LccnSubscription subscription) {
@@ -77,5 +81,15 @@ public class VnfLcmSubscriptions281Sol003Controller implements VnfLcmSubscriptio
 		links.setSelf(self);
 
 		subs.setLinks(links);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VnfLcmSubscriptions281Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VNFLCM);
 	}
 }

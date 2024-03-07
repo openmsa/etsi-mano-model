@@ -14,24 +14,13 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.v281.services;
+package com.ubiqube.etsi.mano.vnfm;
 
-import java.util.UUID;
-
-import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
-import com.ubiqube.etsi.mano.service.event.model.EventMessage;
+import com.ubiqube.etsi.mano.controller.subscription.SubscriptionLinkable;
 
 /**
- *
- * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
- *
+ * @author olivier
  */
-public interface NfvoFactory {
-
-	Object createNotificationVnfPackageOnboardingNotification(final UUID subscriptionId, EventMessage eventMessage);
-
-	Object createVnfPackageChangeNotification(final UUID subscriptionId, EventMessage eventMessage);
-
-	String createSubscriptionLink(ApiAndType at, String id);
-
+public interface SubscriptionLinkable281Vnfm extends SubscriptionLinkable {
+	//
 }

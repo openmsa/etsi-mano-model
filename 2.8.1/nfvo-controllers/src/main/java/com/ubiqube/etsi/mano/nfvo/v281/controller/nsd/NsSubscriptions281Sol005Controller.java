@@ -21,8 +21,6 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -30,10 +28,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.controller.nsd.NsdSubscriptionFrontController;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.nfvo.v281.SubscriptionLinkable281Nfvo;
 import com.ubiqube.etsi.mano.nfvo.v281.model.nsd.NsdmSubscription;
 import com.ubiqube.etsi.mano.nfvo.v281.model.nsd.NsdmSubscriptionLinks;
 import com.ubiqube.etsi.mano.nfvo.v281.model.nsd.NsdmSubscriptionRequest;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+
+import jakarta.validation.constraints.NotNull;
 
 /**
  *
@@ -42,7 +46,7 @@ import com.ubiqube.etsi.mano.nfvo.v281.model.nsd.NsdmSubscriptionRequest;
  */
 @RestController
 @Conditional(SingleControllerCondition.class)
-public class NsSubscriptions281Sol005Controller implements NsSubscriptions281Sol005Api {
+public class NsSubscriptions281Sol005Controller implements NsSubscriptions281Sol005Api, SubscriptionLinkable281Nfvo {
 	private final NsdSubscriptionFrontController nsdSubscriptionFrontController;
 
 	public NsSubscriptions281Sol005Controller(final NsdSubscriptionFrontController nsdSubscriptionFrontController) {
@@ -61,8 +65,8 @@ public class NsSubscriptions281Sol005Controller implements NsSubscriptions281Sol
 	 *
 	 */
 	@Override
-	public ResponseEntity<List<NsdmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams,final String filter) {
-		return nsdSubscriptionFrontController.search(requestParams,NsdmSubscription.class,NsSubscriptions281Sol005Controller::makeLink);
+	public ResponseEntity<List<NsdmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String filter) {
+		return nsdSubscriptionFrontController.search(requestParams, NsdmSubscription.class, NsSubscriptions281Sol005Controller::makeLink);
 	}
 
 	/**
@@ -87,7 +91,7 @@ public class NsSubscriptions281Sol005Controller implements NsSubscriptions281Sol
 	 */
 	@Override
 	public ResponseEntity<NsdmSubscription> subscriptionsPost(final NsdmSubscriptionRequest body) {
-		return nsdSubscriptionFrontController.create(body,NsdmSubscription.class,NsSubscriptions281Sol005Api.class,NsSubscriptions281Sol005Controller::makeLink,NsSubscriptions281Sol005Controller::getSelfLink);
+		return nsdSubscriptionFrontController.create(body, NsdmSubscription.class, NsSubscriptions281Sol005Api.class, NsSubscriptions281Sol005Controller::makeLink, NsSubscriptions281Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -118,7 +122,7 @@ public class NsSubscriptions281Sol005Controller implements NsSubscriptions281Sol
 	 */
 	@Override
 	public ResponseEntity<NsdmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return nsdSubscriptionFrontController.findById(subscriptionId,NsdmSubscription.class,NsSubscriptions281Sol005Controller::makeLink);
+		return nsdSubscriptionFrontController.findById(subscriptionId, NsdmSubscription.class, NsSubscriptions281Sol005Controller::makeLink);
 	}
 
 	private static void makeLink(@NotNull final NsdmSubscription subs) {
@@ -130,6 +134,16 @@ public class NsSubscriptions281Sol005Controller implements NsSubscriptions281Sol
 
 	private static String getSelfLink(@NotNull final NsdmSubscription subs) {
 		return linkTo(methodOn(NsSubscriptions281Sol005Api.class).subscriptionsSubscriptionIdGet(subs.getId())).withSelfRel().getHref();
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(NsSubscriptions281Sol005Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.NSD);
 	}
 
 }
