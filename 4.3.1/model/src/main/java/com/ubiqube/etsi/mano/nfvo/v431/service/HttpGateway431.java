@@ -26,6 +26,7 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.mano.CancelModeTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.GrantInterface;
 import com.ubiqube.etsi.mano.dao.mano.ScaleTypeEnum;
@@ -43,6 +44,7 @@ import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.NsdInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.CreateVnfPkgInfoRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.service.AbstractHttpGateway;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.utils.Version;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.Grant;
@@ -66,10 +68,12 @@ import ma.glasnost.orika.MapperFacade;
 @Service
 public class HttpGateway431 extends AbstractHttpGateway {
 	private final NfvoFactory nfvoFactory;
+	private final VnfmFactory vnfmFactory;
 	private final MapperFacade mapper;
 
-	public HttpGateway431(final ObjectProvider<NfvoFactory> nfvoFactory, final MapperFacade mapper) {
+	public HttpGateway431(final ObjectProvider<NfvoFactory> nfvoFactory, final ObjectProvider<VnfmFactory> vnfmFactory, final MapperFacade mapper) {
 		this.nfvoFactory = nfvoFactory.getIfAvailable();
+		this.vnfmFactory = vnfmFactory.getIfAvailable();
 		this.mapper = mapper;
 	}
 
@@ -281,5 +285,13 @@ public class HttpGateway431 extends AbstractHttpGateway {
 	@Override
 	public Class<?> getVnfInstanceHealRequest() {
 		return HealVnfRequest.class;
+	}
+
+	@Override
+	public String getSubscriptionUriFor(final ApiAndType at, final String id) {
+		if (at.api() == ApiTypesEnum.SOL003) {
+			return vnfmFactory.createSubscriptionLink(at, id);
+		}
+		return nfvoFactory.createSubscriptionLink(at, id);
 	}
 }

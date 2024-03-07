@@ -24,14 +24,18 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.controller.vnf.VnfSubscriptionSol005FrontController;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.Link;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.PkgmSubscriptionLinks;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.PkgmSubscriptionRequest;
+import com.ubiqube.etsi.mano.nfvo.v431.service.SubscriptionLinkable431Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 
 @RestController
-public class VnfSubscriptions431Sol005Controller implements VnfSubscriptions431Sol005Api {
+public class VnfSubscriptions431Sol005Controller implements VnfSubscriptions431Sol005Api, SubscriptionLinkable431Nfvo {
 	private final VnfSubscriptionSol005FrontController vnfSubscriptionSol03FrontController;
 
 	public VnfSubscriptions431Sol005Controller(final VnfSubscriptionSol005FrontController vnfSubscriptionSol03FrontController) {
@@ -105,6 +109,16 @@ public class VnfSubscriptions431Sol005Controller implements VnfSubscriptions431S
 		self.setHref(linkTo(methodOn(VnfSubscriptions431Sol005Api.class).subscriptionsSubscriptionIdGet(pkgmSubscription.getId())).withSelfRel().getHref());
 		subscriptionsPkgmSubscriptionLinks.setSelf(self);
 		pkgmSubscription.setLinks(subscriptionsPkgmSubscriptionLinks);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VnfSubscriptions431Sol005Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.VNF);
 	}
 
 }

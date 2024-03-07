@@ -18,16 +18,20 @@ package com.ubiqube.etsi.mano.nfvo.v431.controller.nsfm;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsfm.FmSubscription;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsfm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.nfvo.v431.service.SubscriptionLinkable431Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+
+import jakarta.validation.Valid;
 
 @RestController
-public class AlarmSubscriptions431Sol005Controller implements AlarmSubscriptions431Sol005Api {
+public class AlarmSubscriptions431Sol005Controller implements AlarmSubscriptions431Sol005Api, SubscriptionLinkable431Nfvo {
 
 	@Override
 	public ResponseEntity<List<FmSubscription>> subscriptionsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
@@ -51,6 +55,17 @@ public class AlarmSubscriptions431Sol005Controller implements AlarmSubscriptions
 	public ResponseEntity<FmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.ALARM);
 	}
 
 }

@@ -21,8 +21,6 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.time.OffsetDateTime;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +31,8 @@ import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.Threshold;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.ThresholdLinks;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.ThresholdModifications;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.Link;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class Thresholds431Sol003Controller implements Thresholds431Sol003Api {
