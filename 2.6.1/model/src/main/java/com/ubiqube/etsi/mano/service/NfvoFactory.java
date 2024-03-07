@@ -16,8 +16,10 @@
  */
 package com.ubiqube.etsi.mano.service;
 
+import java.util.Map;
 import java.util.UUID;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 
 /**
@@ -30,4 +32,8 @@ public interface NfvoFactory {
 	Object createNotificationVnfPackageOnboardingNotification(UUID subscriptionId, EventMessage event);
 
 	Object createVnfPackageChangeNotification(UUID subscriptionId, EventMessage event);
+
+	String createVnfPackageSubscriptionLink(Map<String, String> params);
+
+	String createSubscriptionLink(ApiAndType at, String id);
 }

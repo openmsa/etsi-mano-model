@@ -26,8 +26,12 @@ import com.ubiqube.etsi.mano.common.v261.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPackageOnboardingNotification;
 import com.ubiqube.etsi.mano.common.v261.services.Linkable;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.controller.vnf.VnfSubscriptionSol005FrontController;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.nfvo.v261.services.Sol005Linkable;
+import com.ubiqube.etsi.mano.nfvo.v261.services.SubscriptionLinkable261Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 
 /**
  *
@@ -35,13 +39,12 @@ import com.ubiqube.etsi.mano.nfvo.v261.services.Sol005Linkable;
  *
  */
 @RestController
-public class VnfSubscription261Sol005Controller implements VnfSubscription261Sol005Api {
+public class VnfSubscription261Sol005Controller implements VnfSubscription261Sol005Api, SubscriptionLinkable261Nfvo {
 	private final VnfSubscriptionSol005FrontController vnfSubscriptionSol005FrontController;
 
 	private final Linkable links = new Sol005Linkable();
 
 	public VnfSubscription261Sol005Controller(final VnfSubscriptionSol005FrontController vnfSubscriptionSol005FrontController) {
-		super();
 		this.vnfSubscriptionSol005FrontController = vnfSubscriptionSol005FrontController;
 	}
 
@@ -74,6 +77,16 @@ public class VnfSubscription261Sol005Controller implements VnfSubscription261Sol
 	@Override
 	public void vnfPackageOnboardingNotificationPost(final VnfPackageOnboardingNotification notificationsMessage) {
 		vnfSubscriptionSol005FrontController.vnfPackageOnboardingNotificationPost(notificationsMessage);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return links.makeSubscriptionLink(id);
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.VNF);
 	}
 
 }

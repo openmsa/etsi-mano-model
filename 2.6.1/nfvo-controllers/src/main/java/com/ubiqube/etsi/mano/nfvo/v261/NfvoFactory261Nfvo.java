@@ -16,14 +16,20 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v261;
 
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.common.v261.VnfSubscriptionFactory261;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.PackageOperationalStateType;
+import com.ubiqube.etsi.mano.common.v261.services.Linkable;
+import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
+import com.ubiqube.etsi.mano.nfvo.v261.services.Sol003Linkable;
 import com.ubiqube.etsi.mano.nfvo.v261.services.Sol005Linkable;
+import com.ubiqube.etsi.mano.nfvo.v261.services.SubscriptionLinkable261Nfvo;
 import com.ubiqube.etsi.mano.repository.VnfPackageRepository;
 import com.ubiqube.etsi.mano.service.NfvoFactory;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
@@ -34,10 +40,11 @@ import com.ubiqube.etsi.mano.service.event.model.EventMessage;
  *
  */
 @Service
-public class NfvoFactory261Nfvo implements NfvoFactory {
+public class NfvoFactory261Nfvo extends AbstractSubscriptionFactory implements NfvoFactory {
 	private final VnfPackageRepository vnfPackageRepository;
 
-	public NfvoFactory261Nfvo(final VnfPackageRepository vnfPackageRepository) {
+	public NfvoFactory261Nfvo(final VnfPackageRepository vnfPackageRepository, final List<SubscriptionLinkable261Nfvo> subs) {
+		super(subs);
 		this.vnfPackageRepository = vnfPackageRepository;
 	}
 
@@ -57,6 +64,12 @@ public class NfvoFactory261Nfvo implements NfvoFactory {
 		}
 		return VnfSubscriptionFactory261.createVnfPackageChangeNotification(deleted, subscriptionId, event.getObjectId(), event.getObjectId(), event.getAdditionalParameters().get("vnfdId"),
 				PackageOperationalStateType.fromValue(event.getAdditionalParameters().get("state")), new Sol005Linkable());
+	}
+
+	@Override
+	public String createVnfPackageSubscriptionLink(final Map<String, String> params) {
+		final Linkable links = new Sol003Linkable();
+		return links.createSubscriptionsPkgmSubscriptionLinks(params.get("id")).getSelf().getHref();
 	}
 
 }

@@ -14,29 +14,13 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.service;
+package com.ubiqube.etsi.mano.vnfm.v261.services;
 
-import java.util.Map;
-import java.util.UUID;
-
-import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
-import com.ubiqube.etsi.mano.nfvo.v261.model.lcmgrant.GrantRequest;
-import com.ubiqube.etsi.mano.service.event.model.EventMessage;
+import com.ubiqube.etsi.mano.controller.subscription.SubscriptionLinkable;
 
 /**
- *
- * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
- *
+ * @author olivier
  */
-public interface VnfmFactory {
-
-	void makeGrantRequestLink(final GrantRequest manoGrant);
-
-	Object createVnfIndicatorValueChangeNotification(UUID subscriptionId, EventMessage event);
-
-	String createVnfIndicatorSubscriptionLink(Map<String, String> params);
-
-	String createVnfLcmSubscriptionLink(Map<String, String> params);
-
-	String createSubscriptionLink(ApiAndType at, String id);
+public interface SubscriptionLinkable261Vnfm extends SubscriptionLinkable {
+	//
 }

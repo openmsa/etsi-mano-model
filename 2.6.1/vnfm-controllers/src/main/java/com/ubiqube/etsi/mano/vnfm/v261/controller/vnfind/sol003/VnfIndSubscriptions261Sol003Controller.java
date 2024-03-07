@@ -27,10 +27,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.SubscriptionFrontController;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vnfind.VnfIndicatorSubscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vnfind.VnfIndicatorSubscriptionLinks;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vnfind.VnfIndicatorSubscriptionRequest;
+import com.ubiqube.etsi.mano.vnfm.v261.services.SubscriptionLinkable261Vnfm;
 
 import jakarta.validation.Valid;
 
@@ -40,7 +44,7 @@ import jakarta.validation.Valid;
  *
  */
 @RestController
-public class VnfIndSubscriptions261Sol003Controller implements VnfIndSubscriptions261Sol003Api {
+public class VnfIndSubscriptions261Sol003Controller implements VnfIndSubscriptions261Sol003Api, SubscriptionLinkable261Vnfm {
 	private final SubscriptionFrontController subscriptionService;
 
 	public VnfIndSubscriptions261Sol003Controller(final SubscriptionFrontController subscriptionService) {
@@ -49,26 +53,30 @@ public class VnfIndSubscriptions261Sol003Controller implements VnfIndSubscriptio
 
 	@Override
 	public ResponseEntity<List<VnfIndicatorSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, VnfIndicatorSubscription.class, VnfIndSubscriptions261Sol003Controller::makeLinks, SubscriptionType.VNFIND);
+		return subscriptionService.search(requestParams, VnfIndicatorSubscription.class, VnfIndSubscriptions261Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
 	}
 
 	@Override
 	public ResponseEntity<VnfIndicatorSubscription> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest vnfIndicatorSubscriptionRequest) {
-		return subscriptionService.create(vnfIndicatorSubscriptionRequest, VnfIndicatorSubscription.class, VnfIndSubscriptions261Sol003Api.class, VnfIndSubscriptions261Sol003Controller::makeLinks, VnfIndSubscriptions261Sol003Controller::makeSelf, SubscriptionType.VNFIND);
+		return subscriptionService.create(vnfIndicatorSubscriptionRequest, VnfIndicatorSubscription.class, VnfIndSubscriptions261Sol003Api.class, VnfIndSubscriptions261Sol003Controller::makeLinks, VnfIndSubscriptions261Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFIND);
 	}
 
 	@Override
 	public ResponseEntity<Void> subscriptionsSubscriptionIdDelete(final String subscriptionId) {
-		return subscriptionService.deleteById(subscriptionId, SubscriptionType.VNFIND);
+		return subscriptionService.deleteById(subscriptionId, ApiVersionType.SOL003_VNFIND);
 	}
 
 	@Override
 	public ResponseEntity<VnfIndicatorSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, VnfIndicatorSubscription.class, VnfIndSubscriptions261Sol003Controller::makeLinks, SubscriptionType.ALARM);
+		return subscriptionService.findById(subscriptionId, VnfIndicatorSubscription.class, VnfIndSubscriptions261Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
 	}
 
 	private static String makeSelf(final VnfIndicatorSubscription subscription) {
-		return linkTo(methodOn(VnfIndSubscriptions261Sol003Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref();
+		return makeSelf(subscription.getId());
+	}
+
+	public static String makeSelf(final String id) {
+		return linkTo(methodOn(VnfIndSubscriptions261Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
 	}
 
 	private static void makeLinks(final VnfIndicatorSubscription subscription) {
@@ -77,5 +85,15 @@ public class VnfIndSubscriptions261Sol003Controller implements VnfIndSubscriptio
 		link.setHref(linkTo(methodOn(VnfIndSubscriptions261Sol003Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref());
 		links.setSelf(link);
 		subscription.setLinks(links);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VnfIndSubscriptions261Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VNFIND);
 	}
 }

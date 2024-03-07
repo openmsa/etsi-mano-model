@@ -28,8 +28,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.SubscriptionFrontController;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsperfo.SubscriptionsPmSubscriptionRequest;
+import com.ubiqube.etsi.mano.nfvo.v261.services.SubscriptionLinkable261Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.PmSubscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.PmSubscriptionLinks;
 
@@ -41,7 +45,7 @@ import jakarta.validation.Valid;
  *
  */
 @RestController
-public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscription261Sol005Api {
+public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscription261Sol005Api, SubscriptionLinkable261Nfvo {
 	private final SubscriptionFrontController subscriptionService;
 
 	public NsPerfoSubscription261Sol005Controller(final SubscriptionFrontController subscriptionService) {
@@ -60,7 +64,7 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 	 */
 	@Override
 	public ResponseEntity<List<PmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, PmSubscription.class, NsPerfoSubscription261Sol005Controller::makeLinks, SubscriptionType.NSPM);
+		return subscriptionService.search(requestParams, PmSubscription.class, NsPerfoSubscription261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSPM);
 	}
 
 	/**
@@ -85,7 +89,7 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 	 */
 	@Override
 	public ResponseEntity<PmSubscription> subscriptionsPost(final SubscriptionsPmSubscriptionRequest pmSubscriptionRequest) throws URISyntaxException {
-		return subscriptionService.create(pmSubscriptionRequest, PmSubscription.class, NsPerfoSubscription261Sol005Api.class, NsPerfoSubscription261Sol005Controller::makeLinks, NsPerfoSubscription261Sol005Controller::makeSelf, SubscriptionType.NSPM);
+		return subscriptionService.create(pmSubscriptionRequest, PmSubscription.class, NsPerfoSubscription261Sol005Api.class, NsPerfoSubscription261Sol005Controller::makeLinks, NsPerfoSubscription261Sol005Controller::makeSelf, ApiVersionType.SOL005_NSPM);
 	}
 
 	/**
@@ -98,7 +102,7 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 	 */
 	@Override
 	public ResponseEntity<Void> subscriptionsSubscriptionIdDelete(final String subscriptionId) {
-		return subscriptionService.deleteById(subscriptionId, SubscriptionType.NSPM);
+		return subscriptionService.deleteById(subscriptionId, ApiVersionType.SOL005_NSPM);
 	}
 
 	/**
@@ -113,7 +117,7 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 	 */
 	@Override
 	public ResponseEntity<PmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, PmSubscription.class, NsPerfoSubscription261Sol005Controller::makeLinks, SubscriptionType.NSPM);
+		return subscriptionService.findById(subscriptionId, PmSubscription.class, NsPerfoSubscription261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSPM);
 	}
 
 	private static void makeLinks(final PmSubscription subscription) {
@@ -126,5 +130,15 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 
 	private static String makeSelf(final PmSubscription subscription) {
 		return linkTo(methodOn(NsPerfoSubscription261Sol005Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref();
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(NsPerfoSubscription261Sol005Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.NSPM);
 	}
 }

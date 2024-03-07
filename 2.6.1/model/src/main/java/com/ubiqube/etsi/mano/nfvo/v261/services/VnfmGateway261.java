@@ -34,6 +34,7 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfInstance;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPkgInfo;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.mano.CancelModeTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.GrantInterface;
 import com.ubiqube.etsi.mano.dao.mano.ScaleTypeEnum;
@@ -49,6 +50,7 @@ import com.ubiqube.etsi.mano.nfvo.v261.model.vnf.CreateVnfPkgInfoRequest;
 import com.ubiqube.etsi.mano.service.AbstractHttpGateway;
 import com.ubiqube.etsi.mano.service.NfvoFactory;
 import com.ubiqube.etsi.mano.service.VnfmFactory;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.utils.Version;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.ChangeExtVnfConnectivityRequest;
@@ -297,5 +299,13 @@ public class VnfmGateway261 extends AbstractHttpGateway {
 	@Override
 	public Object createVnfThresholdRequest(final Threshold reqIn) {
 		return mapper.map(reqIn, CreateThresholdRequest.class);
+	}
+
+	@Override
+	public String getSubscriptionUriFor(final ApiAndType at, final String id) {
+		if (at.api() == ApiTypesEnum.SOL003) {
+			return vnfmFactory.createSubscriptionLink(at, id);
+		}
+		return nfvoFactory.createSubscriptionLink(at, id);
 	}
 }

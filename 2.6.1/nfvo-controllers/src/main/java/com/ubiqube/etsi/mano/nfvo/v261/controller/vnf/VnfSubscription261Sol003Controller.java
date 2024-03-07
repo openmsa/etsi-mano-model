@@ -26,8 +26,12 @@ import com.ubiqube.etsi.mano.common.v261.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPackageOnboardingNotification;
 import com.ubiqube.etsi.mano.common.v261.services.Linkable;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.controller.vnf.VnfSubscriptionSol003FrontController;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.nfvo.v261.services.Sol003Linkable;
+import com.ubiqube.etsi.mano.nfvo.v261.services.SubscriptionLinkable261Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 
 /**
  *
@@ -35,20 +39,23 @@ import com.ubiqube.etsi.mano.nfvo.v261.services.Sol003Linkable;
  *
  */
 @RestController
-public class VnfSubscription261Sol003Controller implements VnfSubscription261Sol003Api {
+public class VnfSubscription261Sol003Controller implements VnfSubscription261Sol003Api, SubscriptionLinkable261Nfvo {
 	private final VnfSubscriptionSol003FrontController vnfSubscriptionSol03FrontController;
 
 	private final Linkable links = new Sol003Linkable();
 
 	public VnfSubscription261Sol003Controller(final VnfSubscriptionSol003FrontController vnfSubscriptionSol03FrontController) {
-		super();
 		this.vnfSubscriptionSol03FrontController = vnfSubscriptionSol03FrontController;
 	}
 
 	/**
 	 * Query multiple subscriptions.
 	 *
-	 * The GET method queries the list of active subscriptions of the functional block that invokes the method. It can be used e.g. for resynchronization after error situations. This method shall follow the provisions specified in the Tables 9.4.7.8.2-1 and 9.4.8.3.2-2 for URI query parameters, request and response data structures, and response codes. ²
+	 * The GET method queries the list of active subscriptions of the functional
+	 * block that invokes the method. It can be used e.g. for resynchronization
+	 * after error situations. This method shall follow the provisions specified in
+	 * the Tables 9.4.7.8.2-1 and 9.4.8.3.2-2 for URI query parameters, request and
+	 * response data structures, and response codes. ²
 	 */
 	@Override
 	public ResponseEntity<List<PkgmSubscription>> subscriptionsGet(final String filter) {
@@ -56,10 +63,22 @@ public class VnfSubscription261Sol003Controller implements VnfSubscription261Sol
 	}
 
 	/**
-	 * Subscribe to notifications related to on-boarding and/or changes of VNF packages.
+	 * Subscribe to notifications related to on-boarding and/or changes of VNF
+	 * packages.
 	 *
-	 * The POST method creates a new subscription. This method shall follow the provisions specified in the Tables 9.4.8.3.1-1 and 9.4.8.3.1-2 for URI query parameters, request and response data structures, and response codes. Creation of two subscription resources with the same callbackURI and the same filter can result in performance degradation and will provide duplicates of notifications to the OSS, and might make sense only in very rare use cases. Consequently, the NFVO may either allow
-	 * creating a subscription resource if another subscription resource with the same filter and callbackUri already exists (in which case it shall return the \&quot;201 Created\&quot; response code), or may decide to not create a duplicate subscription resource (in which case it shall return a \&quot;303 See Other\&quot; response code referencing the existing subscription resource with the same filter and callbackUri).
+	 * The POST method creates a new subscription. This method shall follow the
+	 * provisions specified in the Tables 9.4.8.3.1-1 and 9.4.8.3.1-2 for URI query
+	 * parameters, request and response data structures, and response codes.
+	 * Creation of two subscription resources with the same callbackURI and the same
+	 * filter can result in performance degradation and will provide duplicates of
+	 * notifications to the OSS, and might make sense only in very rare use cases.
+	 * Consequently, the NFVO may either allow creating a subscription resource if
+	 * another subscription resource with the same filter and callbackUri already
+	 * exists (in which case it shall return the \&quot;201 Created\&quot; response
+	 * code), or may decide to not create a duplicate subscription resource (in
+	 * which case it shall return a \&quot;303 See Other\&quot; response code
+	 * referencing the existing subscription resource with the same filter and
+	 * callbackUri).
 	 *
 	 */
 	@Override
@@ -81,7 +100,8 @@ public class VnfSubscription261Sol003Controller implements VnfSubscription261Sol
 	/**
 	 * Read an individual subscription resource.
 	 *
-	 * Query Subscription Information The GET method reads an individual subscription.
+	 * Query Subscription Information The GET method reads an individual
+	 * subscription.
 	 *
 	 */
 	@Override
@@ -92,7 +112,10 @@ public class VnfSubscription261Sol003Controller implements VnfSubscription261Sol
 	/**
 	 * Test the notification endpoint
 	 *
-	 * The GET method allows the server to test the notification endpoint that is provided by the client, e.g. during subscription. This method shall follow the provisions specified in the Tables 9.4.10.3.2-1 and 9.4.10.3.2-2 for URI query parameters, request and response data structures, and response codes.
+	 * The GET method allows the server to test the notification endpoint that is
+	 * provided by the client, e.g. during subscription. This method shall follow
+	 * the provisions specified in the Tables 9.4.10.3.2-1 and 9.4.10.3.2-2 for URI
+	 * query parameters, request and response data structures, and response codes.
 	 *
 	 */
 	@Override
@@ -103,7 +126,10 @@ public class VnfSubscription261Sol003Controller implements VnfSubscription261Sol
 	/**
 	 * Notify about VNF package onboarding or change
 	 *
-	 * The POST method delivers a notification from the server to the client. This method shall follow the provisions specified in the Tables 9.4.10.3.1-1 and 9.4.10.3.1-2 for URI query parameters, request and response data structures, and response codes.
+	 * The POST method delivers a notification from the server to the client. This
+	 * method shall follow the provisions specified in the Tables 9.4.10.3.1-1 and
+	 * 9.4.10.3.1-2 for URI query parameters, request and response data structures,
+	 * and response codes.
 	 *
 	 */
 	@Override
@@ -114,12 +140,25 @@ public class VnfSubscription261Sol003Controller implements VnfSubscription261Sol
 	/**
 	 * Notify about VNF package onboarding or change
 	 *
-	 * The POST method delivers a notification from the server to the client. This method shall follow the provisions specified in the Tables 9.4.10.3.1-1 and 9.4.10.3.1-2 for URI query parameters, request and response data structures, and response codes.
+	 * The POST method delivers a notification from the server to the client. This
+	 * method shall follow the provisions specified in the Tables 9.4.10.3.1-1 and
+	 * 9.4.10.3.1-2 for URI query parameters, request and response data structures,
+	 * and response codes.
 	 *
 	 */
 	@Override
 	public void vnfPackageOnboardingNotificationPost(final VnfPackageOnboardingNotification notificationsMessage) {
 		vnfSubscriptionSol03FrontController.vnfPackageOnboardingNotificationPost(notificationsMessage);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return links.makeSubscriptionLink(id);
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VNF);
 	}
 
 }

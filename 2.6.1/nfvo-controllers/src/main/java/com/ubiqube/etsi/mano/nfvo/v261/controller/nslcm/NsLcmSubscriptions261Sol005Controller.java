@@ -26,9 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.nslcm.NsLcmSubscriptionsGenericFrontController;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.LccnSubscription;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.LccnSubscriptionLinks;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.nfvo.v261.services.SubscriptionLinkable261Nfvo;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 
 /**
  *
@@ -36,7 +40,7 @@ import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.LccnSubscriptionRequest;
  *
  */
 @RestController
-public class NsLcmSubscriptions261Sol005Controller implements NsLcmSubscriptions261Sol005Api {
+public class NsLcmSubscriptions261Sol005Controller implements NsLcmSubscriptions261Sol005Api, SubscriptionLinkable261Nfvo {
 	private final NsLcmSubscriptionsGenericFrontController nsLcmSubscriptionsGenericFrontController;
 
 	public NsLcmSubscriptions261Sol005Controller(final NsLcmSubscriptionsGenericFrontController nsLcmSubscriptionsGenericFrontController) {
@@ -73,5 +77,15 @@ public class NsLcmSubscriptions261Sol005Controller implements NsLcmSubscriptions
 
 	private static String getSelfLink(final LccnSubscription lccnSubscription) {
 		return linkTo(methodOn(NsLcmSubscriptions261Sol005Api.class).subscriptionsSubscriptionIdGet(lccnSubscription.getId())).withSelfRel().getHref();
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(NsLcmSubscriptions261Sol005Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.NSLCM);
 	}
 }

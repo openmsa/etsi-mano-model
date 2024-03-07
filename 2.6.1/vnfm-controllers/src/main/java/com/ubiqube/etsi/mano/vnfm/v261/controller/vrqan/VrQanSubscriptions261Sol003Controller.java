@@ -28,10 +28,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.SubscriptionFrontController;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vrqan.VrQuotaAvailSubscriptionLinks;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vrqan.VrQuotaAvailSubscriptionRequest;
+import com.ubiqube.etsi.mano.vnfm.v261.services.SubscriptionLinkable261Vnfm;
 
 import jakarta.validation.Valid;
 
@@ -41,7 +45,7 @@ import jakarta.validation.Valid;
  *
  */
 @RestController
-public class VrQanSubscriptions261Sol003Controller implements VrQanSubscriptions261Sol003Api {
+public class VrQanSubscriptions261Sol003Controller implements VrQanSubscriptions261Sol003Api, SubscriptionLinkable261Vnfm {
 	private final SubscriptionFrontController subscriptionService;
 
 	public VrQanSubscriptions261Sol003Controller(final SubscriptionFrontController subscriptionService) {
@@ -50,22 +54,22 @@ public class VrQanSubscriptions261Sol003Controller implements VrQanSubscriptions
 
 	@Override
 	public ResponseEntity<List<VrQuotaAvailSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, VrQuotaAvailSubscription.class, VrQanSubscriptions261Sol003Controller::makeLinks, SubscriptionType.VRQAN);
+		return subscriptionService.search(requestParams, VrQuotaAvailSubscription.class, VrQanSubscriptions261Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override
 	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsPost(@Valid final VrQuotaAvailSubscriptionRequest vrQuotaAvailSubscriptionRequest) throws URISyntaxException {
-		return subscriptionService.create(vrQuotaAvailSubscriptionRequest, VrQuotaAvailSubscription.class, VrQanSubscriptions261Sol003Api.class, VrQanSubscriptions261Sol003Controller::makeLinks, VrQanSubscriptions261Sol003Controller::makeSelf, SubscriptionType.VRQAN);
+		return subscriptionService.create(vrQuotaAvailSubscriptionRequest, VrQuotaAvailSubscription.class, VrQanSubscriptions261Sol003Api.class, VrQanSubscriptions261Sol003Controller::makeLinks, VrQanSubscriptions261Sol003Controller::makeSelf, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override
 	public ResponseEntity<Void> subscriptionsSubscriptionIdDelete(final String subscriptionId) {
-		return subscriptionService.deleteById(subscriptionId, SubscriptionType.VRQAN);
+		return subscriptionService.deleteById(subscriptionId, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override
 	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, VrQuotaAvailSubscription.class, VrQanSubscriptions261Sol003Controller::makeLinks, SubscriptionType.VRQAN);
+		return subscriptionService.findById(subscriptionId, VrQuotaAvailSubscription.class, VrQanSubscriptions261Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
 	}
 
 	private static String makeSelf(final VrQuotaAvailSubscription subscription) {
@@ -78,5 +82,15 @@ public class VrQanSubscriptions261Sol003Controller implements VrQanSubscriptions
 		link.setHref(linkTo(methodOn(VrQanSubscriptions261Sol003Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref());
 		links.setSelf(link);
 		subscription.setLinks(links);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VrQanSubscriptions261Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VRQAN);
 	}
 }

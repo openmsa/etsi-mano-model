@@ -31,7 +31,7 @@ import com.ubiqube.etsi.mano.common.v261.services.Linkable;
 import com.ubiqube.etsi.mano.vnfm.v261.controller.vnfind.sol003.VnfIndSubscriptions261Sol003Api;
 
 public class Sol003Linkable implements Linkable {
-	
+
 	@Override
 	public VnfIndicatorValueChangeNotificationLinks createVnfIndicatorValueChangeNotificationLinks(final String vnfIndicatorId, final String vnfInstanceId, final UUID subscriptionId) {
 		final VnfIndicatorValueChangeNotificationLinks ret = new VnfIndicatorValueChangeNotificationLinks();
@@ -40,7 +40,7 @@ public class Sol003Linkable implements Linkable {
 		ret.setSubscription(subscription);
 		return ret;
 	}
-	
+
 	private static NotificationLink createVnfIndicatorInfoLinksSelf(final String href) {
 		final NotificationLink link = new NotificationLink();
 		link.setHref(href);
@@ -48,33 +48,37 @@ public class Sol003Linkable implements Linkable {
 	}
 
 	@Override
-	public void makeLinks(VnfPkgInfo vnfPkgInfo) {
+	public void makeLinks(final VnfPkgInfo vnfPkgInfo) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public String getSelfLink(VnfPkgInfo vnfPkgInfo) {
+	public String getSelfLink(final VnfPkgInfo vnfPkgInfo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public PkgmLinks createVnfPackageOnboardingNotificationLinks(UUID vnfPkgId, String vnfdId, UUID subscriptionId) {
+	public PkgmLinks createVnfPackageOnboardingNotificationLinks(final UUID vnfPkgId, final String vnfdId, final UUID subscriptionId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public PkgmSubscriptionLinks createSubscriptionsPkgmSubscriptionLinks(String subscriptionId) {
+	public PkgmSubscriptionLinks createSubscriptionsPkgmSubscriptionLinks(final String subscriptionId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void makeSubscriptionLink(PkgmSubscription pkgmSubscription) {
+	public void makeSubscriptionLink(final PkgmSubscription pkgmSubscription) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
+	@Override
+	public String makeSubscriptionLink(final String id) {
+		return createSubscriptionsPkgmSubscriptionLinks(id).getSelf().getHref();
+	}
 }

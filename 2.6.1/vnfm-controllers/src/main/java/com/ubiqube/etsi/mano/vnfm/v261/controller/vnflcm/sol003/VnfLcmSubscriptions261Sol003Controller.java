@@ -21,21 +21,25 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.LccnSubscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.LccnSubscriptionLinks;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.vnfm.v261.services.SubscriptionLinkable261Vnfm;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 @RestController
-public class VnfLcmSubscriptions261Sol003Controller implements VnfLcmSubscriptions261Sol003Api {
+public class VnfLcmSubscriptions261Sol003Controller implements VnfLcmSubscriptions261Sol003Api, SubscriptionLinkable261Vnfm {
 	private final VnfLcmSubscriptionFrontController frontController;
 
 	public VnfLcmSubscriptions261Sol003Controller(final VnfLcmSubscriptionFrontController frontController) {
@@ -63,7 +67,11 @@ public class VnfLcmSubscriptions261Sol003Controller implements VnfLcmSubscriptio
 	}
 
 	private static String getSelfLink(final LccnSubscription subscription) {
-		return linkTo(methodOn(VnfLcmSubscriptions261Sol003Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref();
+		return getSelfLink(subscription.getId());
+	}
+
+	public static String getSelfLink(final String id) {
+		return linkTo(methodOn(VnfLcmSubscriptions261Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
 	}
 
 	private static void makeLinks(@NotNull final LccnSubscription subscription) {
@@ -73,6 +81,16 @@ public class VnfLcmSubscriptions261Sol003Controller implements VnfLcmSubscriptio
 		self.setHref(linkTo(methodOn(VnfLcmSubscriptions261Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref());
 		links.setSelf(self);
 		subscription.setLinks(links);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VnfLcmSubscriptions261Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VNFLCM);
 	}
 
 }

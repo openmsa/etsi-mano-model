@@ -19,19 +19,25 @@ package com.ubiqube.etsi.mano.vnfm.v261;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.common.v261.VnfSubscriptionFactory261;
 import com.ubiqube.etsi.mano.common.v261.model.Link;
+import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
 import com.ubiqube.etsi.mano.nfvo.v261.model.lcmgrant.GrantRequest;
 import com.ubiqube.etsi.mano.nfvo.v261.model.lcmgrant.GrantRequestLinks;
 import com.ubiqube.etsi.mano.service.VnfmFactory;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
+import com.ubiqube.etsi.mano.vnfm.v261.controller.vnfind.sol003.VnfIndSubscriptions261Sol003Controller;
 import com.ubiqube.etsi.mano.vnfm.v261.controller.vnflcm.sol003.VnfLcm261Sol003Api;
 import com.ubiqube.etsi.mano.vnfm.v261.controller.vnflcm.sol003.VnfLcm261Sol003Controller;
+import com.ubiqube.etsi.mano.vnfm.v261.controller.vnflcm.sol003.VnfLcmSubscriptions261Sol003Controller;
 import com.ubiqube.etsi.mano.vnfm.v261.services.Sol003Linkable;
+import com.ubiqube.etsi.mano.vnfm.v261.services.SubscriptionLinkable261Vnfm;
 
 /**
  *
@@ -39,7 +45,12 @@ import com.ubiqube.etsi.mano.vnfm.v261.services.Sol003Linkable;
  *
  */
 @Service
-public class VnfmFactory261Sol003 implements VnfmFactory {
+public class VnfmFactory261Sol003 extends AbstractSubscriptionFactory implements VnfmFactory {
+
+	public VnfmFactory261Sol003(final List<SubscriptionLinkable261Vnfm> subs) {
+		super(subs);
+	}
+
 	@Override
 	public void makeGrantRequestLink(final GrantRequest manoGrant) {
 		final GrantRequestLinks links = new GrantRequestLinks();
@@ -51,10 +62,20 @@ public class VnfmFactory261Sol003 implements VnfmFactory {
 		link.setHref(linkTo(methodOn(VnfLcm261Sol003Api.class).vnfInstancesVnfInstanceIdGet(manoGrant.getVnfLcmOpOccId())).withSelfRel().getHref());
 		links.setVnfLcmOpOcc(link);
 	}
-	
+
 	@Override
 	public Object createVnfIndicatorValueChangeNotification(final UUID subscriptionId, final EventMessage event) {
 		return VnfSubscriptionFactory261.createNotificationVnfIndicatorValueChangeNotification(event.getId(), subscriptionId, event.getAdditionalParameters().get("vnfIndicatorId"), event.getAdditionalParameters().get("vnfInstanceId"), event.getAdditionalParameters().get("value"), event.getAdditionalParameters().get("vnfdId"), new Sol003Linkable());
+	}
+
+	@Override
+	public String createVnfIndicatorSubscriptionLink(final Map<String, String> params) {
+		return VnfIndSubscriptions261Sol003Controller.makeSelf(params.get("id"));
+	}
+
+	@Override
+	public String createVnfLcmSubscriptionLink(final Map<String, String> params) {
+		return VnfLcmSubscriptions261Sol003Controller.getSelfLink(params.get("id"));
 	}
 
 }
