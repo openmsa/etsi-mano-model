@@ -16,15 +16,18 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v331;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.c331.services.NfvoFactory;
+import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PackageOperationalStateType;
 import com.ubiqube.etsi.mano.repository.VnfPackageRepository;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
+import com.ubiqube.etsi.mano.vnfm.v331.service.SubscriptionLinkable331Nfvo;
 
 /**
  *
@@ -32,10 +35,11 @@ import com.ubiqube.etsi.mano.service.event.model.EventMessage;
  *
  */
 @Service
-public class NfvoFactory331 implements NfvoFactory {
+public class NfvoFactory331 extends AbstractSubscriptionFactory implements NfvoFactory {
 	private final VnfPackageRepository vnfPackageRepository;
 
-	public NfvoFactory331(final VnfPackageRepository vnfPackageRepository) {
+	public NfvoFactory331(final VnfPackageRepository vnfPackageRepository, final List<SubscriptionLinkable331Nfvo> subs) {
+		super(subs);
 		this.vnfPackageRepository = vnfPackageRepository;
 	}
 

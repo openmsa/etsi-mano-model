@@ -43,11 +43,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.SingleControllerCondition;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.controller.vnf.VnfSubscriptionSol003FrontController;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmSubscriptionLinks;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmSubscriptionRequest;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.vnfm.v331.service.SubscriptionLinkable331Nfvo;
 
 /**
  *
@@ -56,11 +60,10 @@ import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmSubscriptionRequest;
  */
 @RestController
 @Conditional(SingleControllerCondition.class)
-public class VnfSubscriptions331Sol003Controller implements VnfSubscriptions331Sol003Api {
+public class VnfSubscriptions331Sol003Controller implements VnfSubscriptions331Sol003Api, SubscriptionLinkable331Nfvo {
 	private final VnfSubscriptionSol003FrontController vnfSubscriptionSol03FrontController;
 
 	public VnfSubscriptions331Sol003Controller(final VnfSubscriptionSol003FrontController vnfSubscriptionSol03FrontController) {
-		super();
 		this.vnfSubscriptionSol03FrontController = vnfSubscriptionSol03FrontController;
 	}
 
@@ -131,6 +134,16 @@ public class VnfSubscriptions331Sol003Controller implements VnfSubscriptions331S
 		self.setHref(linkTo(methodOn(VnfSubscriptions331Sol003Api.class).subscriptionsSubscriptionIdGet(pkgmSubscription.getId())).withSelfRel().getHref());
 		subscriptionsPkgmSubscriptionLinks.setSelf(self);
 		pkgmSubscription.setLinks(subscriptionsPkgmSubscriptionLinks);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VnfSubscriptions331Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VNF);
 	}
 
 }

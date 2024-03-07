@@ -18,13 +18,17 @@ package com.ubiqube.etsi.mano.nfvo.v331.controller.nfvici;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.nfvo.v331.model.nfvici.NfviCapacityInfoSubscription;
 import com.ubiqube.etsi.mano.nfvo.v331.model.nfvici.NfviCapacityInfoSubscriptionRequest;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.vnfm.v331.service.SubscriptionLinkable331Nfvo;
+
+import jakarta.validation.Valid;
 
 /**
  *
@@ -32,7 +36,7 @@ import com.ubiqube.etsi.mano.nfvo.v331.model.nfvici.NfviCapacityInfoSubscription
  *
  */
 @RestController
-public class NfvIciSubscriptions331Sol005Controller implements NfvIciSubscriptions331Sol005Api {
+public class NfvIciSubscriptions331Sol005Controller implements NfvIciSubscriptions331Sol005Api, SubscriptionLinkable331Nfvo {
 
 	@Override
 	public ResponseEntity<List<NfviCapacityInfoSubscription>> subscriptionsGet(@Valid final String nextpageOpaqueMarker) {
@@ -56,6 +60,17 @@ public class NfvIciSubscriptions331Sol005Controller implements NfvIciSubscriptio
 	public ResponseEntity<NfviCapacityInfoSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.NSNFVI);
 	}
 
 }

@@ -21,18 +21,22 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.LccnSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
+import com.ubiqube.etsi.mano.vnfm.v331.SubscriptionLinkable331Vnfm;
+
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 
 /**
  *
@@ -41,7 +45,7 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
  */
 @RolesAllowed({ "ROLE_NFVO" })
 @RestController
-public class VnfLcmSubscriptions331Sol003Controller implements VnfLcmSubscriptions331Sol003Api {
+public class VnfLcmSubscriptions331Sol003Controller implements VnfLcmSubscriptions331Sol003Api, SubscriptionLinkable331Vnfm {
 	private final VnfLcmSubscriptionFrontController frontController;
 
 	public VnfLcmSubscriptions331Sol003Controller(final VnfLcmSubscriptionFrontController frontController) {
@@ -79,6 +83,16 @@ public class VnfLcmSubscriptions331Sol003Controller implements VnfLcmSubscriptio
 		links.setSelf(self);
 
 		subs.setLinks(links);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VnfLcmSubscriptions331Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VNFLCM);
 	}
 
 }

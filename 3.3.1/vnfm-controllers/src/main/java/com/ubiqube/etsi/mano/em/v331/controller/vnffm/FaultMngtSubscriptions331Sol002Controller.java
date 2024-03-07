@@ -21,23 +21,27 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.SingleControllerCondition;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v331.model.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.em.v331.model.vnffm.FmSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v331.model.vnffm.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
+import com.ubiqube.etsi.mano.vnfm.v331.SubscriptionLinkable331Vnfm;
+
+import jakarta.validation.Valid;
 
 @RestController
 @Conditional(SingleControllerCondition.class)
-public class FaultMngtSubscriptions331Sol002Controller implements FaultMngtSubscriptions331Sol002Api {
+public class FaultMngtSubscriptions331Sol002Controller implements FaultMngtSubscriptions331Sol002Api, SubscriptionLinkable331Vnfm {
 	private final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController;
 
 	public FaultMngtSubscriptions331Sol002Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController) {
@@ -74,5 +78,15 @@ public class FaultMngtSubscriptions331Sol002Controller implements FaultMngtSubsc
 
 	private static String makeSelf(final FmSubscription subscription) {
 		return linkTo(methodOn(FaultMngtSubscriptions331Sol002Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref();
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(FaultMngtSubscriptions331Sol002Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VNFFM);
 	}
 }

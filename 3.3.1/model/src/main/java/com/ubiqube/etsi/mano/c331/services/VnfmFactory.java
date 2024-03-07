@@ -16,10 +16,13 @@
  */
 package com.ubiqube.etsi.mano.c331.services;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.vnfm.v331.model.grant.GrantRequest;
 
 public interface VnfmFactory {
 
 	void makeGrantRequestLink(GrantRequest grant);
+
+	String createSubscriptionLink(ApiAndType at, String id);
 
 }

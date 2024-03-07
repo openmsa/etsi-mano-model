@@ -18,15 +18,19 @@ package com.ubiqube.etsi.mano.vnfm.v331.controller.vrqan;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.SingleControllerCondition;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.v331.model.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.vnfm.v331.model.vrqan.VrQuotaAvailSubscriptionRequest;
+import com.ubiqube.etsi.mano.vnfm.v331.service.SubscriptionLinkable331Nfvo;
+
+import jakarta.validation.Valid;
 
 /**
  *
@@ -35,7 +39,7 @@ import com.ubiqube.etsi.mano.vnfm.v331.model.vrqan.VrQuotaAvailSubscriptionReque
  */
 @RestController
 @Conditional(SingleControllerCondition.class)
-public class VrQanSubscriptions331Sol003Controller implements VrQanSubscriptions331Sol003Api {
+public class VrQanSubscriptions331Sol003Controller implements VrQanSubscriptions331Sol003Api, SubscriptionLinkable331Nfvo {
 
 	@Override
 	public ResponseEntity<List<VrQuotaAvailSubscription>> subscriptionsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
@@ -59,5 +63,16 @@ public class VrQanSubscriptions331Sol003Controller implements VrQanSubscriptions
 	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VRQAN);
 	}
 }
