@@ -21,18 +21,22 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v351.model.lcmcoord.Link;
 import com.ubiqube.etsi.mano.em.v351.model.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.em.v351.model.vnffm.FmSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v351.model.vnffm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
+import com.ubiqube.etsi.mano.vnfm.v351.SubscriptionLinkable351Vnfm;
+
+import jakarta.validation.Valid;
 
 /**
  *
@@ -41,7 +45,7 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController
  */
 @ConditionalOnMissingClass("com.ubiqube.etsi.mano.em.v331.controller.vnffm.FaultMngtSubscriptions331Sol002Api")
 @RestController
-public class AlarmsSubscriptions351Sol002Controller implements AlarmsSubscriptions351Sol002Api {
+public class AlarmsSubscriptions351Sol002Controller implements AlarmsSubscriptions351Sol002Api, SubscriptionLinkable351Vnfm {
 	private final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController;
 
 	public AlarmsSubscriptions351Sol002Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController) {
@@ -78,6 +82,16 @@ public class AlarmsSubscriptions351Sol002Controller implements AlarmsSubscriptio
 
 	private static String makeSelf(final FmSubscription subscription) {
 		return linkTo(methodOn(AlarmsSubscriptions351Sol002Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref();
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(AlarmsSubscriptions351Sol002Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL002, SubscriptionType.ALARM);
 	}
 
 }

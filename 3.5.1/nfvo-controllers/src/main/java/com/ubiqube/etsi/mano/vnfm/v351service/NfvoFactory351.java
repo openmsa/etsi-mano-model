@@ -14,12 +14,14 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.vnfm.v351;
+package com.ubiqube.etsi.mano.vnfm.v351service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
 import com.ubiqube.etsi.mano.nfvo.v351.model.vnf.PackageOperationalStateType;
 import com.ubiqube.etsi.mano.nfvo.v351.model.vnf.VnfPackageChangeNotification;
@@ -27,6 +29,9 @@ import com.ubiqube.etsi.mano.nfvo.v351.model.vnf.VnfPackageOnboardingNotificatio
 import com.ubiqube.etsi.mano.repository.VnfPackageRepository;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.v351.services.NfvoFactory;
+import com.ubiqube.etsi.mano.vnfm.v351.Sol003Linkable;
+import com.ubiqube.etsi.mano.vnfm.v351.Sol005Linkable;
+import com.ubiqube.etsi.mano.vnfm.v351.VnfSubscriptionFactory351;
 
 /**
  *
@@ -34,10 +39,11 @@ import com.ubiqube.etsi.mano.v351.services.NfvoFactory;
  *
  */
 @Service
-public class NfvoFactory351 implements NfvoFactory {
+public class NfvoFactory351 extends AbstractSubscriptionFactory implements NfvoFactory {
 	private final VnfPackageRepository vnfPackageRepository;
 
-	public NfvoFactory351(final VnfPackageRepository vnfPackageRepository) {
+	public NfvoFactory351(final VnfPackageRepository vnfPackageRepository, final List<SubscriptionLinkable351Nfvo> subs) {
+		super(subs);
 		this.vnfPackageRepository = vnfPackageRepository;
 	}
 

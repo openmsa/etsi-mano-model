@@ -24,11 +24,15 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.controller.vnf.VnfSubscriptionSol003FrontController;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v351.model.lcmcoord.Link;
 import com.ubiqube.etsi.mano.nfvo.v351.model.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.nfvo.v351.model.vnf.PkgmSubscriptionLinks;
 import com.ubiqube.etsi.mano.nfvo.v351.model.vnf.PkgmSubscriptionRequest;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.vnfm.v351service.SubscriptionLinkable351Nfvo;
 
 /**
  *
@@ -36,11 +40,10 @@ import com.ubiqube.etsi.mano.nfvo.v351.model.vnf.PkgmSubscriptionRequest;
  *
  */
 @RestController
-public class VnfSubscriptions351Sol003Controller implements VnfSubscriptions351Sol003Api {
+public class VnfSubscriptions351Sol003Controller implements VnfSubscriptions351Sol003Api, SubscriptionLinkable351Nfvo {
 	private final VnfSubscriptionSol003FrontController vnfSubscriptionSol03FrontController;
 
 	public VnfSubscriptions351Sol003Controller(final VnfSubscriptionSol003FrontController vnfSubscriptionSol03FrontController) {
-		super();
 		this.vnfSubscriptionSol03FrontController = vnfSubscriptionSol03FrontController;
 	}
 
@@ -111,6 +114,16 @@ public class VnfSubscriptions351Sol003Controller implements VnfSubscriptions351S
 		self.setHref(linkTo(methodOn(VnfSubscriptions351Sol003Api.class).subscriptionsSubscriptionIdGet(pkgmSubscription.getId())).withSelfRel().getHref());
 		subscriptionsPkgmSubscriptionLinks.setSelf(self);
 		pkgmSubscription.setLinks(subscriptionsPkgmSubscriptionLinks);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VnfSubscriptions351Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.VNF);
 	}
 
 }

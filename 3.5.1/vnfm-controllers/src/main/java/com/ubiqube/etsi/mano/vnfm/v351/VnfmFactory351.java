@@ -14,23 +14,20 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.v351.services;
+package com.ubiqube.etsi.mano.vnfm.v351;
 
-import java.util.UUID;
+import java.util.List;
 
-import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
-import com.ubiqube.etsi.mano.service.event.model.EventMessage;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
- *
- */
-public interface NfvoFactory {
+import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
+import com.ubiqube.etsi.mano.v351.services.VnfmFactory;
 
-	Object createNotificationVnfPackageOnboardingNotification(final UUID subscriptionId, EventMessage eventMessage);
+@Service
+public class VnfmFactory351 extends AbstractSubscriptionFactory implements VnfmFactory {
 
-	Object createVnfPackageChangeNotification(final UUID subscriptionId, EventMessage eventMessage);
+	public VnfmFactory351(final List<SubscriptionLinkable351Vnfm> subs) {
+		super(subs);
+	}
 
-	String createSubscriptionLink(final ApiAndType at, final String id);
 }
