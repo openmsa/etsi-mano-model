@@ -123,7 +123,7 @@ public class VnfSubscriptions351Sol003Controller implements VnfSubscriptions351S
 
 	@Override
 	public ApiAndType getApiAndType() {
-		return ApiAndType.of(ApiTypesEnum.SOL005, SubscriptionType.VNF);
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VNF);
 	}
 
 }
