@@ -16,8 +16,11 @@
  */
 package com.ubiqube.etsi.mano.v271.services;
 
+import java.util.UUID;
+
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.model.v271.sol003.lcmgrant.GrantRequest;
+import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 
 /**
  *
@@ -29,4 +32,6 @@ public interface VnfmFactory {
 	<T> void makeGrantRequestLink(final GrantRequest manoGrant);
 
 	String createSubscriptionLink(ApiAndType at, String id);
+
+	Object createVnfIndicatorValueChangeNotification(UUID subscriptionId, EventMessage event);
 }

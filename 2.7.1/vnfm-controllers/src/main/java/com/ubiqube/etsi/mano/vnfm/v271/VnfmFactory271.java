@@ -20,6 +20,7 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ import com.ubiqube.etsi.mano.em.v271.controller.vnflcm.VnfInstances271Sol002Cont
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.model.v271.sol003.lcmgrant.GrantRequest;
 import com.ubiqube.etsi.mano.model.v271.sol003.lcmgrant.GrantRequestLinks;
+import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.v271.services.VnfmFactory;
 
 /**
@@ -53,6 +55,11 @@ public class VnfmFactory271 extends AbstractSubscriptionFactory implements VnfmF
 		link = new Link();
 		link.setHref(linkTo(methodOn(VnfInstances271Sol002Api.class).vnfInstancesVnfInstanceIdGet(manoGrant.getVnfLcmOpOccId())).withSelfRel().getHref());
 		links.setVnfLcmOpOcc(link);
+	}
+
+	@Override
+	public Object createVnfIndicatorValueChangeNotification(final UUID subscriptionId, final EventMessage event) {
+		return null;
 	}
 
 }
