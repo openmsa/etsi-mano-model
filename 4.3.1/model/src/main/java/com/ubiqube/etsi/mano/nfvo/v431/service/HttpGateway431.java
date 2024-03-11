@@ -22,6 +22,8 @@ import java.util.Map.Entry;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,7 @@ import com.ubiqube.etsi.mano.dao.mano.pm.PmJob;
 import com.ubiqube.etsi.mano.dao.mano.pm.Threshold;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeExtVnfConnectivityRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.CreateVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.OperateVnfRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v431.model.vnfpm.CreatePmJobRequest;
@@ -46,16 +49,21 @@ import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.service.AbstractHttpGateway;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.utils.Version;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantRequestLinks;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.PkgmSubscriptionRequest;
+import com.ubiqube.etsi.mano.vnfm.v431.model.vnffm.FmSubscription;
+import com.ubiqube.etsi.mano.vnfm.v431.model.vnffm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.vnfm.v431.model.vnfind.VnfIndicator;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnfind.VnfIndicatorSubscription;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnfind.VnfIndicatorSubscriptionRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.HealVnfRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.InstantiateVnfRequest;
+import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ScaleVnfRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ScaleVnfToLevelRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.TerminateVnfRequest;
@@ -65,8 +73,14 @@ import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.Link;
 
 import ma.glasnost.orika.MapperFacade;
 
+/**
+ *
+ * @author olivier
+ *
+ */
 @Service
 public class HttpGateway431 extends AbstractHttpGateway {
+	private static final Logger LOG = LoggerFactory.getLogger(HttpGateway431.class);
 	private final NfvoFactory nfvoFactory;
 	private final VnfmFactory vnfmFactory;
 	private final MapperFacade mapper;
@@ -90,6 +104,16 @@ public class HttpGateway431 extends AbstractHttpGateway {
 	@Override
 	public Class<?> getPkgmSubscriptionRequest() {
 		return PkgmSubscriptionRequest.class;
+	}
+
+	@Override
+	public Class<?> getVnfIndicatorValueChangeSubscriptionClass() {
+		return VnfIndicatorSubscription.class;
+	}
+
+	@Override
+	public Class<?> getVnfIndicatorValueChangeSubscriptionRequest() {
+		return VnfIndicatorSubscriptionRequest.class;
 	}
 
 	@Override
@@ -163,8 +187,34 @@ public class HttpGateway431 extends AbstractHttpGateway {
 	}
 
 	@Override
+	public Object createVnfInstanceScaleRequest(final ScaleTypeEnum scaleType, final String aspectId, final Integer numberOfSteps) {
+		final var req = new ScaleVnfRequest();
+		req.setAspectId(aspectId);
+		req.setNumberOfSteps(numberOfSteps);
+		if (ScaleTypeEnum.IN.equals(scaleType)) {
+			req.setType(ScaleVnfRequest.TypeEnum.IN);
+		}
+		if (ScaleTypeEnum.OUT.equals(scaleType)) {
+			req.setType(ScaleVnfRequest.TypeEnum.OUT);
+		}
+		return req;
+	}
+
+	@Override
+	public Object createVnfInstanceHealRequest(final String cause) {
+		final var req = new HealVnfRequest();
+		req.setCause(cause);
+		return req;
+	}
+
+	@Override
 	public Class<?> getVnfInstanceScaleRequest() {
 		return ScaleVnfRequest.class;
+	}
+
+	@Override
+	public Class<?> getVnfInstanceHealRequest() {
+		return HealVnfRequest.class;
 	}
 
 	@Override
@@ -182,7 +232,11 @@ public class HttpGateway431 extends AbstractHttpGateway {
 		return switch (event.getNotificationEvent()) {
 		case VNF_PKG_ONCHANGE, VNF_PKG_ONDELETION -> nfvoFactory.createVnfPackageChangeNotification(subscriptionId, event);
 		case VNF_PKG_ONBOARDING -> nfvoFactory.createNotificationVnfPackageOnboardingNotification(subscriptionId, event);
-		default -> null;
+		case VNF_INDICATOR_VALUE_CHANGED -> vnfmFactory.createVnfIndicatorValueChangeNotification(subscriptionId, event);
+		default -> {
+			LOG.warn("Could not find event.");
+			yield null;
+		}
 		};
 	}
 
@@ -252,46 +306,69 @@ public class HttpGateway431 extends AbstractHttpGateway {
 	}
 
 	@Override
-	public Class<?> getVnfIndicatorValueChangeSubscriptionClass() {
-		return VnfIndicatorSubscription.class;
-	}
-
-	@Override
-	public Class<?> getVnfIndicatorValueChangeSubscriptionRequest() {
-		return VnfIndicatorSubscriptionRequest.class;
-	}
-
-	@Override
-	public Object createVnfInstanceScaleRequest(final ScaleTypeEnum scaleTypeEnum, final String aspectId, final Integer numberOfSteps) {
-		final var req = new ScaleVnfRequest();
-		req.setAspectId(aspectId);
-		req.setNumberOfSteps(numberOfSteps);
-		if (ScaleTypeEnum.IN.equals(scaleTypeEnum)) {
-			req.setType(ScaleVnfRequest.TypeEnum.IN);
-		}
-		if (ScaleTypeEnum.OUT.equals(scaleTypeEnum)) {
-			req.setType(ScaleVnfRequest.TypeEnum.OUT);
-		}
-		return req;
-	}
-
-	@Override
-	public Object createVnfInstanceHealRequest(final String cause) {
-		final var req = new HealVnfRequest();
-		req.setCause(cause);
-		return req;
-	}
-
-	@Override
-	public Class<?> getVnfInstanceHealRequest() {
-		return HealVnfRequest.class;
-	}
-
-	@Override
 	public String getSubscriptionUriFor(final ApiAndType at, final String id) {
 		if (at.api() == ApiTypesEnum.SOL003) {
 			return vnfmFactory.createSubscriptionLink(at, id);
 		}
 		return nfvoFactory.createSubscriptionLink(at, id);
 	}
+
+	@Override
+	public Class<?> getVnfIndicatorSubscriptionClass() {
+		return VnfIndicatorSubscriptionRequest.class;
+	}
+
+	@Override
+	public Class<?> getVnfIndicatorRequest() {
+		return VnfIndicatorSubscriptionRequest.class;
+	}
+
+	@Override
+	public Object createVnfInstanceSubscriptionRequest(final Subscription subscription) {
+		return mapper.map(subscription, LccnSubscriptionRequest.class);
+	}
+
+	@Override
+	public Object createVnfIndicatorSubscriptionRequest(final Subscription subscription) {
+		return mapper.map(subscription, VnfIndicatorSubscriptionRequest.class);
+	}
+
+	@Override
+	public Class<?> getVnfInstanceSubscriptionRequest() {
+		return LccnSubscriptionRequest.class;
+	}
+
+	@Override
+	public Class<?> getVnfInstanceSubscriptionClass() {
+		return LccnSubscription.class;
+	}
+
+	@Override
+	public Class<?> getVnfIndicatorClass() {
+		return VnfIndicator.class;
+	}
+
+	@Override
+	public ParameterizedTypeReference<List<Class<?>>> getVnfIndicatorClassList() {
+		final ParameterizedTypeReference<List<VnfIndicator>> res = new ParameterizedTypeReference<>() {
+			// Nothing.
+		};
+		return (ParameterizedTypeReference<List<Class<?>>>) (Object) res;
+	}
+
+	@Override
+	public Object createVnfFmSubscriptionRequest(final Subscription subscription) {
+		return mapper.map(subscription, FmSubscription.class);
+	}
+
+	@Override
+	public Class<?> getVnfFmSubscriptionRequest() {
+		return FmSubscriptionRequest.class;
+	}
+
+	@Override
+	public Class<?> getVnfFmSubscriptionClass() {
+		return FmSubscription.class;
+	}
+
 }

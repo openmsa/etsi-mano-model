@@ -17,17 +17,25 @@
 package com.ubiqube.etsi.mano.em.v431.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
 import com.ubiqube.etsi.mano.nfvo.v431.service.VnfmFactory;
+import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 
 @Service
 public class VnfmFactory431 extends AbstractSubscriptionFactory implements VnfmFactory {
 
 	public VnfmFactory431(final List<SubscriptionLinkable431Vnfm> subs) {
 		super(subs);
+	}
+
+	@Override
+	public Object createVnfIndicatorValueChangeNotification(final UUID subscriptionId, final EventMessage event) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
