@@ -16,8 +16,13 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v361.services;
 
+import java.util.UUID;
+
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 
 public interface VnfmFactory {
 	String createSubscriptionLink(final ApiAndType at, final String id);
+
+	Object createVnfIndicatorValueChangeNotification(UUID subscriptionId, EventMessage event);
 }
