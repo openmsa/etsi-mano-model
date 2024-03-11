@@ -17,11 +17,13 @@
 package com.ubiqube.etsi.mano.vnfm.v331;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.c331.services.VnfmFactory;
 import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
+import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.vnfm.v331.model.grant.GrantRequest;
 
 /**
@@ -39,5 +41,11 @@ public class VnfmFactory331 extends AbstractSubscriptionFactory implements VnfmF
 	public void makeGrantRequestLink(final GrantRequest grant) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public Object createVnfIndicatorValueChangeNotification(final UUID subscriptionId, final EventMessage event) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
