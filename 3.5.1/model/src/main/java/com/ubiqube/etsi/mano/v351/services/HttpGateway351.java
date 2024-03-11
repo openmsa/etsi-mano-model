@@ -36,6 +36,8 @@ import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
 import com.ubiqube.etsi.mano.dao.mano.pm.PmJob;
 import com.ubiqube.etsi.mano.dao.mano.pm.Threshold;
 import com.ubiqube.etsi.mano.em.v351.model.lcmcoord.Link;
+import com.ubiqube.etsi.mano.em.v351.model.vnffm.FmSubscription;
+import com.ubiqube.etsi.mano.em.v351.model.vnffm.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v351.model.vnfind.VnfIndicator;
 import com.ubiqube.etsi.mano.em.v351.model.vnfind.VnfIndicatorSubscription;
 import com.ubiqube.etsi.mano.em.v351.model.vnfind.VnfIndicatorSubscriptionRequest;
@@ -352,6 +354,21 @@ public class HttpGateway351 extends AbstractHttpGateway {
 			// Nothing.
 		};
 		return (ParameterizedTypeReference<List<Class<?>>>) (Object) res;
+	}
+
+	@Override
+	public Object createVnfFmSubscriptionRequest(final Subscription subscription) {
+		return mapper.map(subscription, FmSubscriptionRequest.class);
+	}
+
+	@Override
+	public Class<?> getVnfFmSubscriptionRequest() {
+		return FmSubscriptionRequest.class;
+	}
+
+	@Override
+	public Class<?> getVnfFmSubscriptionClass() {
+		return FmSubscription.class;
 	}
 
 }

@@ -55,6 +55,8 @@ import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.utils.Version;
+import com.ubiqube.etsi.mano.vnfm.v261.model.faultmngt.FmSubscription;
+import com.ubiqube.etsi.mano.vnfm.v261.model.faultmngt.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.ChangeExtVnfConnectivityRequest;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.CreateVnfRequest;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.HealVnfRequest;
@@ -354,6 +356,21 @@ public class VnfmGateway261 extends AbstractHttpGateway {
 			// Nothing.
 		};
 		return (ParameterizedTypeReference<List<Class<?>>>) (Object) res;
+	}
+
+	@Override
+	public Object createVnfFmSubscriptionRequest(final Subscription subscription) {
+		return mapper.map(subscription, FmSubscriptionRequest.class);
+	}
+
+	@Override
+	public Class<?> getVnfFmSubscriptionRequest() {
+		return FmSubscriptionRequest.class;
+	}
+
+	@Override
+	public Class<?> getVnfFmSubscriptionClass() {
+		return FmSubscription.class;
 	}
 
 }
