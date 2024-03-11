@@ -81,15 +81,15 @@ import ma.glasnost.orika.MapperFacade;
  *
  */
 @Service
-public class VnfmGateway261 extends AbstractHttpGateway {
+public class HttpGateway261 extends AbstractHttpGateway {
 
-	private static final Logger LOG = LoggerFactory.getLogger(VnfmGateway261.class);
+	private static final Logger LOG = LoggerFactory.getLogger(HttpGateway261.class);
 
 	private final NfvoFactory nfvoFactory;
 	private final VnfmFactory vnfmFactory;
 	private final MapperFacade mapper;
 
-	public VnfmGateway261(final ObjectProvider<VnfmFactory> vnfmFactory, final ObjectProvider<NfvoFactory> nfvoFactory, final MapperFacade mapper) {
+	public HttpGateway261(final ObjectProvider<VnfmFactory> vnfmFactory, final ObjectProvider<NfvoFactory> nfvoFactory, final MapperFacade mapper) {
 		this.vnfmFactory = vnfmFactory.getIfAvailable();
 		this.nfvoFactory = nfvoFactory.getIfAvailable();
 		this.mapper = mapper;
