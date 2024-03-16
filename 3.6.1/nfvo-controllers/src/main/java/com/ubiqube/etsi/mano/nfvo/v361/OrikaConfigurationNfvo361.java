@@ -50,6 +50,7 @@ import com.ubiqube.etsi.mano.em.v361.model.vnflcm.OperateVnfRequest;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.RevertToVnfSnapshotRequest;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.ScaleVnfRequest;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.ScaleVnfToLevelRequest;
+import com.ubiqube.etsi.mano.em.v361.model.vnflcm.SubscriptionAuthentication;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.SubscriptionAuthenticationParamsOauth2ClientCredentials;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.VnfExtCpInfo;
@@ -72,6 +73,7 @@ import com.ubiqube.etsi.mano.nfvo.v361.model.nslcm.NsScaleInfo;
 import com.ubiqube.etsi.mano.nfvo.v361.model.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.nfvo.v361.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
+import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.v361.model.grant.ConstraintResourceRef;
 import com.ubiqube.etsi.mano.vnfm.v361.model.grant.Grant;
@@ -170,7 +172,11 @@ public class OrikaConfigurationNfvo361 implements OrikaMapperFactoryConfigurer {
 				.fieldMap("filter", "filters").converter("filterConverter").add()
 				.byDefault()
 				.register();
-
+		orikaMapperFactory.classMap(SubscriptionAuthentication.class, AuthentificationInformations.class)
+				.field("paramsBasic", "authParamBasic")
+				.field("paramsOauth2ClientCredentials", "authParamOauth2")
+				.byDefault()
+				.register();
 		/**
 		 * No default !
 		 */
