@@ -42,6 +42,8 @@ import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.dao.mano.vim.SoftwareImage;
 import com.ubiqube.etsi.mano.dao.mano.vim.VnfStorage;
 import com.ubiqube.etsi.mano.model.VnfInstantiate;
+import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.SubscriptionAuthenticationParamsOauth2ClientCredentials;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.Checksum;
 import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
 import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
@@ -50,7 +52,6 @@ import com.ubiqube.etsi.mano.vnfm.v431.model.grant.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.ResourceDefinition;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.VnfExtCpData;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPackageArtifactInfo;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPackageSoftwareImageInfo;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPackageSoftwareImageInfo.ContainerFormatEnum;
@@ -74,7 +75,6 @@ import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfInstanceInstantiatedVnfIn
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfcResourceInfo;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.SubscriptionAuthentication;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.SubscriptionAuthenticationParamsOauth2ClientCredentials;
 import com.ubiqube.orika.OrikaMapperFactoryConfigurer;
 
 import ma.glasnost.orika.CustomMapper;

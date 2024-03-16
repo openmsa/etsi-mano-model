@@ -18,14 +18,13 @@ package com.ubiqube.etsi.mano.nfvo.v431.model.nsperfo;
 
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.SubscriptionAuthentication;
+import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.SubscriptionAuthentication;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
 
 /**
  * This type represents modifications to a threshold. It shall comply with the

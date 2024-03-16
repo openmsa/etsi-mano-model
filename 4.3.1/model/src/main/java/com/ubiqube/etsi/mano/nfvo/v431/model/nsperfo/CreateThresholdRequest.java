@@ -20,15 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.SubscriptionAuthentication;
+import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.SubscriptionAuthentication;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a request to create a threshold.
