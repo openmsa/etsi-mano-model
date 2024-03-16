@@ -193,8 +193,8 @@ public class OrikaConfigurationNfvo431 implements OrikaMapperFactoryConfigurer {
 				.field("resource.vimConnectionId", "vimConnectionId")
 				.field("resource.resourceProviderId", "resourceProviderId")
 				.field("resource.vimLevelResourceType", "vimLevelResourceType")
-				.field("resource.vimLevelAdditionalResourceInfo", "vimLevelAdditionalResourceInfo")
 				.field("resource.resourceId", "resourceId")
+				.field("resource.vimLevelAdditionalResourceInfo", "vimLevelAdditionalResourceInfo")
 				.field("resource.containerNamespace", "containerNamespace")
 				.register();
 		orikaMapperFactory.classMap(InstantiateNsRequest.class, NsdInstance.class)
