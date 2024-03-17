@@ -18,15 +18,13 @@ package com.ubiqube.etsi.mano.nfvo.v261.model.nsfm;
 
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.annotation.Nonnull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 /**
  * This type represents a subscription related to notifications about VNF
@@ -45,7 +43,7 @@ public class FmSubscription {
 	private String callbackUri = null;
 
 	@JsonProperty("_links")
-	private AlarmLinks _links = null;
+	private AlarmLinks links = null;
 
 	public FmSubscription id(final String id) {
 		this.id = id;
@@ -110,8 +108,8 @@ public class FmSubscription {
 		this.callbackUri = callbackUri;
 	}
 
-	public FmSubscription _links(final AlarmLinks _links) {
-		this._links = _links;
+	public FmSubscription links(final AlarmLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -125,11 +123,11 @@ public class FmSubscription {
 
 	@Valid
 	public AlarmLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final AlarmLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -144,12 +142,12 @@ public class FmSubscription {
 		return Objects.equals(this.id, fmSubscription.id) &&
 				Objects.equals(this.filter, fmSubscription.filter) &&
 				Objects.equals(this.callbackUri, fmSubscription.callbackUri) &&
-				Objects.equals(this._links, fmSubscription._links);
+				Objects.equals(this.links, fmSubscription.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, filter, callbackUri, _links);
+		return Objects.hash(id, filter, callbackUri, links);
 	}
 
 	@Override
@@ -160,7 +158,7 @@ public class FmSubscription {
 		sb.append("    id: ").append(toIndentedString(id)).append("\n");
 		sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
 		sb.append("    callbackUri: ").append(toIndentedString(callbackUri)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
