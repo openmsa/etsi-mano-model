@@ -21,9 +21,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -32,12 +29,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.VnfInstance;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a response for Query NS operation. It shall comply with
  * the provisions defined in Table 6.5.2.10-1.
  */
-@Schema (description= "This type represents a response for Query NS operation.  It shall comply with the provisions defined in Table 6.5.2.10-1. " )
+@Schema(description = "This type represents a response for Query NS operation.  It shall comply with the provisions defined in Table 6.5.2.10-1. ")
 @Validated
 public class NsInstance {
 	@JsonProperty("id")
@@ -131,7 +130,7 @@ public class NsInstance {
 	private List<AffinityOrAntiAffinityRule> additionalAffinityOrAntiAffinityRule = null;
 
 	@JsonProperty("_links")
-	private NsInstanceLinks _links = null;
+	private NsInstanceLinks links = null;
 
 	public NsInstance id(final UUID id) {
 		this.id = id;
@@ -143,7 +142,7 @@ public class NsInstance {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public UUID getId() {
@@ -164,7 +163,7 @@ public class NsInstance {
 	 *
 	 * @return nsInstanceName
 	 **/
-	@Schema(required = true , description = "Human readable name of the NS instance. ")
+	@Schema(required = true, description = "Human readable name of the NS instance. ")
 	@NotNull
 
 	public String getNsInstanceName() {
@@ -185,7 +184,7 @@ public class NsInstance {
 	 *
 	 * @return nsInstanceDescription
 	 **/
-	@Schema(required = true , description = "Human readable description of the NS instance. ")
+	@Schema(required = true, description = "Human readable description of the NS instance. ")
 	@NotNull
 
 	public String getNsInstanceDescription() {
@@ -206,7 +205,7 @@ public class NsInstance {
 	 *
 	 * @return nsdId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public UUID getNsdId() {
@@ -227,7 +226,7 @@ public class NsInstance {
 	 *
 	 * @return nsdInfoId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public UUID getNsdInfoId() {
@@ -440,7 +439,7 @@ public class NsInstance {
 	 *
 	 * @return nsState
 	 **/
-	@Schema(required = true , description = "The state of the NS instance. Permitted values: NOT_INSTANTIATED: The NS instance is terminated or not instantiated. INSTANTIATED: The NS instance is instantiated. ")
+	@Schema(required = true, description = "The state of the NS instance. Permitted values: NOT_INSTANTIATED: The NS instance is terminated or not instantiated. INSTANTIATED: The NS instance is instantiated. ")
 	@NotNull
 
 	public NsStateEnum getNsState() {
@@ -540,8 +539,8 @@ public class NsInstance {
 		this.additionalAffinityOrAntiAffinityRule = additionalAffinityOrAntiAffinityRule;
 	}
 
-	public NsInstance _links(final NsInstanceLinks _links) {
-		this._links = _links;
+	public NsInstance links(final NsInstanceLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -550,16 +549,16 @@ public class NsInstance {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
 	public NsInstanceLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final NsInstanceLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -567,32 +566,32 @@ public class NsInstance {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final NsInstance nsInstance = (NsInstance) o;
 		return Objects.equals(this.id, nsInstance.id) &&
-		Objects.equals(this.nsInstanceName, nsInstance.nsInstanceName) &&
-		Objects.equals(this.nsInstanceDescription, nsInstance.nsInstanceDescription) &&
-		Objects.equals(this.nsdId, nsInstance.nsdId) &&
-		Objects.equals(this.nsdInfoId, nsInstance.nsdInfoId) &&
-		Objects.equals(this.flavourId, nsInstance.flavourId) &&
-		Objects.equals(this.vnfInstance, nsInstance.vnfInstance) &&
-		Objects.equals(this.pnfInfo, nsInstance.pnfInfo) &&
-		Objects.equals(this.virtualLinkInfo, nsInstance.virtualLinkInfo) &&
-		Objects.equals(this.vnffgInfo, nsInstance.vnffgInfo) &&
-		Objects.equals(this.sapInfo, nsInstance.sapInfo) &&
-		Objects.equals(this.nestedNsInstanceId, nsInstance.nestedNsInstanceId) &&
-		Objects.equals(this.nsState, nsInstance.nsState) &&
-		Objects.equals(this.monitoringParameter, nsInstance.monitoringParameter) &&
-		Objects.equals(this.nsScaleStatus, nsInstance.nsScaleStatus) &&
-		Objects.equals(this.additionalAffinityOrAntiAffinityRule, nsInstance.additionalAffinityOrAntiAffinityRule) &&
-		Objects.equals(this._links, nsInstance._links);
+				Objects.equals(this.nsInstanceName, nsInstance.nsInstanceName) &&
+				Objects.equals(this.nsInstanceDescription, nsInstance.nsInstanceDescription) &&
+				Objects.equals(this.nsdId, nsInstance.nsdId) &&
+				Objects.equals(this.nsdInfoId, nsInstance.nsdInfoId) &&
+				Objects.equals(this.flavourId, nsInstance.flavourId) &&
+				Objects.equals(this.vnfInstance, nsInstance.vnfInstance) &&
+				Objects.equals(this.pnfInfo, nsInstance.pnfInfo) &&
+				Objects.equals(this.virtualLinkInfo, nsInstance.virtualLinkInfo) &&
+				Objects.equals(this.vnffgInfo, nsInstance.vnffgInfo) &&
+				Objects.equals(this.sapInfo, nsInstance.sapInfo) &&
+				Objects.equals(this.nestedNsInstanceId, nsInstance.nestedNsInstanceId) &&
+				Objects.equals(this.nsState, nsInstance.nsState) &&
+				Objects.equals(this.monitoringParameter, nsInstance.monitoringParameter) &&
+				Objects.equals(this.nsScaleStatus, nsInstance.nsScaleStatus) &&
+				Objects.equals(this.additionalAffinityOrAntiAffinityRule, nsInstance.additionalAffinityOrAntiAffinityRule) &&
+				Objects.equals(this.links, nsInstance.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nsInstanceName, nsInstanceDescription, nsdId, nsdInfoId, flavourId, vnfInstance, pnfInfo, virtualLinkInfo, vnffgInfo, sapInfo, nestedNsInstanceId, nsState, monitoringParameter, nsScaleStatus, additionalAffinityOrAntiAffinityRule, _links);
+		return Objects.hash(id, nsInstanceName, nsInstanceDescription, nsdId, nsdInfoId, flavourId, vnfInstance, pnfInfo, virtualLinkInfo, vnffgInfo, sapInfo, nestedNsInstanceId, nsState, monitoringParameter, nsScaleStatus, additionalAffinityOrAntiAffinityRule, links);
 	}
 
 	@Override
@@ -616,7 +615,7 @@ public class NsInstance {
 		sb.append("    monitoringParameter: ").append(toIndentedString(monitoringParameter)).append("\n");
 		sb.append("    nsScaleStatus: ").append(toIndentedString(nsScaleStatus)).append("\n");
 		sb.append("    additionalAffinityOrAntiAffinityRule: ").append(toIndentedString(additionalAffinityOrAntiAffinityRule)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
