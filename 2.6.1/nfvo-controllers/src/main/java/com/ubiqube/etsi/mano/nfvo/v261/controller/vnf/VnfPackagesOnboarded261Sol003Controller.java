@@ -16,11 +16,6 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v261.controller.vnf;
 
-import static com.ubiqube.etsi.mano.Constants.getSafeUUID;
-
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -30,6 +25,9 @@ import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.common.v261.services.Linkable;
 import com.ubiqube.etsi.mano.controller.vnf.OnboardedPackageFrontController;
 import com.ubiqube.etsi.mano.nfvo.v261.services.Sol003Linkable;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 /**
  *
@@ -52,12 +50,12 @@ public class VnfPackagesOnboarded261Sol003Controller implements VnfPackagesOnboa
 
 	@Override
 	public final ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsArtifactPathGet(final HttpServletRequest request, final String vnfdId, @Valid final String includeSignatures) {
-		return vnfPackageFrontController.onboardedGetArtifact(request, getSafeUUID(vnfdId), includeSignatures);
+		return vnfPackageFrontController.onboardedGetArtifact(request, vnfdId, includeSignatures);
 	}
 
 	@Override
 	public final ResponseEntity<VnfPkgInfo> onboardedVnfPackagesVnfdIdGet(final String vnfdId) {
-		return vnfPackageFrontController.onboardedFindById(getSafeUUID(vnfdId), VnfPkgInfo.class, links::makeLinks);
+		return vnfPackageFrontController.onboardedFindById(vnfdId, VnfPkgInfo.class, links::makeLinks);
 	}
 
 	@Override
