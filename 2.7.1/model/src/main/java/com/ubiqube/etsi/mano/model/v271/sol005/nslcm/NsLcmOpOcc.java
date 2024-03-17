@@ -20,9 +20,6 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -32,12 +29,14 @@ import com.ubiqube.etsi.mano.em.v271.model.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.CancelModeType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a request a NS lifecycle operation occurrence. It shall
  * comply with the provisions defined in Table 6.5.2.3-1.
  */
-@Schema (description= "This type represents a request a NS lifecycle operation occurrence. It shall comply with the provisions defined in Table 6.5.2.3-1. " )
+@Schema(description = "This type represents a request a NS lifecycle operation occurrence. It shall comply with the provisions defined in Table 6.5.2.3-1. ")
 @Validated
 public class NsLcmOpOcc {
 	@JsonProperty("id")
@@ -122,7 +121,7 @@ public class NsLcmOpOcc {
 	private NsLcmOpOccResourceChanges resourceChanges = null;
 
 	@JsonProperty("_links")
-	private NsLcmOpOccLinks _links = null;
+	private NsLcmOpOccLinks links = null;
 
 	public NsLcmOpOcc id(final String id) {
 		this.id = id;
@@ -134,7 +133,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getId() {
@@ -155,7 +154,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return operationState
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
@@ -177,7 +176,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return statusEnteredTime
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
@@ -199,7 +198,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return nsInstanceId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public UUID getNsInstanceId() {
@@ -220,7 +219,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return lcmOperationType
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
@@ -242,7 +241,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return startTime
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
@@ -267,7 +266,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return isAutomaticInvocation
 	 **/
-	@Schema(required = true , description = "Set to true if this NS LCM operation occurrence has been automatically triggered by the NFVO. This occurs in the case of auto-scaling, auto-healing and when a nested NS is modified as a result of an operation on its composite NS. Set to false otherwise. ")
+	@Schema(required = true, description = "Set to true if this NS LCM operation occurrence has been automatically triggered by the NFVO. This occurs in the case of auto-scaling, auto-healing and when a nested NS is modified as a result of an operation on its composite NS. Set to false otherwise. ")
 	@NotNull
 
 	public Boolean isIsAutomaticInvocation() {
@@ -318,7 +317,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return isCancelPending
 	 **/
-	@Schema(required = true , description = "If the LCM operation occurrence is in \"PROCESSING\" or \"ROLLING_BACK\" state and the operation is being cancelled, this attribute shall be set to true. Otherwise, it shall be set to false. ")
+	@Schema(required = true, description = "If the LCM operation occurrence is in \"PROCESSING\" or \"ROLLING_BACK\" state and the operation is being cancelled, this attribute shall be set to true. Otherwise, it shall be set to false. ")
 	@NotNull
 
 	public Boolean isIsCancelPending() {
@@ -392,8 +391,8 @@ public class NsLcmOpOcc {
 		this.resourceChanges = resourceChanges;
 	}
 
-	public NsLcmOpOcc _links(final NsLcmOpOccLinks _links) {
-		this._links = _links;
+	public NsLcmOpOcc links(final NsLcmOpOccLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -402,16 +401,16 @@ public class NsLcmOpOcc {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
 	public NsLcmOpOccLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final NsLcmOpOccLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -424,23 +423,23 @@ public class NsLcmOpOcc {
 		}
 		final NsLcmOpOcc nsLcmOpOcc = (NsLcmOpOcc) o;
 		return Objects.equals(this.id, nsLcmOpOcc.id) &&
-		Objects.equals(this.operationState, nsLcmOpOcc.operationState) &&
-		Objects.equals(this.statusEnteredTime, nsLcmOpOcc.statusEnteredTime) &&
-		Objects.equals(this.nsInstanceId, nsLcmOpOcc.nsInstanceId) &&
-		Objects.equals(this.lcmOperationType, nsLcmOpOcc.lcmOperationType) &&
-		Objects.equals(this.startTime, nsLcmOpOcc.startTime) &&
-		Objects.equals(this.isAutomaticInvocation, nsLcmOpOcc.isAutomaticInvocation) &&
-		Objects.equals(this.operationParams, nsLcmOpOcc.operationParams) &&
-		Objects.equals(this.isCancelPending, nsLcmOpOcc.isCancelPending) &&
-		Objects.equals(this.cancelMode, nsLcmOpOcc.cancelMode) &&
-		Objects.equals(this.error, nsLcmOpOcc.error) &&
-		Objects.equals(this.resourceChanges, nsLcmOpOcc.resourceChanges) &&
-		Objects.equals(this._links, nsLcmOpOcc._links);
+				Objects.equals(this.operationState, nsLcmOpOcc.operationState) &&
+				Objects.equals(this.statusEnteredTime, nsLcmOpOcc.statusEnteredTime) &&
+				Objects.equals(this.nsInstanceId, nsLcmOpOcc.nsInstanceId) &&
+				Objects.equals(this.lcmOperationType, nsLcmOpOcc.lcmOperationType) &&
+				Objects.equals(this.startTime, nsLcmOpOcc.startTime) &&
+				Objects.equals(this.isAutomaticInvocation, nsLcmOpOcc.isAutomaticInvocation) &&
+				Objects.equals(this.operationParams, nsLcmOpOcc.operationParams) &&
+				Objects.equals(this.isCancelPending, nsLcmOpOcc.isCancelPending) &&
+				Objects.equals(this.cancelMode, nsLcmOpOcc.cancelMode) &&
+				Objects.equals(this.error, nsLcmOpOcc.error) &&
+				Objects.equals(this.resourceChanges, nsLcmOpOcc.resourceChanges) &&
+				Objects.equals(this.links, nsLcmOpOcc.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, operationState, statusEnteredTime, nsInstanceId, lcmOperationType, startTime, isAutomaticInvocation, operationParams, isCancelPending, cancelMode, error, resourceChanges, _links);
+		return Objects.hash(id, operationState, statusEnteredTime, nsInstanceId, lcmOperationType, startTime, isAutomaticInvocation, operationParams, isCancelPending, cancelMode, error, resourceChanges, links);
 	}
 
 	@Override
@@ -460,7 +459,7 @@ public class NsLcmOpOcc {
 		sb.append("    cancelMode: ").append(toIndentedString(cancelMode)).append("\n");
 		sb.append("    error: ").append(toIndentedString(error)).append("\n");
 		sb.append("    resourceChanges: ").append(toIndentedString(resourceChanges)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
