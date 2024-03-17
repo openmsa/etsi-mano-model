@@ -21,9 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -32,11 +29,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.em.v271.model.vnfconfig.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a response for the query PNFD operation.
  */
-@Schema (description= "This type represents a response for the query PNFD operation. " )
+@Schema(description = "This type represents a response for the query PNFD operation. ")
 @Validated
 public class PnfdInfo {
 	@JsonProperty("id")
@@ -112,7 +111,7 @@ public class PnfdInfo {
 	private Map<String, Object> userDefinedData = null;
 
 	@JsonProperty("_links")
-	private PnfdInfoLinks _links = null;
+	private PnfdInfoLinks links = null;
 
 	public PnfdInfo id(final String id) {
 		this.id = id;
@@ -124,7 +123,7 @@ public class PnfdInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getId() {
@@ -319,7 +318,7 @@ public class PnfdInfo {
 	 *
 	 * @return pnfdOnboardingState
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
@@ -362,7 +361,7 @@ public class PnfdInfo {
 	 *
 	 * @return pnfdUsageState
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
@@ -395,8 +394,8 @@ public class PnfdInfo {
 		this.userDefinedData = userDefinedData;
 	}
 
-	public PnfdInfo _links(final PnfdInfoLinks _links) {
-		this._links = _links;
+	public PnfdInfo links(final PnfdInfoLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -405,16 +404,16 @@ public class PnfdInfo {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
 	public PnfdInfoLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final PnfdInfoLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -422,29 +421,29 @@ public class PnfdInfo {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final PnfdInfo pnfdInfo = (PnfdInfo) o;
 		return Objects.equals(this.id, pnfdInfo.id) &&
-		Objects.equals(this.pnfdId, pnfdInfo.pnfdId) &&
-		Objects.equals(this.pnfdName, pnfdInfo.pnfdName) &&
-		Objects.equals(this.pnfdersion, pnfdInfo.pnfdersion) &&
-		Objects.equals(this.pnfdProvider, pnfdInfo.pnfdProvider) &&
-		Objects.equals(this.pnfdInvariantId, pnfdInfo.pnfdInvariantId) &&
-		Objects.equals(this.archiveSecurityOption, pnfdInfo.archiveSecurityOption) &&
-		Objects.equals(this.signingCertificate, pnfdInfo.signingCertificate) &&
-		Objects.equals(this.artifacts, pnfdInfo.artifacts) &&
-		Objects.equals(this.pnfdOnboardingState, pnfdInfo.pnfdOnboardingState) &&
-		Objects.equals(this.onboardingFailureDetails, pnfdInfo.onboardingFailureDetails) &&
-		Objects.equals(this.pnfdUsageState, pnfdInfo.pnfdUsageState) &&
-		Objects.equals(this.userDefinedData, pnfdInfo.userDefinedData) &&
-		Objects.equals(this._links, pnfdInfo._links);
+				Objects.equals(this.pnfdId, pnfdInfo.pnfdId) &&
+				Objects.equals(this.pnfdName, pnfdInfo.pnfdName) &&
+				Objects.equals(this.pnfdersion, pnfdInfo.pnfdersion) &&
+				Objects.equals(this.pnfdProvider, pnfdInfo.pnfdProvider) &&
+				Objects.equals(this.pnfdInvariantId, pnfdInfo.pnfdInvariantId) &&
+				Objects.equals(this.archiveSecurityOption, pnfdInfo.archiveSecurityOption) &&
+				Objects.equals(this.signingCertificate, pnfdInfo.signingCertificate) &&
+				Objects.equals(this.artifacts, pnfdInfo.artifacts) &&
+				Objects.equals(this.pnfdOnboardingState, pnfdInfo.pnfdOnboardingState) &&
+				Objects.equals(this.onboardingFailureDetails, pnfdInfo.onboardingFailureDetails) &&
+				Objects.equals(this.pnfdUsageState, pnfdInfo.pnfdUsageState) &&
+				Objects.equals(this.userDefinedData, pnfdInfo.userDefinedData) &&
+				Objects.equals(this.links, pnfdInfo.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, pnfdId, pnfdName, pnfdersion, pnfdProvider, pnfdInvariantId, archiveSecurityOption, signingCertificate, artifacts, pnfdOnboardingState, onboardingFailureDetails, pnfdUsageState, userDefinedData, _links);
+		return Objects.hash(id, pnfdId, pnfdName, pnfdersion, pnfdProvider, pnfdInvariantId, archiveSecurityOption, signingCertificate, artifacts, pnfdOnboardingState, onboardingFailureDetails, pnfdUsageState, userDefinedData, links);
 	}
 
 	@Override
@@ -465,7 +464,7 @@ public class PnfdInfo {
 		sb.append("    onboardingFailureDetails: ").append(toIndentedString(onboardingFailureDetails)).append("\n");
 		sb.append("    pnfdUsageState: ").append(toIndentedString(pnfdUsageState)).append("\n");
 		sb.append("    userDefinedData: ").append(toIndentedString(userDefinedData)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
