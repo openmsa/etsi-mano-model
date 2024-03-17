@@ -16,13 +16,6 @@
  */
 package com.ubiqube.etsi.mano.vnfm.v351.controller.vnf;
 
-import static com.ubiqube.etsi.mano.nfvo.fc.controller.NfvoConstants.getSafeUUID;
-
-import java.util.UUID;
-
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -31,6 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.controller.vnf.OnboardedPackageFrontController;
 import com.ubiqube.etsi.mano.nfvo.v351.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.vnfm.v351service.LinksSol003;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 /**
  *
@@ -53,22 +49,22 @@ public class OnboardedVnfPackages351Sol003Controller implements OnboardedVnfPack
 
 	@Override
 	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsArtifactPathGet(final HttpServletRequest request, final String vnfdId, final String range, @Valid final String includeSignature) {
-		return onboardedVnfPackageFrontController.onboardedGetArtifact(request, getSafeUUID(vnfdId), includeSignature);
+		return onboardedVnfPackageFrontController.onboardedGetArtifact(request, vnfdId, includeSignature);
 	}
 
 	@Override
 	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsGet(final String vnfdId, final String range) {
-		return onboardedVnfPackageFrontController.onboardedGetArtifactByVnfdId(getSafeUUID(vnfdId));
+		return onboardedVnfPackageFrontController.onboardedGetArtifactByVnfdId(vnfdId);
 	}
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> onboardedVnfPackagesVnfdIdGet(final String vnfdId) {
-		return onboardedVnfPackageFrontController.onboardedFindById(getSafeUUID(vnfdId), VnfPkgInfo.class, LinksSol003::makeLinks);
+		return onboardedVnfPackageFrontController.onboardedFindById(vnfdId, VnfPkgInfo.class, LinksSol003::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdManifestGet(final String vnfdId, @Valid final String includeSignature) {
-		return onboardedVnfPackageFrontController.onboardedGetManifestByVnfd(UUID.fromString(vnfdId), includeSignature);
+		return onboardedVnfPackageFrontController.onboardedGetManifestByVnfd(vnfdId, includeSignature);
 	}
 
 	@Override
