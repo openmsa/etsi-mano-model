@@ -16,14 +16,6 @@
  */
 package com.ubiqube.etsi.mano.vnfm.v331.controller.vnf;
 
-import static com.ubiqube.etsi.mano.nfvo.fc.controller.NfvoConstants.getSafeUUID;
-
-import java.util.UUID;
-
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.springframework.context.annotation.Conditional;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +26,10 @@ import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.controller.vnf.OnboardedPackageFrontController;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.vnfm.v331.service.LinksSol003;
+
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 /**
  *
@@ -58,22 +54,22 @@ public class OnboardedVnfPackages331Sol003Controller implements OnboardedVnfPack
 
 	@Override
 	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsArtifactPathGet(final HttpServletRequest request, final String vnfdId, final String range, @Valid final String includeSignature) {
-		return vnfPackageFrontController.onboardedGetArtifact(request, getSafeUUID(vnfdId), includeSignature);
+		return vnfPackageFrontController.onboardedGetArtifact(request, vnfdId, includeSignature);
 	}
 
 	@Override
 	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsGet(final String vnfdId, final String accept) {
-		return vnfPackageFrontController.onboardedGetVnfdByVnfdId(getSafeUUID(vnfdId), accept);
+		return vnfPackageFrontController.onboardedGetVnfdByVnfdId(vnfdId, accept);
 	}
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> onboardedVnfPackagesVnfdIdGet(final String vnfdId) {
-		return vnfPackageFrontController.onboardedFindById(getSafeUUID(vnfdId), VnfPkgInfo.class, LinksSol003::makeLinks);
+		return vnfPackageFrontController.onboardedFindById(vnfdId, VnfPkgInfo.class, LinksSol003::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdManifestGet(final String vnfdId, @Valid final String includeSignature) {
-		return vnfPackageFrontController.onboardedGetManifestByVnfd(UUID.fromString(vnfdId), includeSignature);
+		return vnfPackageFrontController.onboardedGetManifestByVnfd(vnfdId, includeSignature);
 	}
 
 	@Override
