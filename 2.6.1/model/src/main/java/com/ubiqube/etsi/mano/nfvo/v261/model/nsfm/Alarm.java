@@ -21,9 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.annotation.Nonnull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,7 +28,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 /**
  * The alarm data type encapsulates information about an alarm. It shall comply
@@ -122,7 +120,7 @@ public class Alarm {
 	private String faultDetails = null;
 
 	@JsonProperty("_links")
-	private AlarmLinks _links = null;
+	private AlarmLinks links = null;
 
 	public Alarm id(final String id) {
 		this.id = id;
@@ -473,8 +471,8 @@ public class Alarm {
 		this.faultDetails = faultDetails;
 	}
 
-	public Alarm _links(final AlarmLinks _links) {
-		this._links = _links;
+	public Alarm links(final AlarmLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -488,11 +486,11 @@ public class Alarm {
 
 	@Valid
 	public AlarmLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final AlarmLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -520,12 +518,12 @@ public class Alarm {
 				Objects.equals(this.isRootCause, alarm.isRootCause) &&
 				Objects.equals(this.correlatedAlarmIds, alarm.correlatedAlarmIds) &&
 				Objects.equals(this.faultDetails, alarm.faultDetails) &&
-				Objects.equals(this._links, alarm._links);
+				Objects.equals(this.links, alarm.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, managedObjectId, rootCauseFaultyComponent, rootCauseFaultyResource, alarmRaisedTime, alarmChangedTime, alarmClearedTime, ackState, perceivedSeverity, eventTime, eventType, faultType, probableCause, isRootCause, correlatedAlarmIds, faultDetails, _links);
+		return Objects.hash(id, managedObjectId, rootCauseFaultyComponent, rootCauseFaultyResource, alarmRaisedTime, alarmChangedTime, alarmClearedTime, ackState, perceivedSeverity, eventTime, eventType, faultType, probableCause, isRootCause, correlatedAlarmIds, faultDetails, links);
 	}
 
 	@Override
@@ -549,7 +547,7 @@ public class Alarm {
 		sb.append("    isRootCause: ").append(toIndentedString(isRootCause)).append("\n");
 		sb.append("    correlatedAlarmIds: ").append(toIndentedString(correlatedAlarmIds)).append("\n");
 		sb.append("    faultDetails: ").append(toIndentedString(faultDetails)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
