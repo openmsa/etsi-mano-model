@@ -37,7 +37,7 @@ public class OnboardedVnfPackages431Sol003Controller implements OnboardedVnfPack
 	}
 
 	@Override
-	public ResponseEntity<String> onboardedVnfPackagesGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+	public ResponseEntity<String> onboardedVnfPackagesGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
 		return onboardedVnfPackageFrontController.onboardedSearch(requestParams, VnfPkgInfo.class, LinksSol003::makeLinks);
 	}
 
