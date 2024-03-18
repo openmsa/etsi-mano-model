@@ -36,6 +36,7 @@ import com.ubiqube.etsi.mano.dao.mano.v2.BlueprintParameters;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
 import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
+import com.ubiqube.etsi.mano.em.v331.model.SubscriptionAuthentication;
 import com.ubiqube.etsi.mano.em.v331.model.SubscriptionAuthenticationParamsOauth2ClientCredentials;
 import com.ubiqube.etsi.mano.em.v331.model.vnfind.VnfIndicatorSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.ExtManagedVirtualLinkData;
@@ -67,6 +68,7 @@ import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPackageArtifactInfo;
 import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
+import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.v331.model.grant.ConstraintResourceRef;
 import com.ubiqube.etsi.mano.vnfm.v331.model.grant.Grant;
@@ -161,7 +163,11 @@ public class OrikaConfigurationNfvo331 implements OrikaMapperFactoryConfigurer {
 				.fieldMap("filter", "filters").converter("filterConverter").add()
 				.byDefault()
 				.register();
-
+		orikaMapperFactory.classMap(SubscriptionAuthentication.class, AuthentificationInformations.class)
+				.field("paramsBasic", "authParamBasic")
+				.field("paramsOauth2ClientCredentials", "authParamOauth2")
+				.byDefault()
+				.register();
 		/**
 		 * No default !
 		 */
@@ -214,6 +220,8 @@ public class OrikaConfigurationNfvo331 implements OrikaMapperFactoryConfigurer {
 		orikaMapperFactory.classMap(Grant.class, GrantResponse.class)
 				.field("links.vnfInstance.href", "instanceLink")
 				.field("links.vnfLcmOpOcc.href", "lcmLink")
+				.field("vimConnectionInfo{key}", "vimConnections{vimId}")
+				.field("vimConnectionInfo{value}", "vimConnections{}")
 				.byDefault()
 				.register();
 		orikaMapperFactory.classMap(ConstraintResourceRef.class, VimConnectionInformation.class)
