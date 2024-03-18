@@ -24,6 +24,7 @@ import org.springframework.stereotype.Component;
 import com.ubiqube.etsi.mano.dao.mano.ExtManagedVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.ExtVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
+import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.VnfCompute;
 import com.ubiqube.etsi.mano.dao.mano.VnfExtCpDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
@@ -70,6 +71,7 @@ import com.ubiqube.etsi.mano.nfvo.v331.model.vnfsnapshotpkgm.Checksum;
 import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
 import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.vnfm.v331.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v331.model.grant.ResourceDefinition;
 import com.ubiqube.orika.OrikaMapperFactoryConfigurer;
 
@@ -311,6 +313,13 @@ public class OrikaMapperVnfm331 implements OrikaMapperFactoryConfigurer {
 		 */
 		orikaMapperFactory.classMap(Alarm.class, Alarms.class)
 				.field("isRootCause", "rootCause")
+				.byDefault()
+				.register();
+		orikaMapperFactory.classMap(Grant.class, GrantResponse.class)
+				.field("links.vnfInstance.href", "instanceLink")
+				.field("links.vnfLcmOpOcc.href", "lcmLink")
+				.field("vimConnectionInfo{key}", "vimConnections{vimId}")
+				.field("vimConnectionInfo{value}", "vimConnections{}")
 				.byDefault()
 				.register();
 		// final ConverterFactory converterFactory =
