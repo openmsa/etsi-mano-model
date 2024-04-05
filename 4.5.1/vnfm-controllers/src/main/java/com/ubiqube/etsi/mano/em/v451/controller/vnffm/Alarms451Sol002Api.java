@@ -50,9 +50,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
+@RequestMapping(value = "/sol002/vnffm/v1", headers = { "Version=1.12.0" })
+@RolesAllowed({ "ROLE_EM" })
 @Validated
 public interface Alarms451Sol002Api {
 
