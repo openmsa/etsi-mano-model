@@ -16,6 +16,7 @@
  */
 package com.ubiqube.etsi.mano.em.v451.model.vnflcm;
 
+import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.validation.annotation.Validated;
@@ -23,7 +24,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.Map;
+import com.ubiqube.etsi.mano.nfvo.v451.model.vnflcm.VimConnectionInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
@@ -109,6 +110,10 @@ public class VnfInstance {
 
 	@JsonProperty("certificateInfo")
 	private CertificateInfo certificateInfo = null;
+
+	@JsonProperty("vimConnectionInfo")
+	@Valid
+	private Map<String, VimConnectionInfo> vimConnectionInfo;
 
 	/**
 	 * The instantiation state of the VNF.
@@ -385,6 +390,14 @@ public class VnfInstance {
 
 	public void setInstantiationState(final InstantiationStateEnum instantiationState) {
 		this.instantiationState = instantiationState;
+	}
+
+	public Map<String, VimConnectionInfo> getVimConnectionInfo() {
+		return vimConnectionInfo;
+	}
+
+	public void setVimConnectionInfo(final Map<String, VimConnectionInfo> vimConnectionInfo) {
+		this.vimConnectionInfo = vimConnectionInfo;
 	}
 
 	public VnfInstance instantiatedVnfInfo(final VnfInstanceInstantiatedVnfInfo instantiatedVnfInfo) {

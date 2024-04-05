@@ -18,12 +18,13 @@ package com.ubiqube.etsi.mano.em.v451.model.vnflcm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Map;
+import com.ubiqube.etsi.mano.nfvo.v451.model.vnflcm.VimConnectionInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
@@ -95,6 +96,10 @@ public class InstantiateVnfRequest implements AnyOfInstantiateVnfRequest {
 	@JsonProperty("selectedDeployableModule")
 	@Valid
 	private List<String> selectedDeployableModule = null;
+
+	@JsonProperty("vimConnectionInfo")
+	@Valid
+	private Map<String, VimConnectionInfo> vimConnectionInfo;
 
 	public InstantiateVnfRequest flavourId(final String flavourId) {
 		this.flavourId = flavourId;
@@ -342,6 +347,29 @@ public class InstantiateVnfRequest implements AnyOfInstantiateVnfRequest {
 
 	public void setSelectedDeployableModule(final List<String> selectedDeployableModule) {
 		this.selectedDeployableModule = selectedDeployableModule;
+	}
+
+	/**
+	 * Information about VIM or CISM connections to be used for managing the
+	 * resources for the VNF instance, or refer to external/externally-managed
+	 * virtual links. This attribute shall only be supported and may be present if -
+	 * the resources for at least one of the VNFCs shall be managed by a VIM and
+	 * VNF-related resource management in direct mode is applicable. - the resources
+	 * for at least one of the VNFCs shall be managed by a CISM. The VNFM shall
+	 * apply the content of this attribute to the \"vimConnectionInfo\" attribute of
+	 * \"VnfInstance\" according to the rules of JSON Merge Patch (see IETF RFC 7396
+	 * [5]).
+	 *
+	 * @return vimConnectionInfo
+	 **/
+	@Schema(description = "Information about VIM or CISM connections to be used for managing the resources for the VNF instance, or refer to external/externally-managed virtual links. This attribute shall only be supported and may be present if - the resources for at least one of the VNFCs shall be managed by a VIM and VNF-related resource management in direct mode is applicable. - the resources for at least one of the VNFCs shall be managed by a CISM. The VNFM shall apply the content of this attribute to the \"vimConnectionInfo\" attribute of \"VnfInstance\" according to the rules of JSON Merge Patch (see IETF RFC 7396 [5]). ")
+	@Valid
+	public Map<String, VimConnectionInfo> getVimConnectionInfo() {
+		return vimConnectionInfo;
+	}
+
+	public void setVimConnectionInfo(final Map<String, VimConnectionInfo> vimConnectionInfo) {
+		this.vimConnectionInfo = vimConnectionInfo;
 	}
 
 	@Override
