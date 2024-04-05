@@ -44,9 +44,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
+@RequestMapping(value = "/sol005/nspm/v2", headers = { "Version=2.12.0" })
+@RolesAllowed({ "ROLE_OSSBSS" })
 @Validated
 public interface PerformanceInformationAvailableNotification451Sol005Api {
 

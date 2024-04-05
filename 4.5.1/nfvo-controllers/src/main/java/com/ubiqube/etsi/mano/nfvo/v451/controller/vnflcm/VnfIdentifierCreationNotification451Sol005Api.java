@@ -44,9 +44,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
+@RequestMapping(value = "/sol003/vnflcm/v2/vnf_instances/notification", headers = "Version=2.12.0")
+@RolesAllowed({ "ROLE_VNFM" })
 @Validated
 public interface VnfIdentifierCreationNotification451Sol005Api {
 

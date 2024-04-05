@@ -46,7 +46,7 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
 @Validated
-@RequestMapping(value = "/sol005/nslcm/v2", headers = { "Version=2.10.0" })
+@RequestMapping(value = "/sol005/nslcm/v2", headers = { "Version=2.12.0" })
 @RolesAllowed({ "ROLE_OSSBSS" })
 public interface NsLcmNotification451Sol005Api {
 

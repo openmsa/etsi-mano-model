@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ubiqube.etsi.mano.em.v451.model.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.em.v451.model.vnffm.AlarmClearedNotification;
@@ -39,8 +40,11 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
+@RequestMapping(value = "/sol005/nsfm/v1", headers = { "Version=1.12.0" })
+@RolesAllowed({ "ROLE_OSSBSS" })
 @Validated
 public interface AlarmNotification451Sol005Api {
 
