@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.em.v451.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfLcmOpOccLinks;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
+import com.ubiqube.etsi.mano.vnfm.v451.service.VnfLcmClassMaping451;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;

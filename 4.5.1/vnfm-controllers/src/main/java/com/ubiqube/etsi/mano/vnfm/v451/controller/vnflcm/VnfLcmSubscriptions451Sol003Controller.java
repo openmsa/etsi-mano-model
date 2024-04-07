@@ -1,34 +1,75 @@
 package com.ubiqube.etsi.mano.vnfm.v451.controller.vnflcm;
 
-import java.util.Optional;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LccnSubscription;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LccnSubscriptionLinks;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
+import com.ubiqube.etsi.mano.vnfm.v451.service.SubscriptionLinkable451Vnfm;
 
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 @RestController
-public class VnfLcmSubscriptions451Sol003Controller implements VnfLcmSubscriptions451Sol003Api {
+public class VnfLcmSubscriptions451Sol003Controller implements VnfLcmSubscriptions451Sol003Api, SubscriptionLinkable451Vnfm {
 
-	private final ObjectMapper objectMapper;
+	private final VnfLcmSubscriptionFrontController frontController;
 
-	private final HttpServletRequest request;
-
-	@org.springframework.beans.factory.annotation.Autowired
-	public VnfLcmSubscriptions451Sol003Controller(final ObjectMapper objectMapper, final HttpServletRequest request) {
-		this.objectMapper = objectMapper;
-		this.request = request;
+	public VnfLcmSubscriptions451Sol003Controller(final VnfLcmSubscriptionFrontController frontController) {
+		this.frontController = frontController;
 	}
 
 	@Override
-	public Optional<ObjectMapper> getObjectMapper() {
-		return Optional.ofNullable(objectMapper);
+	public ResponseEntity<List<LccnSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+		return frontController.search(requestParams, nextpageOpaqueMarker, LccnSubscription.class, VnfLcmSubscriptions451Sol003Controller::makeLinks);
 	}
 
 	@Override
-	public Optional<HttpServletRequest> getRequest() {
-		return Optional.ofNullable(request);
+	public ResponseEntity<LccnSubscription> subscriptionsPost(@Valid final LccnSubscriptionRequest body) {
+		return frontController.create(body, LccnSubscription.class, VnfLcmSubscriptions451Sol003Api.class, VnfLcmSubscriptions451Sol003Controller::makeLinks, VnfLcmSubscriptions451Sol003Controller::getSelfLink);
+	}
+
+	@Override
+	public ResponseEntity<Void> subscriptionsSubscriptionIdDelete(final String subscriptionId) {
+		return frontController.deleteById(subscriptionId);
+	}
+
+	@Override
+	public ResponseEntity<LccnSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
+		return frontController.findById(subscriptionId, LccnSubscription.class, VnfLcmSubscriptions451Sol003Controller::makeLinks);
+	}
+
+	private static String getSelfLink(final LccnSubscription subscription) {
+		return linkTo(methodOn(VnfLcmSubscriptions451Sol003Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref();
+	}
+
+	private static void makeLinks(final LccnSubscription subs) {
+		final LccnSubscriptionLinks links = new LccnSubscriptionLinks();
+		final Link self = new Link();
+		self.setHref(linkTo(methodOn(VnfLcmSubscriptions451Sol003Api.class).subscriptionsSubscriptionIdGet(subs.getId())).withSelfRel().getHref());
+		links.setSelf(self);
+		subs.setLinks(links);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VnfLcmSubscriptions451Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VNFLCM);
 	}
 
 }
