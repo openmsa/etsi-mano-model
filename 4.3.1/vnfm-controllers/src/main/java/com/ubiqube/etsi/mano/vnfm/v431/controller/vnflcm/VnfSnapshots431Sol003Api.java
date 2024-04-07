@@ -95,10 +95,7 @@ public interface VnfSnapshots431Sol003Api {
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
 	@PostMapping(value = "/vnf_snapshots", produces = { "application/json" }, consumes = { "application/json" })
 	ResponseEntity<VnfSnapshotInfo> vnfSnapshotsPost(
-			@Parameter(in = ParameterIn.HEADER, description = "Content-Types that are acceptable for the response. Reference: IETF RFC 7231. ", required = true, schema = @Schema()) @RequestHeader(value = "Accept", required = true) String accept,
-			@Parameter(in = ParameterIn.HEADER, description = "Version of the API requested to use when responding to this request. ", required = true, schema = @Schema()) @RequestHeader(value = "Version", required = true) String version,
-			@Parameter(in = ParameterIn.DEFAULT, description = "The VNF snapshot resource creation parameters, as defined in clause 5.5.2.20.", required = true, schema = @Schema()) @Valid @RequestBody CreateVnfSnapshotInfoRequest body,
-			@Parameter(in = ParameterIn.HEADER, description = "The authorization token for the request. Reference: IETF RFC 7235. ", schema = @Schema()) @RequestHeader(value = "Authorization", required = false) String authorization);
+			@Parameter(in = ParameterIn.DEFAULT, description = "The VNF snapshot resource creation parameters, as defined in clause 5.5.2.20.", required = true, schema = @Schema()) @Valid @RequestBody CreateVnfSnapshotInfoRequest body);
 
 	@Operation(summary = "", description = "This method deletes an \"Individual VNF snapshot\" resource and the associated VNF snapshot information managed by the VNFM, and any resource associated to the VNF snapshot managed by the VIM. See clause 5.4.24.3.5. ", tags = {})
 	@ApiResponses(value = {

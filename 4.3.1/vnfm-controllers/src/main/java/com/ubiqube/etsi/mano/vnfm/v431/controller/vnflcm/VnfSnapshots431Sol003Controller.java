@@ -40,7 +40,7 @@ public class VnfSnapshots431Sol003Controller implements VnfSnapshots431Sol003Api
 	}
 
 	@Override
-	public ResponseEntity<VnfSnapshotInfo> vnfSnapshotsPost(final String accept, final String version, @Valid final CreateVnfSnapshotInfoRequest body, final String authorization) {
+	public ResponseEntity<VnfSnapshotInfo> vnfSnapshotsPost(final CreateVnfSnapshotInfoRequest body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
