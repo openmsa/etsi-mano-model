@@ -16,32 +16,42 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v451.controller.lcmcoord;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
 import java.util.Optional;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 public class Coordinations451Sol005Controller implements Coordinations451Sol005Api {
 
-    private final ObjectMapper objectMapper;
+	private final ObjectMapper objectMapper;
 
-    private final HttpServletRequest request;
+	private final HttpServletRequest request;
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public Coordinations451Sol005Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@org.springframework.beans.factory.annotation.Autowired
+	public Coordinations451Sol005Controller(final ObjectMapper objectMapper, final HttpServletRequest request) {
+		this.objectMapper = objectMapper;
+		this.request = request;
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+	@Override
+	public Optional<ObjectMapper> getObjectMapper() {
+		return Optional.ofNullable(objectMapper);
+	}
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public Optional<HttpServletRequest> getRequest() {
+		return Optional.ofNullable(request);
+	}
+
+	@Override
+	public ResponseEntity<Void> coordinationsCancelPost(final String version, final String accept, final String authorization) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
