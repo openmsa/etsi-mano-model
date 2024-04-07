@@ -19,8 +19,6 @@ package com.ubiqube.etsi.mano.vnfm.v351.controller.grant;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +28,9 @@ import com.ubiqube.etsi.mano.vnfm.v351.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v351.model.grant.GrantLinks;
 import com.ubiqube.etsi.mano.vnfm.v351.model.grant.GrantRequest;
 
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -38,20 +39,21 @@ import com.ubiqube.etsi.mano.vnfm.v351.model.grant.GrantRequest;
 @RestController
 public class LcmGrants351Sol003Controller implements LcmGrants351Sol003Api {
 	private final LcmGrantsFrontController lcmGrantsFrontController;
+	private final MapperFacade mapper;
 
-	public LcmGrants351Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController) {
-		super();
+	public LcmGrants351Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final MapperFacade mapper) {
 		this.lcmGrantsFrontController = lcmGrantsFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Grant> grantsGrantIdGet(final String grantId) {
-		return lcmGrantsFrontController.grantsGrantIdGet(grantId, Grant.class, LcmGrants351Sol003Controller::makeSelfLinks);
+		return lcmGrantsFrontController.grantsGrantIdGet(grantId, x -> mapper.map(x, Grant.class), LcmGrants351Sol003Controller::makeSelfLinks);
 	}
 
 	@Override
 	public ResponseEntity<Grant> grantsPost(@Valid final GrantRequest grantRequest) {
-		return lcmGrantsFrontController.grantsPost(grantRequest, Grant.class, LcmGrants351Sol003Controller::getSelfLink);
+		return lcmGrantsFrontController.grantsPost(grantRequest, x -> mapper.map(x, Grant.class), LcmGrants351Sol003Controller::getSelfLink);
 	}
 
 	private static void makeSelfLinks(final Grant jsonGrant) {
