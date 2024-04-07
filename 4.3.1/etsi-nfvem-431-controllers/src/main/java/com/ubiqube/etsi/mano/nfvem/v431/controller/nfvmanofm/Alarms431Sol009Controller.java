@@ -21,8 +21,8 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanofm.Alarm;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanofm.AlarmModifications;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.Alarm;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmModifications;
 
 import jakarta.validation.Valid;
 

@@ -21,8 +21,8 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanofm.FmSubscription;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanofm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.FmSubscription;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.FmSubscriptionRequest;
 
 import jakarta.validation.Valid;
 
