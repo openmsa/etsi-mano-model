@@ -102,6 +102,10 @@ public class OrikaMapperVnfm271 implements OrikaMapperFactoryConfigurer {
 				.field("extManagedVirtualLinkInfo", "extManagedVirtualLinks")
 				.byDefault()
 				.register();
+		orikaMapperFactory.classMap(SoftwareImage.class, VnfPackageSoftwareImageInfo.class)
+				.exclude("userMetadata")
+				.byDefault()
+				.register();
 		orikaMapperFactory.classMap(VnfPackage.class, VnfPkgInfo.class)
 				.byDefault()
 				.customize(new CustomMapper<VnfPackage, VnfPkgInfo>() {
