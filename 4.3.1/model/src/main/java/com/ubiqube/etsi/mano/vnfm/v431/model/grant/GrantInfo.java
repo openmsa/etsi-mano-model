@@ -16,19 +16,17 @@
  */
 package com.ubiqube.etsi.mano.vnfm.v431.model.grant;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type contains information about a Compute, storage or network resource
@@ -61,7 +59,7 @@ public class GrantInfo {
 
 	@JsonProperty("mcioConstraints")
 	@Valid
-	private List<Map<String, String>> mcioConstraints = null;
+	private Map<String, String> mcioConstraints = null;
 
 	public GrantInfo resourceDefinitionId(final String resourceDefinitionId) {
 		this.resourceDefinitionId = resourceDefinitionId;
@@ -204,16 +202,16 @@ public class GrantInfo {
 		this.containerNamespace = containerNamespace;
 	}
 
-	public GrantInfo mcioConstraints(final List<Map<String, String>> mcioConstraints) {
+	public GrantInfo mcioConstraints(final Map<String, String> mcioConstraints) {
 		this.mcioConstraints = mcioConstraints;
 		return this;
 	}
 
 	public GrantInfo addMcioConstraintsItem(final Map<String, String> mcioConstraintsItem) {
 		if (this.mcioConstraints == null) {
-			this.mcioConstraints = new ArrayList<>();
+			this.mcioConstraints = new LinkedHashMap<>();
 		}
-		this.mcioConstraints.add(mcioConstraintsItem);
+		this.mcioConstraints.putAll(mcioConstraintsItem);
 		return this;
 	}
 
@@ -232,11 +230,11 @@ public class GrantInfo {
 	 **/
 	@Schema(description = "The constraint values to be assigned to MCIOs of a VNF with containerized components. The key in the key-value pair indicates the parameter name of the MCIO constraint in the MCIO declarative descriptor and shall be one of the possible enumeration values of the \"mcioConstraintsParams\" attribute as specified in clause 7.1.6.2.2 of ETSI GS NFV-IFA 011 [10]. The value in the keyvalue pair indicates the value to be assigned to the MCIO constraint. This attribute shall be present if the granted resources are managed by a CISM. The attribute shall be absent if the granted resources are not managed by a CISM. ")
 	@Valid
-	public List<Map<String, String>> getMcioConstraints() {
+	public Map<String, String> getMcioConstraints() {
 		return mcioConstraints;
 	}
 
-	public void setMcioConstraints(final List<Map<String, String>> mcioConstraints) {
+	public void setMcioConstraints(final Map<String, String> mcioConstraints) {
 		this.mcioConstraints = mcioConstraints;
 	}
 

@@ -570,7 +570,7 @@ public class VnfPkgInfo {
 		this.onboardingFailureDetails = onboardingFailureDetails;
 	}
 
-	public VnfPkgInfo _links(final VnfPkgInfoLinks _links) {
+	public VnfPkgInfo links(final VnfPkgInfoLinks _links) {
 		this.links = _links;
 		return this;
 	}

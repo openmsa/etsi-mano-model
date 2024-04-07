@@ -614,7 +614,7 @@ public class Grant {
 		this.additionalParams = additionalParams;
 	}
 
-	public Grant _links(final GrantLinks _links) {
+	public Grant links(final GrantLinks _links) {
 		this.links = _links;
 		return this;
 	}
