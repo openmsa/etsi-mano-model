@@ -21,9 +21,6 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v431.controller.nslcm;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,8 +28,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.ProblemDetails;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.CancelMode;
+import com.ubiqube.etsi.mano.em.v431.model.vnfconfig.ProblemDetails;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.CancelMode;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsLcmOpOcc;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,6 +39,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 
 @Validated
 @RequestMapping(value = "/sol005/nslcm/v2", headers = { "Version=2.10.0" })
@@ -62,7 +61,7 @@ public interface Nslcm431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @PostMapping(value = "/nslcm/v1/ns_lcm_op_occs/{nsLcmOpOccId}/cancel", produces = {"application/json"}, consumes = {"application/json"})
+	@PostMapping(value = "/nslcm/v1/ns_lcm_op_occs/{nsLcmOpOccId}/cancel", produces = { "application/json" }, consumes = { "application/json" })
 	ResponseEntity<Void> nslcmV1NsLcmOpOccsNsLcmOpOccIdCancelPost(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of a NS lifecycle management operation occurrence. ", required = true, schema = @Schema()) @PathVariable("nsLcmOpOccId") final String nsLcmOpOccId,
 			@Parameter(in = ParameterIn.DEFAULT, description = "The POST request to this resource shall include a CancelMode structure in the payload body to choose between \"graceful\" and \"forceful\" cancellation.", required = true, schema = @Schema()) @Valid @RequestBody final CancelMode body);
@@ -81,7 +80,7 @@ public interface Nslcm431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @PostMapping(value = "/nslcm/v1/ns_lcm_op_occs/{nsLcmOpOccId}/fail", produces = {"application/json"})
+	@PostMapping(value = "/nslcm/v1/ns_lcm_op_occs/{nsLcmOpOccId}/fail", produces = { "application/json" })
 	ResponseEntity<NsLcmOpOcc> nslcmV1NsLcmOpOccsNsLcmOpOccIdFailPost(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of a NS lifecycle management operation occurrence. ", required = true, schema = @Schema()) @PathVariable("nsLcmOpOccId") final String nsLcmOpOccId);
 }

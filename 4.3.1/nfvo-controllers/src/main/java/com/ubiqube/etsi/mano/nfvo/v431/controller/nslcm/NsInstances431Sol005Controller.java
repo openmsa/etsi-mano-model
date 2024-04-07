@@ -19,16 +19,13 @@ package com.ubiqube.etsi.mano.nfvo.v431.controller.nslcm;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.annotation.Nonnull;
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nslcm.NsInstanceGenericFrontController;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.Link;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.CreateNsRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.HealNsRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.InstantiateNsRequest;
@@ -37,6 +34,9 @@ import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsInstanceLinks;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.ScaleNsRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.TerminateNsRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.UpdateNsRequest;
+
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 @RestController
 public class NsInstances431Sol005Controller implements NsInstances431Sol005Api {

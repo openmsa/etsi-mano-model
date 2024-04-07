@@ -27,11 +27,11 @@ import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.service.OrikaConfigurationNfvo431;
 import com.ubiqube.etsi.mano.test.TestHelper;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfLcmOpOcc;
 
 /**
  *
@@ -56,7 +56,7 @@ class MappingTest extends TestHelper {
 	void testVnfInstance() throws Exception {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
-		doTest(com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.VnfInstance.class, VnfInstance.class, ignore);
+		doTest(com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance.class, VnfInstance.class, ignore);
 		assertTrue(true);
 	}
 

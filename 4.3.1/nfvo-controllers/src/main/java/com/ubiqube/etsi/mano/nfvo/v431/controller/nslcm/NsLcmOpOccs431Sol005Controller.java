@@ -19,18 +19,18 @@ package com.ubiqube.etsi.mano.nfvo.v431.controller.nslcm;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nslcm.NsLcmGenericFrontController;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.Link;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsLcmInfoModificationRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsLcmOpOccLinks;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 @RestController
 public class NsLcmOpOccs431Sol005Controller implements NsLcmOpOccs431Sol005Api {

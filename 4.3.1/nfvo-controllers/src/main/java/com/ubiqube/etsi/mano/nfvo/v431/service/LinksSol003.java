@@ -19,10 +19,10 @@ package com.ubiqube.etsi.mano.nfvo.v431.service;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfoLinks;
 import com.ubiqube.etsi.mano.vnfm.v431.controller.vnf.VnfPackages431Sol003Api;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPkgInfo;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPkgInfoLinks;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.Link;
 
 public class LinksSol003 {
 

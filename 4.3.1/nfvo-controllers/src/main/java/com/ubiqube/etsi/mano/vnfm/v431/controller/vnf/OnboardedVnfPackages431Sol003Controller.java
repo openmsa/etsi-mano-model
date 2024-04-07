@@ -22,8 +22,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnf.OnboardedPackageFrontController;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.service.LinksSol003;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPkgInfo;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

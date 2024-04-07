@@ -20,9 +20,6 @@ import static com.ubiqube.etsi.mano.nfvo.fc.controller.NfvoConstants.getSafeUUID
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -30,12 +27,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.Link;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.CreateVnfPkgInfoRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.ExternalArtifactsAccessConfig;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.UploadVnfPkgFromUriRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfoLinks;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfPackages431Sol005Controller implements VnfPackages431Sol005Api {

@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nsfm.FmSubscription;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nsfm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.FmSubscription;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.service.SubscriptionLinkable431Nfvo;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 

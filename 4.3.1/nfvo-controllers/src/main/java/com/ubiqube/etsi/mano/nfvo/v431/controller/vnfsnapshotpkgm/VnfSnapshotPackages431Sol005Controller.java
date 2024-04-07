@@ -20,16 +20,14 @@ import static com.ubiqube.etsi.mano.nfvo.fc.controller.NfvoConstants.getSafeUUID
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nssp.VnfSnapshotPackagesFrontController;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.nfvo.v431.controller.vnf.VnfPackages431Sol005Api;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.Link;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.BuildVnfSnapshotPkgRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.CancelVnfSnapshotPkgOperationRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.CreateVnfSnapshotPkgInfoRequest;
@@ -39,6 +37,8 @@ import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.VnfSnapshotPkgExtAr
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.VnfSnapshotPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.VnfSnapshotPkgInfoLinks;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.VnfSnapshotPkgInfoModifications;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfSnapshotPackages431Sol005Controller implements VnfSnapshotPackages431Sol005Api {

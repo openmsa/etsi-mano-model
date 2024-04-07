@@ -16,14 +16,14 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v431.controller.nsfm;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.nfvo.v431.model.nsfm.AlarmClearedNotification;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nsfm.AlarmListRebuiltNotification;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nsfm.AlarmNotification;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmClearedNotification;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmListRebuiltNotification;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmNotification;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class AlarmNotification431Sol005Controller implements AlarmNotification431Sol005Api {

@@ -19,9 +19,6 @@ package com.ubiqube.etsi.mano.nfvo.v431.controller.nsd;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.annotation.Nonnull;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -29,11 +26,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ubiqube.etsi.mano.controller.nsd.NsDescriptorGenericFrontController;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.Link;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.CreateNsdInfoRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.NsdInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.NsdInfoLinks;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.NsdInfoModifications;
+
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 @RestController
 public class NsDescriptors431Sol005Controller implements NsDescriptors431Sol005Api {

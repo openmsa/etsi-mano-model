@@ -25,18 +25,24 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.ProblemDetails;
+import com.ubiqube.etsi.mano.em.v431.model.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.CreatePnfdInfoRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.PnfdInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.PnfdInfoModifications;
@@ -49,6 +55,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 @Validated
 @RequestMapping(value = "/sol005/nsd/v2", headers = { "Version=2.10.0" })
@@ -80,7 +89,7 @@ public interface PnfDescriptors431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/pnf_descriptors", produces = {"application/json"})
+	@GetMapping(value = "/pnf_descriptors", produces = { "application/json" })
 	default ResponseEntity<List<PnfdInfo>> pnfDescriptorsGet(
 			@Parameter(in = ParameterIn.HEADER, description = "Version of the API requested to use when responding to this request. ", required = true, schema = @Schema()) @RequestHeader(value = "Version", required = true) final String version,
 			@Parameter(in = ParameterIn.HEADER, description = "The authorization token for the request. Reference: IETF RFC 7235. ", schema = @Schema()) @RequestHeader(value = "Authorization", required = false) final String authorization,
@@ -123,7 +132,7 @@ public interface PnfDescriptors431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/pnf_descriptors/{pnfdInfoId}/artifacts/{artifactPath}", produces = {"application/json"})
+	@GetMapping(value = "/pnf_descriptors/{pnfdInfoId}/artifacts/{artifactPath}", produces = { "application/json" })
 	default ResponseEntity<Void> pnfDescriptorsPnfdInfoIdArtifactsArtifactPathGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual PNF descriptor resource. ", required = true, schema = @Schema()) @PathVariable("pnfdInfoId") final String pnfdInfoId,
 
@@ -153,7 +162,7 @@ public interface PnfDescriptors431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @DeleteMapping(value = "/pnf_descriptors/{pnfdInfoId}", produces = {"application/json"})
+	@DeleteMapping(value = "/pnf_descriptors/{pnfdInfoId}", produces = { "application/json" })
 	default ResponseEntity<Void> pnfDescriptorsPnfdInfoIdDelete(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual PNF descriptor resource. ", required = true, schema = @Schema()) @PathVariable("pnfdInfoId") final String pnfdInfoId) {
 		if (getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
@@ -175,7 +184,7 @@ public interface PnfDescriptors431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/pnf_descriptors/{pnfdInfoId}", produces = {"application/json"})
+	@GetMapping(value = "/pnf_descriptors/{pnfdInfoId}", produces = { "application/json" })
 	default ResponseEntity<PnfdInfo> pnfDescriptorsPnfdInfoIdGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual PNF descriptor resource. ", required = true, schema = @Schema()) @PathVariable("pnfdInfoId") final String pnfdInfoId,
 			@Parameter(in = ParameterIn.HEADER, description = "Content-Types that are acceptable for the response. Reference: IETF RFC 7231. ", required = true, schema = @Schema()) @RequestHeader(value = "Accept", required = true) final String accept,
@@ -209,7 +218,7 @@ public interface PnfDescriptors431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/pnf_descriptors/{pnfdInfoId}/manifest", produces = {"application/json"})
+	@GetMapping(value = "/pnf_descriptors/{pnfdInfoId}/manifest", produces = { "application/json" })
 	default ResponseEntity<Void> pnfDescriptorsPnfdInfoIdManifestGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual PNF descriptor resource. ", required = true, schema = @Schema()) @PathVariable("pnfdInfoId") final String pnfdInfoId,
 			@Parameter(in = ParameterIn.HEADER, description = "Version of the API requested to use when responding to this request. ", required = true, schema = @Schema()) @RequestHeader(value = "Version", required = true) final String version,
@@ -237,7 +246,7 @@ public interface PnfDescriptors431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @PatchMapping(value = "/pnf_descriptors/{pnfdInfoId}", produces = {"application/json"}, consumes = {"application/json"})
+	@PatchMapping(value = "/pnf_descriptors/{pnfdInfoId}", produces = { "application/json" }, consumes = { "application/json" })
 	default ResponseEntity<PnfdInfoModifications> pnfDescriptorsPnfdInfoIdPatch(
 			@Parameter(in = ParameterIn.HEADER, description = "Content-Types that are acceptable for the response. Reference: IETF RFC 7231. ", required = true, schema = @Schema()) @RequestHeader(value = "Accept", required = true) final String accept,
 			@Parameter(in = ParameterIn.HEADER, description = "The MIME type of the body of the request. Reference: IETF RFC 7231 ", required = true, schema = @Schema()) @RequestHeader(value = "Content-Type", required = true) final String contentType,
@@ -273,7 +282,7 @@ public interface PnfDescriptors431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/pnf_descriptors/{pnfdInfoId}/pnfd_content", produces = {"application/json"})
+	@GetMapping(value = "/pnf_descriptors/{pnfdInfoId}/pnfd_content", produces = { "application/json" })
 	default ResponseEntity<Void> pnfDescriptorsPnfdInfoIdPnfdContentGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual PNF descriptor resource. ", required = true, schema = @Schema()) @PathVariable("pnfdInfoId") final String pnfdInfoId,
 			@Parameter(in = ParameterIn.HEADER, description = "Version of the API requested to use when responding to this request. ", required = true, schema = @Schema()) @RequestHeader(value = "Version", required = true) final String version,
@@ -301,7 +310,7 @@ public interface PnfDescriptors431Sol005Api {
 			@ApiResponse(responseCode = "409", description = "409 CONFLICT  Shall be returned upon the following error: The operation cannot be executed currently, due to a conflict with the state of the resource. Typically, this is due to the fact that the \"pnfdOnboardingState\" attribute has a value other than \"CREATED\" or \"ERROR\". The response body shall contain a ProblemDetails structure, in which the \"detail\" attribute shall convey more information about the error ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @PutMapping(value = "/pnf_descriptors/{pnfdInfoId}/pnfd_content", produces = {"application/json"})
+	@PutMapping(value = "/pnf_descriptors/{pnfdInfoId}/pnfd_content", produces = { "application/json" })
 	default ResponseEntity<Void> pnfDescriptorsPnfdInfoIdPnfdContentPut(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual PNF descriptor resource. ", required = true, schema = @Schema()) @PathVariable("pnfdInfoId") final String pnfdInfoId,
 			@Parameter(in = ParameterIn.HEADER, description = "Version of the API requested to use when responding to this request. ", required = true, schema = @Schema()) @RequestHeader(value = "Version", required = true) final String version,
@@ -329,7 +338,7 @@ public interface PnfDescriptors431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/pnf_descriptors/{pnfdInfoId}/pnfd", produces = {"application/json"})
+	@GetMapping(value = "/pnf_descriptors/{pnfdInfoId}/pnfd", produces = { "application/json" })
 	default ResponseEntity<Void> pnfDescriptorsPnfdInfoIdPnfdGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual PNF descriptor resource. ", required = true, schema = @Schema()) @PathVariable("pnfdInfoId") final String pnfdInfoId,
 			@Parameter(in = ParameterIn.HEADER, description = "Version of the API requested to use when responding to this request. ", required = true, schema = @Schema()) @RequestHeader(value = "Version", required = true) final String version,
@@ -357,7 +366,7 @@ public interface PnfDescriptors431Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-            @PostMapping(value = "/pnf_descriptors", produces = {"application/json"}, consumes = {"application/json"})
+	@PostMapping(value = "/pnf_descriptors", produces = { "application/json" }, consumes = { "application/json" })
 	default ResponseEntity<PnfdInfo> pnfDescriptorsPost(
 			@Parameter(in = ParameterIn.HEADER, description = "Version of the API requested to use when responding to this request. ", required = true, schema = @Schema()) @RequestHeader(value = "Version", required = true) final String version,
 			@Parameter(in = ParameterIn.HEADER, description = "Content-Types that are acceptable for the response. Reference: IETF RFC 7231. ", required = true, schema = @Schema()) @RequestHeader(value = "Accept", required = true) final String accept,

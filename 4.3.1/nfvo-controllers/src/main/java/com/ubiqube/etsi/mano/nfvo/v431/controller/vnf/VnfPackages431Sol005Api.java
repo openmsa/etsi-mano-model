@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.ProblemDetails;
+import com.ubiqube.etsi.mano.em.v431.model.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.CreateVnfPkgInfoRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.ExternalArtifactsAccessConfig;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.UploadVnfPkgFromUriRequest;

@@ -21,9 +21,6 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v431.controller.nsfm;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +28,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.ProblemDetails;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nsfm.AlarmClearedNotification;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nsfm.AlarmListRebuiltNotification;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nsfm.AlarmNotification;
+import com.ubiqube.etsi.mano.em.v431.model.vnfconfig.ProblemDetails;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmClearedNotification;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmListRebuiltNotification;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmNotification;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -43,6 +40,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 
 @Validated
 @RequestMapping(value = "/sol005/nsfm/v1", headers = { "Version=1.10.0" })

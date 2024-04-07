@@ -18,17 +18,17 @@ package com.ubiqube.etsi.mano.vnfm.v431.controller.vnf;
 
 import static com.ubiqube.etsi.mano.nfvo.fc.controller.NfvoConstants.getSafeUUID;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.service.LinksSol003;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPkgInfo;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfPackages431Sol003Controller implements VnfPackages431Sol003Api {
