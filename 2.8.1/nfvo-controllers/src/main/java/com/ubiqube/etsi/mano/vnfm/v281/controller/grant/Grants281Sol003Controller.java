@@ -19,8 +19,6 @@ package com.ubiqube.etsi.mano.vnfm.v281.controller.grant;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.validation.Valid;
-
 import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +29,9 @@ import com.ubiqube.etsi.mano.em.v281.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.vnfm.v281.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v281.model.grant.GrantRequest;
 
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -40,20 +41,21 @@ import com.ubiqube.etsi.mano.vnfm.v281.model.grant.GrantRequest;
 @Conditional(SingleControllerCondition.class)
 public class Grants281Sol003Controller implements Grants281Sol003Api {
 	private final LcmGrantsFrontController lcmGrantsFrontController;
+	private final MapperFacade mapper;
 
-	public Grants281Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController) {
-		super();
+	public Grants281Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final MapperFacade mapper) {
 		this.lcmGrantsFrontController = lcmGrantsFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Grant> grantsGrantIdGet(final String grantId) {
-		return lcmGrantsFrontController.grantsGrantIdGet(grantId,Grant.class,Grants281Sol003Controller::makeSelfLinks);
+		return lcmGrantsFrontController.grantsGrantIdGet(grantId, x -> mapper.map(x, Grant.class), Grants281Sol003Controller::makeSelfLinks);
 	}
 
 	@Override
 	public ResponseEntity<Grant> grantsPost(@Valid final GrantRequest grantRequest) {
-		return lcmGrantsFrontController.grantsPost(grantRequest,Grant.class,Grants281Sol003Controller::getSelfLink);
+		return lcmGrantsFrontController.grantsPost(grantRequest, x -> mapper.map(x, Grant.class), Grants281Sol003Controller::getSelfLink);
 	}
 
 	private static void makeSelfLinks(final Grant jsonGrant) {
