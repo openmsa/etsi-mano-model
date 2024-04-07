@@ -16,213 +16,222 @@
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.LogReportAvailableNotificationLinks;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.ManoManagedObjectReference;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
+import java.util.Objects;
+
 import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanopm.ManoManagedObjectReference;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 
 /**
- * This notification informs the receiver that the log report of the NFV-MANO functional entity is available. It shall comply with the provisions defined in table 8.6.2.4-1. The notification shall be triggered by the NFV-MANO functional entity when log information has been collected by the logging job and the log report is available.
+ * This notification informs the receiver that the log report of the NFV-MANO
+ * functional entity is available. It shall comply with the provisions defined
+ * in table 8.6.2.4-1. The notification shall be triggered by the NFV-MANO
+ * functional entity when log information has been collected by the logging job
+ * and the log report is available.
  */
 @Schema(description = "This notification informs the receiver that the log report of the NFV-MANO functional entity is available. It shall comply with the provisions defined in table 8.6.2.4-1. The notification shall be triggered by the NFV-MANO functional entity when log information has been collected by the logging job and the log report is available.")
 @Validated
 
+public class LogReportAvailableNotification {
+	@JsonProperty("id")
+	private String id = null;
 
+	@JsonProperty("notificationType")
+	private String notificationType = null;
 
-public class LogReportAvailableNotification   {
-  @JsonProperty("id")
-  private String id = null;
+	@JsonProperty("subscriptionId")
+	private String subscriptionId = null;
 
-  @JsonProperty("notificationType")
-  private String notificationType = null;
+	@JsonProperty("timeStamp")
+	private OffsetDateTime timeStamp = null;
 
-  @JsonProperty("subscriptionId")
-  private String subscriptionId = null;
+	@JsonProperty("objectInstanceId")
+	private ManoManagedObjectReference objectInstanceId = null;
 
-  @JsonProperty("timeStamp")
-  private OffsetDateTime timeStamp = null;
+	@JsonProperty("_links")
+	private LogReportAvailableNotificationLinks _links = null;
 
-  @JsonProperty("objectInstanceId")
-  private ManoManagedObjectReference objectInstanceId = null;
+	public LogReportAvailableNotification id(final String id) {
+		this.id = id;
+		return this;
+	}
 
-  @JsonProperty("_links")
-  private LogReportAvailableNotificationLinks _links = null;
+	/**
+	 * An identifier with the intention of being globally unique.
+	 *
+	 * @return id
+	 **/
+	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@NotNull
 
-  public LogReportAvailableNotification id(String id) {
-    this.id = id;
-    return this;
-  }
+	public String getId() {
+		return id;
+	}
 
-  /**
-   * An identifier with the intention of being globally unique. 
-   * @return id
-   **/
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
-      @NotNull
+	public void setId(final String id) {
+		this.id = id;
+	}
 
-    public String getId() {
-    return id;
-  }
+	public LogReportAvailableNotification notificationType(final String notificationType) {
+		this.notificationType = notificationType;
+		return this;
+	}
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	/**
+	 * Discriminator for the different notification types. Shall be set to
+	 * \"LogReportAvailableNotification\" for this notification type.
+	 *
+	 * @return notificationType
+	 **/
+	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"LogReportAvailableNotification\" for this notification type.")
+	@NotNull
 
-  public LogReportAvailableNotification notificationType(String notificationType) {
-    this.notificationType = notificationType;
-    return this;
-  }
+	public String getNotificationType() {
+		return notificationType;
+	}
 
-  /**
-   * Discriminator for the different notification types. Shall be set to \"LogReportAvailableNotification\" for this notification type.
-   * @return notificationType
-   **/
-  @Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"LogReportAvailableNotification\" for this notification type.")
-      @NotNull
+	public void setNotificationType(final String notificationType) {
+		this.notificationType = notificationType;
+	}
 
-    public String getNotificationType() {
-    return notificationType;
-  }
+	public LogReportAvailableNotification subscriptionId(final String subscriptionId) {
+		this.subscriptionId = subscriptionId;
+		return this;
+	}
 
-  public void setNotificationType(String notificationType) {
-    this.notificationType = notificationType;
-  }
+	/**
+	 * An identifier with the intention of being globally unique.
+	 *
+	 * @return subscriptionId
+	 **/
+	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@NotNull
 
-  public LogReportAvailableNotification subscriptionId(String subscriptionId) {
-    this.subscriptionId = subscriptionId;
-    return this;
-  }
+	public String getSubscriptionId() {
+		return subscriptionId;
+	}
 
-  /**
-   * An identifier with the intention of being globally unique. 
-   * @return subscriptionId
-   **/
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
-      @NotNull
+	public void setSubscriptionId(final String subscriptionId) {
+		this.subscriptionId = subscriptionId;
+	}
 
-    public String getSubscriptionId() {
-    return subscriptionId;
-  }
+	public LogReportAvailableNotification timeStamp(final OffsetDateTime timeStamp) {
+		this.timeStamp = timeStamp;
+		return this;
+	}
 
-  public void setSubscriptionId(String subscriptionId) {
-    this.subscriptionId = subscriptionId;
-  }
+	/**
+	 * Date-time stamp. Representation: String formatted according to IETF RFC 3339.
+	 *
+	 * @return timeStamp
+	 **/
+	@Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+	@NotNull
 
-  public LogReportAvailableNotification timeStamp(OffsetDateTime timeStamp) {
-    this.timeStamp = timeStamp;
-    return this;
-  }
+	@Valid
+	public OffsetDateTime getTimeStamp() {
+		return timeStamp;
+	}
 
-  /**
-   * Date-time stamp. Representation: String formatted according to IETF RFC 3339. 
-   * @return timeStamp
-   **/
-  @Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
-      @NotNull
+	public void setTimeStamp(final OffsetDateTime timeStamp) {
+		this.timeStamp = timeStamp;
+	}
 
-    @Valid
-    public OffsetDateTime getTimeStamp() {
-    return timeStamp;
-  }
+	public LogReportAvailableNotification objectInstanceId(final ManoManagedObjectReference objectInstanceId) {
+		this.objectInstanceId = objectInstanceId;
+		return this;
+	}
 
-  public void setTimeStamp(OffsetDateTime timeStamp) {
-    this.timeStamp = timeStamp;
-  }
+	/**
+	 * Get objectInstanceId
+	 *
+	 * @return objectInstanceId
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  public LogReportAvailableNotification objectInstanceId(ManoManagedObjectReference objectInstanceId) {
-    this.objectInstanceId = objectInstanceId;
-    return this;
-  }
+	@Valid
+	public ManoManagedObjectReference getObjectInstanceId() {
+		return objectInstanceId;
+	}
 
-  /**
-   * Get objectInstanceId
-   * @return objectInstanceId
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public void setObjectInstanceId(final ManoManagedObjectReference objectInstanceId) {
+		this.objectInstanceId = objectInstanceId;
+	}
 
-    @Valid
-    public ManoManagedObjectReference getObjectInstanceId() {
-    return objectInstanceId;
-  }
+	public LogReportAvailableNotification _links(final LogReportAvailableNotificationLinks _links) {
+		this._links = _links;
+		return this;
+	}
 
-  public void setObjectInstanceId(ManoManagedObjectReference objectInstanceId) {
-    this.objectInstanceId = objectInstanceId;
-  }
+	/**
+	 * Get _links
+	 *
+	 * @return _links
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  public LogReportAvailableNotification _links(LogReportAvailableNotificationLinks _links) {
-    this._links = _links;
-    return this;
-  }
+	@Valid
+	public LogReportAvailableNotificationLinks getLinks() {
+		return _links;
+	}
 
-  /**
-   * Get _links
-   * @return _links
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public void setLinks(final LogReportAvailableNotificationLinks _links) {
+		this._links = _links;
+	}
 
-    @Valid
-    public LogReportAvailableNotificationLinks getLinks() {
-    return _links;
-  }
+	@Override
+	public boolean equals(final java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if ((o == null) || (getClass() != o.getClass())) {
+			return false;
+		}
+		final LogReportAvailableNotification logReportAvailableNotification = (LogReportAvailableNotification) o;
+		return Objects.equals(this.id, logReportAvailableNotification.id) &&
+				Objects.equals(this.notificationType, logReportAvailableNotification.notificationType) &&
+				Objects.equals(this.subscriptionId, logReportAvailableNotification.subscriptionId) &&
+				Objects.equals(this.timeStamp, logReportAvailableNotification.timeStamp) &&
+				Objects.equals(this.objectInstanceId, logReportAvailableNotification.objectInstanceId) &&
+				Objects.equals(this._links, logReportAvailableNotification._links);
+	}
 
-  public void setLinks(LogReportAvailableNotificationLinks _links) {
-    this._links = _links;
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, notificationType, subscriptionId, timeStamp, objectInstanceId, _links);
+	}
 
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("class LogReportAvailableNotification {\n");
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    LogReportAvailableNotification logReportAvailableNotification = (LogReportAvailableNotification) o;
-    return Objects.equals(this.id, logReportAvailableNotification.id) &&
-        Objects.equals(this.notificationType, logReportAvailableNotification.notificationType) &&
-        Objects.equals(this.subscriptionId, logReportAvailableNotification.subscriptionId) &&
-        Objects.equals(this.timeStamp, logReportAvailableNotification.timeStamp) &&
-        Objects.equals(this.objectInstanceId, logReportAvailableNotification.objectInstanceId) &&
-        Objects.equals(this._links, logReportAvailableNotification._links);
-  }
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
+		sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
+		sb.append("    timeStamp: ").append(toIndentedString(timeStamp)).append("\n");
+		sb.append("    objectInstanceId: ").append(toIndentedString(objectInstanceId)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, notificationType, subscriptionId, timeStamp, objectInstanceId, _links);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LogReportAvailableNotification {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
-    sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
-    sb.append("    timeStamp: ").append(toIndentedString(timeStamp)).append("\n");
-    sb.append("    objectInstanceId: ").append(toIndentedString(objectInstanceId)).append("\n");
-    sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }

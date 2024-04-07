@@ -21,17 +21,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.ProblemDetails;
+import com.ubiqube.etsi.mano.em.v431.model.vnfconfig.ProblemDetails;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedVirtualLink;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnLinks;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LcmOpOccNotificationVerbosityType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents an NS lifecycle management operation occurrence

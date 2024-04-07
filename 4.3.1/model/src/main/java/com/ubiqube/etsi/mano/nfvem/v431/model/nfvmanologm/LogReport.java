@@ -16,347 +16,362 @@
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.LogReportFileLocationInfo;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.LogReportSecurityAndIntegrityInfo;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.LoggingJobLinks;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.ManoManagedObjectReference;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
+import java.util.Objects;
+
 import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanopm.ManoManagedObjectReference;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 
 /**
- * This type represents a log report, which provides information about a compiled log and how to obtain it. * NOTE: It is not specified in the present document how the NFV-MANO functional entity&#x27;s private         key is provided to the NFV-MANO functional entity. 
+ * This type represents a log report, which provides information about a
+ * compiled log and how to obtain it. * NOTE: It is not specified in the present
+ * document how the NFV-MANO functional entity&#x27;s private key is provided to
+ * the NFV-MANO functional entity.
  */
 @Schema(description = "This type represents a log report, which provides information about a compiled log and how to obtain it. * NOTE: It is not specified in the present document how the NFV-MANO functional entity's private         key is provided to the NFV-MANO functional entity. ")
 @Validated
 
+public class LogReport {
+	@JsonProperty("id")
+	private String id = null;
 
+	@JsonProperty("objectInstanceId")
+	private ManoManagedObjectReference objectInstanceId = null;
 
-public class LogReport   {
-  @JsonProperty("id")
-  private String id = null;
+	/**
+	 * The trigger for the compilation of the log file. Permitted values: -
+	 * ON_DEMAND: created based on explicit request by a client. - AUTOMATIC:
+	 * created according to the logging job compilation configuration.
+	 */
+	public enum CompilationTriggerEnum {
+		ON_DEMAND("ON_DEMAND"),
 
-  @JsonProperty("objectInstanceId")
-  private ManoManagedObjectReference objectInstanceId = null;
+		AUTOMATIC("AUTOMATIC");
 
-  /**
-   * The trigger for the compilation of the log file. Permitted values: - ON_DEMAND: created based on explicit request by a client. - AUTOMATIC: created according to the logging job compilation configuration.
-   */
-  public enum CompilationTriggerEnum {
-    ON_DEMAND("ON_DEMAND"),
-    
-    AUTOMATIC("AUTOMATIC");
+		private final String value;
 
-    private String value;
+		CompilationTriggerEnum(final String value) {
+			this.value = value;
+		}
 
-    CompilationTriggerEnum(String value) {
-      this.value = value;
-    }
+		@Override
+		@JsonValue
+		public String toString() {
+			return String.valueOf(value);
+		}
 
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
+		@JsonCreator
+		public static CompilationTriggerEnum fromValue(final String text) {
+			for (final CompilationTriggerEnum b : CompilationTriggerEnum.values()) {
+				if (String.valueOf(b.value).equals(text)) {
+					return b;
+				}
+			}
+			return null;
+		}
+	}
 
-    @JsonCreator
-    public static CompilationTriggerEnum fromValue(String text) {
-      for (CompilationTriggerEnum b : CompilationTriggerEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-  @JsonProperty("compilationTrigger")
-  private CompilationTriggerEnum compilationTrigger = null;
+	@JsonProperty("compilationTrigger")
+	private CompilationTriggerEnum compilationTrigger = null;
 
-  @JsonProperty("readyTime")
-  private OffsetDateTime readyTime = null;
+	@JsonProperty("readyTime")
+	private OffsetDateTime readyTime = null;
 
-  @JsonProperty("expiryTime")
-  private OffsetDateTime expiryTime = null;
+	@JsonProperty("expiryTime")
+	private OffsetDateTime expiryTime = null;
 
-  @JsonProperty("fileSize")
-  private Integer fileSize = null;
+	@JsonProperty("fileSize")
+	private Integer fileSize = null;
 
-  @JsonProperty("fileFormat")
-  private String fileFormat = null;
+	@JsonProperty("fileFormat")
+	private String fileFormat = null;
 
-  @JsonProperty("fileLocationInfo")
-  private LogReportFileLocationInfo fileLocationInfo = null;
+	@JsonProperty("fileLocationInfo")
+	private LogReportFileLocationInfo fileLocationInfo = null;
 
-  @JsonProperty("securityAndIntegrityInfo")
-  private LogReportSecurityAndIntegrityInfo securityAndIntegrityInfo = null;
+	@JsonProperty("securityAndIntegrityInfo")
+	private LogReportSecurityAndIntegrityInfo securityAndIntegrityInfo = null;
 
-  @JsonProperty("_links")
-  private LoggingJobLinks _links = null;
+	@JsonProperty("_links")
+	private LoggingJobLinks _links = null;
 
-  public LogReport id(String id) {
-    this.id = id;
-    return this;
-  }
+	public LogReport id(final String id) {
+		this.id = id;
+		return this;
+	}
 
-  /**
-   * An identifier with the intention of being globally unique. 
-   * @return id
-   **/
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
-      @NotNull
+	/**
+	 * An identifier with the intention of being globally unique.
+	 *
+	 * @return id
+	 **/
+	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@NotNull
 
-    public String getId() {
-    return id;
-  }
+	public String getId() {
+		return id;
+	}
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public void setId(final String id) {
+		this.id = id;
+	}
 
-  public LogReport objectInstanceId(ManoManagedObjectReference objectInstanceId) {
-    this.objectInstanceId = objectInstanceId;
-    return this;
-  }
+	public LogReport objectInstanceId(final ManoManagedObjectReference objectInstanceId) {
+		this.objectInstanceId = objectInstanceId;
+		return this;
+	}
 
-  /**
-   * Get objectInstanceId
-   * @return objectInstanceId
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	/**
+	 * Get objectInstanceId
+	 *
+	 * @return objectInstanceId
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-    @Valid
-    public ManoManagedObjectReference getObjectInstanceId() {
-    return objectInstanceId;
-  }
+	@Valid
+	public ManoManagedObjectReference getObjectInstanceId() {
+		return objectInstanceId;
+	}
 
-  public void setObjectInstanceId(ManoManagedObjectReference objectInstanceId) {
-    this.objectInstanceId = objectInstanceId;
-  }
+	public void setObjectInstanceId(final ManoManagedObjectReference objectInstanceId) {
+		this.objectInstanceId = objectInstanceId;
+	}
 
-  public LogReport compilationTrigger(CompilationTriggerEnum compilationTrigger) {
-    this.compilationTrigger = compilationTrigger;
-    return this;
-  }
+	public LogReport compilationTrigger(final CompilationTriggerEnum compilationTrigger) {
+		this.compilationTrigger = compilationTrigger;
+		return this;
+	}
 
-  /**
-   * The trigger for the compilation of the log file. Permitted values: - ON_DEMAND: created based on explicit request by a client. - AUTOMATIC: created according to the logging job compilation configuration.
-   * @return compilationTrigger
-   **/
-  @Schema(required = true, description = "The trigger for the compilation of the log file. Permitted values: - ON_DEMAND: created based on explicit request by a client. - AUTOMATIC: created according to the logging job compilation configuration.")
-      @NotNull
+	/**
+	 * The trigger for the compilation of the log file. Permitted values: -
+	 * ON_DEMAND: created based on explicit request by a client. - AUTOMATIC:
+	 * created according to the logging job compilation configuration.
+	 *
+	 * @return compilationTrigger
+	 **/
+	@Schema(required = true, description = "The trigger for the compilation of the log file. Permitted values: - ON_DEMAND: created based on explicit request by a client. - AUTOMATIC: created according to the logging job compilation configuration.")
+	@NotNull
 
-    public CompilationTriggerEnum getCompilationTrigger() {
-    return compilationTrigger;
-  }
+	public CompilationTriggerEnum getCompilationTrigger() {
+		return compilationTrigger;
+	}
 
-  public void setCompilationTrigger(CompilationTriggerEnum compilationTrigger) {
-    this.compilationTrigger = compilationTrigger;
-  }
+	public void setCompilationTrigger(final CompilationTriggerEnum compilationTrigger) {
+		this.compilationTrigger = compilationTrigger;
+	}
 
-  public LogReport readyTime(OffsetDateTime readyTime) {
-    this.readyTime = readyTime;
-    return this;
-  }
+	public LogReport readyTime(final OffsetDateTime readyTime) {
+		this.readyTime = readyTime;
+		return this;
+	}
 
-  /**
-   * Date-time stamp. Representation: String formatted according to IETF RFC 3339. 
-   * @return readyTime
-   **/
-  @Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
-      @NotNull
+	/**
+	 * Date-time stamp. Representation: String formatted according to IETF RFC 3339.
+	 *
+	 * @return readyTime
+	 **/
+	@Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+	@NotNull
 
-    @Valid
-    public OffsetDateTime getReadyTime() {
-    return readyTime;
-  }
+	@Valid
+	public OffsetDateTime getReadyTime() {
+		return readyTime;
+	}
 
-  public void setReadyTime(OffsetDateTime readyTime) {
-    this.readyTime = readyTime;
-  }
+	public void setReadyTime(final OffsetDateTime readyTime) {
+		this.readyTime = readyTime;
+	}
 
-  public LogReport expiryTime(OffsetDateTime expiryTime) {
-    this.expiryTime = expiryTime;
-    return this;
-  }
+	public LogReport expiryTime(final OffsetDateTime expiryTime) {
+		this.expiryTime = expiryTime;
+		return this;
+	}
 
-  /**
-   * Date-time stamp. Representation: String formatted according to IETF RFC 3339. 
-   * @return expiryTime
-   **/
-  @Schema(description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
-  
-    @Valid
-    public OffsetDateTime getExpiryTime() {
-    return expiryTime;
-  }
+	/**
+	 * Date-time stamp. Representation: String formatted according to IETF RFC 3339.
+	 *
+	 * @return expiryTime
+	 **/
+	@Schema(description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
 
-  public void setExpiryTime(OffsetDateTime expiryTime) {
-    this.expiryTime = expiryTime;
-  }
+	@Valid
+	public OffsetDateTime getExpiryTime() {
+		return expiryTime;
+	}
 
-  public LogReport fileSize(Integer fileSize) {
-    this.fileSize = fileSize;
-    return this;
-  }
+	public void setExpiryTime(final OffsetDateTime expiryTime) {
+		this.expiryTime = expiryTime;
+	}
 
-  /**
-   * The size of the compiled log file in bytes, if known.
-   * @return fileSize
-   **/
-  @Schema(description = "The size of the compiled log file in bytes, if known.")
-  
-    public Integer getFileSize() {
-    return fileSize;
-  }
+	public LogReport fileSize(final Integer fileSize) {
+		this.fileSize = fileSize;
+		return this;
+	}
 
-  public void setFileSize(Integer fileSize) {
-    this.fileSize = fileSize;
-  }
+	/**
+	 * The size of the compiled log file in bytes, if known.
+	 *
+	 * @return fileSize
+	 **/
+	@Schema(description = "The size of the compiled log file in bytes, if known.")
 
-  public LogReport fileFormat(String fileFormat) {
-    this.fileFormat = fileFormat;
-    return this;
-  }
+	public Integer getFileSize() {
+		return fileSize;
+	}
 
-  /**
-   * The encoding used by the file.
-   * @return fileFormat
-   **/
-  @Schema(required = true, description = "The encoding used by the file.")
-      @NotNull
+	public void setFileSize(final Integer fileSize) {
+		this.fileSize = fileSize;
+	}
 
-    public String getFileFormat() {
-    return fileFormat;
-  }
+	public LogReport fileFormat(final String fileFormat) {
+		this.fileFormat = fileFormat;
+		return this;
+	}
 
-  public void setFileFormat(String fileFormat) {
-    this.fileFormat = fileFormat;
-  }
+	/**
+	 * The encoding used by the file.
+	 *
+	 * @return fileFormat
+	 **/
+	@Schema(required = true, description = "The encoding used by the file.")
+	@NotNull
 
-  public LogReport fileLocationInfo(LogReportFileLocationInfo fileLocationInfo) {
-    this.fileLocationInfo = fileLocationInfo;
-    return this;
-  }
+	public String getFileFormat() {
+		return fileFormat;
+	}
 
-  /**
-   * Get fileLocationInfo
-   * @return fileLocationInfo
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public void setFileFormat(final String fileFormat) {
+		this.fileFormat = fileFormat;
+	}
 
-    @Valid
-    public LogReportFileLocationInfo getFileLocationInfo() {
-    return fileLocationInfo;
-  }
+	public LogReport fileLocationInfo(final LogReportFileLocationInfo fileLocationInfo) {
+		this.fileLocationInfo = fileLocationInfo;
+		return this;
+	}
 
-  public void setFileLocationInfo(LogReportFileLocationInfo fileLocationInfo) {
-    this.fileLocationInfo = fileLocationInfo;
-  }
+	/**
+	 * Get fileLocationInfo
+	 *
+	 * @return fileLocationInfo
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  public LogReport securityAndIntegrityInfo(LogReportSecurityAndIntegrityInfo securityAndIntegrityInfo) {
-    this.securityAndIntegrityInfo = securityAndIntegrityInfo;
-    return this;
-  }
+	@Valid
+	public LogReportFileLocationInfo getFileLocationInfo() {
+		return fileLocationInfo;
+	}
 
-  /**
-   * Get securityAndIntegrityInfo
-   * @return securityAndIntegrityInfo
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public void setFileLocationInfo(final LogReportFileLocationInfo fileLocationInfo) {
+		this.fileLocationInfo = fileLocationInfo;
+	}
 
-    @Valid
-    public LogReportSecurityAndIntegrityInfo getSecurityAndIntegrityInfo() {
-    return securityAndIntegrityInfo;
-  }
+	public LogReport securityAndIntegrityInfo(final LogReportSecurityAndIntegrityInfo securityAndIntegrityInfo) {
+		this.securityAndIntegrityInfo = securityAndIntegrityInfo;
+		return this;
+	}
 
-  public void setSecurityAndIntegrityInfo(LogReportSecurityAndIntegrityInfo securityAndIntegrityInfo) {
-    this.securityAndIntegrityInfo = securityAndIntegrityInfo;
-  }
+	/**
+	 * Get securityAndIntegrityInfo
+	 *
+	 * @return securityAndIntegrityInfo
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  public LogReport _links(LoggingJobLinks _links) {
-    this._links = _links;
-    return this;
-  }
+	@Valid
+	public LogReportSecurityAndIntegrityInfo getSecurityAndIntegrityInfo() {
+		return securityAndIntegrityInfo;
+	}
 
-  /**
-   * Get _links
-   * @return _links
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public void setSecurityAndIntegrityInfo(final LogReportSecurityAndIntegrityInfo securityAndIntegrityInfo) {
+		this.securityAndIntegrityInfo = securityAndIntegrityInfo;
+	}
 
-    @Valid
-    public LoggingJobLinks getLinks() {
-    return _links;
-  }
+	public LogReport _links(final LoggingJobLinks _links) {
+		this._links = _links;
+		return this;
+	}
 
-  public void setLinks(LoggingJobLinks _links) {
-    this._links = _links;
-  }
+	/**
+	 * Get _links
+	 *
+	 * @return _links
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
+	@Valid
+	public LoggingJobLinks getLinks() {
+		return _links;
+	}
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    LogReport logReport = (LogReport) o;
-    return Objects.equals(this.id, logReport.id) &&
-        Objects.equals(this.objectInstanceId, logReport.objectInstanceId) &&
-        Objects.equals(this.compilationTrigger, logReport.compilationTrigger) &&
-        Objects.equals(this.readyTime, logReport.readyTime) &&
-        Objects.equals(this.expiryTime, logReport.expiryTime) &&
-        Objects.equals(this.fileSize, logReport.fileSize) &&
-        Objects.equals(this.fileFormat, logReport.fileFormat) &&
-        Objects.equals(this.fileLocationInfo, logReport.fileLocationInfo) &&
-        Objects.equals(this.securityAndIntegrityInfo, logReport.securityAndIntegrityInfo) &&
-        Objects.equals(this._links, logReport._links);
-  }
+	public void setLinks(final LoggingJobLinks _links) {
+		this._links = _links;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, objectInstanceId, compilationTrigger, readyTime, expiryTime, fileSize, fileFormat, fileLocationInfo, securityAndIntegrityInfo, _links);
-  }
+	@Override
+	public boolean equals(final java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if ((o == null) || (getClass() != o.getClass())) {
+			return false;
+		}
+		final LogReport logReport = (LogReport) o;
+		return Objects.equals(this.id, logReport.id) &&
+				Objects.equals(this.objectInstanceId, logReport.objectInstanceId) &&
+				Objects.equals(this.compilationTrigger, logReport.compilationTrigger) &&
+				Objects.equals(this.readyTime, logReport.readyTime) &&
+				Objects.equals(this.expiryTime, logReport.expiryTime) &&
+				Objects.equals(this.fileSize, logReport.fileSize) &&
+				Objects.equals(this.fileFormat, logReport.fileFormat) &&
+				Objects.equals(this.fileLocationInfo, logReport.fileLocationInfo) &&
+				Objects.equals(this.securityAndIntegrityInfo, logReport.securityAndIntegrityInfo) &&
+				Objects.equals(this._links, logReport._links);
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LogReport {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    objectInstanceId: ").append(toIndentedString(objectInstanceId)).append("\n");
-    sb.append("    compilationTrigger: ").append(toIndentedString(compilationTrigger)).append("\n");
-    sb.append("    readyTime: ").append(toIndentedString(readyTime)).append("\n");
-    sb.append("    expiryTime: ").append(toIndentedString(expiryTime)).append("\n");
-    sb.append("    fileSize: ").append(toIndentedString(fileSize)).append("\n");
-    sb.append("    fileFormat: ").append(toIndentedString(fileFormat)).append("\n");
-    sb.append("    fileLocationInfo: ").append(toIndentedString(fileLocationInfo)).append("\n");
-    sb.append("    securityAndIntegrityInfo: ").append(toIndentedString(securityAndIntegrityInfo)).append("\n");
-    sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, objectInstanceId, compilationTrigger, readyTime, expiryTime, fileSize, fileFormat, fileLocationInfo, securityAndIntegrityInfo, _links);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("class LogReport {\n");
+
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    objectInstanceId: ").append(toIndentedString(objectInstanceId)).append("\n");
+		sb.append("    compilationTrigger: ").append(toIndentedString(compilationTrigger)).append("\n");
+		sb.append("    readyTime: ").append(toIndentedString(readyTime)).append("\n");
+		sb.append("    expiryTime: ").append(toIndentedString(expiryTime)).append("\n");
+		sb.append("    fileSize: ").append(toIndentedString(fileSize)).append("\n");
+		sb.append("    fileFormat: ").append(toIndentedString(fileFormat)).append("\n");
+		sb.append("    fileLocationInfo: ").append(toIndentedString(fileLocationInfo)).append("\n");
+		sb.append("    securityAndIntegrityInfo: ").append(toIndentedString(securityAndIntegrityInfo)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }

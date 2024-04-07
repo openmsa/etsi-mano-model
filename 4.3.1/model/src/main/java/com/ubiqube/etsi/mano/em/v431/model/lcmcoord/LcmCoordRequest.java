@@ -22,7 +22,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ubiqube.etsi.mano.nfvo.v431.model.lcmcoord.LcmCoordLinks;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;

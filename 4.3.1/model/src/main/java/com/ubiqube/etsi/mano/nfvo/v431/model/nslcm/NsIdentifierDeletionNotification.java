@@ -16,209 +16,216 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v431.model.nslcm;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.LccnLinks;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
+import java.util.Objects;
+
 import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnLinks;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * NsIdentifierDeletionNotification
  */
 @Validated
 
+public class NsIdentifierDeletionNotification {
+	@JsonProperty("id")
+	private String id = null;
 
-public class NsIdentifierDeletionNotification   {
-  @JsonProperty("id")
-  private String id = null;
+	@JsonProperty("notificationType")
+	private String notificationType = null;
 
-  @JsonProperty("notificationType")
-  private String notificationType = null;
+	@JsonProperty("subscriptionId")
+	private String subscriptionId = null;
 
-  @JsonProperty("subscriptionId")
-  private String subscriptionId = null;
+	@JsonProperty("timestamp")
+	private OffsetDateTime timestamp = null;
 
-  @JsonProperty("timestamp")
-  private OffsetDateTime timestamp = null;
+	@JsonProperty("nsInstanceId")
+	private String nsInstanceId = null;
 
-  @JsonProperty("nsInstanceId")
-  private String nsInstanceId = null;
+	@JsonProperty("_links")
+	private LccnLinks _links = null;
 
-  @JsonProperty("_links")
-  private LccnLinks _links = null;
+	public NsIdentifierDeletionNotification id(final String id) {
+		this.id = id;
+		return this;
+	}
 
-  public NsIdentifierDeletionNotification id(String id) {
-    this.id = id;
-    return this;
-  }
+	/**
+	 * Get id
+	 *
+	 * @return id
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  /**
-   * Get id
-   * @return id
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public String getId() {
+		return id;
+	}
 
-    public String getId() {
-    return id;
-  }
+	public void setId(final String id) {
+		this.id = id;
+	}
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public NsIdentifierDeletionNotification notificationType(final String notificationType) {
+		this.notificationType = notificationType;
+		return this;
+	}
 
-  public NsIdentifierDeletionNotification notificationType(String notificationType) {
-    this.notificationType = notificationType;
-    return this;
-  }
+	/**
+	 * Discriminator for the different notification types. Shall be set to
+	 * \"NsIdentifierDeletionNotification\" for this notification type.
+	 *
+	 * @return notificationType
+	 **/
+	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"NsIdentifierDeletionNotification\" for this notification type. ")
+	@NotNull
 
-  /**
-   * Discriminator for the different notification types. Shall be set to \"NsIdentifierDeletionNotification\" for this notification type. 
-   * @return notificationType
-   **/
-  @Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"NsIdentifierDeletionNotification\" for this notification type. ")
-      @NotNull
+	public String getNotificationType() {
+		return notificationType;
+	}
 
-    public String getNotificationType() {
-    return notificationType;
-  }
+	public void setNotificationType(final String notificationType) {
+		this.notificationType = notificationType;
+	}
 
-  public void setNotificationType(String notificationType) {
-    this.notificationType = notificationType;
-  }
+	public NsIdentifierDeletionNotification subscriptionId(final String subscriptionId) {
+		this.subscriptionId = subscriptionId;
+		return this;
+	}
 
-  public NsIdentifierDeletionNotification subscriptionId(String subscriptionId) {
-    this.subscriptionId = subscriptionId;
-    return this;
-  }
+	/**
+	 * Get subscriptionId
+	 *
+	 * @return subscriptionId
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  /**
-   * Get subscriptionId
-   * @return subscriptionId
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public String getSubscriptionId() {
+		return subscriptionId;
+	}
 
-    public String getSubscriptionId() {
-    return subscriptionId;
-  }
+	public void setSubscriptionId(final String subscriptionId) {
+		this.subscriptionId = subscriptionId;
+	}
 
-  public void setSubscriptionId(String subscriptionId) {
-    this.subscriptionId = subscriptionId;
-  }
+	public NsIdentifierDeletionNotification timestamp(final OffsetDateTime timestamp) {
+		this.timestamp = timestamp;
+		return this;
+	}
 
-  public NsIdentifierDeletionNotification timestamp(OffsetDateTime timestamp) {
-    this.timestamp = timestamp;
-    return this;
-  }
+	/**
+	 * Get timestamp
+	 *
+	 * @return timestamp
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  /**
-   * Get timestamp
-   * @return timestamp
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	@Valid
+	public OffsetDateTime getTimestamp() {
+		return timestamp;
+	}
 
-    @Valid
-    public OffsetDateTime getTimestamp() {
-    return timestamp;
-  }
+	public void setTimestamp(final OffsetDateTime timestamp) {
+		this.timestamp = timestamp;
+	}
 
-  public void setTimestamp(OffsetDateTime timestamp) {
-    this.timestamp = timestamp;
-  }
+	public NsIdentifierDeletionNotification nsInstanceId(final String nsInstanceId) {
+		this.nsInstanceId = nsInstanceId;
+		return this;
+	}
 
-  public NsIdentifierDeletionNotification nsInstanceId(String nsInstanceId) {
-    this.nsInstanceId = nsInstanceId;
-    return this;
-  }
+	/**
+	 * Get nsInstanceId
+	 *
+	 * @return nsInstanceId
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  /**
-   * Get nsInstanceId
-   * @return nsInstanceId
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public String getNsInstanceId() {
+		return nsInstanceId;
+	}
 
-    public String getNsInstanceId() {
-    return nsInstanceId;
-  }
+	public void setNsInstanceId(final String nsInstanceId) {
+		this.nsInstanceId = nsInstanceId;
+	}
 
-  public void setNsInstanceId(String nsInstanceId) {
-    this.nsInstanceId = nsInstanceId;
-  }
+	public NsIdentifierDeletionNotification _links(final LccnLinks _links) {
+		this._links = _links;
+		return this;
+	}
 
-  public NsIdentifierDeletionNotification _links(LccnLinks _links) {
-    this._links = _links;
-    return this;
-  }
+	/**
+	 * Get _links
+	 *
+	 * @return _links
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  /**
-   * Get _links
-   * @return _links
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	@Valid
+	public LccnLinks getLinks() {
+		return _links;
+	}
 
-    @Valid
-    public LccnLinks getLinks() {
-    return _links;
-  }
+	public void setLinks(final LccnLinks _links) {
+		this._links = _links;
+	}
 
-  public void setLinks(LccnLinks _links) {
-    this._links = _links;
-  }
+	@Override
+	public boolean equals(final java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if ((o == null) || (getClass() != o.getClass())) {
+			return false;
+		}
+		final NsIdentifierDeletionNotification nsIdentifierDeletionNotification = (NsIdentifierDeletionNotification) o;
+		return Objects.equals(this.id, nsIdentifierDeletionNotification.id) &&
+				Objects.equals(this.notificationType, nsIdentifierDeletionNotification.notificationType) &&
+				Objects.equals(this.subscriptionId, nsIdentifierDeletionNotification.subscriptionId) &&
+				Objects.equals(this.timestamp, nsIdentifierDeletionNotification.timestamp) &&
+				Objects.equals(this.nsInstanceId, nsIdentifierDeletionNotification.nsInstanceId) &&
+				Objects.equals(this._links, nsIdentifierDeletionNotification._links);
+	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, notificationType, subscriptionId, timestamp, nsInstanceId, _links);
+	}
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    NsIdentifierDeletionNotification nsIdentifierDeletionNotification = (NsIdentifierDeletionNotification) o;
-    return Objects.equals(this.id, nsIdentifierDeletionNotification.id) &&
-        Objects.equals(this.notificationType, nsIdentifierDeletionNotification.notificationType) &&
-        Objects.equals(this.subscriptionId, nsIdentifierDeletionNotification.subscriptionId) &&
-        Objects.equals(this.timestamp, nsIdentifierDeletionNotification.timestamp) &&
-        Objects.equals(this.nsInstanceId, nsIdentifierDeletionNotification.nsInstanceId) &&
-        Objects.equals(this._links, nsIdentifierDeletionNotification._links);
-  }
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("class NsIdentifierDeletionNotification {\n");
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, notificationType, subscriptionId, timestamp, nsInstanceId, _links);
-  }
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
+		sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
+		sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
+		sb.append("    nsInstanceId: ").append(toIndentedString(nsInstanceId)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class NsIdentifierDeletionNotification {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
-    sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
-    sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
-    sb.append("    nsInstanceId: ").append(toIndentedString(nsInstanceId)).append("\n");
-    sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }

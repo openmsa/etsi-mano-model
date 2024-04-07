@@ -16,18 +16,19 @@
  */
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.LoggingJobConfig;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.LoggingJobCriteria;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.ManoManagedObjectReference;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanopm.ManoManagedObjectReference;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 /**
  * Information on application context created by the MEC system
@@ -35,126 +36,131 @@ import jakarta.validation.constraints.*;
 @Schema(description = "Information on application context created by the MEC system")
 @Validated
 
+public class CreateLoggingJobRequest {
+	@JsonProperty("objectInstanceIds")
+	@Valid
+	private List<ManoManagedObjectReference> objectInstanceIds = new ArrayList<>();
 
+	@JsonProperty("jobCriteria")
+	private LoggingJobCriteria jobCriteria = null;
 
-public class CreateLoggingJobRequest   {
-  @JsonProperty("objectInstanceIds")
-  @Valid
-  private List<ManoManagedObjectReference> objectInstanceIds = new ArrayList<>();
+	@JsonProperty("jobConfig")
+	private LoggingJobConfig jobConfig = null;
 
-  @JsonProperty("jobCriteria")
-  private LoggingJobCriteria jobCriteria = null;
+	public CreateLoggingJobRequest objectInstanceIds(final List<ManoManagedObjectReference> objectInstanceIds) {
+		this.objectInstanceIds = objectInstanceIds;
+		return this;
+	}
 
-  @JsonProperty("jobConfig")
-  private LoggingJobConfig jobConfig = null;
+	public CreateLoggingJobRequest addObjectInstanceIdsItem(final ManoManagedObjectReference objectInstanceIdsItem) {
+		this.objectInstanceIds.add(objectInstanceIdsItem);
+		return this;
+	}
 
-  public CreateLoggingJobRequest objectInstanceIds(List<ManoManagedObjectReference> objectInstanceIds) {
-    this.objectInstanceIds = objectInstanceIds;
-    return this;
-  }
+	/**
+	 * Identifiers of the object instance for which logging information is requested
+	 * to be collected. This attribute shall contain the identifier of the instance
+	 * of the object to be logged according to their type. If more than one
+	 * identifier is provided, values shall all refer to object instances of the
+	 * same type, for which the same criteria is then applicable.
+	 *
+	 * @return objectInstanceIds
+	 **/
+	@Schema(required = true, description = "Identifiers of the object instance for which logging information is requested to be collected. This attribute shall contain the identifier of the instance of the object to be logged according to their type. If more than one identifier is provided, values shall all refer to object instances of the same type, for which the same criteria is then applicable.")
+	@NotNull
+	@Valid
+	@Size(min = 1)
+	public List<ManoManagedObjectReference> getObjectInstanceIds() {
+		return objectInstanceIds;
+	}
 
-  public CreateLoggingJobRequest addObjectInstanceIdsItem(ManoManagedObjectReference objectInstanceIdsItem) {
-    this.objectInstanceIds.add(objectInstanceIdsItem);
-    return this;
-  }
+	public void setObjectInstanceIds(final List<ManoManagedObjectReference> objectInstanceIds) {
+		this.objectInstanceIds = objectInstanceIds;
+	}
 
-  /**
-   * Identifiers of the object instance for which logging information is requested to be collected. This attribute shall contain the identifier of the instance of the object to be logged according to their type. If more than one identifier is provided, values shall all refer to object instances of the same type, for which the same criteria is then applicable.
-   * @return objectInstanceIds
-   **/
-  @Schema(required = true, description = "Identifiers of the object instance for which logging information is requested to be collected. This attribute shall contain the identifier of the instance of the object to be logged according to their type. If more than one identifier is provided, values shall all refer to object instances of the same type, for which the same criteria is then applicable.")
-      @NotNull
-    @Valid
-  @Size(min=1)   public List<ManoManagedObjectReference> getObjectInstanceIds() {
-    return objectInstanceIds;
-  }
+	public CreateLoggingJobRequest jobCriteria(final LoggingJobCriteria jobCriteria) {
+		this.jobCriteria = jobCriteria;
+		return this;
+	}
 
-  public void setObjectInstanceIds(List<ManoManagedObjectReference> objectInstanceIds) {
-    this.objectInstanceIds = objectInstanceIds;
-  }
+	/**
+	 * Get jobCriteria
+	 *
+	 * @return jobCriteria
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  public CreateLoggingJobRequest jobCriteria(LoggingJobCriteria jobCriteria) {
-    this.jobCriteria = jobCriteria;
-    return this;
-  }
+	@Valid
+	public LoggingJobCriteria getJobCriteria() {
+		return jobCriteria;
+	}
 
-  /**
-   * Get jobCriteria
-   * @return jobCriteria
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public void setJobCriteria(final LoggingJobCriteria jobCriteria) {
+		this.jobCriteria = jobCriteria;
+	}
 
-    @Valid
-    public LoggingJobCriteria getJobCriteria() {
-    return jobCriteria;
-  }
+	public CreateLoggingJobRequest jobConfig(final LoggingJobConfig jobConfig) {
+		this.jobConfig = jobConfig;
+		return this;
+	}
 
-  public void setJobCriteria(LoggingJobCriteria jobCriteria) {
-    this.jobCriteria = jobCriteria;
-  }
+	/**
+	 * Get jobConfig
+	 *
+	 * @return jobConfig
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  public CreateLoggingJobRequest jobConfig(LoggingJobConfig jobConfig) {
-    this.jobConfig = jobConfig;
-    return this;
-  }
+	@Valid
+	public LoggingJobConfig getJobConfig() {
+		return jobConfig;
+	}
 
-  /**
-   * Get jobConfig
-   * @return jobConfig
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public void setJobConfig(final LoggingJobConfig jobConfig) {
+		this.jobConfig = jobConfig;
+	}
 
-    @Valid
-    public LoggingJobConfig getJobConfig() {
-    return jobConfig;
-  }
+	@Override
+	public boolean equals(final java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if ((o == null) || (getClass() != o.getClass())) {
+			return false;
+		}
+		final CreateLoggingJobRequest createLoggingJobRequest = (CreateLoggingJobRequest) o;
+		return Objects.equals(this.objectInstanceIds, createLoggingJobRequest.objectInstanceIds) &&
+				Objects.equals(this.jobCriteria, createLoggingJobRequest.jobCriteria) &&
+				Objects.equals(this.jobConfig, createLoggingJobRequest.jobConfig);
+	}
 
-  public void setJobConfig(LoggingJobConfig jobConfig) {
-    this.jobConfig = jobConfig;
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(objectInstanceIds, jobCriteria, jobConfig);
+	}
 
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("class CreateLoggingJobRequest {\n");
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CreateLoggingJobRequest createLoggingJobRequest = (CreateLoggingJobRequest) o;
-    return Objects.equals(this.objectInstanceIds, createLoggingJobRequest.objectInstanceIds) &&
-        Objects.equals(this.jobCriteria, createLoggingJobRequest.jobCriteria) &&
-        Objects.equals(this.jobConfig, createLoggingJobRequest.jobConfig);
-  }
+		sb.append("    objectInstanceIds: ").append(toIndentedString(objectInstanceIds)).append("\n");
+		sb.append("    jobCriteria: ").append(toIndentedString(jobCriteria)).append("\n");
+		sb.append("    jobConfig: ").append(toIndentedString(jobConfig)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(objectInstanceIds, jobCriteria, jobConfig);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateLoggingJobRequest {\n");
-    
-    sb.append("    objectInstanceIds: ").append(toIndentedString(objectInstanceIds)).append("\n");
-    sb.append("    jobCriteria: ").append(toIndentedString(jobCriteria)).append("\n");
-    sb.append("    jobConfig: ").append(toIndentedString(jobConfig)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }

@@ -17,135 +17,142 @@
 package com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanologm.ManoEntitySubscriptionFilter;
-import io.swagger.v3.oas.annotations.media.Schema;
+
 import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ManoEntitySubscriptionFilter;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 
 /**
- * This type represents a filter that can be used to subscribe for notifications related to log management events. * NOTE: The permitted values of the \&quot;notificationTypes\&quot; attribute are spelled exactly as the names         of the notification types to facilitate automated code generation systems.
+ * This type represents a filter that can be used to subscribe for notifications
+ * related to log management events. * NOTE: The permitted values of the
+ * \&quot;notificationTypes\&quot; attribute are spelled exactly as the names of
+ * the notification types to facilitate automated code generation systems.
  */
 @Schema(description = "This type represents a filter that can be used to subscribe for notifications related to log management events. * NOTE: The permitted values of the \"notificationTypes\" attribute are spelled exactly as the names         of the notification types to facilitate automated code generation systems.")
 @Validated
 
+public class LogmNotificationsFilter {
+	@JsonProperty("objectInstanceFilter")
+	private ManoEntitySubscriptionFilter objectInstanceFilter = null;
 
+	/**
+	 * Match particular notification types. Permitted values: -
+	 * LogReportAvailableNotification See note.
+	 */
+	public enum NotificationTypesEnum {
+		LOGREPORTAVAILABLENOTIFICATION("LogReportAvailableNotification");
 
-public class LogmNotificationsFilter   {
-  @JsonProperty("objectInstanceFilter")
-  private ManoEntitySubscriptionFilter objectInstanceFilter = null;
+		private final String value;
 
-  /**
-   * Match particular notification types. Permitted values: - LogReportAvailableNotification See note.
-   */
-  public enum NotificationTypesEnum {
-    LOGREPORTAVAILABLENOTIFICATION("LogReportAvailableNotification");
+		NotificationTypesEnum(final String value) {
+			this.value = value;
+		}
 
-    private String value;
+		@Override
+		@JsonValue
+		public String toString() {
+			return String.valueOf(value);
+		}
 
-    NotificationTypesEnum(String value) {
-      this.value = value;
-    }
+		@JsonCreator
+		public static NotificationTypesEnum fromValue(final String text) {
+			for (final NotificationTypesEnum b : NotificationTypesEnum.values()) {
+				if (String.valueOf(b.value).equals(text)) {
+					return b;
+				}
+			}
+			return null;
+		}
+	}
 
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
+	@JsonProperty("notificationTypes")
+	private NotificationTypesEnum notificationTypes = null;
 
-    @JsonCreator
-    public static NotificationTypesEnum fromValue(String text) {
-      for (NotificationTypesEnum b : NotificationTypesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-  @JsonProperty("notificationTypes")
-  private NotificationTypesEnum notificationTypes = null;
+	public LogmNotificationsFilter objectInstanceFilter(final ManoEntitySubscriptionFilter objectInstanceFilter) {
+		this.objectInstanceFilter = objectInstanceFilter;
+		return this;
+	}
 
-  public LogmNotificationsFilter objectInstanceFilter(ManoEntitySubscriptionFilter objectInstanceFilter) {
-    this.objectInstanceFilter = objectInstanceFilter;
-    return this;
-  }
+	/**
+	 * Get objectInstanceFilter
+	 *
+	 * @return objectInstanceFilter
+	 **/
+	@Schema(description = "")
 
-  /**
-   * Get objectInstanceFilter
-   * @return objectInstanceFilter
-   **/
-  @Schema(description = "")
-  
-    @Valid
-    public ManoEntitySubscriptionFilter getObjectInstanceFilter() {
-    return objectInstanceFilter;
-  }
+	@Valid
+	public ManoEntitySubscriptionFilter getObjectInstanceFilter() {
+		return objectInstanceFilter;
+	}
 
-  public void setObjectInstanceFilter(ManoEntitySubscriptionFilter objectInstanceFilter) {
-    this.objectInstanceFilter = objectInstanceFilter;
-  }
+	public void setObjectInstanceFilter(final ManoEntitySubscriptionFilter objectInstanceFilter) {
+		this.objectInstanceFilter = objectInstanceFilter;
+	}
 
-  public LogmNotificationsFilter notificationTypes(NotificationTypesEnum notificationTypes) {
-    this.notificationTypes = notificationTypes;
-    return this;
-  }
+	public LogmNotificationsFilter notificationTypes(final NotificationTypesEnum notificationTypes) {
+		this.notificationTypes = notificationTypes;
+		return this;
+	}
 
-  /**
-   * Match particular notification types. Permitted values: - LogReportAvailableNotification See note.
-   * @return notificationTypes
-   **/
-  @Schema(description = "Match particular notification types. Permitted values: - LogReportAvailableNotification See note.")
-  
-    public NotificationTypesEnum getNotificationTypes() {
-    return notificationTypes;
-  }
+	/**
+	 * Match particular notification types. Permitted values: -
+	 * LogReportAvailableNotification See note.
+	 *
+	 * @return notificationTypes
+	 **/
+	@Schema(description = "Match particular notification types. Permitted values: - LogReportAvailableNotification See note.")
 
-  public void setNotificationTypes(NotificationTypesEnum notificationTypes) {
-    this.notificationTypes = notificationTypes;
-  }
+	public NotificationTypesEnum getNotificationTypes() {
+		return notificationTypes;
+	}
 
+	public void setNotificationTypes(final NotificationTypesEnum notificationTypes) {
+		this.notificationTypes = notificationTypes;
+	}
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    LogmNotificationsFilter logmNotificationsFilter = (LogmNotificationsFilter) o;
-    return Objects.equals(this.objectInstanceFilter, logmNotificationsFilter.objectInstanceFilter) &&
-        Objects.equals(this.notificationTypes, logmNotificationsFilter.notificationTypes);
-  }
+	@Override
+	public boolean equals(final java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if ((o == null) || (getClass() != o.getClass())) {
+			return false;
+		}
+		final LogmNotificationsFilter logmNotificationsFilter = (LogmNotificationsFilter) o;
+		return Objects.equals(this.objectInstanceFilter, logmNotificationsFilter.objectInstanceFilter) &&
+				Objects.equals(this.notificationTypes, logmNotificationsFilter.notificationTypes);
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(objectInstanceFilter, notificationTypes);
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(objectInstanceFilter, notificationTypes);
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LogmNotificationsFilter {\n");
-    
-    sb.append("    objectInstanceFilter: ").append(toIndentedString(objectInstanceFilter)).append("\n");
-    sb.append("    notificationTypes: ").append(toIndentedString(notificationTypes)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("class LogmNotificationsFilter {\n");
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		sb.append("    objectInstanceFilter: ").append(toIndentedString(objectInstanceFilter)).append("\n");
+		sb.append("    notificationTypes: ").append(toIndentedString(notificationTypes)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }
