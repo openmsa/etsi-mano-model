@@ -28,7 +28,7 @@ import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import ma.glasnost.orika.impl.generator.EclipseJdtCompilerStrategy;
 
-public class PnfDescriptorTest {
+class PnfDescriptorTest {
 	private final DefaultMapperFactory mapperFactory;
 
 	public PnfDescriptorTest() {
@@ -41,7 +41,7 @@ public class PnfDescriptorTest {
 	void testJsonToDao() throws Exception {
 		final MapperFacade mapper = mapperFactory.getMapperFacade();
 		final PnfdInfo pnf = new PnfdInfo();
-		pnf.setPnfdersion("1.0.0");
+		pnf.setPnfdVersion("1.0.0");
 		final PnfDescriptor pnfD = mapper.map(pnf, PnfDescriptor.class);
 		assertEquals("1.0.0", pnfD.getPnfdVersion());
 	}

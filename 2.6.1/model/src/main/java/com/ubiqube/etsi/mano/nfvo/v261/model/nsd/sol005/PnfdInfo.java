@@ -19,23 +19,20 @@ package com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.annotation.Nonnull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 /**
  * This type represents a response for the query PNFD operation.
  */
 @Schema(description = "This type represents a response for the query PNFD operation. ")
 @Validated
-
 
 public class PnfdInfo {
 	@JsonProperty("id")
@@ -48,7 +45,7 @@ public class PnfdInfo {
 	private String pnfdName = null;
 
 	@JsonProperty("pnfdersion")
-	private String pnfdersion = null;
+	private String pnfdVersion = null;
 
 	@JsonProperty("pnfdProvider")
 	private String pnfdProvider = null;
@@ -136,8 +133,8 @@ public class PnfdInfo {
 		this.pnfdName = pnfdName;
 	}
 
-	public PnfdInfo pnfdersion(final String pnfdersion) {
-		this.pnfdersion = pnfdersion;
+	public PnfdInfo pnfdVersion(final String pnfdersion) {
+		this.pnfdVersion = pnfdersion;
 		return this;
 	}
 
@@ -148,12 +145,12 @@ public class PnfdInfo {
 	 **/
 	@Schema(description = "")
 
-	public String getPnfdersion() {
-		return pnfdersion;
+	public String getPnfdVersion() {
+		return pnfdVersion;
 	}
 
-	public void setPnfdersion(final String pnfdersion) {
-		this.pnfdersion = pnfdersion;
+	public void setPnfdVersion(final String pnfdersion) {
+		this.pnfdVersion = pnfdersion;
 	}
 
 	public PnfdInfo pnfdProvider(final String pnfdProvider) {
@@ -327,7 +324,7 @@ public class PnfdInfo {
 		return Objects.equals(this.id, pnfdInfo.id) &&
 				Objects.equals(this.pnfdId, pnfdInfo.pnfdId) &&
 				Objects.equals(this.pnfdName, pnfdInfo.pnfdName) &&
-				Objects.equals(this.pnfdersion, pnfdInfo.pnfdersion) &&
+				Objects.equals(this.pnfdVersion, pnfdInfo.pnfdVersion) &&
 				Objects.equals(this.pnfdProvider, pnfdInfo.pnfdProvider) &&
 				Objects.equals(this.pnfdInvariantId, pnfdInfo.pnfdInvariantId) &&
 				Objects.equals(this.pnfdOnboardingState, pnfdInfo.pnfdOnboardingState) &&
@@ -339,7 +336,7 @@ public class PnfdInfo {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, pnfdId, pnfdName, pnfdersion, pnfdProvider, pnfdInvariantId, pnfdOnboardingState, onboardingFailureDetails, pnfdUsageState, userDefinedData, links);
+		return Objects.hash(id, pnfdId, pnfdName, pnfdVersion, pnfdProvider, pnfdInvariantId, pnfdOnboardingState, onboardingFailureDetails, pnfdUsageState, userDefinedData, links);
 	}
 
 	@Override
@@ -350,7 +347,7 @@ public class PnfdInfo {
 		sb.append("    id: ").append(toIndentedString(id)).append("\n");
 		sb.append("    pnfdId: ").append(toIndentedString(pnfdId)).append("\n");
 		sb.append("    pnfdName: ").append(toIndentedString(pnfdName)).append("\n");
-		sb.append("    pnfdersion: ").append(toIndentedString(pnfdersion)).append("\n");
+		sb.append("    pnfdersion: ").append(toIndentedString(pnfdVersion)).append("\n");
 		sb.append("    pnfdProvider: ").append(toIndentedString(pnfdProvider)).append("\n");
 		sb.append("    pnfdInvariantId: ").append(toIndentedString(pnfdInvariantId)).append("\n");
 		sb.append("    pnfdOnboardingState: ").append(toIndentedString(pnfdOnboardingState)).append("\n");

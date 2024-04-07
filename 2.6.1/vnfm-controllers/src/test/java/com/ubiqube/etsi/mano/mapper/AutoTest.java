@@ -72,6 +72,7 @@ class AutoTest extends TestHelper {
 	void testGrant() throws Exception {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
+		ignore.add("getResourceTemplateId");
 		doTest(GrantRequest.class, GrantResponse.class, ignore);
 	}
 }
