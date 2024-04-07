@@ -104,7 +104,7 @@ public class OrikaConfigurationNfvo431 implements OrikaMapperFactoryConfigurer {
 				.field("metadata{value}", "metadata{value}")
 				.field("extensions{key}", "extensions{key}")
 				.field("extensions{value}", "extensions{value}")
-				.field("vimConnectionInfo{value}", "vimConnectionInfo{}")
+//				.field("vimConnectionInfo{value}", "vimConnectionInfo{}")
 				.byDefault()
 				.register();
 

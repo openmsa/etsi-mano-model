@@ -14,17 +14,26 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-package com.ubiqube.etsi.mano.nfvo.v431.service;
+package com.ubiqube.etsi.mano.service.mapping;
 
-import java.util.UUID;
+import java.net.URI;
 
-import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
-import com.ubiqube.etsi.mano.service.event.model.EventMessage;
+import jakarta.annotation.Nullable;
 
-public interface VnfmFactory {
+public interface StringToUriMapping {
+	@Nullable
+	default URI map(final @Nullable String uri) {
+		if (null == uri) {
+			return null;
+		}
+		return URI.create(uri);
+	}
 
-	String createSubscriptionLink(ApiAndType at, String id);
-
-	Object createVnfIndicatorValueChangeNotification(UUID subscriptionId, EventMessage event);
-
+	@Nullable
+	default String map(final @Nullable URI uri) {
+		if (null == uri) {
+			return null;
+		}
+		return uri.toString();
+	}
 }

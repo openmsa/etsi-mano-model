@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.em.v431.model.vnflcm;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 import org.springframework.validation.annotation.Validated;
 
@@ -93,6 +94,9 @@ public class VnfInstance {
 
 	@JsonProperty("vnfdVersion")
 	private String vnfdVersion = null;
+
+	@JsonProperty("vnfPkgId")
+	private UUID vnfPkgId = null;
 
 	@JsonProperty("vnfConfigurableProperties")
 	private Map<String, String> vnfConfigurableProperties = null;
@@ -309,6 +313,29 @@ public class VnfInstance {
 
 	public void setVnfdVersion(final String vnfdVersion) {
 		this.vnfdVersion = vnfdVersion;
+	}
+
+	public VnfInstance vnfPkgId(final UUID vnfPkgId) {
+		this.vnfPkgId = vnfPkgId;
+		return this;
+	}
+
+	/**
+	 * Identifier of information held by the NFVO about the specific VNF package on
+	 * which the VNF is based. This identifier has been allocated by the NFVO. This
+	 * attribute can be modified with the PATCH method.
+	 *
+	 * @return vnfPkgId
+	 **/
+	@Schema(required = true, description = "Identifier of information held by the NFVO about the specific VNF package on which the VNF is based. This identifier has been allocated by the NFVO. This attribute can be modified with the PATCH method. ")
+	@NotNull
+
+	public UUID getVnfPkgId() {
+		return vnfPkgId;
+	}
+
+	public void setVnfPkgId(final UUID vnfPkgId) {
+		this.vnfPkgId = vnfPkgId;
 	}
 
 	public VnfInstance vnfConfigurableProperties(final Map<String, String> vnfConfigurableProperties) {

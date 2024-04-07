@@ -14,17 +14,9 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-package com.ubiqube.etsi.mano.nfvo.v431.service;
+@NonNullApi
+@NonNullFields
+package com.ubiqube.etsi.mano.service.mapping;
 
-import java.util.UUID;
-
-import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
-import com.ubiqube.etsi.mano.service.event.model.EventMessage;
-
-public interface VnfmFactory {
-
-	String createSubscriptionLink(ApiAndType at, String id);
-
-	Object createVnfIndicatorValueChangeNotification(UUID subscriptionId, EventMessage event);
-
-}
+import org.springframework.lang.NonNullApi;
+import org.springframework.lang.NonNullFields;
