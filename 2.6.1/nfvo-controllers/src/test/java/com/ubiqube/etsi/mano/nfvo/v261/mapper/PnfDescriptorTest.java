@@ -43,6 +43,6 @@ public class PnfDescriptorTest {
 		final PnfdInfo pnf = new PnfdInfo();
 		pnf.setPnfdersion("1.0.0");
 		final PnfDescriptor pnfD = mapper.map(pnf, PnfDescriptor.class);
-		assertEquals("1.0.0", pnfD.getPnfdersion());
+		assertEquals("1.0.0", pnfD.getPnfdVersion());
 	}
 }
