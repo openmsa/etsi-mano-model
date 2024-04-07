@@ -17,158 +17,186 @@
 package com.ubiqube.etsi.mano.em.v451.model.vnffm;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.ubiqube.etsi.mano.em.v451.model.vnffm.FmNotificationsFilter;
-import com.ubiqube.etsi.mano.em.v451.model.vnffm.FmSubscriptionLinks;
-import io.swagger.v3.oas.annotations.media.Schema;
+
 import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.SubscriptionAuthentication;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 
 /**
- * This type represents a subscription related to notifications about VNF faults. 
+ * This type represents a subscription related to notifications about VNF
+ * faults.
  */
 @Schema(description = "This type represents a subscription related to notifications about VNF faults. ")
 @Validated
 
+public class FmSubscription {
+	@JsonProperty("id")
+	private String id = null;
 
-public class FmSubscription   {
-  @JsonProperty("id")
-  private String id = null;
+	@JsonProperty("filter")
+	private FmNotificationsFilter filter = null;
 
-  @JsonProperty("filter")
-  private FmNotificationsFilter filter = null;
+	@JsonProperty("callbackUri")
+	private String callbackUri = null;
 
-  @JsonProperty("callbackUri")
-  private String callbackUri = null;
+	@JsonProperty("authentication")
+	private SubscriptionAuthentication authentication = null;
 
-  @JsonProperty("_links")
-  private FmSubscriptionLinks _links = null;
+	@JsonProperty("_links")
+	private FmSubscriptionLinks links = null;
 
-  public FmSubscription id(String id) {
-    this.id = id;
-    return this;
-  }
+	public FmSubscription id(final String id) {
+		this.id = id;
+		return this;
+	}
 
-  /**
-   * Get id
-   * @return id
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	/**
+	 * Get id
+	 *
+	 * @return id
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-    public String getId() {
-    return id;
-  }
+	public String getId() {
+		return id;
+	}
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public void setId(final String id) {
+		this.id = id;
+	}
 
-  public FmSubscription filter(FmNotificationsFilter filter) {
-    this.filter = filter;
-    return this;
-  }
+	public FmSubscription filter(final FmNotificationsFilter filter) {
+		this.filter = filter;
+		return this;
+	}
 
-  /**
-   * Get filter
-   * @return filter
-   **/
-  @Schema(description = "")
-  
-    @Valid
-    public FmNotificationsFilter getFilter() {
-    return filter;
-  }
+	/**
+	 * Get filter
+	 *
+	 * @return filter
+	 **/
+	@Schema(description = "")
 
-  public void setFilter(FmNotificationsFilter filter) {
-    this.filter = filter;
-  }
+	@Valid
+	public FmNotificationsFilter getFilter() {
+		return filter;
+	}
 
-  public FmSubscription callbackUri(String callbackUri) {
-    this.callbackUri = callbackUri;
-    return this;
-  }
+	public void setFilter(final FmNotificationsFilter filter) {
+		this.filter = filter;
+	}
 
-  /**
-   * Get callbackUri
-   * @return callbackUri
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public FmSubscription callbackUri(final String callbackUri) {
+		this.callbackUri = callbackUri;
+		return this;
+	}
 
-    public String getCallbackUri() {
-    return callbackUri;
-  }
+	/**
+	 * Get callbackUri
+	 *
+	 * @return callbackUri
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  public void setCallbackUri(String callbackUri) {
-    this.callbackUri = callbackUri;
-  }
+	public String getCallbackUri() {
+		return callbackUri;
+	}
 
-  public FmSubscription _links(FmSubscriptionLinks _links) {
-    this._links = _links;
-    return this;
-  }
+	public void setCallbackUri(final String callbackUri) {
+		this.callbackUri = callbackUri;
+	}
 
-  /**
-   * Get _links
-   * @return _links
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public FmSubscription authentication(final SubscriptionAuthentication authentication) {
+		this.authentication = authentication;
+		return this;
+	}
 
-    @Valid
-    public FmSubscriptionLinks getLinks() {
-    return _links;
-  }
+	/**
+	 * Get authentication
+	 *
+	 * @return authentication
+	 **/
+	@Schema(description = "")
 
-  public void setLinks(FmSubscriptionLinks _links) {
-    this._links = _links;
-  }
+	@Valid
+	public SubscriptionAuthentication getAuthentication() {
+		return authentication;
+	}
 
+	public void setAuthentication(final SubscriptionAuthentication authentication) {
+		this.authentication = authentication;
+	}
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    FmSubscription fmSubscription = (FmSubscription) o;
-    return Objects.equals(this.id, fmSubscription.id) &&
-        Objects.equals(this.filter, fmSubscription.filter) &&
-        Objects.equals(this.callbackUri, fmSubscription.callbackUri) &&
-        Objects.equals(this._links, fmSubscription._links);
-  }
+	public FmSubscription links(final FmSubscriptionLinks _links) {
+		this.links = _links;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, filter, callbackUri, _links);
-  }
+	/**
+	 * Get _links
+	 *
+	 * @return _links
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FmSubscription {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
-    sb.append("    callbackUri: ").append(toIndentedString(callbackUri)).append("\n");
-    sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Valid
+	public FmSubscriptionLinks getLinks() {
+		return links;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setLinks(final FmSubscriptionLinks _links) {
+		this.links = _links;
+	}
+
+	@Override
+	public boolean equals(final java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if ((o == null) || (getClass() != o.getClass())) {
+			return false;
+		}
+		final FmSubscription fmSubscription = (FmSubscription) o;
+		return Objects.equals(this.id, fmSubscription.id) &&
+				Objects.equals(this.filter, fmSubscription.filter) &&
+				Objects.equals(this.callbackUri, fmSubscription.callbackUri) &&
+				Objects.equals(this.links, fmSubscription.links);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, filter, callbackUri, links);
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("class FmSubscription {\n");
+
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
+		sb.append("    callbackUri: ").append(toIndentedString(callbackUri)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }

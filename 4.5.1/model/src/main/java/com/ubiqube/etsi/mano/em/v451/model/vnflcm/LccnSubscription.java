@@ -17,185 +17,210 @@
 package com.ubiqube.etsi.mano.em.v451.model.vnflcm;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LccnSubscriptionLinks;
-import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LcmOpOccNotificationVerbosityType;
-import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LifecycleChangeNotificationsFilter;
-import io.swagger.v3.oas.annotations.media.Schema;
+
 import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 
 /**
- * This type represents a subscription related to notifications about VNF lifecycle changes. 
+ * This type represents a subscription related to notifications about VNF
+ * lifecycle changes.
  */
 @Schema(description = "This type represents a subscription related to notifications about VNF lifecycle changes. ")
 @Validated
 
+public class LccnSubscription {
+	@JsonProperty("id")
+	private String id = null;
 
-public class LccnSubscription   {
-  @JsonProperty("id")
-  private String id = null;
+	@JsonProperty("filter")
+	private LifecycleChangeNotificationsFilter filter = null;
 
-  @JsonProperty("filter")
-  private LifecycleChangeNotificationsFilter filter = null;
+	@JsonProperty("callbackUri")
+	private String callbackUri = null;
+	@JsonProperty("authentication")
+	private SubscriptionAuthentication authentication = null;
+	@JsonProperty("verbosity")
+	private LcmOpOccNotificationVerbosityType verbosity = null;
 
-  @JsonProperty("callbackUri")
-  private String callbackUri = null;
+	@JsonProperty("_links")
+	private LccnSubscriptionLinks _links = null;
 
-  @JsonProperty("verbosity")
-  private LcmOpOccNotificationVerbosityType verbosity = null;
+	public LccnSubscription id(final String id) {
+		this.id = id;
+		return this;
+	}
 
-  @JsonProperty("_links")
-  private LccnSubscriptionLinks _links = null;
+	/**
+	 * Get id
+	 *
+	 * @return id
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  public LccnSubscription id(String id) {
-    this.id = id;
-    return this;
-  }
+	public String getId() {
+		return id;
+	}
 
-  /**
-   * Get id
-   * @return id
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public void setId(final String id) {
+		this.id = id;
+	}
 
-    public String getId() {
-    return id;
-  }
+	public LccnSubscription filter(final LifecycleChangeNotificationsFilter filter) {
+		this.filter = filter;
+		return this;
+	}
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	/**
+	 * Get filter
+	 *
+	 * @return filter
+	 **/
+	@Schema(description = "")
 
-  public LccnSubscription filter(LifecycleChangeNotificationsFilter filter) {
-    this.filter = filter;
-    return this;
-  }
+	@Valid
+	public LifecycleChangeNotificationsFilter getFilter() {
+		return filter;
+	}
 
-  /**
-   * Get filter
-   * @return filter
-   **/
-  @Schema(description = "")
-  
-    @Valid
-    public LifecycleChangeNotificationsFilter getFilter() {
-    return filter;
-  }
+	public void setFilter(final LifecycleChangeNotificationsFilter filter) {
+		this.filter = filter;
+	}
 
-  public void setFilter(LifecycleChangeNotificationsFilter filter) {
-    this.filter = filter;
-  }
+	public LccnSubscription callbackUri(final String callbackUri) {
+		this.callbackUri = callbackUri;
+		return this;
+	}
 
-  public LccnSubscription callbackUri(String callbackUri) {
-    this.callbackUri = callbackUri;
-    return this;
-  }
+	/**
+	 * Get callbackUri
+	 *
+	 * @return callbackUri
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  /**
-   * Get callbackUri
-   * @return callbackUri
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public String getCallbackUri() {
+		return callbackUri;
+	}
 
-    public String getCallbackUri() {
-    return callbackUri;
-  }
+	public void setCallbackUri(final String callbackUri) {
+		this.callbackUri = callbackUri;
+	}
 
-  public void setCallbackUri(String callbackUri) {
-    this.callbackUri = callbackUri;
-  }
+	public LccnSubscription authentication(final SubscriptionAuthentication authentication) {
+		this.authentication = authentication;
+		return this;
+	}
 
-  public LccnSubscription verbosity(LcmOpOccNotificationVerbosityType verbosity) {
-    this.verbosity = verbosity;
-    return this;
-  }
+	/**
+	 * Get authentication
+	 *
+	 * @return authentication
+	 **/
+	@Schema(description = "")
 
-  /**
-   * Get verbosity
-   * @return verbosity
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	@Valid
+	public SubscriptionAuthentication getAuthentication() {
+		return authentication;
+	}
 
-    @Valid
-    public LcmOpOccNotificationVerbosityType getVerbosity() {
-    return verbosity;
-  }
+	public void setAuthentication(final SubscriptionAuthentication authentication) {
+		this.authentication = authentication;
+	}
 
-  public void setVerbosity(LcmOpOccNotificationVerbosityType verbosity) {
-    this.verbosity = verbosity;
-  }
+	public LccnSubscription verbosity(final LcmOpOccNotificationVerbosityType verbosity) {
+		this.verbosity = verbosity;
+		return this;
+	}
 
-  public LccnSubscription _links(LccnSubscriptionLinks _links) {
-    this._links = _links;
-    return this;
-  }
+	/**
+	 * Get verbosity
+	 *
+	 * @return verbosity
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  /**
-   * Get _links
-   * @return _links
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	@Valid
+	public LcmOpOccNotificationVerbosityType getVerbosity() {
+		return verbosity;
+	}
 
-    @Valid
-    public LccnSubscriptionLinks getLinks() {
-    return _links;
-  }
+	public void setVerbosity(final LcmOpOccNotificationVerbosityType verbosity) {
+		this.verbosity = verbosity;
+	}
 
-  public void setLinks(LccnSubscriptionLinks _links) {
-    this._links = _links;
-  }
+	public LccnSubscription _links(final LccnSubscriptionLinks _links) {
+		this._links = _links;
+		return this;
+	}
 
+	/**
+	 * Get _links
+	 *
+	 * @return _links
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    LccnSubscription lccnSubscription = (LccnSubscription) o;
-    return Objects.equals(this.id, lccnSubscription.id) &&
-        Objects.equals(this.filter, lccnSubscription.filter) &&
-        Objects.equals(this.callbackUri, lccnSubscription.callbackUri) &&
-        Objects.equals(this.verbosity, lccnSubscription.verbosity) &&
-        Objects.equals(this._links, lccnSubscription._links);
-  }
+	@Valid
+	public LccnSubscriptionLinks getLinks() {
+		return _links;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, filter, callbackUri, verbosity, _links);
-  }
+	public void setLinks(final LccnSubscriptionLinks _links) {
+		this._links = _links;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LccnSubscription {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
-    sb.append("    callbackUri: ").append(toIndentedString(callbackUri)).append("\n");
-    sb.append("    verbosity: ").append(toIndentedString(verbosity)).append("\n");
-    sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(final java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if ((o == null) || (getClass() != o.getClass())) {
+			return false;
+		}
+		final LccnSubscription lccnSubscription = (LccnSubscription) o;
+		return Objects.equals(this.id, lccnSubscription.id) &&
+				Objects.equals(this.filter, lccnSubscription.filter) &&
+				Objects.equals(this.callbackUri, lccnSubscription.callbackUri) &&
+				Objects.equals(this.verbosity, lccnSubscription.verbosity) &&
+				Objects.equals(this._links, lccnSubscription._links);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, filter, callbackUri, verbosity, _links);
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("class LccnSubscription {\n");
+
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
+		sb.append("    callbackUri: ").append(toIndentedString(callbackUri)).append("\n");
+		sb.append("    verbosity: ").append(toIndentedString(verbosity)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }

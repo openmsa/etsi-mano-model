@@ -129,7 +129,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	private List<String> warnings = null;
 
 	@JsonProperty("_links")
-	private VnfLcmOpOccLinks _links = null;
+	private VnfLcmOpOccLinks links = null;
 
 	public VnfLcmOpOcc id(final String id) {
 		this.id = id;
@@ -608,8 +608,8 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 		this.warnings = warnings;
 	}
 
-	public VnfLcmOpOcc _links(final VnfLcmOpOccLinks _links) {
-		this._links = _links;
+	public VnfLcmOpOcc links(final VnfLcmOpOccLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -622,11 +622,11 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 
 	@Valid
 	public VnfLcmOpOccLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final VnfLcmOpOccLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -659,12 +659,12 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 				Objects.equals(this.lcmCoordinations, vnfLcmOpOcc.lcmCoordinations) &&
 				Objects.equals(this.rejectedLcmCoordinations, vnfLcmOpOcc.rejectedLcmCoordinations) &&
 				Objects.equals(this.warnings, vnfLcmOpOcc.warnings) &&
-				Objects.equals(this._links, vnfLcmOpOcc._links);
+				Objects.equals(this.links, vnfLcmOpOcc.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, operationState, stateEnteredTime, startTime, vnfInstanceId, grantId, operation, isAutomaticInvocation, operationParams, isCancelPending, cancelMode, error, resourceChanges, changedInfo, affectedVipCps, changedExtConnectivity, modificationsTriggeredByVnfPkgChange, vnfSnapshotInfoId, lcmCoordinations, rejectedLcmCoordinations, warnings, _links);
+		return Objects.hash(id, operationState, stateEnteredTime, startTime, vnfInstanceId, grantId, operation, isAutomaticInvocation, operationParams, isCancelPending, cancelMode, error, resourceChanges, changedInfo, affectedVipCps, changedExtConnectivity, modificationsTriggeredByVnfPkgChange, vnfSnapshotInfoId, lcmCoordinations, rejectedLcmCoordinations, warnings, links);
 	}
 
 	@Override
@@ -693,7 +693,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 		sb.append("    lcmCoordinations: ").append(toIndentedString(lcmCoordinations)).append("\n");
 		sb.append("    rejectedLcmCoordinations: ").append(toIndentedString(rejectedLcmCoordinations)).append("\n");
 		sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

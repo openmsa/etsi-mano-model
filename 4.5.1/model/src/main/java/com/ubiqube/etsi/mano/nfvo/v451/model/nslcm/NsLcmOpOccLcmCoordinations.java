@@ -57,7 +57,7 @@ public class NsLcmOpOccLcmCoordinations {
 	 * OSS/BSS)
 	 */
 	public enum EndpointTypeEnum {
-		MGMT("MGMT");
+		MGMT("MGMT"), VNF("VNF");
 
 		private final String value;
 

@@ -142,7 +142,7 @@ public class VnfPkgInfo {
 	private ProblemDetails onboardingFailureDetails = null;
 
 	@JsonProperty("_links")
-	private VnfPkgInfoLinks _links = null;
+	private VnfPkgInfoLinks links = null;
 
 	public VnfPkgInfo id(final String id) {
 		this.id = id;
@@ -573,8 +573,8 @@ public class VnfPkgInfo {
 		this.onboardingFailureDetails = onboardingFailureDetails;
 	}
 
-	public VnfPkgInfo _links(final VnfPkgInfoLinks _links) {
-		this._links = _links;
+	public VnfPkgInfo links(final VnfPkgInfoLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -588,11 +588,11 @@ public class VnfPkgInfo {
 
 	@Valid
 	public VnfPkgInfoLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final VnfPkgInfoLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -623,12 +623,12 @@ public class VnfPkgInfo {
 				Objects.equals(this.vnfmInfo, vnfPkgInfo.vnfmInfo) &&
 				Objects.equals(this.userDefinedData, vnfPkgInfo.userDefinedData) &&
 				Objects.equals(this.onboardingFailureDetails, vnfPkgInfo.onboardingFailureDetails) &&
-				Objects.equals(this._links, vnfPkgInfo._links);
+				Objects.equals(this.links, vnfPkgInfo.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, vnfdId, vnfdExtInvariantId, vnfProvider, vnfProductName, vnfSoftwareVersion, vnfdVersion, compatibleSpecificationVersions, checksum, packageSecurityOption, signingCertificate, softwareImages, additionalArtifacts, onboardingState, operationalState, usageState, vnfmInfo, userDefinedData, onboardingFailureDetails, _links);
+		return Objects.hash(id, vnfdId, vnfdExtInvariantId, vnfProvider, vnfProductName, vnfSoftwareVersion, vnfdVersion, compatibleSpecificationVersions, checksum, packageSecurityOption, signingCertificate, softwareImages, additionalArtifacts, onboardingState, operationalState, usageState, vnfmInfo, userDefinedData, onboardingFailureDetails, links);
 	}
 
 	@Override
@@ -655,7 +655,7 @@ public class VnfPkgInfo {
 		sb.append("    vnfmInfo: ").append(toIndentedString(vnfmInfo)).append("\n");
 		sb.append("    userDefinedData: ").append(toIndentedString(userDefinedData)).append("\n");
 		sb.append("    onboardingFailureDetails: ").append(toIndentedString(onboardingFailureDetails)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
