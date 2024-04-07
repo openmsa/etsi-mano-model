@@ -23,19 +23,23 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ubiqube.etsi.mano.controller.policy.PolicyFrontController;
+import com.ubiqube.etsi.mano.controller.policy.PolicyPatchDto;
+import com.ubiqube.etsi.mano.dao.mano.policy.Policies;
 import com.ubiqube.etsi.mano.policy.v341.model.CreatePolicyRequest;
 import com.ubiqube.etsi.mano.policy.v341.model.Link;
 import com.ubiqube.etsi.mano.policy.v341.model.Policy;
 import com.ubiqube.etsi.mano.policy.v341.model.PolicyLinks;
 import com.ubiqube.etsi.mano.policy.v341.model.PolicyModifications;
+import com.ubiqube.etsi.mano.policy.v341.service.mapping.CreatePolicyRequestMapping;
+import com.ubiqube.etsi.mano.policy.v341.service.mapping.PolicyMapping;
+
+import jakarta.validation.Valid;
 
 /**
  *
@@ -45,10 +49,13 @@ import com.ubiqube.etsi.mano.policy.v341.model.PolicyModifications;
 @RestController
 public class Policies341Sol012Controller implements Policies341Sol012Api {
 	private final PolicyFrontController fc;
+	private final PolicyMapping policyMapping;
+	private final CreatePolicyRequestMapping createPolicyRequestMapping;
 
-	public Policies341Sol012Controller(final PolicyFrontController fc) {
-		super();
+	public Policies341Sol012Controller(final PolicyFrontController fc, final PolicyMapping policyMapping, final CreatePolicyRequestMapping createPolicyRequestMapping) {
 		this.fc = fc;
+		this.policyMapping = policyMapping;
+		this.createPolicyRequestMapping = createPolicyRequestMapping;
 	}
 
 	@Override
@@ -63,12 +70,14 @@ public class Policies341Sol012Controller implements Policies341Sol012Api {
 
 	@Override
 	public ResponseEntity<Policy> policiesPolicyIdGet(final String policyId) {
-		return fc.findById(policyId, Policy.class, Policies341Sol012Controller::makeLinks);
+		return fc.findById(policyId, policyMapping::map, Policies341Sol012Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<PolicyModifications> policiesPolicyIdPatch(final String policyId, @Valid final PolicyModifications body) {
-		return fc.modify(policyId, body, Policy.class, Policies341Sol012Controller::makeLinks);
+		final PolicyPatchDto req = policyMapping.map(body);
+		fc.modify(policyId, req, x -> policyMapping.map(x), Policies341Sol012Controller::makeLinks);
+		return ResponseEntity.ok().build();
 	}
 
 	@Override
@@ -93,7 +102,8 @@ public class Policies341Sol012Controller implements Policies341Sol012Api {
 
 	@Override
 	public ResponseEntity<Policy> policiesPost(@Valid final CreatePolicyRequest body) {
-		return fc.create(body, Policy.class, Policies341Sol012Controller::makeLinks);
+		final Policies req = createPolicyRequestMapping.map(body);
+		return fc.create(req, policyMapping::map, Policies341Sol012Controller::makeLinks);
 	}
 
 	private static PolicyLinks makeLinks(final Policy pol) {

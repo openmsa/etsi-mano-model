@@ -14,28 +14,23 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.policy.v341;
+package com.ubiqube.etsi.mano.policy.v341.service.mapping;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.dao.mano.policy.Policies;
-import com.ubiqube.etsi.mano.policy.v341.model.Policy;
+import com.ubiqube.etsi.mano.policy.v341.model.CreatePolicyRequest;
+import org.mapstruct.Mapping;
 
-import ma.glasnost.orika.MapperFactory;
-import com.ubiqube.orika.OrikaMapperFactoryConfigurer;
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+public interface CreatePolicyRequestMapping {
 
-/**
- *
- * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
- *
- */
-@Component
-public class OrikaMapper341Sol012 implements OrikaMapperFactoryConfigurer {
-	@Override
-	public void configure(final MapperFactory orikaMapperFactory) {
-		orikaMapperFactory.classMap(Policies.class, Policy.class)
-				.field("versions{version}", "versions{}")
-				.byDefault()
-				.register();
-	}
+	@Mapping(target = "activationStatus", ignore = true)
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "selectedVersion", ignore = true)
+	@Mapping(target = "transferStatus", ignore = true)
+	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "versions", ignore = true)
+	Policies map(CreatePolicyRequest o);
 }
