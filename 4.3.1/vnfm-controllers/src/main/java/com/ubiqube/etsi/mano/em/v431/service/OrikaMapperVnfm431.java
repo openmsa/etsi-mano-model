@@ -39,41 +39,41 @@ import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedVirtualLink;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfLcmOpOccs;
 import com.ubiqube.etsi.mano.dao.mano.v2.BlueprintParameters;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
+import com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications;
 import com.ubiqube.etsi.mano.dao.mano.vim.SoftwareImage;
 import com.ubiqube.etsi.mano.dao.mano.vim.VnfStorage;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.Alarm;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.FmSubscription;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnfind.VnfIndicatorSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedExtLinkPort;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedVirtualLink;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedVirtualStorage;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedVnfc;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtManagedVirtualLinkData;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtManagedVirtualLinkInfo;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtVirtualLinkInfo;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.InstantiateVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscription;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfExtCpData;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstanceInstantiatedVnfInfo;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfcResourceInfo;
 import com.ubiqube.etsi.mano.model.VnfInstantiate;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.SubscriptionAuthenticationParamsOauth2ClientCredentials;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.PkgmSubscriptionRequest;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPackageArtifactInfo;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPackageSoftwareImageInfo;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPackageSoftwareImageInfo.ContainerFormatEnum;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPackageSoftwareImageInfo.DiskFormatEnum;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.Checksum;
 import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
 import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.vnfm.v431.model.grant.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.ResourceDefinition;
-import com.ubiqube.etsi.mano.vnfm.v431.model.grant.VnfExtCpData;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPackageArtifactInfo;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPackageSoftwareImageInfo;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPackageSoftwareImageInfo.ContainerFormatEnum;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPackageSoftwareImageInfo.DiskFormatEnum;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnf.VnfPkgInfo;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnffm.Alarm;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnffm.FmSubscription;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnffm.FmSubscriptionRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfind.VnfIndicatorSubscriptionRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.AffectedExtLinkPort;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.AffectedVirtualLink;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.AffectedVirtualStorage;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.AffectedVnfc;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ExtManagedVirtualLinkInfo;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ExtVirtualLinkInfo;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.LccnSubscription;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.LccnSubscriptionRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfInfoModifications;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfInstanceInstantiatedVnfInfo;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfLcmOpOcc;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfcResourceInfo;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.SubscriptionAuthentication;
 import com.ubiqube.orika.OrikaMapperFactoryConfigurer;
 
@@ -86,7 +86,7 @@ public class OrikaMapperVnfm431 implements OrikaMapperFactoryConfigurer {
 
 	@Override
 	public void configure(final MapperFactory orikaMapperFactory) {
-		orikaMapperFactory.classMap(com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfInstance.class, VnfInstance.class)
+		orikaMapperFactory.classMap(com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance.class, VnfInstance.class)
 				.field("instantiatedVnfInfo.extVirtualLinkInfo", "instantiatedVnfInfo.extVirtualLinkInfo")
 				.field("vimConnectionInfo{value}", "vimConnectionInfo")
 				.byDefault()

@@ -23,31 +23,31 @@ import static com.ubiqube.etsi.mano.vnfm.fc.Constants.getSafeUUID;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.dao.mano.CancelModeTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeCurrentVnfPkgRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeExtVnfConnectivityRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeVnfFlavourRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.CreateVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.CreateVnfSnapshotRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.HealVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.InstantiateVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.OperateVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.RevertToVnfSnapshotRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleVnfToLevelRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.TerminateVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstanceLinks;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfInstanceGenericFrontController;
 import com.ubiqube.etsi.mano.vnfm.v431.controller.vnfind.Indicators431Sol003Api;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ChangeCurrentVnfPkgRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ChangeExtVnfConnectivityRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ChangeVnfFlavourRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.CreateVnfRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.CreateVnfSnapshotRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.HealVnfRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.OperateVnfRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.RevertToVnfSnapshotRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ScaleVnfRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ScaleVnfToLevelRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.TerminateVnfRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfInstance;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfInstanceLinks;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.Link;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfInstances431Sol003Controller implements VnfInstances431Sol003Api {

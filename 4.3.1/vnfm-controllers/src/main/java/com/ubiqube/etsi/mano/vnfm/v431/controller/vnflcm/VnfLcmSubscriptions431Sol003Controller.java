@@ -27,13 +27,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscription;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscriptionLinks;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v431.service.SubscriptionLinkable431Vnfm;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.LccnSubscription;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.LccnSubscriptionLinks;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.LccnSubscriptionRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.Link;
 
 import jakarta.validation.Valid;
 

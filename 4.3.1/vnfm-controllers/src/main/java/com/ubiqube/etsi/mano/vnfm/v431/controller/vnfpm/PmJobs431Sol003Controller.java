@@ -26,13 +26,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.CreatePmJobRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.PerformanceReport;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.PmJob;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.PmJobLinks;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.PmJobModifications;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfpm.VnfmPmGenericFrontController;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.CreatePmJobRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.PerformanceReport;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.PmJob;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.PmJobLinks;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.PmJobModifications;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.Link;
 
 import jakarta.validation.Valid;
 

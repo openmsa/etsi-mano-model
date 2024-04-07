@@ -24,11 +24,11 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.em.v431.model.vnfind.VnfIndicator;
+import com.ubiqube.etsi.mano.em.v431.model.vnfind.VnfIndicatorLinks;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfind.IndicatorsFrontController;
 import com.ubiqube.etsi.mano.vnfm.v431.controller.vnflcm.VnfInstances431Sol003Api;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfind.VnfIndicator;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfind.VnfIndicatorLinks;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.Link;
 
 import jakarta.validation.Valid;
 

@@ -19,16 +19,16 @@ package com.ubiqube.etsi.mano.vnfm.v431.controller.vnflcm;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.CreateVnfSnapshotInfoRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfSnapshotInfo;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.CreateVnfSnapshotInfoRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfSnapshotInfo;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfSnapshotInfoModificationRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfSnapshotInfoModifications;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfSnapshots431Sol003Controller implements VnfSnapshots431Sol003Api {

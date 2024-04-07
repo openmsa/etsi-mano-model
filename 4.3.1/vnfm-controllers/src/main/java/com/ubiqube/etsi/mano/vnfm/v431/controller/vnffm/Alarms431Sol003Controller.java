@@ -21,18 +21,18 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.time.OffsetDateTime;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.dao.mano.alarm.AckState;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.Alarm;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmLinks;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmModifications;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.AlarmFrontController;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnffm.Alarm;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnffm.AlarmLinks;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnffm.AlarmModifications;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.Link;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class Alarms431Sol003Controller implements Alarms431Sol003Api {

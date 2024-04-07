@@ -23,8 +23,6 @@ import static com.ubiqube.etsi.mano.vnfm.fc.Constants.getSafeUUID;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,6 +45,8 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstanceLinks;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfInstanceGenericFrontController;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfInstances431Sol002Controller implements VnfInstances431Sol002Api {

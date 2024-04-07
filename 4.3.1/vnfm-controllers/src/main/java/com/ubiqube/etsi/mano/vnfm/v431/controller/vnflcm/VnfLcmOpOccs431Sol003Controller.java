@@ -21,17 +21,17 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.UUID;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOccLinks;
 import com.ubiqube.etsi.mano.em.v431.service.VnfLcmClassMaping431;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfLcmOpOcc;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfLcmOpOccLinks;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.Link;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfLcmOpOccs431Sol003Controller implements VnfLcmOpOccs431Sol003Api {

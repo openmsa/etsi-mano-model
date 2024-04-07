@@ -16,19 +16,19 @@
  */
 package com.ubiqube.etsi.mano.em.v431.service;
 
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeCurrentVnfPkgRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeExtVnfConnectivityRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeVnfFlavourRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.CreateVnfSnapshotRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.HealVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.InstantiateVnfRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.OperateVnfRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.RevertToVnfSnapshotRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleVnfToLevelRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.TerminateVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInfoModificationRequest;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ChangeCurrentVnfPkgRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ChangeExtVnfConnectivityRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ChangeVnfFlavourRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.ScaleVnfToLevelRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.TerminateVnfRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnflcm.VnfInfoModificationRequest;
 
 /**
  *

@@ -16,13 +16,13 @@
  */
 package com.ubiqube.etsi.mano.vnfm.v431.controller.vnfpm;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.PerformanceInformationAvailableNotification;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.ThresholdCrossedNotification;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.PerformanceInformationAvailableNotification;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.ThresholdCrossedNotification;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class PerformanceInformationAvailableNotification431Sol003Controller implements PerformanceInformationAvailableNotification431Sol003Api {

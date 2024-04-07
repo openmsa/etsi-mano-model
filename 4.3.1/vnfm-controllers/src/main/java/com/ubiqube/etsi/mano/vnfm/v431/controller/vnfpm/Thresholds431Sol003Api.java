@@ -36,10 +36,10 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.CreateThresholdRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.Threshold;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfpm.ThresholdModifications;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.ProblemDetails;
+import com.ubiqube.etsi.mano.em.v431.model.vnfconfig.ProblemDetails;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.CreateThresholdRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.Threshold;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.ThresholdModifications;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

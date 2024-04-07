@@ -29,12 +29,12 @@ import com.ubiqube.etsi.mano.controller.SubscriptionFrontController;
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
+import com.ubiqube.etsi.mano.em.v431.model.vnfind.VnfIndicatorSubscription;
+import com.ubiqube.etsi.mano.em.v431.model.vnfind.VnfIndicatorSubscriptionLinks;
+import com.ubiqube.etsi.mano.em.v431.model.vnfind.VnfIndicatorSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v431.service.SubscriptionLinkable431Vnfm;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfind.VnfIndicatorSubscription;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfind.VnfIndicatorSubscriptionLinks;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vnfind.VnfIndicatorSubscriptionRequest;
-import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.Link;
 
 import jakarta.validation.Valid;
 
