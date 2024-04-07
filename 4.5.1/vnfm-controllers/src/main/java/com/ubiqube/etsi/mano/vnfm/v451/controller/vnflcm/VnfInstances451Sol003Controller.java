@@ -157,8 +157,8 @@ public class VnfInstances451Sol003Controller implements VnfInstances451Sol003Api
 		final String hrefSelf = linkTo(methodOn(VnfInstances451Sol003Api.class).vnfInstancesVnfInstanceIdGet(id)).withSelfRel().getHref();
 		final String hrefTerminate = linkTo(methodOn(VnfInstances451Sol003Api.class).vnfInstancesVnfInstanceIdTerminatePost(id, null)).withSelfRel().getHref();
 		final String hrefChangeVnfPkg = linkTo(methodOn(VnfInstances451Sol003Api.class).vnfInstancesVnfInstanceIdChangeVnfpkgPost(id, null)).withSelfRel().getHref();
-		final String hrefCreateSnap = linkTo(methodOn(VnfSnapshots451Sol003Api.class).vnfSnapshotsPost(null, null, null, null)).withSelfRel().getHref();
-		final String hrefRevertSnap = linkTo(methodOn(VnfSnapshots451Sol003Api.class).vnfSnapshotsPost(null, null, null, null)).withSelfRel().getHref();
+		final String hrefCreateSnap = linkTo(methodOn(VnfSnapshots451Sol003Api.class).vnfSnapshotsPost(null)).withSelfRel().getHref();
+		final String hrefRevertSnap = linkTo(methodOn(VnfSnapshots451Sol003Api.class).vnfSnapshotsPost(null)).withSelfRel().getHref();
 		final VnfInstanceLinks vnfInstanceLinks = new VnfInstanceLinks();
 		final Link self = new Link();
 		self.setHref(hrefSelf);
