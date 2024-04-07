@@ -19,8 +19,6 @@ package com.ubiqube.etsi.mano.vnfm.v331.controller.lcmgrant;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +26,9 @@ import com.ubiqube.etsi.mano.controller.lcmgrant.LcmGrantsFrontController;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.or.v331.model.grants.GrantNsLifecycleOperationRequest;
 import com.ubiqube.etsi.mano.vnfm.v331.model.grant.Grant;
+
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -37,20 +38,21 @@ import com.ubiqube.etsi.mano.vnfm.v331.model.grant.Grant;
 @RestController
 public class LcmGrants331Sol003Controller implements LcmGrants331Sol003Api {
 	private final LcmGrantsFrontController lcmGrantsFrontController;
+	private final MapperFacade mapper;
 
-	public LcmGrants331Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController) {
-		super();
+	public LcmGrants331Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final MapperFacade mapper) {
 		this.lcmGrantsFrontController = lcmGrantsFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Grant> grantsGrantIdGet(final String grantId) {
-		return lcmGrantsFrontController.grantsGrantIdGet(grantId, Grant.class, LcmGrants331Sol003Controller::makeSelfLinks);
+		return lcmGrantsFrontController.grantsGrantIdGet(grantId, x -> mapper.map(x, Grant.class), LcmGrants331Sol003Controller::makeSelfLinks);
 	}
 
 	@Override
 	public ResponseEntity<Grant> grantsPost(@Valid final GrantNsLifecycleOperationRequest grantRequest) {
-		return lcmGrantsFrontController.grantsPost(grantRequest, Grant.class, LcmGrants331Sol003Controller::getSelfLink);
+		return lcmGrantsFrontController.grantsPost(grantRequest, x -> mapper.map(x, Grant.class), LcmGrants331Sol003Controller::getSelfLink);
 	}
 
 	private static void makeSelfLinks(final Grant jsonGrant) {
