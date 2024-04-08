@@ -35,16 +35,19 @@ import com.ubiqube.etsi.mano.em.v431.model.vnfind.VnfIndicatorSubscriptionReques
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v431.service.SubscriptionLinkable431Vnfm;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class IndicatorSubscriptions431Sol003Controller implements IndicatorSubscriptions431Sol003Api, SubscriptionLinkable431Vnfm {
-
 	private final SubscriptionFrontController subscriptionService;
+	private final MapperFacade mapper;
 
-	public IndicatorSubscriptions431Sol003Controller(final SubscriptionFrontController subscriptionService) {
+	public IndicatorSubscriptions431Sol003Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
 		this.subscriptionService = subscriptionService;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -53,8 +56,9 @@ public class IndicatorSubscriptions431Sol003Controller implements IndicatorSubsc
 	}
 
 	@Override
-	public ResponseEntity<VnfIndicatorSubscription> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest vnfIndicatorSubscriptionRequest) {
-		return subscriptionService.create(vnfIndicatorSubscriptionRequest, VnfIndicatorSubscription.class, IndicatorSubscriptions431Sol003Api.class, IndicatorSubscriptions431Sol003Controller::makeLinks, IndicatorSubscriptions431Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFIND);
+	public ResponseEntity<VnfIndicatorSubscription> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest body) {
+		final Subscription req = mapper.map(body, Subscription.class);
+		return subscriptionService.create(req, x -> mapper.map(x, VnfIndicatorSubscription.class), IndicatorSubscriptions431Sol003Api.class, IndicatorSubscriptions431Sol003Controller::makeLinks, IndicatorSubscriptions431Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFIND);
 	}
 
 	@Override

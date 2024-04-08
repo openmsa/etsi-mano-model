@@ -33,16 +33,20 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v431.service.SubscriptionLinkable431Vnfm;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnfLcmSubscriptions431Sol002Controller implements VnfLcmSubscriptions431Sol002Api, SubscriptionLinkable431Vnfm {
 	private final VnfLcmSubscriptionFrontController frontController;
+	private final MapperFacade mapper;
 
-	public VnfLcmSubscriptions431Sol002Controller(final VnfLcmSubscriptionFrontController frontController) {
+	public VnfLcmSubscriptions431Sol002Controller(final VnfLcmSubscriptionFrontController frontController, final MapperFacade mapper) {
 		this.frontController = frontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -52,7 +56,8 @@ public class VnfLcmSubscriptions431Sol002Controller implements VnfLcmSubscriptio
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsPost(@Valid final LccnSubscriptionRequest body) {
-		return frontController.create(body, LccnSubscription.class, VnfLcmSubscriptions431Sol002Api.class, VnfLcmSubscriptions431Sol002Controller::makeLinks, VnfLcmSubscriptions431Sol002Controller::getSelfLink);
+		final Subscription req = mapper.map(body, Subscription.class);
+		return frontController.create(req, x -> mapper.map(x, LccnSubscription.class), VnfLcmSubscriptions431Sol002Api.class, VnfLcmSubscriptions431Sol002Controller::makeLinks, VnfLcmSubscriptions431Sol002Controller::getSelfLink);
 	}
 
 	@Override
