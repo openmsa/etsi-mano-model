@@ -34,16 +34,20 @@ import com.ubiqube.etsi.mano.em.v271.model.vnfind.VnfIndicatorSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v271.model.vnfind.VnfIndicatorSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.v271.SubscriptionLinkable271Vnfm;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnfIndSubscriptions271Sol003Controller implements VnfIndSubscriptions271Sol003Api, SubscriptionLinkable271Vnfm {
 	private final SubscriptionFrontController subscriptionService;
+	private final MapperFacade mapper;
 
-	public VnfIndSubscriptions271Sol003Controller(final SubscriptionFrontController subscriptionService) {
+	public VnfIndSubscriptions271Sol003Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
 		this.subscriptionService = subscriptionService;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -52,8 +56,9 @@ public class VnfIndSubscriptions271Sol003Controller implements VnfIndSubscriptio
 	}
 
 	@Override
-	public ResponseEntity<VnfIndicatorSubscription> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest vnfIndicatorSubscriptionRequest) {
-		return subscriptionService.create(vnfIndicatorSubscriptionRequest, VnfIndicatorSubscription.class, VnfIndSubscriptions271Sol003Api.class, VnfIndSubscriptions271Sol003Controller::makeLinks, VnfIndSubscriptions271Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFIND);
+	public ResponseEntity<VnfIndicatorSubscription> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest body) {
+		final Subscription req = mapper.map(body, Subscription.class);
+		return subscriptionService.create(req, x -> mapper.map(x, VnfIndicatorSubscription.class), VnfIndSubscriptions271Sol003Api.class, VnfIndSubscriptions271Sol003Controller::makeLinks, VnfIndSubscriptions271Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFIND);
 	}
 
 	@Override

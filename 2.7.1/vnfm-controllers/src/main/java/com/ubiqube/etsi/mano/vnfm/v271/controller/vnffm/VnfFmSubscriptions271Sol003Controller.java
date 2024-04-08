@@ -32,10 +32,12 @@ import com.ubiqube.etsi.mano.em.v271.model.vnffm.FmSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v271.model.vnffm.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
 import com.ubiqube.etsi.mano.vnfm.v271.SubscriptionLinkable271Vnfm;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -45,9 +47,11 @@ import jakarta.validation.Valid;
 @RestController
 public class VnfFmSubscriptions271Sol003Controller implements VnfFmSubscriptions271Sol003Api, SubscriptionLinkable271Vnfm {
 	private final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController;
+	private final MapperFacade mapper;
 
-	public VnfFmSubscriptions271Sol003Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController) {
+	public VnfFmSubscriptions271Sol003Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController, final MapperFacade mapper) {
 		this.faultMngtSubscriptionsFrontController = faultMngtSubscriptionsFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -56,8 +60,9 @@ public class VnfFmSubscriptions271Sol003Controller implements VnfFmSubscriptions
 	}
 
 	@Override
-	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest fmSubscriptionRequest) {
-		return faultMngtSubscriptionsFrontController.create(fmSubscriptionRequest, FmSubscription.class, VnfFmSubscriptions271Sol003Api.class, VnfFmSubscriptions271Sol003Controller::makeLinks, VnfFmSubscriptions271Sol003Controller::makeSelf);
+	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest body) {
+		final Subscription req = mapper.map(body, Subscription.class);
+		return faultMngtSubscriptionsFrontController.create(req, x -> mapper.map(x, FmSubscription.class), VnfFmSubscriptions271Sol003Api.class, VnfFmSubscriptions271Sol003Controller::makeLinks, VnfFmSubscriptions271Sol003Controller::makeSelf);
 	}
 
 	@Override
