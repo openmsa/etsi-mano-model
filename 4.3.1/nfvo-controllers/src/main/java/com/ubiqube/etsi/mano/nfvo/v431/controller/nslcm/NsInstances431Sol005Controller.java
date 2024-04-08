@@ -24,6 +24,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nslcm.NsInstanceGenericFrontController;
+import com.ubiqube.etsi.mano.dao.mano.dto.CreateNsInstance;
+import com.ubiqube.etsi.mano.dao.mano.dto.nsi.NsInstantiate;
+import com.ubiqube.etsi.mano.dao.mano.nsd.upd.UpdateRequest;
+import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.NsHeal;
+import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.NsScale;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.CreateNsRequest;
@@ -37,13 +42,16 @@ import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.UpdateNsRequest;
 
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class NsInstances431Sol005Controller implements NsInstances431Sol005Api {
 	private final NsInstanceGenericFrontController nsInstanceGenericFrontController;
+	private final MapperFacade mapper;
 
-	public NsInstances431Sol005Controller(final NsInstanceGenericFrontController nsInstanceGenericFrontController) {
+	public NsInstances431Sol005Controller(final NsInstanceGenericFrontController nsInstanceGenericFrontController, final MapperFacade mapper) {
 		this.nsInstanceGenericFrontController = nsInstanceGenericFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -58,22 +66,25 @@ public class NsInstances431Sol005Controller implements NsInstances431Sol005Api {
 
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdGet(final String nsInstanceId) {
-		return nsInstanceGenericFrontController.findById(nsInstanceId, NsInstance.class, NsInstances431Sol005Controller::makeLinks);
+		return nsInstanceGenericFrontController.findById(nsInstanceId, x -> mapper.map(x, NsInstance.class), NsInstances431Sol005Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<Void> nsInstancesNsInstanceIdHealPost(final String nsInstanceId, @Valid final HealNsRequest body) {
-		return nsInstanceGenericFrontController.heal(nsInstanceId, body, NsInstances431Sol005Controller::getNsbLink);
+		final NsHeal req = mapper.map(body, NsHeal.class);
+		return nsInstanceGenericFrontController.heal(nsInstanceId, req, NsInstances431Sol005Controller::getNsbLink);
 	}
 
 	@Override
 	public ResponseEntity<Void> nsInstancesNsInstanceIdInstantiatePost(final String nsInstanceId, @Valid final InstantiateNsRequest body) {
-		return nsInstanceGenericFrontController.instantiate(nsInstanceId, body, NsInstances431Sol005Controller::getNsbLink);
+		final NsInstantiate req = mapper.map(body, NsInstantiate.class);
+		return nsInstanceGenericFrontController.instantiate(nsInstanceId, req, NsInstances431Sol005Controller::getNsbLink);
 	}
 
 	@Override
 	public ResponseEntity<Void> nsInstancesNsInstanceIdScalePost(final String nsInstanceId, @Valid final ScaleNsRequest body) {
-		return nsInstanceGenericFrontController.scale(nsInstanceId, body, NsInstances431Sol005Controller::getNsbLink);
+		final NsScale req = mapper.map(body, NsScale.class);
+		return nsInstanceGenericFrontController.scale(nsInstanceId, req, NsInstances431Sol005Controller::getNsbLink);
 	}
 
 	@Override
@@ -83,12 +94,14 @@ public class NsInstances431Sol005Controller implements NsInstances431Sol005Api {
 
 	@Override
 	public ResponseEntity<Void> nsInstancesNsInstanceIdUpdatePost(final String nsInstanceId, @Valid final UpdateNsRequest body) {
-		return nsInstanceGenericFrontController.update(nsInstanceId, body, NsInstances431Sol005Controller::getNsbLink);
+		final UpdateRequest req = mapper.map(body, UpdateRequest.class);
+		return nsInstanceGenericFrontController.update(nsInstanceId, req, NsInstances431Sol005Controller::getNsbLink);
 	}
 
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesPost(@Valid final CreateNsRequest body) {
-		return nsInstanceGenericFrontController.create(body, NsInstance.class, NsInstances431Sol005Controller::makeLinks, NsInstances431Sol005Controller::getLink);
+		final CreateNsInstance req = mapper.map(body, CreateNsInstance.class);
+		return nsInstanceGenericFrontController.create(req, x -> mapper.map(x, NsInstance.class), NsInstances431Sol005Controller::makeLinks, NsInstances431Sol005Controller::getLink);
 	}
 
 	private static String getLink(final NsInstance nsBlueprint) {

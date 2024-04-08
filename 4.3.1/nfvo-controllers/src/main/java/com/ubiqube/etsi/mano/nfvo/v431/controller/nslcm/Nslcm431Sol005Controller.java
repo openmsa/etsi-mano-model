@@ -30,14 +30,16 @@ import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsLcmOpOccLinks;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class Nslcm431Sol005Controller implements Nslcm431Sol005Api {
-
 	private final NsLcmGenericFrontController nsLcmGenericFrontController;
+	private final MapperFacade mapper;
 
-	public Nslcm431Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController) {
+	public Nslcm431Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final MapperFacade mapper) {
 		this.nsLcmGenericFrontController = nsLcmGenericFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -47,7 +49,7 @@ public class Nslcm431Sol005Controller implements Nslcm431Sol005Api {
 
 	@Override
 	public ResponseEntity<NsLcmOpOcc> nslcmV1NsLcmOpOccsNsLcmOpOccIdFailPost(final String nsLcmOpOccId) {
-		return nsLcmGenericFrontController.fail(nsLcmOpOccId, NsLcmOpOcc.class, Nslcm431Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.fail(nsLcmOpOccId, x -> mapper.map(x, NsLcmOpOcc.class), Nslcm431Sol005Controller::makeLinks);
 	}
 
 	public static void makeLinks(@NotNull final NsLcmOpOcc nsLcmOpOccs) {

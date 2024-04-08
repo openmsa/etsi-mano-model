@@ -33,23 +33,26 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 
 import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class Alarms431Sol005Controller implements Alarms431Sol005Api {
 	private final NsAlarmFrontController nsAlarmFrontController;
+	private final MapperFacade mapper;
 
-	public Alarms431Sol005Controller(final NsAlarmFrontController nsAlarmFrontController) {
+	public Alarms431Sol005Controller(final NsAlarmFrontController nsAlarmFrontController, final MapperFacade mapper) {
 		this.nsAlarmFrontController = nsAlarmFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Alarm> alarmsAlarmIdGet(final String alarmId) {
-		return nsAlarmFrontController.findById(getSafeUUID(alarmId), Alarm.class, Alarms431Sol005Controller::makeLinks);
+		return nsAlarmFrontController.findById(getSafeUUID(alarmId), x -> mapper.map(x, Alarm.class), Alarms431Sol005Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<AlarmModifications> alarmsAlarmIdPatch(final String alarmId, @Valid final AlarmModifications body, final String ifMatch) {
-		return nsAlarmFrontController.patch(alarmId, AckState.valueOf(body.getAckState().toString()), ifMatch, AlarmModifications.class);
+		return nsAlarmFrontController.patch(alarmId, AckState.valueOf(body.getAckState().toString()), ifMatch, x -> mapper.map(x, AlarmModifications.class));
 	}
 
 	@Override

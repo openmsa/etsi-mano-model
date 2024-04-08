@@ -34,13 +34,16 @@ import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.NsdInfoModifications;
 
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class NsDescriptors431Sol005Controller implements NsDescriptors431Sol005Api {
 	private final NsDescriptorGenericFrontController nsDescriptorGenericFrontController;
+	private final MapperFacade mapper;
 
-	public NsDescriptors431Sol005Controller(final NsDescriptorGenericFrontController nsDescriptorGenericFrontController) {
+	public NsDescriptors431Sol005Controller(final NsDescriptorGenericFrontController nsDescriptorGenericFrontController, final MapperFacade mapper) {
 		this.nsDescriptorGenericFrontController = nsDescriptorGenericFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -55,7 +58,7 @@ public class NsDescriptors431Sol005Controller implements NsDescriptors431Sol005A
 
 	@Override
 	public ResponseEntity<NsdInfo> nsDescriptorsNsdInfoIdGet(final String nsdInfoId) {
-		return nsDescriptorGenericFrontController.finsById(nsdInfoId, NsdInfo.class, NsDescriptors431Sol005Controller::makeLinks);
+		return nsDescriptorGenericFrontController.finsById(nsdInfoId, x -> mapper.map(x, NsdInfo.class), NsDescriptors431Sol005Controller::makeLinks);
 	}
 
 	@Override
@@ -70,14 +73,14 @@ public class NsDescriptors431Sol005Controller implements NsDescriptors431Sol005A
 
 	@Override
 	public ResponseEntity<NsdInfoModifications> nsDescriptorsNsdInfoIdPatch(final String nsdInfoId, @Valid final String body, final String ifMatch) {
-		nsDescriptorGenericFrontController.modify(nsdInfoId, body, ifMatch, NsdInfo.class, NsDescriptors431Sol005Controller::makeLinks);
+		nsDescriptorGenericFrontController.modify(nsdInfoId, body, ifMatch, x -> mapper.map(x, NsdInfo.class), NsDescriptors431Sol005Controller::makeLinks);
 		final NsdInfoModifications modif = new NsdInfoModifications();
 		return ResponseEntity.ok(modif);
 	}
 
 	@Override
 	public ResponseEntity<NsdInfo> nsDescriptorsPost(@Valid final CreateNsdInfoRequest body) {
-		return nsDescriptorGenericFrontController.create("", body.getUserDefinedData(), NsdInfo.class, NsDescriptors431Sol005Controller::makeLinks, NsDescriptors431Sol005Controller::makeSelfLink);
+		return nsDescriptorGenericFrontController.create("", body.getUserDefinedData(), x -> mapper.map(x, NsdInfo.class), NsDescriptors431Sol005Controller::makeLinks, NsDescriptors431Sol005Controller::makeSelfLink);
 	}
 
 	@Override
