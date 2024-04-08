@@ -34,12 +34,12 @@ import com.ubiqube.etsi.mano.vnfm.v451.model.grant.GrantRequest;
 import jakarta.validation.Valid;
 
 @RestController
-public class Grants451Sol005Controller implements Grants451Sol005Api {
+public class Grants451Sol003Controller implements Grants451Sol003Api {
 	private final LcmGrantsFrontController lcmGrantsFrontController;
 	private final GrantMapping grantMapping;
 	private final GrantRequestMapping grantRequestMapping;
 
-	public Grants451Sol005Controller(final LcmGrantsFrontController lcmGrantsFrontController, final GrantMapping grantMapping, final GrantRequestMapping grantRequestMapping) {
+	public Grants451Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final GrantMapping grantMapping, final GrantRequestMapping grantRequestMapping) {
 		this.lcmGrantsFrontController = lcmGrantsFrontController;
 		this.grantMapping = grantMapping;
 		this.grantRequestMapping = grantRequestMapping;
@@ -47,25 +47,25 @@ public class Grants451Sol005Controller implements Grants451Sol005Api {
 
 	@Override
 	public ResponseEntity<Grant> grantsGrantIdGet(final String grantId) {
-		return lcmGrantsFrontController.grantsGrantIdGet(grantId, grantMapping::map, Grants451Sol005Controller::makeSelfLinks);
+		return lcmGrantsFrontController.grantsGrantIdGet(grantId, grantMapping::map, Grants451Sol003Controller::makeSelfLinks);
 	}
 
 	@Override
 	public ResponseEntity<Grant> grantsPost(@Valid final GrantRequest grantRequest) {
 		final GrantResponse req = grantRequestMapping.map(grantRequest);
-		return lcmGrantsFrontController.grantsPost(req, grantMapping::map, Grants451Sol005Controller::getSelfLink);
+		return lcmGrantsFrontController.grantsPost(req, grantMapping::map, Grants451Sol003Controller::getSelfLink);
 	}
 
 	private static void makeSelfLinks(final Grant jsonGrant) {
 		final GrantLinks grantLinks = new GrantLinks();
 		final Link link = new Link();
-		link.setHref(linkTo(methodOn(Grants451Sol005Api.class).grantsGrantIdGet(jsonGrant.getId())).withSelfRel().getHref());
+		link.setHref(linkTo(methodOn(Grants451Sol003Api.class).grantsGrantIdGet(jsonGrant.getId())).withSelfRel().getHref());
 		grantLinks.setSelf(link);
 		jsonGrant.setLinks(grantLinks);
 	}
 
 	private static String getSelfLink(final Grant grant) {
-		return linkTo(methodOn(Grants451Sol005Api.class).grantsGrantIdGet(grant.getId())).withSelfRel().getHref();
+		return linkTo(methodOn(Grants451Sol003Api.class).grantsGrantIdGet(grant.getId())).withSelfRel().getHref();
 	}
 
 }

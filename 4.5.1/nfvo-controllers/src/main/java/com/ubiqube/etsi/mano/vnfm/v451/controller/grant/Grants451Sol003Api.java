@@ -45,7 +45,7 @@ import jakarta.validation.Valid;
 @RequestMapping(value = "/sol003/grant/v1", headers = { "Version=1.12.0" })
 @RolesAllowed({ "ROLE_VNFM" })
 @Validated
-public interface Grants451Sol005Api {
+public interface Grants451Sol003Api {
 
 	@Operation(summary = "", description = "The GET method reads a grant. See clause 9.4.3.3.2. ", tags = {})
 	@ApiResponses(value = {
