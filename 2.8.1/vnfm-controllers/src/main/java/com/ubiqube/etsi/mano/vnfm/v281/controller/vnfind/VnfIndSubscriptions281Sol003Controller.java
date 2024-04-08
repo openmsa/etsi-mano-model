@@ -36,9 +36,11 @@ import com.ubiqube.etsi.mano.em.v281.model.vnfind.VnfIndicatorSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v281.model.vnfind.VnfIndicatorSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.SubscriptionLinkable281Vnfm;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -49,9 +51,11 @@ import jakarta.validation.Valid;
 @Conditional(SingleControllerCondition.class)
 public class VnfIndSubscriptions281Sol003Controller implements VnfIndSubscriptions281Sol003Api, SubscriptionLinkable281Vnfm {
 	private final SubscriptionFrontController subscriptionService;
+	private final MapperFacade mapper;
 
-	public VnfIndSubscriptions281Sol003Controller(final SubscriptionFrontController subscriptionService) {
+	public VnfIndSubscriptions281Sol003Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
 		this.subscriptionService = subscriptionService;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -60,8 +64,9 @@ public class VnfIndSubscriptions281Sol003Controller implements VnfIndSubscriptio
 	}
 
 	@Override
-	public ResponseEntity<VnfIndicatorSubscription> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest vnfIndicatorSubscriptionRequest) {
-		return subscriptionService.create(vnfIndicatorSubscriptionRequest, VnfIndicatorSubscription.class, VnfIndSubscriptions281Sol003Api.class, VnfIndSubscriptions281Sol003Controller::makeLinks, VnfIndSubscriptions281Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFIND);
+	public ResponseEntity<VnfIndicatorSubscription> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest body) {
+		final Subscription req = mapper.map(body, Subscription.class);
+		return subscriptionService.create(req, x -> mapper.map(x, VnfIndicatorSubscription.class), VnfIndSubscriptions281Sol003Api.class, VnfIndSubscriptions281Sol003Controller::makeLinks, VnfIndSubscriptions281Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFIND);
 	}
 
 	@Override
