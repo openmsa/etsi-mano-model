@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.controller.lcmgrant.LcmGrantsFrontController;
+import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.vnfm.v281.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v281.model.grant.GrantRequest;
@@ -54,8 +55,9 @@ public class Grants281Sol003Controller implements Grants281Sol003Api {
 	}
 
 	@Override
-	public ResponseEntity<Grant> grantsPost(@Valid final GrantRequest grantRequest) {
-		return lcmGrantsFrontController.grantsPost(grantRequest, x -> mapper.map(x, Grant.class), Grants281Sol003Controller::getSelfLink);
+	public ResponseEntity<Grant> grantsPost(@Valid final GrantRequest body) {
+		final GrantResponse req = mapper.map(body, GrantResponse.class);
+		return lcmGrantsFrontController.grantsPost(req, x -> mapper.map(x, Grant.class), Grants281Sol003Controller::getSelfLink);
 	}
 
 	private static void makeSelfLinks(final Grant jsonGrant) {
