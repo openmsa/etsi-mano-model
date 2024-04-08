@@ -16,13 +16,15 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v361.controller.vnfind;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnfind.VnfIndicatorNotificationFrontController;
+import com.ubiqube.etsi.mano.dao.mano.ind.VnfIndiValueChangeNotification;
 import com.ubiqube.etsi.mano.vnfm.v361.model.vnfind.VnfIndicatorValueChangeNotification;
+
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -32,9 +34,11 @@ import com.ubiqube.etsi.mano.vnfm.v361.model.vnfind.VnfIndicatorValueChangeNotif
 @RestController
 public class VnfIndNotification361Sol003Controller implements VnfIndNotification361Sol003Api {
 	private final VnfIndicatorNotificationFrontController fc;
+	private final MapperFacade mapper;
 
-	public VnfIndNotification361Sol003Controller(final VnfIndicatorNotificationFrontController fc) {
+	public VnfIndNotification361Sol003Controller(final VnfIndicatorNotificationFrontController fc, final MapperFacade mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -44,7 +48,8 @@ public class VnfIndNotification361Sol003Controller implements VnfIndNotification
 
 	@Override
 	public ResponseEntity<Void> valueChangePost(@Valid final VnfIndicatorValueChangeNotification body) {
-		return fc.valueChangeNotification(body, "3.6.1");
+		final VnfIndiValueChangeNotification req = mapper.map(body, VnfIndiValueChangeNotification.class);
+		return fc.valueChangeNotification(req, "3.6.1");
 	}
 
 	@Override
@@ -54,7 +59,8 @@ public class VnfIndNotification361Sol003Controller implements VnfIndNotification
 
 	@Override
 	public ResponseEntity<Void> supportedChangePost(@Valid final VnfIndicatorValueChangeNotification body) {
-		return fc.supportedChangeNotification(body, "3.6.1");
+		final VnfIndiValueChangeNotification req = mapper.map(body, VnfIndiValueChangeNotification.class);
+		return fc.supportedChangeNotification(req, "3.6.1");
 	}
 
 }

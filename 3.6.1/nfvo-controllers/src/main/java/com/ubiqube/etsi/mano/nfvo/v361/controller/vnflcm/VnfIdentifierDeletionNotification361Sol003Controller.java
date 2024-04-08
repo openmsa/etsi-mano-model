@@ -16,13 +16,15 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v361.controller.vnflcm;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnflcm.VnfLcmNotificationFrontController;
+import com.ubiqube.etsi.mano.dao.mano.vnflcm.VnfLcmNotification;
 import com.ubiqube.etsi.mano.em.v361.model.vnflcm.VnfIdentifierDeletionNotification;
+
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -32,9 +34,11 @@ import com.ubiqube.etsi.mano.em.v361.model.vnflcm.VnfIdentifierDeletionNotificat
 @RestController
 public class VnfIdentifierDeletionNotification361Sol003Controller implements VnfIdentifierDeletionNotification261Sol003Api {
 	private final VnfLcmNotificationFrontController fc;
+	private final MapperFacade mapper;
 
-	public VnfIdentifierDeletionNotification361Sol003Controller(final VnfLcmNotificationFrontController fc) {
+	public VnfIdentifierDeletionNotification361Sol003Controller(final VnfLcmNotificationFrontController fc, final MapperFacade mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -44,7 +48,8 @@ public class VnfIdentifierDeletionNotification361Sol003Controller implements Vnf
 
 	@Override
 	public ResponseEntity<Void> deletionNotificationPost(@Valid final VnfIdentifierDeletionNotification body) {
-		return fc.deletionNotification(body, "3.6.1");
+		final VnfLcmNotification req = mapper.map(body, VnfLcmNotification.class);
+		return fc.deletionNotification(req, "3.6.1");
 	}
 
 }

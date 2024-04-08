@@ -19,8 +19,6 @@ package com.ubiqube.etsi.mano.nfvo.v361.controller.nslcm;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +28,9 @@ import com.ubiqube.etsi.mano.em.v361.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.nfvo.v361.model.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.nfvo.v361.model.nslcm.NsLcmOpOccLinks;
 
+import jakarta.validation.constraints.NotNull;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -37,12 +38,12 @@ import com.ubiqube.etsi.mano.nfvo.v361.model.nslcm.NsLcmOpOccLinks;
  */
 @RestController
 public class NsLcmOpOccs361Sol005Controller implements NsLcmOpOccs361Sol005Api {
-
 	private final NsLcmGenericFrontController nsLcmGenericFrontController;
+	private final MapperFacade mapper;
 
-	public NsLcmOpOccs361Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController) {
-		super();
+	public NsLcmOpOccs361Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final MapperFacade mapper) {
 		this.nsLcmGenericFrontController = nsLcmGenericFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -57,7 +58,7 @@ public class NsLcmOpOccs361Sol005Controller implements NsLcmOpOccs361Sol005Api {
 
 	@Override
 	public ResponseEntity<NsLcmOpOcc> nsLcmOpOccsNsLcmOpOccIdGet(final String nsLcmOpOccId) {
-		return nsLcmGenericFrontController.findById(nsLcmOpOccId, NsLcmOpOcc.class, NsLcmOpOccs361Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.findById(nsLcmOpOccId, x -> mapper.map(x, NsLcmOpOcc.class), NsLcmOpOccs361Sol005Controller::makeLinks);
 	}
 
 	@Override

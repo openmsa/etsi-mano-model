@@ -16,13 +16,14 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v361.controller.vnfpm;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnf.VnfPerformanceNotificationFrontController;
 import com.ubiqube.etsi.mano.vnfm.v361.model.vnfpm.PerformanceInformationAvailableNotification;
+
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -32,9 +33,11 @@ import com.ubiqube.etsi.mano.vnfm.v361.model.vnfpm.PerformanceInformationAvailab
 @RestController
 public class VnfpmAvailableNotification361Sol003Controller implements VnfpmAvailableNotification361Sol003Api {
 	private final VnfPerformanceNotificationFrontController fc;
+	private final MapperFacade mapper;
 
-	public VnfpmAvailableNotification361Sol003Controller(final VnfPerformanceNotificationFrontController fc) {
+	public VnfpmAvailableNotification361Sol003Controller(final VnfPerformanceNotificationFrontController fc, final MapperFacade mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -44,7 +47,8 @@ public class VnfpmAvailableNotification361Sol003Controller implements VnfpmAvail
 
 	@Override
 	public ResponseEntity<Void> availableNotificationPost(@Valid final PerformanceInformationAvailableNotification body) {
-		return fc.availablePost(body, "3.6.1");
+		final com.ubiqube.etsi.mano.dao.mano.pm.PerformanceInformationAvailableNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.pm.PerformanceInformationAvailableNotification.class);
+		return fc.availablePost(req, "3.6.1");
 	}
 
 }

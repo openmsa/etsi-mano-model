@@ -16,13 +16,15 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v361.controller.vnflcm;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnflcm.VnfLcmNotificationFrontController;
+import com.ubiqube.etsi.mano.dao.mano.vnflcm.VnfLcmNotification;
 import com.ubiqube.etsi.mano.vnfm.v361.model.vnflcm.VnfLcmOperationOccurrenceNotification;
+
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -32,9 +34,11 @@ import com.ubiqube.etsi.mano.vnfm.v361.model.vnflcm.VnfLcmOperationOccurrenceNot
 @RestController
 public class VnfLcmOperationOccurrenceNotification361Sol003Controller implements VnfLcmOperationOccurrenceNotification261Sol003Api {
 	private final VnfLcmNotificationFrontController fc;
+	private final MapperFacade mapper;
 
-	public VnfLcmOperationOccurrenceNotification361Sol003Controller(final VnfLcmNotificationFrontController fc) {
+	public VnfLcmOperationOccurrenceNotification361Sol003Controller(final VnfLcmNotificationFrontController fc, final MapperFacade mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -44,7 +48,8 @@ public class VnfLcmOperationOccurrenceNotification361Sol003Controller implements
 
 	@Override
 	public ResponseEntity<Void> lcmOperationOccurrenceNotificationPost(@Valid final VnfLcmOperationOccurrenceNotification body) {
-		return fc.vnflcmopoccNotification(body, "3.6.1");
+		final VnfLcmNotification req = mapper.map(body, VnfLcmNotification.class);
+		return fc.vnflcmopoccNotification(req, "3.6.1");
 	}
 
 }
