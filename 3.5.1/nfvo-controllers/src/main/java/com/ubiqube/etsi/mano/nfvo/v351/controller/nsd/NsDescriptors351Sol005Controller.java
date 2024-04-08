@@ -19,9 +19,6 @@ package com.ubiqube.etsi.mano.nfvo.v351.controller.nsd;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.annotation.Nonnull;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -35,6 +32,10 @@ import com.ubiqube.etsi.mano.nfvo.v351.model.nsd.NsdInfo;
 import com.ubiqube.etsi.mano.nfvo.v351.model.nsd.NsdInfoLinks;
 import com.ubiqube.etsi.mano.nfvo.v351.model.nsd.NsdInfoModifications;
 
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -43,10 +44,11 @@ import com.ubiqube.etsi.mano.nfvo.v351.model.nsd.NsdInfoModifications;
 @RestController
 public class NsDescriptors351Sol005Controller implements NsDescriptors351Sol005Api {
 	private final NsDescriptorGenericFrontController nsDescriptorGenericFrontController;
+	private final MapperFacade mapper;
 
-	public NsDescriptors351Sol005Controller(final NsDescriptorGenericFrontController nsDescriptorGenericFrontController) {
-		super();
+	public NsDescriptors351Sol005Controller(final NsDescriptorGenericFrontController nsDescriptorGenericFrontController, final MapperFacade mapper) {
 		this.nsDescriptorGenericFrontController = nsDescriptorGenericFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -61,7 +63,7 @@ public class NsDescriptors351Sol005Controller implements NsDescriptors351Sol005A
 
 	@Override
 	public ResponseEntity<NsdInfo> nsDescriptorsNsdInfoIdGet(final String nsdInfoId) {
-		return nsDescriptorGenericFrontController.finsById(nsdInfoId, NsdInfo.class, NsDescriptors351Sol005Controller::makeLinks);
+		return nsDescriptorGenericFrontController.finsById(nsdInfoId, x -> mapper.map(x, NsdInfo.class), NsDescriptors351Sol005Controller::makeLinks);
 	}
 
 	@Override
@@ -76,14 +78,14 @@ public class NsDescriptors351Sol005Controller implements NsDescriptors351Sol005A
 
 	@Override
 	public ResponseEntity<NsdInfoModifications> nsDescriptorsNsdInfoIdPatch(final String nsdInfoId, @Valid final String body, final String ifMatch) {
-		nsDescriptorGenericFrontController.modify(nsdInfoId, body, ifMatch, NsdInfo.class, NsDescriptors351Sol005Controller::makeLinks);
+		nsDescriptorGenericFrontController.modify(nsdInfoId, body, ifMatch, x -> mapper.map(x, NsdInfo.class), NsDescriptors351Sol005Controller::makeLinks);
 		final NsdInfoModifications modif = new NsdInfoModifications();
 		return ResponseEntity.ok(modif);
 	}
 
 	@Override
 	public ResponseEntity<NsdInfo> nsDescriptorsPost(@Valid final CreateNsdInfoRequest body) {
-		return nsDescriptorGenericFrontController.create("", body.getUserDefinedData(), NsdInfo.class, NsDescriptors351Sol005Controller::makeLinks, NsDescriptors351Sol005Controller::makeSelfLink);
+		return nsDescriptorGenericFrontController.create("", body.getUserDefinedData(), x -> mapper.map(x, NsdInfo.class), NsDescriptors351Sol005Controller::makeLinks, NsDescriptors351Sol005Controller::makeSelfLink);
 	}
 
 	@Override

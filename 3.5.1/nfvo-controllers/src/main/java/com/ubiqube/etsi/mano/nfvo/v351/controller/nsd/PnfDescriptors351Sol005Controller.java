@@ -21,8 +21,6 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.function.Consumer;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +32,9 @@ import com.ubiqube.etsi.mano.nfvo.v351.model.nsd.PnfdInfo;
 import com.ubiqube.etsi.mano.nfvo.v351.model.nsd.PnfdInfoLinks;
 import com.ubiqube.etsi.mano.nfvo.v351.model.nsd.PnfdInfoModifications;
 
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -42,9 +43,11 @@ import com.ubiqube.etsi.mano.nfvo.v351.model.nsd.PnfdInfoModifications;
 @RestController
 public class PnfDescriptors351Sol005Controller implements PnfDescriptors351Sol005Api {
 	private final PnfFrontController pnfFrontController;
+	private final MapperFacade mapper;
 
-	public PnfDescriptors351Sol005Controller(final PnfFrontController pnfFrontController) {
+	public PnfDescriptors351Sol005Controller(final PnfFrontController pnfFrontController, final MapperFacade mapper) {
 		this.pnfFrontController = pnfFrontController;
+		this.mapper = mapper;
 	}
 
 	/**
@@ -89,7 +92,7 @@ public class PnfDescriptors351Sol005Controller implements PnfDescriptors351Sol00
 	 */
 	@Override
 	public ResponseEntity<PnfdInfo> pnfDescriptorsPnfdInfoIdGet(final String pnfdInfoId) {
-		return pnfFrontController.findById(pnfdInfoId, PnfdInfo.class, PnfDescriptors351Sol005Controller::makeLinks);
+		return pnfFrontController.findById(pnfdInfoId, x -> mapper.map(x, PnfdInfo.class), PnfDescriptors351Sol005Controller::makeLinks);
 	}
 
 	/**
@@ -139,7 +142,7 @@ public class PnfDescriptors351Sol005Controller implements PnfDescriptors351Sol00
 	 */
 	@Override
 	public ResponseEntity<PnfdInfo> pnfDescriptorsPost(final CreatePnfdInfoRequest body) {
-		return pnfFrontController.create(body.getUserDefinedData(), PnfdInfo.class, PnfDescriptors351Sol005Controller::makeLinks);
+		return pnfFrontController.create(body.getUserDefinedData(), x -> mapper.map(x, PnfdInfo.class), PnfDescriptors351Sol005Controller::makeLinks);
 	}
 
 	@Override
