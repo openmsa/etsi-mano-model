@@ -16,32 +16,56 @@
  */
 package com.ubiqube.etsi.mano.vnfm.v451.controller.grant;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.controller.lcmgrant.LcmGrantsFrontController;
+import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.service.mapping.GrantMapping;
+import com.ubiqube.etsi.mano.service.mapping.GrantRequestMapping;
+import com.ubiqube.etsi.mano.vnfm.v451.model.grant.Grant;
+import com.ubiqube.etsi.mano.vnfm.v451.model.grant.GrantLinks;
+import com.ubiqube.etsi.mano.vnfm.v451.model.grant.GrantRequest;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class Grants451Sol005Controller implements Grants451Sol005Api {
+	private final LcmGrantsFrontController lcmGrantsFrontController;
+	private final GrantMapping grantMapping;
+	private final GrantRequestMapping grantRequestMapping;
 
-    private final ObjectMapper objectMapper;
+	public Grants451Sol005Controller(final LcmGrantsFrontController lcmGrantsFrontController, final GrantMapping grantMapping, final GrantRequestMapping grantRequestMapping) {
+		this.lcmGrantsFrontController = lcmGrantsFrontController;
+		this.grantMapping = grantMapping;
+		this.grantRequestMapping = grantRequestMapping;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<Grant> grantsGrantIdGet(final String grantId) {
+		return lcmGrantsFrontController.grantsGrantIdGet(grantId, grantMapping::map, Grants451Sol005Controller::makeSelfLinks);
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public Grants451Sol005Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@Override
+	public ResponseEntity<Grant> grantsPost(@Valid final GrantRequest grantRequest) {
+		final GrantResponse req = grantRequestMapping.map(grantRequest);
+		return lcmGrantsFrontController.grantsPost(req, grantMapping::map, Grants451Sol005Controller::getSelfLink);
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+	private static void makeSelfLinks(final Grant jsonGrant) {
+		final GrantLinks grantLinks = new GrantLinks();
+		final Link link = new Link();
+		link.setHref(linkTo(methodOn(Grants451Sol005Api.class).grantsGrantIdGet(jsonGrant.getId())).withSelfRel().getHref());
+		grantLinks.setSelf(link);
+		jsonGrant.setLinks(grantLinks);
+	}
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	private static String getSelfLink(final Grant grant) {
+		return linkTo(methodOn(Grants451Sol005Api.class).grantsGrantIdGet(grant.getId())).withSelfRel().getHref();
+	}
 
 }
