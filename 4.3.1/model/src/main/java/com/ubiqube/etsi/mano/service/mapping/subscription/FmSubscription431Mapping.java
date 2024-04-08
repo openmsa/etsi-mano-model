@@ -14,28 +14,28 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-package com.ubiqube.etsi.mano.service.mapping;
+package com.ubiqube.etsi.mano.service.mapping.subscription;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.dao.mano.VnfIndicator;
+import com.ubiqube.etsi.mano.em.v431.model.vnffm.FmSubscription;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfIndicatorMapping {
+public interface FmSubscription431Mapping extends BaseSubscription431Mapping {
 
-	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "indicators", ignore = true)
-	@Mapping(target = "source", ignore = true)
-	@Mapping(target = "state", ignore = true)
-	@Mapping(target = "targets", ignore = true)
-	@Mapping(target = "toscaId", ignore = true)
-	@Mapping(target = "toscaName", source = "name")
-	@Mapping(target = "triggers", ignore = true)
-	VnfIndicator map(com.ubiqube.etsi.mano.em.v431.model.vnfind.VnfIndicator o);
-
+	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	@Mapping(target = "value", ignore = true)
-	com.ubiqube.etsi.mano.em.v431.model.vnfind.VnfIndicator map(VnfIndicator o);
+	FmSubscription map(Subscription o);
+
+	@Mapping(target = "authentication", ignore = true)
+	@Mapping(target = "api", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
+	@Mapping(target = "nodeFilter", ignore = true)
+	@Mapping(target = "subscriptionType", ignore = true)
+	@Mapping(target = "version", ignore = true)
+	Subscription map(FmSubscription o);
 }

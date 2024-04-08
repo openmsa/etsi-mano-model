@@ -31,11 +31,11 @@ import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
 import com.ubiqube.etsi.mano.service.auth.model.AuthType;
 import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
 import com.ubiqube.etsi.mano.service.event.model.FilterAttributes;
-import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
+import com.ubiqube.etsi.mano.service.mapping.StringToUri431Mapping;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.SubscriptionAuthentication;
 
 @Mapper
-public interface BaseSubscriptionMapping extends StringToUriMapping {
+public interface BaseSubscription431Mapping extends StringToUri431Mapping {
 	@ValueMapping(source = "BASIC", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "TLS_CERT", target = MappingConstants.THROW_EXCEPTION)
 	SubscriptionAuthentication.AuthTypeEnum map(AuthType o);

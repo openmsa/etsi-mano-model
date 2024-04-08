@@ -20,13 +20,15 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.em.v431.model.vnffm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface FmSubscriptionRequestMapping extends BaseSubscriptionMapping {
+public interface LccnSubscriptionRequest431Mapping extends BaseSubscription431Mapping {
+
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	FmSubscriptionRequest map(Subscription o);
+	@Mapping(target = "verbosity", ignore = true)
+	LccnSubscriptionRequest map(Subscription o);
 
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
@@ -35,5 +37,5 @@ public interface FmSubscriptionRequestMapping extends BaseSubscriptionMapping {
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", ignore = true)
 	@Mapping(target = "version", ignore = true)
-	Subscription map(FmSubscriptionRequest o);
+	Subscription map(LccnSubscriptionRequest o);
 }

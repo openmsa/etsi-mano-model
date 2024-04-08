@@ -46,7 +46,7 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfExtCpConfig;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfExtCpData;
 
 @Mapper
-public interface ConnectivityMapping {
+public interface Connectivity431Mapping {
 
 	@ValueMapping(source = "ETHERNET", target = MappingConstants.THROW_EXCEPTION)
 	CpProtocolInfo.LayerProtocolEnum mapLayerProtocolType(LayerProtocolType en);

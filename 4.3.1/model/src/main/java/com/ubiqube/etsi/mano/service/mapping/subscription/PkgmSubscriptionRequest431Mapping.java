@@ -24,7 +24,7 @@ import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PkgmSubscriptionRequestMapping extends BaseSubscriptionMapping {
+public interface PkgmSubscriptionRequest431Mapping extends BaseSubscription431Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	PkgmSubscriptionRequest map(Subscription o);

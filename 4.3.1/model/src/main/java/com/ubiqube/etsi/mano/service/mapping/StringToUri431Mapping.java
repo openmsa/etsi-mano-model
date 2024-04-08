@@ -20,7 +20,7 @@ import java.net.URI;
 
 import jakarta.annotation.Nullable;
 
-public interface StringToUriMapping {
+public interface StringToUri431Mapping {
 	@Nullable
 	default URI map(final @Nullable String uri) {
 		if (null == uri) {

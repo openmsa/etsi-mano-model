@@ -30,7 +30,7 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VimConnectionInfo;
 import jakarta.annotation.Nullable;
 
 @Mapper
-public interface VimConnectionInfoMapping {
+public interface VimConnectionInfo431Mapping {
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "cnfInfo", ignore = true)
 	@Mapping(target = "id", ignore = true)

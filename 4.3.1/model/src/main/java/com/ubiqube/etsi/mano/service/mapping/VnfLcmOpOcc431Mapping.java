@@ -55,7 +55,7 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOccResourceChanges;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfLcmOpOccMapping extends StringToUriMapping, ConnectivityMapping {
+public interface VnfLcmOpOcc431Mapping extends StringToUri431Mapping, Connectivity431Mapping {
 
 	@Mapping(target = "operationState", source = "operationStatus")
 	@Mapping(target = "links", ignore = true)

@@ -46,7 +46,7 @@ import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.VnffgInfo;
 import io.micrometer.common.lang.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface NsInstanceMapping {
+public interface NsInstance431Mapping {
 	@Mapping(target = "additionalAffinityOrAntiAffinityRule", ignore = true)
 	@Mapping(target = "monitoringParameter", ignore = true)
 	@Mapping(target = "nestedNsInstanceId", ignore = true)

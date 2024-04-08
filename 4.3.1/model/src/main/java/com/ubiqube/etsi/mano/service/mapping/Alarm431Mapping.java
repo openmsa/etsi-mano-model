@@ -34,7 +34,7 @@ import com.ubiqube.etsi.mano.em.v431.model.vnffm.FaultyResourceType;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface AlarmMapping {
+public interface Alarm431Mapping {
 
 	@Mapping(target = "isRootCause", source = "rootCause")
 	@Mapping(target = "links", ignore = true)
