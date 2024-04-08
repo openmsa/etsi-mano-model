@@ -16,32 +16,30 @@
  */
 package com.ubiqube.etsi.mano.vnfm.v451.controller.vnf;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.nfvo.v451.model.vnf.VnfPackageChangeNotification;
+import com.ubiqube.etsi.mano.vnfm.fc.vnf.VnfNotificationFrontController;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfPackageChangeNotification451Sol003Controller implements VnfPackageChangeNotification451Sol003Api {
+	private final VnfNotificationFrontController fc;
 
-    private final ObjectMapper objectMapper;
+	public VnfPackageChangeNotification451Sol003Controller(final VnfNotificationFrontController fc) {
+		this.fc = fc;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<Void> vnfPackageChangeNotificationCheck() {
+		return fc.check();
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public VnfPackageChangeNotification451Sol003Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
-
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
-
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<Void> vnfPackageChangeNotificationPost(@Valid final VnfPackageChangeNotification body) {
+		return fc.onNotification(body, "4.5.1");
+	}
 
 }
