@@ -19,7 +19,6 @@ import jakarta.validation.Valid;
 
 @RestController
 public class VnfLcmOpOccs451Sol003Controller implements VnfLcmOpOccs451Sol003Api {
-
 	private final VnfLcmOpOccGenericFrontController frontController;
 
 	public VnfLcmOpOccs451Sol003Controller(final VnfLcmOpOccGenericFrontController frontController) {
