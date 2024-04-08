@@ -49,7 +49,7 @@ import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfLcmOpOccRejectedLcmCoordina
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfLcmOpOccResourceChanges;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfLcmOpOccMapping extends StringToUriMapping, ConnectivityMapping {
+public interface VnfLcmOpOcc451Mapping extends StringToUri451Mapping, Connectivity451Mapping {
 
 	@Mapping(target = "operationState", source = "operationStatus")
 	@Mapping(target = "links", ignore = true)

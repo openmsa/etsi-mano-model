@@ -42,7 +42,7 @@ import com.ubiqube.etsi.mano.nfvo.v451.model.nslcm.NsVirtualLinkInfo;
 import com.ubiqube.etsi.mano.nfvo.v451.model.nslcm.VnffgInfo;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface NsInstanceMapping {
+public interface NsInstance451Mapping {
 	@Mapping(target = "additionalAffinityOrAntiAffinityRule", ignore = true)
 	@Mapping(target = "dataFlowMirroringInfo", ignore = true)
 	@Mapping(target = "monitoringParameter", ignore = true)

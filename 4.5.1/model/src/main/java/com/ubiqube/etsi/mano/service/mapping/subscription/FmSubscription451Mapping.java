@@ -20,22 +20,21 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.nfvo.v451.model.vnf.PkgmSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v451.model.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PkgmSubscriptionRequestMapping extends BaseSubscriptionMapping {
+public interface FmSubscription451Mapping extends BaseSubscription451Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	PkgmSubscriptionRequest map(Subscription o);
+	@Mapping(target = "links", ignore = true)
+	FmSubscription map(Subscription o);
 
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
-	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", ignore = true)
 	@Mapping(target = "version", ignore = true)
-	Subscription map(PkgmSubscriptionRequest o);
-
+	Subscription map(FmSubscription o);
 }

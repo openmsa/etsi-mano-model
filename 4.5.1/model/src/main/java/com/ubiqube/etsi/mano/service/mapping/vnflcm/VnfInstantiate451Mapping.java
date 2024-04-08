@@ -31,10 +31,10 @@ import com.ubiqube.etsi.mano.em.v451.model.vnflcm.InstantiateVnfRequest;
 import com.ubiqube.etsi.mano.model.ExternalManagedVirtualLink;
 import com.ubiqube.etsi.mano.model.VnfInstantiate;
 import com.ubiqube.etsi.mano.nfvo.v451.model.vnflcm.VimConnectionInfo;
-import com.ubiqube.etsi.mano.service.mapping.ConnectivityMapping;
+import com.ubiqube.etsi.mano.service.mapping.Connectivity451Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfInstantiateMapping extends ConnectivityMapping {
+public interface VnfInstantiate451Mapping extends Connectivity451Mapping {
 
 	VnfInstantiate map(InstantiateVnfRequest o);
 

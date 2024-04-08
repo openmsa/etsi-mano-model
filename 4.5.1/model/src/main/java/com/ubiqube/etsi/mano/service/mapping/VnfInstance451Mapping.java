@@ -56,7 +56,7 @@ import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfcResourceInfo;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfcResourceInfoVnfcCpInfo;
 
 @Mapper
-public interface VnfInstanceMapping extends VimConnectionInfoMapping, ConnectivityMapping {
+public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Connectivity451Mapping {
 
 	@Mapping(target = "certificateInfo", ignore = true)
 	@Mapping(target = "links", ignore = true)

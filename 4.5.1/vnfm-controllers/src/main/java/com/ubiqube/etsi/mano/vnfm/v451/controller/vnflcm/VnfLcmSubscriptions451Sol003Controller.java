@@ -17,8 +17,8 @@ import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.service.mapping.subscription.LccnSubscriptionMapping;
-import com.ubiqube.etsi.mano.service.mapping.subscription.LccnSubscriptionRequestMapping;
+import com.ubiqube.etsi.mano.service.mapping.subscription.LccnSubscription451Mapping;
+import com.ubiqube.etsi.mano.service.mapping.subscription.LccnSubscriptionRequest451Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
 import com.ubiqube.etsi.mano.vnfm.v451.service.SubscriptionLinkable451Vnfm;
 
@@ -27,10 +27,10 @@ import jakarta.validation.Valid;
 @RestController
 public class VnfLcmSubscriptions451Sol003Controller implements VnfLcmSubscriptions451Sol003Api, SubscriptionLinkable451Vnfm {
 	private final VnfLcmSubscriptionFrontController frontController;
-	private final LccnSubscriptionRequestMapping requestMapper;
-	private final LccnSubscriptionMapping lccnSubscriptionMapping;
+	private final LccnSubscriptionRequest451Mapping requestMapper;
+	private final LccnSubscription451Mapping lccnSubscriptionMapping;
 
-	public VnfLcmSubscriptions451Sol003Controller(final VnfLcmSubscriptionFrontController frontController, final LccnSubscriptionMapping lccnSubscriptionMapping, final LccnSubscriptionRequestMapping requestMapper) {
+	public VnfLcmSubscriptions451Sol003Controller(final VnfLcmSubscriptionFrontController frontController, final LccnSubscription451Mapping lccnSubscriptionMapping, final LccnSubscriptionRequest451Mapping requestMapper) {
 		this.frontController = frontController;
 		this.requestMapper = requestMapper;
 		this.lccnSubscriptionMapping = lccnSubscriptionMapping;

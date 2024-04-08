@@ -46,7 +46,7 @@ import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfExtCpConfig;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfExtCpData;
 
 @Mapper
-public interface ConnectivityMapping {
+public interface Connectivity451Mapping {
 
 	@ValueMapping(source = "IP_OVER_ETHERNET", target = "OVER_ETHERNET")
 	@ValueMapping(source = "IP_FOR_VIRTUAL_CP", target = "FOR_VIRTUAL_CP")

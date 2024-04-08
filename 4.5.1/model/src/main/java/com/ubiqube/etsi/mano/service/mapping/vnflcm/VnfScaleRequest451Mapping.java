@@ -12,18 +12,24 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see https://www.gnu.org/licenses/.
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.ubiqube.etsi.mano.service.mapping.vnflcm;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.em.v451.model.vnflcm.OperateVnfRequest;
-import com.ubiqube.etsi.mano.model.VnfOperateRequest;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.ScaleVnfRequest;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.ScaleVnfToLevelRequest;
+import com.ubiqube.etsi.mano.model.VnfScaleRequest;
+import com.ubiqube.etsi.mano.model.VnfScaleToLevelRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfOperateRequestMapping {
+public interface VnfScaleRequest451Mapping {
+	@Mapping(target = "instantiationLevelId", ignore = true)
+	@Mapping(target = "scaleInfo", ignore = true)
+	VnfScaleRequest map(ScaleVnfRequest o);
 
-	VnfOperateRequest map(OperateVnfRequest o);
+	VnfScaleToLevelRequest map(ScaleVnfToLevelRequest o);
 }

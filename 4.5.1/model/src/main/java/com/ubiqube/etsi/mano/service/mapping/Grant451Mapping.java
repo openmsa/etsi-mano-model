@@ -43,7 +43,7 @@ import com.ubiqube.etsi.mano.vnfm.v451.model.grant.ZoneGroupInfo;
 import com.ubiqube.etsi.mano.vnfm.v451.model.grant.ZoneInfo;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface GrantMapping extends VimConnectionInfoMapping, ConnectivityMapping {
+public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivity451Mapping {
 
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "id", ignore = true)

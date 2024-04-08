@@ -33,8 +33,8 @@ import com.ubiqube.etsi.mano.nfvo.v451.model.vnf.ExternalArtifactsAccessConfig;
 import com.ubiqube.etsi.mano.nfvo.v451.model.vnf.UploadVnfPackageFromUriRequest;
 import com.ubiqube.etsi.mano.nfvo.v451.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v451.model.vnf.VnfPkgInfoLinks;
-import com.ubiqube.etsi.mano.service.mapping.VnfPkgInfoMapping;
-import com.ubiqube.etsi.mano.service.mapping.pkg.UploadVnfPackageFromUriRequestMapping;
+import com.ubiqube.etsi.mano.service.mapping.VnfPkgInfo451Mapping;
+import com.ubiqube.etsi.mano.service.mapping.pkg.UploadVnfPackageFromUriRequest451Mapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -42,10 +42,10 @@ import jakarta.validation.Valid;
 @RestController
 public class VnfPackages451Sol005Controller implements VnfPackages451Sol005Api {
 	private final VnfPackageFrontController frontController;
-	private final VnfPkgInfoMapping vnfPkgInfoMapping;
-	private final UploadVnfPackageFromUriRequestMapping uploadVnfPackageFromUriRequestMapping;
+	private final VnfPkgInfo451Mapping vnfPkgInfoMapping;
+	private final UploadVnfPackageFromUriRequest451Mapping uploadVnfPackageFromUriRequestMapping;
 
-	public VnfPackages451Sol005Controller(final VnfPackageFrontController frontController, final VnfPkgInfoMapping vnfPkgInfoMapping, final UploadVnfPackageFromUriRequestMapping uploadVnfPackageFromUriRequestMapping) {
+	public VnfPackages451Sol005Controller(final VnfPackageFrontController frontController, final VnfPkgInfo451Mapping vnfPkgInfoMapping, final UploadVnfPackageFromUriRequest451Mapping uploadVnfPackageFromUriRequestMapping) {
 		this.frontController = frontController;
 		this.vnfPkgInfoMapping = vnfPkgInfoMapping;
 		this.uploadVnfPackageFromUriRequestMapping = uploadVnfPackageFromUriRequestMapping;

@@ -14,27 +14,16 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-package com.ubiqube.etsi.mano.service.mapping.subscription;
+package com.ubiqube.etsi.mano.service.mapping.vnflcm;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.em.v451.model.vnffm.FmSubscription;
-import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.OperateVnfRequest;
+import com.ubiqube.etsi.mano.model.VnfOperateRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface FmSubscriptionMapping extends BaseSubscriptionMapping {
+public interface VnfOperateRequest451Mapping {
 
-	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	@Mapping(target = "links", ignore = true)
-	FmSubscription map(Subscription o);
-
-	@Mapping(target = "api", ignore = true)
-	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
-	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", ignore = true)
-	@Mapping(target = "version", ignore = true)
-	Subscription map(FmSubscription o);
+	VnfOperateRequest map(OperateVnfRequest o);
 }

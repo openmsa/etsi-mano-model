@@ -16,46 +16,26 @@
  */
 package com.ubiqube.etsi.mano.service.mapping;
 
-import java.util.List;
-import java.util.Set;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.dao.mano.pm.MonResource;
-import com.ubiqube.etsi.mano.dao.mano.pm.Threshold;
-
-import jakarta.annotation.Nullable;
+import com.ubiqube.etsi.mano.dao.mano.VnfIndicator;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface ThresholdMapping extends StringToUriMapping {
-	@Mapping(target = "remoteResource", ignore = true)
-	@Mapping(target = "subscription", ignore = true)
-	Threshold map(com.ubiqube.etsi.mano.em.v451.model.vnfpm.Threshold o);
+public interface VnfIndicator451Mapping {
 
-	@Nullable
-	default MonResource mapMonResource(final @Nullable String value) {
-		if (null == value) {
-			return null;
-		}
-		final MonResource mr = new MonResource();
-		mr.setResource(value);
-		return mr;
-	}
-
-	Set<MonResource> map(List<String> subObjectInstanceIds);
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "indicators", ignore = true)
+	@Mapping(target = "source", ignore = true)
+	@Mapping(target = "state", ignore = true)
+	@Mapping(target = "targets", ignore = true)
+	@Mapping(target = "toscaId", ignore = true)
+	@Mapping(target = "toscaName", source = "name")
+	@Mapping(target = "triggers", ignore = true)
+	VnfIndicator map(com.ubiqube.etsi.mano.em.v451.model.vnfind.VnfIndicator o);
 
 	@Mapping(target = "links", ignore = true)
-	com.ubiqube.etsi.mano.em.v451.model.vnfpm.Threshold map(Threshold o);
-
-	List<String> map(Set<MonResource> value);
-
-	@Nullable
-	default String map(final @Nullable MonResource value) {
-		if (null == value) {
-			return null;
-		}
-		return value.getResource();
-	}
+	@Mapping(target = "value", ignore = true)
+	com.ubiqube.etsi.mano.em.v451.model.vnfind.VnfIndicator map(VnfIndicator o);
 }

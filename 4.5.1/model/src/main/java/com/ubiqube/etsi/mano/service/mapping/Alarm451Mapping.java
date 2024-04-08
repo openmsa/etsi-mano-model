@@ -23,28 +23,29 @@ import java.time.ZoneOffset;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.ValueMapping;
 
-import com.ubiqube.etsi.mano.dao.mano.pm.PmJob;
-import com.ubiqube.etsi.mano.dao.mano.pm.PmReport;
-import com.ubiqube.etsi.mano.em.v451.model.vnfpm.PmJobReports;
+import com.ubiqube.etsi.mano.dao.mano.AdditionalResourceInfo;
+import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
+import com.ubiqube.etsi.mano.dao.mano.alarm.Alarms;
+import com.ubiqube.etsi.mano.em.v451.model.vnffm.Alarm;
+import com.ubiqube.etsi.mano.em.v451.model.vnffm.FaultyResourceType;
 
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PmJobMapping extends StringToUriMapping {
+public interface Alarm451Mapping {
 
-	@Mapping(target = "authentication", ignore = true)
-	@Mapping(target = "remoteMonitoring", ignore = true)
-	@Mapping(target = "resolvedSubObjectInstanceIds", ignore = true)
-	@Mapping(target = "subscriptionRemoteId", ignore = true)
-	@Mapping(target = "vimConnectionInformation", ignore = true)
-	PmJob map(com.ubiqube.etsi.mano.em.v451.model.vnfpm.PmJob o);
+	@Mapping(target = "isRootCause", source = "rootCause")
+	@Mapping(target = "links", ignore = true)
+	Alarm map(Alarms o);
+
+	@Mapping(target = "rootCause", source = "isRootCause")
+	@Mapping(target = "version", ignore = true)
+	Alarms map(Alarm o);
 
 	@Mapping(target = "id", ignore = true)
-	PmReport map(PmJobReports o);
-
-	@Mapping(target = "links", ignore = true)
-	com.ubiqube.etsi.mano.em.v451.model.vnfpm.PmJob map(PmJob o);
+	AdditionalResourceInfo map(com.ubiqube.etsi.mano.em.v451.model.vnflcm.AdditionalResourceInfo o);
 
 	@Nullable
 	default OffsetDateTime toOffsetDateTime(final @Nullable LocalDateTime localDateTime) {
@@ -62,4 +63,8 @@ public interface PmJobMapping extends StringToUriMapping {
 		return offsetDateTime.toLocalDateTime();
 	}
 
+	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "NETWORK")
+	FaultyResourceType map(ResourceTypeEnum o);
+
+	ResourceTypeEnum map(FaultyResourceType o);
 }

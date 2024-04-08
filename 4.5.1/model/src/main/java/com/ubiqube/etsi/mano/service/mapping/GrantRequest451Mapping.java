@@ -34,7 +34,7 @@ import com.ubiqube.etsi.mano.vnfm.v451.model.grant.ResourceDefinition;
 import com.ubiqube.etsi.mano.vnfm.v451.model.grant.SnapshotResourceDefinition;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface GrantRequestMapping {
+public interface GrantRequest451Mapping {
 
 	@Mapping(target = "paasAssets", ignore = true)
 	@Mapping(target = "audit", ignore = true)

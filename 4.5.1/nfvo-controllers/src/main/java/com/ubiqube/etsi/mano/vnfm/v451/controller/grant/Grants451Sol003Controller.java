@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.controller.lcmgrant.LcmGrantsFrontController;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.Link;
-import com.ubiqube.etsi.mano.service.mapping.GrantMapping;
-import com.ubiqube.etsi.mano.service.mapping.GrantRequestMapping;
+import com.ubiqube.etsi.mano.service.mapping.Grant451Mapping;
+import com.ubiqube.etsi.mano.service.mapping.GrantRequest451Mapping;
 import com.ubiqube.etsi.mano.vnfm.v451.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v451.model.grant.GrantLinks;
 import com.ubiqube.etsi.mano.vnfm.v451.model.grant.GrantRequest;
@@ -36,10 +36,10 @@ import jakarta.validation.Valid;
 @RestController
 public class Grants451Sol003Controller implements Grants451Sol003Api {
 	private final LcmGrantsFrontController lcmGrantsFrontController;
-	private final GrantMapping grantMapping;
-	private final GrantRequestMapping grantRequestMapping;
+	private final Grant451Mapping grantMapping;
+	private final GrantRequest451Mapping grantRequestMapping;
 
-	public Grants451Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final GrantMapping grantMapping, final GrantRequestMapping grantRequestMapping) {
+	public Grants451Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final Grant451Mapping grantMapping, final GrantRequest451Mapping grantRequestMapping) {
 		this.lcmGrantsFrontController = lcmGrantsFrontController;
 		this.grantMapping = grantMapping;
 		this.grantRequestMapping = grantRequestMapping;

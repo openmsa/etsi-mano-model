@@ -14,26 +14,23 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-package com.ubiqube.etsi.mano.service.mapping.subscription;
+package com.ubiqube.etsi.mano.service.mapping.vnflcm;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.em.v451.model.vnffm.FmSubscriptionRequest;
-import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.dao.mano.vnfi.ChangeExtVnfConnRequest;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.ChangeExtVnfConnectivityRequest;
+import com.ubiqube.etsi.mano.service.mapping.Connectivity451Mapping;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface FmSubscriptionRequestMapping extends BaseSubscriptionMapping {
-	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	FmSubscriptionRequest map(Subscription o);
+public interface ChangeExtVnfConnRequest451Mapping extends Connectivity451Mapping {
 
-	@Mapping(target = "api", ignore = true)
+	ChangeExtVnfConnRequest map(ChangeExtVnfConnRequest o);
+
 	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", ignore = true)
-	@Mapping(target = "version", ignore = true)
-	Subscription map(FmSubscriptionRequest o);
+	@Mapping(target = "vimConnectionInfo", ignore = true)
+	ChangeExtVnfConnRequest map(ChangeExtVnfConnectivityRequest o);
 }

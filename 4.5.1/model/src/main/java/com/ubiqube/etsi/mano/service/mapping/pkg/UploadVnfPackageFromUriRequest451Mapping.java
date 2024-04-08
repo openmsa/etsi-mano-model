@@ -26,7 +26,7 @@ import com.ubiqube.etsi.mano.nfvo.v451.model.vnf.UploadVnfPackageFromUriRequest;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface UploadVnfPackageFromUriRequestMapping {
+public interface UploadVnfPackageFromUriRequest451Mapping {
 
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "password", ignore = true)
