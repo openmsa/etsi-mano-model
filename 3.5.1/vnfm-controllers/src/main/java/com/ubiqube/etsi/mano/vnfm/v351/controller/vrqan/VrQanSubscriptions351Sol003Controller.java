@@ -31,12 +31,14 @@ import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v351.model.lcmcoord.Link;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.v351.SubscriptionLinkable351Vnfm;
 import com.ubiqube.etsi.mano.vnfm.v351.model.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.vnfm.v351.model.vrqan.VrQuotaAvailSubscriptionLinks;
 import com.ubiqube.etsi.mano.vnfm.v351.model.vrqan.VrQuotaAvailSubscriptionRequest;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -46,9 +48,11 @@ import jakarta.validation.Valid;
 @RestController
 public class VrQanSubscriptions351Sol003Controller implements VrQanSubscriptions351Sol003Api, SubscriptionLinkable351Vnfm {
 	private final SubscriptionFrontController subscriptionService;
+	private final MapperFacade mapper;
 
-	public VrQanSubscriptions351Sol003Controller(final SubscriptionFrontController subscriptionService) {
+	public VrQanSubscriptions351Sol003Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
 		this.subscriptionService = subscriptionService;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -57,8 +61,9 @@ public class VrQanSubscriptions351Sol003Controller implements VrQanSubscriptions
 	}
 
 	@Override
-	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsPost(@Valid final VrQuotaAvailSubscriptionRequest vrQuotaAvailSubscriptionRequest) {
-		return subscriptionService.create(vrQuotaAvailSubscriptionRequest, VrQuotaAvailSubscription.class, VrQanSubscriptions351Sol003Api.class, VrQanSubscriptions351Sol003Controller::makeLinks, VrQanSubscriptions351Sol003Controller::makeSelf, ApiVersionType.SOL003_VRQAN);
+	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsPost(@Valid final VrQuotaAvailSubscriptionRequest body) {
+		final Subscription req = mapper.map(body, Subscription.class);
+		return subscriptionService.create(req, x -> mapper.map(x, VrQuotaAvailSubscription.class), VrQanSubscriptions351Sol003Api.class, VrQanSubscriptions351Sol003Controller::makeLinks, VrQanSubscriptions351Sol003Controller::makeSelf, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override

@@ -33,10 +33,12 @@ import com.ubiqube.etsi.mano.em.v351.model.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.em.v351.model.vnffm.FmSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v351.model.vnffm.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
 import com.ubiqube.etsi.mano.vnfm.v351.SubscriptionLinkable351Vnfm;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -47,9 +49,11 @@ import jakarta.validation.Valid;
 @RestController
 public class AlarmsSubscriptions351Sol002Controller implements AlarmsSubscriptions351Sol002Api, SubscriptionLinkable351Vnfm {
 	private final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController;
+	private final MapperFacade mapper;
 
-	public AlarmsSubscriptions351Sol002Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController) {
+	public AlarmsSubscriptions351Sol002Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController, final MapperFacade mapper) {
 		this.faultMngtSubscriptionsFrontController = faultMngtSubscriptionsFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -58,8 +62,9 @@ public class AlarmsSubscriptions351Sol002Controller implements AlarmsSubscriptio
 	}
 
 	@Override
-	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest fmSubscriptionRequest) {
-		return faultMngtSubscriptionsFrontController.create(fmSubscriptionRequest, FmSubscription.class, AlarmsSubscriptions351Sol002Api.class, AlarmsSubscriptions351Sol002Controller::makeLinks, AlarmsSubscriptions351Sol002Controller::makeSelf);
+	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest body) {
+		final Subscription req = mapper.map(body, Subscription.class);
+		return faultMngtSubscriptionsFrontController.create(req, x -> mapper.map(x, FmSubscription.class), AlarmsSubscriptions351Sol002Api.class, AlarmsSubscriptions351Sol002Controller::makeLinks, AlarmsSubscriptions351Sol002Controller::makeSelf);
 	}
 
 	@Override
