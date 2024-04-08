@@ -20,9 +20,17 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.dao.mano.vnfi.ChangeExtVnfConnRequest;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.ChangeExtVnfConnectivityRequest;
+import com.ubiqube.etsi.mano.service.mapping.ConnectivityMapping;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface ChangeExtVnfConnRequestMapping {
+public interface ChangeExtVnfConnRequestMapping extends ConnectivityMapping {
 
 	ChangeExtVnfConnRequest map(ChangeExtVnfConnRequest o);
+
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "vimConnectionInfo", ignore = true)
+	ChangeExtVnfConnRequest map(ChangeExtVnfConnectivityRequest o);
 }
