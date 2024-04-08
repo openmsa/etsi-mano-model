@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
 import com.ubiqube.etsi.mano.vnfm.v261.controller.vnflcm.sol003.VnfLcmSubscriptions261Sol003Api;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.LccnSubscription;
@@ -38,13 +39,16 @@ import com.ubiqube.etsi.mano.vnfm.v261.services.SubscriptionLinkable261Vnfm;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnflcmSubscriptions261Sol002Controller implements VnflcmSubscriptions261Sol002Api, SubscriptionLinkable261Vnfm {
 	private final VnfLcmSubscriptionFrontController frontController;
+	private final MapperFacade mapper;
 
-	public VnflcmSubscriptions261Sol002Controller(final VnfLcmSubscriptionFrontController frontController) {
+	public VnflcmSubscriptions261Sol002Controller(final VnfLcmSubscriptionFrontController frontController, final MapperFacade mapper) {
 		this.frontController = frontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -54,7 +58,8 @@ public class VnflcmSubscriptions261Sol002Controller implements VnflcmSubscriptio
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsPost(@Valid final LccnSubscriptionRequest body) {
-		return frontController.create(body, LccnSubscription.class, VnflcmSubscriptions261Sol002Api.class, VnflcmSubscriptions261Sol002Controller::makeLinks, VnflcmSubscriptions261Sol002Controller::getSelfLink);
+		final Subscription req = mapper.map(body, Subscription.class);
+		return frontController.create(req, x -> mapper.map(x, LccnSubscription.class), VnflcmSubscriptions261Sol002Api.class, VnflcmSubscriptions261Sol002Controller::makeLinks, VnflcmSubscriptions261Sol002Controller::getSelfLink);
 	}
 
 	@Override

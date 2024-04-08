@@ -31,6 +31,7 @@ import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.v261.controller.vnffm.sol002.FaultmngtSubscriptions261Sol002Api;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.PmSubscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.PmSubscriptionLinks;
@@ -39,14 +40,17 @@ import com.ubiqube.etsi.mano.vnfm.v261.services.SubscriptionLinkable261Vnfm;
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RolesAllowed({ "ROLE_NFVO" })
 @RestController
 public class VnfPmSubscriptions261Sol003Controller implements VnfPmSubscriptions261Sol003Api, SubscriptionLinkable261Vnfm {
 	private final SubscriptionFrontController subscriptionService;
+	private final MapperFacade mapper;
 
-	public VnfPmSubscriptions261Sol003Controller(final SubscriptionFrontController subscriptionService) {
+	public VnfPmSubscriptions261Sol003Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
 		this.subscriptionService = subscriptionService;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -55,8 +59,9 @@ public class VnfPmSubscriptions261Sol003Controller implements VnfPmSubscriptions
 	}
 
 	@Override
-	public ResponseEntity<PmSubscription> subscriptionsPost(@Valid final PmSubscriptionRequest pmSubscriptionRequest) {
-		return subscriptionService.create(pmSubscriptionRequest, PmSubscription.class, VnfPmSubscriptions261Sol003Api.class, VnfPmSubscriptions261Sol003Controller::makeLinks, VnfPmSubscriptions261Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFPM);
+	public ResponseEntity<PmSubscription> subscriptionsPost(@Valid final PmSubscriptionRequest body) {
+		final Subscription req = mapper.map(body, Subscription.class);
+		return subscriptionService.create(req, x -> mapper.map(x, PmSubscription.class), VnfPmSubscriptions261Sol003Api.class, VnfPmSubscriptions261Sol003Controller::makeLinks, VnfPmSubscriptions261Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFPM);
 	}
 
 	@Override

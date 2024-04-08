@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
 import com.ubiqube.etsi.mano.vnfm.v261.model.faultmngt.FmSubscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.faultmngt.FmSubscriptionLinks;
@@ -36,6 +37,7 @@ import com.ubiqube.etsi.mano.vnfm.v261.model.faultmngt.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.vnfm.v261.services.SubscriptionLinkable261Vnfm;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -45,9 +47,11 @@ import jakarta.validation.Valid;
 @RestController
 public class VnfFmSubscriptions261Sol003Controller implements VnfFmSubscriptions261Sol003Api, SubscriptionLinkable261Vnfm {
 	private final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController;
+	private final MapperFacade mapper;
 
-	public VnfFmSubscriptions261Sol003Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController) {
+	public VnfFmSubscriptions261Sol003Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController, final MapperFacade mapper) {
 		this.faultMngtSubscriptionsFrontController = faultMngtSubscriptionsFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -56,8 +60,9 @@ public class VnfFmSubscriptions261Sol003Controller implements VnfFmSubscriptions
 	}
 
 	@Override
-	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest fmSubscriptionRequest) {
-		return faultMngtSubscriptionsFrontController.create(fmSubscriptionRequest, FmSubscription.class, VnfFmSubscriptions261Sol003Api.class, VnfFmSubscriptions261Sol003Controller::makeLinks, VnfFmSubscriptions261Sol003Controller::makeSelf);
+	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest body) {
+		final Subscription req = mapper.map(body, Subscription.class);
+		return faultMngtSubscriptionsFrontController.create(req, x -> mapper.map(x, FmSubscription.class), VnfFmSubscriptions261Sol003Api.class, VnfFmSubscriptions261Sol003Controller::makeLinks, VnfFmSubscriptions261Sol003Controller::makeSelf);
 	}
 
 	@Override

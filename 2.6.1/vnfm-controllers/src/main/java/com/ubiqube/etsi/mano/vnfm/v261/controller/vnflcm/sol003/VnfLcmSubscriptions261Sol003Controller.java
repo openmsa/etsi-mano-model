@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.LccnSubscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.LccnSubscriptionLinks;
@@ -37,13 +38,16 @@ import com.ubiqube.etsi.mano.vnfm.v261.services.SubscriptionLinkable261Vnfm;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnfLcmSubscriptions261Sol003Controller implements VnfLcmSubscriptions261Sol003Api, SubscriptionLinkable261Vnfm {
 	private final VnfLcmSubscriptionFrontController frontController;
+	private final MapperFacade mapper;
 
-	public VnfLcmSubscriptions261Sol003Controller(final VnfLcmSubscriptionFrontController frontController) {
+	public VnfLcmSubscriptions261Sol003Controller(final VnfLcmSubscriptionFrontController frontController, final MapperFacade mapper) {
 		this.frontController = frontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -53,7 +57,8 @@ public class VnfLcmSubscriptions261Sol003Controller implements VnfLcmSubscriptio
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsPost(@Valid final LccnSubscriptionRequest body) {
-		return frontController.create(body, LccnSubscription.class, VnfLcmSubscriptions261Sol003Api.class, VnfLcmSubscriptions261Sol003Controller::makeLinks, VnfLcmSubscriptions261Sol003Controller::getSelfLink);
+		final Subscription req = mapper.map(body, Subscription.class);
+		return frontController.create(req, x -> mapper.map(x, LccnSubscription.class), VnfLcmSubscriptions261Sol003Api.class, VnfLcmSubscriptions261Sol003Controller::makeLinks, VnfLcmSubscriptions261Sol003Controller::getSelfLink);
 	}
 
 	@Override

@@ -32,12 +32,14 @@ import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vrqan.VrQuotaAvailSubscriptionLinks;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vrqan.VrQuotaAvailSubscriptionRequest;
 import com.ubiqube.etsi.mano.vnfm.v261.services.SubscriptionLinkable261Vnfm;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -47,9 +49,11 @@ import jakarta.validation.Valid;
 @RestController
 public class VrQanSubscriptions261Sol003Controller implements VrQanSubscriptions261Sol003Api, SubscriptionLinkable261Vnfm {
 	private final SubscriptionFrontController subscriptionService;
+	private final MapperFacade mapper;
 
-	public VrQanSubscriptions261Sol003Controller(final SubscriptionFrontController subscriptionService) {
+	public VrQanSubscriptions261Sol003Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
 		this.subscriptionService = subscriptionService;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -58,8 +62,9 @@ public class VrQanSubscriptions261Sol003Controller implements VrQanSubscriptions
 	}
 
 	@Override
-	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsPost(@Valid final VrQuotaAvailSubscriptionRequest vrQuotaAvailSubscriptionRequest) throws URISyntaxException {
-		return subscriptionService.create(vrQuotaAvailSubscriptionRequest, VrQuotaAvailSubscription.class, VrQanSubscriptions261Sol003Api.class, VrQanSubscriptions261Sol003Controller::makeLinks, VrQanSubscriptions261Sol003Controller::makeSelf, ApiVersionType.SOL003_VRQAN);
+	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsPost(@Valid final VrQuotaAvailSubscriptionRequest body) throws URISyntaxException {
+		final Subscription req = mapper.map(body, Subscription.class);
+		return subscriptionService.create(req, x -> mapper.map(x, VrQuotaAvailSubscription.class), VrQanSubscriptions261Sol003Api.class, VrQanSubscriptions261Sol003Controller::makeLinks, VrQanSubscriptions261Sol003Controller::makeSelf, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override
