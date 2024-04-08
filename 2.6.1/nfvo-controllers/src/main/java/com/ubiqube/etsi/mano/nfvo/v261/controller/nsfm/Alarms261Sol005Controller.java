@@ -33,6 +33,7 @@ import com.ubiqube.etsi.mano.nfvo.v261.model.nsfm.AlarmModifications;
 
 import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -42,19 +43,21 @@ import jakarta.validation.Valid;
 @RestController
 public class Alarms261Sol005Controller implements Alarms261Sol005Api {
 	private final NsAlarmFrontController nsAlarmFrontController;
+	private final MapperFacade mapper;
 
-	public Alarms261Sol005Controller(final NsAlarmFrontController nsAlarmFrontController) {
+	public Alarms261Sol005Controller(final NsAlarmFrontController nsAlarmFrontController, final MapperFacade mapper) {
 		this.nsAlarmFrontController = nsAlarmFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Alarm> alarmsAlarmIdGet(final String alarmId) {
-		return nsAlarmFrontController.findById(getSafeUUID(alarmId), Alarm.class, Alarms261Sol005Controller::makeLinks);
+		return nsAlarmFrontController.findById(getSafeUUID(alarmId), x -> mapper.map(x, Alarm.class), Alarms261Sol005Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<AlarmModifications> alarmsAlarmIdPatch(@Valid final AlarmModifications body, final String alarmId, final String ifMatch) {
-		return nsAlarmFrontController.patch(alarmId, AckState.valueOf(body.getAckState().toString()), ifMatch, AlarmModifications.class);
+		return nsAlarmFrontController.patch(alarmId, AckState.valueOf(body.getAckState().toString()), ifMatch, x -> mapper.map(x, AlarmModifications.class));
 	}
 
 	@Override

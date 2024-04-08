@@ -21,9 +21,6 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.net.URISyntaxException;
 
-import jakarta.annotation.Nonnull;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -35,6 +32,10 @@ import com.ubiqube.etsi.mano.controller.nsd.NsDescriptorGenericFrontController;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.CreateNsdInfoRequest;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.NsdInfo;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.NsdInfoLinks;
+
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  * SOL005 - NSD Management Interface
@@ -51,10 +52,11 @@ import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.NsdInfoLinks;
 @RestController
 public class NsDescriptor261Sol005Controller implements NsDescriptor261Sol005Api {
 	private final NsDescriptorGenericFrontController nsDescriptorGenericFrontController;
+	private final MapperFacade mapper;
 
-	public NsDescriptor261Sol005Controller(final NsDescriptorGenericFrontController nsDescriptorGenericFrontController) {
-		super();
+	public NsDescriptor261Sol005Controller(final NsDescriptorGenericFrontController nsDescriptorGenericFrontController, final MapperFacade mapper) {
 		this.nsDescriptorGenericFrontController = nsDescriptorGenericFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -69,7 +71,7 @@ public class NsDescriptor261Sol005Controller implements NsDescriptor261Sol005Api
 
 	@Override
 	public ResponseEntity<NsdInfo> nsDescriptorsNsdInfoIdGet(final String nsdInfoId) {
-		return nsDescriptorGenericFrontController.finsById(nsdInfoId, NsdInfo.class, NsDescriptor261Sol005Controller::makeLinks);
+		return nsDescriptorGenericFrontController.finsById(nsdInfoId, x -> mapper.map(x, NsdInfo.class), NsDescriptor261Sol005Controller::makeLinks);
 	}
 
 	@Override
@@ -84,12 +86,12 @@ public class NsDescriptor261Sol005Controller implements NsDescriptor261Sol005Api
 
 	@Override
 	public ResponseEntity<NsdInfo> nsDescriptorsNsdInfoIdPatch(final String nsdInfoId, @Valid final String body, final String ifMatch) {
-		return nsDescriptorGenericFrontController.modify(nsdInfoId, body, ifMatch, NsdInfo.class, NsDescriptor261Sol005Controller::makeLinks);
+		return nsDescriptorGenericFrontController.modify(nsdInfoId, body, ifMatch, x -> mapper.map(x, NsdInfo.class), NsDescriptor261Sol005Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<NsdInfo> nsDescriptorsPost(final String contentType, @Valid final CreateNsdInfoRequest body) throws URISyntaxException {
-		return nsDescriptorGenericFrontController.create(contentType, body.getUserDefinedData(), NsdInfo.class, NsDescriptor261Sol005Controller::makeLinks, NsDescriptor261Sol005Controller::makeSelfLink);
+		return nsDescriptorGenericFrontController.create(contentType, body.getUserDefinedData(), x -> mapper.map(x, NsdInfo.class), NsDescriptor261Sol005Controller::makeLinks, NsDescriptor261Sol005Controller::makeSelfLink);
 	}
 
 	private static String makeSelfLink(final NsdInfo nsdInfo) {

@@ -16,13 +16,15 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v261.controller.vnflcm;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnflcm.VnfLcmNotificationFrontController;
+import com.ubiqube.etsi.mano.dao.mano.vnflcm.VnfLcmNotification;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vnflcm.VnfIdentifierCreationNotification;
+
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -32,9 +34,11 @@ import com.ubiqube.etsi.mano.vnfm.v261.model.vnflcm.VnfIdentifierCreationNotific
 @RestController
 public class VnfIdentifierCreationNotification261Sol003Controller implements VnfIdentifierCreationNotification261Sol003Api {
 	private final VnfLcmNotificationFrontController fc;
+	private final MapperFacade mapper;
 
-	public VnfIdentifierCreationNotification261Sol003Controller(final VnfLcmNotificationFrontController fc) {
+	public VnfIdentifierCreationNotification261Sol003Controller(final VnfLcmNotificationFrontController fc, final MapperFacade mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -44,7 +48,8 @@ public class VnfIdentifierCreationNotification261Sol003Controller implements Vnf
 
 	@Override
 	public ResponseEntity<Void> vnfIdentifierCreationNotificationPost(@Valid final VnfIdentifierCreationNotification body) {
-		return fc.creationNotification(body, "3.6.1");
+		final VnfLcmNotification req = mapper.map(body, VnfLcmNotification.class);
+		return fc.creationNotification(req, "3.6.1");
 	}
 
 }

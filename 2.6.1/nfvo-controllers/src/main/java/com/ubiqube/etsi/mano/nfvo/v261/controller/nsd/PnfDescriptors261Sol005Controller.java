@@ -21,8 +21,6 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.function.Consumer;
 
-import jakarta.annotation.Nonnull;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,19 +33,24 @@ import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.PnfdInfo;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.PnfdInfoLinks;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.PnfdInfoModifications;
 
+import jakarta.annotation.Nonnull;
+import ma.glasnost.orika.MapperFacade;
+
 @RestController
 public class PnfDescriptors261Sol005Controller implements PnfDescriptors261Sol005Api {
 	private final PnfFrontController pnfFrontController;
+	private final MapperFacade mapper;
 
-	public PnfDescriptors261Sol005Controller(final PnfFrontController pnfFrontController) {
-		super();
+	public PnfDescriptors261Sol005Controller(final PnfFrontController pnfFrontController, final MapperFacade mapper) {
 		this.pnfFrontController = pnfFrontController;
+		this.mapper = mapper;
 	}
 
 	/**
 	 * Query information about multiple PNF descriptor resources.
 	 *
-	 * \&quot;The GET method queries information about multiple PNF descriptor resources.\&quot;
+	 * \&quot;The GET method queries information about multiple PNF descriptor
+	 * resources.\&quot;
 	 *
 	 */
 	@Override
@@ -59,8 +62,14 @@ public class PnfDescriptors261Sol005Controller implements PnfDescriptors261Sol00
 	/**
 	 * Delete an individual PNF descriptor resource.
 	 *
-	 * The DELETE method deletes an individual PNF descriptor resource. An individual PNF descriptor resource can only be deleted when there is no NS instance using it or there is NSD referencing it. To delete all PNFD versions identified by a particular value of the \&quot;pnfdInvariantId\&quot; attribute, the procedure is to first use the GET method with filter \&quot;pnfdInvariantId\&quot; towards the PNF descriptors resource to find all versions of the PNFD. Then, the client uses the DELETE
-	 * method described in this clause to delete each PNFD version individually.
+	 * The DELETE method deletes an individual PNF descriptor resource. An
+	 * individual PNF descriptor resource can only be deleted when there is no NS
+	 * instance using it or there is NSD referencing it. To delete all PNFD versions
+	 * identified by a particular value of the \&quot;pnfdInvariantId\&quot;
+	 * attribute, the procedure is to first use the GET method with filter
+	 * \&quot;pnfdInvariantId\&quot; towards the PNF descriptors resource to find
+	 * all versions of the PNFD. Then, the client uses the DELETE method described
+	 * in this clause to delete each PNFD version individually.
 	 *
 	 */
 	@Override
@@ -71,18 +80,22 @@ public class PnfDescriptors261Sol005Controller implements PnfDescriptors261Sol00
 	/**
 	 * Read an individual PNFD resource.
 	 *
-	 * The GET method reads information about an individual PNF descriptor. This method shall follow the provisions specified in the Tables 5.4.6.3.2-1 and 5.4.6.3.2-2 of GS NFV-SOL 005 for URI query parameters, request and response data structures, and response codes.
+	 * The GET method reads information about an individual PNF descriptor. This
+	 * method shall follow the provisions specified in the Tables 5.4.6.3.2-1 and
+	 * 5.4.6.3.2-2 of GS NFV-SOL 005 for URI query parameters, request and response
+	 * data structures, and response codes.
 	 *
 	 */
 	@Override
 	public ResponseEntity<PnfdInfo> pnfDescriptorsPnfdInfoIdGet(final String pnfdInfoId) {
-		return pnfFrontController.findById(pnfdInfoId, PnfdInfo.class, PnfDescriptors261Sol005Controller::makeLinks);
+		return pnfFrontController.findById(pnfdInfoId, x -> mapper.map(x, PnfdInfo.class), PnfDescriptors261Sol005Controller::makeLinks);
 	}
 
 	/**
 	 * Modify the user defined data of an individual PNF descriptor resource.
 	 *
-	 * The PATCH method modifies the user defined data of an individual PNF descriptor resource.
+	 * The PATCH method modifies the user defined data of an individual PNF
+	 * descriptor resource.
 	 *
 	 */
 	@Override
@@ -93,7 +106,9 @@ public class PnfDescriptors261Sol005Controller implements PnfDescriptors261Sol00
 	/**
 	 * Fetch the content of a PNFD.
 	 *
-	 * The GET method fetches the content of the PNFD. This method shall follow the provisions specified in the Table 5.4.7.3.2-2 for URI query parameters, request and response data structures, and response codes.
+	 * The GET method fetches the content of the PNFD. This method shall follow the
+	 * provisions specified in the Table 5.4.7.3.2-2 for URI query parameters,
+	 * request and response data structures, and response codes.
 	 *
 	 */
 	@Override
@@ -104,7 +119,10 @@ public class PnfDescriptors261Sol005Controller implements PnfDescriptors261Sol00
 	/**
 	 * Upload the content of a PNFD.
 	 *
-	 * The PUT method is used to upload the content of a PNFD. This resource represents the content of the individual PNF descriptor, i.e. PNFD content. The client can use this resource to upload and download the content of the PNFD.
+	 * The PUT method is used to upload the content of a PNFD. This resource
+	 * represents the content of the individual PNF descriptor, i.e. PNFD content.
+	 * The client can use this resource to upload and download the content of the
+	 * PNFD.
 	 *
 	 */
 	@Override
@@ -120,7 +138,7 @@ public class PnfDescriptors261Sol005Controller implements PnfDescriptors261Sol00
 	 */
 	@Override
 	public ResponseEntity<PnfdInfo> pnfDescriptorsPost(final String contentType, final CreatePnfdInfoRequest body) {
-		return pnfFrontController.create(body.getUserDefinedData(), PnfdInfo.class, PnfDescriptors261Sol005Controller::makeLinks);
+		return pnfFrontController.create(body.getUserDefinedData(), x -> mapper.map(x, PnfdInfo.class), PnfDescriptors261Sol005Controller::makeLinks);
 	}
 
 	private static PnfdInfoLinks makeLinks(final PnfdInfo x) {

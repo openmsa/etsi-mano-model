@@ -19,8 +19,6 @@ package com.ubiqube.etsi.mano.nfvo.v261.controller.nslcm;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +29,9 @@ import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.NsLcmOpOccLinks;
 
+import jakarta.validation.constraints.NotNull;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
@@ -38,18 +39,22 @@ import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.NsLcmOpOccLinks;
  */
 @RestController
 public class NsLcmOpOccs261Sol005Controller implements NsLcmOpOccs261Sol005Api {
-
 	private final NsLcmGenericFrontController nsLcmGenericFrontController;
+	private final MapperFacade mapper;
 
-	public NsLcmOpOccs261Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController) {
-		super();
+	public NsLcmOpOccs261Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final MapperFacade mapper) {
 		this.nsLcmGenericFrontController = nsLcmGenericFrontController;
+		this.mapper = mapper;
 	}
 
 	/**
 	 * Query multiple NS LCM operation occurrences.
 	 *
-	 * Get Operation Status. The client can use this method to query status information about multiple NS lifecycle management operation occurrences. This method shall follow the provisions specified in the Tables 6.4.9.3.2-1 and 6.4.9.3.2-2 for URI query parameters, request and response data structures, and response codes.
+	 * Get Operation Status. The client can use this method to query status
+	 * information about multiple NS lifecycle management operation occurrences.
+	 * This method shall follow the provisions specified in the Tables 6.4.9.3.2-1
+	 * and 6.4.9.3.2-2 for URI query parameters, request and response data
+	 * structures, and response codes.
 	 *
 	 */
 	@Override
@@ -60,7 +65,12 @@ public class NsLcmOpOccs261Sol005Controller implements NsLcmOpOccs261Sol005Api {
 	/**
 	 * Continue a NS lifecycle management operation occurrence.
 	 *
-	 * The POST method initiates continuing an NS lifecycle operation if that operation has experienced a temporary failure, i.e. the related \&quot;NS LCM operation occurrence\&quot; is in \&quot;FAILED_TEMP\&quot; state. This method shall follow the provisions specified in the Tables 6.4.13.3.1-1 and 6.4.13.3.1-2 for URI query parameters, request and response data structures, and response codes.
+	 * The POST method initiates continuing an NS lifecycle operation if that
+	 * operation has experienced a temporary failure, i.e. the related \&quot;NS LCM
+	 * operation occurrence\&quot; is in \&quot;FAILED_TEMP\&quot; state. This
+	 * method shall follow the provisions specified in the Tables 6.4.13.3.1-1 and
+	 * 6.4.13.3.1-2 for URI query parameters, request and response data structures,
+	 * and response codes.
 	 *
 	 */
 	@Override
@@ -71,18 +81,27 @@ public class NsLcmOpOccs261Sol005Controller implements NsLcmOpOccs261Sol005Api {
 	/**
 	 * Read an individual NS LCM operation occurrence resource.
 	 *
-	 * The client can use this method to retrieve status information about a NS lifecycle management operation occurrence by reading an individual \&quot;NS LCM operation occurrence\&quot; resource. This method shall follow the provisions specified in the Tables 6.4.10.3.2-1 and 6.4.10.3.2-2 for URI query parameters, request and response data structures, and response codes.
+	 * The client can use this method to retrieve status information about a NS
+	 * lifecycle management operation occurrence by reading an individual \&quot;NS
+	 * LCM operation occurrence\&quot; resource. This method shall follow the
+	 * provisions specified in the Tables 6.4.10.3.2-1 and 6.4.10.3.2-2 for URI
+	 * query parameters, request and response data structures, and response codes.
 	 *
 	 */
 	@Override
 	public ResponseEntity<NsLcmOpOcc> nsLcmOpOccsNsLcmOpOccIdGet(final String nsLcmOpOccId, final String contentType) {
-		return nsLcmGenericFrontController.findById(nsLcmOpOccId, NsLcmOpOcc.class, NsLcmOpOccs261Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.findById(nsLcmOpOccId, x -> mapper.map(x, NsLcmOpOcc.class), NsLcmOpOccs261Sol005Controller::makeLinks);
 	}
 
 	/**
 	 * Retry a NS lifecycle management operation occurrence.
 	 *
-	 * The POST method initiates retrying a NS lifecycle management operation if that operation has experienced a temporary failure, i.e. the related \&quot;NS LCM operation occurrence\&quot; is in \&quot;FAILED_TEMP\&quot; state. This method shall follow the provisions specified in the Tables 6.4.11.3.1-1 and 6.4.11.3.1-2 for URI query parameters, request and response data structures, and response codes.
+	 * The POST method initiates retrying a NS lifecycle management operation if
+	 * that operation has experienced a temporary failure, i.e. the related
+	 * \&quot;NS LCM operation occurrence\&quot; is in \&quot;FAILED_TEMP\&quot;
+	 * state. This method shall follow the provisions specified in the Tables
+	 * 6.4.11.3.1-1 and 6.4.11.3.1-2 for URI query parameters, request and response
+	 * data structures, and response codes.
 	 *
 	 */
 	@Override
@@ -94,7 +113,12 @@ public class NsLcmOpOccs261Sol005Controller implements NsLcmOpOccs261Sol005Api {
 	/**
 	 * Rollback a NS lifecycle management operation occurrence.
 	 *
-	 * The POST method initiates rolling back a NS lifecycle operation if that operation has experienced a temporary failure, i.e. the related \&quot;NS LCM operation occurrence\&quot; is in \&quot;FAILED_TEMP\&quot; state. This method shall follow the provisions specified in the Tables 6.4.12.3.1-1 and 6.4.12.3.1-2 for URI query parameters, request and response data structures, and response codes.
+	 * The POST method initiates rolling back a NS lifecycle operation if that
+	 * operation has experienced a temporary failure, i.e. the related \&quot;NS LCM
+	 * operation occurrence\&quot; is in \&quot;FAILED_TEMP\&quot; state. This
+	 * method shall follow the provisions specified in the Tables 6.4.12.3.1-1 and
+	 * 6.4.12.3.1-2 for URI query parameters, request and response data structures,
+	 * and response codes.
 	 *
 	 */
 	@Override

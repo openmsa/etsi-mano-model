@@ -16,14 +16,15 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v261.controller.vnfpm;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnf.VnfPerformanceNotificationFrontController;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsperfo.PerformanceInformationAvailableNotification;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsperfo.ThresholdCrossedNotification;
+
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -33,9 +34,11 @@ import com.ubiqube.etsi.mano.nfvo.v261.model.nsperfo.ThresholdCrossedNotificatio
 @RestController
 public class PerformanceInformationAvailableNotification261Sol003Controller implements PerformanceInformationAvailableNotification261Sol003Api {
 	private final VnfPerformanceNotificationFrontController fc;
+	private final MapperFacade mapper;
 
-	public PerformanceInformationAvailableNotification261Sol003Controller(final VnfPerformanceNotificationFrontController fc) {
+	public PerformanceInformationAvailableNotification261Sol003Controller(final VnfPerformanceNotificationFrontController fc, final MapperFacade mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -45,7 +48,8 @@ public class PerformanceInformationAvailableNotification261Sol003Controller impl
 
 	@Override
 	public ResponseEntity<Void> availabePost(@Valid final PerformanceInformationAvailableNotification body) {
-		return fc.availablePost(body, "2.6.1");
+		final com.ubiqube.etsi.mano.dao.mano.pm.PerformanceInformationAvailableNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.pm.PerformanceInformationAvailableNotification.class);
+		return fc.availablePost(req, "2.6.1");
 	}
 
 	@Override
@@ -55,7 +59,8 @@ public class PerformanceInformationAvailableNotification261Sol003Controller impl
 
 	@Override
 	public ResponseEntity<Void> crossedPost(@Valid final ThresholdCrossedNotification body) {
-		return fc.crossedPost(body, "2.6.1");
+		final com.ubiqube.etsi.mano.dao.mano.pm.ThresholdCrossedNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.pm.ThresholdCrossedNotification.class);
+		return fc.crossedPost(req, "2.6.1");
 	}
 
 }

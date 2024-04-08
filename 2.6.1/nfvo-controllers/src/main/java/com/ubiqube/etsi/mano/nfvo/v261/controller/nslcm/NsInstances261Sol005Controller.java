@@ -19,14 +19,17 @@ package com.ubiqube.etsi.mano.nfvo.v261.controller.nslcm;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.annotation.Nonnull;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.nslcm.NsInstanceGenericFrontController;
+import com.ubiqube.etsi.mano.dao.mano.dto.CreateNsInstance;
+import com.ubiqube.etsi.mano.dao.mano.dto.nsi.NsInstantiate;
+import com.ubiqube.etsi.mano.dao.mano.nsd.upd.UpdateRequest;
+import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.NsHeal;
+import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.NsScale;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.CreateNsRequest;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.HealNsRequest;
@@ -37,6 +40,9 @@ import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.ScaleNsRequest;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.TerminateNsRequest;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.UpdateNsRequest;
 
+import jakarta.annotation.Nonnull;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
@@ -44,17 +50,21 @@ import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.UpdateNsRequest;
  */
 @RestController
 public final class NsInstances261Sol005Controller implements NsInstances261Sol005Api {
-
 	private final NsInstanceGenericFrontController frontController;
+	private final MapperFacade mapper;
 
-	public NsInstances261Sol005Controller(final NsInstanceGenericFrontController _frontController) {
-		frontController = _frontController;
+	public NsInstances261Sol005Controller(final NsInstanceGenericFrontController frontController, final MapperFacade mapper) {
+		this.frontController = frontController;
+		this.mapper = mapper;
 	}
 
 	/**
 	 * Query multiple NS instances.
 	 *
-	 * Query NS Instances. The GET method queries information about multiple NS instances. This method shall support the URI query parameters, request and response data structures, and response codes, as specified in the Tables 6.4.2.3.2-1 and 6.4.2.3.2-2.
+	 * Query NS Instances. The GET method queries information about multiple NS
+	 * instances. This method shall support the URI query parameters, request and
+	 * response data structures, and response codes, as specified in the Tables
+	 * 6.4.2.3.2-1 and 6.4.2.3.2-2.
 	 *
 	 */
 	@Override
@@ -76,23 +86,28 @@ public final class NsInstances261Sol005Controller implements NsInstances261Sol00
 	/**
 	 * Read an individual NS instance resource.
 	 *
-	 * The GET method retrieves information about a NS instance by reading an individual NS instance resource.
+	 * The GET method retrieves information about a NS instance by reading an
+	 * individual NS instance resource.
 	 *
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdGet(final String nsInstanceId) {
-		return frontController.findById(nsInstanceId, NsInstance.class, NsInstances261Sol005Controller::makeLinks);
+		return frontController.findById(nsInstanceId, x -> mapper.map(x, NsInstance.class), NsInstances261Sol005Controller::makeLinks);
 	}
 
 	/**
 	 * Heal a NS instance.
 	 *
-	 * The POST method requests to heal a NS instance resource. This method shall follow the provisions specified in the Tables 6.4.7.3.1-1 and 6.4.7.3.1-2 for URI query parameters, request and response data structures, and response codes.
+	 * The POST method requests to heal a NS instance resource. This method shall
+	 * follow the provisions specified in the Tables 6.4.7.3.1-1 and 6.4.7.3.1-2 for
+	 * URI query parameters, request and response data structures, and response
+	 * codes.
 	 *
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdHealPost(final String nsInstanceId, final HealNsRequest body) {
-		return frontController.heal(nsInstanceId, body, NsInstances261Sol005Controller::getSelfLink);
+		final NsHeal req = mapper.map(body, NsHeal.class);
+		return frontController.heal(nsInstanceId, req, NsInstances261Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -103,7 +118,8 @@ public final class NsInstances261Sol005Controller implements NsInstances261Sol00
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdInstantiatePost(final String nsInstanceId, final InstantiateNsRequest body) {
-		return frontController.instantiate(nsInstanceId, body, NsInstances261Sol005Controller::getSelfLink);
+		final NsInstantiate req = mapper.map(body, NsInstantiate.class);
+		return frontController.instantiate(nsInstanceId, req, NsInstances261Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -114,13 +130,19 @@ public final class NsInstances261Sol005Controller implements NsInstances261Sol00
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdScalePost(final String nsInstanceId, final ScaleNsRequest body) {
-		return frontController.scale(nsInstanceId, body, NsInstances261Sol005Controller::getSelfLink);
+		final NsScale req = mapper.map(body, NsScale.class);
+		return frontController.scale(nsInstanceId, req, NsInstances261Sol005Controller::getSelfLink);
 	}
 
 	/**
 	 * Terminate a NS instance.
 	 *
-	 * Terminate NS task. The POST method terminates a NS instance. This method can only be used with a NS instance in the INSTANTIATED state. Terminating a NS instance does not delete the NS instance identifier, but rather transitions the NS into the NOT_INSTANTIATED state. This method shall support the URI query parameters, request and response data structures, and response codes, as specified in the Tables 6.4.8.3.1-1 and 6.8.8.3.1-2.
+	 * Terminate NS task. The POST method terminates a NS instance. This method can
+	 * only be used with a NS instance in the INSTANTIATED state. Terminating a NS
+	 * instance does not delete the NS instance identifier, but rather transitions
+	 * the NS into the NOT_INSTANTIATED state. This method shall support the URI
+	 * query parameters, request and response data structures, and response codes,
+	 * as specified in the Tables 6.4.8.3.1-1 and 6.8.8.3.1-2.
 	 *
 	 */
 	@Override
@@ -136,7 +158,8 @@ public final class NsInstances261Sol005Controller implements NsInstances261Sol00
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdUpdatePost(final String nsInstanceId, final UpdateNsRequest body) {
-		return frontController.update(nsInstanceId, body, NsInstances261Sol005Controller::getSelfLink);
+		final UpdateRequest req = mapper.map(body, UpdateRequest.class);
+		return frontController.update(nsInstanceId, req, NsInstances261Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -147,7 +170,8 @@ public final class NsInstances261Sol005Controller implements NsInstances261Sol00
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesPost(final CreateNsRequest request) {
-		return frontController.create(request, NsInstance.class, NsInstances261Sol005Controller::makeLinks, NsInstances261Sol005Controller::getSelfLink);
+		final CreateNsInstance req = mapper.map(request, CreateNsInstance.class);
+		return frontController.create(req, x -> mapper.map(x, NsInstance.class), NsInstances261Sol005Controller::makeLinks, NsInstances261Sol005Controller::getSelfLink);
 	}
 
 	private static void makeLinks(@Nonnull final NsInstance nsdInfo) {

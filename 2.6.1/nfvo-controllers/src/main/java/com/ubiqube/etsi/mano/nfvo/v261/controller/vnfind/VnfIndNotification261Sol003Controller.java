@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfIndicatorValueChangeNotification;
 import com.ubiqube.etsi.mano.controller.vnfind.VnfIndicatorNotificationFrontController;
+import com.ubiqube.etsi.mano.dao.mano.ind.VnfIndiValueChangeNotification;
 
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -33,9 +35,11 @@ import jakarta.validation.Valid;
 @RestController
 public class VnfIndNotification261Sol003Controller implements VnfIndNotification261Sol003Api {
 	private final VnfIndicatorNotificationFrontController fc;
+	private final MapperFacade mapper;
 
-	public VnfIndNotification261Sol003Controller(final VnfIndicatorNotificationFrontController fc) {
+	public VnfIndNotification261Sol003Controller(final VnfIndicatorNotificationFrontController fc, final MapperFacade mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -45,7 +49,8 @@ public class VnfIndNotification261Sol003Controller implements VnfIndNotification
 
 	@Override
 	public ResponseEntity<Void> valueChangePost(@Valid final @Nonnull VnfIndicatorValueChangeNotification body) {
-		return fc.valueChangeNotification(body, "3.6.1");
+		final VnfIndiValueChangeNotification req = mapper.map(body, VnfIndiValueChangeNotification.class);
+		return fc.valueChangeNotification(req, "3.6.1");
 	}
 
 	@Override
@@ -55,7 +60,8 @@ public class VnfIndNotification261Sol003Controller implements VnfIndNotification
 
 	@Override
 	public ResponseEntity<Void> supportedChangePost(@Valid final @Nonnull VnfIndicatorValueChangeNotification body) {
-		return fc.supportedChangeNotification(body, "3.6.1");
+		final VnfIndiValueChangeNotification req = mapper.map(body, VnfIndiValueChangeNotification.class);
+		return fc.supportedChangeNotification(req, "3.6.1");
 	}
 
 }

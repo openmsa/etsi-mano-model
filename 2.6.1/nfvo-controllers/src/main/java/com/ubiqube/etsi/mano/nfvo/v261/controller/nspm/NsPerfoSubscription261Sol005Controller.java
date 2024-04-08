@@ -34,10 +34,12 @@ import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsperfo.SubscriptionsPmSubscriptionRequest;
 import com.ubiqube.etsi.mano.nfvo.v261.services.SubscriptionLinkable261Nfvo;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.PmSubscription;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.PmSubscriptionLinks;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -47,9 +49,11 @@ import jakarta.validation.Valid;
 @RestController
 public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscription261Sol005Api, SubscriptionLinkable261Nfvo {
 	private final SubscriptionFrontController subscriptionService;
+	private final MapperFacade mapper;
 
-	public NsPerfoSubscription261Sol005Controller(final SubscriptionFrontController subscriptionService) {
+	public NsPerfoSubscription261Sol005Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
 		this.subscriptionService = subscriptionService;
+		this.mapper = mapper;
 	}
 
 	/**
@@ -89,7 +93,8 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 	 */
 	@Override
 	public ResponseEntity<PmSubscription> subscriptionsPost(final SubscriptionsPmSubscriptionRequest pmSubscriptionRequest) throws URISyntaxException {
-		return subscriptionService.create(pmSubscriptionRequest, PmSubscription.class, NsPerfoSubscription261Sol005Api.class, NsPerfoSubscription261Sol005Controller::makeLinks, NsPerfoSubscription261Sol005Controller::makeSelf, ApiVersionType.SOL005_NSPM);
+		final Subscription req = mapper.map(pmSubscriptionRequest, Subscription.class);
+		return subscriptionService.create(req, x -> mapper.map(x, PmSubscription.class), NsPerfoSubscription261Sol005Api.class, NsPerfoSubscription261Sol005Controller::makeLinks, NsPerfoSubscription261Sol005Controller::makeSelf, ApiVersionType.SOL005_NSPM);
 	}
 
 	/**

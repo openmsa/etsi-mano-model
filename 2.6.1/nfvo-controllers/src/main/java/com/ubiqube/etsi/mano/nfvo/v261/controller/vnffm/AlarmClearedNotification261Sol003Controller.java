@@ -16,13 +16,14 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v261.controller.vnffm;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnffm.VnffmNotificationFrontController;
 import com.ubiqube.etsi.mano.vnfm.v261.model.vrqan.AlarmClearedNotification;
+
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -32,9 +33,11 @@ import com.ubiqube.etsi.mano.vnfm.v261.model.vrqan.AlarmClearedNotification;
 @RestController
 public class AlarmClearedNotification261Sol003Controller implements AlarmClearedNotification261Sol003Api {
 	private final VnffmNotificationFrontController fc;
+	private final MapperFacade mapper;
 
-	public AlarmClearedNotification261Sol003Controller(final VnffmNotificationFrontController fc) {
+	public AlarmClearedNotification261Sol003Controller(final VnffmNotificationFrontController fc, final MapperFacade mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -44,7 +47,8 @@ public class AlarmClearedNotification261Sol003Controller implements AlarmCleared
 
 	@Override
 	public ResponseEntity<Void> AlarmClearedNotificationPost(@Valid final AlarmClearedNotification body) {
-		return fc.alarmClearedNotification(body, "2.6.1");
+		final com.ubiqube.etsi.mano.dao.mano.alarm.AlarmNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.alarm.AlarmNotification.class);
+		return fc.alarmClearedNotification(req, "2.6.1");
 	}
 
 }

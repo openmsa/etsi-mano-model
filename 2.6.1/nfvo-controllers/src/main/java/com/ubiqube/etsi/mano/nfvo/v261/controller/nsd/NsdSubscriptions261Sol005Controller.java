@@ -34,8 +34,10 @@ import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.NsdmSubscriptionLinks;
 import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.NsdmSubscriptionRequest;
 import com.ubiqube.etsi.mano.nfvo.v261.services.SubscriptionLinkable261Nfvo;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
 
 import jakarta.validation.constraints.NotNull;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -45,9 +47,11 @@ import jakarta.validation.constraints.NotNull;
 @RestController
 public class NsdSubscriptions261Sol005Controller implements NsdSubscriptions261Sol005Api, SubscriptionLinkable261Nfvo {
 	private final NsdSubscriptionFrontController nsdSubscriptionFrontController;
+	private final MapperFacade mapper;
 
-	public NsdSubscriptions261Sol005Controller(final NsdSubscriptionFrontController nsdSubscriptionFrontController) {
+	public NsdSubscriptions261Sol005Controller(final NsdSubscriptionFrontController nsdSubscriptionFrontController, final MapperFacade mapper) {
 		this.nsdSubscriptionFrontController = nsdSubscriptionFrontController;
+		this.mapper = mapper;
 	}
 
 	/**
@@ -88,7 +92,8 @@ public class NsdSubscriptions261Sol005Controller implements NsdSubscriptions261S
 	 */
 	@Override
 	public ResponseEntity<NsdmSubscription> subscriptionsPost(final NsdmSubscriptionRequest body) {
-		return nsdSubscriptionFrontController.create(body, NsdmSubscription.class, NsdSubscriptions261Sol005Api.class, NsdSubscriptions261Sol005Controller::makeLink, NsdSubscriptions261Sol005Controller::getSelfLink);
+		final Subscription req = mapper.map(body, Subscription.class);
+		return nsdSubscriptionFrontController.create(req, x -> mapper.map(x, NsdmSubscription.class), NsdSubscriptions261Sol005Api.class, NsdSubscriptions261Sol005Controller::makeLink, NsdSubscriptions261Sol005Controller::getSelfLink);
 	}
 
 	/**
