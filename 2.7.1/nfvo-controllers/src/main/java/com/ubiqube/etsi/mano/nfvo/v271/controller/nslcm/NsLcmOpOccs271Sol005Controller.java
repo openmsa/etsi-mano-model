@@ -19,9 +19,6 @@ package com.ubiqube.etsi.mano.nfvo.v271.controller.nslcm;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +29,10 @@ import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.model.v271.sol005.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.model.v271.sol005.nslcm.NsLcmOpOccLinks;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -40,15 +41,16 @@ import com.ubiqube.etsi.mano.model.v271.sol005.nslcm.NsLcmOpOccLinks;
 @RestController
 public class NsLcmOpOccs271Sol005Controller implements NsLcmOpOccs271Sol005Api {
 	private final NsLcmGenericFrontController nsLcmGenericFrontController;
+	private final MapperFacade mapper;
 
-	public NsLcmOpOccs271Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController) {
-		super();
+	public NsLcmOpOccs271Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final MapperFacade mapper) {
 		this.nsLcmGenericFrontController = nsLcmGenericFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
-	public ResponseEntity<String> nsLcmOpOccsGet(final MultiValueMap<String, String> requestParams,final String nextpageOpaqueMarker) {
-		return nsLcmGenericFrontController.search(requestParams,NsLcmOpOcc.class,nextpageOpaqueMarker,NsLcmOpOccs271Sol005Controller::makeLinks);
+	public ResponseEntity<String> nsLcmOpOccsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
+		return nsLcmGenericFrontController.search(requestParams, NsLcmOpOcc.class, nextpageOpaqueMarker, NsLcmOpOccs271Sol005Controller::makeLinks);
 	}
 
 	@Override
@@ -58,7 +60,7 @@ public class NsLcmOpOccs271Sol005Controller implements NsLcmOpOccs271Sol005Api {
 
 	@Override
 	public ResponseEntity<NsLcmOpOcc> nsLcmOpOccsNsLcmOpOccIdGet(final String nsLcmOpOccId) {
-		return nsLcmGenericFrontController.findById(nsLcmOpOccId,NsLcmOpOcc.class,NsLcmOpOccs271Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.findById(nsLcmOpOccId, x -> mapper.map(x, NsLcmOpOcc.class), NsLcmOpOccs271Sol005Controller::makeLinks);
 	}
 
 	@Override
@@ -72,13 +74,13 @@ public class NsLcmOpOccs271Sol005Controller implements NsLcmOpOccs271Sol005Api {
 	}
 
 	@Override
-	public ResponseEntity<Void> nslcmV1NsLcmOpOccsNsLcmOpOccIdCancelPost(final String nsLcmOpOccId,@Valid final CancelMode body) {
-		return nsLcmGenericFrontController.cancel(nsLcmOpOccId,body.getCancelMode().toString());
+	public ResponseEntity<Void> nslcmV1NsLcmOpOccsNsLcmOpOccIdCancelPost(final String nsLcmOpOccId, @Valid final CancelMode body) {
+		return nsLcmGenericFrontController.cancel(nsLcmOpOccId, body.getCancelMode().toString());
 	}
 
 	@Override
 	public ResponseEntity<NsLcmOpOcc> nslcmV1NsLcmOpOccsNsLcmOpOccIdFailPost(final String nsLcmOpOccId) {
-		return nsLcmGenericFrontController.fail(nsLcmOpOccId,NsLcmOpOcc.class,NsLcmOpOccs271Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.fail(nsLcmOpOccId, x -> mapper.map(x, NsLcmOpOcc.class), NsLcmOpOccs271Sol005Controller::makeLinks);
 	}
 
 	public static void makeLinks(@NotNull final NsLcmOpOcc nsLcmOpOccs) {

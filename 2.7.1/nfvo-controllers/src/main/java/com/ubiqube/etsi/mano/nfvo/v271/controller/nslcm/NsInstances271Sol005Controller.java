@@ -19,13 +19,16 @@ package com.ubiqube.etsi.mano.nfvo.v271.controller.nslcm;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.annotation.Nonnull;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nslcm.NsInstanceGenericFrontController;
+import com.ubiqube.etsi.mano.dao.mano.dto.CreateNsInstance;
+import com.ubiqube.etsi.mano.dao.mano.dto.nsi.NsInstantiate;
+import com.ubiqube.etsi.mano.dao.mano.nsd.upd.UpdateRequest;
+import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.NsHeal;
+import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.NsScale;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.model.v271.sol005.nslcm.CreateNsRequest;
@@ -37,6 +40,9 @@ import com.ubiqube.etsi.mano.model.v271.sol005.nslcm.ScaleNsRequest;
 import com.ubiqube.etsi.mano.model.v271.sol005.nslcm.TerminateNsRequest;
 import com.ubiqube.etsi.mano.model.v271.sol005.nslcm.UpdateNsRequest;
 
+import jakarta.annotation.Nonnull;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -44,11 +50,12 @@ import com.ubiqube.etsi.mano.model.v271.sol005.nslcm.UpdateNsRequest;
  */
 @RestController
 public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
-
 	private final NsInstanceGenericFrontController frontController;
+	private final MapperFacade mapper;
 
-	public NsInstances271Sol005Controller(final NsInstanceGenericFrontController _frontController) {
-		frontController = _frontController;
+	public NsInstances271Sol005Controller(final NsInstanceGenericFrontController frontController, final MapperFacade mapper) {
+		this.frontController = frontController;
+		this.mapper = mapper;
 	}
 
 	/**
@@ -62,7 +69,7 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<String> nsInstancesGet(final MultiValueMap<String, String> requestParams) {
-		return frontController.search(requestParams,NsInstance.class,null,NsInstances271Sol005Controller::makeLinks);
+		return frontController.search(requestParams, NsInstance.class, null, NsInstances271Sol005Controller::makeLinks);
 	}
 
 	/**
@@ -85,7 +92,7 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdGet(final String nsInstanceId) {
-		return frontController.findById(nsInstanceId,NsInstance.class,NsInstances271Sol005Controller::makeLinks);
+		return frontController.findById(nsInstanceId, x -> mapper.map(x, NsInstance.class), NsInstances271Sol005Controller::makeLinks);
 	}
 
 	/**
@@ -98,8 +105,9 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 *
 	 */
 	@Override
-	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdHealPost(final String nsInstanceId,final HealNsRequest body) {
-		return frontController.heal(nsInstanceId,body,NsInstances271Sol005Controller::getSelfLink);
+	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdHealPost(final String nsInstanceId, final HealNsRequest body) {
+		final NsHeal req = mapper.map(body, NsHeal.class);
+		return frontController.heal(nsInstanceId, req, NsInstances271Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -109,8 +117,9 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 *
 	 */
 	@Override
-	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdInstantiatePost(final String nsInstanceId,final InstantiateNsRequest body) {
-		return frontController.instantiate(nsInstanceId,body,NsInstances271Sol005Controller::getSelfLink);
+	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdInstantiatePost(final String nsInstanceId, final InstantiateNsRequest body) {
+		final NsInstantiate req = mapper.map(body, NsInstantiate.class);
+		return frontController.instantiate(nsInstanceId, req, NsInstances271Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -120,8 +129,9 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 *
 	 */
 	@Override
-	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdScalePost(final String nsInstanceId,final ScaleNsRequest body) {
-		return frontController.scale(nsInstanceId,body,NsInstances271Sol005Controller::getSelfLink);
+	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdScalePost(final String nsInstanceId, final ScaleNsRequest body) {
+		final NsScale req = mapper.map(body, NsScale.class);
+		return frontController.scale(nsInstanceId, req, NsInstances271Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -136,8 +146,8 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 *
 	 */
 	@Override
-	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdTerminatePost(final String nsInstanceId,final TerminateNsRequest body) {
-		return frontController.terminate(nsInstanceId,body,NsInstances271Sol005Controller::getSelfLink);
+	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdTerminatePost(final String nsInstanceId, final TerminateNsRequest body) {
+		return frontController.terminate(nsInstanceId, body, NsInstances271Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -147,8 +157,9 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 *
 	 */
 	@Override
-	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdUpdatePost(final String nsInstanceId,final UpdateNsRequest body) {
-		return frontController.update(nsInstanceId,body,NsInstances271Sol005Controller::getSelfLink);
+	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdUpdatePost(final String nsInstanceId, final UpdateNsRequest body) {
+		final UpdateRequest req = mapper.map(body, UpdateRequest.class);
+		return frontController.update(nsInstanceId, req, NsInstances271Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -159,22 +170,23 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesPost(final CreateNsRequest request) {
-		return frontController.create(request,NsInstance.class,NsInstances271Sol005Controller::makeLinks,NsInstances271Sol005Controller::getSelfLink);
+		final CreateNsInstance req = mapper.map(request, CreateNsInstance.class);
+		return frontController.create(req, x -> mapper.map(x, NsInstance.class), NsInstances271Sol005Controller::makeLinks, NsInstances271Sol005Controller::getSelfLink);
 	}
 
 	private static void makeLinks(@Nonnull final NsInstance nsdInfo) {
 		final String id = nsdInfo.getId().toString();
 		final NsInstanceLinks nsInstanceLinks = new NsInstanceLinks();
 		final Link heal = new Link();
-		heal.setHref(linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdHealPost(id,null)).withSelfRel().getHref());
+		heal.setHref(linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdHealPost(id, null)).withSelfRel().getHref());
 		nsInstanceLinks.setHeal(heal);
 
 		final Link instantiate = new Link();
-		instantiate.setHref(linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdInstantiatePost(id,null)).withSelfRel().getHref());
+		instantiate.setHref(linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdInstantiatePost(id, null)).withSelfRel().getHref());
 		nsInstanceLinks.setInstantiate(instantiate);
 		// nsInstanceLinks.setNestedNsInstances(nestedNsInstances);
 		final Link scale = new Link();
-		scale.setHref(linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdScalePost(id,null)).withSelfRel().getHref());
+		scale.setHref(linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdScalePost(id, null)).withSelfRel().getHref());
 		nsInstanceLinks.setScale(scale);
 
 		final Link self = new Link();
@@ -182,11 +194,11 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 		nsInstanceLinks.setSelf(self);
 
 		final Link terminate = new Link();
-		terminate.setHref(linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdTerminatePost(id,null)).withSelfRel().getHref());
+		terminate.setHref(linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdTerminatePost(id, null)).withSelfRel().getHref());
 		nsInstanceLinks.setTerminate(terminate);
 
 		final Link update = new Link();
-		update.setHref(linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdUpdatePost(id,null)).withSelfRel().getHref());
+		update.setHref(linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdUpdatePost(id, null)).withSelfRel().getHref());
 		nsInstanceLinks.setUpdate(update);
 		nsdInfo.setLinks(nsInstanceLinks);
 	}
@@ -196,7 +208,7 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	}
 
 	private static String getSelfLink(final NsInstance nsdInfo) {
-		return linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdHealPost(nsdInfo.getId().toString(),null)).withSelfRel().getHref();
+		return linkTo(methodOn(NsInstances271Sol005Api.class).nsInstancesNsInstanceIdHealPost(nsdInfo.getId().toString(), null)).withSelfRel().getHref();
 	}
 
 }
