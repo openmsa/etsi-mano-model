@@ -27,7 +27,7 @@ import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.SubscriptionAuthentication;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.SubscriptionAuthenticationParamsOauth2ClientCredentials;
-import com.ubiqube.etsi.mano.mapper.OrikaFilterMapper;
+import com.ubiqube.etsi.mano.mapper.DotMapper;
 import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
 import com.ubiqube.etsi.mano.service.auth.model.AuthType;
 import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
@@ -42,14 +42,14 @@ public interface BaseSubscription451Mapping extends StringToUri451Mapping {
 
 	@Named("toObject")
 	default <T> T toObject(final List<FilterAttributes> src) {
-		final OrikaFilterMapper m = new OrikaFilterMapper();
-		return (T) m.convertFrom(src, null, null);
+		final DotMapper m = new DotMapper();
+		return (T) m.AttrToObject(src, null);
 	}
 
 	@Named("fromObject")
 	default <T> List<FilterAttributes> fromObject(final T src) {
-		final OrikaFilterMapper m = new OrikaFilterMapper();
-		return m.convertTo(src, null, null);
+		final DotMapper m = new DotMapper();
+		return m.objectToAttr(src);
 	}
 
 	@Mapping(target = "paramsBasic", source = "authParamBasic")
