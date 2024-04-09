@@ -16,29 +16,19 @@
  */
 package com.ubiqube.etsi.mano.test;
 
-import java.beans.IntrospectionException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
-import java.util.function.Function;
-
 import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-public class MapstructTestHelper extends AssertNull {
-
-	private final PodamFactory podam;
-
-	public MapstructTestHelper() {
-		this.podam = TestPodam.createPodam();
+public class TestPodam {
+	private TestPodam() {
+		//
 	}
 
-	protected <T, R> void doTest(final Class<T> clazz, final Function<T, R> in, final Function<R, T> out) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
-		final T obj = podam.manufacturePojo(clazz);
-		final R tmp = in.apply(obj);
-		final T r2 = out.apply(tmp);
-		final Deque<String> stack = new ArrayDeque<>();
-		assertFullEqual(obj, r2, Set.of("getLinks"), stack);
+	public static PodamFactory createPodam() {
+		final PodamFactoryImpl podam = new PodamFactoryImpl();
+		podam.getStrategy().addOrReplaceTypeManufacturer(String.class, new UUIDManufacturer());
+		podam.getStrategy().setDefaultNumberOfCollectionElements(1);
+		return podam;
 	}
 
 }

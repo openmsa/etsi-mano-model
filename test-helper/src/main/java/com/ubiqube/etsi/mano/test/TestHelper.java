@@ -46,7 +46,7 @@ public class TestHelper extends AssertNull {
 
 	public TestHelper(final OrikaMapperFactoryConfigurer orikaMapperFactoryConfigurer) {
 		this.mapperFactory = TestUtils.createOrika(orikaMapperFactoryConfigurer);
-		this.podam = TestUtils.createPodam();
+		this.podam = TestPodam.createPodam();
 	}
 
 	protected void doTest(final Class<?> json, final Class<?> db, final Set<String> ignore) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
