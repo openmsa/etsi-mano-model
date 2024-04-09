@@ -14,6 +14,7 @@ import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LccnSubscriptionLinks;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LifecycleChangeNotificationsFilter;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
@@ -44,7 +45,7 @@ public class VnfLcmSubscriptions451Sol003Controller implements VnfLcmSubscriptio
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsPost(@Valid final LccnSubscriptionRequest body) {
 		final Subscription req = requestMapper.map(body);
-		return frontController.create(req, lccnSubscriptionMapping::map, VnfLcmSubscriptions451Sol003Api.class, VnfLcmSubscriptions451Sol003Controller::makeLinks, VnfLcmSubscriptions451Sol003Controller::getSelfLink);
+		return frontController.create(req, x -> lccnSubscriptionMapping.map(x, LifecycleChangeNotificationsFilter.class), VnfLcmSubscriptions451Sol003Api.class, VnfLcmSubscriptions451Sol003Controller::makeLinks, VnfLcmSubscriptions451Sol003Controller::getSelfLink);
 	}
 
 	@Override

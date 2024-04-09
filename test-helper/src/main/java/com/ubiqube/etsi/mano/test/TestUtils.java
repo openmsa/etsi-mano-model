@@ -16,15 +16,6 @@
  */
 package com.ubiqube.etsi.mano.test;
 
-import com.ubiqube.etsi.mano.mapper.OffsetDateTimeToDateConverter;
-import com.ubiqube.etsi.mano.mapper.OrikaFilterMapper;
-import com.ubiqube.etsi.mano.mapper.UuidConverter;
-import com.ubiqube.orika.OrikaMapperFactoryConfigurer;
-
-import ma.glasnost.orika.OrikaSystemProperties;
-import ma.glasnost.orika.converter.ConverterFactory;
-import ma.glasnost.orika.impl.DefaultMapperFactory;
-import ma.glasnost.orika.impl.generator.EclipseJdtCompilerStrategy;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -40,16 +31,16 @@ public class TestUtils {
 		return podam;
 	}
 
-	public static DefaultMapperFactory createOrika(final OrikaMapperFactoryConfigurer orikaMapperFactoryConfigurer) {
-		System.setProperty(OrikaSystemProperties.COMPILER_STRATEGY, EclipseJdtCompilerStrategy.class.getName());
-		System.setProperty(OrikaSystemProperties.WRITE_SOURCE_FILES, "true");
-		System.setProperty(OrikaSystemProperties.WRITE_SOURCE_FILES_TO_PATH, "/tmp/orika-test");
-		final DefaultMapperFactory mapperFactory = new DefaultMapperFactory.Builder().compilerStrategy(new EclipseJdtCompilerStrategy()).build();
-		orikaMapperFactoryConfigurer.configure(mapperFactory);
-		final ConverterFactory converterFactory = mapperFactory.getConverterFactory();
-		converterFactory.registerConverter("filterConverter", new OrikaFilterMapper());
-		converterFactory.registerConverter(new UuidConverter());
-		converterFactory.registerConverter(new OffsetDateTimeToDateConverter());
-		return mapperFactory;
-	}
+//	public static DefaultMapperFactory createOrika(final OrikaMapperFactoryConfigurer orikaMapperFactoryConfigurer) {
+//		System.setProperty(OrikaSystemProperties.COMPILER_STRATEGY, EclipseJdtCompilerStrategy.class.getName());
+//		System.setProperty(OrikaSystemProperties.WRITE_SOURCE_FILES, "true");
+//		System.setProperty(OrikaSystemProperties.WRITE_SOURCE_FILES_TO_PATH, "/tmp/orika-test");
+//		final DefaultMapperFactory mapperFactory = new DefaultMapperFactory.Builder().compilerStrategy(new EclipseJdtCompilerStrategy()).build();
+//		orikaMapperFactoryConfigurer.configure(mapperFactory);
+//		final ConverterFactory converterFactory = mapperFactory.getConverterFactory();
+//		converterFactory.registerConverter("filterConverter", new OrikaFilterMapper());
+//		converterFactory.registerConverter(new UuidConverter());
+//		converterFactory.registerConverter(new OffsetDateTimeToDateConverter());
+//		return mapperFactory;
+//	}
 }

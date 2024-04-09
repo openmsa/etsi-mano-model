@@ -16,8 +16,10 @@
  */
 package com.ubiqube.etsi.mano.service.mapping.subscription;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import org.mapstruct.Context;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -27,6 +29,7 @@ import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.SubscriptionAuthentication;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.SubscriptionAuthenticationParamsOauth2ClientCredentials;
+import com.ubiqube.etsi.mano.exception.GenericException;
 import com.ubiqube.etsi.mano.mapper.DotMapper;
 import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
 import com.ubiqube.etsi.mano.service.auth.model.AuthType;
@@ -41,9 +44,17 @@ public interface BaseSubscription451Mapping extends StringToUri451Mapping {
 	SubscriptionAuthentication.AuthTypeEnum map(AuthType o);
 
 	@Named("toObject")
-	default <T> T toObject(final List<FilterAttributes> src) {
+	default <T> T toObject(final List<FilterAttributes> src, @Context final Class<?> clazz) {
 		final DotMapper m = new DotMapper();
-		return (T) m.AttrToObject(src, null);
+		return (T) m.AttrToObject(src, createClass(clazz));
+	}
+
+	default Object createClass(final Class<?> clazz) {
+		try {
+			return clazz.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+			throw new GenericException(e);
+		}
 	}
 
 	@Named("fromObject")

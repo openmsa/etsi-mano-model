@@ -26,16 +26,19 @@ import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.dto.nsi.NsInstanceDto;
 import com.ubiqube.etsi.mano.em.v451.model.vnffm.Alarm;
+import com.ubiqube.etsi.mano.em.v451.model.vnffm.FmNotificationsFilter;
 import com.ubiqube.etsi.mano.em.v451.model.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.em.v451.model.vnffm.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.em.v451.model.vnfind.VnfIndicator;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v451.model.vnflcm.LifecycleChangeNotificationsFilter;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v451.model.vnfpm.PmJob;
 import com.ubiqube.etsi.mano.em.v451.model.vnfpm.Threshold;
 import com.ubiqube.etsi.mano.nfvo.v451.model.nsd.PnfdInfo;
 import com.ubiqube.etsi.mano.nfvo.v451.model.nslcm.NsLcmOpOcc;
+import com.ubiqube.etsi.mano.nfvo.v451.model.vnf.PkgmNotificationsFilter;
 import com.ubiqube.etsi.mano.nfvo.v451.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.service.mapping.Alarm451Mapping;
 import com.ubiqube.etsi.mano.service.mapping.Grant451Mapping;
@@ -143,30 +146,30 @@ class MapStructTest extends MapstructTestHelper {
 	@Test
 	void testFmSubscription() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
 		final FmSubscription451Mapping mapper = Mappers.getMapper(FmSubscription451Mapping.class);
-		doTest(FmSubscription.class, x -> mapper.map(x), x -> mapper.map(x));
+		doTest(FmSubscription.class, x -> mapper.map(x), x -> mapper.map(x, FmNotificationsFilter.class));
 	}
 
 	@Test
 	void testFmSubscriptionRequest() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
 		final FmSubscriptionRequest451Mapping mapper = Mappers.getMapper(FmSubscriptionRequest451Mapping.class);
-		doTest(FmSubscriptionRequest.class, x -> mapper.map(x), x -> mapper.map(x));
+		doTest(FmSubscriptionRequest.class, x -> mapper.map(x), x -> mapper.map(x, FmNotificationsFilter.class));
 	}
 
 	@Test
 	void testLccnSubscription() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
 		final LccnSubscription451Mapping mapper = Mappers.getMapper(LccnSubscription451Mapping.class);
-		doTest(LccnSubscription.class, x -> mapper.map(x), x -> mapper.map(x));
+		doTest(LccnSubscription.class, x -> mapper.map(x), x -> mapper.map(x, LifecycleChangeNotificationsFilter.class));
 	}
 
 	@Test
 	void testLccnSubscriptionRequest() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
 		final LccnSubscriptionRequest451Mapping mapper = Mappers.getMapper(LccnSubscriptionRequest451Mapping.class);
-		doTest(LccnSubscriptionRequest.class, x -> mapper.map(x), x -> mapper.map(x));
+		doTest(LccnSubscriptionRequest.class, x -> mapper.map(x), x -> mapper.map(x, LifecycleChangeNotificationsFilter.class));
 	}
 
 	@Test
 	void testPkgmSubscriptionRequest() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
 		final PkgmSubscriptionRequest451Mapping mapper = Mappers.getMapper(PkgmSubscriptionRequest451Mapping.class);
-		doTest(PkgmSubscriptionRequest.class, x -> mapper.map(x), x -> mapper.map(x));
+		doTest(PkgmSubscriptionRequest.class, x -> mapper.map(x), x -> mapper.map(x, PkgmNotificationsFilter.class));
 	}
 }
