@@ -25,6 +25,7 @@ import com.ubiqube.etsi.mano.dao.mano.VnfIndicator;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VnfIndicator431Mapping {
 
+	@Mapping(target = "value", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "indicators", ignore = true)
 	@Mapping(target = "source", ignore = true)
