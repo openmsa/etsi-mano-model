@@ -70,7 +70,7 @@ public class VnfInstances351Sol003Controller implements VnfInstances351Sol003Api
 
 	@Override
 	public ResponseEntity<String> vnfInstancesGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, VnfInstance.class, nextpageOpaqueMarker, VnfInstances351Sol003Controller::makeLinks);
+		return frontController.search(requestParams, x -> mapper.map(x, VnfInstance.class), nextpageOpaqueMarker, VnfInstances351Sol003Controller::makeLinks);
 	}
 
 	@Override
