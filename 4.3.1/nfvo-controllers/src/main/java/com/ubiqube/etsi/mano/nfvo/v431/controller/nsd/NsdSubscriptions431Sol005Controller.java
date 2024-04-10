@@ -62,7 +62,7 @@ public class NsdSubscriptions431Sol005Controller implements NsdSubscriptions431S
 	 */
 	@Override
 	public ResponseEntity<List<NsdmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return nsdSubscriptionFrontController.search(requestParams, NsdmSubscription.class, NsdSubscriptions431Sol005Controller::makeLink);
+		return nsdSubscriptionFrontController.search(requestParams, x -> mapper.map(x, NsdmSubscription.class), NsdSubscriptions431Sol005Controller::makeLink);
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class NsdSubscriptions431Sol005Controller implements NsdSubscriptions431S
 	 */
 	@Override
 	public ResponseEntity<NsdmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return nsdSubscriptionFrontController.findById(subscriptionId, NsdmSubscription.class, NsdSubscriptions431Sol005Controller::makeLink);
+		return nsdSubscriptionFrontController.findById(subscriptionId, x -> mapper.map(x, NsdmSubscription.class), NsdSubscriptions431Sol005Controller::makeLink);
 	}
 
 	private static void makeLink(@NotNull final NsdmSubscription subs) {

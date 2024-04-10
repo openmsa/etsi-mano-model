@@ -29,14 +29,16 @@ import com.ubiqube.etsi.mano.nfvo.v431.service.LinksSol003;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnfPackages431Sol003Controller implements VnfPackages431Sol003Api {
-
 	private final VnfPackageFrontController frontController;
+	private final MapperFacade mapper;
 
-	public VnfPackages431Sol003Controller(final VnfPackageFrontController frontController) {
+	public VnfPackages431Sol003Controller(final VnfPackageFrontController frontController, final MapperFacade mapper) {
 		this.frontController = frontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -72,7 +74,7 @@ public class VnfPackages431Sol003Controller implements VnfPackages431Sol003Api {
 
 	@Override
 	public ResponseEntity<String> vnfPackagesGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, VnfPkgInfo.class, LinksSol003::makeLinks);
+		return frontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
 	}
 
 }
