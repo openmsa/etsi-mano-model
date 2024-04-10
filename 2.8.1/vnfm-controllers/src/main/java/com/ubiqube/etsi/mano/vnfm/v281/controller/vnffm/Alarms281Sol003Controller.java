@@ -19,8 +19,6 @@ package com.ubiqube.etsi.mano.vnfm.v281.controller.vnffm;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +30,9 @@ import com.ubiqube.etsi.mano.em.v281.model.vnffm.AlarmModifications;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.AlarmFrontController;
 
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -39,27 +40,27 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnffm.AlarmFrontController;
  */
 @RestController
 public class Alarms281Sol003Controller implements Alarms281Sol003Api {
-
 	private final AlarmFrontController alarmFrontController;
+	private final MapperFacade mapper;
 
-	public Alarms281Sol003Controller(final AlarmFrontController alarmFrontController) {
-		super();
+	public Alarms281Sol003Controller(final AlarmFrontController alarmFrontController, final MapperFacade mapper) {
 		this.alarmFrontController = alarmFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Alarm> alarmsAlarmIdGet(final String alarmId) {
-		return alarmFrontController.findById(alarmId,Alarm.class,Alarms281Sol003Controller::makeLinks);
+		return alarmFrontController.findById(alarmId, x -> mapper.map(x, Alarm.class), Alarms281Sol003Controller::makeLinks);
 	}
 
 	@Override
-	public ResponseEntity<AlarmModifications> alarmsAlarmIdPatch(final String alarmId,final AlarmModifications alarmModifications,final String ifMatch) {
-		return alarmFrontController.patch(alarmId,AckState.valueOf(alarmModifications.getAckState().toString()),ifMatch,AlarmModifications.class);
+	public ResponseEntity<AlarmModifications> alarmsAlarmIdPatch(final String alarmId, final AlarmModifications alarmModifications, final String ifMatch) {
+		return alarmFrontController.patch(alarmId, AckState.valueOf(alarmModifications.getAckState().toString()), ifMatch, x -> mapper.map(x, AlarmModifications.class));
 	}
 
 	@Override
-	public ResponseEntity<String> alarmsGet(final MultiValueMap<String, String> requestParams,@Valid final String nextpageOpaqueMarker) {
-		return alarmFrontController.search(requestParams,Alarm.class,Alarms281Sol003Controller::makeLinks);
+	public ResponseEntity<String> alarmsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+		return alarmFrontController.search(requestParams, x -> mapper.map(x, Alarm.class), Alarms281Sol003Controller::makeLinks);
 	}
 
 	private static void makeLinks(final Alarm alarm) {

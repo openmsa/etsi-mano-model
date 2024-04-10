@@ -60,7 +60,7 @@ public class VnfIndSubscriptions281Sol003Controller implements VnfIndSubscriptio
 
 	@Override
 	public ResponseEntity<List<VnfIndicatorSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, VnfIndicatorSubscription.class, VnfIndSubscriptions281Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
+		return subscriptionService.search(requestParams, x -> mapper.map(x, VnfIndicatorSubscription.class), VnfIndSubscriptions281Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class VnfIndSubscriptions281Sol003Controller implements VnfIndSubscriptio
 
 	@Override
 	public ResponseEntity<VnfIndicatorSubscription> indicatorsSubscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, VnfIndicatorSubscription.class, VnfIndSubscriptions281Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, VnfIndicatorSubscription.class), VnfIndSubscriptions281Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
 	}
 
 	private static String makeSelf(final VnfIndicatorSubscription subscription) {

@@ -21,9 +21,6 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.UUID;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +32,10 @@ import com.ubiqube.etsi.mano.em.v281.model.vnflcm.VnfLcmOpOccLinks;
 import com.ubiqube.etsi.mano.vnfm.VnfLcmClassMaping281;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -43,19 +44,20 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 @RestController
 public class VnfLcmOpOccs281Sol002Controller implements VnfLcmOpOccs281Sol002Api {
 	private final VnfLcmOpOccGenericFrontController frontController;
+	private final MapperFacade mapper;
 
-	public VnfLcmOpOccs281Sol002Controller(final VnfLcmOpOccGenericFrontController frontController) {
-		super();
+	public VnfLcmOpOccs281Sol002Controller(final VnfLcmOpOccGenericFrontController frontController, final MapperFacade mapper) {
 		this.frontController = frontController;
+		this.mapper = mapper;
 	}
 
 	@Override
-	public ResponseEntity<String> vnfLcmOpOccsGet(final MultiValueMap<String, String> requestParams,@Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams,VnfLcmOpOcc.class,VnfLcmOpOccs281Sol002Controller::makeLinks);
+	public ResponseEntity<String> vnfLcmOpOccsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+		return frontController.search(requestParams, x -> mapper.map(x, VnfLcmOpOcc.class), VnfLcmOpOccs281Sol002Controller::makeLinks);
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfLcmOpOccsVnfLcmOpOccIdCancelPost(final String vnfLcmOpOccId,final CancelMode cancelMode) {
+	public ResponseEntity<Void> vnfLcmOpOccsVnfLcmOpOccIdCancelPost(final String vnfLcmOpOccId, final CancelMode cancelMode) {
 		return frontController.lcmOpOccCancel(UUID.fromString(vnfLcmOpOccId));
 	}
 
@@ -66,11 +68,11 @@ public class VnfLcmOpOccs281Sol002Controller implements VnfLcmOpOccs281Sol002Api
 
 	@Override
 	public ResponseEntity<VnfLcmOpOcc> vnfLcmOpOccsVnfLcmOpOccIdGet(final String vnfLcmOpOccId) {
-		return frontController.lcmOpOccFindById(new VnfLcmClassMaping281(),UUID.fromString(vnfLcmOpOccId),VnfLcmOpOcc.class,
-		VnfLcmOpOccs281Sol002Controller::makeLinks,VnfLcmOpOccs281Sol002Controller::setOperationParams);
+		return frontController.lcmOpOccFindById(new VnfLcmClassMaping281(), UUID.fromString(vnfLcmOpOccId), VnfLcmOpOcc.class,
+				VnfLcmOpOccs281Sol002Controller::makeLinks, VnfLcmOpOccs281Sol002Controller::setOperationParams);
 	}
 
-	private static void setOperationParams(final VnfLcmOpOcc lcmOpOcc,final Object obj) {
+	private static void setOperationParams(final VnfLcmOpOcc lcmOpOcc, final Object obj) {
 		lcmOpOcc.setOperationParams(obj);
 	}
 
@@ -89,7 +91,7 @@ public class VnfLcmOpOccs281Sol002Controller implements VnfLcmOpOccs281Sol002Api
 		final String id = vnfLcmOpOcc.getId();
 		final VnfLcmOpOccLinks links = new VnfLcmOpOccLinks();
 		final Link cancel = new Link();
-		cancel.setHref(linkTo(methodOn(VnfLcmOpOccs281Sol002Api.class).vnfLcmOpOccsVnfLcmOpOccIdCancelPost(id,null)).withSelfRel().getHref());
+		cancel.setHref(linkTo(methodOn(VnfLcmOpOccs281Sol002Api.class).vnfLcmOpOccsVnfLcmOpOccIdCancelPost(id, null)).withSelfRel().getHref());
 		links.setCancel(cancel);
 
 		final Link fail = new Link();
