@@ -69,7 +69,7 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<String> nsInstancesGet(final MultiValueMap<String, String> requestParams) {
-		return frontController.search(requestParams, x -> mapper.map(x, NsInstance.class), null, NsInstances271Sol005Controller::makeLinks);
+		return frontController.search(requestParams, x -> mapper.map(x, NsInstance.class), null, NsInstances271Sol005Controller::makeLinks, NsInstance.class);
 	}
 
 	/**
