@@ -61,7 +61,7 @@ public class NsInstances331Sol005Controller implements NsInstances331Sol005Api {
 
 	@Override
 	public ResponseEntity<String> nsInstancesGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return nsInstanceGenericFrontController.search(requestParams, NsInstance.class, nextpageOpaqueMarker, NsInstances331Sol005Controller::makeLinks);
+		return nsInstanceGenericFrontController.search(requestParams, x -> mapper.map(x, NsInstance.class), nextpageOpaqueMarker, NsInstances331Sol005Controller::makeLinks);
 	}
 
 	@Override

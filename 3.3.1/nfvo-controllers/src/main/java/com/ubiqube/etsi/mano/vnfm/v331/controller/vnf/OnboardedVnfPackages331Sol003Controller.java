@@ -30,6 +30,7 @@ import com.ubiqube.etsi.mano.vnfm.v331.service.LinksSol003;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -41,15 +42,16 @@ import jakarta.validation.Valid;
 @Conditional(SingleControllerCondition.class)
 public class OnboardedVnfPackages331Sol003Controller implements OnboardedVnfPackages331Sol003Api {
 	private final OnboardedPackageFrontController vnfPackageFrontController;
+	private final MapperFacade mapper;
 
-	public OnboardedVnfPackages331Sol003Controller(final OnboardedPackageFrontController vnfPackageFrontController) {
-		super();
+	public OnboardedVnfPackages331Sol003Controller(final OnboardedPackageFrontController vnfPackageFrontController, final MapperFacade mapper) {
 		this.vnfPackageFrontController = vnfPackageFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<String> onboardedVnfPackagesGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return vnfPackageFrontController.onboardedSearch(requestParams, VnfPkgInfo.class, LinksSol003::makeLinks);
+		return vnfPackageFrontController.onboardedSearch(requestParams, x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
 	}
 
 	@Override
@@ -64,7 +66,7 @@ public class OnboardedVnfPackages331Sol003Controller implements OnboardedVnfPack
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> onboardedVnfPackagesVnfdIdGet(final String vnfdId) {
-		return vnfPackageFrontController.onboardedFindById(vnfdId, VnfPkgInfo.class, LinksSol003::makeLinks);
+		return vnfPackageFrontController.onboardedFindById(vnfdId, x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
 	}
 
 	@Override
