@@ -21,9 +21,6 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.UUID;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +31,10 @@ import com.ubiqube.etsi.mano.em.v331.model.vnflcm.VnfLcmOpOccLinks;
 import com.ubiqube.etsi.mano.vnfm.VnfLcmClassMaping331;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -42,17 +43,17 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 @RolesAllowed({ "ROLE_NFVO" })
 @RestController
 public class VnfLcmOpOccs331Sol003Controller implements VnfLcmOpOccs331Sol003Api {
-
 	private final VnfLcmOpOccGenericFrontController frontController;
+	private final MapperFacade mapper;
 
-	public VnfLcmOpOccs331Sol003Controller(final VnfLcmOpOccGenericFrontController frontController) {
-		super();
+	public VnfLcmOpOccs331Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final MapperFacade mapper) {
 		this.frontController = frontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<String> vnfLcmOpOccsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, VnfLcmOpOcc.class, VnfLcmOpOccs331Sol003Controller::makeLinks);
+		return frontController.search(requestParams, x -> mapper.map(x, VnfLcmOpOcc.class), VnfLcmOpOccs331Sol003Controller::makeLinks);
 	}
 
 	@Override

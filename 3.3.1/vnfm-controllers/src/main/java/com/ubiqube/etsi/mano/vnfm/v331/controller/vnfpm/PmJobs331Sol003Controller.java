@@ -21,8 +21,6 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.UUID;
 
-import jakarta.validation.Valid;
-
 import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -37,6 +35,9 @@ import com.ubiqube.etsi.mano.em.v331.model.vnfind.PmJobModifications;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfpm.VnfmPmGenericFrontController;
 
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -46,14 +47,16 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnfpm.VnfmPmGenericFrontController;
 @Conditional(SingleControllerCondition.class)
 public class PmJobs331Sol003Controller implements PmJobs331Sol003Api {
 	private final VnfmPmGenericFrontController vnfmPmGenericFrontController;
+	private final MapperFacade mapper;
 
-	public PmJobs331Sol003Controller(final VnfmPmGenericFrontController vnfmPmGenericFrontController) {
+	public PmJobs331Sol003Controller(final VnfmPmGenericFrontController vnfmPmGenericFrontController, final MapperFacade mapper) {
 		this.vnfmPmGenericFrontController = vnfmPmGenericFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<String> pmJobsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return vnfmPmGenericFrontController.search(requestParams, PmJob.class, PmJobs331Sol003Controller::makeLinks);
+		return vnfmPmGenericFrontController.search(requestParams, x -> mapper.map(x, PmJob.class), PmJobs331Sol003Controller::makeLinks);
 	}
 
 	private static void makeLinks(final PmJob x) {
@@ -80,17 +83,18 @@ public class PmJobs331Sol003Controller implements PmJobs331Sol003Api {
 
 	@Override
 	public ResponseEntity<PmJob> pmJobsPmJobIdGet(final String pmJobIdn) {
-		return vnfmPmGenericFrontController.findById(UUID.fromString(pmJobIdn), PmJob.class, PmJobs331Sol003Controller::makeLinks);
+		return vnfmPmGenericFrontController.findById(UUID.fromString(pmJobIdn), x -> mapper.map(x, PmJob.class), PmJobs331Sol003Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<PerformanceReport> pmJobsPmJobIdReportsReportIdGet(final String pmJobId, final String reportId) {
-		return vnfmPmGenericFrontController.findReportById(pmJobId, reportId, PerformanceReport.class);
+		return vnfmPmGenericFrontController.findReportById(pmJobId, reportId, x -> mapper.map(x, PerformanceReport.class));
 	}
 
 	@Override
 	public ResponseEntity<PmJob> pmJobsPost(@Valid final CreatePmJobRequest createPmJobRequest) {
-		return vnfmPmGenericFrontController.pmJobsPost(createPmJobRequest, PmJob.class, PmJobs331Sol003Controller::makeLinks, PmJobs331Sol003Controller::makeSelf);
+		final com.ubiqube.etsi.mano.dao.mano.pm.PmJob req = mapper.map(createPmJobRequest, com.ubiqube.etsi.mano.dao.mano.pm.PmJob.class);
+		return vnfmPmGenericFrontController.pmJobsPost(req, x -> mapper.map(x, PmJob.class), PmJobs331Sol003Controller::makeLinks, PmJobs331Sol003Controller::makeSelf);
 	}
 
 	@Override
