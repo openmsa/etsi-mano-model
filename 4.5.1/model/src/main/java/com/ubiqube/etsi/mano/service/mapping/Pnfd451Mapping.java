@@ -29,7 +29,7 @@ import com.ubiqube.etsi.mano.nfvo.v451.model.nsd.PnfdInfo;
 import com.ubiqube.etsi.mano.nfvo.v451.model.nsd.PnfdOnboardingStateType;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface Pnfd451Mapping extends StringToUri451Mapping {
+public interface Pnfd451Mapping extends StringToUriMapping {
 
 	@Mapping(target = "links", ignore = true)
 	PnfdInfo map(PnfDescriptor o);

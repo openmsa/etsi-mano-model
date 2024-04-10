@@ -26,7 +26,7 @@ import com.ubiqube.etsi.mano.nfvo.v451.model.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.nfvo.v451.model.nslcm.NsLcmOpOccRejectedLcmCoordinations;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface NsLcmOpOcc451Mapping extends StringToUri451Mapping {
+public interface NsLcmOpOcc451Mapping extends StringToUriMapping {
 	@Mapping(target = "isAutomaticInvocation", ignore = true)
 	@Mapping(target = "isCancelPending", ignore = true)
 	@Mapping(target = "lcmOperationType", ignore = true)

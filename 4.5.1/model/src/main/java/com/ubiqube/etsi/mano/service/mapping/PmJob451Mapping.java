@@ -31,7 +31,7 @@ import com.ubiqube.etsi.mano.em.v451.model.vnfpm.PmJobReports;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PmJob451Mapping extends StringToUri451Mapping {
+public interface PmJob451Mapping extends StringToUriMapping {
 
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "remoteMonitoring", ignore = true)

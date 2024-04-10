@@ -29,7 +29,7 @@ import com.ubiqube.etsi.mano.dao.mano.pm.Threshold;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface Threshold451Mapping extends StringToUri451Mapping {
+public interface Threshold451Mapping extends StringToUriMapping {
 	@Mapping(target = "remoteResource", ignore = true)
 	@Mapping(target = "subscription", ignore = true)
 	Threshold map(com.ubiqube.etsi.mano.em.v451.model.vnfpm.Threshold o);
