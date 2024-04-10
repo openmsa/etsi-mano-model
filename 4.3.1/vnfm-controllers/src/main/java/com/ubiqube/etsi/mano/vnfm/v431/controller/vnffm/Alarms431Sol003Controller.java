@@ -33,29 +33,31 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.AlarmFrontController;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class Alarms431Sol003Controller implements Alarms431Sol003Api {
-
 	private final AlarmFrontController alarmFrontController;
+	private final MapperFacade mapper;
 
-	public Alarms431Sol003Controller(final AlarmFrontController alarmFrontController) {
+	public Alarms431Sol003Controller(final AlarmFrontController alarmFrontController, final MapperFacade mapper) {
 		this.alarmFrontController = alarmFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Alarm> alarmsAlarmIdGet(final String alarmId) {
-		return alarmFrontController.findById(alarmId, Alarm.class, Alarms431Sol003Controller::makeLinks);
+		return alarmFrontController.findById(alarmId, x -> mapper.map(x, Alarm.class), Alarms431Sol003Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<AlarmModifications> alarmsAlarmIdPatch(final String alarmId, final AlarmModifications alarmModifications, final OffsetDateTime ifUnmodifiedSince, final String ifMatch) {
-		return alarmFrontController.patch(alarmId, AckState.valueOf(alarmModifications.getAckState().toString()), ifMatch, AlarmModifications.class);
+		return alarmFrontController.patch(alarmId, AckState.valueOf(alarmModifications.getAckState().toString()), ifMatch, x -> mapper.map(x, AlarmModifications.class));
 	}
 
 	@Override
 	public ResponseEntity<String> alarmsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return alarmFrontController.search(requestParams, Alarm.class, Alarms431Sol003Controller::makeLinks);
+		return alarmFrontController.search(requestParams, x -> mapper.map(x, Alarm.class), Alarms431Sol003Controller::makeLinks);
 	}
 
 	private static void makeLinks(final Alarm alarm) {

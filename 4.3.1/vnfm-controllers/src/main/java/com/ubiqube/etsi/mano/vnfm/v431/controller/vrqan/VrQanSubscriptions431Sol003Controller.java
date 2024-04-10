@@ -52,7 +52,7 @@ public class VrQanSubscriptions431Sol003Controller implements VrQanSubscriptions
 
 	@Override
 	public ResponseEntity<List<VrQuotaAvailSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, VrQuotaAvailSubscription.class, VrQanSubscriptions431Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
+		return subscriptionService.search(requestParams, x -> mapper.map(x, VrQuotaAvailSubscription.class), VrQanSubscriptions431Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class VrQanSubscriptions431Sol003Controller implements VrQanSubscriptions
 
 	@Override
 	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, VrQuotaAvailSubscription.class, VrQanSubscriptions431Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, VrQuotaAvailSubscription.class), VrQanSubscriptions431Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
 	}
 
 	private static String makeSelf(final VrQuotaAvailSubscription subscription) {

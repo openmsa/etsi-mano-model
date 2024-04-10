@@ -31,28 +31,31 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnfind.IndicatorsFrontController;
 import com.ubiqube.etsi.mano.vnfm.v431.controller.vnflcm.VnfInstances431Sol003Api;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class Indicators431Sol003Controller implements Indicators431Sol003Api {
 	private final IndicatorsFrontController indicatorsFrontController;
+	private final MapperFacade mapper;
 
-	public Indicators431Sol003Controller(final IndicatorsFrontController indicatorsFrontController) {
+	public Indicators431Sol003Controller(final IndicatorsFrontController indicatorsFrontController, final MapperFacade mapper) {
 		this.indicatorsFrontController = indicatorsFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<VnfIndicator>> indicatorsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		return indicatorsFrontController.search(filter, nextpageOpaqueMarker, VnfIndicator.class, Indicators431Sol003Controller::makeLink);
+		return indicatorsFrontController.search(filter, nextpageOpaqueMarker, x -> mapper.map(x, VnfIndicator.class), Indicators431Sol003Controller::makeLink);
 	}
 
 	@Override
 	public ResponseEntity<List<VnfIndicator>> indicatorsVnfInstanceIdGet(final String vnfInstanceId, @Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		return indicatorsFrontController.findByVnfInstanceId(vnfInstanceId, filter, nextpageOpaqueMarker, VnfIndicator.class, Indicators431Sol003Controller::makeLink);
+		return indicatorsFrontController.findByVnfInstanceId(vnfInstanceId, filter, nextpageOpaqueMarker, x -> mapper.map(x, VnfIndicator.class), Indicators431Sol003Controller::makeLink);
 	}
 
 	@Override
 	public ResponseEntity<VnfIndicator> indicatorsVnfInstanceIdIndicatorIdGet(final String vnfInstanceId, final String indicatorId) {
-		return indicatorsFrontController.findByVnfInstanceIdAndIndicatorId(vnfInstanceId, indicatorId, VnfIndicator.class, Indicators431Sol003Controller::makeLink);
+		return indicatorsFrontController.findByVnfInstanceIdAndIndicatorId(vnfInstanceId, indicatorId, x -> mapper.map(x, VnfIndicator.class), Indicators431Sol003Controller::makeLink);
 	}
 
 	private static void makeLink(final VnfIndicator x) {
