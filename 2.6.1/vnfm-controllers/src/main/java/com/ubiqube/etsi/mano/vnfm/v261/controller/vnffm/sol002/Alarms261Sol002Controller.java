@@ -34,6 +34,7 @@ import com.ubiqube.etsi.mano.vnfm.v261.model.faultmngt.PerceivedSeverityRequest;
 
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -44,9 +45,11 @@ import jakarta.validation.Valid;
 public class Alarms261Sol002Controller implements Alarms261Sol002Api {
 
 	private final AlarmFrontController alarmFrontController;
+	private final MapperFacade mapper;
 
-	public Alarms261Sol002Controller(final AlarmFrontController alarmFrontController) {
+	public Alarms261Sol002Controller(final AlarmFrontController alarmFrontController, final MapperFacade mapper) {
 		this.alarmFrontController = alarmFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -56,17 +59,17 @@ public class Alarms261Sol002Controller implements Alarms261Sol002Api {
 
 	@Override
 	public ResponseEntity<Alarm> alarmsAlarmIdGet(final String alarmId) {
-		return alarmFrontController.findById(alarmId, Alarm.class, Alarms261Sol002Controller::makeLinks);
+		return alarmFrontController.findById(alarmId, x -> mapper.map(x, Alarm.class), Alarms261Sol002Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<AlarmModifications> alarmsAlarmIdPatch(final String alarmId, final AlarmModifications alarmModifications, final String ifMatch) {
-		return alarmFrontController.patch(alarmId, AckState.valueOf(alarmModifications.getAckState().toString()), ifMatch, AlarmModifications.class);
+		return alarmFrontController.patch(alarmId, AckState.valueOf(alarmModifications.getAckState().toString()), ifMatch, x -> mapper.map(x, AlarmModifications.class));
 	}
 
 	@Override
 	public ResponseEntity<String> alarmsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return alarmFrontController.search(requestParams, Alarm.class, Alarms261Sol002Controller::makeLinks);
+		return alarmFrontController.search(requestParams, x -> mapper.map(x, Alarm.class), Alarms261Sol002Controller::makeLinks);
 	}
 
 	private static void makeLinks(final Alarm alarm) {

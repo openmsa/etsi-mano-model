@@ -53,7 +53,7 @@ public class VnflcmSubscriptions261Sol002Controller implements VnflcmSubscriptio
 
 	@Override
 	public ResponseEntity<List<LccnSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, nextpageOpaqueMarker, LccnSubscription.class, VnflcmSubscriptions261Sol002Controller::makeLinks);
+		return frontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, LccnSubscription.class), VnflcmSubscriptions261Sol002Controller::makeLinks);
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class VnflcmSubscriptions261Sol002Controller implements VnflcmSubscriptio
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return frontController.findById(subscriptionId, LccnSubscription.class, VnflcmSubscriptions261Sol002Controller::makeLinks);
+		return frontController.findById(subscriptionId, x -> mapper.map(x, LccnSubscription.class), VnflcmSubscriptions261Sol002Controller::makeLinks);
 	}
 
 	private static String getSelfLink(final LccnSubscription subscription) {

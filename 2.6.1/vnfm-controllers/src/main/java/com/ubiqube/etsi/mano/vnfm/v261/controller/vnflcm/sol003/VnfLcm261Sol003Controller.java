@@ -73,7 +73,7 @@ public class VnfLcm261Sol003Controller implements VnfLcm261Sol003Api {
 
 	@Override
 	public ResponseEntity<String> vnfInstancesGet(final MultiValueMap<String, String> requestParams) {
-		return frontController.search(requestParams, com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfInstance.class, null, VnfLcm261Sol003Controller::makeLinks);
+		return frontController.search(requestParams, x -> mapper.map(x, com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfInstance.class), null, VnfLcm261Sol003Controller::makeLinks);
 	}
 
 	@Override

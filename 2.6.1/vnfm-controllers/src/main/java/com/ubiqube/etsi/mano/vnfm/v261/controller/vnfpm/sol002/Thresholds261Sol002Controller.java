@@ -19,9 +19,6 @@ package com.ubiqube.etsi.mano.vnfm.v261.controller.vnfpm.sol002;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +29,10 @@ import com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.CreateThresholdRequest;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.Threshold;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.ThresholdLinks;
 
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
@@ -41,14 +42,17 @@ import com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.ThresholdLinks;
 @RolesAllowed({ "ROLE_EM" })
 public class Thresholds261Sol002Controller implements Thresholds261Sol002Api {
 	private final VnfmThresholdFrontController vnfmThresholdFrontController;
+	private final MapperFacade mapper;
 
-	public Thresholds261Sol002Controller(final VnfmThresholdFrontController vnfmThresholdFrontController) {
+	public Thresholds261Sol002Controller(final VnfmThresholdFrontController vnfmThresholdFrontController, final MapperFacade mapper) {
 		this.vnfmThresholdFrontController = vnfmThresholdFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Threshold> thresholdsPost(@Valid final CreateThresholdRequest createThresholdRequest) {
-		return vnfmThresholdFrontController.thresholdsCreate(createThresholdRequest, Threshold.class, Thresholds261Sol002Controller::makeLinks, Thresholds261Sol002Controller::getSelfLink);
+		final com.ubiqube.etsi.mano.dao.mano.pm.Threshold req = mapper.map(createThresholdRequest, com.ubiqube.etsi.mano.dao.mano.pm.Threshold.class);
+		return vnfmThresholdFrontController.thresholdsCreate(req, x -> mapper.map(x, Threshold.class), Thresholds261Sol002Controller::makeLinks, Thresholds261Sol002Controller::getSelfLink);
 	}
 
 	@Override
@@ -58,12 +62,12 @@ public class Thresholds261Sol002Controller implements Thresholds261Sol002Api {
 
 	@Override
 	public ResponseEntity<Threshold> thresholdsThresholdIdGet(final String thresholdId) {
-		return vnfmThresholdFrontController.findById(thresholdId, Threshold.class, Thresholds261Sol002Controller::makeLinks);
+		return vnfmThresholdFrontController.findById(thresholdId, x -> mapper.map(x, Threshold.class), Thresholds261Sol002Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<String> thresholdsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return vnfmThresholdFrontController.search(requestParams, nextpageOpaqueMarker, Threshold.class, Thresholds261Sol002Controller::makeLinks);
+		return vnfmThresholdFrontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, Threshold.class), Thresholds261Sol002Controller::makeLinks);
 	}
 
 	private static void makeLinks(final Threshold x) {

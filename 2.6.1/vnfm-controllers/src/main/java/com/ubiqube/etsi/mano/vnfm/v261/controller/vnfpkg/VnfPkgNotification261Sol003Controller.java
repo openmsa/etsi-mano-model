@@ -21,8 +21,6 @@
  */
 package com.ubiqube.etsi.mano.vnfm.v261.controller.vnfpkg;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,13 +28,17 @@ import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPackageOnboardingNotification;
 import com.ubiqube.etsi.mano.vnfm.fc.vnf.VnfNotificationFrontController;
 
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 @RestController
 public class VnfPkgNotification261Sol003Controller implements VnfPkgNotification261Sol003Api {
 	private final VnfNotificationFrontController fc;
+	private final MapperFacade mapper;
 
-	public VnfPkgNotification261Sol003Controller(final VnfNotificationFrontController fc) {
-		super();
+	public VnfPkgNotification261Sol003Controller(final VnfNotificationFrontController fc, final MapperFacade mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -46,7 +48,8 @@ public class VnfPkgNotification261Sol003Controller implements VnfPkgNotification
 
 	@Override
 	public ResponseEntity<Void> onboardingAction(final VnfPackageOnboardingNotification body) {
-		return fc.onNotification(body, "2.6.1");
+		final com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification.class);
+		return fc.onNotification(req, "2.6.1");
 	}
 
 	@Override
@@ -56,7 +59,8 @@ public class VnfPkgNotification261Sol003Controller implements VnfPkgNotification
 
 	@Override
 	public ResponseEntity<Void> changeAction(@Valid final VnfPackageChangeNotification body) {
-		return fc.onChange(body, "2.6.1");
+		final com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification.class);
+		return fc.onChange(req, "2.6.1");
 	}
 
 }

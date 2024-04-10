@@ -57,7 +57,7 @@ public class FaultMngtSubscriptions261Sol002Controller implements FaultmngtSubsc
 
 	@Override
 	public ResponseEntity<List<FmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return faultMngtSubscriptionsFrontController.search(requestParams, FmSubscription.class, FaultMngtSubscriptions261Sol002Controller::makeLinks, ApiVersionType.SOL003_VNFFM);
+		return faultMngtSubscriptionsFrontController.search(requestParams, x -> mapper.map(x, FmSubscription.class), FaultMngtSubscriptions261Sol002Controller::makeLinks, ApiVersionType.SOL003_VNFFM);
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class FaultMngtSubscriptions261Sol002Controller implements FaultmngtSubsc
 
 	@Override
 	public ResponseEntity<FmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return faultMngtSubscriptionsFrontController.findById(subscriptionId, FmSubscription.class, FaultMngtSubscriptions261Sol002Controller::makeLinks, ApiVersionType.SOL003_VNFFM);
+		return faultMngtSubscriptionsFrontController.findById(subscriptionId, x -> mapper.map(x, FmSubscription.class), FaultMngtSubscriptions261Sol002Controller::makeLinks, ApiVersionType.SOL003_VNFFM);
 	}
 
 	private static void makeLinks(final FmSubscription subscription) {

@@ -55,7 +55,7 @@ public class VnfPmSubscriptions261Sol003Controller implements VnfPmSubscriptions
 
 	@Override
 	public ResponseEntity<List<PmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, PmSubscription.class, VnfPmSubscriptions261Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFPM);
+		return subscriptionService.search(requestParams, x -> mapper.map(x, PmSubscription.class), VnfPmSubscriptions261Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFPM);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class VnfPmSubscriptions261Sol003Controller implements VnfPmSubscriptions
 
 	@Override
 	public ResponseEntity<PmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, PmSubscription.class, VnfPmSubscriptions261Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFPM);
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, PmSubscription.class), VnfPmSubscriptions261Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFPM);
 	}
 
 	private static String makeSelf(final PmSubscription subscription) {

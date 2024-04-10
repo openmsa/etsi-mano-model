@@ -21,8 +21,6 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.UUID;
 
-import jakarta.validation.constraints.NotNull;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -35,20 +33,24 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.VnfLcmOpOccLinks;
 
+import jakarta.validation.constraints.NotNull;
+import ma.glasnost.orika.MapperFacade;
+
 @RestController
 public class VnfLcmOpOccs261Sol003Controller implements VnfLcmOpOccs261Sol003Api {
 	private static final Logger LOG = LoggerFactory.getLogger(VnfLcmOpOccs261Sol003Controller.class);
-
 	private final VnfLcmOpOccGenericFrontController frontController;
+	private final MapperFacade mapper;
 
-	public VnfLcmOpOccs261Sol003Controller(final VnfLcmOpOccGenericFrontController frontController) {
+	public VnfLcmOpOccs261Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final MapperFacade mapper) {
 		this.frontController = frontController;
+		this.mapper = mapper;
 		LOG.info("Starting VNF LCM OP OCCS SOL003/2.6.1 Controller.");
 	}
 
 	@Override
 	public ResponseEntity<String> vnfLcmOpOccsGet(final MultiValueMap<String, String> requestParams) {
-		return frontController.search(requestParams, VnfLcmOpOcc.class, VnfLcmOpOccs261Sol003Controller::makeLinks);
+		return frontController.search(requestParams, x -> mapper.map(x, VnfLcmOpOcc.class), VnfLcmOpOccs261Sol003Controller::makeLinks);
 	}
 
 	@Override
