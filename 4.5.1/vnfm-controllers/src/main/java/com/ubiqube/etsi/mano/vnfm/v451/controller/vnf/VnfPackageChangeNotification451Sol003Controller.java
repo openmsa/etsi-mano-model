@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.nfvo.v451.model.vnf.VnfPackageChangeNotification;
+import com.ubiqube.etsi.mano.service.mapping.pkg.VnfPackageOnboardingNotification451Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnf.VnfNotificationFrontController;
 
 import jakarta.validation.Valid;
@@ -27,9 +28,11 @@ import jakarta.validation.Valid;
 @RestController
 public class VnfPackageChangeNotification451Sol003Controller implements VnfPackageChangeNotification451Sol003Api {
 	private final VnfNotificationFrontController fc;
+	private final VnfPackageOnboardingNotification451Mapping mapper;
 
-	public VnfPackageChangeNotification451Sol003Controller(final VnfNotificationFrontController fc) {
+	public VnfPackageChangeNotification451Sol003Controller(final VnfNotificationFrontController fc, final VnfPackageOnboardingNotification451Mapping mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -39,7 +42,8 @@ public class VnfPackageChangeNotification451Sol003Controller implements VnfPacka
 
 	@Override
 	public ResponseEntity<Void> vnfPackageChangeNotificationPost(@Valid final VnfPackageChangeNotification body) {
-		return fc.onNotification(body, "4.5.1");
+		final com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification req = mapper.map(body);
+		return fc.onChange(req, "4.5.1");
 	}
 
 }

@@ -28,6 +28,7 @@ import com.ubiqube.etsi.mano.em.v451.model.vnfind.VnfIndicator;
 import com.ubiqube.etsi.mano.em.v451.model.vnfind.VnfIndicatorLinks;
 import com.ubiqube.etsi.mano.em.v451.model.vnfind.VnfIndicatorSubscription;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.service.mapping.VnfIndicator451Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfind.IndicatorsFrontController;
 import com.ubiqube.etsi.mano.vnfm.v451.controller.vnflcm.VnfInstances451Sol003Api;
 
@@ -36,24 +37,26 @@ import jakarta.validation.Valid;
 @RestController
 public class Indicators451Sol003Controller implements Indicators451Sol003Api {
 	private final IndicatorsFrontController indicatorsFrontController;
+	private final VnfIndicator451Mapping vnfIndicator451Mapping;
 
-	public Indicators451Sol003Controller(final IndicatorsFrontController indicatorsFrontController) {
+	public Indicators451Sol003Controller(final IndicatorsFrontController indicatorsFrontController, final VnfIndicator451Mapping vnfIndicator451Mapping) {
 		this.indicatorsFrontController = indicatorsFrontController;
+		this.vnfIndicator451Mapping = vnfIndicator451Mapping;
 	}
 
 	@Override
 	public ResponseEntity<List<VnfIndicator>> indicatorsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		return indicatorsFrontController.search(filter, nextpageOpaqueMarker, VnfIndicator.class, Indicators451Sol003Controller::makeLink);
+		return indicatorsFrontController.search(filter, nextpageOpaqueMarker, vnfIndicator451Mapping::map, Indicators451Sol003Controller::makeLink);
 	}
 
 	@Override
 	public ResponseEntity<List<VnfIndicator>> indicatorsVnfInstanceIdGet(final String vnfInstanceId, @Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		return indicatorsFrontController.findByVnfInstanceId(vnfInstanceId, filter, nextpageOpaqueMarker, VnfIndicator.class, Indicators451Sol003Controller::makeLink);
+		return indicatorsFrontController.findByVnfInstanceId(vnfInstanceId, filter, nextpageOpaqueMarker, vnfIndicator451Mapping::map, Indicators451Sol003Controller::makeLink);
 	}
 
 	@Override
 	public ResponseEntity<VnfIndicator> indicatorsVnfInstanceIdIndicatorIdGet(final String vnfInstanceId, final String indicatorId) {
-		return indicatorsFrontController.findByVnfInstanceIdAndIndicatorId(vnfInstanceId, indicatorId, VnfIndicator.class, Indicators451Sol003Controller::makeLink);
+		return indicatorsFrontController.findByVnfInstanceIdAndIndicatorId(vnfInstanceId, indicatorId, vnfIndicator451Mapping::map, Indicators451Sol003Controller::makeLink);
 	}
 
 	private static void makeLink(final VnfIndicator x) {

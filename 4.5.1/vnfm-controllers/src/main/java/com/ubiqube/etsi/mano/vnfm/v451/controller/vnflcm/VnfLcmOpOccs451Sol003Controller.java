@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfLcmOpOccLinks;
+import com.ubiqube.etsi.mano.service.mapping.VnfLcmOpOcc451Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 import com.ubiqube.etsi.mano.vnfm.v451.service.VnfLcmClassMaping451;
 
@@ -20,14 +21,16 @@ import jakarta.validation.Valid;
 @RestController
 public class VnfLcmOpOccs451Sol003Controller implements VnfLcmOpOccs451Sol003Api {
 	private final VnfLcmOpOccGenericFrontController frontController;
+	private final VnfLcmOpOcc451Mapping vnfLcmOpOcc451Mapping;
 
-	public VnfLcmOpOccs451Sol003Controller(final VnfLcmOpOccGenericFrontController frontController) {
+	public VnfLcmOpOccs451Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfLcmOpOcc451Mapping vnfLcmOpOcc451Mapping) {
 		this.frontController = frontController;
+		this.vnfLcmOpOcc451Mapping = vnfLcmOpOcc451Mapping;
 	}
 
 	@Override
 	public ResponseEntity<String> vnfLcmOpOccsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, VnfLcmOpOcc.class, VnfLcmOpOccs451Sol003Controller::makeLinks);
+		return frontController.search(requestParams, vnfLcmOpOcc451Mapping::map, VnfLcmOpOccs451Sol003Controller::makeLinks);
 	}
 
 	@Override
