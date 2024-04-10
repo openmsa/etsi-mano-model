@@ -18,9 +18,6 @@ package com.ubiqube.etsi.mano.nfvo.v261.controller.vnf;
 
 import static com.ubiqube.etsi.mano.Constants.getSafeUUID;
 
-import jakarta.annotation.Nonnull;
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -30,6 +27,10 @@ import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.common.v261.services.Linkable;
 import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
 import com.ubiqube.etsi.mano.nfvo.v261.services.Sol003Linkable;
+
+import jakarta.annotation.Nonnull;
+import jakarta.servlet.http.HttpServletRequest;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  * SOL005 - VNF Package Management Interface
@@ -49,9 +50,11 @@ public class VnfPackage261Sol003Controller implements VnfPackage261Sol003Api {
 	private final VnfPackageFrontController vnfPackageFrontController;
 	@Nonnull
 	private final Linkable links = new Sol003Linkable();
+	private final MapperFacade mapper;
 
-	public VnfPackage261Sol003Controller(final VnfPackageFrontController vnfPackageFrontController) {
+	public VnfPackage261Sol003Controller(final VnfPackageFrontController vnfPackageFrontController, final MapperFacade mapper) {
 		this.vnfPackageFrontController = vnfPackageFrontController;
+		this.mapper = mapper;
 	}
 
 	/**
@@ -65,7 +68,7 @@ public class VnfPackage261Sol003Controller implements VnfPackage261Sol003Api {
 	 */
 	@Override
 	public ResponseEntity<String> vnfPackagesGet(final MultiValueMap<String, String> requestParams) {
-		return vnfPackageFrontController.search(requestParams, VnfPkgInfo.class, links::makeLinks);
+		return vnfPackageFrontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), links::makeLinks);
 	}
 
 	/**

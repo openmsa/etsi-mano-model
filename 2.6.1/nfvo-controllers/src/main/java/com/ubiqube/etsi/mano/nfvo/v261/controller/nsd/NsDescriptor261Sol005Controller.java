@@ -61,7 +61,7 @@ public class NsDescriptor261Sol005Controller implements NsDescriptor261Sol005Api
 
 	@Override
 	public ResponseEntity<String> nsDescriptorsGet(final MultiValueMap<String, String> requestParams) {
-		return nsDescriptorGenericFrontController.search(requestParams, NsdInfo.class, NsDescriptor261Sol005Controller::makeLinks);
+		return nsDescriptorGenericFrontController.search(requestParams, x -> mapper.map(x, NsdInfo.class), NsDescriptor261Sol005Controller::makeLinks);
 	}
 
 	@Override

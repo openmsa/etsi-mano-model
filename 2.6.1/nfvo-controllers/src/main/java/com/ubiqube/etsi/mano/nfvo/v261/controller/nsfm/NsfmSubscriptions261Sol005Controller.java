@@ -57,7 +57,7 @@ public class NsfmSubscriptions261Sol005Controller implements NsfmSubscriptions26
 
 	@Override
 	public ResponseEntity<List<FmSubscription>> subscriptionsGet(@Valid final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, FmSubscription.class, NsfmSubscriptions261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSFM);
+		return subscriptionService.search(requestParams, x -> mapper.map(x, FmSubscription.class), NsfmSubscriptions261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSFM);
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class NsfmSubscriptions261Sol005Controller implements NsfmSubscriptions26
 
 	@Override
 	public ResponseEntity<FmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, FmSubscription.class, NsfmSubscriptions261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSFM);
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, FmSubscription.class), NsfmSubscriptions261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSFM);
 	}
 
 	private static void makeLinks(final FmSubscription subscription) {

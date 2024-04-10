@@ -68,7 +68,7 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 	 */
 	@Override
 	public ResponseEntity<List<PmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, PmSubscription.class, NsPerfoSubscription261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSPM);
+		return subscriptionService.search(requestParams, x -> mapper.map(x, PmSubscription.class), NsPerfoSubscription261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSPM);
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 	 */
 	@Override
 	public ResponseEntity<PmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, PmSubscription.class, NsPerfoSubscription261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSPM);
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, PmSubscription.class), NsPerfoSubscription261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSPM);
 	}
 
 	private static void makeLinks(final PmSubscription subscription) {

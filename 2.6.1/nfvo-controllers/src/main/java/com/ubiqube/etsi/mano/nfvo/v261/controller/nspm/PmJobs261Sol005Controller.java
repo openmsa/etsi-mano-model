@@ -67,7 +67,7 @@ public class PmJobs261Sol005Controller implements PmJobs261Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<String> pmJobsGet(final MultiValueMap<String, String> requestParams) {
-		return nfvoPmController.search(requestParams, com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.PmJob.class, PMJ_SEARCH_DEFAULT_EXCLUDE_FIELDS, PMJ_SEARCH_MANDATORY_FIELDS, PmJobs261Sol005Controller::makeLinks);
+		return nfvoPmController.search(requestParams, x -> mapper.map(x, com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.PmJob.class), PMJ_SEARCH_DEFAULT_EXCLUDE_FIELDS, PMJ_SEARCH_MANDATORY_FIELDS, PmJobs261Sol005Controller::makeLinks);
 	}
 
 	/**

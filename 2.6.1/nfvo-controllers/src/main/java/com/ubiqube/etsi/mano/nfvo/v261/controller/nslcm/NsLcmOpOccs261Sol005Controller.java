@@ -59,7 +59,7 @@ public class NsLcmOpOccs261Sol005Controller implements NsLcmOpOccs261Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<String> nsLcmOpOccsGet(final MultiValueMap<String, String> requestParams) {
-		return nsLcmGenericFrontController.search(requestParams, NsLcmOpOcc.class, null, NsLcmOpOccs261Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x, NsLcmOpOcc.class), null, NsLcmOpOccs261Sol005Controller::makeLinks);
 	}
 
 	/**
