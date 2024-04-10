@@ -54,7 +54,7 @@ public class PmJobs271Sol003Controller implements PmJobs271Sol003Api {
 
 	@Override
 	public ResponseEntity<String> pmJobsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return vnfmPmGenericFrontController.search(requestParams, x -> mapper.map(x, PmJob.class), PmJobs271Sol003Controller::makeLinks);
+		return vnfmPmGenericFrontController.search(requestParams, x -> mapper.map(x, PmJob.class), PmJobs271Sol003Controller::makeLinks, PmJob.class);
 	}
 
 	private static void makeLinks(final PmJob x) {
