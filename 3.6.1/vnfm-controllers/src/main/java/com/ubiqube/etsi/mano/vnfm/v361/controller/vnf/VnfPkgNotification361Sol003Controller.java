@@ -29,13 +29,16 @@ import com.ubiqube.etsi.mano.nfvo.v361.model.vnf.VnfPackageOnboardingNotificatio
 import com.ubiqube.etsi.mano.vnfm.fc.vnf.VnfNotificationFrontController;
 
 import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnfPkgNotification361Sol003Controller implements VnfPkgNotification361Sol003Api {
 	private final VnfNotificationFrontController fc;
+	private final MapperFacade mapper;
 
-	public VnfPkgNotification361Sol003Controller(final VnfNotificationFrontController fc) {
+	public VnfPkgNotification361Sol003Controller(final VnfNotificationFrontController fc, final MapperFacade mapper) {
 		this.fc = fc;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -45,7 +48,8 @@ public class VnfPkgNotification361Sol003Controller implements VnfPkgNotification
 
 	@Override
 	public ResponseEntity<Void> onboardingAction(final VnfPackageOnboardingNotification body) {
-		return fc.onNotification(body, "2.6.1");
+		final com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification.class);
+		return fc.onNotification(req, "2.6.1");
 	}
 
 	@Override
@@ -55,7 +59,8 @@ public class VnfPkgNotification361Sol003Controller implements VnfPkgNotification
 
 	@Override
 	public ResponseEntity<Void> changeAction(@Valid final VnfPackageChangeNotification body) {
-		return fc.onChange(body, "2.6.1");
+		final com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification.class);
+		return fc.onChange(req, "2.6.1");
 	}
 
 }
