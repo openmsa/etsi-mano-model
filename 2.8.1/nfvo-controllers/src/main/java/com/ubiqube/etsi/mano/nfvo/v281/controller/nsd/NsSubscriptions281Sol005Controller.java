@@ -70,7 +70,7 @@ public class NsSubscriptions281Sol005Controller implements NsSubscriptions281Sol
 	 */
 	@Override
 	public ResponseEntity<List<NsdmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String filter) {
-		return nsdSubscriptionFrontController.search(requestParams, NsdmSubscription.class, NsSubscriptions281Sol005Controller::makeLink);
+		return nsdSubscriptionFrontController.search(requestParams, x -> mapper.map(x, NsdmSubscription.class), NsSubscriptions281Sol005Controller::makeLink);
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class NsSubscriptions281Sol005Controller implements NsSubscriptions281Sol
 	 */
 	@Override
 	public ResponseEntity<NsdmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return nsdSubscriptionFrontController.findById(subscriptionId, NsdmSubscription.class, NsSubscriptions281Sol005Controller::makeLink);
+		return nsdSubscriptionFrontController.findById(subscriptionId, x -> mapper.map(x, NsdmSubscription.class), NsSubscriptions281Sol005Controller::makeLink);
 	}
 
 	private static void makeLink(@NotNull final NsdmSubscription subs) {
