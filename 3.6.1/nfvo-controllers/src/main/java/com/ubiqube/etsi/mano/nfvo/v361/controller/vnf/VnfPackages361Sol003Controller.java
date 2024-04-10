@@ -18,9 +18,6 @@ package com.ubiqube.etsi.mano.nfvo.v361.controller.vnf;
 
 import static com.ubiqube.etsi.mano.nfvo.fc.controller.NfvoConstants.getSafeUUID;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -30,6 +27,10 @@ import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
 import com.ubiqube.etsi.mano.nfvo.v361.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v361.service.LinksSol003;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -37,11 +38,12 @@ import com.ubiqube.etsi.mano.nfvo.v361.service.LinksSol003;
  */
 @RestController
 public class VnfPackages361Sol003Controller implements VnfPackages361Sol003Api {
-
 	private final VnfPackageFrontController frontController;
+	private final MapperFacade mapper;
 
-	public VnfPackages361Sol003Controller(final VnfPackageFrontController frontController) {
+	public VnfPackages361Sol003Controller(final VnfPackageFrontController frontController, final MapperFacade mapper) {
 		this.frontController = frontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -77,7 +79,7 @@ public class VnfPackages361Sol003Controller implements VnfPackages361Sol003Api {
 
 	@Override
 	public ResponseEntity<String> vnfPackagesGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, VnfPkgInfo.class, LinksSol003::makeLinks);
+		return frontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
 	}
 
 }
