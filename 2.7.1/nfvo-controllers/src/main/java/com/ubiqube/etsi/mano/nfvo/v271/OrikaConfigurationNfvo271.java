@@ -34,6 +34,7 @@ import com.ubiqube.etsi.mano.dao.mano.nsd.VnffgDescriptor;
 import com.ubiqube.etsi.mano.dao.mano.v2.BlueprintParameters;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
+import com.ubiqube.etsi.mano.dao.mano.vim.SoftwareImage;
 import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.em.v271.model.SubscriptionAuthenticationParamsOauth2ClientCredentials;
 import com.ubiqube.etsi.mano.em.v271.model.vnfind.VnfIndicatorSubscriptionRequest;
@@ -60,6 +61,7 @@ import com.ubiqube.etsi.mano.model.v271.sol003.lcmgrant.GrantRequest;
 import com.ubiqube.etsi.mano.model.v271.sol003.lcmgrant.ResourceDefinition;
 import com.ubiqube.etsi.mano.model.v271.sol003.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.model.v271.sol003.vnf.PkgmSubscriptionRequest;
+import com.ubiqube.etsi.mano.model.v271.sol003.vnf.VnfPackageSoftwareImageInfo;
 import com.ubiqube.etsi.mano.model.v271.sol005.nsd.NsdInfo;
 import com.ubiqube.etsi.mano.model.v271.sol005.nsd.NsdmSubscription;
 import com.ubiqube.etsi.mano.model.v271.sol005.nsd.NsdmSubscriptionRequest;
@@ -299,6 +301,10 @@ public class OrikaConfigurationNfvo271 implements OrikaMapperFactoryConfigurer {
 				.field("extManagedVirtualLinkInfo", "extManagedVirtualLinks")
 				.field("monitoringParameters", "vnfMonitoringParameter")
 				.field("extVirtualLinkInfo", "extVirtualLinkInfo")
+				.byDefault()
+				.register();
+		orikaMapperFactory.classMap(SoftwareImage.class, VnfPackageSoftwareImageInfo.class)
+				.exclude("userMetadata")
 				.byDefault()
 				.register();
 		orikaMapperFactory.classMap(VnffgInfo.class, VnffgDescriptor.class)
