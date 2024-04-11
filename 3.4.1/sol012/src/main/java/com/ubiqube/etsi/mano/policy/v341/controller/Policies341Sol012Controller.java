@@ -60,7 +60,7 @@ public class Policies341Sol012Controller implements Policies341Sol012Api {
 
 	@Override
 	public ResponseEntity<String> policiesGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return fc.search(requestParams, nextpageOpaqueMarker, policyMapping::map, Policies341Sol012Controller::makeLinks);
+		return fc.search(requestParams, nextpageOpaqueMarker, policyMapping::map, Policies341Sol012Controller::makeLinks, Policy.class);
 	}
 
 	@Override
