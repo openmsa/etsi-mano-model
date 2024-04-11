@@ -67,7 +67,7 @@ public class Thresholds261Sol005Controller implements Thresholds261Sol005Api {
 	@Override
 	public ResponseEntity<String> thresholdsGet(final String filter) {
 		final Consumer<com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.Threshold> setLink = x -> x.setLinks(makeLinks(x.getId()));
-		return nfvoThresholdController.search(new LinkedMultiValueMap<>(), x -> mapper.map(x, com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.Threshold.class), THR_SEARCH_DEFAULT_EXCLUDE_FIELDS, THR_SEARCH_MANDATORY_FIELDS, setLink);
+		return nfvoThresholdController.search(new LinkedMultiValueMap<>(), x -> mapper.map(x, com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.Threshold.class), THR_SEARCH_DEFAULT_EXCLUDE_FIELDS, THR_SEARCH_MANDATORY_FIELDS, setLink, com.ubiqube.etsi.mano.vnfm.v261.model.nsperfo.Threshold.class);
 	}
 
 	private ThresholdLinks makeLinks(@NotNull final String id) {

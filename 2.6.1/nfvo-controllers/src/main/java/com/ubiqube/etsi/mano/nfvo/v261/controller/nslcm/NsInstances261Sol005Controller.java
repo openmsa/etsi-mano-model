@@ -69,7 +69,7 @@ public final class NsInstances261Sol005Controller implements NsInstances261Sol00
 	 */
 	@Override
 	public ResponseEntity<String> nsInstancesGet(final MultiValueMap<String, String> requestParams) {
-		return frontController.search(requestParams, x -> mapper.map(x, NsInstance.class), null, NsInstances261Sol005Controller::makeLinks);
+		return frontController.search(requestParams, x -> mapper.map(x, NsInstance.class), null, NsInstances261Sol005Controller::makeLinks, NsInstance.class);
 	}
 
 	/**

@@ -68,7 +68,7 @@ public class VnfPackage261Sol003Controller implements VnfPackage261Sol003Api {
 	 */
 	@Override
 	public ResponseEntity<String> vnfPackagesGet(final MultiValueMap<String, String> requestParams) {
-		return vnfPackageFrontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), links::makeLinks);
+		return vnfPackageFrontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), links::makeLinks, VnfPkgInfo.class);
 	}
 
 	/**
