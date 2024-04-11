@@ -63,7 +63,7 @@ public class Thresholds431Sol003Controller implements Thresholds431Sol003Api {
 
 	@Override
 	public ResponseEntity<String> thresholdsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return vnfmThresholdFrontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, Threshold.class), Thresholds431Sol003Controller::makeLinks);
+		return vnfmThresholdFrontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, Threshold.class), Thresholds431Sol003Controller::makeLinks, Threshold.class);
 	}
 
 	@Override
