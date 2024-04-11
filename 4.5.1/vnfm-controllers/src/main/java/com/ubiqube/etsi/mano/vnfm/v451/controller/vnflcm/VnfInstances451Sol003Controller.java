@@ -80,12 +80,12 @@ public class VnfInstances451Sol003Controller implements VnfInstances451Sol003Api
 
 	@Override
 	public ResponseEntity<String> vnfInstancesGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, vnfInstanceMapping::map, nextpageOpaqueMarker, VnfInstances451Sol003Controller::makeLinks);
+		return frontController.search(requestParams, vnfInstanceMapping::map, nextpageOpaqueMarker, VnfInstances451Sol003Controller::makeLinks, VnfInstance.class);
 	}
 
 	@Override
 	public ResponseEntity<VnfInstance> vnfInstancesPost(@Valid final CreateVnfRequest createVnfRequest) {
-		return frontController.create(createVnfRequest.getVnfdId(), createVnfRequest.getVnfInstanceName(), createVnfRequest.getVnfInstanceDescription(), x -> vnfInstanceMapping.map(x),
+		return frontController.create(createVnfRequest.getVnfdId(), createVnfRequest.getVnfInstanceName(), createVnfRequest.getVnfInstanceDescription(), vnfInstanceMapping::map,
 				VnfInstances451Sol003Controller::makeLinks, "");
 	}
 

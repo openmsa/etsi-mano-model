@@ -46,7 +46,7 @@ public class VnfLcmOpOccs451Sol003Controller implements VnfLcmOpOccs451Sol003Api
 
 	@Override
 	public ResponseEntity<String> vnfLcmOpOccsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, vnfLcmOpOcc451Mapping::map, VnfLcmOpOccs451Sol003Controller::makeLinks);
+		return frontController.search(requestParams, vnfLcmOpOcc451Mapping::map, VnfLcmOpOccs451Sol003Controller::makeLinks, VnfLcmOpOcc.class);
 	}
 
 	@Override
