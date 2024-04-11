@@ -62,7 +62,7 @@ public class Alarms351Sol003Controller implements Alarms351Sol003Api {
 
 	@Override
 	public ResponseEntity<String> alarmsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return alarmFrontController.search(requestParams, x -> mapper.map(x, Alarm.class), Alarms351Sol003Controller::makeLinks);
+		return alarmFrontController.search(requestParams, x -> mapper.map(x, Alarm.class), Alarms351Sol003Controller::makeLinks, Alarm.class);
 	}
 
 	private static void makeLinks(final Alarm alarm) {
