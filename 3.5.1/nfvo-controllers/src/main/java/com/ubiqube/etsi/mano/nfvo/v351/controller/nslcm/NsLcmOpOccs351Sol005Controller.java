@@ -48,7 +48,7 @@ public class NsLcmOpOccs351Sol005Controller implements NsLcmOpOccs351Sol005Api {
 
 	@Override
 	public ResponseEntity<String> nsLcmOpOccsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x, NsLcmOpOcc.class), nextpageOpaqueMarker, NsLcmOpOccs351Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x, NsLcmOpOcc.class), nextpageOpaqueMarker, NsLcmOpOccs351Sol005Controller::makeLinks, NsLcmOpOcc.class);
 	}
 
 	@Override

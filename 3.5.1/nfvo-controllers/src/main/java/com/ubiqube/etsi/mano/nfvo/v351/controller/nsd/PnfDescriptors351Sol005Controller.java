@@ -60,7 +60,7 @@ public class PnfDescriptors351Sol005Controller implements PnfDescriptors351Sol00
 	@Override
 	public ResponseEntity<String> pnfDescriptorsGet(final MultiValueMap<String, String> requestParams) {
 		final Consumer<PnfdInfo> setLink = x -> x.setLinks(makeLinks(x));
-		return pnfFrontController.search(requestParams, x -> mapper.map(x, PnfdInfo.class), setLink);
+		return pnfFrontController.search(requestParams, x -> mapper.map(x, PnfdInfo.class), setLink, PnfdInfo.class);
 	}
 
 	/**

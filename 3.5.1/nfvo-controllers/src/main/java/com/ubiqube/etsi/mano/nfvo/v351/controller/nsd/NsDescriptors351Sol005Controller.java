@@ -53,7 +53,7 @@ public class NsDescriptors351Sol005Controller implements NsDescriptors351Sol005A
 
 	@Override
 	public ResponseEntity<String> nsDescriptorsGet(final MultiValueMap<String, String> requestParams) {
-		return nsDescriptorGenericFrontController.search(requestParams, x -> mapper.map(x, NsdInfo.class), NsDescriptors351Sol005Controller::makeLinks);
+		return nsDescriptorGenericFrontController.search(requestParams, x -> mapper.map(x, NsdInfo.class), NsDescriptors351Sol005Controller::makeLinks, NsdInfo.class);
 	}
 
 	@Override
