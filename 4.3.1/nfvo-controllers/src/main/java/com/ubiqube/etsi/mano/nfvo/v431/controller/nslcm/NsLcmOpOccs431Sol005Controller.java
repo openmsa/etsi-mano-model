@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nslcm.NsLcmGenericFrontController;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsInstance;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsLcmInfoModificationRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsLcmOpOccLinks;
@@ -45,7 +46,7 @@ public class NsLcmOpOccs431Sol005Controller implements NsLcmOpOccs431Sol005Api {
 
 	@Override
 	public ResponseEntity<String> nsLcmOpOccsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x, NsLcmOpOcc.class), nextpageOpaqueMarker, NsLcmOpOccs431Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x, NsLcmOpOcc.class), nextpageOpaqueMarker, NsLcmOpOccs431Sol005Controller::makeLinks, NsInstance.class);
 	}
 
 	@Override
