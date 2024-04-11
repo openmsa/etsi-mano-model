@@ -59,7 +59,7 @@ public class VnfPackages331Sol005Controller implements VnfPackages331Sol005Api {
 
 	@Override
 	public ResponseEntity<String> vnfPackagesGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), VnfPackages331Sol005Controller::makeLinks);
+		return frontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), VnfPackages331Sol005Controller::makeLinks, VnfPkgInfo.class);
 	}
 
 	@Override
