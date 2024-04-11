@@ -53,7 +53,7 @@ public class VnfLcmOpOccs331Sol003Controller implements VnfLcmOpOccs331Sol003Api
 
 	@Override
 	public ResponseEntity<String> vnfLcmOpOccsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, x -> mapper.map(x, VnfLcmOpOcc.class), VnfLcmOpOccs331Sol003Controller::makeLinks);
+		return frontController.search(requestParams, x -> mapper.map(x, VnfLcmOpOcc.class), VnfLcmOpOccs331Sol003Controller::makeLinks, VnfLcmOpOcc.class);
 	}
 
 	@Override
