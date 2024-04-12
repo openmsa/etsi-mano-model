@@ -70,6 +70,8 @@ import com.ubiqube.etsi.mano.utils.Version;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantRequestLinks;
+import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.VrQuotaAvailSubscription;
+import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.VrQuotaAvailSubscriptionRequest;
 
 import ma.glasnost.orika.MapperFacade;
 
@@ -369,6 +371,16 @@ public class HttpGateway431 extends AbstractHttpGateway {
 	@Override
 	public Class<?> getVnfFmSubscriptionClass() {
 		return FmSubscription.class;
+	}
+
+	@Override
+	public Class<?> getVrQanSubscriptionRequest() {
+		return VrQuotaAvailSubscriptionRequest.class;
+	}
+
+	@Override
+	public Class<?> getVrQanSubscriptionClass() {
+		return VrQuotaAvailSubscription.class;
 	}
 
 }
