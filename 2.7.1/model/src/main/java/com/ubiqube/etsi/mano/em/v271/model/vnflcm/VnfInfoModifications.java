@@ -16,16 +16,17 @@
  */
 package com.ubiqube.etsi.mano.em.v271.model.vnflcm;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-import jakarta.validation.Valid;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ubiqube.etsi.mano.vnfm.v271.model.vnflcm.VimConnectionInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
 
 /**
  * This type represents attribute modifications that were performed on an
@@ -35,7 +36,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * attributes of the \&quot;VnfInstance\&quot; data structure that were modified
  * implicitly e.g. when modifying the referenced VNF package.
  */
-@Schema (description= "This type represents attribute modifications that were performed on an \"Individual VNF instance\" resource. The attributes that can be included consist of those requested to be modified explicitly in the \"VnfInfoModificationRequest\" data structure, and additional attributes of the \"VnfInstance\" data structure that were modified implicitly e.g. when modifying the referenced VNF package. " )
+@Schema(description = "This type represents attribute modifications that were performed on an \"Individual VNF instance\" resource. The attributes that can be included consist of those requested to be modified explicitly in the \"VnfInfoModificationRequest\" data structure, and additional attributes of the \"VnfInstance\" data structure that were modified implicitly e.g. when modifying the referenced VNF package. ")
 @Validated
 
 public class VnfInfoModifications {
@@ -53,6 +54,9 @@ public class VnfInfoModifications {
 
 	@JsonProperty("extensions")
 	private Map<String, String> extensions = null;
+
+	@JsonProperty("vimConnectionInfo")
+	private List<VimConnectionInfo> vimConnectionInfo = null;
 
 	@JsonProperty("vnfdId")
 	private String vnfdId = null;
@@ -178,6 +182,14 @@ public class VnfInfoModifications {
 
 	public void setExtensions(final Map<String, String> extensions) {
 		this.extensions = extensions;
+	}
+
+	public List<VimConnectionInfo> getVimConnectionInfo() {
+		return vimConnectionInfo;
+	}
+
+	public void setVimConnectionInfo(final List<VimConnectionInfo> vimConnectionInfo) {
+		this.vimConnectionInfo = vimConnectionInfo;
 	}
 
 	public VnfInfoModifications vnfdId(final String vnfdId) {
@@ -307,15 +319,15 @@ public class VnfInfoModifications {
 		}
 		final VnfInfoModifications vnfInfoModifications = (VnfInfoModifications) o;
 		return Objects.equals(this.vnfInstanceName, vnfInfoModifications.vnfInstanceName) &&
-		Objects.equals(this.vnfInstanceDescription, vnfInfoModifications.vnfInstanceDescription) &&
-		Objects.equals(this.vnfConfigurableProperties, vnfInfoModifications.vnfConfigurableProperties) &&
-		Objects.equals(this.metadata, vnfInfoModifications.metadata) &&
-		Objects.equals(this.extensions, vnfInfoModifications.extensions) &&
-		Objects.equals(this.vnfdId, vnfInfoModifications.vnfdId) &&
-		Objects.equals(this.vnfProvider, vnfInfoModifications.vnfProvider) &&
-		Objects.equals(this.vnfProductName, vnfInfoModifications.vnfProductName) &&
-		Objects.equals(this.vnfSoftwareVersion, vnfInfoModifications.vnfSoftwareVersion) &&
-		Objects.equals(this.vnfdVersion, vnfInfoModifications.vnfdVersion);
+				Objects.equals(this.vnfInstanceDescription, vnfInfoModifications.vnfInstanceDescription) &&
+				Objects.equals(this.vnfConfigurableProperties, vnfInfoModifications.vnfConfigurableProperties) &&
+				Objects.equals(this.metadata, vnfInfoModifications.metadata) &&
+				Objects.equals(this.extensions, vnfInfoModifications.extensions) &&
+				Objects.equals(this.vnfdId, vnfInfoModifications.vnfdId) &&
+				Objects.equals(this.vnfProvider, vnfInfoModifications.vnfProvider) &&
+				Objects.equals(this.vnfProductName, vnfInfoModifications.vnfProductName) &&
+				Objects.equals(this.vnfSoftwareVersion, vnfInfoModifications.vnfSoftwareVersion) &&
+				Objects.equals(this.vnfdVersion, vnfInfoModifications.vnfdVersion);
 	}
 
 	@Override
