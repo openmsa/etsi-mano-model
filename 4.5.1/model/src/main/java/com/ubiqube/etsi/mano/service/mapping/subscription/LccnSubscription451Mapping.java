@@ -27,10 +27,8 @@ import com.ubiqube.etsi.mano.service.event.model.Subscription;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface LccnSubscription451Mapping extends BaseSubscription451Mapping {
 
-	@Mapping(target = "_links", ignore = true)
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	@Mapping(target = "verbosity", ignore = true)
 	LccnSubscription map(Subscription o, @Context final Class<?> clazz);
 
 	@Mapping(target = "api", ignore = true)

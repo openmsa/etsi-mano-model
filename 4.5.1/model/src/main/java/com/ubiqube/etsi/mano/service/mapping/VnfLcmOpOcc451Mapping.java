@@ -156,7 +156,7 @@ public interface VnfLcmOpOcc451Mapping extends StringToUriMapping, Connectivity4
 	@Mapping(target = "computeResource.resourceId", source = "resourceId")
 	@Mapping(target = "computeResource.resourceProviderId", source = "resourceProviderId")
 	@Mapping(target = "computeResource.vimLevelResourceType", source = "vimLevelResourceType")
-	@Mapping(target = "computeResource.vimConnectionId", source = "vimConnectionInformation.id")
+	@Mapping(target = "computeResource.vimConnectionId", source = "vimConnectionInformation.vimId")
 	@Mapping(target = "computeResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
 	@Mapping(target = "computeResource.containerNamespace", source = "containerNamespace")
 	AffectedVnfc map(VnfInstantiatedCompute o);

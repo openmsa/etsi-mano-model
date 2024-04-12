@@ -28,7 +28,6 @@ import com.ubiqube.etsi.mano.service.event.model.Subscription;
 public interface LccnSubscriptionRequest451Mapping extends BaseSubscription451Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	@Mapping(target = "verbosity", ignore = true)
 	LccnSubscriptionRequest map(Subscription o, @Context final Class<?> clazz);
 
 	@Mapping(target = "api", ignore = true)
