@@ -16,7 +16,10 @@
  */
 package com.ubiqube.etsi.mano.service.mapping;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -36,6 +39,7 @@ import com.ubiqube.etsi.mano.dao.mano.v2.AffectedVipCp;
 import com.ubiqube.etsi.mano.dao.mano.v2.OperationStatusType;
 import com.ubiqube.etsi.mano.dao.mano.v2.PlanOperationType;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
+import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.RejectedLcmCoordination;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.VnfLcmCoordination;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.VnfPkgChange;
@@ -48,6 +52,7 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LcmOperationStateType;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LcmOperationType;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ModificationsTriggeredByVnfPkgChange;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInfoModifications;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOccLcmCoordinations;
@@ -93,6 +98,16 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	LcmOperationStateType map(OperationStatusType o);
 
 	VnfInfoModifications map(com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications o);
+
+	@Nullable
+	default List<VimConnectionInfo> mapToListVimConnectionInfo(@Nullable final Map<String, VimConnectionInformation> value) {
+		if (null == value) {
+			return null;
+		}
+		return value.entrySet().stream().map(x -> map(x.getValue())).toList();
+	}
+
+	VimConnectionInfo map(VimConnectionInformation value);
 
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "automaticInvocation", source = "isAutomaticInvocation")
@@ -142,8 +157,24 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	ExtLinkPortInfoEntity map(ExtLinkPortInfo o);
 
 	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "vimConnectionInfo", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications map(VnfInfoModifications o);
+
+	@Nullable
+	default Map<String, VimConnectionInformation> mapToMapVimConnectionInformation(final @Nullable List<VimConnectionInfo> value) {
+		if (null == value) {
+			return Map.of();
+		}
+		return value.stream().map(this::map).collect(Collectors.toMap(x -> x.getVimId(), x -> x));
+	}
+
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "cnfInfo", ignore = true)
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "jujuInfo", ignore = true)
+	@Mapping(target = "tenantId", ignore = true)
+	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "vimCapabilities", ignore = true)
+	VimConnectionInformation map(VimConnectionInfo x);
 
 	@Mapping(target = "id", ignore = true)
 	NetAttDefResourceInfo map(com.ubiqube.etsi.mano.em.v431.model.vnflcm.NetAttDefResourceInfo o);
@@ -205,7 +236,7 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	@Mapping(target = "computeResource.resourceId", source = "resourceId")
 	@Mapping(target = "computeResource.resourceProviderId", source = "resourceProviderId")
 	@Mapping(target = "computeResource.vimLevelResourceType", source = "vimLevelResourceType")
-	@Mapping(target = "computeResource.vimConnectionId", source = "vimConnectionInformation.id")
+	@Mapping(target = "computeResource.vimConnectionId", source = "vimConnectionInformation.vimId")
 	@Mapping(target = "computeResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
 	@Mapping(target = "computeResource.containerNamespace", source = "containerNamespace")
 	AffectedVnfc map(VnfInstantiatedCompute o);
