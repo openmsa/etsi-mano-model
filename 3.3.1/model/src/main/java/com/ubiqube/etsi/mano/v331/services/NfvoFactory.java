@@ -14,34 +14,24 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.c331.services;
+package com.ubiqube.etsi.mano.v331.services;
 
 import java.util.UUID;
 
-import jakarta.annotation.Nonnull;
-
-import com.ubiqube.etsi.mano.controller.FrontApiTypesEnum;
-import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmLinks;
-import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmSubscriptionLinks;
-import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPkgInfo;
-import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPkgInfoLinks;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
-public interface Linkable {
-	VnfPkgInfoLinks getVnfLinks(@Nonnull String vnfPkgId);
+public interface NfvoFactory {
 
-	PkgmSubscriptionLinks createSubscriptionsPkgmSubscriptionLinks(@Nonnull String subscriptionId);
+	Object createNotificationVnfPackageOnboardingNotification(final UUID subscriptionId, EventMessage eventMessage);
 
-	FrontApiTypesEnum getApi();
+	Object createVnfPackageChangeNotification(final UUID subscriptionId, EventMessage eventMessage);
 
-	void makeLinks(final VnfPkgInfo vnfPkgInfo);
-
-	String getSelfLink(final VnfPkgInfo vnfPkgInfo);
-
-	PkgmLinks createVnfPackageOnboardingNotificationLinks(UUID vnfPkgId, String vnfdId, UUID subscriptionId);
+	String createSubscriptionLink(ApiAndType at, String id);
 
 }

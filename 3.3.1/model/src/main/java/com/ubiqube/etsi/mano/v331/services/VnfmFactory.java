@@ -14,35 +14,20 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.c331.services;
+package com.ubiqube.etsi.mano.v331.services;
 
-import java.time.OffsetDateTime;
+import java.util.UUID;
 
-import org.springframework.stereotype.Service;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.service.event.model.EventMessage;
+import com.ubiqube.etsi.mano.vnfm.v331.model.grant.GrantRequest;
 
-import com.ubiqube.etsi.mano.controller.AbstractEtsiImplementation;
+public interface VnfmFactory {
 
-/**
- *
- * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
- *
- */
-@Service
-public class EtsiImplementation331 extends AbstractEtsiImplementation {
+	void makeGrantRequestLink(GrantRequest grant);
 
-	@Override
-	public String getVersion() {
-		return "3.3.1";
-	}
+	String createSubscriptionLink(ApiAndType at, String id);
 
-	@Override
-	public boolean isDeprecated() {
-		return false;
-	}
-
-	@Override
-	public OffsetDateTime getRetirementDate() {
-		return null;
-	}
+	Object createVnfIndicatorValueChangeNotification(UUID subscriptionId, EventMessage event);
 
 }
