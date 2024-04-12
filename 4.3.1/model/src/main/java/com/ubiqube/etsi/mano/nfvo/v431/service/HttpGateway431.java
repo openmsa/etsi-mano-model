@@ -85,7 +85,7 @@ public class HttpGateway431 extends AbstractHttpGateway {
 	private final VnfmFactory vnfmFactory;
 	private final MapperFacade mapper;
 
-	public HttpGateway431(final ObjectProvider<NfvoFactory> nfvoFactory, final ObjectProvider<VnfmFactory> vnfmFactory, final MapperFacade mapper) {
+	public HttpGateway431(final ObjectProvider<VnfmFactory> vnfmFactory, final ObjectProvider<NfvoFactory> nfvoFactory, final MapperFacade mapper) {
 		this.nfvoFactory = nfvoFactory.getIfAvailable();
 		this.vnfmFactory = vnfmFactory.getIfAvailable();
 		this.mapper = mapper;
