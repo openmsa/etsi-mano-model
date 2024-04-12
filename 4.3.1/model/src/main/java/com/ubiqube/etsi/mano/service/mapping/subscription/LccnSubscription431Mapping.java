@@ -16,6 +16,7 @@
  */
 package com.ubiqube.etsi.mano.service.mapping.subscription;
 
+import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -30,8 +31,9 @@ public interface LccnSubscription431Mapping extends BaseSubscription431Mapping {
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "verbosity", ignore = true)
-	LccnSubscription map(Subscription o);
+	LccnSubscription map(Subscription o, @Context final Class<?> clazz);
 
+	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")

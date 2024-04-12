@@ -43,7 +43,7 @@ import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsInstance;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsVirtualLinkInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.VnffgInfo;
 
-import io.micrometer.common.lang.Nullable;
+import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface NsInstance431Mapping {
@@ -91,15 +91,15 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "vnfInstanceId", ignore = true)
 	VnffgInfo map(VnffgDescriptor o);
 
-	com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsCpHandle map(NsCpHandle o);
-
 	@Nullable
-	default com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsCpHandle map(final @Nullable Set<NsCpHandle> value) {
+	default com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsCpHandle mapSetDb(final @Nullable Set<NsCpHandle> value) {
 		if (null == value) {
 			return null;
 		}
 		return map(value.iterator().next());
 	}
+
+	com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsCpHandle map(NsCpHandle value);
 
 	@Mapping(target = "extCpInfo", ignore = true)
 	@Mapping(target = "extManagedVirtualLinkInfo", ignore = true)
@@ -152,12 +152,15 @@ public interface NsInstance431Mapping {
 	VnffgDescriptor map(VnffgInfo o);
 
 	@Nullable
-	default Set<NsCpHandle> map(final @Nullable com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsCpHandle value) {
+	default Set<NsCpHandle> mapSet(final @Nullable com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsCpHandle value) {
 		if (null == value) {
 			return Set.of();
 		}
-		return map(value);
+		return Set.of(map(value));
 	}
+
+	@Mapping(target = "id", ignore = true)
+	NsCpHandle map(com.ubiqube.etsi.mano.nfvo.v431.model.nslcm.NsCpHandle o);
 
 	@Mapping(target = "id", ignore = true)
 	AdditionalResourceInfo map(com.ubiqube.etsi.mano.em.v431.model.vnflcm.AdditionalResourceInfo o);

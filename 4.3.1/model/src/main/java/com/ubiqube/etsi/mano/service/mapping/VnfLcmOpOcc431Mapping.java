@@ -38,6 +38,7 @@ import com.ubiqube.etsi.mano.dao.mano.v2.PlanOperationType;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.RejectedLcmCoordination;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.VnfLcmCoordination;
+import com.ubiqube.etsi.mano.dao.mano.vnfm.VnfPkgChange;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedExtLinkPort;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedVirtualLink;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedVirtualStorage;
@@ -46,6 +47,7 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtLinkPortInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LcmOperationStateType;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LcmOperationType;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ModificationsTriggeredByVnfPkgChange;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInfoModifications;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOccLcmCoordinations;
@@ -55,15 +57,18 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOccResourceChanges;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfLcmOpOcc431Mapping extends StringToUri431Mapping, Connectivity431Mapping {
+public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity431Mapping {
 
 	@Mapping(target = "operationState", source = "operationStatus")
 	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "vnfInstanceId", source = "vnfInstance.id")
 	VnfLcmOpOcc map(VnfBlueprint bp);
 
+	@Mapping(target = "vimConnectionInfo", ignore = true)
+	ModificationsTriggeredByVnfPkgChange map(VnfPkgChange o);
+
 	@Nullable
-	default VnfLcmOpOccLcmCoordinations map(final @Nullable Set<VnfLcmCoordination> value) {
+	default VnfLcmOpOccLcmCoordinations mapToVnfLcmOpOccLcmCoordinations(final @Nullable Set<VnfLcmCoordination> value) {
 		if (null == value) {
 			return null;
 		}
@@ -73,7 +78,7 @@ public interface VnfLcmOpOcc431Mapping extends StringToUri431Mapping, Connectivi
 	VnfLcmOpOccLcmCoordinations map(VnfLcmCoordination next);
 
 	@Nullable
-	default VnfLcmOpOccRejectedLcmCoordinations mapToVnfLcmOpOccRejectedLcmCoordinations(final @Nullable Set<RejectedLcmCoordination> value) {
+	default VnfLcmOpOccRejectedLcmCoordinations map(final @Nullable Set<RejectedLcmCoordination> value) {
 		if (null == value) {
 			return null;
 		}
@@ -87,7 +92,7 @@ public interface VnfLcmOpOcc431Mapping extends StringToUri431Mapping, Connectivi
 	@ValueMapping(source = "SUCCESS", target = MappingConstants.THROW_EXCEPTION)
 	LcmOperationStateType map(OperationStatusType o);
 
-//	VnfInfoModifications map(com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications o);
+	VnfInfoModifications map(com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications o);
 
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "automaticInvocation", source = "isAutomaticInvocation")
@@ -109,25 +114,23 @@ public interface VnfLcmOpOcc431Mapping extends StringToUri431Mapping, Connectivi
 	@Mapping(target = "zones", ignore = true)
 	VnfBlueprint map(VnfLcmOpOcc lcm);
 
-	VnfLcmCoordination mapToVnfLcmCoordination(VnfLcmOpOccLcmCoordinations value);
-
-	@Nullable
-	default Set<VnfLcmCoordination> mapToSetVnfLcmCoordination(final @Nullable VnfLcmOpOccLcmCoordinations value) {
-		if (null == value) {
-			return Set.of();
-		}
-		final VnfLcmCoordination r = mapToVnfLcmCoordination(value);
-		return Set.of(r);
-	}
-
 	@Nullable
 	default Set<RejectedLcmCoordination> mapToRejectedLcmCoordination(final @Nullable VnfLcmOpOccRejectedLcmCoordinations value) {
 		if (null == value) {
-			return Set.of();
+			return null;
 		}
-		final RejectedLcmCoordination r = map(value);
-		return Set.of(r);
+		return Set.of(map(value));
 	}
+
+	@Nullable
+	default Set<VnfLcmCoordination> mapToVnfLcmCoordination(final @Nullable VnfLcmOpOccLcmCoordinations value) {
+		if (null == value) {
+			return null;
+		}
+		return Set.of(map(value));
+	}
+
+	VnfLcmCoordination map(VnfLcmOpOccLcmCoordinations value);
 
 	@Mapping(target = "id", ignore = true)
 	AffectedVipCp map(com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedVipCp o);
@@ -186,6 +189,17 @@ public interface VnfLcmOpOcc431Mapping extends StringToUri431Mapping, Connectivi
 	@Mapping(target = "vnfLcmOpOccs", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "zoneId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.accessInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.audit", ignore = true)
+	@Mapping(target = "vimConnectionInformation.cnfInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.extra", ignore = true)
+	@Mapping(target = "vimConnectionInformation.interfaceInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.jujuInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.tenantId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.version", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimCapabilities", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimType", ignore = true)
+	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	VnfInstantiatedExtLinkPort map(AffectedExtLinkPort o);
 
 	@Mapping(target = "computeResource.resourceId", source = "resourceId")
@@ -211,7 +225,7 @@ public interface VnfLcmOpOcc431Mapping extends StringToUri431Mapping, Connectivi
 	@Mapping(target = "startTime", ignore = true)
 	@Mapping(target = "status", ignore = true)
 	@Mapping(target = "toscaName", ignore = true)
-	@Mapping(target = "vimConnectionInformation.id", source = "computeResource.vimConnectionId")
+	@Mapping(target = "vimConnectionInformation.vimId", source = "computeResource.vimConnectionId")
 	@Mapping(target = "vimLevelAdditionalResourceInfo", source = "computeResource.vimLevelAdditionalResourceInfo")
 	@Mapping(target = "vimLevelResourceType", source = "computeResource.vimLevelResourceType")
 	@Mapping(target = "vnfLcmOpOccs", ignore = true)
@@ -220,6 +234,17 @@ public interface VnfLcmOpOcc431Mapping extends StringToUri431Mapping, Connectivi
 	@Mapping(target = "imageId", ignore = true)
 	@Mapping(target = "storageResourceIds", ignore = true)
 	@Mapping(target = "vnfcCpInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.accessInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.audit", ignore = true)
+	@Mapping(target = "vimConnectionInformation.cnfInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.extra", ignore = true)
+	@Mapping(target = "vimConnectionInformation.interfaceInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.jujuInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.tenantId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.version", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimCapabilities", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimType", ignore = true)
+	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	VnfInstantiatedCompute map(AffectedVnfc o);
 
 	@Mapping(target = "storageResource.vimConnectionId", source = "vimConnectionInformation.vimId")
@@ -307,8 +332,8 @@ public interface VnfLcmOpOcc431Mapping extends StringToUri431Mapping, Connectivi
 	@Mapping(target = "vimConnectionInformation.vimId", ignore = true)
 	VnfInstantiatedVirtualLink map(AffectedVirtualLink o);
 
-	@ValueMapping(source = "UPDATE", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "SELECT_DEPL_MODS", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "UPDATE", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "MODIFY_INFORMATION", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "CHANGE_EXTERNAL_VNF_CONNECTIVITY", target = MappingConstants.THROW_EXCEPTION)
 	LcmOperationType map(PlanOperationType operation);

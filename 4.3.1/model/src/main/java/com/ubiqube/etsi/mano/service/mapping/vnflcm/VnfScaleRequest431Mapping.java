@@ -14,27 +14,27 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-package com.ubiqube.etsi.mano.service.mapping.subscription;
+package com.ubiqube.etsi.mano.service.mapping.vnflcm;
 
-import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.em.v431.model.vnffm.FmSubscriptionRequest;
-import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleInfo;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleVnfToLevelRequest;
+import com.ubiqube.etsi.mano.model.CommScaleInfo;
+import com.ubiqube.etsi.mano.model.VnfScaleRequest;
+import com.ubiqube.etsi.mano.model.VnfScaleToLevelRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface FmSubscriptionRequest431Mapping extends BaseSubscription431Mapping {
-	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	FmSubscriptionRequest map(Subscription o, @Context final Class<?> clazz);
+public interface VnfScaleRequest431Mapping {
+	@Mapping(target = "instantiationLevelId", ignore = true)
+	@Mapping(target = "scaleInfo", ignore = true)
+	VnfScaleRequest map(ScaleVnfRequest o);
 
-	@Mapping(target = "api", ignore = true)
-	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
-	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", ignore = true)
-	@Mapping(target = "version", ignore = true)
-	Subscription map(FmSubscriptionRequest o);
+	VnfScaleToLevelRequest map(ScaleVnfToLevelRequest o);
+
+	@Mapping(target = "scaleLevel", source = "scaleToLevel")
+	CommScaleInfo map(ScaleInfo o);
 }

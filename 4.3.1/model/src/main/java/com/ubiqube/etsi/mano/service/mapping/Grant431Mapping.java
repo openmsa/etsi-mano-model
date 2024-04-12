@@ -22,7 +22,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.dao.mano.ExtVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.GrantVimAssetsEntity;
@@ -33,7 +32,6 @@ import com.ubiqube.etsi.mano.dao.mano.ZoneInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.ConstraintResourceRef;
 import com.ubiqube.etsi.mano.dao.mano.grant.SnapshotResourceDefinitionEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.VimConstraint;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtVirtualLinkData;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantInfo;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantVimAssets;
@@ -41,6 +39,8 @@ import com.ubiqube.etsi.mano.vnfm.v431.model.grant.ResourceDefinition;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.SnapshotResourceDefinition;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.ZoneGroupInfo;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.ZoneInfo;
+
+import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivity431Mapping {
@@ -66,8 +66,11 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	@Mapping(target = "zoneId", ignore = true)
 	GrantInformationExt map(ResourceDefinition o);
 
-	@SuppressWarnings("null")
-	default Set<String> map(final String value) {
+	@Nullable
+	default Set<String> map(final @Nullable String value) {
+		if (null == value) {
+			return null;
+		}
 		return Set.of(value);
 	}
 
@@ -80,9 +83,6 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "vimConnectionInfo", source = "vimConnections")
 	Grant map(GrantResponse grantResponse);
-
-	@Mapping(target = "extNetAttDefResourceData", source = "extNetAttDefResource")
-	ExtVirtualLinkData map(ExtVirtualLinkDataEntity o);
 
 	@Mapping(target = "paasAssets", ignore = true)
 	@Mapping(target = "audit", ignore = true)
@@ -104,14 +104,6 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	@Mapping(target = "vimConstraints", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	GrantResponse map(Grant grant);
-
-	@Mapping(target = "containerNamespace", ignore = true)
-	@Mapping(target = "currentVnfExtCpData", ignore = true)
-	@Mapping(target = "extNetAttDefResource", ignore = true)
-	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
-	@Mapping(target = "vimLevelResourceType", ignore = true)
-	@Mapping(target = "vnfInstance", ignore = true)
-	ExtVirtualLinkDataEntity map(ExtVirtualLinkData o);
 
 	GrantVimAssetsEntity map(GrantVimAssets gva);
 
@@ -139,5 +131,4 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	GrantInformationExt map(GrantInfo gi);
 
 	GrantInfo map(GrantInformationExt gie);
-
 }

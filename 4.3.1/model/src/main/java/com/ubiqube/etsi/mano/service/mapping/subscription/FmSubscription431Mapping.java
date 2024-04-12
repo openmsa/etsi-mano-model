@@ -16,6 +16,7 @@
  */
 package com.ubiqube.etsi.mano.service.mapping.subscription;
 
+import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -28,7 +29,7 @@ public interface FmSubscription431Mapping extends BaseSubscription431Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	FmSubscription map(Subscription o);
+	FmSubscription map(Subscription o, @Context final Class<?> obj);
 
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "api", ignore = true)

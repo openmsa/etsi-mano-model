@@ -16,6 +16,7 @@
  */
 package com.ubiqube.etsi.mano.service.mapping.subscription;
 
+import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -27,7 +28,7 @@ import com.ubiqube.etsi.mano.service.event.model.Subscription;
 public interface PkgmSubscriptionRequest431Mapping extends BaseSubscription431Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	PkgmSubscriptionRequest map(Subscription o);
+	PkgmSubscriptionRequest map(Subscription o, @Context final Class<?> clazz);
 
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)

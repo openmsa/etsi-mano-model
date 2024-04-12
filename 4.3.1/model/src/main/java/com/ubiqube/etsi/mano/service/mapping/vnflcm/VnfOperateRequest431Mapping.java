@@ -14,26 +14,16 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-package com.ubiqube.etsi.mano.service.mapping;
+package com.ubiqube.etsi.mano.service.mapping.vnflcm;
 
-import java.net.URI;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
 
-import jakarta.annotation.Nullable;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.OperateVnfRequest;
+import com.ubiqube.etsi.mano.model.VnfOperateRequest;
 
-public interface StringToUri431Mapping {
-	@Nullable
-	default URI map(final @Nullable String uri) {
-		if (null == uri) {
-			return null;
-		}
-		return URI.create(uri);
-	}
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+public interface VnfOperateRequest431Mapping {
 
-	@Nullable
-	default String map(final @Nullable URI uri) {
-		if (null == uri) {
-			return null;
-		}
-		return uri.toString();
-	}
+	VnfOperateRequest map(OperateVnfRequest o);
 }

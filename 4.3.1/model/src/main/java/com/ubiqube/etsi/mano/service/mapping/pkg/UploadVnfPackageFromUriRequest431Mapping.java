@@ -14,29 +14,24 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-package com.ubiqube.etsi.mano.service.mapping.subscription;
+package com.ubiqube.etsi.mano.service.mapping.pkg;
 
-import org.mapstruct.Context;
+import java.net.URI;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscriptionRequest;
-import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.dao.mano.pkg.UploadUriParameters;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.UploadVnfPkgFromUriRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface LccnSubscriptionRequest431Mapping extends BaseSubscription431Mapping {
+public interface UploadVnfPackageFromUriRequest431Mapping {
 
-	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	@Mapping(target = "verbosity", ignore = true)
-	LccnSubscriptionRequest map(Subscription o, @Context final Class<?> clazz);
-
-	@Mapping(target = "api", ignore = true)
-	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", ignore = true)
-	@Mapping(target = "version", ignore = true)
-	Subscription map(LccnSubscriptionRequest o);
+	UploadUriParameters map(UploadVnfPkgFromUriRequest o);
+
+	default URI toURI(final String string) {
+		return URI.create(string);
+	}
 }

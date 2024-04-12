@@ -32,7 +32,7 @@ import com.ubiqube.etsi.mano.em.v431.model.vnfpm.PmJobReports;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PmJob431Mapping extends StringToUri431Mapping {
+public interface PmJob431Mapping extends StringToUriMapping {
 
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "remoteMonitoring", ignore = true)
@@ -47,23 +47,22 @@ public interface PmJob431Mapping extends StringToUri431Mapping {
 	@Mapping(target = "links", ignore = true)
 	com.ubiqube.etsi.mano.em.v431.model.vnfpm.PmJob map(PmJob o);
 
-	PmJobReports map(PmReport o);
-
 	@Nullable
-	default Set<PmReport> mapToPmReport(final @Nullable PmJobReports o) {
-		if (o == null) {
-			return Set.of();
-		}
-		return Set.of(map(o));
-	}
-
-	@SuppressWarnings("null")
-	@Nullable
-	default PmJobReports mapToPmJobReports(final @Nullable Set<PmReport> value) {
+	default PmJobReports map(final @Nullable Set<PmReport> value) {
 		if (null == value) {
 			return null;
 		}
 		return map(value.iterator().next());
+	}
+
+	PmJobReports map(PmReport next);
+
+	@Nullable
+	default Set<PmReport> mapToSet(final @Nullable PmJobReports value) {
+		if (null == value) {
+			return null;
+		}
+		return Set.of(map(value));
 	}
 
 	@Nullable

@@ -16,8 +16,10 @@
  */
 package com.ubiqube.etsi.mano.service.mapping.subscription;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import org.mapstruct.Context;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -25,31 +27,40 @@ import org.mapstruct.MappingConstants;
 import org.mapstruct.Named;
 import org.mapstruct.ValueMapping;
 
-import com.ubiqube.etsi.mano.mapper.OrikaFilterMapper;
+import com.ubiqube.etsi.mano.exception.GenericException;
+import com.ubiqube.etsi.mano.mapper.DotMapper;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nfvici.SubscriptionAuthenticationParamsOauth2ClientCredentials;
 import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
 import com.ubiqube.etsi.mano.service.auth.model.AuthType;
 import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
 import com.ubiqube.etsi.mano.service.event.model.FilterAttributes;
-import com.ubiqube.etsi.mano.service.mapping.StringToUri431Mapping;
+import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.SubscriptionAuthentication;
 
 @Mapper
-public interface BaseSubscription431Mapping extends StringToUri431Mapping {
+public interface BaseSubscription431Mapping extends StringToUriMapping {
 	@ValueMapping(source = "BASIC", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "TLS_CERT", target = MappingConstants.THROW_EXCEPTION)
 	SubscriptionAuthentication.AuthTypeEnum map(AuthType o);
 
 	@Named("toObject")
-	default <T> T toObject(final List<FilterAttributes> src) {
-		final OrikaFilterMapper m = new OrikaFilterMapper();
-		return (T) m.convertFrom(src, null, null);
+	default <T> T toObject(final List<FilterAttributes> src, @Context final Class<?> clazz) {
+		final DotMapper m = new DotMapper();
+		return (T) m.AttrToObject(src, createClass(clazz));
+	}
+
+	default Object createClass(final Class<?> clazz) {
+		try {
+			return clazz.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+			throw new GenericException(e);
+		}
 	}
 
 	@Named("fromObject")
 	default <T> List<FilterAttributes> fromObject(final T src) {
-		final OrikaFilterMapper m = new OrikaFilterMapper();
-		return m.convertTo(src, null, null);
+		final DotMapper m = new DotMapper();
+		return m.objectToAttr(src);
 	}
 
 	@Mapping(target = "paramsBasic", source = "authParamBasic")

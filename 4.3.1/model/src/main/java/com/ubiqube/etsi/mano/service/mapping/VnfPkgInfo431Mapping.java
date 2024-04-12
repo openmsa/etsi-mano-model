@@ -24,15 +24,17 @@ import org.mapstruct.ValueMapping;
 import com.ubiqube.etsi.mano.dao.mano.AdditionalArtifact;
 import com.ubiqube.etsi.mano.dao.mano.PkgChecksum;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
+import com.ubiqube.etsi.mano.dao.mano.pkg.UploadUriParameters;
 import com.ubiqube.etsi.mano.dao.mano.vim.Checksum;
 import com.ubiqube.etsi.mano.dao.mano.vim.ContainerFormatType;
 import com.ubiqube.etsi.mano.dao.mano.vim.SoftwareImage;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.UploadVnfPkgFromUriRequest;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPackageArtifactInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPackageSoftwareImageInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfPkgInfo431Mapping extends StringToUri431Mapping {
+public interface VnfPkgInfo431Mapping extends StringToUriMapping {
 
 	@Mapping(target = "links", ignore = true)
 	VnfPkgInfo map(VnfPackage vnfInst);
@@ -110,4 +112,7 @@ public interface VnfPkgInfo431Mapping extends StringToUri431Mapping {
 
 	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "DOCKER")
 	VnfPackageSoftwareImageInfo.ContainerFormatEnum map(ContainerFormatType en);
+
+	@Mapping(target = "id", ignore = true)
+	UploadUriParameters map(UploadVnfPkgFromUriRequest body);
 }

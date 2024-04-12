@@ -35,6 +35,8 @@ import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.ResourceDefinition;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.SnapshotResourceDefinition;
 
+import jakarta.annotation.Nullable;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface GrantRequest431Mapping {
 
@@ -59,6 +61,14 @@ public interface GrantRequest431Mapping {
 	@Mapping(target = "zones", ignore = true)
 	GrantResponse map(GrantRequest o);
 
+	@Nullable
+	default Set<String> map(final @Nullable String value) {
+		if (null == value) {
+			return null;
+		}
+		return Set.of(value);
+	}
+
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	PlacementConstraint map(com.ubiqube.etsi.mano.vnfm.v431.model.grant.PlacementConstraint o);
@@ -78,11 +88,6 @@ public interface GrantRequest431Mapping {
 	@Mapping(target = "vimLevelResourceType", source = "resource.vimLevelResourceType")
 	@Mapping(target = "zoneId", ignore = true)
 	GrantInformationExt map(ResourceDefinition o);
-
-	@SuppressWarnings("null")
-	default Set<String> map(final String value) {
-		return Set.of(value);
-	}
 
 	@Mapping(target = "scaleLevel", source = "scaleToLevel")
 	@Mapping(target = "id", ignore = true)

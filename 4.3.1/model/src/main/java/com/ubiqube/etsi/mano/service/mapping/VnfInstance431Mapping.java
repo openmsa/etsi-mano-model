@@ -73,6 +73,7 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "pmJobs", ignore = true)
 	@Mapping(target = "tenantId", ignore = true)
 	@Mapping(target = "version", ignore = true)
+//	@Mapping(target = "vimConnectionInfo", source = "vimConnectionInfo")
 	@Mapping(target = "extCpInfo", ignore = true)
 	@Mapping(target = "versionDependency", ignore = true)
 	@Mapping(target = "vnfPkg", ignore = true)
@@ -87,6 +88,8 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "IP_OVER_ETHERNET")
 	LayerProtocolType mapLayerProtocolType2(CpProtocolInfo.LayerProtocolEnum en);
 
+	CpProtocolInfoEntity.LayerProtocolEnum map(CpProtocolInfo.LayerProtocolEnum en);
+
 	@ValueMapping(source = "ETHERNET", target = MappingConstants.THROW_EXCEPTION)
 	CpProtocolInfo.LayerProtocolEnum map(CpProtocolInfoEntity.LayerProtocolEnum en);
 
@@ -95,9 +98,6 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "vnfState", source = "state")
 	@Mapping(target = "vnfVirtualLinkResourceInfo", source = "virtualLinkResourceInfo")
 	VnfInstanceInstantiatedVnfInfo map(BlueprintParameters bp);
-
-	@Mapping(target = "scaleToLevel", source = "scaleLevel")
-	com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleInfo map(ScaleInfo o);
 
 	@Mapping(target = "networkResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
 	@Mapping(target = "networkResource.vimLevelResourceType", source = "vimLevelResourceType")
@@ -122,9 +122,6 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "zoneId", ignore = true)
 	VnfcResourceInfoEntity map(VnfcResourceInfo vnfcResourceInfo);
 
-	@Mapping(target = "certificateContentId", ignore = true)
-	VnfcResourceInfoVnfcCpInfoEntity map(VnfcResourceInfoVnfcCpInfo o);
-
 	VnfcResourceInfoVnfcCpInfo map(VnfcResourceInfoVnfcCpInfoEntity vnfcCpInfo);
 
 	@Mapping(target = "id", ignore = true)
@@ -144,9 +141,6 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "virtualLinkResourceInfo", ignore = true)
 	@Mapping(target = "vnfMonitoringParameter", ignore = true)
 	BlueprintParameters map(VnfInstanceInstantiatedVnfInfo viivi);
-
-	@Mapping(target = "certificateContentId", ignore = true)
-	ExtCpInfo map(VnfExtCpInfo o);
 
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "extCps", ignore = true)
@@ -248,8 +242,6 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 
 	@Mapping(target = "addressPoolName", ignore = true)
 	VirtualCpAddressInfo map(com.ubiqube.etsi.mano.em.v431.model.vnflcm.VirtualCpAddressInfo vcp);
-
-//	com.ubiqube.etsi.mano.em.v431.model.vnflcm.VirtualCpAddressInfo mapToVirtualCpAddressInfo(VirtualCpAddressInfo vcp);
 
 	@Mapping(target = "isDynamic", ignore = true)
 	IpOverEthernetAddressInfoIpAddresses mapToIpOverEthernetAddressInfoIpAddresses(IpOverEthernetAddressDataIpAddressesEntity o);

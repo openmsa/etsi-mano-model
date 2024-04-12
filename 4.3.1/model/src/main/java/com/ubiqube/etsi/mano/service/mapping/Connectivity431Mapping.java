@@ -33,11 +33,11 @@ import com.ubiqube.etsi.mano.dao.mano.NetAttDefResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.VirtualCpAddressInfo;
 import com.ubiqube.etsi.mano.dao.mano.VnfExtCpConfiguration;
 import com.ubiqube.etsi.mano.dao.mano.VnfExtCpDataEntity;
-import com.ubiqube.etsi.mano.dao.mano.nsd.upd.ExtVirtualLinkData;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.CpProtocolData;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.CpProtocolInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtLinkPortData;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtManagedVirtualLinkData;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtVirtualLinkData;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.IpOverEthernetAddressData;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.IpOverEthernetAddressDataIpAddresses;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.NetAttDefResourceData;
@@ -60,11 +60,9 @@ public interface Connectivity431Mapping {
 	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "IP_OVER_ETHERNET")
 	CpProtocolData.LayerProtocolEnum map(LayerProtocolType lpt);
 
-	@Mapping(target = "extCps", ignore = true)
-	@Mapping(target = "extLinkPorts", ignore = true)
-	@Mapping(target = "extNetAttDefResource", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "currentVnfExtCpData", ignore = true)
+	@Mapping(target = "extNetAttDefResource", source = "extNetAttDefResourceData")
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	@Mapping(target = "vimLevelResourceType", ignore = true)
 	@Mapping(target = "vnfInstance", ignore = true)
@@ -76,6 +74,9 @@ public interface Connectivity431Mapping {
 	@Mapping(target = "netAttDefResource", source = "resourceHandle")
 	@Mapping(target = "netAttDefResourceInfoId", source = "netAttDefResourceId")
 	NetAttDefResourceInfo map(NetAttDefResourceData o);
+
+	@Mapping(target = "extNetAttDefResourceData", source = "extNetAttDefResource")
+	ExtVirtualLinkData map(ExtVirtualLinkDataEntity evld);
 
 	@Mapping(target = "netAttDefResourceId", source = "netAttDefResourceInfoId")
 	@Mapping(target = "resourceHandle", source = "netAttDefResource")
