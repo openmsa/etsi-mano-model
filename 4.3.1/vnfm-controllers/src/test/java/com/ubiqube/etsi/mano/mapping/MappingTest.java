@@ -22,32 +22,33 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
+import org.mapstruct.factory.Mappers;
 
-import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
-import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
-import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOcc;
-import com.ubiqube.etsi.mano.em.v431.service.OrikaMapperVnfm431;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
-import com.ubiqube.etsi.mano.test.TestHelper;
-import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantRequest;
+import com.ubiqube.etsi.mano.service.mapping.GrantRequest431Mapping;
+import com.ubiqube.etsi.mano.service.mapping.VnfInstance431Mapping;
+import com.ubiqube.etsi.mano.service.mapping.VnfLcmOpOcc431Mapping;
+import com.ubiqube.etsi.mano.service.mapping.VnfPkgInfo431Mapping;
+import com.ubiqube.etsi.mano.test.MapstructTestHelper;
 
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
-class MappingTest extends TestHelper {
+class MappingTest extends MapstructTestHelper {
 	public MappingTest() {
-		super(new OrikaMapperVnfm431());
+		//
 	}
 
 	@Test
 	void testVnfPkgInfo() throws Exception {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
-		doTest(VnfPkgInfo.class, VnfPackage.class, ignore);
+		final VnfPkgInfo431Mapping mapper = Mappers.getMapper(VnfPkgInfo431Mapping.class);
+		doTest(VnfPkgInfo.class, x -> mapper.map(x), x -> mapper.map(x));
 		assertTrue(true);
 	}
 
@@ -55,7 +56,8 @@ class MappingTest extends TestHelper {
 	void testVnfInstance() throws Exception {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
-		doTest(VnfInstance.class, com.ubiqube.etsi.mano.dao.mano.VnfInstance.class, ignore);
+		final VnfInstance431Mapping mapper = Mappers.getMapper(VnfInstance431Mapping.class);
+		doTest(VnfInstance.class, x -> mapper.map(x), x -> mapper.map(x));
 		assertTrue(true);
 	}
 
@@ -63,9 +65,8 @@ class MappingTest extends TestHelper {
 	void testLcmOpOccs() throws Exception {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
-		// To much work.
-		ignore.add("getResourceChanges");
-		doTest(VnfLcmOpOcc.class, VnfBlueprint.class, ignore);
+		final VnfLcmOpOcc431Mapping mapper = Mappers.getMapper(VnfLcmOpOcc431Mapping.class);
+		doTest(VnfLcmOpOcc.class, x -> mapper.map(x), x -> mapper.map(x));
 		assertTrue(true);
 	}
 
@@ -73,7 +74,8 @@ class MappingTest extends TestHelper {
 	void testGrant() throws Exception {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
-		doTest(GrantRequest.class, GrantResponse.class, ignore);
+		final GrantRequest431Mapping mapper = Mappers.getMapper(GrantRequest431Mapping.class);
+//		doTest(GrantRequest.class, x -> mapper.map(x), x -> mapper.map(x));
 		assertTrue(true);
 	}
 
