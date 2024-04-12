@@ -70,6 +70,8 @@ import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.utils.Version;
+import com.ubiqube.etsi.mano.vnfm.v271.model.vrqan.VrQuotaAvailSubscription;
+import com.ubiqube.etsi.mano.vnfm.v271.model.vrqan.VrQuotaAvailSubscriptionRequest;
 
 import ma.glasnost.orika.MapperFacade;
 
@@ -369,6 +371,16 @@ public class HttpGateway271 extends AbstractHttpGateway {
 	@Override
 	public Class<?> getVnfFmSubscriptionClass() {
 		return FmSubscription.class;
+	}
+
+	@Override
+	public Class<?> getVrQanSubscriptionRequest() {
+		return VrQuotaAvailSubscriptionRequest.class;
+	}
+
+	@Override
+	public Class<?> getVrQanSubscriptionClass() {
+		return VrQuotaAvailSubscription.class;
 	}
 
 }
