@@ -48,7 +48,7 @@ public class LccnSubscription {
 	private LcmOpOccNotificationVerbosityType verbosity = null;
 
 	@JsonProperty("_links")
-	private LccnSubscriptionLinks _links = null;
+	private LccnSubscriptionLinks links = null;
 
 	public LccnSubscription id(final String id) {
 		this.id = id;
@@ -156,8 +156,8 @@ public class LccnSubscription {
 		this.verbosity = verbosity;
 	}
 
-	public LccnSubscription _links(final LccnSubscriptionLinks _links) {
-		this._links = _links;
+	public LccnSubscription links(final LccnSubscriptionLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -171,11 +171,11 @@ public class LccnSubscription {
 
 	@Valid
 	public LccnSubscriptionLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final LccnSubscriptionLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -191,12 +191,12 @@ public class LccnSubscription {
 				Objects.equals(this.filter, lccnSubscription.filter) &&
 				Objects.equals(this.callbackUri, lccnSubscription.callbackUri) &&
 				Objects.equals(this.verbosity, lccnSubscription.verbosity) &&
-				Objects.equals(this._links, lccnSubscription._links);
+				Objects.equals(this.links, lccnSubscription.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, filter, callbackUri, verbosity, _links);
+		return Objects.hash(id, filter, callbackUri, verbosity, links);
 	}
 
 	@Override
@@ -208,7 +208,7 @@ public class LccnSubscription {
 		sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
 		sb.append("    callbackUri: ").append(toIndentedString(callbackUri)).append("\n");
 		sb.append("    verbosity: ").append(toIndentedString(verbosity)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
