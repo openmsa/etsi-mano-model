@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ubiqube.etsi.mano.em.v331.model.vnfconfig.ProblemDetails;
-import com.ubiqube.etsi.mano.or.v331.model.grants.GrantNsLifecycleOperationRequest;
 import com.ubiqube.etsi.mano.vnfm.v331.model.grant.Grant;
+import com.ubiqube.etsi.mano.vnfm.v331.model.grant.GrantRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -81,6 +81,6 @@ public interface LcmGrants331Sol003Api {
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
 	@PostMapping(value = "/", produces = { "application/json" }, consumes = { "application/json" })
-	ResponseEntity<Grant> grantsPost(@Parameter(in = ParameterIn.DEFAULT, description = "The NS lifecycle operation grant request parameters, as defined in clause 7.6.2.2.", schema = @Schema()) @Valid @RequestBody final GrantNsLifecycleOperationRequest body);
+	ResponseEntity<Grant> grantsPost(@Parameter(in = ParameterIn.DEFAULT, description = "The NS lifecycle operation grant request parameters, as defined in clause 7.6.2.2.", schema = @Schema()) @Valid @RequestBody final GrantRequest body);
 
 }

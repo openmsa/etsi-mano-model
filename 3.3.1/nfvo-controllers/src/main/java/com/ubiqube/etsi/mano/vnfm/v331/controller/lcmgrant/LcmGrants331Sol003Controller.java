@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.controller.lcmgrant.LcmGrantsFrontController;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.em.v331.model.vnflcm.Link;
-import com.ubiqube.etsi.mano.or.v331.model.grants.GrantNsLifecycleOperationRequest;
 import com.ubiqube.etsi.mano.vnfm.v331.model.grant.Grant;
+import com.ubiqube.etsi.mano.vnfm.v331.model.grant.GrantRequest;
 
 import jakarta.validation.Valid;
 import ma.glasnost.orika.MapperFacade;
@@ -52,7 +52,7 @@ public class LcmGrants331Sol003Controller implements LcmGrants331Sol003Api {
 	}
 
 	@Override
-	public ResponseEntity<Grant> grantsPost(@Valid final GrantNsLifecycleOperationRequest body) {
+	public ResponseEntity<Grant> grantsPost(@Valid final GrantRequest body) {
 		final GrantResponse req = mapper.map(body, GrantResponse.class);
 		return lcmGrantsFrontController.grantsPost(req, x -> mapper.map(x, Grant.class), LcmGrants331Sol003Controller::getSelfLink);
 	}
