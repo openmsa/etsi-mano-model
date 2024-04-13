@@ -21,7 +21,6 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.UUID;
 
-import com.ubiqube.etsi.mano.c331.services.Linkable;
 import com.ubiqube.etsi.mano.controller.FrontApiTypesEnum;
 import com.ubiqube.etsi.mano.nfvo.v331.controller.vnf.VnfPackages331Sol005Api;
 import com.ubiqube.etsi.mano.nfvo.v331.controller.vnf.VnfSubscriptions331Sol005Api;
@@ -30,6 +29,7 @@ import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmLinks;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PkgmSubscriptionLinks;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPkgInfoLinks;
+import com.ubiqube.etsi.mano.v331.services.Linkable;
 
 public class Sol005Linkable implements Linkable {
 

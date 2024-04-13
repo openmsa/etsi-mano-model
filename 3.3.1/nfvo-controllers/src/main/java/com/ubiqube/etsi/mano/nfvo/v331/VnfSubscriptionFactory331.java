@@ -19,13 +19,13 @@ package com.ubiqube.etsi.mano.nfvo.v331;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
-import jakarta.annotation.Nonnull;
-
-import com.ubiqube.etsi.mano.c331.services.Linkable;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PackageChangeType;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.PackageOperationalStateType;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPackageOnboardingNotification;
+import com.ubiqube.etsi.mano.v331.services.Linkable;
+
+import jakarta.annotation.Nonnull;
 
 /**
  *
