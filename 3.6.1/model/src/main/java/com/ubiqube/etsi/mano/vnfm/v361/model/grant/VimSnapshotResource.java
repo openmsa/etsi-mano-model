@@ -17,202 +17,213 @@
 package com.ubiqube.etsi.mano.vnfm.v361.model.grant;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.v3.oas.annotations.media.Schema;
+
 import org.springframework.validation.annotation.Validated;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 
 /**
- * This type contains a mapping between a snapshot resource definition related to a VNF snapshot  and the corresponding resource managed by the NFVO in the VIM which is needed during the revert  to VNF snapshot operation. 
+ * This type contains a mapping between a snapshot resource definition related
+ * to a VNF snapshot and the corresponding resource managed by the NFVO in the
+ * VIM which is needed during the revert to VNF snapshot operation.
  */
 @Schema(description = "This type contains a mapping between a snapshot resource definition related to a VNF snapshot  and the corresponding resource managed by the NFVO in the VIM which is needed during the revert  to VNF snapshot operation. ")
 @Validated
 
+public class VimSnapshotResource {
+	@JsonProperty("vimConnectionId")
+	private String vimConnectionId = null;
 
-public class VimSnapshotResource   {
-  @JsonProperty("vimConnectionId")
-  private String vimConnectionId = null;
+	@JsonProperty("resourceProviderId")
+	private String resourceProviderId = null;
 
-  @JsonProperty("resourceProviderId")
-  private String resourceProviderId = null;
+	@JsonProperty("vnfSnapshotId")
+	private String vnfSnapshotId = null;
 
-  @JsonProperty("vnfSnapshotId")
-  private String vnfSnapshotId = null;
+	@JsonProperty("vnfcSnapshotId")
+	private String vnfcSnapshotId = null;
 
-  @JsonProperty("vnfcSnapshotId")
-  private String vnfcSnapshotId = null;
+	@JsonProperty("storageSnapshotId")
+	private String storageSnapshotId = null;
 
-  @JsonProperty("storageSnapshotId")
-  private Object storageSnapshotId = null;
+	@JsonProperty("vimSnapshotResourceId")
+	private String vimSnapshotResourceId = null;
 
-  @JsonProperty("vimSnapshotResourceId")
-  private String vimSnapshotResourceId = null;
+	public VimSnapshotResource vimConnectionId(final String vimConnectionId) {
+		this.vimConnectionId = vimConnectionId;
+		return this;
+	}
 
-  public VimSnapshotResource vimConnectionId(String vimConnectionId) {
-    this.vimConnectionId = vimConnectionId;
-    return this;
-  }
+	/**
+	 * Get vimConnectionId
+	 *
+	 * @return vimConnectionId
+	 **/
+	@Schema(description = "")
 
-  /**
-   * Get vimConnectionId
-   * @return vimConnectionId
-   **/
-  @Schema(description = "")
-  
-    public String getVimConnectionId() {
-    return vimConnectionId;
-  }
+	public String getVimConnectionId() {
+		return vimConnectionId;
+	}
 
-  public void setVimConnectionId(String vimConnectionId) {
-    this.vimConnectionId = vimConnectionId;
-  }
+	public void setVimConnectionId(final String vimConnectionId) {
+		this.vimConnectionId = vimConnectionId;
+	}
 
-  public VimSnapshotResource resourceProviderId(String resourceProviderId) {
-    this.resourceProviderId = resourceProviderId;
-    return this;
-  }
+	public VimSnapshotResource resourceProviderId(final String resourceProviderId) {
+		this.resourceProviderId = resourceProviderId;
+		return this;
+	}
 
-  /**
-   * Get resourceProviderId
-   * @return resourceProviderId
-   **/
-  @Schema(description = "")
-  
-    public String getResourceProviderId() {
-    return resourceProviderId;
-  }
+	/**
+	 * Get resourceProviderId
+	 *
+	 * @return resourceProviderId
+	 **/
+	@Schema(description = "")
 
-  public void setResourceProviderId(String resourceProviderId) {
-    this.resourceProviderId = resourceProviderId;
-  }
+	public String getResourceProviderId() {
+		return resourceProviderId;
+	}
 
-  public VimSnapshotResource vnfSnapshotId(String vnfSnapshotId) {
-    this.vnfSnapshotId = vnfSnapshotId;
-    return this;
-  }
+	public void setResourceProviderId(final String resourceProviderId) {
+		this.resourceProviderId = resourceProviderId;
+	}
 
-  /**
-   * Get vnfSnapshotId
-   * @return vnfSnapshotId
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public VimSnapshotResource vnfSnapshotId(final String vnfSnapshotId) {
+		this.vnfSnapshotId = vnfSnapshotId;
+		return this;
+	}
 
-    public String getVnfSnapshotId() {
-    return vnfSnapshotId;
-  }
+	/**
+	 * Get vnfSnapshotId
+	 *
+	 * @return vnfSnapshotId
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  public void setVnfSnapshotId(String vnfSnapshotId) {
-    this.vnfSnapshotId = vnfSnapshotId;
-  }
+	public String getVnfSnapshotId() {
+		return vnfSnapshotId;
+	}
 
-  public VimSnapshotResource vnfcSnapshotId(String vnfcSnapshotId) {
-    this.vnfcSnapshotId = vnfcSnapshotId;
-    return this;
-  }
+	public void setVnfSnapshotId(final String vnfSnapshotId) {
+		this.vnfSnapshotId = vnfSnapshotId;
+	}
 
-  /**
-   * Get vnfcSnapshotId
-   * @return vnfcSnapshotId
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public VimSnapshotResource vnfcSnapshotId(final String vnfcSnapshotId) {
+		this.vnfcSnapshotId = vnfcSnapshotId;
+		return this;
+	}
 
-    public String getVnfcSnapshotId() {
-    return vnfcSnapshotId;
-  }
+	/**
+	 * Get vnfcSnapshotId
+	 *
+	 * @return vnfcSnapshotId
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
-  public void setVnfcSnapshotId(String vnfcSnapshotId) {
-    this.vnfcSnapshotId = vnfcSnapshotId;
-  }
+	public String getVnfcSnapshotId() {
+		return vnfcSnapshotId;
+	}
 
-  public VimSnapshotResource storageSnapshotId(Object storageSnapshotId) {
-    this.storageSnapshotId = storageSnapshotId;
-    return this;
-  }
+	public void setVnfcSnapshotId(final String vnfcSnapshotId) {
+		this.vnfcSnapshotId = vnfcSnapshotId;
+	}
 
-  /**
-   * Identifier of the virtual storage resource that has been snapshotted as referred in the VNFC snapshot information. Shall only be present if the snapshot resource in the VIM is a storage  resource (as indicated by \"type=STORAGE\" in the parent resource definition). $ref: \"../../../definitions/SOL002SOL003_def.yaml#/definitions/IdentifierInVnf\" 
-   * @return storageSnapshotId
-   **/
-  @Schema(description = "Identifier of the virtual storage resource that has been snapshotted as referred in the VNFC snapshot information. Shall only be present if the snapshot resource in the VIM is a storage  resource (as indicated by \"type=STORAGE\" in the parent resource definition). $ref: \"../../../definitions/SOL002SOL003_def.yaml#/definitions/IdentifierInVnf\" ")
-  
-    public Object getStorageSnapshotId() {
-    return storageSnapshotId;
-  }
+	public VimSnapshotResource storageSnapshotId(final String storageSnapshotId) {
+		this.storageSnapshotId = storageSnapshotId;
+		return this;
+	}
 
-  public void setStorageSnapshotId(Object storageSnapshotId) {
-    this.storageSnapshotId = storageSnapshotId;
-  }
+	/**
+	 * Identifier of the virtual storage resource that has been snapshotted as
+	 * referred in the VNFC snapshot information. Shall only be present if the
+	 * snapshot resource in the VIM is a storage resource (as indicated by
+	 * \"type=STORAGE\" in the parent resource definition). $ref:
+	 * \"../../../definitions/SOL002SOL003_def.yaml#/definitions/IdentifierInVnf\"
+	 *
+	 * @return storageSnapshotId
+	 **/
+	@Schema(description = "Identifier of the virtual storage resource that has been snapshotted as referred in the VNFC snapshot information. Shall only be present if the snapshot resource in the VIM is a storage  resource (as indicated by \"type=STORAGE\" in the parent resource definition). $ref: \"../../../definitions/SOL002SOL003_def.yaml#/definitions/IdentifierInVnf\" ")
 
-  public VimSnapshotResource vimSnapshotResourceId(String vimSnapshotResourceId) {
-    this.vimSnapshotResourceId = vimSnapshotResourceId;
-    return this;
-  }
+	public String getStorageSnapshotId() {
+		return storageSnapshotId;
+	}
 
-  /**
-   * Get vimSnapshotResourceId
-   * @return vimSnapshotResourceId
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
+	public void setStorageSnapshotId(final String storageSnapshotId) {
+		this.storageSnapshotId = storageSnapshotId;
+	}
 
-    public String getVimSnapshotResourceId() {
-    return vimSnapshotResourceId;
-  }
+	public VimSnapshotResource vimSnapshotResourceId(final String vimSnapshotResourceId) {
+		this.vimSnapshotResourceId = vimSnapshotResourceId;
+		return this;
+	}
 
-  public void setVimSnapshotResourceId(String vimSnapshotResourceId) {
-    this.vimSnapshotResourceId = vimSnapshotResourceId;
-  }
+	/**
+	 * Get vimSnapshotResourceId
+	 *
+	 * @return vimSnapshotResourceId
+	 **/
+	@Schema(required = true, description = "")
+	@NotNull
 
+	public String getVimSnapshotResourceId() {
+		return vimSnapshotResourceId;
+	}
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    VimSnapshotResource vimSnapshotResource = (VimSnapshotResource) o;
-    return Objects.equals(this.vimConnectionId, vimSnapshotResource.vimConnectionId) &&
-        Objects.equals(this.resourceProviderId, vimSnapshotResource.resourceProviderId) &&
-        Objects.equals(this.vnfSnapshotId, vimSnapshotResource.vnfSnapshotId) &&
-        Objects.equals(this.vnfcSnapshotId, vimSnapshotResource.vnfcSnapshotId) &&
-        Objects.equals(this.storageSnapshotId, vimSnapshotResource.storageSnapshotId) &&
-        Objects.equals(this.vimSnapshotResourceId, vimSnapshotResource.vimSnapshotResourceId);
-  }
+	public void setVimSnapshotResourceId(final String vimSnapshotResourceId) {
+		this.vimSnapshotResourceId = vimSnapshotResourceId;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(vimConnectionId, resourceProviderId, vnfSnapshotId, vnfcSnapshotId, storageSnapshotId, vimSnapshotResourceId);
-  }
+	@Override
+	public boolean equals(final java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if ((o == null) || (getClass() != o.getClass())) {
+			return false;
+		}
+		final VimSnapshotResource vimSnapshotResource = (VimSnapshotResource) o;
+		return Objects.equals(this.vimConnectionId, vimSnapshotResource.vimConnectionId) &&
+				Objects.equals(this.resourceProviderId, vimSnapshotResource.resourceProviderId) &&
+				Objects.equals(this.vnfSnapshotId, vimSnapshotResource.vnfSnapshotId) &&
+				Objects.equals(this.vnfcSnapshotId, vimSnapshotResource.vnfcSnapshotId) &&
+				Objects.equals(this.storageSnapshotId, vimSnapshotResource.storageSnapshotId) &&
+				Objects.equals(this.vimSnapshotResourceId, vimSnapshotResource.vimSnapshotResourceId);
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class VimSnapshotResource {\n");
-    
-    sb.append("    vimConnectionId: ").append(toIndentedString(vimConnectionId)).append("\n");
-    sb.append("    resourceProviderId: ").append(toIndentedString(resourceProviderId)).append("\n");
-    sb.append("    vnfSnapshotId: ").append(toIndentedString(vnfSnapshotId)).append("\n");
-    sb.append("    vnfcSnapshotId: ").append(toIndentedString(vnfcSnapshotId)).append("\n");
-    sb.append("    storageSnapshotId: ").append(toIndentedString(storageSnapshotId)).append("\n");
-    sb.append("    vimSnapshotResourceId: ").append(toIndentedString(vimSnapshotResourceId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(vimConnectionId, resourceProviderId, vnfSnapshotId, vnfcSnapshotId, storageSnapshotId, vimSnapshotResourceId);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("class VimSnapshotResource {\n");
+
+		sb.append("    vimConnectionId: ").append(toIndentedString(vimConnectionId)).append("\n");
+		sb.append("    resourceProviderId: ").append(toIndentedString(resourceProviderId)).append("\n");
+		sb.append("    vnfSnapshotId: ").append(toIndentedString(vnfSnapshotId)).append("\n");
+		sb.append("    vnfcSnapshotId: ").append(toIndentedString(vnfcSnapshotId)).append("\n");
+		sb.append("    storageSnapshotId: ").append(toIndentedString(storageSnapshotId)).append("\n");
+		sb.append("    vimSnapshotResourceId: ").append(toIndentedString(vimSnapshotResourceId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }
