@@ -18,17 +18,16 @@ package com.ubiqube.etsi.mano.vnfm.v351.model.grant;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a grant request. It shall comply with the provisions
@@ -115,7 +114,7 @@ public class GrantRequest {
 	private Map<String, String> additionalParams = null;
 
 	@JsonProperty("_links")
-	private GrantRequestLinks _links = null;
+	private GrantRequestLinks links = null;
 
 	public GrantRequest vnfInstanceId(final String vnfInstanceId) {
 		this.vnfInstanceId = vnfInstanceId;
@@ -490,8 +489,8 @@ public class GrantRequest {
 		this.additionalParams = additionalParams;
 	}
 
-	public GrantRequest _links(final GrantRequestLinks _links) {
-		this._links = _links;
+	public GrantRequest links(final GrantRequestLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -505,11 +504,11 @@ public class GrantRequest {
 
 	@Valid
 	public GrantRequestLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final GrantRequestLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -517,7 +516,7 @@ public class GrantRequest {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final GrantRequest grantRequest = (GrantRequest) o;
@@ -536,12 +535,12 @@ public class GrantRequest {
 				Objects.equals(this.placementConstraints, grantRequest.placementConstraints) &&
 				Objects.equals(this.vimConstraints, grantRequest.vimConstraints) &&
 				Objects.equals(this.additionalParams, grantRequest.additionalParams) &&
-				Objects.equals(this._links, grantRequest._links);
+				Objects.equals(this.links, grantRequest.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(vnfInstanceId, vnfLcmOpOccId, vnfdId, dstVnfdId, flavourId, operation, isAutomaticInvocation, instantiationLevelId, addResources, tempResources, removeResources, updateResources, placementConstraints, vimConstraints, additionalParams, _links);
+		return Objects.hash(vnfInstanceId, vnfLcmOpOccId, vnfdId, dstVnfdId, flavourId, operation, isAutomaticInvocation, instantiationLevelId, addResources, tempResources, removeResources, updateResources, placementConstraints, vimConstraints, additionalParams, links);
 	}
 
 	@Override
@@ -564,7 +563,7 @@ public class GrantRequest {
 		sb.append("    placementConstraints: ").append(toIndentedString(placementConstraints)).append("\n");
 		sb.append("    vimConstraints: ").append(toIndentedString(vimConstraints)).append("\n");
 		sb.append("    additionalParams: ").append(toIndentedString(additionalParams)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
