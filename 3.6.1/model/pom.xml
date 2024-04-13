@@ -76,5 +76,9 @@
 			<groupId>ma.glasnost.orika</groupId>
 			<artifactId>ubi-orika-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.ubiqube.mano</groupId>
+			<artifactId>mano-orika</artifactId>
+		</dependency>
 	</dependencies>
 </project>
