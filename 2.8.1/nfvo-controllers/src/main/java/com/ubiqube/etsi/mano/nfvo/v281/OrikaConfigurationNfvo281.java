@@ -16,6 +16,9 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v281;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.dao.mano.ExtManagedVirtualLinkDataEntity;
@@ -169,6 +172,30 @@ public class OrikaConfigurationNfvo281 implements OrikaMapperFactoryConfigurer {
 				.field("resource.resourceProviderId", "resourceProviderId")
 				.field("resource.vimLevelResourceType", "vimLevelResourceType")
 				.field("resource.resourceId", "resourceId")
+				.field("resourceTemplateId", "resourceTemplateId{}")
+				.customize(new CustomMapper<>() {
+					@Override
+					public void mapAtoB(final ResourceDefinition a, final GrantInformationExt b, final MappingContext context) {
+						final String value = a.getResourceTemplateId();
+						if (value == null) {
+							b.setResourceTemplateId(new LinkedHashSet<>());
+						} else {
+							final Set<String> set = new LinkedHashSet<>();
+							set.add(value);
+							b.setResourceTemplateId(set);
+						}
+					}
+
+					@Override
+					public void mapBtoA(final GrantInformationExt b, final ResourceDefinition a, final MappingContext context) {
+						final Set<String> value = b.getResourceTemplateId();
+						if ((b == null) || value.isEmpty()) {
+							return;
+						}
+						a.setResourceTemplateId(value.iterator().next());
+					}
+				})
+
 				.register();
 		orikaMapperFactory.classMap(InstantiateNsRequest.class, NsdInstance.class)
 				.field("nsFlavourId", "instantiatedVnfInfo.flavourId")
