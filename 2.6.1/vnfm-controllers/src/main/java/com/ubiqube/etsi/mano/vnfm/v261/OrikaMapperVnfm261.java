@@ -16,6 +16,7 @@
  */
 package com.ubiqube.etsi.mano.vnfm.v261;
 
+import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -250,6 +251,30 @@ public class OrikaMapperVnfm261 implements OrikaMapperFactoryConfigurer {
 				.field("resource.vimLevelResourceType", "vimLevelResourceType")
 				.field("resource.resourceId", "resourceId")
 				.field("resource.resourceProviderId", "resourceProviderId")
+				.field("resourceTemplateId", "resourceTemplateId{}")
+				.customize(new CustomMapper<>() {
+					@Override
+					public void mapAtoB(final ResourceDefinition a, final GrantInformationExt b, final MappingContext context) {
+						final String value = a.getResourceTemplateId();
+						if (value == null) {
+							b.setResourceTemplateId(new LinkedHashSet<>());
+						} else {
+							final Set<String> set = new LinkedHashSet<>();
+							set.add(value);
+							b.setResourceTemplateId(set);
+						}
+					}
+
+					@Override
+					public void mapBtoA(final GrantInformationExt b, final ResourceDefinition a, final MappingContext context) {
+						final Set<String> value = b.getResourceTemplateId();
+						if ((b == null) || value.isEmpty()) {
+							return;
+						}
+						a.setResourceTemplateId(value.iterator().next());
+					}
+				})
+
 				.byDefault()
 				.register();
 		/*
