@@ -16,6 +16,8 @@
  */
 package com.ubiqube.etsi.mano.service.mapping.vnflcm;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.mapstruct.Mapper;
@@ -30,6 +32,7 @@ import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedStorage;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedVirtualLink;
 import com.ubiqube.etsi.mano.dao.mano.v2.PlanOperationType;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
+import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.RejectedLcmCoordination;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.VnfLcmCoordination;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.VnfPkgChange;
@@ -39,6 +42,7 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedVirtualStorage;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.AffectedVnfc;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LcmOperationType;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ModificationsTriggeredByVnfPkgChange;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOccLcmCoordinations;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOccRejectedLcmCoordinations;
@@ -52,6 +56,12 @@ public interface VnfBlueprint431Mapping extends StringToUriMapping, Connectivity
 	@Mapping(target = "operationState", ignore = true)
 	@Mapping(target = "vnfInstanceId", ignore = true)
 	VnfLcmOpOcc map(VnfBlueprint x);
+
+	default List<VimConnectionInfo> map(final Map<String, VimConnectionInformation> o) {
+		return o.values().stream().map(this::map).toList();
+	}
+
+	VimConnectionInfo map(VimConnectionInformation x);
 
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	ModificationsTriggeredByVnfPkgChange map(VnfPkgChange o);

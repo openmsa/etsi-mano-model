@@ -31,6 +31,7 @@ public interface FmSubscription431Mapping extends BaseSubscription431Mapping {
 	@Mapping(target = "links", ignore = true)
 	FmSubscription map(Subscription o, @Context final Class<?> obj);
 
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)

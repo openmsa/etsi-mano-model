@@ -29,6 +29,7 @@ public interface FmSubscriptionRequest431Mapping extends BaseSubscription431Mapp
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	FmSubscriptionRequest map(Subscription o, @Context final Class<?> clazz);
 
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")

@@ -30,6 +30,7 @@ public interface PkgmSubscriptionRequest431Mapping extends BaseSubscription431Ma
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	PkgmSubscriptionRequest map(Subscription o, @Context final Class<?> clazz);
 
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")

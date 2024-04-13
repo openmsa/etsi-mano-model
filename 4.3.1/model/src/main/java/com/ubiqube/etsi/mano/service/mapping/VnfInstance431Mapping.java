@@ -58,6 +58,7 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfcResourceInfoVnfcCpInfo;
 @Mapper
 public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Connectivity431Mapping {
 
+	@Mapping(target = "vnfPkgId", source = "vnfPkg.id")
 	@Mapping(target = "links", ignore = true)
 	com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance map(VnfInstance vnfInst);
 
@@ -99,6 +100,9 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "vnfVirtualLinkResourceInfo", source = "virtualLinkResourceInfo")
 	VnfInstanceInstantiatedVnfInfo map(BlueprintParameters bp);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
+	com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleInfo map(ScaleInfo o);
+
 	@Mapping(target = "networkResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
 	@Mapping(target = "networkResource.vimLevelResourceType", source = "vimLevelResourceType")
 	@Mapping(target = "networkResource.resourceId", source = "resourceId")
@@ -122,6 +126,9 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "zoneId", ignore = true)
 	VnfcResourceInfoEntity map(VnfcResourceInfo vnfcResourceInfo);
 
+	@Mapping(target = "certificateContentId", ignore = true)
+	VnfcResourceInfoVnfcCpInfoEntity map(VnfcResourceInfoVnfcCpInfo o);
+
 	VnfcResourceInfoVnfcCpInfo map(VnfcResourceInfoVnfcCpInfoEntity vnfcCpInfo);
 
 	@Mapping(target = "id", ignore = true)
@@ -141,6 +148,9 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "virtualLinkResourceInfo", ignore = true)
 	@Mapping(target = "vnfMonitoringParameter", ignore = true)
 	BlueprintParameters map(VnfInstanceInstantiatedVnfInfo viivi);
+
+	@Mapping(target = "certificateContentId", ignore = true)
+	ExtCpInfo map(VnfExtCpInfo o);
 
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "extCps", ignore = true)

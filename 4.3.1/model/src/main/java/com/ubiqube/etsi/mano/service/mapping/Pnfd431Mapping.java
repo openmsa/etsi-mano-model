@@ -27,6 +27,7 @@ import com.ubiqube.etsi.mano.dao.mano.PnfDescriptor;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.PnfdArchiveArtifactInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.PnfdInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.PnfdOnboardingStateType;
+import com.ubiqube.etsi.mano.nfvo.v431.model.vnfsnapshotpkgm.Checksum;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface Pnfd431Mapping extends StringToUriMapping {
@@ -52,4 +53,9 @@ public interface Pnfd431Mapping extends StringToUriMapping {
 	@Mapping(target = "repository", ignore = true)
 	@Mapping(target = "signature", ignore = true)
 	AdditionalArtifact map(PnfdArchiveArtifactInfo o);
+
+	@Mapping(target = "md5", ignore = true)
+	@Mapping(target = "sha256", ignore = true)
+	@Mapping(target = "sha512", ignore = true)
+	com.ubiqube.etsi.mano.dao.mano.vim.Checksum map(Checksum o);
 }
