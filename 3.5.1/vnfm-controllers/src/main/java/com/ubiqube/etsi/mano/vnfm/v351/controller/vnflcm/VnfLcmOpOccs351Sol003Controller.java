@@ -43,10 +43,12 @@ import ma.glasnost.orika.MapperFacade;
 public class VnfLcmOpOccs351Sol003Controller implements VnfLcmOpOccs351Sol003Api {
 	private final VnfLcmOpOccGenericFrontController frontController;
 	private final MapperFacade mapper;
+	private final VnfLcmClassMaping351 vnfLcmClassMaping351;
 
-	public VnfLcmOpOccs351Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final MapperFacade mapper) {
+	public VnfLcmOpOccs351Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final MapperFacade mapper, final VnfLcmClassMaping351 vnfLcmClassMaping351) {
 		this.frontController = frontController;
 		this.mapper = mapper;
+		this.vnfLcmClassMaping351 = vnfLcmClassMaping351;
 	}
 
 	@Override
@@ -66,7 +68,7 @@ public class VnfLcmOpOccs351Sol003Controller implements VnfLcmOpOccs351Sol003Api
 
 	@Override
 	public ResponseEntity<VnfLcmOpOcc> vnfLcmOpOccsVnfLcmOpOccIdGet(final String vnfLcmOpOccId) {
-		return frontController.lcmOpOccFindById(new VnfLcmClassMaping351(), UUID.fromString(vnfLcmOpOccId), VnfLcmOpOcc.class, VnfLcmOpOccs351Sol003Controller::makeLinks, VnfLcmOpOccs351Sol003Controller::setOperationParams);
+		return frontController.lcmOpOccFindById(vnfLcmClassMaping351, UUID.fromString(vnfLcmOpOccId), VnfLcmOpOcc.class, VnfLcmOpOccs351Sol003Controller::makeLinks, VnfLcmOpOccs351Sol003Controller::setOperationParams);
 	}
 
 	private static void setOperationParams(final VnfLcmOpOcc lcmOpOcc, final Object obj) {
