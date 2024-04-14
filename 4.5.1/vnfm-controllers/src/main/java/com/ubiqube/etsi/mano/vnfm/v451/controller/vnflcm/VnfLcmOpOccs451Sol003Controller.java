@@ -29,8 +29,8 @@ import com.ubiqube.etsi.mano.em.v451.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfLcmOpOccLinks;
 import com.ubiqube.etsi.mano.service.mapping.VnfLcmOpOcc451Mapping;
+import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
-import com.ubiqube.etsi.mano.vnfm.v451.service.VnfLcmClassMaping451;
 
 import jakarta.validation.Valid;
 
@@ -38,10 +38,12 @@ import jakarta.validation.Valid;
 public class VnfLcmOpOccs451Sol003Controller implements VnfLcmOpOccs451Sol003Api {
 	private final VnfLcmOpOccGenericFrontController frontController;
 	private final VnfLcmOpOcc451Mapping vnfLcmOpOcc451Mapping;
+	private final VnfLcmClassMaping vnfLcmClassMaping451;
 
-	public VnfLcmOpOccs451Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfLcmOpOcc451Mapping vnfLcmOpOcc451Mapping) {
+	public VnfLcmOpOccs451Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfLcmOpOcc451Mapping vnfLcmOpOcc451Mapping, final VnfLcmClassMaping vnfLcmClassMaping451) {
 		this.frontController = frontController;
 		this.vnfLcmOpOcc451Mapping = vnfLcmOpOcc451Mapping;
+		this.vnfLcmClassMaping451 = vnfLcmClassMaping451;
 	}
 
 	@Override
@@ -61,7 +63,7 @@ public class VnfLcmOpOccs451Sol003Controller implements VnfLcmOpOccs451Sol003Api
 
 	@Override
 	public ResponseEntity<VnfLcmOpOcc> vnfLcmOpOccsVnfLcmOpOccIdGet(final String vnfLcmOpOccId) {
-		return frontController.lcmOpOccFindById(new VnfLcmClassMaping451(), UUID.fromString(vnfLcmOpOccId), VnfLcmOpOcc.class, VnfLcmOpOccs451Sol003Controller::makeLinks, VnfLcmOpOccs451Sol003Controller::setOperationParams);
+		return frontController.lcmOpOccFindById(vnfLcmClassMaping451, UUID.fromString(vnfLcmOpOccId), VnfLcmOpOcc.class, VnfLcmOpOccs451Sol003Controller::makeLinks, VnfLcmOpOccs451Sol003Controller::setOperationParams);
 	}
 
 	private static void setOperationParams(final VnfLcmOpOcc lcmOpOcc, final Object obj) {

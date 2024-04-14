@@ -39,10 +39,12 @@ import jakarta.validation.constraints.NotNull;
 public class VnfLcmOpOccs451Sol002Controller implements VnfLcmOpOccs451Sol002Api {
 	private final VnfLcmOpOccGenericFrontController frontController;
 	private final VnfBlueprint451Mapping vnfBlueprintMapping;
+	private final VnfLcmClassMaping451 vnfLcmClassMaping451;
 
-	public VnfLcmOpOccs451Sol002Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfBlueprint451Mapping vnfBlueprintMapping) {
+	public VnfLcmOpOccs451Sol002Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfBlueprint451Mapping vnfBlueprintMapping, final VnfLcmClassMaping451 vnfLcmClassMaping451) {
 		this.frontController = frontController;
 		this.vnfBlueprintMapping = vnfBlueprintMapping;
+		this.vnfLcmClassMaping451 = vnfLcmClassMaping451;
 	}
 
 	@Override
@@ -62,7 +64,7 @@ public class VnfLcmOpOccs451Sol002Controller implements VnfLcmOpOccs451Sol002Api
 
 	@Override
 	public ResponseEntity<VnfLcmOpOcc> vnfLcmOpOccsVnfLcmOpOccIdGet(final String vnfLcmOpOccId) {
-		return frontController.lcmOpOccFindById(new VnfLcmClassMaping451(), UUID.fromString(vnfLcmOpOccId), VnfLcmOpOcc.class,
+		return frontController.lcmOpOccFindById(vnfLcmClassMaping451, UUID.fromString(vnfLcmOpOccId), VnfLcmOpOcc.class,
 				VnfLcmOpOccs451Sol002Controller::makeLinks, VnfLcmOpOccs451Sol002Controller::setOperationParams);
 	}
 
