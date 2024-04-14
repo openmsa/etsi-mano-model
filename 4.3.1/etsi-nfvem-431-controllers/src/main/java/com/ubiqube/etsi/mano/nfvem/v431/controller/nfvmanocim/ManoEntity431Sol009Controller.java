@@ -29,13 +29,19 @@ import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ManoEntity;
 import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ManoServiceInterface;
 import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ManoServiceInterfaceModificationRequest;
 import com.ubiqube.etsi.mano.nfvem.v431.model.nfvmanocim.ManoServiceInterfaceModifications;
+import com.ubiqube.etsi.mano.nfvem.v431.service.mapping.ManoEntity431Mapping;
+import com.ubiqube.etsi.mano.nfvem.v431.service.mapping.ManoServiceInterface431Mapping;
 
 @RestController
 public class ManoEntity431Sol009Controller implements ManoEntity431Sol009Api {
 	private final ManoEntityFrontController manoEntityFrontController;
+	private final ManoEntity431Mapping manoEntityMapping;
+	private final ManoServiceInterface431Mapping manoServiceInterface431Mapping;
 
-	public ManoEntity431Sol009Controller(final ManoEntityFrontController manoEntityFrontController) {
+	public ManoEntity431Sol009Controller(final ManoEntityFrontController manoEntityFrontController, final ManoEntity431Mapping manoEntityMapping, final ManoServiceInterface431Mapping manoServiceInterface431Mapping) {
 		this.manoEntityFrontController = manoEntityFrontController;
+		this.manoEntityMapping = manoEntityMapping;
+		this.manoServiceInterface431Mapping = manoServiceInterface431Mapping;
 	}
 
 	@Override
@@ -45,12 +51,12 @@ public class ManoEntity431Sol009Controller implements ManoEntity431Sol009Api {
 
 	@Override
 	public ResponseEntity<ManoEntity> manoEntityGet() {
-		return manoEntityFrontController.find(ManoEntity.class);
+		return manoEntityFrontController.find(manoEntityMapping::map);
 	}
 
 	@Override
 	public ResponseEntity<List<ManoServiceInterface>> manoEntityManoInterfacesGet(final String filter, final String allFields, final String fields, final String excludeFields, final String excludeDefault, final String nextpageOpaqueMarker) {
-		return manoEntityFrontController.interfaceSearch(filter, ManoServiceInterface.class);
+		return manoEntityFrontController.interfaceSearch(filter, manoServiceInterface431Mapping::map);
 	}
 
 	@Override
@@ -60,17 +66,17 @@ public class ManoEntity431Sol009Controller implements ManoEntity431Sol009Api {
 
 	@Override
 	public ResponseEntity<ManoServiceInterface> manoEntityManoInterfacesManoServiceInterfaceIdGet(final String manoServiceInterfaceId) {
-		return manoEntityFrontController.interfaceFindById(manoServiceInterfaceId, ManoServiceInterface.class);
+		return manoEntityFrontController.interfaceFindById(manoServiceInterfaceId, manoServiceInterface431Mapping::map);
 	}
 
 	@Override
 	public ResponseEntity<ManoServiceInterfaceModifications> manoEntityManoInterfacesManoServiceInterfaceIdPatch(final String manoServiceInterfaceId, final ManoServiceInterfaceModificationRequest body) {
-		return manoEntityFrontController.interfacePatch(manoServiceInterfaceId, body, ManoServiceInterfaceModifications.class);
+		return manoEntityFrontController.interfacePatch(manoServiceInterfaceId, body, manoServiceInterface431Mapping::mapToManoServiceInterfaceModifications);
 	}
 
 	@Override
 	public ResponseEntity<ManoConfigModifications> manoEntityPatch(final ManoConfigModificationRequest body) {
-		return manoEntityFrontController.patch(body, ManoConfigModifications.class);
+		return manoEntityFrontController.patch(body, manoServiceInterface431Mapping::mapToManoConfigModifications);
 	}
 
 }

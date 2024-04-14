@@ -16,18 +16,7 @@
  */
 package com.ubiqube.etsi.mano.em.v431.service;
 
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeCurrentVnfPkgRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeExtVnfConnectivityRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeVnfFlavourRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.CreateVnfSnapshotRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.HealVnfRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.OperateVnfRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.RevertToVnfSnapshotRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleVnfRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleVnfToLevelRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.TerminateVnfRequest;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInfoModificationRequest;
+import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
 
 /**
@@ -38,63 +27,75 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
 public class VnfLcmClassMaping431 implements VnfLcmClassMaping {
 
 	@Override
-	public Class<?> getInstantiateVnfRequest() {
-		return InstantiateVnfRequest.class;
+	public <R> R getInstantiateVnfRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getScaleVnfRequest() {
-		return ScaleVnfRequest.class;
+	public <R> R getScaleVnfRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getScaleVnfToLevelRequest() {
-		return ScaleVnfToLevelRequest.class;
+	public <R> R getScaleVnfToLevelRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getChangeVnfFlavourRequest() {
-		return ChangeVnfFlavourRequest.class;
+	public <R> R getChangeVnfFlavourRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getOperateVnfRequest() {
-		return OperateVnfRequest.class;
+	public <R> R getOperateVnfRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getHealVnfRequest() {
-		return HealVnfRequest.class;
+	public <R> R getHealVnfRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getChangeExtVnfConnectivityRequest() {
-		return ChangeExtVnfConnectivityRequest.class;
+	public <R> R getChangeExtVnfConnectivityRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getTerminateVnfRequest() {
-		return TerminateVnfRequest.class;
+	public <R> R getTerminateVnfRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getVnfInfoModificationRequest() {
-		return VnfInfoModificationRequest.class;
+	public <R> R getVnfInfoModificationRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getCreateVnfSnapshotRequest() {
-		return CreateVnfSnapshotRequest.class;
+	public <R> R getCreateVnfSnapshotRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getRevertToVnfSnapshotRequest() {
-		return RevertToVnfSnapshotRequest.class;
+	public <R> R getRevertToVnfSnapshotRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Class<?> getChangeCurrentVnfPkgRequest() {
-		return ChangeCurrentVnfPkgRequest.class;
+	public <R> R getChangeCurrentVnfPkgRequest(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

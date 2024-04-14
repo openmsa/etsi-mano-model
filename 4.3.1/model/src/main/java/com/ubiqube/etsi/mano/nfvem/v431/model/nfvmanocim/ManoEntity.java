@@ -100,7 +100,7 @@ public class ManoEntity {
 	private CismSpecificInfo cismSpecificInfo = null;
 
 	@JsonProperty("_links")
-	private ManoEntityLinks _links = null;
+	private ManoEntityLinks links = null;
 
 	public ManoEntity id(final String id) {
 		this.id = id;
@@ -460,8 +460,8 @@ public class ManoEntity {
 		this.cismSpecificInfo = cismSpecificInfo;
 	}
 
-	public ManoEntity _links(final ManoEntityLinks _links) {
-		this._links = _links;
+	public ManoEntity links(final ManoEntityLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -475,11 +475,11 @@ public class ManoEntity {
 
 	@Valid
 	public ManoEntityLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final ManoEntityLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -507,12 +507,12 @@ public class ManoEntity {
 				Objects.equals(this.vimSpecificInfo, manoEntity.vimSpecificInfo) &&
 				Objects.equals(this.wimSpecificInfo, manoEntity.wimSpecificInfo) &&
 				Objects.equals(this.cismSpecificInfo, manoEntity.cismSpecificInfo) &&
-				Objects.equals(this._links, manoEntity._links);
+				Objects.equals(this.links, manoEntity.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, type, name, description, provider, softwareVersion, softwareInfo, manoEntityComponents, manoServices, manoConfigurableParams, manoApplicationState, nfvoSpecificInfo, vnfmSpecificInfo, vimSpecificInfo, wimSpecificInfo, cismSpecificInfo, _links);
+		return Objects.hash(id, type, name, description, provider, softwareVersion, softwareInfo, manoEntityComponents, manoServices, manoConfigurableParams, manoApplicationState, nfvoSpecificInfo, vnfmSpecificInfo, vimSpecificInfo, wimSpecificInfo, cismSpecificInfo, links);
 	}
 
 	@Override
@@ -536,7 +536,7 @@ public class ManoEntity {
 		sb.append("    vimSpecificInfo: ").append(toIndentedString(vimSpecificInfo)).append("\n");
 		sb.append("    wimSpecificInfo: ").append(toIndentedString(wimSpecificInfo)).append("\n");
 		sb.append("    cismSpecificInfo: ").append(toIndentedString(cismSpecificInfo)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
