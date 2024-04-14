@@ -383,4 +383,5 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	@ValueMapping(source = "LINK_PORT_ADDED", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "LINK_PORT_REMOVED", target = MappingConstants.THROW_EXCEPTION)
 	AffectedVirtualStorage.ChangeTypeEnum mapAffectedVirtualStorage(ChangeType en);
+
 }
