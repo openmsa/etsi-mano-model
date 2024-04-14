@@ -37,7 +37,6 @@ import com.ubiqube.etsi.mano.em.v451.model.vnflcm.VnfInfoModificationRequest;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface LcmOpOcc451Mapping {
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "extManagedVirtualLinks", ignore = true)
 	@Mapping(target = "extVirtualLinks", ignore = true)
 	@Mapping(target = "extensions", ignore = true)
@@ -50,18 +49,15 @@ public interface LcmOpOcc451Mapping {
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	InstantiateVnfRequest mapToInstantiateVnfRequest(VnfBlueprint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "aspectId", ignore = true)
 	@Mapping(target = "numberOfSteps", ignore = true)
 	@Mapping(target = "type", ignore = true)
 	ScaleVnfRequest mapToScaleVnfRequest(VnfBlueprint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "instantiationLevelId", ignore = true)
 	@Mapping(target = "scaleInfo", ignore = true)
 	ScaleVnfToLevelRequest mapToScaleVnfToLevelRequest(VnfBlueprint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "certificateConfigurationData", ignore = true)
 	@Mapping(target = "extManagedVirtualLinks", ignore = true)
 	@Mapping(target = "extVirtualLinks", ignore = true)
@@ -73,25 +69,21 @@ public interface LcmOpOcc451Mapping {
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	ChangeVnfFlavourRequest mapToChangeVnfFlavourRequest(VnfBlueprint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "changeStateTo", ignore = true)
 	@Mapping(target = "gracefulStopTimeout", ignore = true)
 	@Mapping(target = "stopType", ignore = true)
 	@Mapping(target = "vnfcInstanceId", ignore = true)
 	OperateVnfRequest mapToOperateVnfRequest(VnfBlueprint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "cause", ignore = true)
 	@Mapping(target = "healScript", ignore = true)
 	@Mapping(target = "vnfcInstanceId", ignore = true)
 	HealVnfRequest mapToHealVnfRequest(VnfBlueprint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "certificateConfigurationData", ignore = true)
 	@Mapping(target = "extVirtualLinks", ignore = true)
 	ChangeExtVnfConnectivityRequest mapToChangeExtVnfConnectivityRequest(VnfBlueprint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "gracefulTerminationTimeout", ignore = true)
 	@Mapping(target = "terminationType", ignore = true)
 	TerminateVnfRequest mapToTerminateVnfRequest(VnfBlueprint o);
@@ -105,17 +97,14 @@ public interface LcmOpOcc451Mapping {
 	@Mapping(target = "vnfdId", ignore = true)
 	VnfInfoModificationRequest mapToVnfInfoModificationRequest(VnfBlueprint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "userDefinedData", ignore = true)
 	@Mapping(target = "vnfcInstanceId", ignore = true)
 	CreateVnfSnapshotRequest mapToCreateVnfSnapshotRequest(VnfBlueprint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "vnfcInstanceId", ignore = true)
 	@Mapping(target = "vnfcSnapshotInfoId", ignore = true)
 	RevertToVnfSnapshotRequest mapToRevertToVnfSnapshotRequest(VnfBlueprint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "certificateConfigurationData", ignore = true)
 	@Mapping(target = "extManagedVirtualLinks", ignore = true)
 	@Mapping(target = "extVirtualLinks", ignore = true)

@@ -90,4 +90,10 @@ public class VnfLcmClassMaping451 implements VnfLcmClassMaping {
 		return (R) lcmOpOcc451Mapping.mapToChangeCurrentVnfPkgRequest(o);
 	}
 
+	@Override
+	public <R> R mapToVnfLcmOpOcc(final VnfBlueprint o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
