@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.ScaleVnfRequest;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.ScaleVnfToLevelRequest;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.VnfInfoModificationRequest;
+import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.VnfLcmOpOcc;
 
 import ma.glasnost.orika.MapperFacade;
 
@@ -103,6 +104,11 @@ public class VnfLcmClassMaping261 implements VnfLcmClassMaping {
 	@Override
 	public <R> R getChangeCurrentVnfPkgRequest(final VnfBlueprint o) {
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public <R> R mapToVnfLcmOpOcc(final VnfBlueprint o) {
+		return (R) mapper.map(o, VnfLcmOpOcc.class);
 	}
 
 }
