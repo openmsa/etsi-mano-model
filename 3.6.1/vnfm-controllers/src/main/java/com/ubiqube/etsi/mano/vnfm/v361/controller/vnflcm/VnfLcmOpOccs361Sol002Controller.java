@@ -69,7 +69,7 @@ public class VnfLcmOpOccs361Sol002Controller implements VnfLcmOpOccs361Sol002Api
 
 	@Override
 	public ResponseEntity<VnfLcmOpOcc> vnfLcmOpOccsVnfLcmOpOccIdGet(final String vnfLcmOpOccId) {
-		return frontController.lcmOpOccFindById(vnfLcmClassMaping361, UUID.fromString(vnfLcmOpOccId), VnfLcmOpOcc.class,
+		return frontController.lcmOpOccFindById(vnfLcmClassMaping361, UUID.fromString(vnfLcmOpOccId),
 				VnfLcmOpOccs361Sol002Controller::makeLinks, VnfLcmOpOccs361Sol002Controller::setOperationParams);
 	}
 
