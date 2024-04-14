@@ -16,6 +16,9 @@
  */
 package com.ubiqube.etsi.mano.vnfm;
 
+import org.springframework.stereotype.Service;
+
+import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.ChangeExtVnfConnectivityRequest;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.ChangeVnfFlavourRequest;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.HealVnfRequest;
@@ -27,71 +30,79 @@ import com.ubiqube.etsi.mano.em.v281.model.vnflcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.em.v281.model.vnflcm.VnfInfoModificationRequest;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
 
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
- * @author ncuser
+ * @author Olivier Vignaud {@literal {@literal <ovi@ubiqube.com>}}
  *
  */
+@Service
 public class VnfLcmClassMaping281 implements VnfLcmClassMaping {
+	private final MapperFacade mapper;
 
-	@Override
-	public Class<?> getInstantiateVnfRequest() {
-		return InstantiateVnfRequest.class;
+	public VnfLcmClassMaping281(final MapperFacade mapper) {
+		this.mapper = mapper;
 	}
 
 	@Override
-	public Class<?> getScaleVnfRequest() {
-		return ScaleVnfRequest.class;
+	public <R> R getInstantiateVnfRequest(final VnfBlueprint o) {
+		return (R) mapper.map(o, InstantiateVnfRequest.class);
 	}
 
 	@Override
-	public Class<?> getScaleVnfToLevelRequest() {
-		return ScaleVnfToLevelRequest.class;
+	public <R> R getScaleVnfRequest(final VnfBlueprint o) {
+		return (R) mapper.map(o, ScaleVnfRequest.class);
 	}
 
 	@Override
-	public Class<?> getChangeVnfFlavourRequest() {
-		return ChangeVnfFlavourRequest.class;
+	public <R> R getScaleVnfToLevelRequest(final VnfBlueprint o) {
+		return (R) mapper.map(o, ScaleVnfToLevelRequest.class);
 	}
 
 	@Override
-	public Class<?> getOperateVnfRequest() {
-		return OperateVnfRequest.class;
+	public <R> R getChangeVnfFlavourRequest(final VnfBlueprint o) {
+		return (R) mapper.map(o, ChangeVnfFlavourRequest.class);
 	}
 
 	@Override
-	public Class<?> getHealVnfRequest() {
-		return HealVnfRequest.class;
+	public <R> R getOperateVnfRequest(final VnfBlueprint o) {
+		return (R) mapper.map(o, OperateVnfRequest.class);
 	}
 
 	@Override
-	public Class<?> getChangeExtVnfConnectivityRequest() {
-		return ChangeExtVnfConnectivityRequest.class;
+	public <R> R getHealVnfRequest(final VnfBlueprint o) {
+		return (R) mapper.map(o, HealVnfRequest.class);
 	}
 
 	@Override
-	public Class<?> getTerminateVnfRequest() {
-		return TerminateVnfRequest.class;
+	public <R> R getChangeExtVnfConnectivityRequest(final VnfBlueprint o) {
+		return (R) mapper.map(o, ChangeExtVnfConnectivityRequest.class);
 	}
 
 	@Override
-	public Class<?> getVnfInfoModificationRequest() {
-		return VnfInfoModificationRequest.class;
+	public <R> R getTerminateVnfRequest(final VnfBlueprint o) {
+		return (R) mapper.map(o, TerminateVnfRequest.class);
 	}
 
 	@Override
-	public Class<?> getCreateVnfSnapshotRequest() {
-		return null;
+	public <R> R getVnfInfoModificationRequest(final VnfBlueprint o) {
+		return (R) mapper.map(o, VnfInfoModificationRequest.class);
 	}
 
 	@Override
-	public Class<?> getRevertToVnfSnapshotRequest() {
-		return null;
+	public <R> R getCreateVnfSnapshotRequest(final VnfBlueprint o) {
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public Class<?> getChangeCurrentVnfPkgRequest() {
-		return null;
+	public <R> R getRevertToVnfSnapshotRequest(final VnfBlueprint o) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public <R> R getChangeCurrentVnfPkgRequest(final VnfBlueprint o) {
+		throw new UnsupportedOperationException();
 	}
 
 }
