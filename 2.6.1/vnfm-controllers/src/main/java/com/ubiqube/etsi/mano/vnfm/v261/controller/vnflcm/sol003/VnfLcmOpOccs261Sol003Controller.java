@@ -41,10 +41,12 @@ public class VnfLcmOpOccs261Sol003Controller implements VnfLcmOpOccs261Sol003Api
 	private static final Logger LOG = LoggerFactory.getLogger(VnfLcmOpOccs261Sol003Controller.class);
 	private final VnfLcmOpOccGenericFrontController frontController;
 	private final MapperFacade mapper;
+	private final VnfLcmClassMaping261 vnfLcmClassMaping261;
 
-	public VnfLcmOpOccs261Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final MapperFacade mapper) {
+	public VnfLcmOpOccs261Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final MapperFacade mapper, final VnfLcmClassMaping261 vnfLcmClassMaping261) {
 		this.frontController = frontController;
 		this.mapper = mapper;
+		this.vnfLcmClassMaping261 = vnfLcmClassMaping261;
 		LOG.info("Starting VNF LCM OP OCCS SOL003/2.6.1 Controller.");
 	}
 
@@ -65,7 +67,7 @@ public class VnfLcmOpOccs261Sol003Controller implements VnfLcmOpOccs261Sol003Api
 
 	@Override
 	public ResponseEntity<VnfLcmOpOcc> vnfLcmOpOccsVnfLcmOpOccIdGet(final String vnfLcmOpOccId) {
-		return frontController.lcmOpOccFindById(new VnfLcmClassMaping261(), UUID.fromString(vnfLcmOpOccId), VnfLcmOpOcc.class,
+		return frontController.lcmOpOccFindById(vnfLcmClassMaping261, UUID.fromString(vnfLcmOpOccId), VnfLcmOpOcc.class,
 				VnfLcmOpOccs261Sol003Controller::makeLinks, VnfLcmOpOccs261Sol003Controller::setOperationParams);
 	}
 
