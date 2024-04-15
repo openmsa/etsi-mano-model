@@ -54,7 +54,7 @@ public class VnfPackages431Sol003Controller implements VnfPackages431Sol003Api {
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdGet(final String vnfPkgId) {
-		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), VnfPkgInfo.class, LinksSol003::makeLinks);
+		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
 	}
 
 	@Override
