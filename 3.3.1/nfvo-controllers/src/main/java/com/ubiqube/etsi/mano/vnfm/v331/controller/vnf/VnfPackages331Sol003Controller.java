@@ -18,11 +18,6 @@ package com.ubiqube.etsi.mano.vnfm.v331.controller.vnf;
 
 import static com.ubiqube.etsi.mano.nfvo.fc.controller.NfvoConstants.getSafeUUID;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.springframework.context.annotation.Conditional;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +28,12 @@ import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
 import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.vnfm.v331.service.LinksSol003;
 
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -42,12 +43,12 @@ import com.ubiqube.etsi.mano.vnfm.v331.service.LinksSol003;
 @RestController
 @Conditional(SingleControllerCondition.class)
 public class VnfPackages331Sol003Controller implements VnfPackages331Sol003Api {
-
 	private final VnfPackageFrontController frontController;
+	private final MapperFacade mapper;
 
-	public VnfPackages331Sol003Controller(final VnfPackageFrontController frontController) {
-		super();
+	public VnfPackages331Sol003Controller(final VnfPackageFrontController frontController, final MapperFacade mapper) {
 		this.frontController = frontController;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -62,7 +63,7 @@ public class VnfPackages331Sol003Controller implements VnfPackages331Sol003Api {
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdGet(final String vnfPkgId, @Valid final String includeSignature) {
-		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), VnfPkgInfo.class, LinksSol003::makeLinks);
+		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
 	}
 
 	@Override
