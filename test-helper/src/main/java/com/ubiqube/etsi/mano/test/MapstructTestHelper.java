@@ -41,4 +41,12 @@ public class MapstructTestHelper extends AssertNull {
 		assertFullEqual(obj, r2, Set.of("getLinks"), stack);
 	}
 
+	protected <T, R> void doTest(final Set<String> ignore, final Class<T> clazz, final Function<T, R> in, final Function<R, T> out) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
+		final T obj = podam.manufacturePojo(clazz);
+		final R tmp = in.apply(obj);
+		final T r2 = out.apply(tmp);
+		final Deque<String> stack = new ArrayDeque<>();
+		assertFullEqual(obj, r2, ignore, stack);
+	}
+
 }
