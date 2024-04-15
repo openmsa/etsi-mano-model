@@ -51,6 +51,7 @@ import com.ubiqube.etsi.mano.em.v271.model.vnflcm.ExtManagedVirtualLinkInfo;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.em.v271.model.vnflcm.VnfInfoModifications;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.VnfInstanceInstantiatedVnfInfo;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v271.model.vnflcm.VnfcResourceInfo;
@@ -200,6 +201,10 @@ public class OrikaMapperVnfm271 implements OrikaMapperFactoryConfigurer {
 				.field("isAutomaticInvocation", "automaticInvocation")
 				.field("isCancelPending", "cancelPending")
 				.field("operationParams", "parameters")
+				.byDefault()
+				.register();
+		orikaMapperFactory.classMap(VnfInfoModifications.class, com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications.class)
+				.exclude("vimConnectionInfo")
 				.byDefault()
 				.register();
 		orikaMapperFactory.classMap(ExtManagedVirtualLinkData.class, ExtManagedVirtualLinkDataEntity.class)
