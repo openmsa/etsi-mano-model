@@ -18,10 +18,6 @@ package com.ubiqube.etsi.mano.nfvo.v271.controller.vnf;
 
 import static com.ubiqube.etsi.mano.Constants.getSafeUUID;
 
-import jakarta.annotation.Nonnull;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +27,11 @@ import com.ubiqube.etsi.mano.model.v271.sol003.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v271.services.Linkable;
 import com.ubiqube.etsi.mano.nfvo.v271.services.Sol003Linkable;
 
+import jakarta.annotation.Nonnull;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import ma.glasnost.orika.MapperFacade;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -38,43 +39,44 @@ import com.ubiqube.etsi.mano.nfvo.v271.services.Sol003Linkable;
  */
 @RestController
 public class VnfPackages271Sol003Controller implements VnfPackages271Sol003Api {
-
+	private final MapperFacade mapper;
 	private final VnfPackageFrontController frontController;
 	@Nonnull
 	private final Linkable links = new Sol003Linkable();
 
-	public VnfPackages271Sol003Controller(final VnfPackageFrontController frontController) {
+	public VnfPackages271Sol003Controller(final VnfPackageFrontController frontController, final MapperFacade mapper) {
+		this.mapper = mapper;
 		this.frontController = frontController;
 	}
 
 	@Override
-	public ResponseEntity<Resource> vnfPackagesVnfPkgIdArtifactsArtifactPathGet(final HttpServletRequest request,final String vnfPkgId,final String range,@Valid final String includeSignature) {
-		return frontController.getArtifactPath(request,getSafeUUID(vnfPkgId),includeSignature);
+	public ResponseEntity<Resource> vnfPackagesVnfPkgIdArtifactsArtifactPathGet(final HttpServletRequest request, final String vnfPkgId, final String range, @Valid final String includeSignature) {
+		return frontController.getArtifactPath(request, getSafeUUID(vnfPkgId), includeSignature);
 	}
 
 	@Override
-	public ResponseEntity<Resource> vnfPackagesVnfPkgIdArtifactsGet(final HttpServletRequest request,final String vnfPkgId,final String range) {
-		return frontController.getSelectArtifacts(request,getSafeUUID(vnfPkgId));
+	public ResponseEntity<Resource> vnfPackagesVnfPkgIdArtifactsGet(final HttpServletRequest request, final String vnfPkgId, final String range) {
+		return frontController.getSelectArtifacts(request, getSafeUUID(vnfPkgId));
 	}
 
 	@Override
-	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdGet(final String vnfPkgId,@Valid final String includeSignature) {
-		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId),VnfPkgInfo.class,links::makeLinks);
+	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdGet(final String vnfPkgId, @Valid final String includeSignature) {
+		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x, VnfPkgInfo.class), links::makeLinks);
 	}
 
 	@Override
-	public ResponseEntity<Resource> vnfPackagesVnfPkgIdManifestGet(final String vnfPkgId,@Valid final String includeSignature) {
-		return frontController.getManifest(getSafeUUID(vnfPkgId),includeSignature);
+	public ResponseEntity<Resource> vnfPackagesVnfPkgIdManifestGet(final String vnfPkgId, @Valid final String includeSignature) {
+		return frontController.getManifest(getSafeUUID(vnfPkgId), includeSignature);
 	}
 
 	@Override
-	public ResponseEntity<Resource> vnfPackagesVnfPkgIdPackageContentGet(final String vnfPkgId,final String range) {
+	public ResponseEntity<Resource> vnfPackagesVnfPkgIdPackageContentGet(final String vnfPkgId, final String range) {
 		return frontController.getContent(getSafeUUID(vnfPkgId));
 	}
 
 	@Override
-	public ResponseEntity<Resource> vnfPackagesVnfPkgIdVnfdGet(final String vnfPkgId,final String accept,@Valid final String includeSignature) {
-		return frontController.getVfnd(getSafeUUID(vnfPkgId),accept,includeSignature);
+	public ResponseEntity<Resource> vnfPackagesVnfPkgIdVnfdGet(final String vnfPkgId, final String accept, @Valid final String includeSignature) {
+		return frontController.getVfnd(getSafeUUID(vnfPkgId), accept, includeSignature);
 	}
 
 }
