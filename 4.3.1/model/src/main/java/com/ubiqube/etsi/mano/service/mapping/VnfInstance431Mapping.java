@@ -36,6 +36,7 @@ import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
 import com.ubiqube.etsi.mano.dao.mano.VirtualCpAddressInfo;
 import com.ubiqube.etsi.mano.dao.mano.VirtualStorageResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
+import com.ubiqube.etsi.mano.dao.mano.VnfMonitoringParameter;
 import com.ubiqube.etsi.mano.dao.mano.VnfcResourceInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.VnfcResourceInfoVnfcCpInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.v2.AdditionalServiceInfo;
@@ -49,6 +50,7 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtManagedVirtualLinkInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.IpOverEthernetAddressInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.IpOverEthernetAddressInfoIpAddresses;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.MonitoringParameter;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VirtualCpInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfExtCpInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstanceInstantiatedVnfInfo;
@@ -77,7 +79,7 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 //	@Mapping(target = "vimConnectionInfo", source = "vimConnectionInfo")
 	@Mapping(target = "extCpInfo", ignore = true)
 	@Mapping(target = "versionDependency", ignore = true)
-	@Mapping(target = "vnfPkg", ignore = true)
+	@Mapping(target = "vnfPkg.id", source = "vnfPkgId")
 	@Mapping(target = "id", ignore = true)
 	VnfInstance map(com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance pkg);
 
@@ -100,7 +102,6 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "vnfVirtualLinkResourceInfo", source = "virtualLinkResourceInfo")
 	VnfInstanceInstantiatedVnfInfo map(BlueprintParameters bp);
 
-	@Mapping(target = "scaleToLevel", ignore = true)
 	com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleInfo map(ScaleInfo o);
 
 	@Mapping(target = "networkResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
@@ -134,8 +135,9 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "id", ignore = true)
 	CpProtocolInfoEntity map(CpProtocolInfo cpi);
 
+	@Mapping(target = "vnfcInfo", ignore = true)
 	@Mapping(target = "aspectId", ignore = true)
-	@Mapping(target = "extManagedVirtualLinks", ignore = true)
+	@Mapping(target = "extManagedVirtualLinks", source = "extManagedVirtualLinkInfo")
 	@Mapping(target = "instantiationLevelId", ignore = true)
 	@Mapping(target = "nsHeal", ignore = true)
 	@Mapping(target = "nsScale", ignore = true)
@@ -143,11 +145,20 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "nsStepStatus", ignore = true)
 	@Mapping(target = "numberOfSteps", ignore = true)
 	@Mapping(target = "scaleType", ignore = true)
-	@Mapping(target = "state", ignore = true)
+	@Mapping(target = "state", source = "vnfState")
 	@Mapping(target = "updData", ignore = true)
 	@Mapping(target = "virtualLinkResourceInfo", ignore = true)
-	@Mapping(target = "vnfMonitoringParameter", ignore = true)
+	@Mapping(target = "vnfMonitoringParameter", source = "monitoringParameters")
 	BlueprintParameters map(VnfInstanceInstantiatedVnfInfo viivi);
+
+	@Mapping(target = "extManagedMultisiteVirtualLinkId", ignore = true)
+	@Mapping(target = "grants", ignore = true)
+	@Mapping(target = ".", source = "networkResource")
+	@Mapping(target = "vnfInstance", ignore = true)
+	ExtManagedVirtualLinkDataEntity map(ExtManagedVirtualLinkInfo o);
+
+	@Mapping(target = "audit", ignore = true)
+	VnfMonitoringParameter map(MonitoringParameter o);
 
 	@Mapping(target = "certificateContentId", ignore = true)
 	ExtCpInfo map(VnfExtCpInfo o);
@@ -201,7 +212,8 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "id", ignore = true)
 	NetAttDefResourceInfo map(com.ubiqube.etsi.mano.em.v431.model.vnflcm.NetAttDefResourceInfo nadr);
 
-	@Mapping(target = "scaleLevel", source = "scaleToLevel")
+//	@Mapping(target = "scaleLevel", source = "scaleToLevel")
+	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleInfo si);
 

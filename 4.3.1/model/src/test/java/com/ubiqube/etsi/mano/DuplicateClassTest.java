@@ -54,7 +54,7 @@ class DuplicateClassTest {
 			v.remove(0);
 			v.forEach(y -> {
 				System.out.println(" - " + y);
-				y.toFile().delete();
+				// y.toFile().delete();
 			});
 
 		});

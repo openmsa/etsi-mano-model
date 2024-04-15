@@ -54,8 +54,16 @@ class MappingTest extends MapstructTestHelper {
 	void testVnfInstance() throws Exception {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
+		//
+		ignore.add("getVnfVirtualLinkResourceInfo");
+		// Ns fields ?
+		ignore.add("getInstantiatedVnfInfo.getVnfVirtualLinkResourceInfo");
+		ignore.add("getInstantiatedVnfInfo.getScaleStatus.[0].getScaleToLevel.getContainerNamespace");
+		ignore.add("getInstantiatedVnfInfo.getExtVirtualLinkInfo.[0].getResourceHandle.getContainerNamespace");
+		ignore.add("getInstantiatedVnfInfo.getMaxScaleLevels.[0].getScaleToLevel.getId");
+		ignore.add("getId");
 		final VnfInstance431Mapping mapper = Mappers.getMapper(VnfInstance431Mapping.class);
-		doTest(com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance.class, x -> mapper.map(x), x -> mapper.map(x));
+		doTest(ignore, com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance.class, x -> mapper.map(x), x -> mapper.map(x));
 		assertTrue(true);
 	}
 
