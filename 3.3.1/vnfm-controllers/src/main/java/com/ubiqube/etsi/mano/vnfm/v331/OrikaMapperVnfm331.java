@@ -273,7 +273,7 @@ public class OrikaMapperVnfm331 implements OrikaMapperFactoryConfigurer {
 					@Override
 					public void mapBtoA(final GrantInformationExt b, final ResourceDefinition a, final MappingContext context) {
 						final Set<String> value = b.getResourceTemplateId();
-						if ((b == null) || value.isEmpty()) {
+						if ((null == value) || (b == null) || value.isEmpty()) {
 							return;
 						}
 						a.setResourceTemplateId(value.iterator().next());
