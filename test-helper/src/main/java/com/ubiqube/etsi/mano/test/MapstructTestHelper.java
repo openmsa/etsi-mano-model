@@ -16,10 +16,14 @@
  */
 package com.ubiqube.etsi.mano.test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.beans.IntrospectionException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 
@@ -38,7 +42,9 @@ public class MapstructTestHelper extends AssertNull {
 		final R tmp = in.apply(obj);
 		final T r2 = out.apply(tmp);
 		final Deque<String> stack = new ArrayDeque<>();
-		assertFullEqual(obj, r2, Set.of("getLinks"), stack);
+		final List<String> errors = new ArrayList<>();
+		assertFullEqual(obj, r2, Set.of("getLinks"), stack, errors);
+		assertTrue(errors.isEmpty(), errors + "");
 	}
 
 	protected <T, R> void doTest(final Set<String> ignore, final Class<T> clazz, final Function<T, R> in, final Function<R, T> out) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
@@ -46,7 +52,9 @@ public class MapstructTestHelper extends AssertNull {
 		final R tmp = in.apply(obj);
 		final T r2 = out.apply(tmp);
 		final Deque<String> stack = new ArrayDeque<>();
-		assertFullEqual(obj, r2, ignore, stack);
+		final List<String> errors = new ArrayList<>();
+		assertFullEqual(obj, r2, ignore, stack, errors);
+		assertTrue(errors.isEmpty(), errors + "");
 	}
 
 }

@@ -16,12 +16,15 @@
  */
 package com.ubiqube.etsi.mano.test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.MethodDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Deque;
@@ -55,8 +58,10 @@ public class TestHelper extends AssertNull {
 		final Object avcDb = mapper.map(avc, db);
 		final Object res = mapper.map(avcDb, json);
 		final Deque<String> stack = new ArrayDeque<>();
+		final List<String> errors = new ArrayList<>();
 		deepSort(avc, res);
-		assertFullEqual(avc, res, ignore, stack);
+		assertFullEqual(avc, res, ignore, stack, errors);
+		assertTrue(errors.isEmpty(), errors + "");
 	}
 
 	private void deepSort(final Object orig, final Object tgt) throws IntrospectionException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {

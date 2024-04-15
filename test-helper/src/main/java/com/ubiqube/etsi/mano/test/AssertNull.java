@@ -16,8 +16,7 @@
  */
 package com.ubiqube.etsi.mano.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
@@ -26,6 +25,7 @@ import java.beans.MethodDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
+import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashSet;
 import java.util.List;
@@ -51,12 +51,12 @@ public class AssertNull {
 		complex.add(LocalDateTime.class);
 	}
 
-	protected <T> void assertFullEqual(final T orig, final T tgt, final Set<String> ignore, final Deque<String> stack) throws IntrospectionException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	protected <T> void assertFullEqual(final T orig, final T tgt, final Set<String> ignore, final Deque<String> stack, final List<String> errors) throws IntrospectionException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		final BeanInfo beanInfo = Introspector.getBeanInfo(orig.getClass());
 		final MethodDescriptor[] m = beanInfo.getMethodDescriptors();
 		for (final MethodDescriptor methodDescriptor : m) {
 			final String methodName = methodDescriptor.getName();
-			if (!methodName.startsWith("get") || "getClass".equals(methodName) || ignore.contains(methodName)) {
+			if (!canHandle(methodName, stack, ignore)) {
 				continue;
 			}
 			LOG.debug(" + {}", methodName);
@@ -69,43 +69,90 @@ public class AssertNull {
 			}
 			if (src instanceof final List<?> sl) {
 				final List<?> dl = (List<?>) dst;
-				assertNotNull(dl, "Target element is null for field: " + methodName + prettyStack(stack));
-				assertEquals(sl.size(), dl.size(), "List are not equals " + methodName + prettyStack(stack));
-				handleList(sl, dl, ignore, stack, methodName);
-			} else if (src instanceof Map) {
+				assertNotNull(dl, "Target element is null for field: " + methodName + prettyStack(stack), errors);
+				assertEquals(sl.size(), dl.size(), "List are not equals " + methodName + prettyStack(stack), errors);
+				handleList(sl, dl, ignore, stack, methodName, errors);
+			} else if (src instanceof final Map sm) {
+				if (dst instanceof final Map dm) {
+					handleMapToMap(dm, dm, stack, errors);
+				}
 				LOG.warn("Map not supported, skipping {}", methodName);
 			} else if (src instanceof Set) {
 				LOG.warn("Set not supported, skipping {}", methodName);
 			} else if (isComplex(src)) {
 				LOG.warn("  + Looping: {}", src.getClass());
-				assertNotNull(dst, "Target element is null for field: " + methodName + prettyStack(stack));
-				assertFullEqual(src, dst, ignore, stack);
+				assertNotNull(dst, "Target element is null for field: " + methodName + prettyStack(stack), errors);
+				assertFullEqual(src, dst, ignore, stack, errors);
 			} else {
 				if (methodName.equals("getVnfPkgId")) {
 					LOG.debug("Hello");
 				}
-				assertEquals(src, dst, "Field " + methodName + ": must be equals." + prettyStack(stack));
+				assertEquals(src, dst, "Field " + methodName + ": must be equals." + prettyStack(stack), errors);
 			}
 			stack.pop();
 		}
 	}
 
-	private void handleList(final List<?> sl, final List<?> dl, final Set<String> ignore, final Deque<String> stack, final String methodName) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
+	private static boolean canHandle(final String methodName, final Deque<String> stack, final Set<String> ignore) {
+		final Deque<String> st = new ArrayDeque<>(stack);
+		st.push(methodName);
+		if ("getVnfVirtualLinkResourceInfo".equals(methodName)) {
+			System.out.println("");
+		}
+		if (!methodName.startsWith("get") || "getClass".equals(methodName) || isInIgnoreList(ignore, st)) {
+			return false;
+		}
+		return true;
+	}
+
+	private static boolean isInIgnoreList(final Set<String> ignore, final Deque<String> st) {
+		return ignore.contains(String.join(".", st.reversed()));
+	}
+
+	private static void assertNotNull(final Object dl, final String string, final List<String> errors) {
+		if (dl == null) {
+			errors.add(string);
+		}
+	}
+
+	private static void assertEquals(final Object src, final Object dst, final String string, final List<String> error) {
+		if (src == null) {
+			error.add(string);
+			return;
+		}
+		if (!src.equals(dst)) {
+			error.add(string);
+		}
+	}
+
+	private static void assertEquals(final int size, final int size2, final String string, final List<String> error) {
+		if (size != size2) {
+			error.add(string);
+			fail("" + error);
+		}
+	}
+
+	private static void handleMapToMap(final Map sm, final Map dm, final Deque<String> stack, final List<String> errors) {
+		assertEquals(sm.size(), sm.size(), "Map are not equals " + prettyStack(stack), errors);
+	}
+
+	private void handleList(final List<?> sl, final List<?> dl, final Set<String> ignore, final Deque<String> stack, final String methodName, final List<String> errors) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
 		for (int i = 0; i < sl.size(); i++) {
 			final Object so = sl.get(i);
 			final Object dobj = dl.get(i);
 			stack.push("[" + i + "]");
 			if (isComplex(so)) {
-				assertFullEqual(so, dobj, ignore, stack);
+				assertFullEqual(so, dobj, ignore, stack, errors);
 			} else {
-				assertEquals(so, dobj, "List in " + methodName + ": is not equal at " + i + prettyStack(stack));
+				assertEquals(so, dobj, "List in " + methodName + ": is not equal at " + i + prettyStack(stack), errors);
 			}
 			stack.pop();
 		}
 	}
 
 	private static String prettyStack(final Deque<String> stack) {
-		return "\n" + stack.toString();
+		final String str = String.join(".", stack.reversed());
+		return "\n" + str;
 	}
 
 	protected boolean isComplex(final Object r) {
