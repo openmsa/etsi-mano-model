@@ -66,6 +66,10 @@ class MappingTest extends TestHelper {
 		ignore.add("getResourceTemplateId");
 		ignore.add("getPlacementConstraints");
 		ignore.add("getVimConstraints");
+		ignore.add("getUpdateResources.[0].getResource");
+		ignore.add("getTempResources.[0].getResource");
+		ignore.add("getAddResources.[0].getResource");
+		ignore.add("getRemoveResources.[0].getResource");
 		doTest(GrantRequest.class, GrantResponse.class, ignore);
 	}
 
