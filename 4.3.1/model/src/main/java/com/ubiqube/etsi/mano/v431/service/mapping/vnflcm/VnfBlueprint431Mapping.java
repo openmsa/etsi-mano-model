@@ -91,7 +91,7 @@ public interface VnfBlueprint431Mapping extends StringToUriMapping, Connectivity
 	@ValueMapping(source = "SUCCESS", target = MappingConstants.THROW_EXCEPTION)
 	LcmOperationStateType map(OperationStatusType o);
 
-	@Mapping(target = "resourceHandle.vimConnectionId", source = "vimConnectionInformation.id")
+	@Mapping(target = "resourceHandle.vimConnectionId", source = "vimConnectionInformation.vimId")
 	@Mapping(target = "resourceHandle.resourceProviderId", source = "resourceProviderId")
 	@Mapping(target = "resourceHandle.resourceId", source = "resourceId")
 	@Mapping(target = "resourceHandle.vimLevelResourceType", source = "vimLevelResourceType")
@@ -99,7 +99,7 @@ public interface VnfBlueprint431Mapping extends StringToUriMapping, Connectivity
 	@Mapping(target = "resourceHandle.containerNamespace", source = "containerNamespace")
 	AffectedExtLinkPort map(VnfInstantiatedExtLinkPort o);
 
-	@Mapping(target = "networkResource.vimConnectionId", source = "vimConnectionInformation.id")
+	@Mapping(target = "networkResource.vimConnectionId", source = "vimConnectionInformation.vimId")
 	@Mapping(target = "networkResource.resourceProviderId", source = "resourceProviderId")
 	@Mapping(target = "networkResource.resourceId", source = "resourceId")
 	@Mapping(target = "networkResource.vimLevelResourceType", source = "vimLevelResourceType")
@@ -108,7 +108,7 @@ public interface VnfBlueprint431Mapping extends StringToUriMapping, Connectivity
 	@Mapping(target = "vnfVirtualLinkDescId", source = "virtualLinkDescId")
 	AffectedVirtualLink map(VnfInstantiatedVirtualLink o);
 
-	@Mapping(target = "computeResource.vimConnectionId", source = "vimConnectionInformation.id")
+	@Mapping(target = "computeResource.vimConnectionId", source = "vimConnectionInformation.vimId")
 	@Mapping(target = "computeResource.resourceProviderId", source = "resourceProviderId")
 	@Mapping(target = "computeResource.resourceId", source = "resourceId")
 	@Mapping(target = "computeResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
@@ -116,7 +116,7 @@ public interface VnfBlueprint431Mapping extends StringToUriMapping, Connectivity
 	@Mapping(target = "computeResource.vimLevelResourceType", source = "vimLevelResourceType")
 	AffectedVnfc map(VnfInstantiatedCompute o);
 
-	@Mapping(target = "storageResource.vimConnectionId", source = "vimConnectionInformation.id")
+	@Mapping(target = "storageResource.vimConnectionId", source = "vimConnectionInformation.vimId")
 	@Mapping(target = "storageResource.resourceProviderId", source = "resourceProviderId")
 	@Mapping(target = "storageResource.resourceId", source = "resourceId")
 	@Mapping(target = "storageResource.vimLevelResourceType", source = "vimLevelResourceType")

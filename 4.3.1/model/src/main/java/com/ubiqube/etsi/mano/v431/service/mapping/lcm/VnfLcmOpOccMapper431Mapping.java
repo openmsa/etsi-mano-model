@@ -42,7 +42,7 @@ public interface VnfLcmOpOccMapper431Mapping {
 	@Mapping(target = "extensions", ignore = true)
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
-	ChangeCurrentVnfPkgRequest mapToChangeCurrentVnfPkgRequest(final VnfBlueprint o);
+	ChangeCurrentVnfPkgRequest mapToChangeCurrentVnfPkgRequest(VnfBlueprint o);
 
 	@Mapping(target = "vnfcInstanceId", ignore = true)
 	@Mapping(target = "vnfcSnapshotInfoId", ignore = true)
@@ -63,7 +63,7 @@ public interface VnfLcmOpOccMapper431Mapping {
 
 	@Mapping(target = "gracefulTerminationTimeout", ignore = true)
 	@Mapping(target = "terminationType", ignore = true)
-	TerminateVnfRequest mapTerminateVnfRequest(VnfBlueprint o);
+	TerminateVnfRequest mapToTerminateVnfRequest(VnfBlueprint o);
 
 	@Mapping(target = "extVirtualLinks", ignore = true)
 	ChangeExtVnfConnectivityRequest mapToChangeExtVnfConnectivityRequest(VnfBlueprint o);

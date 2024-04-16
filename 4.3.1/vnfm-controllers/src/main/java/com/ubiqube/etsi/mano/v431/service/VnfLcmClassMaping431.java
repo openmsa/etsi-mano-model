@@ -75,7 +75,7 @@ public class VnfLcmClassMaping431 implements VnfLcmClassMaping {
 
 	@Override
 	public <R> R getTerminateVnfRequest(final VnfBlueprint o) {
-		return (R) vnfLcmOpOcc431Mapping.mapTerminateVnfRequest(o);
+		return (R) vnfLcmOpOcc431Mapping.mapToTerminateVnfRequest(o);
 	}
 
 	@Override

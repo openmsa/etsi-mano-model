@@ -314,7 +314,7 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	@Mapping(target = "vimConnectionInformation.version", ignore = true)
 	@Mapping(target = "vimConnectionInformation.vimCapabilities", ignore = true)
 	@Mapping(target = "vimConnectionInformation.vimType", ignore = true)
-	@Mapping(target = "vimConnectionInformation.vimId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimId", source = "networkResource.vimConnectionId")
 	VnfInstantiatedVirtualLink map(AffectedVirtualLink o);
 
 	ChangeType map(AffectedVnfc.ChangeTypeEnum en);
