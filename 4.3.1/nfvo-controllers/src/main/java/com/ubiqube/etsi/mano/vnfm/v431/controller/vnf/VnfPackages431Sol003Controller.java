@@ -26,17 +26,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
 import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.service.LinksSol003;
+import com.ubiqube.etsi.mano.service.mapping.VnfPkgInfo431Mapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnfPackages431Sol003Controller implements VnfPackages431Sol003Api {
 	private final VnfPackageFrontController frontController;
-	private final MapperFacade mapper;
+	private final VnfPkgInfo431Mapping mapper;
 
-	public VnfPackages431Sol003Controller(final VnfPackageFrontController frontController, final MapperFacade mapper) {
+	public VnfPackages431Sol003Controller(final VnfPackageFrontController frontController, final VnfPkgInfo431Mapping mapper) {
 		this.frontController = frontController;
 		this.mapper = mapper;
 	}
@@ -54,7 +54,7 @@ public class VnfPackages431Sol003Controller implements VnfPackages431Sol003Api {
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdGet(final String vnfPkgId) {
-		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
+		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x), LinksSol003::makeLinks);
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class VnfPackages431Sol003Controller implements VnfPackages431Sol003Api {
 
 	@Override
 	public ResponseEntity<String> vnfPackagesGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks, VnfPkgInfo.class);
+		return frontController.search(requestParams, x -> mapper.map(x), LinksSol003::makeLinks, VnfPkgInfo.class);
 	}
 
 }

@@ -134,7 +134,7 @@ public class GrantRequest implements AnyOfGrantRequest {
 	private Map<String, String> additionalParams = null;
 
 	@JsonProperty("_links")
-	private GrantRequestLinks _links = null;
+	private GrantRequestLinks links = null;
 
 	public GrantRequest vnfInstanceId(final String vnfInstanceId) {
 		this.vnfInstanceId = vnfInstanceId;
@@ -542,8 +542,8 @@ public class GrantRequest implements AnyOfGrantRequest {
 		this.additionalParams = additionalParams;
 	}
 
-	public GrantRequest _links(final GrantRequestLinks _links) {
-		this._links = _links;
+	public GrantRequest links(final GrantRequestLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -557,11 +557,11 @@ public class GrantRequest implements AnyOfGrantRequest {
 
 	@Valid
 	public GrantRequestLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final GrantRequestLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -589,12 +589,12 @@ public class GrantRequest implements AnyOfGrantRequest {
 				Objects.equals(this.placementConstraints, grantRequest.placementConstraints) &&
 				Objects.equals(this.vimConstraints, grantRequest.vimConstraints) &&
 				Objects.equals(this.additionalParams, grantRequest.additionalParams) &&
-				Objects.equals(this._links, grantRequest._links);
+				Objects.equals(this.links, grantRequest.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(vnfInstanceId, vnfLcmOpOccId, vnfdId, dstVnfdId, flavourId, operation, isAutomaticInvocation, instantiationLevelId, targetScaleLevelInfo, addResources, tempResources, removeResources, updateResources, placementConstraints, vimConstraints, additionalParams, _links);
+		return Objects.hash(vnfInstanceId, vnfLcmOpOccId, vnfdId, dstVnfdId, flavourId, operation, isAutomaticInvocation, instantiationLevelId, targetScaleLevelInfo, addResources, tempResources, removeResources, updateResources, placementConstraints, vimConstraints, additionalParams, links);
 	}
 
 	@Override
@@ -618,7 +618,7 @@ public class GrantRequest implements AnyOfGrantRequest {
 		sb.append("    placementConstraints: ").append(toIndentedString(placementConstraints)).append("\n");
 		sb.append("    vimConstraints: ").append(toIndentedString(vimConstraints)).append("\n");
 		sb.append("    additionalParams: ").append(toIndentedString(additionalParams)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

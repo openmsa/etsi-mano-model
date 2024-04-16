@@ -30,34 +30,34 @@ import com.ubiqube.etsi.mano.em.v431.model.vnffm.Alarm;
 import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmLinks;
 import com.ubiqube.etsi.mano.em.v431.model.vnffm.AlarmModifications;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.service.mapping.Alarm431Mapping;
 
 import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class Alarms431Sol005Controller implements Alarms431Sol005Api {
 	private final NsAlarmFrontController nsAlarmFrontController;
-	private final MapperFacade mapper;
+	private final Alarm431Mapping mapper;
 
-	public Alarms431Sol005Controller(final NsAlarmFrontController nsAlarmFrontController, final MapperFacade mapper) {
+	public Alarms431Sol005Controller(final NsAlarmFrontController nsAlarmFrontController, final Alarm431Mapping mapper) {
 		this.nsAlarmFrontController = nsAlarmFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Alarm> alarmsAlarmIdGet(final String alarmId) {
-		return nsAlarmFrontController.findById(getSafeUUID(alarmId), x -> mapper.map(x, Alarm.class), Alarms431Sol005Controller::makeLinks);
+		return nsAlarmFrontController.findById(getSafeUUID(alarmId), x -> mapper.map(x), Alarms431Sol005Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<AlarmModifications> alarmsAlarmIdPatch(final String alarmId, @Valid final AlarmModifications body, final String ifMatch) {
-		return nsAlarmFrontController.patch(alarmId, AckState.valueOf(body.getAckState().toString()), ifMatch, x -> mapper.map(x, AlarmModifications.class));
+		return nsAlarmFrontController.patch(alarmId, AckState.valueOf(body.getAckState().toString()), ifMatch, x -> mapper.mapAlarmModifications(x));
 	}
 
 	@Override
 	public ResponseEntity<String> alarmsGet(final MultiValueMap<String, String> requestParams, @Nullable final String nextpageOpaqueMarker) {
-		return nsAlarmFrontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, Alarm.class), Alarms431Sol005Controller::makeLinks, Alarm.class);
+		return nsAlarmFrontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x), Alarms431Sol005Controller::makeLinks, Alarm.class);
 	}
 
 	private static void makeLinks(final Alarm alarm) {
