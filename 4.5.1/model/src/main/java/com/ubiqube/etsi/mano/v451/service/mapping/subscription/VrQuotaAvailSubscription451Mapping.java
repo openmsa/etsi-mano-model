@@ -22,6 +22,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v451.model.vnfm.vrqan.VrQuotaAvailNotificationsFilter;
 import com.ubiqube.etsi.mano.v451.model.vnfm.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.v451.model.vnfm.vrqan.VrQuotaAvailSubscriptionRequest;
 
@@ -29,7 +30,7 @@ import com.ubiqube.etsi.mano.v451.model.vnfm.vrqan.VrQuotaAvailSubscriptionReque
 public interface VrQuotaAvailSubscription451Mapping extends BaseSubscription451Mapping {
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	VrQuotaAvailSubscription map(Subscription o, @Context final Class<?> clazz);
+	VrQuotaAvailSubscription map(Subscription o, @Context final Class<VrQuotaAvailNotificationsFilter> clazz);
 
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
