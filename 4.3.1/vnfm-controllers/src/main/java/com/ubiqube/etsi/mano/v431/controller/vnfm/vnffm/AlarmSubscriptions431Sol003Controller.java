@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v431.model.em.vnffm.FmNotificationsFilter;
 import com.ubiqube.etsi.mano.v431.model.em.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.v431.model.em.vnffm.FmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v431.model.em.vnffm.FmSubscriptionRequest;
@@ -51,13 +52,13 @@ public class AlarmSubscriptions431Sol003Controller implements AlarmSubscriptions
 
 	@Override
 	public ResponseEntity<List<FmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return faultMngtSubscriptionsFrontController.search(requestParams, x -> mapper.map(x, FmSubscription.class), AlarmSubscriptions431Sol003Controller::makeLinks);
+		return faultMngtSubscriptionsFrontController.search(requestParams, x -> mapper.map(x, FmNotificationsFilter.class), AlarmSubscriptions431Sol003Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest body) {
 		final Subscription req = mapper.map(body);
-		return faultMngtSubscriptionsFrontController.create(req, x -> mapper.map(x, FmSubscription.class), AlarmSubscriptions431Sol003Api.class, AlarmSubscriptions431Sol003Controller::makeLinks, AlarmSubscriptions431Sol003Controller::makeSelf);
+		return faultMngtSubscriptionsFrontController.create(req, x -> mapper.map(x, FmNotificationsFilter.class), AlarmSubscriptions431Sol003Api.class, AlarmSubscriptions431Sol003Controller::makeLinks, AlarmSubscriptions431Sol003Controller::makeSelf);
 	}
 
 	@Override
@@ -67,7 +68,7 @@ public class AlarmSubscriptions431Sol003Controller implements AlarmSubscriptions
 
 	@Override
 	public ResponseEntity<FmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return faultMngtSubscriptionsFrontController.findById(subscriptionId, x -> mapper.map(x, FmSubscription.class), AlarmSubscriptions431Sol003Controller::makeLinks);
+		return faultMngtSubscriptionsFrontController.findById(subscriptionId, x -> mapper.map(x, FmNotificationsFilter.class), AlarmSubscriptions431Sol003Controller::makeLinks);
 	}
 
 	private static void makeLinks(final FmSubscription subscription) {
