@@ -28,6 +28,7 @@ import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackageNsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackageVnfPackage;
 import com.ubiqube.etsi.mano.dao.mano.PkgChecksum;
+import com.ubiqube.etsi.mano.dao.mano.PnfDescriptor;
 import com.ubiqube.etsi.mano.dao.mano.nfvo.NsArchiveArtifactInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.NsdArchiveArtifactInfo;
 import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.NsdInfo;
@@ -39,8 +40,23 @@ import jakarta.annotation.Nullable;
 public interface Nsd431Mapping extends StringToUriMapping {
 
 	@Mapping(target = "links", ignore = true)
-	@Mapping(target = "pnfdInfoIds", ignore = true)
+	@Mapping(target = "pnfdInfoIds", source = "pnfdInfoIds")
 	NsdInfo map(NsdPackage o);
+
+	default List<String> mapPnfDescriptor(final @Nullable Set<PnfDescriptor> value) {
+		if (null == value) {
+			return List.of();
+		}
+		return value.stream().map(this::map).toList();
+	}
+
+	@Nullable
+	default String map(final @Nullable PnfDescriptor o) {
+		if (o == null) {
+			return null;
+		}
+		return o.getPnfdId();
+	}
 
 	List<String> map(Set<NsdPackageVnfPackage> value);
 

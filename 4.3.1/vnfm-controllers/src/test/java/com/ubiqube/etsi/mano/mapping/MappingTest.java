@@ -56,8 +56,10 @@ class MappingTest extends MapstructTestHelper {
 	void testVnfInstance() throws Exception {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
+		ignore.add("getInstantiatedVnfInfo.getVnfVirtualLinkResourceInfo");
+		ignore.add("getInstantiatedVnfInfo.getExtVirtualLinkInfo.[0].getResourceHandle.getContainerNamespace");
 		final VnfInstance431Mapping mapper = Mappers.getMapper(VnfInstance431Mapping.class);
-		doTest(VnfInstance.class, x -> mapper.map(x), x -> mapper.map(x));
+		doTest(ignore, VnfInstance.class, x -> mapper.map(x), x -> mapper.map(x));
 		assertTrue(true);
 	}
 

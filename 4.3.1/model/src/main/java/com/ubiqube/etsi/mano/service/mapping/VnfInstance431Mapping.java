@@ -80,7 +80,7 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "extCpInfo", ignore = true)
 	@Mapping(target = "versionDependency", ignore = true)
 	@Mapping(target = "vnfPkg.id", source = "vnfPkgId")
-	@Mapping(target = "id", ignore = true)
+//	@Mapping(target = "id", ignore = true)
 	VnfInstance map(com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance pkg);
 
 	@Override

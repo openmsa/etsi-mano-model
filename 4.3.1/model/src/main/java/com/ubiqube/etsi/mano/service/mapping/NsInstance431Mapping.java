@@ -80,7 +80,7 @@ public interface NsInstance431Mapping {
 
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nsScaleLevelId", ignore = true)
-	@Mapping(target = "nsScalingAspectId", ignore = true)
+	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo map(ScaleInfo o);
 
 	@Mapping(target = "linkPort", ignore = true)
@@ -108,7 +108,6 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "vipCpInfo", ignore = true)
 	@Mapping(target = "virtualCpInfo", ignore = true)
 	@Mapping(target = "vnfVirtualLinkResourceInfo", ignore = true)
-	@Mapping(target = "vnfcInfo", ignore = true)
 	VnfInstanceInstantiatedVnfInfo map(VnfInstanceInstantiatedVnfInfoDto o);
 
 	@Mapping(target = "scaleToLevel", ignore = true)
@@ -120,7 +119,8 @@ public interface NsInstance431Mapping {
 
 	NsInstanceDto map(NsInstance o);
 
-	@Mapping(target = "aspectId", ignore = true)
+	@Mapping(target = "scaleToLevel", ignore = true)
+	@Mapping(target = "aspectId", source = "nsScalingAspectId")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
@@ -169,6 +169,7 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "zoneId", ignore = true)
 	VirtualStorageResourceInfo map(com.ubiqube.etsi.mano.em.v431.model.vnflcm.VirtualStorageResourceInfo p);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")
 	@Mapping(target = "scaleLevel", source = "nsScaleLevelId")
 	com.ubiqube.etsi.mano.dao.mano.ScaleInfo mapDbScaleInfo(NsScaleInfo o);

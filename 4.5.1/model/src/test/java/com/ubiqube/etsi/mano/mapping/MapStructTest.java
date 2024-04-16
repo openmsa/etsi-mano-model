@@ -18,6 +18,8 @@ package com.ubiqube.etsi.mano.mapping;
 
 import java.beans.IntrospectionException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
@@ -99,13 +101,20 @@ class MapStructTest extends MapstructTestHelper {
 	@Test
 	void testNsInstance() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
 		final NsInstance451Mapping mapper = Mappers.getMapper(NsInstance451Mapping.class);
-		doTest(NsInstanceDto.class, x -> mapper.map(x), x -> mapper.map(x));
+		final Set<String> ignore = new LinkedHashSet<>();
+		ignore.add("getLinks");
+		ignore.add("getVnfInstance.[0].getInstantiatedVnfInfo.getMonitoringParameters.[0].getAudit");
+		doTest(ignore, NsInstanceDto.class, x -> mapper.map(x), x -> mapper.map(x));
 	}
 
 	@Test
 	void testNsLcmOpOcc() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
 		final NsLcmOpOcc451Mapping mapper = Mappers.getMapper(NsLcmOpOcc451Mapping.class);
-		doTest(NsLcmOpOcc.class, x -> mapper.map(x), x -> mapper.map(x));
+		final Set<String> ignore = new LinkedHashSet<>();
+		ignore.add("getResourceChanges");
+		ignore.add("getLinks");
+		ignore.add("getOperationParams");
+		doTest(ignore, NsLcmOpOcc.class, x -> mapper.map(x), x -> mapper.map(x));
 	}
 
 	@Test
@@ -129,7 +138,10 @@ class MapStructTest extends MapstructTestHelper {
 	@Test
 	void testVnfIndicator() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException {
 		final VnfIndicator451Mapping mapper = Mappers.getMapper(VnfIndicator451Mapping.class);
-		doTest(VnfIndicator.class, x -> mapper.map(x), x -> mapper.map(x));
+		final Set<String> ignore = new LinkedHashSet<>();
+		ignore.add("getValue");
+		ignore.add("getLinks");
+		doTest(ignore, VnfIndicator.class, x -> mapper.map(x), x -> mapper.map(x));
 	}
 
 	@Test

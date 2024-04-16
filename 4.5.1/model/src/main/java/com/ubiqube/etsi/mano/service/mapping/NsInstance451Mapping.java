@@ -166,7 +166,7 @@ public interface NsInstance451Mapping {
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	@Mapping(target = "vnfInstanceDescription", ignore = true)
 	@Mapping(target = "vnfInstanceName", ignore = true)
-	@Mapping(target = "vnfPkgId", ignore = true)
+	@Mapping(target = "vnfPkgId", source = "vnfPkgIds")
 	@Mapping(target = "vnfProductName", ignore = true)
 	@Mapping(target = "vnfProvider", ignore = true)
 	@Mapping(target = "vnfSoftwareVersion", ignore = true)
