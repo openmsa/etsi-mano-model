@@ -24,12 +24,12 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOcc;
-import com.ubiqube.etsi.mano.nfvo.v431.model.vnf.VnfPkgInfo;
-import com.ubiqube.etsi.mano.service.mapping.VnfInstance431Mapping;
-import com.ubiqube.etsi.mano.service.mapping.VnfLcmOpOcc431Mapping;
-import com.ubiqube.etsi.mano.service.mapping.VnfPkgInfo431Mapping;
 import com.ubiqube.etsi.mano.test.MapstructTestHelper;
+import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v431.model.nfvo.vnf.VnfPkgInfo;
+import com.ubiqube.etsi.mano.v431.service.mapping.VnfInstance431Mapping;
+import com.ubiqube.etsi.mano.v431.service.mapping.VnfLcmOpOcc431Mapping;
+import com.ubiqube.etsi.mano.v431.service.mapping.VnfPkgInfo431Mapping;
 
 /**
  *
@@ -63,7 +63,7 @@ class MappingTest extends MapstructTestHelper {
 		ignore.add("getInstantiatedVnfInfo.getMaxScaleLevels.[0].getScaleToLevel.getId");
 		ignore.add("getId");
 		final VnfInstance431Mapping mapper = Mappers.getMapper(VnfInstance431Mapping.class);
-		doTest(ignore, com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance.class, x -> mapper.map(x), x -> mapper.map(x));
+		doTest(ignore, com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfInstance.class, x -> mapper.map(x), x -> mapper.map(x));
 		assertTrue(true);
 	}
 
