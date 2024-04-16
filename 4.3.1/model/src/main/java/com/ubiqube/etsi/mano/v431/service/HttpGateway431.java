@@ -98,39 +98,39 @@ public class HttpGateway431 extends AbstractHttpGateway {
 	private final NfvoFactory nfvoFactory;
 	private final VnfmFactory vnfmFactory;
 	private final Grant431Mapping grantMapping;
-	private final FmSubscription431Mapping fmSubscription431Mapping;
-	private final LccnSubscription431Mapping lccnSubscription431Mapping;
-	private final PkgmSubscriptionRequest431Mapping pkgmSubscriptionRequest431Mapping;
-	private final PmJob431Mapping job431Mapping;
-	private final Threshold431Mapping threshold431Mapping;
-	private final VnfIndicator431Mapping vnfIndicator431Mapping;
-	private final VnfIndicatorSubscription431Mapping vnfIndicatorSubscription431Mapping;
-	private final VnfInstanceRequest431Mapping vnfInstanceRequest431Mapping;
-	private final VnfInstantiate431Mapping vnfInstantiate431Mapping;
-	private final VnfInstance431Mapping vnfInstance431Mapping;
-	private final VrQuotaAvailSubscription431Mapping vrQuotaAvailSubscription431Mapping;
-	private final Nsd431Mapping nsd431Mapping;
-	private final VnfPkgInfo431Mapping vnfPkgInfo431Mapping;
-	private final VnfLcmOpOcc431Mapping vnfLcmOpOcc431Mapping;
+	private final FmSubscription431Mapping fmSubscriptionMapping;
+	private final LccnSubscription431Mapping lccnSubscriptionMapping;
+	private final PkgmSubscriptionRequest431Mapping pkgmSubscriptionRequestMapping;
+	private final PmJob431Mapping pmJobMapping;
+	private final Threshold431Mapping thresholdMapping;
+	private final VnfIndicator431Mapping vnfIndicatorMapping;
+	private final VnfIndicatorSubscription431Mapping vnfIndicatorSubscriptionMapping;
+	private final VnfInstanceRequest431Mapping vnfInstanceRequestMapping;
+	private final VnfInstantiate431Mapping vnfInstantiateMapping;
+	private final VnfInstance431Mapping vnfInstanceMapping;
+	private final VrQuotaAvailSubscription431Mapping vrQuotaAvailSubscriptionMapping;
+	private final Nsd431Mapping nsdMapping;
+	private final VnfPkgInfo431Mapping vnfPkgInfoMapping;
+	private final VnfLcmOpOcc431Mapping vnfLcmOpOccMapping;
 
 	public HttpGateway431(final ObjectProvider<VnfmFactory> vnfmFactory, final ObjectProvider<NfvoFactory> nfvoFactory, final Grant431Mapping grantMapping, final FmSubscription431Mapping fmSubscription431Mapping, final LccnSubscription431Mapping lccnSubscription431Mapping, final PkgmSubscriptionRequest431Mapping pkgmSubscriptionRequest431Mapping, final PmJob431Mapping job431Mapping, final Threshold431Mapping threshold431Mapping, final VnfIndicator431Mapping vnfIndicator431Mapping, final VnfIndicatorSubscription431Mapping vnfIndicatorSubscription431Mapping, final VnfInstanceRequest431Mapping vnfInstanceRequest431Mapping, final VnfInstantiate431Mapping vnfInstantiate431Mapping, final VnfInstance431Mapping vnfInstance431Mapping, final VrQuotaAvailSubscription431Mapping vrQuotaAvailSubscription431Mapping, final Nsd431Mapping nsd431Mapping, final VnfPkgInfo431Mapping vnfPkgInfo431Mapping, final VnfLcmOpOcc431Mapping vnfLcmOpOcc431Mapping) {
 		this.vnfmFactory = vnfmFactory.getIfAvailable();
 		this.nfvoFactory = nfvoFactory.getIfAvailable();
 		this.grantMapping = grantMapping;
-		this.fmSubscription431Mapping = fmSubscription431Mapping;
-		this.lccnSubscription431Mapping = lccnSubscription431Mapping;
-		this.pkgmSubscriptionRequest431Mapping = pkgmSubscriptionRequest431Mapping;
-		this.job431Mapping = job431Mapping;
-		this.threshold431Mapping = threshold431Mapping;
-		this.vnfIndicator431Mapping = vnfIndicator431Mapping;
-		this.vnfIndicatorSubscription431Mapping = vnfIndicatorSubscription431Mapping;
-		this.vnfInstanceRequest431Mapping = vnfInstanceRequest431Mapping;
-		this.vnfInstantiate431Mapping = vnfInstantiate431Mapping;
-		this.vnfInstance431Mapping = vnfInstance431Mapping;
-		this.vrQuotaAvailSubscription431Mapping = vrQuotaAvailSubscription431Mapping;
-		this.nsd431Mapping = nsd431Mapping;
-		this.vnfPkgInfo431Mapping = vnfPkgInfo431Mapping;
-		this.vnfLcmOpOcc431Mapping = vnfLcmOpOcc431Mapping;
+		this.fmSubscriptionMapping = fmSubscription431Mapping;
+		this.lccnSubscriptionMapping = lccnSubscription431Mapping;
+		this.pkgmSubscriptionRequestMapping = pkgmSubscriptionRequest431Mapping;
+		this.pmJobMapping = job431Mapping;
+		this.thresholdMapping = threshold431Mapping;
+		this.vnfIndicatorMapping = vnfIndicator431Mapping;
+		this.vnfIndicatorSubscriptionMapping = vnfIndicatorSubscription431Mapping;
+		this.vnfInstanceRequestMapping = vnfInstanceRequest431Mapping;
+		this.vnfInstantiateMapping = vnfInstantiate431Mapping;
+		this.vnfInstanceMapping = vnfInstance431Mapping;
+		this.vrQuotaAvailSubscriptionMapping = vrQuotaAvailSubscription431Mapping;
+		this.nsdMapping = nsd431Mapping;
+		this.vnfPkgInfoMapping = vnfPkgInfo431Mapping;
+		this.vnfLcmOpOccMapping = vnfLcmOpOcc431Mapping;
 	}
 
 	@Override
@@ -294,12 +294,12 @@ public class HttpGateway431 extends AbstractHttpGateway {
 
 	@Override
 	public Object createVnfPmJobRequest(final PmJob pmJob) {
-		return job431Mapping.map(pmJob);
+		return pmJobMapping.map(pmJob);
 	}
 
 	@Override
 	public Object createVnfThresholdRequest(final Threshold reqIn) {
-		return threshold431Mapping.map(reqIn);
+		return thresholdMapping.map(reqIn);
 	}
 
 	@Override
@@ -317,12 +317,12 @@ public class HttpGateway431 extends AbstractHttpGateway {
 
 	@Override
 	public Object createVnfInstanceSubscriptionRequest(final Subscription subscription) {
-		return lccnSubscription431Mapping.map(subscription, LccnSubscriptionRequest.class);
+		return lccnSubscriptionMapping.map(subscription, LccnSubscriptionRequest.class);
 	}
 
 	@Override
 	public Object createVnfIndicatorSubscriptionRequest(final Subscription subscription) {
-		return vnfIndicatorSubscription431Mapping.map(subscription, VnfIndicatorSubscriptionRequest.class);
+		return vnfIndicatorSubscriptionMapping.map(subscription, VnfIndicatorSubscriptionRequest.class);
 	}
 
 	@Override
@@ -340,7 +340,7 @@ public class HttpGateway431 extends AbstractHttpGateway {
 
 	@Override
 	public Object createVnfFmSubscriptionRequest(final Subscription subscription) {
-		return fmSubscription431Mapping.map(subscription, FmSubscription.class);
+		return fmSubscriptionMapping.map(subscription, FmSubscription.class);
 	}
 
 	@Override
@@ -356,7 +356,7 @@ public class HttpGateway431 extends AbstractHttpGateway {
 	// =====
 	@Override
 	public Object getPkgmSubscriptionRequest(final Subscription req) {
-		return pkgmSubscriptionRequest431Mapping.map(req, PkgmSubscriptionRequest.class);
+		return pkgmSubscriptionRequestMapping.map(req, PkgmSubscriptionRequest.class);
 	}
 
 	@Override
@@ -371,57 +371,57 @@ public class HttpGateway431 extends AbstractHttpGateway {
 
 	@Override
 	public Object getVnfInstanceInstantiateRequest(final VnfInstantiate req) {
-		return vnfInstantiate431Mapping.map(req);
+		return vnfInstantiateMapping.map(req);
 	}
 
 	@Override
 	public Object getVnfInstanceScaleToLevelRequest(final VnfScaleToLevelRequest req) {
-		return vnfInstanceRequest431Mapping.map(req);
+		return vnfInstanceRequestMapping.map(req);
 	}
 
 	@Override
 	public Object createVnfInstanceHealRequest(final VnfHealRequest req) {
-		return vnfInstanceRequest431Mapping.map(req);
+		return vnfInstanceRequestMapping.map(req);
 	}
 
 	@Override
 	public Object getVnfInstanceOperateRequest(final VnfOperateRequest req) {
-		return vnfInstanceRequest431Mapping.map(req);
+		return vnfInstanceRequestMapping.map(req);
 	}
 
 	@Override
 	public Object getVnfInstanceChangeFalvourRequest(final ChangeVnfFlavourData req) {
-		return vnfInstanceRequest431Mapping.map(req);
+		return vnfInstanceRequestMapping.map(req);
 	}
 
 	@Override
 	public Object getVnfInstanceChangeExtConnRequest(final ChangeExtVnfConnRequest req) {
-		return vnfInstanceRequest431Mapping.map(req);
+		return vnfInstanceRequestMapping.map(req);
 	}
 
 	@Override
 	public Object mapVrQanSubscriptionRequest(final Subscription o) {
-		return vrQuotaAvailSubscription431Mapping.map(o, Subscription.class);
+		return vrQuotaAvailSubscriptionMapping.map(o, Subscription.class);
 	}
 
 	@Override
 	public Subscription mapVnfFmSubscription(final Object o) {
-		return fmSubscription431Mapping.map((FmSubscription) o);
+		return fmSubscriptionMapping.map((FmSubscription) o);
 	}
 
 	@Override
 	public Subscription mapVrQanSubscriptionSubscription(final Object o) {
-		return vrQuotaAvailSubscription431Mapping.map((VrQuotaAvailSubscription) o);
+		return vrQuotaAvailSubscriptionMapping.map((VrQuotaAvailSubscription) o);
 	}
 
 	@Override
 	public Subscription mapToPkgmSubscription(final Object o) {
-		return pkgmSubscriptionRequest431Mapping.map((PkgmSubscriptionRequest) o);
+		return pkgmSubscriptionRequestMapping.map((PkgmSubscriptionRequest) o);
 	}
 
 	@Override
 	public Subscription mapToVnfIndicatorSubscription(final Object o) {
-		return vnfIndicatorSubscription431Mapping.map((VnfIndicatorSubscription) o);
+		return vnfIndicatorSubscriptionMapping.map((VnfIndicatorSubscription) o);
 	}
 
 	@Override
@@ -431,37 +431,37 @@ public class HttpGateway431 extends AbstractHttpGateway {
 
 	@Override
 	public NsdPackage mapToNsdPackage(final Object o) {
-		return nsd431Mapping.map((NsdInfo) o);
+		return nsdMapping.map((NsdInfo) o);
 	}
 
 	@Override
 	public com.ubiqube.etsi.mano.dao.mano.VnfIndicator mapToVnfIndicator(final Object o) {
-		return vnfIndicator431Mapping.map((VnfIndicator) o);
+		return vnfIndicatorMapping.map((VnfIndicator) o);
 	}
 
 	@Override
 	public com.ubiqube.etsi.mano.dao.mano.VnfInstance mapToVnfInstance(final Object o) {
-		return vnfInstance431Mapping.map((com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfInstance) o);
+		return vnfInstanceMapping.map((com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfInstance) o);
 	}
 
 	@Override
 	public VnfBlueprint mapToVnfBlueprint(final Object o) {
-		return vnfLcmOpOcc431Mapping.map((VnfLcmOpOcc) o);
+		return vnfLcmOpOccMapping.map((VnfLcmOpOcc) o);
 	}
 
 	@Override
 	public VnfPackage mapToVnfPackage(final Object o) {
-		return vnfPkgInfo431Mapping.map((VnfPkgInfo) o);
+		return vnfPkgInfoMapping.map((VnfPkgInfo) o);
 	}
 
 	@Override
 	public Threshold mapToThreshold(final Object o) {
-		return threshold431Mapping.map((com.ubiqube.etsi.mano.v431.model.em.vnfpm.Threshold) o);
+		return thresholdMapping.map((com.ubiqube.etsi.mano.v431.model.em.vnfpm.Threshold) o);
 	}
 
 	@Override
 	public PmJob mapToPmJob(final Object o) {
-		return job431Mapping.map((com.ubiqube.etsi.mano.v431.model.em.vnfpm.PmJob) o);
+		return pmJobMapping.map((com.ubiqube.etsi.mano.v431.model.em.vnfpm.PmJob) o);
 	}
 
 }
