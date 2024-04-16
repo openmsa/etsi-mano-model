@@ -99,5 +99,12 @@ public interface VnfInstantiate431Mapping extends Connectivity431Mapping {
 	@Mapping(target = "vimCapabilities", ignore = true)
 	VimConnectionInformation map(VimConnectionInfo o);
 
+	@Mapping(target = "targetScaleLevelInfo", ignore = true)
+	@Mapping(target = "additionalParams", ignore = true)
+	@Mapping(target = "extensions", ignore = true)
+	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	InstantiateVnfRequest map(VnfInstantiate req);
+
+	@Mapping(target = "vimConnectionId", ignore = true)
+	ExtManagedVirtualLinkData map(ExternalManagedVirtualLink o);
 }

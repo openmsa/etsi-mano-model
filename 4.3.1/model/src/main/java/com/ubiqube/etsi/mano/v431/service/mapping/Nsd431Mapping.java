@@ -44,6 +44,7 @@ public interface Nsd431Mapping extends StringToUriMapping {
 	@Mapping(target = "pnfdInfoIds", source = "pnfdInfoIds")
 	NsdInfo map(NsdPackage o);
 
+	@Nullable
 	default List<String> mapPnfDescriptor(final @Nullable Set<PnfDescriptor> value) {
 		if (null == value) {
 			return List.of();

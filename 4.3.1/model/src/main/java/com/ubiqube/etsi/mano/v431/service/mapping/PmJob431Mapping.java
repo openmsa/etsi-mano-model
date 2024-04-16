@@ -59,7 +59,7 @@ public interface PmJob431Mapping extends BaseSubscription431Mapping {
 		return map(value.iterator().next());
 	}
 
-	PmJobReports map(PmReport next);
+	PmJobReports map(@Nullable PmReport next);
 
 	@Nullable
 	default Set<PmReport> mapToSet(final @Nullable PmJobReports value) {

@@ -36,13 +36,11 @@ import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedStorage;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedVirtualLink;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfLcmResourceChanges;
 import com.ubiqube.etsi.mano.dao.mano.v2.AffectedVipCp;
-import com.ubiqube.etsi.mano.dao.mano.v2.OperationStatusType;
 import com.ubiqube.etsi.mano.dao.mano.v2.PlanOperationType;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.RejectedLcmCoordination;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.VnfLcmCoordination;
-import com.ubiqube.etsi.mano.dao.mano.vnfm.VnfPkgChange;
 import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.AffectedExtLinkPort;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.AffectedVirtualLink;
@@ -50,9 +48,7 @@ import com.ubiqube.etsi.mano.v431.model.em.vnflcm.AffectedVirtualStorage;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.AffectedVnfc;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ExtLinkPortInfo;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ExtVirtualLinkInfo;
-import com.ubiqube.etsi.mano.v431.model.em.vnflcm.LcmOperationStateType;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.LcmOperationType;
-import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ModificationsTriggeredByVnfPkgChange;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfInfoModifications;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfLcmOpOcc;
@@ -65,51 +61,7 @@ import jakarta.annotation.Nullable;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity431Mapping {
 
-	@Mapping(target = "operationState", source = "operationStatus")
-	@Mapping(target = "links", ignore = true)
-	@Mapping(target = "vnfInstanceId", source = "vnfInstance.id")
-	VnfLcmOpOcc map(VnfBlueprint bp);
-
-	@Mapping(target = "vimConnectionInfo", ignore = true)
-	ModificationsTriggeredByVnfPkgChange map(VnfPkgChange o);
-
-	@Nullable
-	default VnfLcmOpOccLcmCoordinations mapToVnfLcmOpOccLcmCoordinations(final @Nullable Set<VnfLcmCoordination> value) {
-		if (null == value) {
-			return null;
-		}
-		return map(value.iterator().next());
-	}
-
-	VnfLcmOpOccLcmCoordinations map(VnfLcmCoordination next);
-
-	@Nullable
-	default VnfLcmOpOccRejectedLcmCoordinations map(final @Nullable Set<RejectedLcmCoordination> value) {
-		if (null == value) {
-			return null;
-		}
-		return map(value.iterator().next());
-	}
-
-	VnfLcmOpOccRejectedLcmCoordinations map(RejectedLcmCoordination next);
-
-	@ValueMapping(source = "PARTIALLY_COMPLETED", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "STARTED", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "SUCCESS", target = MappingConstants.THROW_EXCEPTION)
-	LcmOperationStateType map(OperationStatusType o);
-
-	VnfInfoModifications map(com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications o);
-
-	@Nullable
-	default List<VimConnectionInfo> mapToListVimConnectionInfo(@Nullable final Map<String, VimConnectionInformation> value) {
-		if (null == value) {
-			return null;
-		}
-		return value.entrySet().stream().map(x -> map(x.getValue())).toList();
-	}
-
-	VimConnectionInfo map(VimConnectionInformation value);
-
+	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "automaticInvocation", source = "isAutomaticInvocation")
 	@Mapping(target = "cancelPending", source = "isCancelPending")
@@ -330,6 +282,7 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	@Mapping(target = "networkResource.containerNamespace", source = "containerNamespace")
 	AffectedVirtualLink map(VnfInstantiatedVirtualLink o);
 
+	@Mapping(target = "virtualLinkDescId", source = "vnfVirtualLinkDescId")
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "containerNamespace", source = "networkResource.containerNamespace")
@@ -364,25 +317,25 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	@Mapping(target = "vimConnectionInformation.vimId", ignore = true)
 	VnfInstantiatedVirtualLink map(AffectedVirtualLink o);
 
-	@ValueMapping(source = "SELECT_DEPL_MODS", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "UPDATE", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "MODIFY_INFORMATION", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "CHANGE_EXTERNAL_VNF_CONNECTIVITY", target = MappingConstants.THROW_EXCEPTION)
-	LcmOperationType map(PlanOperationType operation);
-
 	ChangeType map(AffectedVnfc.ChangeTypeEnum en);
 
-	@ValueMapping(source = "LINK_PORT_ADDED", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "LINK_PORT_REMOVED", target = MappingConstants.THROW_EXCEPTION)
-	AffectedVnfc.ChangeTypeEnum mapAffectedVnfc(ChangeType en);
+	@ValueMapping(source = "LINK_PORT_ADDED", target = "ADDED")
+	@ValueMapping(source = "LINK_PORT_REMOVED", target = "REMOVED")
+	AffectedVnfc.ChangeTypeEnum mapAffectedVnfc(ChangeType o);
 
-	@ValueMapping(source = "LINK_PORT_ADDED", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "LINK_PORT_REMOVED", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "LINK_PORT_ADDED", target = "ADDED")
+	@ValueMapping(source = "LINK_PORT_REMOVED", target = "REMOVED")
 	@ValueMapping(source = "TEMPORARY", target = MappingConstants.THROW_EXCEPTION)
-	AffectedExtLinkPort.ChangeTypeEnum mapAffectedExtLinkPort(ChangeType en);
+	AffectedExtLinkPort.ChangeTypeEnum mapAffectedExtLinkPort(ChangeType o);
 
-	@ValueMapping(source = "LINK_PORT_ADDED", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "LINK_PORT_REMOVED", target = MappingConstants.THROW_EXCEPTION)
-	AffectedVirtualStorage.ChangeTypeEnum mapAffectedVirtualStorage(ChangeType en);
+	@ValueMapping(source = "LINK_PORT_ADDED", target = "ADDED")
+	@ValueMapping(source = "LINK_PORT_REMOVED", target = "REMOVED")
+	AffectedVirtualStorage.ChangeTypeEnum mapAffectedVirtualStorage(ChangeType o);
+
+	@ValueMapping(source = "CHANGE_EXTERNAL_VNF_CONNECTIVITY", target = "CHANGE_EXT_CONN")
+	@ValueMapping(source = "MODIFY_INFORMATION", target = "MODIFY_INFO")
+	@ValueMapping(source = "UPDATE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "SELECT_DEPL_MODS", target = MappingConstants.THROW_EXCEPTION)
+	LcmOperationType map(PlanOperationType o);
 
 }

@@ -47,6 +47,7 @@ public interface NsLcmOpOcc431Mapping extends StringToUriMapping {
 	@ValueMapping(source = "VNF", target = MappingConstants.THROW_EXCEPTION)
 	NsLcmOpOccLcmCoordinations.EndpointTypeEnum mapNsLcmOpOccLcmCoordinations(EndpointType o);
 
+	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "automaticInvocation", ignore = true)
 	@Mapping(target = "cancelPending", ignore = true)

@@ -19,8 +19,8 @@ package com.ubiqube.etsi.mano.v431.service;
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
-import com.ubiqube.etsi.mano.v431.service.mapping.VnfLcmOpOcc431Mapping;
 import com.ubiqube.etsi.mano.v431.service.mapping.lcm.VnfLcmOpOccMapper431Mapping;
+import com.ubiqube.etsi.mano.v431.service.mapping.vnflcm.VnfBlueprint431Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
 
 /**
@@ -31,9 +31,9 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
 @Service
 public class VnfLcmClassMaping431 implements VnfLcmClassMaping {
 	private final VnfLcmOpOccMapper431Mapping vnfLcmOpOcc431Mapping;
-	private final VnfLcmOpOcc431Mapping mapper2;
+	private final VnfBlueprint431Mapping mapper2;
 
-	public VnfLcmClassMaping431(final VnfLcmOpOccMapper431Mapping vnfLcmOpOcc431Mapping, final VnfLcmOpOcc431Mapping mapper2) {
+	public VnfLcmClassMaping431(final VnfLcmOpOccMapper431Mapping vnfLcmOpOcc431Mapping, final VnfBlueprint431Mapping mapper2) {
 		this.vnfLcmOpOcc431Mapping = vnfLcmOpOcc431Mapping;
 		this.mapper2 = mapper2;
 	}

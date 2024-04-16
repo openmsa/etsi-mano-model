@@ -99,13 +99,13 @@ public interface NsInstance431Mapping {
 
 	@Nullable
 	default com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.NsCpHandle mapSetDb(final @Nullable Set<NsCpHandle> value) {
-		if (null == value) {
+		if ((null == value) || value.isEmpty()) {
 			return null;
 		}
 		return map(value.iterator().next());
 	}
 
-	com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.NsCpHandle map(NsCpHandle value);
+	com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.NsCpHandle map(@Nullable NsCpHandle value);
 
 	@Mapping(target = "extCpInfo", ignore = true)
 	@Mapping(target = "extManagedVirtualLinkInfo", ignore = true)

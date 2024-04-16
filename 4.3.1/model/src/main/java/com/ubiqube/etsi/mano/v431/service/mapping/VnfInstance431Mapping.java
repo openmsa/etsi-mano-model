@@ -30,7 +30,6 @@ import com.ubiqube.etsi.mano.dao.mano.ExtVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataIpAddressesEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressInfoEntity;
-import com.ubiqube.etsi.mano.dao.mano.LayerProtocolType;
 import com.ubiqube.etsi.mano.dao.mano.NetAttDefResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
 import com.ubiqube.etsi.mano.dao.mano.VirtualCpAddressInfo;
@@ -82,14 +81,6 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "vnfPkg.id", source = "vnfPkgId")
 //	@Mapping(target = "id", ignore = true)
 	VnfInstance map(com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfInstance pkg);
-
-	@Override
-	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "IP_OVER_ETHERNET")
-	CpProtocolInfo.LayerProtocolEnum mapLayerProtocolType(LayerProtocolType en);
-
-	@Override
-	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "IP_OVER_ETHERNET")
-	LayerProtocolType mapLayerProtocolType2(CpProtocolInfo.LayerProtocolEnum en);
 
 	CpProtocolInfoEntity.LayerProtocolEnum map(CpProtocolInfo.LayerProtocolEnum en);
 

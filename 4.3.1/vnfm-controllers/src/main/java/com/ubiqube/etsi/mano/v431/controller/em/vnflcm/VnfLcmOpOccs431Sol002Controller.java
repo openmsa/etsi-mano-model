@@ -29,7 +29,7 @@ import com.ubiqube.etsi.mano.v431.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfLcmOpOccLinks;
 import com.ubiqube.etsi.mano.v431.service.VnfLcmClassMaping431;
-import com.ubiqube.etsi.mano.v431.service.mapping.VnfLcmOpOcc431Mapping;
+import com.ubiqube.etsi.mano.v431.service.mapping.vnflcm.VnfBlueprint431Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 
 import jakarta.validation.Valid;
@@ -38,10 +38,10 @@ import jakarta.validation.constraints.NotNull;
 @RestController
 public class VnfLcmOpOccs431Sol002Controller implements VnfLcmOpOccs431Sol002Api {
 	private final VnfLcmOpOccGenericFrontController frontController;
-	private final VnfLcmOpOcc431Mapping mapper;
+	private final VnfBlueprint431Mapping mapper;
 	private final VnfLcmClassMaping431 vnfLcmClassMaping431;
 
-	public VnfLcmOpOccs431Sol002Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfLcmOpOcc431Mapping mapper, final VnfLcmClassMaping431 vnfLcmClassMaping431) {
+	public VnfLcmOpOccs431Sol002Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfBlueprint431Mapping mapper, final VnfLcmClassMaping431 vnfLcmClassMaping431) {
 		this.frontController = frontController;
 		this.mapper = mapper;
 		this.vnfLcmClassMaping431 = vnfLcmClassMaping431;
