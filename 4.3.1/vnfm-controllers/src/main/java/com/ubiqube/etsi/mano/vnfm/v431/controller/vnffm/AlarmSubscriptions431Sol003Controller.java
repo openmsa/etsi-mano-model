@@ -34,17 +34,17 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v431.service.SubscriptionLinkable431Vnfm;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.service.mapping.subscription.FmSubscription431Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class AlarmSubscriptions431Sol003Controller implements AlarmSubscriptions431Sol003Api, SubscriptionLinkable431Vnfm {
 	private final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController;
-	private final MapperFacade mapper;
+	private final FmSubscription431Mapping mapper;
 
-	public AlarmSubscriptions431Sol003Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController, final MapperFacade mapper) {
+	public AlarmSubscriptions431Sol003Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController, final FmSubscription431Mapping mapper) {
 		this.faultMngtSubscriptionsFrontController = faultMngtSubscriptionsFrontController;
 		this.mapper = mapper;
 	}
@@ -56,7 +56,7 @@ public class AlarmSubscriptions431Sol003Controller implements AlarmSubscriptions
 
 	@Override
 	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
+		final Subscription req = mapper.map(body);
 		return faultMngtSubscriptionsFrontController.create(req, x -> mapper.map(x, FmSubscription.class), AlarmSubscriptions431Sol003Api.class, AlarmSubscriptions431Sol003Controller::makeLinks, AlarmSubscriptions431Sol003Controller::makeSelf);
 	}
 

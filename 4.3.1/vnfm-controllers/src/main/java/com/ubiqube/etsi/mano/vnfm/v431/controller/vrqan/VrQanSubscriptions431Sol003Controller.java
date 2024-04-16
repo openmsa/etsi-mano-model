@@ -33,19 +33,19 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v431.service.SubscriptionLinkable431Vnfm;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.service.mapping.subscription.VrQuotaAvailSubscription431Mapping;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.VrQuotaAvailSubscriptionLinks;
 import com.ubiqube.etsi.mano.vnfm.v431.model.vrqan.VrQuotaAvailSubscriptionRequest;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VrQanSubscriptions431Sol003Controller implements VrQanSubscriptions431Sol003Api, SubscriptionLinkable431Vnfm {
 	private final SubscriptionFrontController subscriptionService;
-	private final MapperFacade mapper;
+	private final VrQuotaAvailSubscription431Mapping mapper;
 
-	public VrQanSubscriptions431Sol003Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
+	public VrQanSubscriptions431Sol003Controller(final SubscriptionFrontController subscriptionService, final VrQuotaAvailSubscription431Mapping mapper) {
 		this.subscriptionService = subscriptionService;
 		this.mapper = mapper;
 	}
@@ -57,7 +57,7 @@ public class VrQanSubscriptions431Sol003Controller implements VrQanSubscriptions
 
 	@Override
 	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsPost(@Valid final VrQuotaAvailSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
+		final Subscription req = mapper.map(body);
 		return subscriptionService.create(req, x -> mapper.map(x, VrQuotaAvailSubscription.class), VrQanSubscriptions431Sol003Api.class, VrQanSubscriptions431Sol003Controller::makeLinks, VrQanSubscriptions431Sol003Controller::makeSelf, ApiVersionType.SOL003_VRQAN);
 	}
 

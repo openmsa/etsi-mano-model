@@ -36,16 +36,16 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v431.service.SubscriptionLinkable431Vnfm;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.service.mapping.subscription.VnfIndicatorSubscription431Mapping;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class IndicatorSubscriptions431Sol003Controller implements IndicatorSubscriptions431Sol003Api, SubscriptionLinkable431Vnfm {
 	private final SubscriptionFrontController subscriptionService;
-	private final MapperFacade mapper;
+	private final VnfIndicatorSubscription431Mapping mapper;
 
-	public IndicatorSubscriptions431Sol003Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
+	public IndicatorSubscriptions431Sol003Controller(final SubscriptionFrontController subscriptionService, final VnfIndicatorSubscription431Mapping mapper) {
 		this.subscriptionService = subscriptionService;
 		this.mapper = mapper;
 	}
@@ -57,7 +57,7 @@ public class IndicatorSubscriptions431Sol003Controller implements IndicatorSubsc
 
 	@Override
 	public ResponseEntity<VnfIndicatorSubscription> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
+		final Subscription req = mapper.map(body);
 		return subscriptionService.create(req, x -> mapper.map(x, VnfIndicatorSubscription.class), IndicatorSubscriptions431Sol003Api.class, IndicatorSubscriptions431Sol003Controller::makeLinks, IndicatorSubscriptions431Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFIND);
 	}
 

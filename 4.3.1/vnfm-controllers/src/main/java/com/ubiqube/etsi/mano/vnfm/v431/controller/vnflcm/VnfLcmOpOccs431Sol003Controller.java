@@ -29,18 +29,18 @@ import com.ubiqube.etsi.mano.em.v431.model.vnflcm.Link;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfLcmOpOccLinks;
 import com.ubiqube.etsi.mano.em.v431.service.VnfLcmClassMaping431;
+import com.ubiqube.etsi.mano.service.mapping.VnfLcmOpOcc431Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnfLcmOpOccs431Sol003Controller implements VnfLcmOpOccs431Sol003Api {
 	private final VnfLcmOpOccGenericFrontController frontController;
-	private final MapperFacade mapper;
+	private final VnfLcmOpOcc431Mapping mapper;
 	private final VnfLcmClassMaping431 vnfLcmClassMaping431;
 
-	public VnfLcmOpOccs431Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final MapperFacade mapper, final VnfLcmClassMaping431 vnfLcmClassMaping431) {
+	public VnfLcmOpOccs431Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfLcmOpOcc431Mapping mapper, final VnfLcmClassMaping431 vnfLcmClassMaping431) {
 		this.frontController = frontController;
 		this.mapper = mapper;
 		this.vnfLcmClassMaping431 = vnfLcmClassMaping431;
@@ -48,7 +48,7 @@ public class VnfLcmOpOccs431Sol003Controller implements VnfLcmOpOccs431Sol003Api
 
 	@Override
 	public ResponseEntity<String> vnfLcmOpOccsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, x -> mapper.map(x, VnfLcmOpOcc.class), VnfLcmOpOccs431Sol003Controller::makeLinks, VnfLcmOpOcc.class);
+		return frontController.search(requestParams, x -> mapper.map(x), VnfLcmOpOccs431Sol003Controller::makeLinks, VnfLcmOpOcc.class);
 	}
 
 	@Override

@@ -30,25 +30,25 @@ import com.ubiqube.etsi.mano.em.v431.model.vnfpm.CreateThresholdRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnfpm.Threshold;
 import com.ubiqube.etsi.mano.em.v431.model.vnfpm.ThresholdLinks;
 import com.ubiqube.etsi.mano.em.v431.model.vnfpm.ThresholdModifications;
+import com.ubiqube.etsi.mano.service.mapping.Threshold431Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfpm.VnfmThresholdFrontController;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class Thresholds431Sol003Controller implements Thresholds431Sol003Api {
 	private final VnfmThresholdFrontController vnfmThresholdFrontController;
-	private final MapperFacade mapper;
+	private final Threshold431Mapping mapper;
 
-	public Thresholds431Sol003Controller(final VnfmThresholdFrontController vnfmThresholdFrontController, final MapperFacade mapper) {
+	public Thresholds431Sol003Controller(final VnfmThresholdFrontController vnfmThresholdFrontController, final Threshold431Mapping mapper) {
 		this.vnfmThresholdFrontController = vnfmThresholdFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Threshold> thresholdsPost(@Valid final CreateThresholdRequest createThresholdRequest) {
-		final com.ubiqube.etsi.mano.dao.mano.pm.Threshold req = mapper.map(createThresholdRequest, com.ubiqube.etsi.mano.dao.mano.pm.Threshold.class);
-		return vnfmThresholdFrontController.thresholdsCreate(req, x -> mapper.map(x, Threshold.class), Thresholds431Sol003Controller::makeLinks, Thresholds431Sol003Controller::getSelfLink);
+		final com.ubiqube.etsi.mano.dao.mano.pm.Threshold req = mapper.map(createThresholdRequest);
+		return vnfmThresholdFrontController.thresholdsCreate(req, x -> mapper.map(x), Thresholds431Sol003Controller::makeLinks, Thresholds431Sol003Controller::getSelfLink);
 	}
 
 	@Override
@@ -58,17 +58,17 @@ public class Thresholds431Sol003Controller implements Thresholds431Sol003Api {
 
 	@Override
 	public ResponseEntity<Threshold> thresholdsThresholdIdGet(final String thresholdId) {
-		return vnfmThresholdFrontController.findById(thresholdId, x -> mapper.map(x, Threshold.class), Thresholds431Sol003Controller::makeLinks);
+		return vnfmThresholdFrontController.findById(thresholdId, x -> mapper.map(x), Thresholds431Sol003Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<String> thresholdsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return vnfmThresholdFrontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, Threshold.class), Thresholds431Sol003Controller::makeLinks, Threshold.class);
+		return vnfmThresholdFrontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x), Thresholds431Sol003Controller::makeLinks, Threshold.class);
 	}
 
 	@Override
 	public ResponseEntity<ThresholdModifications> thresholdsThresholdIdPatch(final String thresholdId, final ThresholdModifications body, final OffsetDateTime ifUnmodifiedSince, final String ifMatch) {
-		return vnfmThresholdFrontController.patch(thresholdId, body, x -> mapper.map(x, ThresholdModifications.class));
+		return vnfmThresholdFrontController.patch(thresholdId, body, x -> mapper.mapToThresholdModifications(x));
 	}
 
 	private static void makeLinks(final Threshold x) {
