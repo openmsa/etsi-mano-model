@@ -22,12 +22,12 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscription;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface LccnSubscription431Mapping extends BaseSubscription431Mapping {
 
-	@Mapping(target = "_links", ignore = true)
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "verbosity", ignore = true)
@@ -41,4 +41,18 @@ public interface LccnSubscription431Mapping extends BaseSubscription431Mapping {
 	@Mapping(target = "subscriptionType", ignore = true)
 	@Mapping(target = "version", ignore = true)
 	Subscription map(LccnSubscription o);
+
+	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
+	@Mapping(target = "verbosity", ignore = true)
+	LccnSubscriptionRequest mapToLccnSubscriptionRequest(Subscription o, @Context final Class<?> clazz);
+
+	@Mapping(target = "api", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "nodeFilter", ignore = true)
+	@Mapping(target = "subscriptionType", ignore = true)
+	@Mapping(target = "version", ignore = true)
+	Subscription map(LccnSubscriptionRequest o);
+
 }

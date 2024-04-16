@@ -25,14 +25,18 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
+import com.ubiqube.etsi.mano.dao.mano.pm.PerformanceReport;
 import com.ubiqube.etsi.mano.dao.mano.pm.PmJob;
 import com.ubiqube.etsi.mano.dao.mano.pm.PmReport;
+import com.ubiqube.etsi.mano.em.v431.model.vnfpm.CreatePmJobRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnfpm.PmJobReports;
+import com.ubiqube.etsi.mano.service.mapping.subscription.BaseSubscription431Mapping;
 
 import jakarta.annotation.Nullable;
+import jakarta.validation.Valid;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PmJob431Mapping extends StringToUriMapping {
+public interface PmJob431Mapping extends BaseSubscription431Mapping {
 
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "remoteMonitoring", ignore = true)
@@ -80,5 +84,16 @@ public interface PmJob431Mapping extends StringToUriMapping {
 		}
 		return offsetDateTime.toLocalDateTime();
 	}
+
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "remoteMonitoring", ignore = true)
+	@Mapping(target = "reports", ignore = true)
+	@Mapping(target = "resolvedSubObjectInstanceIds", ignore = true)
+	@Mapping(target = "subscriptionRemoteId", ignore = true)
+	@Mapping(target = "vimConnectionInformation", ignore = true)
+	PmJob map(@Valid CreatePmJobRequest createPmJobRequest);
+
+	@Mapping(target = "entries", ignore = true)
+	com.ubiqube.etsi.mano.em.v431.model.vnfpm.PerformanceReport map(PerformanceReport x);
 
 }

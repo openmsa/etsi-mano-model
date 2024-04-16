@@ -22,10 +22,18 @@ import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.dao.mano.vnfi.ChangeExtVnfConnRequest;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ChangeExtVnfConnectivityRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.OperateVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleInfo;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleVnfRequest;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleVnfToLevelRequest;
+import com.ubiqube.etsi.mano.model.CommScaleInfo;
+import com.ubiqube.etsi.mano.model.VnfOperateRequest;
+import com.ubiqube.etsi.mano.model.VnfScaleRequest;
+import com.ubiqube.etsi.mano.model.VnfScaleToLevelRequest;
 import com.ubiqube.etsi.mano.service.mapping.Connectivity431Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface ChangeExtVnfConnRequest431Mapping extends Connectivity431Mapping {
+public interface VnfInstanceRequest431Mapping extends Connectivity431Mapping {
 
 	ChangeExtVnfConnRequest map(ChangeExtVnfConnRequest o);
 
@@ -33,4 +41,15 @@ public interface ChangeExtVnfConnRequest431Mapping extends Connectivity431Mappin
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	ChangeExtVnfConnRequest map(ChangeExtVnfConnectivityRequest o);
+
+	VnfOperateRequest map(OperateVnfRequest o);
+
+	@Mapping(target = "instantiationLevelId", ignore = true)
+	@Mapping(target = "scaleInfo", ignore = true)
+	VnfScaleRequest map(ScaleVnfRequest o);
+
+	VnfScaleToLevelRequest map(ScaleVnfToLevelRequest o);
+
+	@Mapping(target = "scaleLevel", source = "scaleToLevel")
+	CommScaleInfo map(ScaleInfo o);
 }
