@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see https://www.gnu.org/licenses/.
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.ubiqube.etsi.mano.v451.service.mapping.subscription;
 
@@ -22,20 +22,34 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.v451.model.em.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.v451.model.nfvo.nsd.NsdmSubscription;
+import com.ubiqube.etsi.mano.v451.model.nfvo.nsd.NsdmSubscriptionRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface LccnSubscriptionRequest451Mapping extends BaseSubscription451Mapping {
+public interface NsdmSubscription451Mapping extends BaseSubscription451Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	LccnSubscriptionRequest map(Subscription o, @Context final Class<?> clazz);
+	@Mapping(target = "links", ignore = true)
+	NsdmSubscription map(Subscription o, @Context final Class<?> clazz);
+
+	@Mapping(target = "verbosity", ignore = true)
+	@Mapping(target = "authentication", ignore = true)
+	@Mapping(target = "api", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
+	@Mapping(target = "nodeFilter", ignore = true)
+	@Mapping(target = "subscriptionType", constant = "NSD")
+	@Mapping(target = "version", ignore = true)
+	Subscription map(NsdmSubscription o);
 
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", ignore = true)
+	@Mapping(target = "subscriptionType", constant = "NSD")
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "version", ignore = true)
-	Subscription map(LccnSubscriptionRequest o);
+	Subscription map(NsdmSubscriptionRequest body);
+
 }

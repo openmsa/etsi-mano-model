@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfLcmOpOccLinks;
-import com.ubiqube.etsi.mano.v451.service.mapping.VnfLcmOpOcc451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.vnflcm.VnfBlueprint451Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 
@@ -37,10 +37,10 @@ import jakarta.validation.Valid;
 @RestController
 public class VnfLcmOpOccs451Sol003Controller implements VnfLcmOpOccs451Sol003Api {
 	private final VnfLcmOpOccGenericFrontController frontController;
-	private final VnfLcmOpOcc451Mapping vnfLcmOpOcc451Mapping;
+	private final VnfBlueprint451Mapping vnfLcmOpOcc451Mapping;
 	private final VnfLcmClassMaping vnfLcmClassMaping451;
 
-	public VnfLcmOpOccs451Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfLcmOpOcc451Mapping vnfLcmOpOcc451Mapping, final VnfLcmClassMaping vnfLcmClassMaping451) {
+	public VnfLcmOpOccs451Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfBlueprint451Mapping vnfLcmOpOcc451Mapping, final VnfLcmClassMaping vnfLcmClassMaping451) {
 		this.frontController = frontController;
 		this.vnfLcmOpOcc451Mapping = vnfLcmOpOcc451Mapping;
 		this.vnfLcmClassMaping451 = vnfLcmClassMaping451;

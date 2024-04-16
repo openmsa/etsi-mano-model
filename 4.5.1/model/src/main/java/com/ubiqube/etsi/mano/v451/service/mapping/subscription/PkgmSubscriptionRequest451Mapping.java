@@ -22,14 +22,16 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnf.PkgmSubscriptionRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface PkgmSubscriptionRequest451Mapping extends BaseSubscription451Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	PkgmSubscriptionRequest map(Subscription o, @Context final Class<?> clazz);
+	PkgmSubscriptionRequest mapRequest(Subscription o, @Context final Class<?> clazz);
 
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
@@ -39,4 +41,7 @@ public interface PkgmSubscriptionRequest451Mapping extends BaseSubscription451Ma
 	@Mapping(target = "version", ignore = true)
 	Subscription map(PkgmSubscriptionRequest o);
 
+	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
+	@Mapping(target = "links", ignore = true)
+	PkgmSubscription map(Subscription o, @Context final Class<?> clazz);
 }

@@ -43,6 +43,7 @@ public interface BaseSubscription451Mapping extends StringToUriMapping {
 	@ValueMapping(source = "TLS_CERT", target = MappingConstants.THROW_EXCEPTION)
 	SubscriptionAuthentication.AuthTypeEnum map(AuthType o);
 
+	@SuppressWarnings("unchecked")
 	@Named("toObject")
 	default <T> T toObject(final List<FilterAttributes> src, @Context final Class<?> clazz) {
 		final DotMapper m = new DotMapper();

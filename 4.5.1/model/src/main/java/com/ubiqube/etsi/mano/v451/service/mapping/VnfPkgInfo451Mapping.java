@@ -114,8 +114,8 @@ public interface VnfPkgInfo451Mapping extends StringToUriMapping {
 	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "DOCKER")
 	VnfPackageSoftwareImageInfo.ContainerFormatEnum map(ContainerFormatType en);
 
-	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "password", ignore = true)
 	@Mapping(target = "username", ignore = true)
+	@Mapping(target = "id", ignore = true)
 	UploadUriParameters map(UploadVnfPackageFromUriRequest body);
 }

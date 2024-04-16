@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v451.service.mapping.vnflcm;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -33,9 +34,12 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.InstantiateVnfRequest;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v451.service.mapping.Connectivity451Mapping;
 
+import jakarta.annotation.Nullable;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VnfInstantiate451Mapping extends Connectivity451Mapping {
 
+	@Mapping(target = "vimConnectionInfo", ignore = true)
 	VnfInstantiate map(InstantiateVnfRequest o);
 
 	@Mapping(target = "extManagedVirtualLinkId", ignore = true)
@@ -97,4 +101,22 @@ public interface VnfInstantiate451Mapping extends Connectivity451Mapping {
 	@Mapping(target = "version", ignore = true)
 	@Mapping(target = "vimCapabilities", ignore = true)
 	VimConnectionInformation map(VimConnectionInfo o);
+
+	@Mapping(target = "selectedDeployableModule", ignore = true)
+	@Mapping(target = "targetScaleLevelInfo", ignore = true)
+	@Mapping(target = "additionalParams", ignore = true)
+	@Mapping(target = "extensions", ignore = true)
+	@Mapping(target = "vnfConfigurableProperties", ignore = true)
+	InstantiateVnfRequest map(VnfInstantiate req);
+ 
+	@Nullable
+	default Map<String,VimConnectionInfo> map(@Nullable List<VimConnectionInformation> value) {
+		if (null == value) return null;
+		return value.stream().collect(Collectors.toMap(x -> x.getVimId(), x -> map(x)));
+		
+	}
+	VimConnectionInfo map (VimConnectionInformation o);
+
+	@Mapping(target = "vimConnectionId", ignore = true)
+	ExtManagedVirtualLinkData map(ExternalManagedVirtualLink o);
 }

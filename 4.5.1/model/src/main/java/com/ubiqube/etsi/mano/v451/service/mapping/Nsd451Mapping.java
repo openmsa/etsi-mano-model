@@ -27,10 +27,13 @@ import org.mapstruct.MappingConstants;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackageNsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackageVnfPackage;
+import com.ubiqube.etsi.mano.dao.mano.PkgChecksum;
+import com.ubiqube.etsi.mano.dao.mano.PnfDescriptor;
 import com.ubiqube.etsi.mano.dao.mano.nfvo.NsArchiveArtifactInfo;
 import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
 import com.ubiqube.etsi.mano.v451.model.nfvo.nsd.NsdArchiveArtifactInfo;
 import com.ubiqube.etsi.mano.v451.model.nfvo.nsd.NsdInfo;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.Checksum;
 
 import jakarta.annotation.Nullable;
 
@@ -38,8 +41,24 @@ import jakarta.annotation.Nullable;
 public interface Nsd451Mapping extends StringToUriMapping {
 
 	@Mapping(target = "links", ignore = true)
-	@Mapping(target = "pnfdInfoIds", ignore = true)
+	@Mapping(target = "pnfdInfoIds", source = "pnfdInfoIds")
 	NsdInfo map(NsdPackage o);
+
+	@Nullable
+	default List<String> mapPnfDescriptor(final @Nullable Set<PnfDescriptor> value) {
+		if (null == value) {
+			return List.of();
+		}
+		return value.stream().map(this::map).toList();
+	}
+
+	@Nullable
+	default String map(final @Nullable PnfDescriptor o) {
+		if (o == null) {
+			return null;
+		}
+		return o.getPnfdId();
+	}
 
 	List<String> map(Set<NsdPackageVnfPackage> value);
 
@@ -80,6 +99,11 @@ public interface Nsd451Mapping extends StringToUriMapping {
 
 	@Mapping(target = "id", ignore = true)
 	NsArchiveArtifactInfo map(NsdArchiveArtifactInfo artifacts);
+
+	@Mapping(target = "md5", ignore = true)
+	@Mapping(target = "sha256", ignore = true)
+	@Mapping(target = "sha512", ignore = true)
+	PkgChecksum map(Checksum o);
 
 	Set<NsdPackageVnfPackage> map(List<String> value);
 

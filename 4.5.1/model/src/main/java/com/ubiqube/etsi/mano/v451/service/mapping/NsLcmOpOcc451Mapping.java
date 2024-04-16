@@ -24,17 +24,19 @@ import org.mapstruct.ValueMapping;
 import com.ubiqube.etsi.mano.dao.mano.v2.OperationStatusType;
 import com.ubiqube.etsi.mano.dao.mano.v2.PlanOperationType;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
+import com.ubiqube.etsi.mano.dao.mano.vnfm.EndpointType;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.RejectedLcmCoordination;
 import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
 import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsLcmOpOcc;
+import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsLcmOpOccLcmCoordinations;
 import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsLcmOpOccRejectedLcmCoordinations;
 import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsLcmOpType;
 import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsLcmOperationStateType;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface NsLcmOpOcc451Mapping extends StringToUriMapping {
-	@Mapping(target = "isAutomaticInvocation", source = "automaticInvocation")
-	@Mapping(target = "isCancelPending", source = "cancelPending")
+	@Mapping(target = "isAutomaticInvocation", ignore = true)
+	@Mapping(target = "isCancelPending", ignore = true)
 	@Mapping(target = "lcmOperationType", source = "operation")
 	@Mapping(target = "nsInstanceId", source = "nsInstance.id")
 	@Mapping(target = "operationState", source = "operationStatus")
@@ -42,11 +44,6 @@ public interface NsLcmOpOcc451Mapping extends StringToUriMapping {
 	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "operationParams", ignore = true)
 	NsLcmOpOcc map(NsBlueprint o);
-
-	@ValueMapping(source = "STARTED", target = "PROCESSING")
-	@ValueMapping(source = "STARTING", target = "PROCESSING")
-	@ValueMapping(source = "SUCCESS", target = "COMPLETED")
-	NsLcmOperationStateType map(OperationStatusType o);
 
 	@ValueMapping(source = "CHANGE_EXTERNAL_VNF_CONNECTIVITY", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "CHANGE_EXT_CONN", target = MappingConstants.THROW_EXCEPTION)
@@ -61,13 +58,25 @@ public interface NsLcmOpOcc451Mapping extends StringToUriMapping {
 	@ValueMapping(source = "SELECT_DEPL_MODS", target = MappingConstants.THROW_EXCEPTION)
 	NsLcmOpType map(PlanOperationType o);
 
+	@ValueMapping(source = "STARTED", target = "PROCESSING")
+	@ValueMapping(source = "STARTING", target = "PROCESSING")
+	@ValueMapping(source = "SUCCESS", target = "COMPLETED")
+	NsLcmOperationStateType map(OperationStatusType o);
+
+	@ValueMapping(source = "VNF", target = MappingConstants.THROW_EXCEPTION)
+	NsLcmOpOccRejectedLcmCoordinations.EndpointTypeEnum map(EndpointType o);
+
+	@ValueMapping(source = "VNF", target = MappingConstants.THROW_EXCEPTION)
+	NsLcmOpOccLcmCoordinations.EndpointTypeEnum mapNsLcmOpOccLcmCoordinations(EndpointType o);
+
+	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "automaticInvocation", source = "isAutomaticInvocation")
-	@Mapping(target = "cancelPending", source = "isCancelPending")
+	@Mapping(target = "automaticInvocation", ignore = true)
+	@Mapping(target = "cancelPending", ignore = true)
 	@Mapping(target = "cirConnectionInfo", ignore = true)
 	@Mapping(target = "mciopConnectionInfo", ignore = true)
-	@Mapping(target = "operation", source = "lcmOperationType")
-	@Mapping(target = "operationStatus", source = "operationState")
+	@Mapping(target = "operation", ignore = true)
+	@Mapping(target = "operationStatus", ignore = true)
 	@Mapping(target = "tenantId", ignore = true)
 	@Mapping(target = "extManagedVirtualLinks", ignore = true)
 	@Mapping(target = "grantsRequestId", ignore = true)

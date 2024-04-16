@@ -16,6 +16,8 @@
  */
 package com.ubiqube.etsi.mano.v451.service.mapping;
 
+import java.util.Set;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -32,6 +34,8 @@ import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantInfo;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantRequest;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.ResourceDefinition;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.SnapshotResourceDefinition;
+
+import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface GrantRequest451Mapping {
@@ -57,6 +61,14 @@ public interface GrantRequest451Mapping {
 	@Mapping(target = "zones", ignore = true)
 	GrantResponse map(GrantRequest o);
 
+	@Nullable
+	default Set<String> map(final @Nullable String value) {
+		if (null == value) {
+			return null;
+		}
+		return Set.of(value);
+	}
+
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	PlacementConstraint map(com.ubiqube.etsi.mano.v451.model.vnfm.grant.PlacementConstraint o);
@@ -77,6 +89,7 @@ public interface GrantRequest451Mapping {
 	@Mapping(target = "zoneId", ignore = true)
 	GrantInformationExt map(ResourceDefinition o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.ScaleInfo o);
 

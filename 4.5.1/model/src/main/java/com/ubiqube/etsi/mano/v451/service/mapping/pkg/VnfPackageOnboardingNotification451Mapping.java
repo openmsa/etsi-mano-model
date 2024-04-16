@@ -17,13 +17,13 @@
 package com.ubiqube.etsi.mano.v451.service.mapping.pkg;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification;
 
 import jakarta.validation.Valid;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VnfPackageOnboardingNotification451Mapping {

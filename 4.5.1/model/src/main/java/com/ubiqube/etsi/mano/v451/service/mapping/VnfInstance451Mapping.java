@@ -30,12 +30,12 @@ import com.ubiqube.etsi.mano.dao.mano.ExtVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataIpAddressesEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressInfoEntity;
-import com.ubiqube.etsi.mano.dao.mano.LayerProtocolType;
 import com.ubiqube.etsi.mano.dao.mano.NetAttDefResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
 import com.ubiqube.etsi.mano.dao.mano.VirtualCpAddressInfo;
 import com.ubiqube.etsi.mano.dao.mano.VirtualStorageResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
+import com.ubiqube.etsi.mano.dao.mano.VnfMonitoringParameter;
 import com.ubiqube.etsi.mano.dao.mano.VnfcResourceInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.VnfcResourceInfoVnfcCpInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.v2.AdditionalServiceInfo;
@@ -49,19 +49,20 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.ExtManagedVirtualLinkInfo;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.IpOverEthernetAddressInfo;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.IpOverEthernetAddressInfoIpAddresses;
+import com.ubiqube.etsi.mano.v451.model.em.vnflcm.MonitoringParameter;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VirtualCpInfo;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfExtCpInfo;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfInstanceInstantiatedVnfInfo;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfcResourceInfo;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfcResourceInfoVnfcCpInfo;
 
-@Mapper
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Connectivity451Mapping {
 
-	@Mapping(target = "certificateInfo", ignore = true)
 	@Mapping(target = "links", ignore = true)
 	com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfInstance map(VnfInstance vnfInst);
 
+	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "blueprints", ignore = true)
 	@Mapping(target = "cirConnectionInfo", ignore = true)
@@ -73,37 +74,24 @@ public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Conn
 	@Mapping(target = "pmJobs", ignore = true)
 	@Mapping(target = "tenantId", ignore = true)
 	@Mapping(target = "version", ignore = true)
-	@Mapping(target = "vimConnectionInfo", source = "vimConnectionInfo")
+//	@Mapping(target = "vimConnectionInfo", source = "vimConnectionInfo")
 	@Mapping(target = "extCpInfo", ignore = true)
 	@Mapping(target = "versionDependency", ignore = true)
-	@Mapping(target = "vnfPkg", ignore = true)
-	@Mapping(target = "id", ignore = true)
+//	@Mapping(target = "id", ignore = true)
 	VnfInstance map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfInstance pkg);
 
-	@Override
-	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "OVER_ETHERNET")
-	CpProtocolInfo.LayerProtocolEnum mapLayerProtocolType(LayerProtocolType en);
-
-	@Override
-	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "IP_OVER_ETHERNET")
-	LayerProtocolType mapLayerProtocolType2(CpProtocolInfo.LayerProtocolEnum en);
-
-	@ValueMapping(source = "OVER_ETHERNET", target = "IP_OVER_ETHERNET")
-	@ValueMapping(source = "FOR_VIRTUAL_CP", target = "IP_FOR_VIRTUAL_CP")
 	CpProtocolInfoEntity.LayerProtocolEnum map(CpProtocolInfo.LayerProtocolEnum en);
 
-	@ValueMapping(source = "IP_OVER_ETHERNET", target = "OVER_ETHERNET")
-	@ValueMapping(source = "IP_FOR_VIRTUAL_CP", target = "FOR_VIRTUAL_CP")
 	@ValueMapping(source = "ETHERNET", target = MappingConstants.THROW_EXCEPTION)
 	CpProtocolInfo.LayerProtocolEnum map(CpProtocolInfoEntity.LayerProtocolEnum en);
 
 	@Mapping(target = "extManagedVirtualLinkInfo", source = "extManagedVirtualLinks")
 	@Mapping(target = "monitoringParameters", source = "vnfMonitoringParameter")
-	@Mapping(target = "selectedDeployableModule", ignore = true)
-	@Mapping(target = "vnfPaasServiceInfo", ignore = true)
 	@Mapping(target = "vnfState", source = "state")
 	@Mapping(target = "vnfVirtualLinkResourceInfo", source = "virtualLinkResourceInfo")
 	VnfInstanceInstantiatedVnfInfo map(BlueprintParameters bp);
+
+	com.ubiqube.etsi.mano.v451.model.em.vnflcm.ScaleInfo map(ScaleInfo o);
 
 	@Mapping(target = "networkResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
 	@Mapping(target = "networkResource.vimLevelResourceType", source = "vimLevelResourceType")
@@ -124,16 +112,21 @@ public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Conn
 
 	VnfcResourceInfo map(VnfcResourceInfoEntity vnfcResourceInfo);
 
+	@Mapping(target = "certificateContentId", ignore = true)
 	@Mapping(target = "zoneId", ignore = true)
 	VnfcResourceInfoEntity map(VnfcResourceInfo vnfcResourceInfo);
+
+	@Mapping(target = "certificateContentId", ignore = true)
+	VnfcResourceInfoVnfcCpInfoEntity map(VnfcResourceInfoVnfcCpInfo o);
 
 	VnfcResourceInfoVnfcCpInfo map(VnfcResourceInfoVnfcCpInfoEntity vnfcCpInfo);
 
 	@Mapping(target = "id", ignore = true)
 	CpProtocolInfoEntity map(CpProtocolInfo cpi);
 
+	@Mapping(target = "vnfcInfo", ignore = true)
 	@Mapping(target = "aspectId", ignore = true)
-	@Mapping(target = "extManagedVirtualLinks", ignore = true)
+	@Mapping(target = "extManagedVirtualLinks", source = "extManagedVirtualLinkInfo")
 	@Mapping(target = "instantiationLevelId", ignore = true)
 	@Mapping(target = "nsHeal", ignore = true)
 	@Mapping(target = "nsScale", ignore = true)
@@ -141,11 +134,23 @@ public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Conn
 	@Mapping(target = "nsStepStatus", ignore = true)
 	@Mapping(target = "numberOfSteps", ignore = true)
 	@Mapping(target = "scaleType", ignore = true)
-	@Mapping(target = "state", ignore = true)
+	@Mapping(target = "state", source = "vnfState")
 	@Mapping(target = "updData", ignore = true)
 	@Mapping(target = "virtualLinkResourceInfo", ignore = true)
-	@Mapping(target = "vnfMonitoringParameter", ignore = true)
+	@Mapping(target = "vnfMonitoringParameter", source = "monitoringParameters")
 	BlueprintParameters map(VnfInstanceInstantiatedVnfInfo viivi);
+
+	@Mapping(target = "extManagedMultisiteVirtualLinkId", ignore = true)
+	@Mapping(target = "grants", ignore = true)
+	@Mapping(target = ".", source = "networkResource")
+	@Mapping(target = "vnfInstance", ignore = true)
+	ExtManagedVirtualLinkDataEntity map(ExtManagedVirtualLinkInfo o);
+
+	@Mapping(target = "audit", ignore = true)
+	VnfMonitoringParameter map(MonitoringParameter o);
+
+	@Mapping(target = "certificateContentId", ignore = true)
+	ExtCpInfo map(VnfExtCpInfo o);
 
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "extCps", ignore = true)
@@ -187,6 +192,7 @@ public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Conn
 	@Mapping(target = "vnfExtCpConfiguration", ignore = true)
 	CpProtocolDataEntity mapToCpProtocolDataEntity(CpProtocolInfo cpi);
 
+	@Mapping(target = "certificateContentId", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	McioInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.McioInfo mi);
 
@@ -195,6 +201,8 @@ public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Conn
 	@Mapping(target = "id", ignore = true)
 	NetAttDefResourceInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.NetAttDefResourceInfo nadr);
 
+//	@Mapping(target = "scaleLevel", source = "scaleToLevel")
+	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.ScaleInfo si);
 
@@ -243,10 +251,8 @@ public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Conn
 	@Mapping(target = "type", ignore = true)
 	IpOverEthernetAddressDataEntity mapToIpOverEthernetAddressDataEntity(IpOverEthernetAddressInfo ipo);
 
-	VirtualCpAddressInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.VirtualCpAddressInfo vcp);
-
 	@Mapping(target = "addressPoolName", ignore = true)
-	com.ubiqube.etsi.mano.v451.model.em.vnflcm.VirtualCpAddressInfo mapToVirtualCpAddressInfo(VirtualCpAddressInfo vcp);
+	VirtualCpAddressInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.VirtualCpAddressInfo vcp);
 
 	@Mapping(target = "isDynamic", ignore = true)
 	IpOverEthernetAddressInfoIpAddresses mapToIpOverEthernetAddressInfoIpAddresses(IpOverEthernetAddressDataIpAddressesEntity o);

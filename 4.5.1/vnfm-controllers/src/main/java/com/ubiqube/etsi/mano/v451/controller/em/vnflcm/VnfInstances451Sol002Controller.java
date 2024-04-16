@@ -51,10 +51,8 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfInstanceLinks;
 import com.ubiqube.etsi.mano.v451.service.mapping.VnfInstance451Mapping;
-import com.ubiqube.etsi.mano.v451.service.mapping.vnflcm.ChangeExtVnfConnRequest451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.vnflcm.VnfInstanceRequest451Mapping;
 import com.ubiqube.etsi.mano.v451.service.mapping.vnflcm.VnfInstantiate451Mapping;
-import com.ubiqube.etsi.mano.v451.service.mapping.vnflcm.VnfOperateRequest451Mapping;
-import com.ubiqube.etsi.mano.v451.service.mapping.vnflcm.VnfScaleRequest451Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfInstanceGenericFrontController;
 
 import jakarta.validation.Valid;
@@ -62,19 +60,15 @@ import jakarta.validation.Valid;
 @RestController
 public class VnfInstances451Sol002Controller implements VnfInstances451Sol002Api {
 	private final VnfInstanceGenericFrontController frontController;
-	private final ChangeExtVnfConnRequest451Mapping changeExtVnfConnRequestMapping;
 	private final VnfInstance451Mapping vnfInstanceMapping;
 	private final VnfInstantiate451Mapping vnfInstantiateMapping;
-	private final VnfOperateRequest451Mapping vnfOperateRequestMapping;
-	private final VnfScaleRequest451Mapping vnfScaleRequestMapping;
+	private final VnfInstanceRequest451Mapping vnfOperateRequestMapping;
 
-	public VnfInstances451Sol002Controller(final VnfInstanceGenericFrontController frontController, final ChangeExtVnfConnRequest451Mapping changeExtVnfConnRequestMapping, final VnfInstance451Mapping vnfInstanceMapping, final VnfInstantiate451Mapping vnfInstantiateMapping, final VnfOperateRequest451Mapping vnfOperateRequestMapping, final VnfScaleRequest451Mapping vnfScaleRequestMapping) {
+	public VnfInstances451Sol002Controller(final VnfInstanceGenericFrontController frontController, final VnfInstance451Mapping vnfInstanceMapping, final VnfInstantiate451Mapping vnfInstantiateMapping, final VnfInstanceRequest451Mapping vnfOperateRequestMapping) {
 		this.frontController = frontController;
-		this.changeExtVnfConnRequestMapping = changeExtVnfConnRequestMapping;
 		this.vnfInstanceMapping = vnfInstanceMapping;
 		this.vnfInstantiateMapping = vnfInstantiateMapping;
 		this.vnfOperateRequestMapping = vnfOperateRequestMapping;
-		this.vnfScaleRequestMapping = vnfScaleRequestMapping;
 	}
 
 	@Override
@@ -90,7 +84,7 @@ public class VnfInstances451Sol002Controller implements VnfInstances451Sol002Api
 
 	@Override
 	public ResponseEntity<Void> vnfInstancesVnfInstanceIdChangeExtConnPost(final String vnfInstanceId, @Valid final ChangeExtVnfConnectivityRequest body) {
-		final ChangeExtVnfConnRequest req = changeExtVnfConnRequestMapping.map(body);
+		final ChangeExtVnfConnRequest req = vnfOperateRequestMapping.map(body);
 		return frontController.changeExtConn(getSafeUUID(vnfInstanceId), req, VnfInstances451Sol002Controller::getLcmLink);
 	}
 
@@ -148,13 +142,13 @@ public class VnfInstances451Sol002Controller implements VnfInstances451Sol002Api
 
 	@Override
 	public ResponseEntity<Void> vnfInstancesVnfInstanceIdScalePost(final String vnfInstanceId, @Valid final ScaleVnfRequest body) {
-		final VnfScaleRequest req = vnfScaleRequestMapping.map(body);
+		final VnfScaleRequest req = vnfOperateRequestMapping.map(body);
 		return frontController.scale(getSafeUUID(vnfInstanceId), req, VnfInstances451Sol002Controller::getLcmLink);
 	}
 
 	@Override
 	public ResponseEntity<Void> vnfInstancesVnfInstanceIdScaleToLevelPost(final String vnfInstanceId, @Valid final ScaleVnfToLevelRequest body) {
-		final VnfScaleToLevelRequest req = vnfScaleRequestMapping.map(body);
+		final VnfScaleToLevelRequest req = vnfOperateRequestMapping.map(body);
 		return frontController.scaleToLevel(getSafeUUID(vnfInstanceId), req, VnfInstances451Sol002Controller::getLcmLink);
 	}
 

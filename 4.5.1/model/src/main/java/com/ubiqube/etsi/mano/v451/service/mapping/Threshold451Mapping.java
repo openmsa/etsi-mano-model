@@ -26,8 +26,11 @@ import org.mapstruct.MappingConstants;
 import com.ubiqube.etsi.mano.dao.mano.pm.MonResource;
 import com.ubiqube.etsi.mano.dao.mano.pm.Threshold;
 import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.CreateThresholdRequest;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.ThresholdModifications;
 
 import jakarta.annotation.Nullable;
+import jakarta.validation.Valid;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface Threshold451Mapping extends StringToUriMapping {
@@ -59,4 +62,12 @@ public interface Threshold451Mapping extends StringToUriMapping {
 		}
 		return value.getResource();
 	}
+
+	@Mapping(target = "authentication", ignore = true)
+	ThresholdModifications mapToThresholdModifications(Threshold o);
+
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "remoteResource", ignore = true)
+	@Mapping(target = "subscription", ignore = true)
+	Threshold map(@Valid CreateThresholdRequest createThresholdRequest);
 }

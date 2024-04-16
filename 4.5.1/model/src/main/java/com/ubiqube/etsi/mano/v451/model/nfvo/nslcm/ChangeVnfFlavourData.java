@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v451.model.nfvo.nslcm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.validation.annotation.Validated;
@@ -26,8 +27,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.CertificateConfigurationData;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.ExtVirtualLinkData;
-
-import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
@@ -69,7 +68,7 @@ public class ChangeVnfFlavourData implements OneOfChangeVnfFlavourData {
 	private String newFlavourId = null;
 
 	@JsonProperty("instantiationLevelId")
-	private Object instantiationLevelId = null;
+	private String instantiationLevelId = null;
 
 	@JsonProperty("targetScaleLevelInfo")
 	@Valid
@@ -139,7 +138,7 @@ public class ChangeVnfFlavourData implements OneOfChangeVnfFlavourData {
 		this.newFlavourId = newFlavourId;
 	}
 
-	public ChangeVnfFlavourData instantiationLevelId(final Object instantiationLevelId) {
+	public ChangeVnfFlavourData instantiationLevelId(final String instantiationLevelId) {
 		this.instantiationLevelId = instantiationLevelId;
 		return this;
 	}
@@ -152,11 +151,11 @@ public class ChangeVnfFlavourData implements OneOfChangeVnfFlavourData {
 	 **/
 	@Schema(description = "Identifier of the instantiation level of the deployment flavour to be instantiated. See note 3. ")
 
-	public Object getInstantiationLevelId() {
+	public String getInstantiationLevelId() {
 		return instantiationLevelId;
 	}
 
-	public void setInstantiationLevelId(final Object instantiationLevelId) {
+	public void setInstantiationLevelId(final String instantiationLevelId) {
 		this.instantiationLevelId = instantiationLevelId;
 	}
 

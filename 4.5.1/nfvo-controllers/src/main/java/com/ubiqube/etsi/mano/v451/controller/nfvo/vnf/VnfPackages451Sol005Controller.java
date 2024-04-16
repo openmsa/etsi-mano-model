@@ -34,7 +34,6 @@ import com.ubiqube.etsi.mano.v451.model.nfvo.vnf.UploadVnfPackageFromUriRequest;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnf.VnfPkgInfoLinks;
 import com.ubiqube.etsi.mano.v451.service.mapping.VnfPkgInfo451Mapping;
-import com.ubiqube.etsi.mano.v451.service.mapping.pkg.UploadVnfPackageFromUriRequest451Mapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -43,12 +42,10 @@ import jakarta.validation.Valid;
 public class VnfPackages451Sol005Controller implements VnfPackages451Sol005Api {
 	private final VnfPackageFrontController frontController;
 	private final VnfPkgInfo451Mapping vnfPkgInfoMapping;
-	private final UploadVnfPackageFromUriRequest451Mapping uploadVnfPackageFromUriRequestMapping;
 
-	public VnfPackages451Sol005Controller(final VnfPackageFrontController frontController, final VnfPkgInfo451Mapping vnfPkgInfoMapping, final UploadVnfPackageFromUriRequest451Mapping uploadVnfPackageFromUriRequestMapping) {
+	public VnfPackages451Sol005Controller(final VnfPackageFrontController frontController, final VnfPkgInfo451Mapping vnfPkgInfoMapping) {
 		this.frontController = frontController;
 		this.vnfPkgInfoMapping = vnfPkgInfoMapping;
-		this.uploadVnfPackageFromUriRequestMapping = uploadVnfPackageFromUriRequestMapping;
 	}
 
 	@Override
@@ -108,7 +105,7 @@ public class VnfPackages451Sol005Controller implements VnfPackages451Sol005Api {
 
 	@Override
 	public ResponseEntity<Void> vnfPackagesVnfPkgIdPackageContentUploadFromUriPost(final UploadVnfPackageFromUriRequest body, final String vnfPkgId, final String accept) {
-		return frontController.uploadFromUri(uploadVnfPackageFromUriRequestMapping.map(body), getSafeUUID(vnfPkgId), accept);
+		return frontController.uploadFromUri(vnfPkgInfoMapping.map(body), getSafeUUID(vnfPkgId), accept);
 	}
 
 	@Override

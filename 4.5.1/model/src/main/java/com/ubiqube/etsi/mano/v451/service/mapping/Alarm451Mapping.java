@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.dao.mano.AdditionalResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.alarm.Alarms;
 import com.ubiqube.etsi.mano.v451.model.em.vnffm.Alarm;
+import com.ubiqube.etsi.mano.v451.model.em.vnffm.AlarmModifications;
 import com.ubiqube.etsi.mano.v451.model.em.vnffm.FaultyResourceType;
 
 import jakarta.annotation.Nullable;
@@ -67,4 +68,6 @@ public interface Alarm451Mapping {
 	FaultyResourceType map(ResourceTypeEnum o);
 
 	ResourceTypeEnum map(FaultyResourceType o);
+
+	AlarmModifications mapAlarmModifications(Alarms o);
 }

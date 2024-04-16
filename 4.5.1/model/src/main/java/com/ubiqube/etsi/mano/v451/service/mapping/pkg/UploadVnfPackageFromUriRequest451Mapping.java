@@ -19,19 +19,18 @@ package com.ubiqube.etsi.mano.v451.service.mapping.pkg;
 import java.net.URI;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.dao.mano.pkg.UploadUriParameters;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnf.UploadVnfPackageFromUriRequest;
 
-import org.mapstruct.Mapping;
-
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UploadVnfPackageFromUriRequest451Mapping {
 
-	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "password", ignore = true)
 	@Mapping(target = "username", ignore = true)
+	@Mapping(target = "id", ignore = true)
 	UploadUriParameters map(UploadVnfPackageFromUriRequest o);
 
 	default URI toURI(final String string) {

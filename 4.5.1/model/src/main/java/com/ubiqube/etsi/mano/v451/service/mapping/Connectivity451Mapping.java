@@ -48,21 +48,16 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfExtCpData;
 @Mapper
 public interface Connectivity451Mapping {
 
-	@ValueMapping(source = "IP_OVER_ETHERNET", target = "OVER_ETHERNET")
-	@ValueMapping(source = "IP_FOR_VIRTUAL_CP", target = "FOR_VIRTUAL_CP")
 	@ValueMapping(source = "ETHERNET", target = MappingConstants.THROW_EXCEPTION)
 	CpProtocolInfo.LayerProtocolEnum mapLayerProtocolType(LayerProtocolType en);
 
-	@ValueMapping(source = "OVER_ETHERNET", target = "IP_OVER_ETHERNET")
 	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "IP_OVER_ETHERNET")
 	LayerProtocolType mapLayerProtocolType2(CpProtocolInfo.LayerProtocolEnum en);
 
-	@ValueMapping(source = "OVER_ETHERNET", target = "IP_OVER_ETHERNET")
 	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "IP_OVER_ETHERNET")
 	LayerProtocolType map(CpProtocolData.LayerProtocolEnum lpe);
 
-	@ValueMapping(source = "IP_OVER_ETHERNET", target = "OVER_ETHERNET")
-	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "OVER_ETHERNET")
+	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "IP_OVER_ETHERNET")
 	CpProtocolData.LayerProtocolEnum map(LayerProtocolType lpt);
 
 	@Mapping(target = "containerNamespace", ignore = true)
@@ -131,6 +126,9 @@ public interface Connectivity451Mapping {
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "vnfExtCpConfiguration", ignore = true)
 	CpProtocolDataEntity map(CpProtocolData cpProtocolData);
+
+	@Mapping(target = "addressPoolName", ignore = true)
+	VirtualCpAddressInfo map(VirtualCpAddressData o);
 
 	@Mapping(target = "addressRange", ignore = true)
 	@Mapping(target = "addresses", ignore = true)

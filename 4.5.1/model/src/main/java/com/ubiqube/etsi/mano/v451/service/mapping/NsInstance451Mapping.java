@@ -16,11 +16,17 @@
  */
 package com.ubiqube.etsi.mano.v451.service.mapping;
 
+import java.util.Set;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.dao.mano.AdditionalResourceInfo;
+import com.ubiqube.etsi.mano.dao.mano.CpProtocolInfoEntity;
+import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataIpAddressesEntity;
+import com.ubiqube.etsi.mano.dao.mano.NsdInstance;
 import com.ubiqube.etsi.mano.dao.mano.VirtualStorageResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.VnfMonitoringParameter;
 import com.ubiqube.etsi.mano.dao.mano.VnfScaleInfo;
@@ -33,6 +39,8 @@ import com.ubiqube.etsi.mano.dao.mano.nfvo.NsVnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.nsd.NsCpHandle;
 import com.ubiqube.etsi.mano.dao.mano.nsd.VnffgDescriptor;
 import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.NsScaleInfo;
+import com.ubiqube.etsi.mano.v451.model.em.vnflcm.CpProtocolInfo;
+import com.ubiqube.etsi.mano.v451.model.em.vnflcm.IpOverEthernetAddressInfoIpAddresses;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.ScaleInfo;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfInstanceInstantiatedVnfInfo;
@@ -41,13 +49,15 @@ import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsInstance;
 import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsVirtualLinkInfo;
 import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.VnffgInfo;
 
+import jakarta.annotation.Nullable;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface NsInstance451Mapping {
-	@Mapping(target = "additionalAffinityOrAntiAffinityRule", ignore = true)
 	@Mapping(target = "dataFlowMirroringInfo", ignore = true)
+	@Mapping(target = "nsPaasServiceInfo", ignore = true)
+	@Mapping(target = "additionalAffinityOrAntiAffinityRule", ignore = true)
 	@Mapping(target = "monitoringParameter", ignore = true)
 	@Mapping(target = "nestedNsInstanceId", ignore = true)
-	@Mapping(target = "nsPaasServiceInfo", ignore = true)
 	@Mapping(target = "pnfInfo", ignore = true)
 	@Mapping(target = "priority", ignore = true)
 	@Mapping(target = "sapInfo", ignore = true)
@@ -70,17 +80,18 @@ public interface NsInstance451Mapping {
 	NsScaleInfo mapNsScaleInfo(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
 	@Mapping(target = "certificateInfo", ignore = true)
-	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "vimConnectionInfo", ignore = true)
+	@Mapping(target = "links", ignore = true)
 	VnfInstance map(VnfInstanceDto o);
 
+	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")
-	@Mapping(target = "scaleLevel", source = "nsScaleLevelId")
 	ScaleInfo map(NsScaleInfo o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nsScaleLevelId", ignore = true)
-	@Mapping(target = "nsScalingAspectId", ignore = true)
+	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo map(ScaleInfo o);
 
 	@Mapping(target = "linkPort", ignore = true)
@@ -91,16 +102,26 @@ public interface NsInstance451Mapping {
 	@Mapping(target = "vnfInstanceId", ignore = true)
 	VnffgInfo map(VnffgDescriptor o);
 
+	@Nullable
+	default com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsCpHandle mapSetDb(final @Nullable Set<NsCpHandle> value) {
+		if ((null == value) || value.isEmpty()) {
+			return null;
+		}
+		return map(value.iterator().next());
+	}
+
+	com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsCpHandle map(@Nullable NsCpHandle value);
+
+	@Mapping(target = "selectedDeployableModule", ignore = true)
+	@Mapping(target = "vnfPaasServiceInfo", ignore = true)
+	@Mapping(target = "vnfcInfo", ignore = true)
 	@Mapping(target = "extCpInfo", ignore = true)
 	@Mapping(target = "extManagedVirtualLinkInfo", ignore = true)
 	@Mapping(target = "extVirtualLinkInfo", ignore = true)
 	@Mapping(target = "mcioInfo", ignore = true)
-	@Mapping(target = "selectedDeployableModule", ignore = true)
 	@Mapping(target = "vipCpInfo", ignore = true)
 	@Mapping(target = "virtualCpInfo", ignore = true)
-	@Mapping(target = "vnfPaasServiceInfo", ignore = true)
 	@Mapping(target = "vnfVirtualLinkResourceInfo", ignore = true)
-	@Mapping(target = "vnfcInfo", ignore = true)
 	VnfInstanceInstantiatedVnfInfo map(VnfInstanceInstantiatedVnfInfoDto o);
 
 	@Mapping(target = "scaleLevel", ignore = true)
@@ -113,7 +134,8 @@ public interface NsInstance451Mapping {
 
 	NsInstanceDto map(NsInstance o);
 
-	@Mapping(target = "aspectId", ignore = true)
+	@Mapping(target = "scaleToLevel", ignore = true)
+	@Mapping(target = "aspectId", source = "nsScalingAspectId")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
@@ -144,6 +166,14 @@ public interface NsInstance451Mapping {
 	@Mapping(target = "vnfProfileId", ignore = true)
 	VnffgDescriptor map(VnffgInfo o);
 
+	@Nullable
+	default Set<NsCpHandle> mapSet(final @Nullable com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsCpHandle value) {
+		if (null == value) {
+			return Set.of();
+		}
+		return Set.of(map(value));
+	}
+
 	@Mapping(target = "id", ignore = true)
 	NsCpHandle map(com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsCpHandle o);
 
@@ -154,6 +184,7 @@ public interface NsInstance451Mapping {
 	@Mapping(target = "zoneId", ignore = true)
 	VirtualStorageResourceInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.VirtualStorageResourceInfo p);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")
 	@Mapping(target = "scaleLevel", source = "nsScaleLevelId")
 	com.ubiqube.etsi.mano.dao.mano.ScaleInfo mapDbScaleInfo(NsScaleInfo o);
@@ -166,11 +197,30 @@ public interface NsInstance451Mapping {
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	@Mapping(target = "vnfInstanceDescription", ignore = true)
 	@Mapping(target = "vnfInstanceName", ignore = true)
-	@Mapping(target = "vnfPkgId", source = "vnfPkgIds")
+	@Mapping(target = "vnfPkgId", ignore = true)
 	@Mapping(target = "vnfProductName", ignore = true)
 	@Mapping(target = "vnfProvider", ignore = true)
 	@Mapping(target = "vnfSoftwareVersion", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "vnfdVersion", ignore = true)
 	VnfInstanceDto map(NsVnfInstance o);
+
+	@Mapping(target = "dataFlowMirroringInfo", ignore = true)
+	@Mapping(target = "nsPaasServiceInfo", ignore = true)
+	@Mapping(target = "flavourId", ignore = true)
+	@Mapping(target = "links", ignore = true)
+	@Mapping(target = "nestedNsInstanceId", ignore = true)
+	@Mapping(target = "nsState", ignore = true)
+	@Mapping(target = "nsdId", ignore = true)
+	@Mapping(target = "nsdInfoId", ignore = true)
+	@Mapping(target = "pnfInfo", ignore = true)
+	@Mapping(target = "versionDependency", ignore = true)
+	@Mapping(target = "virtualLinkInfo", ignore = true)
+	NsInstance map(NsdInstance o);
+
+	@Mapping(target = "isDynamic", ignore = true)
+	IpOverEthernetAddressInfoIpAddresses map(IpOverEthernetAddressDataIpAddressesEntity o);
+
+	@ValueMapping(source = "ETHERNET", target = MappingConstants.THROW_EXCEPTION)
+	CpProtocolInfo.LayerProtocolEnum map(CpProtocolInfoEntity.LayerProtocolEnum o);
 }

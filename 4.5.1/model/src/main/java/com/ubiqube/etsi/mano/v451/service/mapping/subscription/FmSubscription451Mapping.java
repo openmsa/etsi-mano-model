@@ -22,20 +22,34 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v451.model.em.vnffm.FmNotificationsFilter;
 import com.ubiqube.etsi.mano.v451.model.em.vnffm.FmSubscription;
+import com.ubiqube.etsi.mano.v451.model.em.vnffm.FmSubscriptionRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface FmSubscription451Mapping extends BaseSubscription451Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	FmSubscription map(Subscription o, @Context final Class<?> obj);
+	FmSubscription map(Subscription o, @Context final Class<FmNotificationsFilter> obj);
 
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", ignore = true)
+	@Mapping(target = "subscriptionType", constant = "VNFFM")
 	@Mapping(target = "version", ignore = true)
 	Subscription map(FmSubscription o);
+
+	@Mapping(target = "api", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "nodeFilter", ignore = true)
+	@Mapping(target = "subscriptionType", constant = "VNFFM")
+	@Mapping(target = "verbosity", ignore = true)
+	@Mapping(target = "version", ignore = true)
+	Subscription map(FmSubscriptionRequest body);
+
 }
