@@ -19,14 +19,12 @@ package com.ubiqube.etsi.mano.nfvo.v431.model.nslcm;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
 
 /**
  * Defines parameters for BGP routing. It shall only be present if the
@@ -37,7 +35,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public class SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting {
 	@JsonProperty("bgpAs")
-	private Object bgpAs = null;
+	private int bgpAs;
 
 	@JsonProperty("bgpNeighbour")
 	private String bgpNeighbour = null;
@@ -45,7 +43,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting {
 	@JsonProperty("bgpAdditionalParam")
 	private Map<String, String> bgpAdditionalParam = null;
 
-	public SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting bgpAs(final Object bgpAs) {
+	public SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting bgpAs(final int bgpAs) {
 		this.bgpAs = bgpAs;
 		return this;
 	}
@@ -57,13 +55,11 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting {
 	 * @return bgpAs
 	 **/
 	@Schema(required = true, description = "The Autonomous System (AS) identification applicable to the BGP routing info entry. ")
-	@NotNull
-
-	public Object getBgpAs() {
+	public int getBgpAs() {
 		return bgpAs;
 	}
 
-	public void setBgpAs(final Object bgpAs) {
+	public void setBgpAs(final int bgpAs) {
 		this.bgpAs = bgpAs;
 	}
 

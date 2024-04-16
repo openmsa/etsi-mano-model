@@ -65,7 +65,7 @@ public class ChangeVnfFlavourData implements OneOfChangeVnfFlavourData {
 	private String newFlavourId = null;
 
 	@JsonProperty("instantiationLevelId")
-	private Object instantiationLevelId = null;
+	private String instantiationLevelId = null;
 
 	@JsonProperty("targetScaleLevelInfo")
 	@Valid
@@ -128,7 +128,7 @@ public class ChangeVnfFlavourData implements OneOfChangeVnfFlavourData {
 		this.newFlavourId = newFlavourId;
 	}
 
-	public ChangeVnfFlavourData instantiationLevelId(final Object instantiationLevelId) {
+	public ChangeVnfFlavourData instantiationLevelId(final String instantiationLevelId) {
 		this.instantiationLevelId = instantiationLevelId;
 		return this;
 	}
@@ -141,11 +141,11 @@ public class ChangeVnfFlavourData implements OneOfChangeVnfFlavourData {
 	 **/
 	@Schema(description = "Identifier of the instantiation level of the deployment flavour to be instantiated. See note 3. ")
 
-	public Object getInstantiationLevelId() {
+	public String getInstantiationLevelId() {
 		return instantiationLevelId;
 	}
 
-	public void setInstantiationLevelId(final Object instantiationLevelId) {
+	public void setInstantiationLevelId(final String instantiationLevelId) {
 		this.instantiationLevelId = instantiationLevelId;
 	}
 

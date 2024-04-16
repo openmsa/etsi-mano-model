@@ -16,19 +16,16 @@
  */
 package com.ubiqube.etsi.mano.nfvo.v431.model.nslcm;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type specifies additional parameters on a per-nested NS instance basis.
@@ -51,7 +48,7 @@ public class ParamsForNestedNs {
 
 	@JsonProperty("additionalParam")
 	@Valid
-	private List<Map<String, String>> additionalParam = null;
+	private Map<String, String> additionalParam = null;
 
 	@JsonProperty("overridingNsdId")
 	private String overridingNsdId = null;
@@ -80,16 +77,8 @@ public class ParamsForNestedNs {
 		this.nsProfileId = nsProfileId;
 	}
 
-	public ParamsForNestedNs additionalParam(final List<Map<String, String>> additionalParam) {
+	public ParamsForNestedNs additionalParam(final Map<String, String> additionalParam) {
 		this.additionalParam = additionalParam;
-		return this;
-	}
-
-	public ParamsForNestedNs addAdditionalParamItem(final Map<String, String> additionalParamItem) {
-		if (this.additionalParam == null) {
-			this.additionalParam = new ArrayList<>();
-		}
-		this.additionalParam.add(additionalParamItem);
 		return this;
 	}
 
@@ -100,11 +89,11 @@ public class ParamsForNestedNs {
 	 **/
 	@Schema(description = "Additional parameters that are to be applied on a per nested NS instance. ")
 	@Valid
-	public List<Map<String, String>> getAdditionalParam() {
+	public Map<String, String> getAdditionalParam() {
 		return additionalParam;
 	}
 
-	public void setAdditionalParam(final List<Map<String, String>> additionalParam) {
+	public void setAdditionalParam(final Map<String, String> additionalParam) {
 		this.additionalParam = additionalParam;
 	}
 
