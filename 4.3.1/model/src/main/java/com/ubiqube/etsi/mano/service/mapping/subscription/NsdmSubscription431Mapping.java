@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see https://www.gnu.org/licenses/.
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.ubiqube.etsi.mano.service.mapping.subscription;
 
@@ -21,36 +21,35 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscription;
-import com.ubiqube.etsi.mano.em.v431.model.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.NsdmSubscription;
+import com.ubiqube.etsi.mano.nfvo.v431.model.nsd.NsdmSubscriptionRequest;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface LccnSubscription431Mapping extends BaseSubscription431Mapping {
+public interface NsdmSubscription431Mapping extends BaseSubscription431Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	LccnSubscription map(Subscription o, @Context final Class<?> clazz);
+	NsdmSubscription map(Subscription o, @Context final Class<?> clazz);
 
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", constant = "VNFLCM")
+	@Mapping(target = "subscriptionType", constant = "NSD")
 	@Mapping(target = "version", ignore = true)
-	Subscription map(LccnSubscription o);
-
-	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	LccnSubscriptionRequest mapToLccnSubscriptionRequest(Subscription o, @Context final Class<?> clazz);
+	Subscription map(NsdmSubscription o);
 
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", constant = "VNFLCM")
+	@Mapping(target = "subscriptionType", constant = "NSD")
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "version", ignore = true)
-	Subscription map(LccnSubscriptionRequest o);
+	Subscription map(NsdmSubscriptionRequest body);
 
 }

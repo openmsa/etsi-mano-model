@@ -30,10 +30,12 @@ import com.ubiqube.etsi.mano.dao.mano.StorageAsset;
 import com.ubiqube.etsi.mano.dao.mano.ZoneGroupInformation;
 import com.ubiqube.etsi.mano.dao.mano.ZoneInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.ConstraintResourceRef;
+import com.ubiqube.etsi.mano.dao.mano.grant.PlacementConstraint;
 import com.ubiqube.etsi.mano.dao.mano.grant.SnapshotResourceDefinitionEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.VimConstraint;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.Grant;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantInfo;
+import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantRequest;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.GrantVimAssets;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.ResourceDefinition;
 import com.ubiqube.etsi.mano.vnfm.v431.model.grant.SnapshotResourceDefinition;
@@ -131,4 +133,29 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	GrantInformationExt map(GrantInfo gi);
 
 	GrantInfo map(GrantInformationExt gie);
+
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "automaticInvocation", ignore = true)
+	@Mapping(target = "available", ignore = true)
+	@Mapping(target = "cirConnectionInfo", ignore = true)
+	@Mapping(target = "computeReservationId", ignore = true)
+	@Mapping(target = "error", ignore = true)
+	@Mapping(target = "extManagedVirtualLinks", ignore = true)
+	@Mapping(target = "extVirtualLinks", ignore = true)
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "instanceLink", source = "links.vnfInstance.href")
+	@Mapping(target = "lcmLink", source = "links.vnfLcmOpOcc.href")
+	@Mapping(target = "mciopRepositoryInfo", ignore = true)
+	@Mapping(target = "networkReservationId", ignore = true)
+	@Mapping(target = "paasAssets", ignore = true)
+	@Mapping(target = "storageReservationId", ignore = true)
+	@Mapping(target = "vimAssets", ignore = true)
+	@Mapping(target = "vimConnections", ignore = true)
+	@Mapping(target = "zoneGroups", ignore = true)
+	@Mapping(target = "zones", ignore = true)
+	GrantResponse map(GrantRequest body);
+
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "id", ignore = true)
+	PlacementConstraint map(com.ubiqube.etsi.mano.vnfm.v431.model.grant.PlacementConstraint o);
 }

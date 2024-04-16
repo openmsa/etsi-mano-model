@@ -21,8 +21,12 @@ import java.util.Set;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.dao.mano.AdditionalResourceInfo;
+import com.ubiqube.etsi.mano.dao.mano.CpProtocolInfoEntity;
+import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataIpAddressesEntity;
+import com.ubiqube.etsi.mano.dao.mano.NsdInstance;
 import com.ubiqube.etsi.mano.dao.mano.VirtualStorageResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.VnfMonitoringParameter;
 import com.ubiqube.etsi.mano.dao.mano.VnfScaleInfo;
@@ -35,6 +39,8 @@ import com.ubiqube.etsi.mano.dao.mano.nfvo.NsVnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.nsd.NsCpHandle;
 import com.ubiqube.etsi.mano.dao.mano.nsd.VnffgDescriptor;
 import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.NsScaleInfo;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.CpProtocolInfo;
+import com.ubiqube.etsi.mano.em.v431.model.vnflcm.IpOverEthernetAddressInfoIpAddresses;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.ScaleInfo;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.em.v431.model.vnflcm.VnfInstanceInstantiatedVnfInfo;
@@ -189,4 +195,21 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "vnfdVersion", ignore = true)
 	VnfInstanceDto map(NsVnfInstance o);
+
+	@Mapping(target = "flavourId", ignore = true)
+	@Mapping(target = "links", ignore = true)
+	@Mapping(target = "nestedNsInstanceId", ignore = true)
+	@Mapping(target = "nsState", ignore = true)
+	@Mapping(target = "nsdId", ignore = true)
+	@Mapping(target = "nsdInfoId", ignore = true)
+	@Mapping(target = "pnfInfo", ignore = true)
+	@Mapping(target = "versionDependency", ignore = true)
+	@Mapping(target = "virtualLinkInfo", ignore = true)
+	NsInstance map(NsdInstance o);
+
+	@Mapping(target = "isDynamic", ignore = true)
+	IpOverEthernetAddressInfoIpAddresses map(IpOverEthernetAddressDataIpAddressesEntity o);
+
+	@ValueMapping(source = "ETHERNET", target = MappingConstants.THROW_EXCEPTION)
+	CpProtocolInfo.LayerProtocolEnum map(CpProtocolInfoEntity.LayerProtocolEnum o);
 }
