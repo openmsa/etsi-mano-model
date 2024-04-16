@@ -23,6 +23,8 @@ import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.MethodDescriptor;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URI;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.ArrayDeque;
@@ -49,6 +51,8 @@ public class AssertNull {
 		complex.add(Boolean.class);
 		complex.add(OffsetDateTime.class);
 		complex.add(LocalDateTime.class);
+		complex.add(URI.class);
+		complex.add(URL.class);
 	}
 
 	protected <T> void assertFullEqual(final T orig, final T tgt, final Set<String> ignore, final Deque<String> stack, final List<String> errors) throws IntrospectionException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
@@ -59,12 +63,17 @@ public class AssertNull {
 			if (!canHandle(methodName, stack, ignore)) {
 				continue;
 			}
+			if (null == tgt) {
+				errors.add("" + methodName + prettyStack(stack));
+				continue;
+			}
 			LOG.debug(" + {}", methodName);
 			stack.push(methodName);
 			final Object src = methodDescriptor.getMethod().invoke(orig);
 			final Object dst = methodDescriptor.getMethod().invoke(tgt);
 			if (null == src) {
 				LOG.warn("  - {} is null", methodName);
+				stack.pop();
 				continue;
 			}
 			if (src instanceof final List<?> sl) {
@@ -111,6 +120,7 @@ public class AssertNull {
 
 	private static void assertNotNull(final Object dl, final String string, final List<String> errors) {
 		if (dl == null) {
+			LOG.warn(string);
 			errors.add(string);
 		}
 	}
