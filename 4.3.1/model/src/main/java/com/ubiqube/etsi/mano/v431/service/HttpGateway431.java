@@ -50,12 +50,14 @@ import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.utils.Version;
+import com.ubiqube.etsi.mano.v431.model.em.vnffm.FmNotificationsFilter;
 import com.ubiqube.etsi.mano.v431.model.em.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.v431.model.em.vnfind.VnfIndicator;
+import com.ubiqube.etsi.mano.v431.model.em.vnfind.VnfIndicatorNotificationsFilter;
 import com.ubiqube.etsi.mano.v431.model.em.vnfind.VnfIndicatorSubscription;
 import com.ubiqube.etsi.mano.v431.model.em.vnfind.VnfIndicatorSubscriptionRequest;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.CreateVnfRequest;
-import com.ubiqube.etsi.mano.v431.model.em.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.v431.model.em.vnflcm.LifecycleChangeNotificationsFilter;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ScaleVnfRequest;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.TerminateVnfRequest;
@@ -64,12 +66,14 @@ import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v431.model.nfvo.nsd.CreateNsdInfoRequest;
 import com.ubiqube.etsi.mano.v431.model.nfvo.nsd.NsdInfo;
 import com.ubiqube.etsi.mano.v431.model.nfvo.vnf.CreateVnfPkgInfoRequest;
+import com.ubiqube.etsi.mano.v431.model.nfvo.vnf.PkgmNotificationsFilter;
 import com.ubiqube.etsi.mano.v431.model.nfvo.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.v431.model.nfvo.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v431.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v431.model.vnfm.grant.Grant;
 import com.ubiqube.etsi.mano.v431.model.vnfm.grant.GrantRequest;
 import com.ubiqube.etsi.mano.v431.model.vnfm.grant.GrantRequestLinks;
+import com.ubiqube.etsi.mano.v431.model.vnfm.vrqan.VrQuotaAvailNotificationsFilter;
 import com.ubiqube.etsi.mano.v431.model.vnfm.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.v431.service.mapping.Grant431Mapping;
 import com.ubiqube.etsi.mano.v431.service.mapping.Nsd431Mapping;
@@ -317,12 +321,12 @@ public class HttpGateway431 extends AbstractHttpGateway {
 
 	@Override
 	public Object createVnfInstanceSubscriptionRequest(final Subscription subscription) {
-		return lccnSubscriptionMapping.map(subscription, LccnSubscriptionRequest.class);
+		return lccnSubscriptionMapping.map(subscription, LifecycleChangeNotificationsFilter.class);
 	}
 
 	@Override
 	public Object createVnfIndicatorSubscriptionRequest(final Subscription subscription) {
-		return vnfIndicatorSubscriptionMapping.map(subscription, VnfIndicatorSubscriptionRequest.class);
+		return vnfIndicatorSubscriptionMapping.map(subscription, VnfIndicatorNotificationsFilter.class);
 	}
 
 	@Override
@@ -340,7 +344,7 @@ public class HttpGateway431 extends AbstractHttpGateway {
 
 	@Override
 	public Object createVnfFmSubscriptionRequest(final Subscription subscription) {
-		return fmSubscriptionMapping.map(subscription, FmSubscription.class);
+		return fmSubscriptionMapping.map(subscription, FmNotificationsFilter.class);
 	}
 
 	@Override
@@ -356,7 +360,7 @@ public class HttpGateway431 extends AbstractHttpGateway {
 	// =====
 	@Override
 	public Object getPkgmSubscriptionRequest(final Subscription req) {
-		return pkgmSubscriptionRequestMapping.map(req, PkgmSubscriptionRequest.class);
+		return pkgmSubscriptionRequestMapping.map(req, PkgmNotificationsFilter.class);
 	}
 
 	@Override
@@ -401,7 +405,7 @@ public class HttpGateway431 extends AbstractHttpGateway {
 
 	@Override
 	public Object mapVrQanSubscriptionRequest(final Subscription o) {
-		return vrQuotaAvailSubscriptionMapping.map(o, Subscription.class);
+		return vrQuotaAvailSubscriptionMapping.map(o, VrQuotaAvailNotificationsFilter.class);
 	}
 
 	@Override

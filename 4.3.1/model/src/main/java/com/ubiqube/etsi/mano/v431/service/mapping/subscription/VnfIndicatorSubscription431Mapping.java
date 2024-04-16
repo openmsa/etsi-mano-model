@@ -22,6 +22,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v431.model.em.vnfind.VnfIndicatorNotificationsFilter;
 import com.ubiqube.etsi.mano.v431.model.em.vnfind.VnfIndicatorSubscription;
 import com.ubiqube.etsi.mano.v431.model.em.vnfind.VnfIndicatorSubscriptionRequest;
 
@@ -30,7 +31,7 @@ public interface VnfIndicatorSubscription431Mapping extends BaseSubscription431M
 
 	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	VnfIndicatorSubscription map(Subscription o, @Context final Class<?> clazz);
+	VnfIndicatorSubscription map(Subscription o, @Context final Class<VnfIndicatorNotificationsFilter> clazz);
 
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "verbosity", ignore = true)

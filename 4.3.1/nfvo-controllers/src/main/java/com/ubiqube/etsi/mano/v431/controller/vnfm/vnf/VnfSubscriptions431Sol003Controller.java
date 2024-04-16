@@ -60,7 +60,7 @@ public class VnfSubscriptions431Sol003Controller implements VnfSubscriptions431S
 	 */
 	@Override
 	public ResponseEntity<List<PkgmSubscription>> subscriptionsGet(final String filter, final String nextpageOpaqueMarker) {
-		return vnfSubscriptionSol03FrontController.search(filter, x -> mapper.map(x, PkgmSubscription.class), VnfSubscriptions431Sol005Controller::makeLinks);
+		return vnfSubscriptionSol03FrontController.search(filter, x -> mapper.map(x, PkgmNotificationsFilter.class), VnfSubscriptions431Sol005Controller::makeLinks);
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class VnfSubscriptions431Sol003Controller implements VnfSubscriptions431S
 	 */
 	@Override
 	public ResponseEntity<PkgmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return vnfSubscriptionSol03FrontController.findById(subscriptionId, x -> mapper.map(x, PkgmSubscription.class), VnfSubscriptions431Sol005Controller::makeLinks);
+		return vnfSubscriptionSol03FrontController.findById(subscriptionId, x -> mapper.map(x, PkgmNotificationsFilter.class), VnfSubscriptions431Sol005Controller::makeLinks);
 	}
 
 	public static void makeLinks(final PkgmSubscription pkgmSubscription) {

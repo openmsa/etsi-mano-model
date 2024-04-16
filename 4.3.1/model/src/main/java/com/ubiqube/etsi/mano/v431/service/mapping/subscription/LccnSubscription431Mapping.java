@@ -24,13 +24,14 @@ import org.mapstruct.MappingConstants;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.v431.model.em.vnflcm.LifecycleChangeNotificationsFilter;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface LccnSubscription431Mapping extends BaseSubscription431Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	LccnSubscription map(Subscription o, @Context final Class<?> clazz);
+	LccnSubscription map(Subscription o, @Context final Class<LifecycleChangeNotificationsFilter> clazz);
 
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "api", ignore = true)
@@ -42,7 +43,7 @@ public interface LccnSubscription431Mapping extends BaseSubscription431Mapping {
 	Subscription map(LccnSubscription o);
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	LccnSubscriptionRequest mapToLccnSubscriptionRequest(Subscription o, @Context final Class<?> clazz);
+	LccnSubscriptionRequest mapToLccnSubscriptionRequest(Subscription o, @Context final Class<LifecycleChangeNotificationsFilter> clazz);
 
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)

@@ -58,7 +58,7 @@ public class VnfSubscriptions431Sol005Controller implements VnfSubscriptions431S
 	 */
 	@Override
 	public ResponseEntity<List<PkgmSubscription>> subscriptionsGet(final String filter, final String nextpageOpaqueMarker) {
-		return vnfSubscriptionSol03FrontController.search(filter, x -> mapper.map(x, PkgmSubscription.class), VnfSubscriptions431Sol005Controller::makeLinks);
+		return vnfSubscriptionSol03FrontController.search(filter, x -> mapper.map(x, PkgmNotificationsFilter.class), VnfSubscriptions431Sol005Controller::makeLinks);
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class VnfSubscriptions431Sol005Controller implements VnfSubscriptions431S
 	@Override
 	public ResponseEntity<PkgmSubscription> subscriptionsPost(final PkgmSubscriptionRequest body) {
 		final Subscription req = mapper.map(body);
-		return vnfSubscriptionSol03FrontController.create(req, VnfSubscriptions431Sol005Api.class, x -> mapper.map(x, PkgmSubscription.class), VnfSubscriptions431Sol005Controller::makeLinks);
+		return vnfSubscriptionSol03FrontController.create(req, VnfSubscriptions431Sol005Api.class, x -> mapper.map(x, PkgmNotificationsFilter.class), VnfSubscriptions431Sol005Controller::makeLinks);
 	}
 
 	/**

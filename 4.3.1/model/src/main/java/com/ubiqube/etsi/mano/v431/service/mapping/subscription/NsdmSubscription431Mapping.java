@@ -22,6 +22,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v431.model.nfvo.nsd.NsdmNotificationsFilter;
 import com.ubiqube.etsi.mano.v431.model.nfvo.nsd.NsdmSubscription;
 import com.ubiqube.etsi.mano.v431.model.nfvo.nsd.NsdmSubscriptionRequest;
 
@@ -30,7 +31,7 @@ public interface NsdmSubscription431Mapping extends BaseSubscription431Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	NsdmSubscription map(Subscription o, @Context final Class<?> clazz);
+	NsdmSubscription map(Subscription o, @Context final Class<NsdmNotificationsFilter> clazz);
 
 	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "authentication", ignore = true)

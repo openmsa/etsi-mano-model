@@ -22,6 +22,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v431.model.em.vnffm.FmNotificationsFilter;
 import com.ubiqube.etsi.mano.v431.model.em.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.v431.model.em.vnffm.FmSubscriptionRequest;
 
@@ -30,7 +31,7 @@ public interface FmSubscription431Mapping extends BaseSubscription431Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	FmSubscription map(Subscription o, @Context final Class<?> obj);
+	FmSubscription map(Subscription o, @Context final Class<FmNotificationsFilter> obj);
 
 	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "authentication", ignore = true)
