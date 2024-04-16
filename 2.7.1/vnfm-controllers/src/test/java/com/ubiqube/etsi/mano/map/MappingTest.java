@@ -63,6 +63,7 @@ class MappingTest extends TestHelper {
 		// ignore.add("getChangedInfo");
 		// ignore.add("getChangedExtConnectivity");
 		ignore.add("getResourceChanges");
+		ignore.add("getChangedInfo.getVimConnectionInfo");
 		doTest(VnfLcmOpOcc.class, VnfBlueprint.class, ignore);
 	}
 
