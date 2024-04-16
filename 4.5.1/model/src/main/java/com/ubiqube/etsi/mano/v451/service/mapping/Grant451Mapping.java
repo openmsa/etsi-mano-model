@@ -36,10 +36,14 @@ import com.ubiqube.etsi.mano.dao.mano.grant.ConstraintResourceRef;
 import com.ubiqube.etsi.mano.dao.mano.grant.PlacementConstraint;
 import com.ubiqube.etsi.mano.dao.mano.grant.SnapshotResourceDefinitionEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.VimConstraint;
+import com.ubiqube.etsi.mano.dao.mano.paas.PaasAsset;
+import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
+import com.ubiqube.etsi.mano.v451.model.em.vnflcm.PaasServiceHandle;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.Grant;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantInfo;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantRequest;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantVimAssets;
+import com.ubiqube.etsi.mano.v451.model.vnfm.grant.PaasAssets;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.ResourceDefinition;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.SnapshotResourceDefinition;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.ZoneGroupInfo;
@@ -88,7 +92,6 @@ public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivi
 	@Mapping(target = "vimConnectionInfo", source = "vimConnections")
 	Grant map(GrantResponse grantResponse);
 
-	@Mapping(target = "paasAssets", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "automaticInvocation", ignore = true)
 	@Mapping(target = "available", ignore = true)
@@ -108,6 +111,19 @@ public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivi
 	@Mapping(target = "vimConstraints", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	GrantResponse map(Grant grant);
+
+	@Mapping(target = "id", ignore = true)
+	PaasAsset map(PaasAssets o);
+
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "cnfInfo", ignore = true)
+	@Mapping(target = "jujuInfo", ignore = true)
+	@Mapping(target = "tenantId", ignore = true)
+	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "vimCapabilities", ignore = true)
+	@Mapping(target = "vimId", ignore = true)
+	@Mapping(target = "vimType", constant = "PAAS")
+	VimConnectionInformation map(PaasServiceHandle o);
 
 	GrantVimAssetsEntity map(GrantVimAssets gva);
 
