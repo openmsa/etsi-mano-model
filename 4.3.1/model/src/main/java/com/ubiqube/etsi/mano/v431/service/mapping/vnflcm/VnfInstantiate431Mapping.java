@@ -98,4 +98,6 @@ public interface VnfInstantiate431Mapping extends Connectivity431Mapping {
 	@Mapping(target = "version", ignore = true)
 	@Mapping(target = "vimCapabilities", ignore = true)
 	VimConnectionInformation map(VimConnectionInfo o);
+
+	InstantiateVnfRequest map(VnfInstantiate req);
 }

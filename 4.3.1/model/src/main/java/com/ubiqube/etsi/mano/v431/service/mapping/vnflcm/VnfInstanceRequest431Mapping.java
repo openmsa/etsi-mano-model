@@ -20,12 +20,15 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
+import com.ubiqube.etsi.mano.dao.mano.nsd.upd.ChangeVnfFlavourData;
 import com.ubiqube.etsi.mano.dao.mano.vnfi.ChangeExtVnfConnRequest;
 import com.ubiqube.etsi.mano.model.CommScaleInfo;
+import com.ubiqube.etsi.mano.model.VnfHealRequest;
 import com.ubiqube.etsi.mano.model.VnfOperateRequest;
 import com.ubiqube.etsi.mano.model.VnfScaleRequest;
 import com.ubiqube.etsi.mano.model.VnfScaleToLevelRequest;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ChangeExtVnfConnectivityRequest;
+import com.ubiqube.etsi.mano.v431.model.em.vnflcm.HealVnfRequest;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.OperateVnfRequest;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ScaleInfo;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ScaleVnfRequest;
@@ -52,4 +55,21 @@ public interface VnfInstanceRequest431Mapping extends Connectivity431Mapping {
 
 	@Mapping(target = "scaleLevel", source = "scaleToLevel")
 	CommScaleInfo map(ScaleInfo o);
+
+	ScaleVnfToLevelRequest map(VnfScaleToLevelRequest req);
+
+	@Mapping(target = "scaleToLevel", ignore = true)
+	@Mapping(target = "vnfdId", ignore = true)
+	ScaleInfo map(CommScaleInfo o);
+
+	@Mapping(target = "vnfcInstanceId", ignore = true)
+	HealVnfRequest map(VnfHealRequest req);
+
+	@Mapping(target = "vnfcInstanceId", ignore = true)
+	OperateVnfRequest map(VnfOperateRequest req);
+
+	@Mapping(target = "extManagedVirtualLinks", ignore = true)
+	@Mapping(target = "extVirtualLinks", ignore = true)
+	@Mapping(target = "targetScaleLevelInfo", ignore = true)
+	com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.ChangeVnfFlavourData map(ChangeVnfFlavourData req);
 }

@@ -21,10 +21,13 @@ import java.util.Set;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
+import com.ubiqube.etsi.mano.dao.mano.GrantInterface;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.GrantVimAssetsEntity;
+import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
 import com.ubiqube.etsi.mano.dao.mano.StorageAsset;
 import com.ubiqube.etsi.mano.dao.mano.ZoneGroupInformation;
@@ -158,4 +161,62 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	PlacementConstraint map(com.ubiqube.etsi.mano.v431.model.vnfm.grant.PlacementConstraint o);
+
+	@Mapping(target = "additionalParams", ignore = true)
+	@Mapping(target = "dstVnfdId", ignore = true)
+	@Mapping(target = "flavourId", ignore = true)
+	@Mapping(target = "instantiationLevelId", ignore = true)
+	@Mapping(target = "isAutomaticInvocation", ignore = true)
+	@Mapping(target = "links", ignore = true)
+	@Mapping(target = "operation", ignore = true)
+	@Mapping(target = "placementConstraints", ignore = true)
+	@Mapping(target = "targetScaleLevelInfo", ignore = true)
+	@Mapping(target = "vimConstraints", ignore = true)
+	@Mapping(target = "vnfInstanceId", ignore = true)
+	@Mapping(target = "vnfLcmOpOccId", ignore = true)
+	@Mapping(target = "vnfdId", ignore = true)
+	GrantRequest map(GrantInterface grant);
+
+	@Mapping(target = "resource", source = ".")
+	ResourceDefinition mapToResourceDefinition(GrantInformationExt o);
+
+	@Nullable
+	default String mapString(final @Nullable Set<String> value) {
+		if ((null == value) || value.isEmpty()) {
+			return null;
+		}
+		return value.iterator().next();
+	}
+
+	@ValueMapping(source = "AFFINITY_RULE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "DNSHOST", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "DNSZONE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "HELM", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "MCIOP_USER", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "MONITORING", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "NETWORK", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "NSD_CREATE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "NSD_EXTRACTOR", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "NSD_INSTANTIATE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "OS_CONTAINER", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "OS_CONTAINER_DEPLOYABLE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "OS_CONTAINER_INFO", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "PAASSERVICE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "SECURITY_GROUP", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "SUBNETWORK", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "TF_NETWORK_POLICY", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "TF_PORT_TUPLE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "TF_PT_LINK", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "TF_SERVICE_INSTANCE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "TF_SERVICE_TEMPLATE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "VNFFG", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "VNFFG_LOADBALANCER", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "VNFFG_PORT_PAIR", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "VNFFG_POST", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "VNF_CREATE", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "VNF_EXTCP", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "VNF_EXTRACTOR", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "VNF_INDICATOR", target = MappingConstants.THROW_EXCEPTION)
+	@ValueMapping(source = "VNF_INSTANTIATE", target = MappingConstants.THROW_EXCEPTION)
+	ResourceDefinition.TypeEnum map(ResourceTypeEnum o);
 }
