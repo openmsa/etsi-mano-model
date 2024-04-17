@@ -27,9 +27,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.SingleControllerCondition;
-import com.ubiqube.etsi.mano.em.v361.model.vnfind.VnfIndicator;
-import com.ubiqube.etsi.mano.em.v361.model.vnfind.VnfIndicatorLinks;
-import com.ubiqube.etsi.mano.em.v361.model.vnflcm.Link;
+import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicator;
+import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorLinks;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfind.Sol002IndicatorsFrontController;
 
 import jakarta.annotation.security.RolesAllowed;

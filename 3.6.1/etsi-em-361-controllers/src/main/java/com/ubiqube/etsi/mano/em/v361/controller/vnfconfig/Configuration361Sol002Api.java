@@ -31,9 +31,9 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ubiqube.etsi.mano.em.v361.model.vnfconfig.ProblemDetails;
-import com.ubiqube.etsi.mano.em.v361.model.vnfconfig.VnfConfigModifications;
-import com.ubiqube.etsi.mano.em.v361.model.vnfconfig.VnfConfiguration;
+import com.ubiqube.etsi.mano.v361.model.em.vnfconfig.ProblemDetails;
+import com.ubiqube.etsi.mano.v361.model.em.vnfconfig.VnfConfigModifications;
+import com.ubiqube.etsi.mano.v361.model.em.vnfconfig.VnfConfiguration;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

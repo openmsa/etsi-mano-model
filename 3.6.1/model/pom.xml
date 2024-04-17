@@ -56,6 +56,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-commons</artifactId>
+			<version>${version.mano-commons}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -79,6 +80,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-orika</artifactId>
+			<version>${version.mano-orika}</version>
 		</dependency>
 	</dependencies>
 </project>
