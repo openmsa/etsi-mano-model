@@ -50,24 +50,23 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfLcmOpOccLcmCoordinations;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfLcmOpOccRejectedLcmCoordinations;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v451.service.mapping.Connectivity451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.VimConnectionInfo451Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfBlueprint451Mapping extends StringToUriMapping, Connectivity451Mapping {
+public interface VnfBlueprint451Mapping extends StringToUriMapping, Connectivity451Mapping, VimConnectionInfo451Mapping {
 
 	@Mapping(target = "operationState", source = "operationStatus")
 	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "vnfInstanceId", source = "vnfInstance.id")
 	VnfLcmOpOcc map(VnfBlueprint x);
 
-	default List<VimConnectionInfo> map(final Map<String, VimConnectionInformation> o) {
+	default List<VimConnectionInfo> mapListOfVimConn(final Map<String, VimConnectionInformation> o) {
 		return o.values().stream().map(this::map).toList();
 	}
 
-	VimConnectionInfo map(VimConnectionInformation x);
-
 	ModificationsTriggeredByVnfPkgChange map(VnfPkgChange o);
 
-	default VnfLcmOpOccLcmCoordinations map(final Set<VnfLcmCoordination> value) {
+	default VnfLcmOpOccLcmCoordinations mapToVnfLcmOpOccLcmCoordinations(final Set<VnfLcmCoordination> value) {
 		if (null == value) {
 			return null;
 		}

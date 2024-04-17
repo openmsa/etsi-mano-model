@@ -33,11 +33,12 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.InstantiateVnfRequest;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v451.service.mapping.Connectivity451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.VimConnectionInfo451Mapping;
 
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfInstantiate451Mapping extends Connectivity451Mapping {
+public interface VnfInstantiate451Mapping extends Connectivity451Mapping , VimConnectionInfo451Mapping{
 
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	VnfInstantiate map(InstantiateVnfRequest o);
@@ -86,21 +87,12 @@ public interface VnfInstantiate451Mapping extends Connectivity451Mapping {
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	ExtLinkPortDataEntity map(ExtLinkPortData o);
 
-	default List<VimConnectionInformation> map(final Map<String, VimConnectionInfo> value) {
+	default List<VimConnectionInformation> mapSetOfVimconn(final Map<String, VimConnectionInfo> value) {
 		if (null == value) {
 			return List.of();
 		}
 		return value.values().stream().map(this::map).toList();
 	}
-
-	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "cnfInfo", ignore = true)
-	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "jujuInfo", ignore = true)
-	@Mapping(target = "tenantId", ignore = true)
-	@Mapping(target = "version", ignore = true)
-	@Mapping(target = "vimCapabilities", ignore = true)
-	VimConnectionInformation map(VimConnectionInfo o);
 
 	@Mapping(target = "selectedDeployableModule", ignore = true)
 	@Mapping(target = "targetScaleLevelInfo", ignore = true)
@@ -115,7 +107,6 @@ public interface VnfInstantiate451Mapping extends Connectivity451Mapping {
 		return value.stream().collect(Collectors.toMap(x -> x.getVimId(), x -> map(x)));
 		
 	}
-	VimConnectionInfo map (VimConnectionInformation o);
 
 	@Mapping(target = "vimConnectionId", ignore = true)
 	ExtManagedVirtualLinkData map(ExternalManagedVirtualLink o);
