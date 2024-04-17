@@ -27,11 +27,11 @@ import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
-import com.ubiqube.etsi.mano.nfvo.v351.model.nsd.NsdInfo;
-import com.ubiqube.etsi.mano.nfvo.v351.model.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.test.TestHelper;
-import com.ubiqube.etsi.mano.vnfm.v351.OrikaConfigurationNfvo351;
-import com.ubiqube.etsi.mano.vnfm.v351.model.grant.GrantRequest;
+import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.NsdInfo;
+import com.ubiqube.etsi.mano.v351.model.nfvo.nslcm.NsLcmOpOcc;
+import com.ubiqube.etsi.mano.v351.model.vnfm.grant.GrantRequest;
+import com.ubiqube.etsi.mano.v351.services.OrikaConfigurationNfvo351;
 
 /**
  *
@@ -55,7 +55,7 @@ class TestMapping extends TestHelper {
 	void testVnfInstance() throws Exception {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
-		doTest(com.ubiqube.etsi.mano.em.v351.model.vnflcm.VnfInstance.class, VnfInstance.class, ignore);
+		doTest(com.ubiqube.etsi.mano.v351.model.em.vnflcm.VnfInstance.class, VnfInstance.class, ignore);
 	}
 
 	@Test
