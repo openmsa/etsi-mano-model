@@ -16,9 +16,6 @@
  */
 package com.ubiqube.etsi.mano.v361.services.mapping;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
 import java.util.Set;
 
 import org.mapstruct.Mapper;
@@ -28,6 +25,7 @@ import org.mapstruct.MappingConstants;
 import com.ubiqube.etsi.mano.dao.mano.pm.PerformanceReport;
 import com.ubiqube.etsi.mano.dao.mano.pm.PmJob;
 import com.ubiqube.etsi.mano.dao.mano.pm.PmReport;
+import com.ubiqube.etsi.mano.service.mapping.DateTimeMapping;
 import com.ubiqube.etsi.mano.v361.model.em.vnfpm.CreatePmJobRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnfpm.PmJobReports;
 import com.ubiqube.etsi.mano.v361.services.mapping.subscription.BaseSubscription361Mapping;
@@ -36,7 +34,7 @@ import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PmJob361Mapping extends BaseSubscription361Mapping {
+public interface PmJob361Mapping extends BaseSubscription361Mapping, DateTimeMapping {
 
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "remoteMonitoring", ignore = true)
@@ -67,22 +65,6 @@ public interface PmJob361Mapping extends BaseSubscription361Mapping {
 			return null;
 		}
 		return Set.of(map(value));
-	}
-
-	@Nullable
-	default OffsetDateTime toOffsetDateTime(final @Nullable LocalDateTime localDateTime) {
-		if (null == localDateTime) {
-			return null;
-		}
-		return localDateTime.atOffset(ZoneOffset.UTC);
-	}
-
-	@Nullable
-	default LocalDateTime toLocalDateTime(final @Nullable OffsetDateTime offsetDateTime) {
-		if (null == offsetDateTime) {
-			return null;
-		}
-		return offsetDateTime.toLocalDateTime();
 	}
 
 	@Mapping(target = "id", ignore = true)

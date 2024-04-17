@@ -16,10 +16,6 @@
  */
 package com.ubiqube.etsi.mano.v361.services.mapping;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -28,14 +24,13 @@ import org.mapstruct.ValueMapping;
 import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.alarm.Alarms;
 import com.ubiqube.etsi.mano.dao.mano.alarm.ResourceHandle;
+import com.ubiqube.etsi.mano.service.mapping.DateTimeMapping;
 import com.ubiqube.etsi.mano.v361.model.em.vnffm.Alarm;
 import com.ubiqube.etsi.mano.v361.model.em.vnffm.AlarmModifications;
 import com.ubiqube.etsi.mano.v361.model.em.vnffm.FaultyResourceType;
 
-import jakarta.annotation.Nullable;
-
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface Alarm361Mapping {
+public interface Alarm361Mapping extends DateTimeMapping {
 
 	@Mapping(target = "isRootCause", source = "rootCause")
 	@Mapping(target = "links", ignore = true)
@@ -48,22 +43,6 @@ public interface Alarm361Mapping {
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	ResourceHandle map(com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle o);
-
-	@Nullable
-	default OffsetDateTime toOffsetDateTime(final @Nullable LocalDateTime localDateTime) {
-		if (null == localDateTime) {
-			return null;
-		}
-		return localDateTime.atOffset(ZoneOffset.UTC);
-	}
-
-	@Nullable
-	default LocalDateTime toLocalDateTime(final @Nullable OffsetDateTime offsetDateTime) {
-		if (null == offsetDateTime) {
-			return null;
-		}
-		return offsetDateTime.toLocalDateTime();
-	}
 
 	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "NETWORK")
 	FaultyResourceType map(ResourceTypeEnum o);
