@@ -19,7 +19,7 @@
  * https://github.com/swagger-api/swagger-codegen
  * Do not edit the class manually.
  */
-package com.ubiqube.etsi.mano.v451.controller.em.vnfconfig;
+package com.ubiqube.etsi.mano.v451.em.controller.em.vnfconfig;
 
 import java.io.IOException;
 import java.time.OffsetDateTime;
