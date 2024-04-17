@@ -1,0 +1,272 @@
+/**
+ *     Copyright (C) 2019-2024 Ubiqube.
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
+ */
+package com.ubiqube.etsi.mano.v361.services.mapping;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+
+import com.ubiqube.etsi.mano.dao.mano.ChangeType;
+import com.ubiqube.etsi.mano.dao.mano.ExtLinkPortInfoEntity;
+import com.ubiqube.etsi.mano.dao.mano.ExtVirtualLinkInfoEntity;
+import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedCompute;
+import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedExtLinkPort;
+import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedStorage;
+import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedVirtualLink;
+import com.ubiqube.etsi.mano.dao.mano.dto.VnfLcmResourceChanges;
+import com.ubiqube.etsi.mano.dao.mano.v2.AffectedVipCp;
+import com.ubiqube.etsi.mano.dao.mano.v2.PlanOperationType;
+import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
+import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
+import com.ubiqube.etsi.mano.dao.mano.vnfm.RejectedLcmCoordination;
+import com.ubiqube.etsi.mano.dao.mano.vnfm.VnfLcmCoordination;
+import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.AffectedExtLinkPort;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.AffectedVirtualLink;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.AffectedVirtualStorage;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.AffectedVnfc;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtLinkPortInfo;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtVirtualLinkInfo;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LcmOperationType;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VimConnectionInfo;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInfoModifications;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfLcmOpOccLcmCoordinations;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfLcmOpOccRejectedLcmCoordinations;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfLcmOpOccResourceChanges;
+
+import jakarta.annotation.Nullable;
+
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity431Mapping, VimConnectionInfo431Mapping {
+
+	@Mapping(target = "additionalParams", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "automaticInvocation", source = "isAutomaticInvocation")
+	@Mapping(target = "cancelPending", source = "isCancelPending")
+	@Mapping(target = "cirConnectionInfo", ignore = true)
+	@Mapping(target = "mciopConnectionInfo", ignore = true)
+	@Mapping(target = "operationStatus", source = "operationState")
+	@Mapping(target = "tenantId", ignore = true)
+	@Mapping(target = "changeExtVnfConnRequest", ignore = true)
+	@Mapping(target = "grantsRequestId", source = "grantId")
+	@Mapping(target = "healCause", ignore = true)
+	@Mapping(target = "operateChanges", ignore = true)
+	@Mapping(target = "parameters", ignore = true)
+//	@Mapping(target = "parameters", source = "operationParams")
+	@Mapping(target = "tasks", ignore = true)
+	@Mapping(target = "vimConnections", ignore = true)
+	@Mapping(target = "vnfInstance.id", source = "vnfInstanceId")
+	@Mapping(target = "zoneGroups", ignore = true)
+	@Mapping(target = "zones", ignore = true)
+	VnfBlueprint map(VnfLcmOpOcc lcm);
+
+	@Nullable
+	default Set<RejectedLcmCoordination> mapToRejectedLcmCoordination(final @Nullable VnfLcmOpOccRejectedLcmCoordinations value) {
+		if (null == value) {
+			return null;
+		}
+		return Set.of(map(value));
+	}
+
+	@Nullable
+	default Set<VnfLcmCoordination> mapToVnfLcmCoordination(final @Nullable VnfLcmOpOccLcmCoordinations value) {
+		if (null == value) {
+			return null;
+		}
+		return Set.of(map(value));
+	}
+
+	VnfLcmCoordination map(VnfLcmOpOccLcmCoordinations value);
+
+	@Mapping(target = "id", ignore = true)
+	AffectedVipCp map(com.ubiqube.etsi.mano.v361.model.em.vnflcm.AffectedVipCp o);
+
+	@Mapping(target = "audit", ignore = true)
+	ExtVirtualLinkInfoEntity map(ExtVirtualLinkInfo o);
+
+	@Mapping(target = "audit", ignore = true)
+	ExtLinkPortInfoEntity map(ExtLinkPortInfo o);
+
+	@Mapping(target = "id", ignore = true)
+	com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications map(VnfInfoModifications o);
+
+	@Nullable
+	default Map<String, VimConnectionInformation> mapToMapVimConnectionInformation(final @Nullable List<VimConnectionInfo> value) {
+		if (null == value) {
+			return Map.of();
+		}
+		return value.stream().map(this::map).collect(Collectors.toMap(x -> x.getVimId(), x -> x));
+	}
+
+	@Mapping(target = "id", ignore = true)
+	RejectedLcmCoordination map(VnfLcmOpOccRejectedLcmCoordinations o);
+
+	@Mapping(target = "affectedExtCp", ignore = true)
+	@Mapping(target = "dnsZones", ignore = true)
+	@Mapping(target = "instanceMonitors", ignore = true)
+	VnfLcmResourceChanges map(VnfLcmOpOccResourceChanges o);
+
+	PlanOperationType map(LcmOperationType operation);
+
+	@Mapping(target = "aliasName", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "endTime", ignore = true)
+	@Mapping(target = "instantiationLevel", ignore = true)
+	@Mapping(target = "manoResourceId", ignore = true)
+	@Mapping(target = "metadata", ignore = true)
+	@Mapping(target = "removedInstantiated", ignore = true)
+	@Mapping(target = "reservationId", ignore = true)
+	@Mapping(target = "resourceDefinitionId", ignore = true)
+	@Mapping(target = "resourceGroupId", ignore = true)
+	@Mapping(target = "resourceId", source = "resourceHandle.resourceId")
+	@Mapping(target = "resourceProviderId", source = "resourceHandle.resourceProviderId")
+	@Mapping(target = "startTime", ignore = true)
+	@Mapping(target = "status", ignore = true)
+	@Mapping(target = "toscaName", ignore = true)
+	@Mapping(target = "vduId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimId", source = "resourceHandle.vimConnectionId")
+	@Mapping(target = "vimLevelResourceType", source = "resourceHandle.vimLevelResourceType")
+	@Mapping(target = "vnfLcmOpOccs", ignore = true)
+	@Mapping(target = "vnfdId", ignore = true)
+	@Mapping(target = "zoneId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.accessInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.audit", ignore = true)
+	@Mapping(target = "vimConnectionInformation.cnfInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.extra", ignore = true)
+	@Mapping(target = "vimConnectionInformation.interfaceInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.jujuInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.tenantId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.version", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimCapabilities", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimType", ignore = true)
+	@Mapping(target = "vimConnectionInformation.id", ignore = true)
+	VnfInstantiatedExtLinkPort map(AffectedExtLinkPort o);
+
+	@Mapping(target = "aliasName", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "endTime", ignore = true)
+	@Mapping(target = "instantiationLevel", ignore = true)
+	@Mapping(target = "manoResourceId", ignore = true)
+	@Mapping(target = "removedInstantiated", ignore = true)
+	@Mapping(target = "reservationId", ignore = true)
+	@Mapping(target = "resourceDefinitionId", ignore = true)
+	@Mapping(target = "resourceGroupId", ignore = true)
+	@Mapping(target = "resourceId", source = "computeResource.resourceId")
+	@Mapping(target = "resourceProviderId", source = "computeResource.resourceProviderId")
+	@Mapping(target = "startTime", ignore = true)
+	@Mapping(target = "status", ignore = true)
+	@Mapping(target = "toscaName", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimId", source = "computeResource.vimConnectionId")
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	@Mapping(target = "vimLevelResourceType", source = "computeResource.vimLevelResourceType")
+	@Mapping(target = "vnfLcmOpOccs", ignore = true)
+	@Mapping(target = "zoneId", ignore = true)
+	@Mapping(target = "flavorId", ignore = true)
+	@Mapping(target = "imageId", ignore = true)
+	@Mapping(target = "storageResourceIds", ignore = true)
+	@Mapping(target = "vnfcCpInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.accessInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.audit", ignore = true)
+	@Mapping(target = "vimConnectionInformation.cnfInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.extra", ignore = true)
+	@Mapping(target = "vimConnectionInformation.interfaceInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.jujuInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.tenantId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.version", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimCapabilities", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimType", ignore = true)
+	@Mapping(target = "vimConnectionInformation.id", ignore = true)
+	VnfInstantiatedCompute map(AffectedVnfc o);
+
+	@Mapping(target = "aliasName", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "endTime", ignore = true)
+	@Mapping(target = "instantiationLevel", ignore = true)
+	@Mapping(target = "manoResourceId", ignore = true)
+	@Mapping(target = "removedInstantiated", ignore = true)
+	@Mapping(target = "reservationId", ignore = true)
+	@Mapping(target = "resourceDefinitionId", ignore = true)
+	@Mapping(target = "resourceGroupId", ignore = true)
+	@Mapping(target = "resourceId", source = "storageResource.resourceId")
+	@Mapping(target = "resourceProviderId", source = "storageResource.resourceProviderId")
+	@Mapping(target = "startTime", ignore = true)
+	@Mapping(target = "status", ignore = true)
+	@Mapping(target = "toscaName", source = "id")
+	@Mapping(target = "vduId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimId", source = "storageResource.vimConnectionId")
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	@Mapping(target = "vimLevelResourceType", source = "storageResource.vimLevelResourceType")
+	@Mapping(target = "vnfLcmOpOccs", ignore = true)
+	@Mapping(target = "zoneId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.accessInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.audit", ignore = true)
+	@Mapping(target = "vimConnectionInformation.cnfInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.extra", ignore = true)
+	@Mapping(target = "vimConnectionInformation.interfaceInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.jujuInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.tenantId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.version", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimCapabilities", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimType", ignore = true)
+	@Mapping(target = "vimConnectionInformation.id", ignore = true)
+	VnfInstantiatedStorage map(AffectedVirtualStorage o);
+
+	@Mapping(target = "virtualLinkDescId", source = "vnfVirtualLinkDescId")
+	@Mapping(target = "aliasName", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "endTime", ignore = true)
+	@Mapping(target = "manoResourceId", source = "vnfVirtualLinkDescId")
+	@Mapping(target = "removedInstantiated", ignore = true)
+	@Mapping(target = "reservationId", ignore = true)
+	@Mapping(target = "resourceDefinitionId", ignore = true)
+	@Mapping(target = "resourceGroupId", ignore = true)
+	@Mapping(target = "resourceId", source = "networkResource.resourceId")
+	@Mapping(target = "resourceProviderId", source = "networkResource.resourceProviderId")
+	@Mapping(target = "startTime", ignore = true)
+	@Mapping(target = "status", ignore = true)
+	@Mapping(target = "toscaName", ignore = true)
+	@Mapping(target = "vduId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.id", source = "networkResource.vimConnectionId")
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	@Mapping(target = "vimLevelResourceType", source = "networkResource.vimLevelResourceType")
+	@Mapping(target = "vnfLcmOpOccs", ignore = true)
+	@Mapping(target = "zoneId", ignore = true)
+	@Mapping(target = "instantiationLevel", ignore = true)
+	@Mapping(target = "vimConnectionInformation.accessInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.audit", ignore = true)
+	@Mapping(target = "vimConnectionInformation.cnfInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.extra", ignore = true)
+	@Mapping(target = "vimConnectionInformation.interfaceInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.jujuInfo", ignore = true)
+	@Mapping(target = "vimConnectionInformation.tenantId", ignore = true)
+	@Mapping(target = "vimConnectionInformation.version", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimCapabilities", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimType", ignore = true)
+	@Mapping(target = "vimConnectionInformation.vimId", source = "networkResource.vimConnectionId")
+	VnfInstantiatedVirtualLink map(AffectedVirtualLink o);
+
+	ChangeType map(AffectedVnfc.ChangeTypeEnum en);
+
+}
