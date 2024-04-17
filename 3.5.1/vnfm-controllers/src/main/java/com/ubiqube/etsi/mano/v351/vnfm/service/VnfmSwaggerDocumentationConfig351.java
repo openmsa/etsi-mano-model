@@ -32,7 +32,7 @@ public class VnfmSwaggerDocumentationConfig351 {
 	GroupedOpenApi customImplementationVnfm351() {
 		return GroupedOpenApi.builder()
 				.group("vnfm-etsi-mano-3.5.1")
-				.packagesToScan("com.ubiqube.etsi.mano.vnfm.v351")
+				.packagesToScan("com.ubiqube.etsi.mano.v351.vnfm")
 				.build();
 	}
 }
