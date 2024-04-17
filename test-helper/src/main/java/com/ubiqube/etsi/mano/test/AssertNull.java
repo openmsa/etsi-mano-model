@@ -96,7 +96,7 @@ public class AssertNull {
 				if (methodName.equals("getVnfPkgId")) {
 					LOG.debug("Hello");
 				}
-				assertEquals(src, dst, "Field " + methodName + ": must be equals." + prettyStack(stack), errors);
+				assertEquals(src, dst, "Field " + methodName + ": must be equals. Expected: " + src + ", got: " + dst + " stack:" + prettyStack(stack), errors);
 			}
 			stack.pop();
 		}
