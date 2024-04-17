@@ -47,7 +47,7 @@ import com.ubiqube.etsi.mano.v361.model.vnfm.grant.ZoneInfo;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivity361Mapping, VimResourceMapping {
+public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivity361Mapping, VimResource361Mapping {
 
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "id", ignore = true)

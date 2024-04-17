@@ -52,7 +52,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.VnffgInfo;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface NsInstance361Mapping extends VimResourceMapping {
+public interface NsInstance361Mapping extends VimResource361Mapping {
 	@Mapping(target = "additionalAffinityOrAntiAffinityRule", ignore = true)
 	@Mapping(target = "monitoringParameter", ignore = true)
 	@Mapping(target = "nestedNsInstanceId", ignore = true)
