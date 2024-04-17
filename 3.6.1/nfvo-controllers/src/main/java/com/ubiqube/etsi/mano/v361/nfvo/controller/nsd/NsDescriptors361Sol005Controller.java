@@ -31,7 +31,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.CreateNsdInfoRequest;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.NsdInfo;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.NsdInfoLinks;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.NsdInfoModifications;
-import com.ubiqube.etsi.mano.v361.services.mapping.Nsd361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.Nsd361Mapping;
 
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;

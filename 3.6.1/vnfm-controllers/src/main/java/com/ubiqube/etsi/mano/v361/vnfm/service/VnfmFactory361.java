@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
-import com.ubiqube.etsi.mano.v361.services.VnfmFactory;
+import com.ubiqube.etsi.mano.v361.service.VnfmFactory;
 
 @Service
 public class VnfmFactory361 extends AbstractSubscriptionFactory implements VnfmFactory {

@@ -48,9 +48,9 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleVnfToLevelRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstanceLinks;
-import com.ubiqube.etsi.mano.v361.services.mapping.VnfInstance361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.vnflcm.VnfInstanceRequest361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.vnflcm.VnfInstantiate361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.VnfInstance361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.vnflcm.VnfInstanceRequest361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.vnflcm.VnfInstantiate361Mapping;
 import com.ubiqube.etsi.mano.v361.vnfm.controller.vnfind.Indicators361Sol003Api;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfInstanceGenericFrontController;
 

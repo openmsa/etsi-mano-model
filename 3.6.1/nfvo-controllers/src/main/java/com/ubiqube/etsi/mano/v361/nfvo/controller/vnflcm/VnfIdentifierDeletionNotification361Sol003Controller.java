@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.controller.vnflcm.VnfLcmNotificationFrontController;
 import com.ubiqube.etsi.mano.dao.mano.vnflcm.VnfLcmNotification;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfIdentifierDeletionNotification;
-import com.ubiqube.etsi.mano.v361.services.mapping.VnfLvmNotification361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.VnfLvmNotification361Mapping;
 
 import jakarta.validation.Valid;
 

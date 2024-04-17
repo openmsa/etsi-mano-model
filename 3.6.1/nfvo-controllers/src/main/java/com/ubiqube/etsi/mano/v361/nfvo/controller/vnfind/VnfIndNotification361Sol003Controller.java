@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.controller.vnfind.VnfIndicatorNotificationFrontController;
 import com.ubiqube.etsi.mano.dao.mano.ind.VnfIndiValueChangeNotification;
 import com.ubiqube.etsi.mano.v361.model.vnfm.vnfind.VnfIndicatorValueChangeNotification;
-import com.ubiqube.etsi.mano.v361.services.mapping.PmJobNotification361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.PmJobNotification361Mapping;
 
 import jakarta.validation.Valid;
 

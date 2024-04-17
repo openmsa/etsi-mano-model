@@ -44,21 +44,21 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PkgmNotificationsFilter;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v361.model.vnfm.grant.Grant;
-import com.ubiqube.etsi.mano.v361.services.mapping.Alarm361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.Grant361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.NsInstance361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.NsLcmOpOcc361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.Nsd361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.PmJob361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.Pnfd361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.Threshold361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.VnfIndicator361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.VnfInstance361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.VnfLcmOpOcc361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.subscription.FmSubscription361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.subscription.LccnSubscription361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.subscription.PkgmSubscriptionRequest361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.vnflcm.VnfBlueprint361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.Alarm361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.Grant361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.NsInstance361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.NsLcmOpOcc361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.Nsd361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.PmJob361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.Pnfd361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.Threshold361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.VnfIndicator361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.VnfInstance361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.VnfLcmOpOcc361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.subscription.FmSubscription361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.subscription.LccnSubscription361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.subscription.PkgmSubscriptionRequest361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.vnflcm.VnfBlueprint361Mapping;
 
 /**
  *

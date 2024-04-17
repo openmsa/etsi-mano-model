@@ -38,7 +38,7 @@ import com.ubiqube.etsi.mano.v361.model.vnfm.vrqan.VrQuotaAvailNotificationsFilt
 import com.ubiqube.etsi.mano.v361.model.vnfm.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.v361.model.vnfm.vrqan.VrQuotaAvailSubscriptionLinks;
 import com.ubiqube.etsi.mano.v361.model.vnfm.vrqan.VrQuotaAvailSubscriptionRequest;
-import com.ubiqube.etsi.mano.v361.services.mapping.subscription.VrQuotaAvailSubscription361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.subscription.VrQuotaAvailSubscription361Mapping;
 import com.ubiqube.etsi.mano.v361.vnfm.service.SubscriptionLinkable361Vnfm;
 
 import jakarta.validation.Valid;

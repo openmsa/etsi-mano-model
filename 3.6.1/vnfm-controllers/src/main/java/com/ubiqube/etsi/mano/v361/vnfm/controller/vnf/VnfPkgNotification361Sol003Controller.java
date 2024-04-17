@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.VnfPackageOnboardingNotification;
-import com.ubiqube.etsi.mano.v361.services.mapping.pkg.VnfPackageOnboardingNotification361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.pkg.VnfPackageOnboardingNotification361Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnf.VnfNotificationFrontController;
 
 import jakarta.validation.Valid;

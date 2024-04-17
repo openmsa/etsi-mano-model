@@ -34,7 +34,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LccnSubscriptionLinks;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LifecycleChangeNotificationsFilter;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.Link;
-import com.ubiqube.etsi.mano.v361.services.mapping.subscription.LccnSubscription361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.subscription.LccnSubscription361Mapping;
 import com.ubiqube.etsi.mano.v361.vnfm.service.SubscriptionLinkable361Vnfm;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
 

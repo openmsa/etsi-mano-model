@@ -25,7 +25,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.NotificationLink;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PkgmLinks;
 import com.ubiqube.etsi.mano.v361.nfvo.controller.vnf.VnfPackages361Sol005Api;
 import com.ubiqube.etsi.mano.v361.nfvo.controller.vnf.VnfSubscriptions361Sol005Api;
-import com.ubiqube.etsi.mano.v361.services.Linkable;
+import com.ubiqube.etsi.mano.v361.service.Linkable;
 
 /**
  *

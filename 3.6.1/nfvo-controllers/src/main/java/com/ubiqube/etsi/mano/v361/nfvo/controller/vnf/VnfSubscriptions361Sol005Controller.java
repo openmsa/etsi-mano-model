@@ -35,7 +35,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PkgmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v361.nfvo.service.SubscriptionLinkable361Nfvo;
-import com.ubiqube.etsi.mano.v361.services.mapping.subscription.PkgmSubscriptionRequest361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.subscription.PkgmSubscriptionRequest361Mapping;
 
 /**
  *

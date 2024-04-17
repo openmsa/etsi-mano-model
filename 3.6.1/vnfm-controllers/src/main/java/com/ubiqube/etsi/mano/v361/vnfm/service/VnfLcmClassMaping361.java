@@ -19,8 +19,8 @@ package com.ubiqube.etsi.mano.v361.vnfm.service;
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
-import com.ubiqube.etsi.mano.v361.services.mapping.lcm.VnfLcmOpOccMapper361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.vnflcm.VnfBlueprint361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.lcm.VnfLcmOpOccMapper361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.vnflcm.VnfBlueprint361Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
 
 /**

@@ -36,7 +36,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.NsdmSubscription;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.NsdmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.NsdmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v361.nfvo.service.SubscriptionLinkable361Nfvo;
-import com.ubiqube.etsi.mano.v361.services.mapping.subscription.NsdmSubscription361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.subscription.NsdmSubscription361Mapping;
 
 import jakarta.validation.constraints.NotNull;
 

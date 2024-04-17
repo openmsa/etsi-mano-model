@@ -27,10 +27,10 @@ import org.mapstruct.factory.Mappers;
 import com.ubiqube.etsi.mano.test.MapstructTestHelper;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.VnfPkgInfo;
-import com.ubiqube.etsi.mano.v361.services.mapping.GrantRequest361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.VnfInstance361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.VnfPkgInfo361Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.vnflcm.VnfBlueprint361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.GrantRequest361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.VnfInstance361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.VnfPkgInfo361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.vnflcm.VnfBlueprint361Mapping;
 
 class MappingTest extends MapstructTestHelper {
 

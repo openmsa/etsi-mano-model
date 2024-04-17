@@ -38,7 +38,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorSubscription;
 import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorSubscriptionLinks;
 import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorSubscriptionRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.Link;
-import com.ubiqube.etsi.mano.v361.services.mapping.subscription.VnfIndicatorSubscription361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.subscription.VnfIndicatorSubscription361Mapping;
 import com.ubiqube.etsi.mano.v361.vnfm.service.SubscriptionLinkable361Vnfm;
 
 import jakarta.validation.Valid;

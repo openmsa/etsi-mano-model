@@ -30,7 +30,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnffm.Alarm;
 import com.ubiqube.etsi.mano.v361.model.em.vnffm.AlarmLinks;
 import com.ubiqube.etsi.mano.v361.model.em.vnffm.AlarmModifications;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.Link;
-import com.ubiqube.etsi.mano.v361.services.mapping.Alarm361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.Alarm361Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.AlarmFrontController;
 
 import jakarta.validation.Valid;

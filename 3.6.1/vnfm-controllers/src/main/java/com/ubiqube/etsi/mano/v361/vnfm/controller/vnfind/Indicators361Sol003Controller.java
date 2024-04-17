@@ -29,7 +29,7 @@ import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicator;
 import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorLinks;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.Link;
-import com.ubiqube.etsi.mano.v361.services.mapping.VnfIndicator361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.VnfIndicator361Mapping;
 import com.ubiqube.etsi.mano.v361.vnfm.controller.vnflcm.VnfInstances361Sol003Api;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfind.IndicatorsFrontController;
 

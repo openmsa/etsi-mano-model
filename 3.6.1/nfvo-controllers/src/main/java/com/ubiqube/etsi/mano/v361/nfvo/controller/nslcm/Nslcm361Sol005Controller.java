@@ -27,7 +27,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.CancelMode;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.NsLcmOpOccLinks;
-import com.ubiqube.etsi.mano.v361.services.mapping.NsLcmOpOcc361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.NsLcmOpOcc361Mapping;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;

@@ -25,7 +25,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PackageChangeType;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PackageOperationalStateType;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.VnfPackageOnboardingNotification;
-import com.ubiqube.etsi.mano.v361.services.Linkable;
+import com.ubiqube.etsi.mano.v361.service.Linkable;
 
 /**
  *
