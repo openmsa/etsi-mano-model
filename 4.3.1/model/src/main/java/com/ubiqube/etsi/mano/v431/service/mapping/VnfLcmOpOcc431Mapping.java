@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
-import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.dao.mano.ChangeType;
 import com.ubiqube.etsi.mano.dao.mano.ExtLinkPortInfoEntity;
@@ -142,14 +141,6 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 
 	PlanOperationType map(LcmOperationType operation);
 
-	@Mapping(target = "resourceHandle.vimConnectionId", source = "vimConnectionInformation.vimId")
-	@Mapping(target = "resourceHandle.resourceProviderId", source = "resourceProviderId")
-	@Mapping(target = "resourceHandle.resourceId", source = "resourceId")
-	@Mapping(target = "resourceHandle.vimLevelResourceType", source = "vimLevelResourceType")
-	@Mapping(target = "resourceHandle.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
-	@Mapping(target = "resourceHandle.containerNamespace", source = "containerNamespace")
-	AffectedExtLinkPort map(VnfInstantiatedExtLinkPort o);
-
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "containerNamespace", source = "resourceHandle.containerNamespace")
@@ -185,14 +176,6 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	@Mapping(target = "vimConnectionInformation.vimType", ignore = true)
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	VnfInstantiatedExtLinkPort map(AffectedExtLinkPort o);
-
-	@Mapping(target = "computeResource.resourceId", source = "resourceId")
-	@Mapping(target = "computeResource.resourceProviderId", source = "resourceProviderId")
-	@Mapping(target = "computeResource.vimLevelResourceType", source = "vimLevelResourceType")
-	@Mapping(target = "computeResource.vimConnectionId", source = "vimConnectionInformation.vimId")
-	@Mapping(target = "computeResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
-	@Mapping(target = "computeResource.containerNamespace", source = "containerNamespace")
-	AffectedVnfc map(VnfInstantiatedCompute o);
 
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
@@ -231,14 +214,6 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	VnfInstantiatedCompute map(AffectedVnfc o);
 
-	@Mapping(target = "storageResource.vimConnectionId", source = "vimConnectionInformation.vimId")
-	@Mapping(target = "storageResource.resourceProviderId", source = "resourceProviderId")
-	@Mapping(target = "storageResource.resourceId", source = "resourceId")
-	@Mapping(target = "storageResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
-	@Mapping(target = "storageResource.containerNamespace", source = "containerNamespace")
-	@Mapping(target = "storageResource.vimLevelResourceType", source = "vimLevelResourceType")
-	AffectedVirtualStorage map(VnfInstantiatedStorage o);
-
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "containerNamespace", source = "storageResource.containerNamespace")
@@ -272,15 +247,6 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	@Mapping(target = "vimConnectionInformation.vimType", ignore = true)
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	VnfInstantiatedStorage map(AffectedVirtualStorage o);
-
-	@Mapping(target = "vnfVirtualLinkDescId", source = "manoResourceId")
-	@Mapping(target = "networkResource.resourceId", source = "resourceId")
-	@Mapping(target = "networkResource.resourceProviderId", source = "resourceProviderId")
-	@Mapping(target = "networkResource.vimLevelResourceType", source = "vimLevelResourceType")
-	@Mapping(target = "networkResource.vimConnectionId", source = "vimConnectionInformation.id")
-	@Mapping(target = "networkResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
-	@Mapping(target = "networkResource.containerNamespace", source = "containerNamespace")
-	AffectedVirtualLink map(VnfInstantiatedVirtualLink o);
 
 	@Mapping(target = "virtualLinkDescId", source = "vnfVirtualLinkDescId")
 	@Mapping(target = "aliasName", ignore = true)
@@ -318,24 +284,5 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	VnfInstantiatedVirtualLink map(AffectedVirtualLink o);
 
 	ChangeType map(AffectedVnfc.ChangeTypeEnum en);
-
-	@ValueMapping(source = "LINK_PORT_ADDED", target = "ADDED")
-	@ValueMapping(source = "LINK_PORT_REMOVED", target = "REMOVED")
-	AffectedVnfc.ChangeTypeEnum mapAffectedVnfc(ChangeType o);
-
-	@ValueMapping(source = "LINK_PORT_ADDED", target = "ADDED")
-	@ValueMapping(source = "LINK_PORT_REMOVED", target = "REMOVED")
-	@ValueMapping(source = "TEMPORARY", target = MappingConstants.THROW_EXCEPTION)
-	AffectedExtLinkPort.ChangeTypeEnum mapAffectedExtLinkPort(ChangeType o);
-
-	@ValueMapping(source = "LINK_PORT_ADDED", target = "ADDED")
-	@ValueMapping(source = "LINK_PORT_REMOVED", target = "REMOVED")
-	AffectedVirtualStorage.ChangeTypeEnum mapAffectedVirtualStorage(ChangeType o);
-
-	@ValueMapping(source = "CHANGE_EXTERNAL_VNF_CONNECTIVITY", target = "CHANGE_EXT_CONN")
-	@ValueMapping(source = "MODIFY_INFORMATION", target = "MODIFY_INFO")
-	@ValueMapping(source = "UPDATE", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "SELECT_DEPL_MODS", target = MappingConstants.THROW_EXCEPTION)
-	LcmOperationType map(PlanOperationType o);
 
 }
