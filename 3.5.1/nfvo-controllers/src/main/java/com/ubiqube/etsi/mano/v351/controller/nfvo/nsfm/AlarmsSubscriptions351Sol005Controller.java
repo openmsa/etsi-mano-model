@@ -27,7 +27,7 @@ import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.FmSubscriptionRequest;
-import com.ubiqube.etsi.mano.v351.services.SubscriptionLinkable351Nfvo;
+import com.ubiqube.etsi.mano.v351.service.SubscriptionLinkable351Nfvo;
 
 import jakarta.validation.Valid;
 

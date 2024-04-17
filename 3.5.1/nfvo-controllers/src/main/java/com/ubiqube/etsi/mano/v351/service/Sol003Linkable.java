@@ -14,24 +14,31 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.v351.services;
+package com.ubiqube.etsi.mano.v351.service;
 
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
+import java.util.UUID;
+
+import com.ubiqube.etsi.mano.controller.FrontApiTypesEnum;
 import com.ubiqube.etsi.mano.v351.controller.vnfm.vnf.VnfPackages351Sol003Api;
 import com.ubiqube.etsi.mano.v351.model.em.lcmcoord.Link;
+import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PkgmLinks;
+import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PkgmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.VnfPkgInfoLinks;
+import com.ubiqube.etsi.mano.v351.service.Linkable;
 
-public class LinksSol003 {
+/**
+ *
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
+ *
+ */
+public class Sol003Linkable implements Linkable {
 
-	private LinksSol003() {
-		// Nothing.
-	}
-
-	public static void makeLinks(final VnfPkgInfo vnfPackage) {
-		final String vnfPkgId = vnfPackage.getId();
+	@Override
+	public VnfPkgInfoLinks getVnfLinks(final String vnfPkgId) {
 		final VnfPkgInfoLinks links = new VnfPkgInfoLinks();
 
 		final Link self = new Link();
@@ -45,7 +52,40 @@ public class LinksSol003 {
 		final Link packageContent = new Link();
 		packageContent.setHref(linkTo(methodOn(VnfPackages351Sol003Api.class).vnfPackagesVnfPkgIdPackageContentGet(vnfPkgId)).withSelfRel().getHref());
 		links.setPackageContent(packageContent);
-		vnfPackage.setLinks(links);
+		return links;
+	}
+
+	@Override
+	public PkgmSubscriptionLinks createSubscriptionsPkgmSubscriptionLinks(final String _subscriptionId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FrontApiTypesEnum getApi() {
+		return FrontApiTypesEnum.SOL003;
+	}
+
+	@Override
+	public void makeLinks(final VnfPkgInfo _vnfPkgInfo) {
+		_vnfPkgInfo.setLinks(getVnfLinks(_vnfPkgInfo.getId()));
+	}
+
+	@Override
+	public String getSelfLink(final VnfPkgInfo _vnfPkgInfo) {
+		return linkTo(methodOn(VnfPackages351Sol003Api.class).vnfPackagesVnfPkgIdGet(_vnfPkgInfo.getId(), null)).withSelfRel().getHref();
+	}
+
+	@Override
+	public PkgmLinks createNotificationLink(final UUID vnfPkgId, final UUID subscriptionId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PkgmLinks createVnfPackageOnboardingNotificationLinks(final UUID vnfPkgId, final UUID subscriptionId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

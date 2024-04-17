@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnf.OnboardedPackageFrontController;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.VnfPkgInfo;
+import com.ubiqube.etsi.mano.v351.service.LinksSol003;
 import com.ubiqube.etsi.mano.v351.service.mapping.VnfPkgInfo351Mapping;
-import com.ubiqube.etsi.mano.v351.services.LinksSol003;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
