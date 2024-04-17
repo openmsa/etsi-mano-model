@@ -14,13 +14,25 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.v351.services;
+package com.ubiqube.etsi.mano.v351.service;
 
-import com.ubiqube.etsi.mano.controller.subscription.SubscriptionLinkable;
+import org.springdoc.core.models.GroupedOpenApi;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * @author olivier
+ *
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
+ *
  */
-public interface SubscriptionLinkable351Vnfm extends SubscriptionLinkable {
-	//
+@Configuration
+public class VnfmSwaggerDocumentationConfig351 {
+	@SuppressWarnings("static-method")
+	@Bean
+	GroupedOpenApi customImplementationVnfm351() {
+		return GroupedOpenApi.builder()
+				.group("vnfm-etsi-mano-3.5.1")
+				.packagesToScan("com.ubiqube.etsi.mano.vnfm.v351")
+				.build();
+	}
 }

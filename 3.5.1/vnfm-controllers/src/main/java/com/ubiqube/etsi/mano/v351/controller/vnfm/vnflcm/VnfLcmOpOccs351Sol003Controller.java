@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.v351.model.em.lcmcoord.Link;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.VnfLcmOpOccLinks;
+import com.ubiqube.etsi.mano.v351.service.VnfLcmClassMaping351;
 import com.ubiqube.etsi.mano.v351.service.mapping.vnflcm.VnfBlueprint351Mapping;
-import com.ubiqube.etsi.mano.v351.services.VnfLcmClassMaping351;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 
 import jakarta.validation.Valid;
