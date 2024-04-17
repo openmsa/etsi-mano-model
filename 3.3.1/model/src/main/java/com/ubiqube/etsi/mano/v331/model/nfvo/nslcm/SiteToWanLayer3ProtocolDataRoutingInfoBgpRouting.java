@@ -16,131 +16,136 @@
  */
 package com.ubiqube.etsi.mano.v331.model.nfvo.nslcm;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.Objects;
+
 import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 
 /**
- * Defines parameters for BGP routing. It shall only be present if the routingProtocol&#x3D;\&quot;BGP\&quot;. 
+ * Defines parameters for BGP routing. It shall only be present if the
+ * routingProtocol&#x3D;\&quot;BGP\&quot;.
  */
 @Schema(description = "Defines parameters for BGP routing. It shall only be present if the routingProtocol=\"BGP\". ")
 @Validated
 
+public class SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting {
+	@JsonProperty("bgpAs")
+	private String bgpAs = null;
 
-public class SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting   {
-  @JsonProperty("bgpAs")
-  private Object bgpAs = null;
+	@JsonProperty("bgpNeighbour")
+	private String bgpNeighbour = null;
 
-  @JsonProperty("bgpNeighbour")
-  private String bgpNeighbour = null;
+	@JsonProperty("bgpAdditionalParam")
+	private Map<String, String> bgpAdditionalParam = null;
 
-  @JsonProperty("bgpAdditionalParam")
-  private Map<String, String> bgpAdditionalParam = null;
+	public SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting bgpAs(final String bgpAs) {
+		this.bgpAs = bgpAs;
+		return this;
+	}
 
-  public SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting bgpAs(Object bgpAs) {
-    this.bgpAs = bgpAs;
-    return this;
-  }
+	/**
+	 * The Autonomous System (AS) identification applicable to the BGP routing info
+	 * entry.
+	 *
+	 * @return bgpAs
+	 **/
+	@Schema(required = true, description = "The Autonomous System (AS) identification applicable to the BGP routing info entry. ")
+	@NotNull
 
-  /**
-   * The Autonomous System (AS) identification applicable to the BGP routing info entry. 
-   * @return bgpAs
-   **/
-  @Schema(required = true, description = "The Autonomous System (AS) identification applicable to the BGP routing info entry. ")
-      @NotNull
+	public String getBgpAs() {
+		return bgpAs;
+	}
 
-    public Object getBgpAs() {
-    return bgpAs;
-  }
+	public void setBgpAs(final String bgpAs) {
+		this.bgpAs = bgpAs;
+	}
 
-  public void setBgpAs(Object bgpAs) {
-    this.bgpAs = bgpAs;
-  }
+	public SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting bgpNeighbour(final String bgpNeighbour) {
+		this.bgpNeighbour = bgpNeighbour;
+		return this;
+	}
 
-  public SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting bgpNeighbour(String bgpNeighbour) {
-    this.bgpNeighbour = bgpNeighbour;
-    return this;
-  }
+	/**
+	 * Get bgpNeighbour
+	 *
+	 * @return bgpNeighbour
+	 **/
+	@Schema(description = "")
 
-  /**
-   * Get bgpNeighbour
-   * @return bgpNeighbour
-   **/
-  @Schema(description = "")
-  
-    public String getBgpNeighbour() {
-    return bgpNeighbour;
-  }
+	public String getBgpNeighbour() {
+		return bgpNeighbour;
+	}
 
-  public void setBgpNeighbour(String bgpNeighbour) {
-    this.bgpNeighbour = bgpNeighbour;
-  }
+	public void setBgpNeighbour(final String bgpNeighbour) {
+		this.bgpNeighbour = bgpNeighbour;
+	}
 
-  public SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting bgpAdditionalParam(Map<String, String> bgpAdditionalParam) {
-    this.bgpAdditionalParam = bgpAdditionalParam;
-    return this;
-  }
+	public SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting bgpAdditionalParam(final Map<String, String> bgpAdditionalParam) {
+		this.bgpAdditionalParam = bgpAdditionalParam;
+		return this;
+	}
 
-  /**
-   * Get bgpAdditionalParam
-   * @return bgpAdditionalParam
-   **/
-  @Schema(description = "")
-  
-    @Valid
-    public Map<String, String> getBgpAdditionalParam() {
-    return bgpAdditionalParam;
-  }
+	/**
+	 * Get bgpAdditionalParam
+	 *
+	 * @return bgpAdditionalParam
+	 **/
+	@Schema(description = "")
 
-  public void setBgpAdditionalParam(Map<String, String> bgpAdditionalParam) {
-    this.bgpAdditionalParam = bgpAdditionalParam;
-  }
+	@Valid
+	public Map<String, String> getBgpAdditionalParam() {
+		return bgpAdditionalParam;
+	}
 
+	public void setBgpAdditionalParam(final Map<String, String> bgpAdditionalParam) {
+		this.bgpAdditionalParam = bgpAdditionalParam;
+	}
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting siteToWanLayer3ProtocolDataRoutingInfoBgpRouting = (SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting) o;
-    return Objects.equals(this.bgpAs, siteToWanLayer3ProtocolDataRoutingInfoBgpRouting.bgpAs) &&
-        Objects.equals(this.bgpNeighbour, siteToWanLayer3ProtocolDataRoutingInfoBgpRouting.bgpNeighbour) &&
-        Objects.equals(this.bgpAdditionalParam, siteToWanLayer3ProtocolDataRoutingInfoBgpRouting.bgpAdditionalParam);
-  }
+	@Override
+	public boolean equals(final java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if ((o == null) || (getClass() != o.getClass())) {
+			return false;
+		}
+		final SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting siteToWanLayer3ProtocolDataRoutingInfoBgpRouting = (SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting) o;
+		return Objects.equals(this.bgpAs, siteToWanLayer3ProtocolDataRoutingInfoBgpRouting.bgpAs) &&
+				Objects.equals(this.bgpNeighbour, siteToWanLayer3ProtocolDataRoutingInfoBgpRouting.bgpNeighbour) &&
+				Objects.equals(this.bgpAdditionalParam, siteToWanLayer3ProtocolDataRoutingInfoBgpRouting.bgpAdditionalParam);
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(bgpAs, bgpNeighbour, bgpAdditionalParam);
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(bgpAs, bgpNeighbour, bgpAdditionalParam);
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting {\n");
-    
-    sb.append("    bgpAs: ").append(toIndentedString(bgpAs)).append("\n");
-    sb.append("    bgpNeighbour: ").append(toIndentedString(bgpNeighbour)).append("\n");
-    sb.append("    bgpAdditionalParam: ").append(toIndentedString(bgpAdditionalParam)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("class SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting {\n");
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		sb.append("    bgpAs: ").append(toIndentedString(bgpAs)).append("\n");
+		sb.append("    bgpNeighbour: ").append(toIndentedString(bgpNeighbour)).append("\n");
+		sb.append("    bgpAdditionalParam: ").append(toIndentedString(bgpAdditionalParam)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }
