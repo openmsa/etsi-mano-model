@@ -31,7 +31,7 @@ import com.ubiqube.etsi.mano.v351.model.em.vnffm.Alarm;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.AlarmLinks;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.AlarmModifications;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.PerceivedSeverityRequest;
-import com.ubiqube.etsi.mano.v351.services.mapping.Alarm351Mapping;
+import com.ubiqube.etsi.mano.v351.service.mapping.Alarm351Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.AlarmFrontController;
 
 import jakarta.validation.Valid;

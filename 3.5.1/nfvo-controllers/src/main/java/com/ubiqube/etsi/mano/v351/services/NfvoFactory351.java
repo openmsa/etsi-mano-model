@@ -28,7 +28,7 @@ import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PackageOperationalStateType;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.VnfPackageOnboardingNotification;
-import com.ubiqube.etsi.mano.v351.services.NfvoFactory;
+import com.ubiqube.etsi.mano.v351.service.NfvoFactory;
 
 /**
  *

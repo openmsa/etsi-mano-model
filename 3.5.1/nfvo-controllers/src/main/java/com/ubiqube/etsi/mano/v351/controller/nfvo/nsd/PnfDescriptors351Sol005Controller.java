@@ -31,7 +31,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.CreatePnfdInfoRequest;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.PnfdInfo;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.PnfdInfoLinks;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.PnfdInfoModifications;
-import com.ubiqube.etsi.mano.v351.services.mapping.Pnfd351Mapping;
+import com.ubiqube.etsi.mano.v351.service.mapping.Pnfd351Mapping;
 
 import jakarta.validation.Valid;
 

@@ -30,7 +30,7 @@ import com.ubiqube.etsi.mano.v351.model.em.vnfpm.CreateThresholdRequest;
 import com.ubiqube.etsi.mano.v351.model.em.vnfpm.Threshold;
 import com.ubiqube.etsi.mano.v351.model.em.vnfpm.ThresholdLinks;
 import com.ubiqube.etsi.mano.v351.model.em.vnfpm.ThresholdModifications;
-import com.ubiqube.etsi.mano.v351.services.mapping.Threshold351Mapping;
+import com.ubiqube.etsi.mano.v351.service.mapping.Threshold351Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfpm.VnfmThresholdFrontController;
 
 import jakarta.validation.Valid;

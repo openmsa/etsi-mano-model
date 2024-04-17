@@ -29,7 +29,7 @@ import com.ubiqube.etsi.mano.v351.controller.vnfm.vnflcm.VnfInstances351Sol003Ap
 import com.ubiqube.etsi.mano.v351.model.em.lcmcoord.Link;
 import com.ubiqube.etsi.mano.v351.model.em.vnfind.VnfIndicator;
 import com.ubiqube.etsi.mano.v351.model.em.vnfind.VnfIndicatorLinks;
-import com.ubiqube.etsi.mano.v351.services.mapping.VnfIndicator351Mapping;
+import com.ubiqube.etsi.mano.v351.service.mapping.VnfIndicator351Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfind.IndicatorsFrontController;
 
 import jakarta.validation.Valid;

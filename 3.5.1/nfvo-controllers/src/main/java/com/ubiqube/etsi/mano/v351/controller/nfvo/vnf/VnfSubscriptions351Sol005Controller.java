@@ -34,8 +34,8 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PkgmNotificationsFilter;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PkgmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PkgmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v351.service.mapping.subscription.PkgmSubscriptionRequest351Mapping;
 import com.ubiqube.etsi.mano.v351.services.SubscriptionLinkable351Nfvo;
-import com.ubiqube.etsi.mano.v351.services.mapping.subscription.PkgmSubscriptionRequest351Mapping;
 
 /**
  *

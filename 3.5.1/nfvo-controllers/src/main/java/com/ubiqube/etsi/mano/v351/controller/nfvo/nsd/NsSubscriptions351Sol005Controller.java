@@ -35,8 +35,8 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.NsdmNotificationsFilter;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.NsdmSubscription;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.NsdmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.NsdmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v351.service.mapping.subscription.NsdmSubscription351Mapping;
 import com.ubiqube.etsi.mano.v351.services.SubscriptionLinkable351Nfvo;
-import com.ubiqube.etsi.mano.v351.services.mapping.subscription.NsdmSubscription351Mapping;
 
 import jakarta.validation.constraints.NotNull;
 

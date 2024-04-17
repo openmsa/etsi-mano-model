@@ -28,7 +28,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PkgmLinks;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PkgmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.VnfPkgInfoLinks;
-import com.ubiqube.etsi.mano.v351.services.Linkable;
+import com.ubiqube.etsi.mano.v351.service.Linkable;
 
 /**
  *

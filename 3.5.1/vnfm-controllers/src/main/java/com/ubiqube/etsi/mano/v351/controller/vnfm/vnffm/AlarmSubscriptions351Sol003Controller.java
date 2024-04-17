@@ -35,8 +35,8 @@ import com.ubiqube.etsi.mano.v351.model.em.vnffm.FmNotificationsFilter;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.FmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v351.service.mapping.subscription.FmSubscription351Mapping;
 import com.ubiqube.etsi.mano.v351.services.SubscriptionLinkable351Vnfm;
-import com.ubiqube.etsi.mano.v351.services.mapping.subscription.FmSubscription351Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
 
 import jakarta.validation.Valid;

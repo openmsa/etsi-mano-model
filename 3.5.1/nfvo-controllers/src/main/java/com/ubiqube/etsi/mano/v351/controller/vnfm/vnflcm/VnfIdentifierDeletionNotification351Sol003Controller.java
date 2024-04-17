@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.controller.vnflcm.VnfLcmNotificationFrontController;
 import com.ubiqube.etsi.mano.dao.mano.vnflcm.VnfLcmNotification;
 import com.ubiqube.etsi.mano.v351.model.vnfm.vnflcm.VnfIdentifierDeletionNotification;
-import com.ubiqube.etsi.mano.v351.services.mapping.VnfLvmNotification351Mapping;
+import com.ubiqube.etsi.mano.v351.service.mapping.VnfLvmNotification351Mapping;
 
 @RestController
 public class VnfIdentifierDeletionNotification351Sol003Controller implements VnfIdentifierDeletionNotification351Sol003Api {

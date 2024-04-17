@@ -50,9 +50,9 @@ import com.ubiqube.etsi.mano.v351.model.em.vnflcm.ScaleVnfToLevelRequest;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.VnfInstanceLinks;
-import com.ubiqube.etsi.mano.v351.services.mapping.VnfInstance351Mapping;
-import com.ubiqube.etsi.mano.v351.services.mapping.vnflcm.VnfInstanceRequest351Mapping;
-import com.ubiqube.etsi.mano.v351.services.mapping.vnflcm.VnfInstantiate351Mapping;
+import com.ubiqube.etsi.mano.v351.service.mapping.VnfInstance351Mapping;
+import com.ubiqube.etsi.mano.v351.service.mapping.vnflcm.VnfInstanceRequest351Mapping;
+import com.ubiqube.etsi.mano.v351.service.mapping.vnflcm.VnfInstantiate351Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfInstanceGenericFrontController;
 
 import jakarta.validation.Valid;

@@ -28,7 +28,7 @@ import com.ubiqube.etsi.mano.v351.model.em.lcmcoord.Link;
 import com.ubiqube.etsi.mano.v351.model.vnfm.grant.Grant;
 import com.ubiqube.etsi.mano.v351.model.vnfm.grant.GrantLinks;
 import com.ubiqube.etsi.mano.v351.model.vnfm.grant.GrantRequest;
-import com.ubiqube.etsi.mano.v351.services.mapping.Grant351Mapping;
+import com.ubiqube.etsi.mano.v351.service.mapping.Grant351Mapping;
 
 import jakarta.validation.Valid;
 

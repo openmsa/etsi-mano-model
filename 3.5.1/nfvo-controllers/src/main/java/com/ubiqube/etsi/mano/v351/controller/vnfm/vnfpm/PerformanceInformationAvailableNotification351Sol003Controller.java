@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnf.VnfPerformanceNotificationFrontController;
 import com.ubiqube.etsi.mano.v351.model.vnfm.vnfpm.PerformanceInformationAvailableNotification;
-import com.ubiqube.etsi.mano.v351.services.mapping.PmJobNotification351Mapping;
+import com.ubiqube.etsi.mano.v351.service.mapping.PmJobNotification351Mapping;
 
 import jakarta.validation.Valid;
 
