@@ -71,7 +71,6 @@ public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Conn
 	@Mapping(target = "pmJobs", ignore = true)
 	@Mapping(target = "tenantId", ignore = true)
 	@Mapping(target = "version", ignore = true)
-//	@Mapping(target = "vimConnectionInfo", source = "vimConnectionInfo")
 	@Mapping(target = "extCpInfo", ignore = true)
 	@Mapping(target = "versionDependency", ignore = true)
 //	@Mapping(target = "id", ignore = true)
