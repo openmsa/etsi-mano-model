@@ -14,7 +14,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.em.v361.controller.vnfconfig;
+package com.ubiqube.etsi.mano.v361.em.controller.vnfconfig;
 
 import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
