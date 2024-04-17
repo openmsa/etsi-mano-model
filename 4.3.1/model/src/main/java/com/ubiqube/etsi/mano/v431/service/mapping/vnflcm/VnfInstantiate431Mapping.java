@@ -32,9 +32,10 @@ import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.InstantiateVnfRequest;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v431.service.mapping.Connectivity431Mapping;
+import com.ubiqube.etsi.mano.v431.service.mapping.VimConnectionInfo431Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfInstantiate431Mapping extends Connectivity431Mapping {
+public interface VnfInstantiate431Mapping extends Connectivity431Mapping, VimConnectionInfo431Mapping {
 
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	VnfInstantiate map(InstantiateVnfRequest o);
@@ -83,13 +84,14 @@ public interface VnfInstantiate431Mapping extends Connectivity431Mapping {
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	ExtLinkPortDataEntity map(ExtLinkPortData o);
 
-	default List<VimConnectionInformation> map(final Map<String, VimConnectionInfo> value) {
+	default List<VimConnectionInformation> mapSetOfVimconn(final Map<String, VimConnectionInfo> value) {
 		if (null == value) {
 			return List.of();
 		}
 		return value.values().stream().map(this::map).toList();
 	}
 
+	@Override
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "cnfInfo", ignore = true)
 	@Mapping(target = "id", ignore = true)

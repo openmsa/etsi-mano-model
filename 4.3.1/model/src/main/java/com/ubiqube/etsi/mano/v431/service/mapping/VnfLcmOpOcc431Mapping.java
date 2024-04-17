@@ -58,7 +58,7 @@ import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfLcmOpOccResourceChanges;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity431Mapping {
+public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity431Mapping, VimConnectionInfo431Mapping {
 
 	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "audit", ignore = true)
@@ -118,15 +118,15 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 		}
 		return value.stream().map(this::map).collect(Collectors.toMap(x -> x.getVimId(), x -> x));
 	}
-
-	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "cnfInfo", ignore = true)
-	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "jujuInfo", ignore = true)
-	@Mapping(target = "tenantId", ignore = true)
-	@Mapping(target = "version", ignore = true)
-	@Mapping(target = "vimCapabilities", ignore = true)
-	VimConnectionInformation map(VimConnectionInfo x);
+//
+//	@Mapping(target = "audit", ignore = true)
+//	@Mapping(target = "cnfInfo", ignore = true)
+//	@Mapping(target = "id", ignore = true)
+//	@Mapping(target = "jujuInfo", ignore = true)
+//	@Mapping(target = "tenantId", ignore = true)
+//	@Mapping(target = "version", ignore = true)
+//	@Mapping(target = "vimCapabilities", ignore = true)
+//	VimConnectionInformation map(VimConnectionInfo x);
 
 	@Mapping(target = "id", ignore = true)
 	NetAttDefResourceInfo map(com.ubiqube.etsi.mano.v431.model.em.vnflcm.NetAttDefResourceInfo o);
