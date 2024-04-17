@@ -37,7 +37,7 @@ import com.ubiqube.etsi.mano.v351.model.vnfm.grant.SnapshotResourceDefinition;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface GrantRequest351Mapping extends VimResourceMapping {
+public interface GrantRequest351Mapping extends VimResource351Mapping {
 
 	@Mapping(target = "targetScaleLevelInfo", ignore = true)
 	@Mapping(target = "paasAssets", ignore = true)

@@ -23,7 +23,7 @@ import com.ubiqube.etsi.mano.dao.mano.VimResource;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.ResourceHandle;
 
 @Mapper
-public interface VimResourceMapping {
+public interface VimResource351Mapping {
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	VimResource mapToVimResource(ResourceHandle o);

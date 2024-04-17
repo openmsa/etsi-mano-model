@@ -31,7 +31,7 @@ import com.ubiqube.etsi.mano.v351.model.vnfm.vnflcm.VnfIdentifierDeletionNotific
 import com.ubiqube.etsi.mano.v351.model.vnfm.vnflcm.VnfLcmOperationOccurrenceNotification;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfLvmNotification351Mapping extends StringToUriMapping, Connectivity351Mapping, VimResourceMapping {
+public interface VnfLvmNotification351Mapping extends StringToUriMapping, Connectivity351Mapping, VimResource351Mapping {
 
 	@Mapping(target = "affectedVnfcs", ignore = true)
 	@Mapping(target = "changedExtConnectivity", ignore = true)

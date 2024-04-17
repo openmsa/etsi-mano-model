@@ -57,7 +57,7 @@ import com.ubiqube.etsi.mano.v351.model.vnfm.grant.VimConnectionInfo;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfLcmOpOcc351Mapping extends StringToUriMapping, Connectivity351Mapping, VimConnectionInfo351Mapping, VimResourceMapping {
+public interface VnfLcmOpOcc351Mapping extends StringToUriMapping, Connectivity351Mapping, VimConnectionInfo351Mapping, VimResource351Mapping {
 
 	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "audit", ignore = true)
