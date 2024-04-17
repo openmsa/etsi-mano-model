@@ -31,13 +31,14 @@ import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.v351.model.em.lcmcoord.Link;
+import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.NsdmNotificationsFilter;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.NsdmSubscription;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.NsdmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nsd.NsdmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v351.services.SubscriptionLinkable351Nfvo;
+import com.ubiqube.etsi.mano.v351.services.mapping.subscription.NsdmSubscription351Mapping;
 
 import jakarta.validation.constraints.NotNull;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -47,9 +48,9 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class NsSubscriptions351Sol005Controller implements NsSubscriptions351Sol005Api, SubscriptionLinkable351Nfvo {
 	private final NsdSubscriptionFrontController nsdSubscriptionFrontController;
-	private final MapperFacade mapper;
+	private final NsdmSubscription351Mapping mapper;
 
-	public NsSubscriptions351Sol005Controller(final NsdSubscriptionFrontController nsdSubscriptionFrontController, final MapperFacade mapper) {
+	public NsSubscriptions351Sol005Controller(final NsdSubscriptionFrontController nsdSubscriptionFrontController, final NsdmSubscription351Mapping mapper) {
 		this.nsdSubscriptionFrontController = nsdSubscriptionFrontController;
 		this.mapper = mapper;
 	}
@@ -67,7 +68,7 @@ public class NsSubscriptions351Sol005Controller implements NsSubscriptions351Sol
 	 */
 	@Override
 	public ResponseEntity<List<NsdmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return nsdSubscriptionFrontController.search(requestParams, x -> mapper.map(x, NsdmSubscription.class), NsSubscriptions351Sol005Controller::makeLink);
+		return nsdSubscriptionFrontController.search(requestParams, x -> mapper.map(x, NsdmNotificationsFilter.class), NsSubscriptions351Sol005Controller::makeLink);
 	}
 
 	/**
@@ -92,8 +93,8 @@ public class NsSubscriptions351Sol005Controller implements NsSubscriptions351Sol
 	 */
 	@Override
 	public ResponseEntity<NsdmSubscription> subscriptionsPost(final NsdmSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
-		return nsdSubscriptionFrontController.create(req, x -> mapper.map(x, NsdmSubscription.class), NsSubscriptions351Sol005Api.class, NsSubscriptions351Sol005Controller::makeLink, NsSubscriptions351Sol005Controller::getSelfLink);
+		final Subscription req = mapper.map(body);
+		return nsdSubscriptionFrontController.create(req, x -> mapper.map(x, NsdmNotificationsFilter.class), NsSubscriptions351Sol005Api.class, NsSubscriptions351Sol005Controller::makeLink, NsSubscriptions351Sol005Controller::getSelfLink);
 	}
 
 	/**
@@ -124,7 +125,7 @@ public class NsSubscriptions351Sol005Controller implements NsSubscriptions351Sol
 	 */
 	@Override
 	public ResponseEntity<NsdmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return nsdSubscriptionFrontController.findById(subscriptionId, x -> mapper.map(x, NsdmSubscription.class), NsSubscriptions351Sol005Controller::makeLink);
+		return nsdSubscriptionFrontController.findById(subscriptionId, x -> mapper.map(x, NsdmNotificationsFilter.class), NsSubscriptions351Sol005Controller::makeLink);
 	}
 
 	private static void makeLink(@NotNull final NsdmSubscription subs) {

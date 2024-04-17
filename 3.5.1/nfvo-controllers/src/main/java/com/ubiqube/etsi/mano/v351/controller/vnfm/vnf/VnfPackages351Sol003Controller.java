@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v351.services.LinksSol003;
+import com.ubiqube.etsi.mano.v351.services.mapping.VnfPkgInfo351Mapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -39,9 +39,9 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class VnfPackages351Sol003Controller implements VnfPackages351Sol003Api {
 	private final VnfPackageFrontController frontController;
-	private final MapperFacade mapper;
+	private final VnfPkgInfo351Mapping mapper;
 
-	public VnfPackages351Sol003Controller(final VnfPackageFrontController frontController, final MapperFacade mapper) {
+	public VnfPackages351Sol003Controller(final VnfPackageFrontController frontController, final VnfPkgInfo351Mapping mapper) {
 		this.frontController = frontController;
 		this.mapper = mapper;
 	}
@@ -58,7 +58,7 @@ public class VnfPackages351Sol003Controller implements VnfPackages351Sol003Api {
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdGet(final String vnfPkgId, @Valid final String includeSignature) {
-		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
+		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x), LinksSol003::makeLinks);
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class VnfPackages351Sol003Controller implements VnfPackages351Sol003Api {
 
 	@Override
 	public ResponseEntity<String> vnfPackagesGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks, VnfPkgInfo.class);
+		return frontController.search(requestParams, x -> mapper.map(x), LinksSol003::makeLinks, VnfPkgInfo.class);
 	}
 
 }
