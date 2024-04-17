@@ -16,32 +16,82 @@
  */
 package com.ubiqube.etsi.mano.v451.controller.vnfm.vrqan;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.controller.SubscriptionFrontController;
+import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
+import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
+import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
+import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v451.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v451.model.vnfm.vrqan.VrQuotaAvailNotificationsFilter;
+import com.ubiqube.etsi.mano.v451.model.vnfm.vrqan.VrQuotaAvailSubscription;
+import com.ubiqube.etsi.mano.v451.model.vnfm.vrqan.VrQuotaAvailSubscriptionLinks;
+import com.ubiqube.etsi.mano.v451.model.vnfm.vrqan.VrQuotaAvailSubscriptionRequest;
+import com.ubiqube.etsi.mano.v451.service.SubscriptionLinkable451Vnfm;
+import com.ubiqube.etsi.mano.v451.service.mapping.subscription.VrQuotaAvailSubscription451Mapping;
+
+import jakarta.validation.Valid;
 
 @RestController
-public class VrQanSubscriptions451Sol003Controller implements VrQanSubscriptions451Sol003Api {
+public class VrQanSubscriptions451Sol003Controller implements VrQanSubscriptions451Sol003Api, SubscriptionLinkable451Vnfm {
+	private final SubscriptionFrontController subscriptionService;
+	private final VrQuotaAvailSubscription451Mapping mapper;
 
-    private final ObjectMapper objectMapper;
+	public VrQanSubscriptions451Sol003Controller(final SubscriptionFrontController subscriptionService, final VrQuotaAvailSubscription451Mapping mapper) {
+		this.subscriptionService = subscriptionService;
+		this.mapper = mapper;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<List<VrQuotaAvailSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
+		return subscriptionService.search(requestParams, x -> mapper.map(x, VrQuotaAvailNotificationsFilter.class), VrQanSubscriptions451Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public VrQanSubscriptions451Sol003Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@Override
+	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsPost(@Valid final VrQuotaAvailSubscriptionRequest body) {
+		final Subscription req = mapper.map(body);
+		return subscriptionService.create(req, x -> mapper.map(x, VrQuotaAvailNotificationsFilter.class), VrQanSubscriptions451Sol003Api.class, VrQanSubscriptions451Sol003Controller::makeLinks, VrQanSubscriptions451Sol003Controller::makeSelf, ApiVersionType.SOL003_VRQAN);
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+	@Override
+	public ResponseEntity<Void> subscriptionsSubscriptionIdDelete(final String subscriptionId) {
+		return subscriptionService.deleteById(subscriptionId, ApiVersionType.SOL003_VRQAN);
+	}
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, VrQuotaAvailNotificationsFilter.class), VrQanSubscriptions451Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
+	}
+
+	private static String makeSelf(final VrQuotaAvailSubscription subscription) {
+		return linkTo(methodOn(VrQanSubscriptions451Sol003Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref();
+	}
+
+	private static void makeLinks(final VrQuotaAvailSubscription subscription) {
+		final VrQuotaAvailSubscriptionLinks links = new VrQuotaAvailSubscriptionLinks();
+		final Link link = new Link();
+		link.setHref(linkTo(methodOn(VrQanSubscriptions451Sol003Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref());
+		links.setSelf(link);
+		subscription.setLinks(links);
+	}
+
+	@Override
+	public String makeSelfLink(final String id) {
+		return linkTo(methodOn(VrQanSubscriptions451Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
+	}
+
+	@Override
+	public ApiAndType getApiAndType() {
+		return ApiAndType.of(ApiTypesEnum.SOL003, SubscriptionType.VRQAN);
+	}
 
 }
