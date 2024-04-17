@@ -229,6 +229,7 @@ public interface VnfInstance351Mapping extends VimConnectionInfo351Mapping, Conn
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v351.model.em.vnflcm.ScaleInfo si);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	VipCpInfo map(com.ubiqube.etsi.mano.v351.model.em.vnflcm.VipCpInfo vc);
 
