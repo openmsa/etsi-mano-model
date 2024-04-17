@@ -59,6 +59,11 @@
 			<version>${version.mano-commons}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.ubiqube.mano</groupId>
+			<artifactId>mano-orika</artifactId>
+			<version>${version.mano-orika}</version>
+		</dependency>
+		<dependency>
 			<groupId>ma.glasnost.orika</groupId>
 			<artifactId>ubi-orika-core</artifactId>
 		</dependency>

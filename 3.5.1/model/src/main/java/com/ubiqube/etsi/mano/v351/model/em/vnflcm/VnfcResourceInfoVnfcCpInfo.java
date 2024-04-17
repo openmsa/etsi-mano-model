@@ -18,17 +18,16 @@ package com.ubiqube.etsi.mano.v351.model.em.vnflcm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * VnfcResourceInfoVnfcCpInfo
@@ -53,7 +52,7 @@ public class VnfcResourceInfoVnfcCpInfo {
 	private String vnfLinkPortId = null;
 
 	@JsonProperty("parentCpId")
-	private Map<String, String> parentCpId = null;
+	private String parentCpId = null;
 
 	@JsonProperty("metadata")
 	private Map<String, String> metadata = null;
@@ -170,7 +169,7 @@ public class VnfcResourceInfoVnfcCpInfo {
 		this.vnfLinkPortId = vnfLinkPortId;
 	}
 
-	public VnfcResourceInfoVnfcCpInfo parentCpId(final Map<String, String> parentCpId) {
+	public VnfcResourceInfoVnfcCpInfo parentCpId(final String parentCpId) {
 		this.parentCpId = parentCpId;
 		return this;
 	}
@@ -183,11 +182,11 @@ public class VnfcResourceInfoVnfcCpInfo {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, String> getParentCpId() {
+	public String getParentCpId() {
 		return parentCpId;
 	}
 
-	public void setParentCpId(final Map<String, String> parentCpId) {
+	public void setParentCpId(final String parentCpId) {
 		this.parentCpId = parentCpId;
 	}
 
@@ -217,7 +216,7 @@ public class VnfcResourceInfoVnfcCpInfo {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final VnfcResourceInfoVnfcCpInfo vnfcResourceInfoVnfcCpInfo = (VnfcResourceInfoVnfcCpInfo) o;
