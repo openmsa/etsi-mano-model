@@ -22,9 +22,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -33,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v331.model.em.vnfconfig.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a response for the query NSD operation.
@@ -129,7 +128,7 @@ public class NsdInfo implements AnyOfNsdInfo {
 	private Map<String, String> userDefinedData = null;
 
 	@JsonProperty("_links")
-	private NsdInfoLinks _links = null;
+	private NsdInfoLinks links = null;
 
 	public NsdInfo id(final UUID id) {
 		this.id = id;
@@ -521,8 +520,8 @@ public class NsdInfo implements AnyOfNsdInfo {
 		this.userDefinedData = userDefinedData;
 	}
 
-	public NsdInfo _links(final NsdInfoLinks _links) {
-		this._links = _links;
+	public NsdInfo links(final NsdInfoLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -536,11 +535,11 @@ public class NsdInfo implements AnyOfNsdInfo {
 
 	@Valid
 	public NsdInfoLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final NsdInfoLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -548,7 +547,7 @@ public class NsdInfo implements AnyOfNsdInfo {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final NsdInfo nsdInfo = (NsdInfo) o;
@@ -569,12 +568,12 @@ public class NsdInfo implements AnyOfNsdInfo {
 				Objects.equals(this.nsdOperationalState, nsdInfo.nsdOperationalState) &&
 				Objects.equals(this.nsdUsageState, nsdInfo.nsdUsageState) &&
 				Objects.equals(this.userDefinedData, nsdInfo.userDefinedData) &&
-				Objects.equals(this._links, nsdInfo._links);
+				Objects.equals(this.links, nsdInfo.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nsdId, nsdName, nsdVersion, nsdDesigner, nsdInvariantId, vnfPkgIds, pnfdInfoIds, nestedNsdInfoIds, archiveSecurityOption, signingCertificate, artifacts, nsdOnboardingState, onboardingFailureDetails, nsdOperationalState, nsdUsageState, userDefinedData, _links);
+		return Objects.hash(id, nsdId, nsdName, nsdVersion, nsdDesigner, nsdInvariantId, vnfPkgIds, pnfdInfoIds, nestedNsdInfoIds, archiveSecurityOption, signingCertificate, artifacts, nsdOnboardingState, onboardingFailureDetails, nsdOperationalState, nsdUsageState, userDefinedData, links);
 	}
 
 	@Override
@@ -599,7 +598,7 @@ public class NsdInfo implements AnyOfNsdInfo {
 		sb.append("    nsdOperationalState: ").append(toIndentedString(nsdOperationalState)).append("\n");
 		sb.append("    nsdUsageState: ").append(toIndentedString(nsdUsageState)).append("\n");
 		sb.append("    userDefinedData: ").append(toIndentedString(userDefinedData)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

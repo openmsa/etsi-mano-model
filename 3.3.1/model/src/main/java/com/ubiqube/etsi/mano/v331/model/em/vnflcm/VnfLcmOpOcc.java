@@ -474,7 +474,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 		this.vnfSnapshotInfoId = vnfSnapshotInfoId;
 	}
 
-	public VnfLcmOpOcc _links(final VnfLcmOpOccLinks _links) {
+	public VnfLcmOpOcc links(final VnfLcmOpOccLinks _links) {
 		this.links = _links;
 		return this;
 	}

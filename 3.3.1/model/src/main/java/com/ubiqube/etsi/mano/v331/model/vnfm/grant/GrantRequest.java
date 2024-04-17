@@ -21,14 +21,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a grant request.
@@ -89,7 +88,7 @@ public class GrantRequest {
 	private Map<String, String> additionalParams = null;
 
 	@JsonProperty("_links")
-	private GrantRequestLinks _links = null;
+	private GrantRequestLinks links = null;
 
 	public GrantRequest vnfInstanceId(final String vnfInstanceId) {
 		this.vnfInstanceId = vnfInstanceId;
@@ -222,7 +221,10 @@ public class GrantRequest {
 	}
 
 	/**
-	 * Set to true if this VNF LCM operation occurrence has been triggered by an automated procedure inside the VNFM (i.e. ScaleVnf / ScaleVnfToLevel triggered by auto-scale, or HealVnf triggered by auto-heal). Set to false otherwise.
+	 * Set to true if this VNF LCM operation occurrence has been triggered by an
+	 * automated procedure inside the VNFM (i.e. ScaleVnf / ScaleVnfToLevel
+	 * triggered by auto-scale, or HealVnf triggered by auto-heal). Set to false
+	 * otherwise.
 	 *
 	 * @return isAutomaticInvocation
 	 **/
@@ -271,7 +273,10 @@ public class GrantRequest {
 	}
 
 	/**
-	 * List of resource definitions in the VNFD for resources to be added by the LCM operation which is related to this grant request, with one entry per resource. If the granting request is for InstantiateVNF, either instantiationLevel or addResources shall be present.
+	 * List of resource definitions in the VNFD for resources to be added by the LCM
+	 * operation which is related to this grant request, with one entry per
+	 * resource. If the granting request is for InstantiateVNF, either
+	 * instantiationLevel or addResources shall be present.
 	 *
 	 * @return addResources
 	 **/
@@ -299,8 +304,14 @@ public class GrantRequest {
 	}
 
 	/**
-	 * List of resource definitions in the VNFD for resources to be temporarily instantiated during the runtime of the LCM operation which is related to this grant request, with one entry per resource. The NFVO will assume that the VNFM will be responsible to both allocate and release the temporary resource during the runtime of the LCM operation. This means, the resource can be allocated and consumed after the \"start\" notification for the LCM operation is sent by the VNFM, and the resource will
-	 * be released before the \"result\" notification of the VNF LCM operation is sent by the VNFM.
+	 * List of resource definitions in the VNFD for resources to be temporarily
+	 * instantiated during the runtime of the LCM operation which is related to this
+	 * grant request, with one entry per resource. The NFVO will assume that the
+	 * VNFM will be responsible to both allocate and release the temporary resource
+	 * during the runtime of the LCM operation. This means, the resource can be
+	 * allocated and consumed after the \"start\" notification for the LCM operation
+	 * is sent by the VNFM, and the resource will be released before the \"result\"
+	 * notification of the VNF LCM operation is sent by the VNFM.
 	 *
 	 * @return tempResources
 	 **/
@@ -328,7 +339,8 @@ public class GrantRequest {
 	}
 
 	/**
-	 * Provides the definitions of resources to be removed by the LCM operation which is related to this grant request, with one entry per resource.
+	 * Provides the definitions of resources to be removed by the LCM operation
+	 * which is related to this grant request, with one entry per resource.
 	 *
 	 * @return removeResources
 	 **/
@@ -356,7 +368,8 @@ public class GrantRequest {
 	}
 
 	/**
-	 * Provides the definitions of resources to be modified by the LCM operation which is related to this grant request, with one entry per resource.
+	 * Provides the definitions of resources to be modified by the LCM operation
+	 * which is related to this grant request, with one entry per resource.
 	 *
 	 * @return updateResources
 	 **/
@@ -384,9 +397,25 @@ public class GrantRequest {
 	}
 
 	/**
-	 * Placement constraints that the VNFM may send to the NFVO in order to influence the resource placement decision. If sent, the NFVO shall take the constraints into consideration when making resource placement decisions, and shall reject the grant if they cannot be honoured. The affinity/anti-affinity rules defined in the VNFD , and the placement constraints in the GrantVnfLifecycleOperation as defined in this clause should be conflict-free. In case of conflicts, the placement constraints in the
-	 * GrantVnfLifecycleOperation shall take precedence. Passing constraints allows the VNFM or the lifecycle management scripts to influence resource placement decisions by the NFVO to ensure VNF properties such as performance or fault tolerance. If fallbackBestEffort is present in placement constraints and set to “true”, the NFVO shall process the Affinity/AntiAffinity constraint in a best effort manner, in which case, if specified resources cannot be allocated based on specified placement
-	 * constraint, the NFVO looks for an alternate best effort placement for the specified resources to be granted. In the best effort anti-affinity case, the resources are expected to be spread optimally over all available instances of scope (e.g. zones), and in the best effort affinity case, they are expected to be distributed optimally over fewer possible instances of scope.
+	 * Placement constraints that the VNFM may send to the NFVO in order to
+	 * influence the resource placement decision. If sent, the NFVO shall take the
+	 * constraints into consideration when making resource placement decisions, and
+	 * shall reject the grant if they cannot be honoured. The affinity/anti-affinity
+	 * rules defined in the VNFD , and the placement constraints in the
+	 * GrantVnfLifecycleOperation as defined in this clause should be conflict-free.
+	 * In case of conflicts, the placement constraints in the
+	 * GrantVnfLifecycleOperation shall take precedence. Passing constraints allows
+	 * the VNFM or the lifecycle management scripts to influence resource placement
+	 * decisions by the NFVO to ensure VNF properties such as performance or fault
+	 * tolerance. If fallbackBestEffort is present in placement constraints and set
+	 * to “true”, the NFVO shall process the Affinity/AntiAffinity constraint in a
+	 * best effort manner, in which case, if specified resources cannot be allocated
+	 * based on specified placement constraint, the NFVO looks for an alternate best
+	 * effort placement for the specified resources to be granted. In the best
+	 * effort anti-affinity case, the resources are expected to be spread optimally
+	 * over all available instances of scope (e.g. zones), and in the best effort
+	 * affinity case, they are expected to be distributed optimally over fewer
+	 * possible instances of scope.
 	 *
 	 * @return placementConstraints
 	 **/
@@ -414,7 +443,13 @@ public class GrantRequest {
 	}
 
 	/**
-	 * Used by the VNFM to require that multiple resources are managed through the same VIM connection. If sent, the NFVO shall take the constraints into consideration when making VIM selection decisions, and shall reject the grant if they cannot be honoured. This attribute shall be supported if VNF-related Resource Management in direct mode is applicable. The applicability and further details of this attribute for indirect mode are left for future specification.
+	 * Used by the VNFM to require that multiple resources are managed through the
+	 * same VIM connection. If sent, the NFVO shall take the constraints into
+	 * consideration when making VIM selection decisions, and shall reject the grant
+	 * if they cannot be honoured. This attribute shall be supported if VNF-related
+	 * Resource Management in direct mode is applicable. The applicability and
+	 * further details of this attribute for indirect mode are left for future
+	 * specification.
 	 *
 	 * @return vimConstraints
 	 **/
@@ -449,8 +484,8 @@ public class GrantRequest {
 		this.additionalParams = additionalParams;
 	}
 
-	public GrantRequest _links(final GrantRequestLinks _links) {
-		this._links = _links;
+	public GrantRequest links(final GrantRequestLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -464,11 +499,11 @@ public class GrantRequest {
 
 	@Valid
 	public GrantRequestLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final GrantRequestLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -495,12 +530,12 @@ public class GrantRequest {
 				Objects.equals(this.placementConstraints, grantRequest.placementConstraints) &&
 				Objects.equals(this.vimConstraints, grantRequest.vimConstraints) &&
 				Objects.equals(this.additionalParams, grantRequest.additionalParams) &&
-				Objects.equals(this._links, grantRequest._links);
+				Objects.equals(this.links, grantRequest.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(vnfInstanceId, vnfLcmOpOccId, vnfdId, dstVnfdId, flavourId, operation, isAutomaticInvocation, instantiationLevelId, addResources, tempResources, removeResources, updateResources, placementConstraints, vimConstraints, additionalParams, _links);
+		return Objects.hash(vnfInstanceId, vnfLcmOpOccId, vnfdId, dstVnfdId, flavourId, operation, isAutomaticInvocation, instantiationLevelId, addResources, tempResources, removeResources, updateResources, placementConstraints, vimConstraints, additionalParams, links);
 	}
 
 	@Override
@@ -523,13 +558,14 @@ public class GrantRequest {
 		sb.append("    placementConstraints: ").append(toIndentedString(placementConstraints)).append("\n");
 		sb.append("    vimConstraints: ").append(toIndentedString(vimConstraints)).append("\n");
 		sb.append("    additionalParams: ").append(toIndentedString(additionalParams)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
 
 	/**
-	 * Convert the given object to string with each line indented by 4 spaces (except the first line).
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
 	 */
 	private String toIndentedString(final java.lang.Object o) {
 		if (o == null) {

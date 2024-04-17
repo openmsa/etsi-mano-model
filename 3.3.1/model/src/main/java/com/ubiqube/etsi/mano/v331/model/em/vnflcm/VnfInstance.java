@@ -447,7 +447,7 @@ public class VnfInstance {
 		this.extensions = extensions;
 	}
 
-	public VnfInstance _links(final VnfInstanceLinks _links) {
+	public VnfInstance links(final VnfInstanceLinks _links) {
 		this.links = _links;
 		return this;
 	}
