@@ -30,6 +30,7 @@ import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataIpAddressesEntity
 import com.ubiqube.etsi.mano.dao.mano.LayerProtocolType;
 import com.ubiqube.etsi.mano.dao.mano.VnfExtCpConfiguration;
 import com.ubiqube.etsi.mano.dao.mano.VnfExtCpDataEntity;
+import com.ubiqube.etsi.mano.dao.mano.alarm.ResourceHandle;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.CpProtocolData;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.CpProtocolInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtLinkPortData;
@@ -55,6 +56,7 @@ public interface Connectivity431Mapping {
 	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "ETHERNET")
 	CpProtocolData.LayerProtocolEnum map(LayerProtocolType lpt);
 
+	@Mapping(target = "extNetAttDefResource", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "currentVnfExtCpData", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
@@ -92,9 +94,14 @@ public interface Connectivity431Mapping {
 	@Mapping(target = "secondaryCpInstanceId", ignore = true)
 	ExtLinkPortDataEntity map(ExtLinkPortData elpt);
 
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	ResourceHandle map(com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle o);
+
 	@Mapping(target = "id", ignore = true)
 	VnfExtCpDataEntity map(VnfExtCpData extCps);
 
+	@Mapping(target = "netAttDefResourceId", ignore = true)
 	@Mapping(target = "cpInstanceId", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "vnfExtCpDataEntity", ignore = true)
@@ -103,6 +110,7 @@ public interface Connectivity431Mapping {
 	@Mapping(target = "createExtLinkPort", ignore = true)
 	VnfExtCpConfig map(VnfExtCpConfiguration vecc);
 
+	@Mapping(target = "virtualCpAddress", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "vnfExtCpConfiguration", ignore = true)
 	CpProtocolDataEntity map(CpProtocolData cpProtocolData);

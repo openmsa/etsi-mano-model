@@ -45,6 +45,7 @@ public interface VnfPkgInfo431Mapping extends StringToUriMapping {
 	@Mapping(target = "sha512", ignore = true)
 	Checksum map(com.ubiqube.etsi.mano.v361.model.nfvo.vnfsnapshotpkgm.Checksum o);
 
+	@Mapping(target = "vnfdExtInvariantId", ignore = true)
 	@Mapping(target = "affinityRules", ignore = true)
 	@Mapping(target = "attributes", ignore = true)
 	@Mapping(target = "audit", ignore = true)

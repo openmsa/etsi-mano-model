@@ -26,6 +26,7 @@ import org.mapstruct.ValueMapping;
 import com.ubiqube.etsi.mano.dao.mano.CpProtocolInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataIpAddressesEntity;
 import com.ubiqube.etsi.mano.dao.mano.NsdInstance;
+import com.ubiqube.etsi.mano.dao.mano.VimResource;
 import com.ubiqube.etsi.mano.dao.mano.VirtualStorageResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.VnfMonitoringParameter;
 import com.ubiqube.etsi.mano.dao.mano.VnfScaleInfo;
@@ -40,6 +41,7 @@ import com.ubiqube.etsi.mano.dao.mano.nsd.VnffgDescriptor;
 import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.NsScaleInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.CpProtocolInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.IpOverEthernetAddressInfoIpAddresses;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstanceInstantiatedVnfInfo;
@@ -75,12 +77,15 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo mapNsScaleInfo(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
+	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "links", ignore = true)
 	VnfInstance map(VnfInstanceDto o);
 
+	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")
 	ScaleInfo map(NsScaleInfo o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nsScaleLevelId", ignore = true)
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
@@ -104,6 +109,8 @@ public interface NsInstance431Mapping {
 
 	com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.NsCpHandle map(@Nullable NsCpHandle value);
 
+	@Mapping(target = "vnfVirtualStorageResourceInfo", ignore = true)
+	@Mapping(target = "vnfcInfo", ignore = true)
 	@Mapping(target = "extCpInfo", ignore = true)
 	@Mapping(target = "extManagedVirtualLinkInfo", ignore = true)
 	@Mapping(target = "extVirtualLinkInfo", ignore = true)
@@ -111,6 +118,7 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "vnfVirtualLinkResourceInfo", ignore = true)
 	VnfInstanceInstantiatedVnfInfo map(VnfInstanceInstantiatedVnfInfoDto o);
 
+	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	ScaleInfo map(VnfScaleInfo o);
 
@@ -129,6 +137,13 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "vimId", ignore = true)
 	@Mapping(target = "vnfPkgId", ignore = true)
 	VnfInstanceDto map(VnfInstance o);
+
+	@Mapping(target = "virtualStorageResourceInfo", source = "vnfVirtualStorageResourceInfo")
+	VnfInstanceInstantiatedVnfInfoDto map(VnfInstanceInstantiatedVnfInfo o);
+
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	com.ubiqube.etsi.mano.dao.mano.alarm.ResourceHandle mapResourceHandleToResourceHandle(ResourceHandle o);
 
 	@Mapping(target = "audit", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.VnfMonitoringParameter map(com.ubiqube.etsi.mano.v361.model.em.vnflcm.MonitoringParameter o);
@@ -165,6 +180,10 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "zoneId", ignore = true)
 	VirtualStorageResourceInfo map(com.ubiqube.etsi.mano.v361.model.em.vnflcm.VirtualStorageResourceInfo p);
+
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	VimResource map(ResourceHandle o);
 
 	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")

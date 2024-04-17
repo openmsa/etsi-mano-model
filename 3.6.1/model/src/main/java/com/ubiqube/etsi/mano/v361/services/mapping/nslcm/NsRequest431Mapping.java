@@ -25,6 +25,7 @@ import com.ubiqube.etsi.mano.dao.mano.NestedNsInstanceData;
 import com.ubiqube.etsi.mano.dao.mano.NsCpProtocolData;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstanceData;
 import com.ubiqube.etsi.mano.dao.mano.VnfScaleInfo;
+import com.ubiqube.etsi.mano.dao.mano.alarm.ResourceHandle;
 import com.ubiqube.etsi.mano.dao.mano.dto.CreateNsInstance;
 import com.ubiqube.etsi.mano.dao.mano.dto.ParamsForNestedNsd;
 import com.ubiqube.etsi.mano.dao.mano.dto.nsi.NsInstantiate;
@@ -145,6 +146,10 @@ public interface NsRequest431Mapping {
 	NsCpProtocolData map(CpProtocolData o);
 
 	ForwardingConfig map(SiteToWanLayer2ProtocolDataForwardingConfig o);
+
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	ResourceHandle map(com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle o);
 
 	@Mapping(target = "id", ignore = true)
 	MscsEndpointInformation map(MscsEndpointInfo o);

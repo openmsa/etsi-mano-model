@@ -33,6 +33,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.vnfsnapshotpkgm.Checksum;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface Pnfd431Mapping extends StringToUriMapping {
 
+	@Mapping(target = "pnfdersion", source = "pnfdVersion")
 	@Mapping(target = "links", ignore = true)
 	PnfdInfo map(PnfDescriptor o);
 
@@ -42,6 +43,8 @@ public interface Pnfd431Mapping extends StringToUriMapping {
 	@ValueMapping(source = "ONBOARDING", target = "ONBOARDED")
 	OnboardingStateType map(PnfdOnboardingStateType o);
 
+	@Mapping(target = "pnfdExtInvariantId", ignore = true)
+	@Mapping(target = "pnfdVersion", source = "pnfdersion")
 	@Mapping(target = "virtualLink", ignore = true)
 	PnfDescriptor map(PnfdInfo o);
 

@@ -107,6 +107,7 @@ public interface VnfInstantiate431Mapping extends Connectivity431Mapping, VimCon
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	InstantiateVnfRequest map(VnfInstantiate req);
 
+	@SuppressWarnings("null")
 	default Map<String,VimConnectionInfo> map(List<VimConnectionInformation> value) {
 		if (null == value) {
 			return Map.of();

@@ -80,6 +80,7 @@ public interface Nsd431Mapping extends StringToUriMapping {
 		return value.getVnfPackage().getId().toString();
 	}
 
+	@Mapping(target = "nsdExtInvariantId", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "autoHealEnabled", ignore = true)
 	@Mapping(target = "flavorId", ignore = true)

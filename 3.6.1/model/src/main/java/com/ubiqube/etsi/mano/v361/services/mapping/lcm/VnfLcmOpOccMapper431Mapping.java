@@ -33,9 +33,10 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleVnfRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleVnfToLevelRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInfoModificationRequest;
+import com.ubiqube.etsi.mano.v361.services.mapping.VimConnectionInfo431Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfLcmOpOccMapper431Mapping {
+public interface VnfLcmOpOccMapper431Mapping extends VimConnectionInfo431Mapping {
 
 	@Mapping(target = "extManagedVirtualLinks", ignore = true)
 	@Mapping(target = "extVirtualLinks", ignore = true)
@@ -52,6 +53,7 @@ public interface VnfLcmOpOccMapper431Mapping {
 	@Mapping(target = "vnfcInstanceId", ignore = true)
 	CreateVnfSnapshotRequest mapToCreateVnfSnapshotRequest(VnfBlueprint o);
 
+	@Mapping(target = "vnfcInfoModificationsDeleteIds", ignore = true)
 	@Mapping(target = "extensions", ignore = true)
 	@Mapping(target = "metadata", ignore = true)
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
@@ -96,6 +98,7 @@ public interface VnfLcmOpOccMapper431Mapping {
 	@Mapping(target = "type", ignore = true)
 	ScaleVnfRequest mapToScaleVnfRequest(VnfBlueprint o);
 
+	@Mapping(target = "vimConnectionInfo", source = "vimConnections")
 	@Mapping(target = "extManagedVirtualLinks", ignore = true)
 	@Mapping(target = "extVirtualLinks", ignore = true)
 	@Mapping(target = "extensions", ignore = true)
