@@ -64,22 +64,9 @@
 			<version>${version.mano-orika}</version>
 		</dependency>
 		<dependency>
-			<groupId>ma.glasnost.orika</groupId>
-			<artifactId>ubi-orika-core</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>uk.co.jemos.podam</groupId>
 			<artifactId>podam</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.ubiqube.orika</groupId>
-			<artifactId>orika-spring-boot-starter</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>ma.glasnost.orika</groupId>
-			<artifactId>ubi-orika-core</artifactId>
 		</dependency>
 	</dependencies>
 	<repositories>
