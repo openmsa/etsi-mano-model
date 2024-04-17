@@ -16,32 +16,76 @@
  */
 package com.ubiqube.etsi.mano.v451.controller.em.vnfpm;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
+
+import java.time.OffsetDateTime;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.v451.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.CreateThresholdRequest;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.Threshold;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.ThresholdLinks;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.ThresholdModifications;
+import com.ubiqube.etsi.mano.v451.service.mapping.Threshold451Mapping;
+import com.ubiqube.etsi.mano.vnfm.fc.vnfpm.VnfmThresholdFrontController;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class Thresholds451Sol002Controller implements Thresholds451Sol002Api {
+	private final VnfmThresholdFrontController vnfmThresholdFrontController;
+	private final Threshold451Mapping mapper;
 
-    private final ObjectMapper objectMapper;
+	public Thresholds451Sol002Controller(final VnfmThresholdFrontController vnfmThresholdFrontController, final Threshold451Mapping mapper) {
+		this.vnfmThresholdFrontController = vnfmThresholdFrontController;
+		this.mapper = mapper;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<Threshold> thresholdsPost(@Valid final CreateThresholdRequest createThresholdRequest) {
+		final com.ubiqube.etsi.mano.dao.mano.pm.Threshold req = mapper.map(createThresholdRequest);
+		return vnfmThresholdFrontController.thresholdsCreate(req, x -> mapper.map(x), Thresholds451Sol002Controller::makeLinks, Thresholds451Sol002Controller::getSelfLink);
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public Thresholds451Sol002Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@Override
+	public ResponseEntity<Void> thresholdsThresholdIdDelete(final String thresholdId) {
+		return vnfmThresholdFrontController.deleteById(thresholdId);
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+	@Override
+	public ResponseEntity<Threshold> thresholdsThresholdIdGet(final String thresholdId) {
+		return vnfmThresholdFrontController.findById(thresholdId, x -> mapper.map(x), Thresholds451Sol002Controller::makeLinks);
+	}
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<String> thresholdsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
+		return vnfmThresholdFrontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x), Thresholds451Sol002Controller::makeLinks, Threshold.class);
+	}
+
+	@Override
+	public ResponseEntity<ThresholdModifications> thresholdsThresholdIdPatch(final String thresholdId, final ThresholdModifications body, final OffsetDateTime ifUnmodifiedSince, final String ifMatch) {
+		return vnfmThresholdFrontController.patch(thresholdId, body, x -> mapper.mapToThresholdModifications(x));
+	}
+
+	private static void makeLinks(final Threshold x) {
+		final ThresholdLinks links = new ThresholdLinks();
+		Link link = new Link();
+		link.setHref(linkTo(methodOn(Thresholds451Sol002Api.class).thresholdsThresholdIdGet(x.getId())).withSelfRel().getHref());
+		links.setSelf(link);
+
+		link = new Link();
+		link.setHref("");
+		// links.setObjects(link);
+
+		x.setLinks(links);
+	}
+
+	private static String getSelfLink(final Threshold threshold) {
+		return linkTo(methodOn(Thresholds451Sol002Api.class).thresholdsThresholdIdGet(threshold.getId().toString())).withSelfRel().getHref();
+	}
 
 }

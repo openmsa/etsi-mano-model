@@ -16,32 +16,83 @@
  */
 package com.ubiqube.etsi.mano.v451.controller.em.vnfpm;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
+
+import java.time.OffsetDateTime;
+import java.util.UUID;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.v451.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.CreatePmJobRequest;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.PerformanceReport;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.PmJob;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.PmJobLinks;
+import com.ubiqube.etsi.mano.v451.model.em.vnfpm.PmJobModifications;
+import com.ubiqube.etsi.mano.v451.service.mapping.PmJob451Mapping;
+import com.ubiqube.etsi.mano.vnfm.fc.vnfpm.VnfmPmGenericFrontController;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class PmJobs451Sol002Controller implements PmJobs451Sol002Api {
+	private final VnfmPmGenericFrontController vnfmPmGenericFrontController;
+	private final PmJob451Mapping mapper;
 
-    private final ObjectMapper objectMapper;
+	public PmJobs451Sol002Controller(final VnfmPmGenericFrontController vnfmPmGenericFrontController, final PmJob451Mapping mapper) {
+		this.vnfmPmGenericFrontController = vnfmPmGenericFrontController;
+		this.mapper = mapper;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<String> pmJobsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
+		return vnfmPmGenericFrontController.search(requestParams, x -> mapper.map(x), PmJobs451Sol002Controller::makeLinks, PmJob.class);
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public PmJobs451Sol002Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	private static void makeLinks(final PmJob x) {
+		final PmJobLinks links = new PmJobLinks();
+		Link link = new Link();
+		link.setHref(linkTo(methodOn(PmJobs451Sol002Api.class).pmJobsPmJobIdGet(x.getId())).withSelfRel().getHref());
+		links.setSelf(link);
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+		link = new Link();
+		link.setHref("");
+		// links.setObjects(link);
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+		x.setLinks(links);
+	}
+
+	private static String makeSelf(final PmJob pmjob) {
+		return linkTo(methodOn(PmJobs451Sol002Api.class).pmJobsPmJobIdGet(pmjob.getId())).withSelfRel().getHref();
+	}
+
+	@Override
+	public ResponseEntity<Void> pmJobsPmJobIdDelete(final String pmJobId) {
+		return vnfmPmGenericFrontController.deleteById(UUID.fromString(pmJobId));
+	}
+
+	@Override
+	public ResponseEntity<PmJob> pmJobsPmJobIdGet(final String pmJobId) {
+		return vnfmPmGenericFrontController.findById(UUID.fromString(pmJobId), x -> mapper.map(x), PmJobs451Sol002Controller::makeLinks);
+	}
+
+	@Override
+	public ResponseEntity<PerformanceReport> pmJobsPmJobIdReportsReportIdGet(final String pmJobId, final String reportId) {
+		return vnfmPmGenericFrontController.findReportById(pmJobId, reportId, x -> mapper.map(x));
+	}
+
+	@Override
+	public ResponseEntity<PmJob> pmJobsPost(@Valid final CreatePmJobRequest createPmJobRequest) {
+		final com.ubiqube.etsi.mano.dao.mano.pm.PmJob req = mapper.map(createPmJobRequest);
+		return vnfmPmGenericFrontController.pmJobsPost(req, x -> mapper.map(x), PmJobs451Sol002Controller::makeLinks, PmJobs451Sol002Controller::makeSelf);
+	}
+
+	@Override
+	public ResponseEntity<PmJobModifications> pmJobsPmJobIdPatch(final String pmJobId, final PmJobModifications pmJobModifications, final OffsetDateTime ifUnmodifiedSince, final String ifMatch) {
+		return vnfmPmGenericFrontController.pmJobsPmJobIdPatch(UUID.fromString(pmJobId), pmJobModifications);
+	}
 
 }
