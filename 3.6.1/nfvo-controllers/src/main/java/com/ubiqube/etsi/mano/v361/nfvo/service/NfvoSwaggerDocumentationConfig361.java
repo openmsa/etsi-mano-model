@@ -32,7 +32,7 @@ public class NfvoSwaggerDocumentationConfig361 {
 	GroupedOpenApi customImplementationNfvo361() {
 		return GroupedOpenApi.builder()
 				.group("nfvo-etsi-mano-3.6.1")
-				.packagesToScan("com.ubiqube.etsi.mano.nfvo.v361")
+				.packagesToScan("com.ubiqube.etsi.mano.v361.nfvo")
 				.build();
 	}
 
