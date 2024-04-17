@@ -27,7 +27,7 @@ public class NfvoSwaggerDocumentationConfig431 {
 	GroupedOpenApi customImplementationNfvo431() {
 		return GroupedOpenApi.builder()
 				.group("nfvo-etsi-mano-4.3.1")
-				.packagesToScan("com.ubiqube.etsi.mano.nfvo.v431")
+				.packagesToScan("com.ubiqube.etsi.mano.v431.nfvo")
 				.build();
 	}
 }
