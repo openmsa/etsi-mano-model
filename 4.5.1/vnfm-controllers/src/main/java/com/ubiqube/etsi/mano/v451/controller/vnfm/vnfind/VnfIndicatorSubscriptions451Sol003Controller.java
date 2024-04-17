@@ -16,32 +16,28 @@
  */
 package com.ubiqube.etsi.mano.v451.controller.vnfm.vnfind;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.v451.model.em.vnfind.VnfIndicatorSubscription;
+import com.ubiqube.etsi.mano.v451.model.em.vnfind.VnfIndicatorSubscriptionRequest;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfIndicatorSubscriptions451Sol003Controller implements VnfIndicatorSubscriptions451Sol003Api {
 
-    private final ObjectMapper objectMapper;
+	@Override
+	public ResponseEntity<List<VnfIndicatorSubscription>> subscriptionsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    private final HttpServletRequest request;
-
-    @org.springframework.beans.factory.annotation.Autowired
-    public VnfIndicatorSubscriptions451Sol003Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
-
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
-
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
-
+	@Override
+	public ResponseEntity<List<VnfIndicatorSubscription>> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
