@@ -28,6 +28,7 @@ import org.mapstruct.MappingConstants;
 import com.ubiqube.etsi.mano.dao.mano.ChangeType;
 import com.ubiqube.etsi.mano.dao.mano.ExtLinkPortInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.ExtVirtualLinkInfoEntity;
+import com.ubiqube.etsi.mano.dao.mano.VimResource;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedCompute;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedExtLinkPort;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedStorage;
@@ -47,6 +48,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.AffectedVnfc;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtLinkPortInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LcmOperationType;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInfoModifications;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfLcmOpOcc;
@@ -101,12 +103,19 @@ public interface VnfLcmOpOcc361Mapping extends StringToUriMapping, Connectivity3
 	@Mapping(target = "id", ignore = true)
 	AffectedVipCp map(com.ubiqube.etsi.mano.v361.model.em.vnflcm.AffectedVipCp o);
 
+	@Mapping(target = "extNetAttDefResource", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	ExtVirtualLinkInfoEntity map(ExtVirtualLinkInfo o);
 
 	@Mapping(target = "audit", ignore = true)
 	ExtLinkPortInfoEntity map(ExtLinkPortInfo o);
 
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	VimResource mapToVimResource(ResourceHandle o);
+
+	@Mapping(target = "vimConnectionInfo", ignore = true)
+	@Mapping(target = "vnfcInfoModifications", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications map(VnfInfoModifications o);
 
@@ -128,6 +137,8 @@ public interface VnfLcmOpOcc361Mapping extends StringToUriMapping, Connectivity3
 
 	PlanOperationType map(LcmOperationType operation);
 
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "endTime", ignore = true)
@@ -162,6 +173,7 @@ public interface VnfLcmOpOcc361Mapping extends StringToUriMapping, Connectivity3
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	VnfInstantiatedExtLinkPort map(AffectedExtLinkPort o);
 
+	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "endTime", ignore = true)

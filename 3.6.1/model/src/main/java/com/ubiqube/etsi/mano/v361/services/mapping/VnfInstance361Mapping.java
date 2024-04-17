@@ -31,6 +31,8 @@ import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataIpAddressesEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
+import com.ubiqube.etsi.mano.dao.mano.VimResource;
+import com.ubiqube.etsi.mano.dao.mano.VirtualLinkInfo;
 import com.ubiqube.etsi.mano.dao.mano.VirtualStorageResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.VnfMonitoringParameter;
@@ -45,8 +47,10 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.IpOverEthernetAddressInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.IpOverEthernetAddressInfoIpAddresses;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.MonitoringParameter;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfExtCpInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstanceInstantiatedVnfInfo;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfVirtualLinkResourceInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfcResourceInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfcResourceInfoVnfcCpInfo;
 
@@ -56,6 +60,7 @@ public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Conn
 	@Mapping(target = "links", ignore = true)
 	com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstance map(VnfInstance vnfInst);
 
+	@Mapping(target = "vnfPkg", ignore = true)
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "blueprints", ignore = true)
@@ -80,6 +85,7 @@ public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Conn
 	@ValueMapping(source = "IP_FOR_VIRTUAL_CP", target = MappingConstants.THROW_EXCEPTION)
 	CpProtocolInfo.LayerProtocolEnum map(CpProtocolInfoEntity.LayerProtocolEnum en);
 
+	@Mapping(target = "vnfVirtualStorageResourceInfo", source = "virtualStorageResourceInfo")
 	@Mapping(target = "extManagedVirtualLinkInfo", source = "extManagedVirtualLinks")
 	@Mapping(target = "monitoringParameters", source = "vnfMonitoringParameter")
 	@Mapping(target = "vnfState", source = "state")
@@ -108,14 +114,19 @@ public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Conn
 	@Mapping(target = "zoneId", ignore = true)
 	VnfcResourceInfoEntity map(VnfcResourceInfo vnfcResourceInfo);
 
+	@Mapping(target = "netAttDefResourceId", ignore = true)
 	@Mapping(target = "certificateContentId", ignore = true)
 	VnfcResourceInfoVnfcCpInfoEntity map(VnfcResourceInfoVnfcCpInfo o);
 
 	VnfcResourceInfoVnfcCpInfo map(VnfcResourceInfoVnfcCpInfoEntity vnfcCpInfo);
 
+	@Mapping(target = "virtualCpAddress", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	CpProtocolInfoEntity map(CpProtocolInfo cpi);
 
+	@Mapping(target = "mcioInfo", ignore = true)
+	@Mapping(target = "virtualCpInfo", ignore = true)
+	@Mapping(target = "virtualStorageResourceInfo", source = "vnfVirtualStorageResourceInfo")
 	@Mapping(target = "vnfcInfo", ignore = true)
 	@Mapping(target = "aspectId", ignore = true)
 	@Mapping(target = "extManagedVirtualLinks", source = "extManagedVirtualLinkInfo")
@@ -128,10 +139,41 @@ public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Conn
 	@Mapping(target = "scaleType", ignore = true)
 	@Mapping(target = "state", source = "vnfState")
 	@Mapping(target = "updData", ignore = true)
-	@Mapping(target = "virtualLinkResourceInfo", ignore = true)
+	@Mapping(target = "virtualLinkResourceInfo", source = "vnfVirtualLinkResourceInfo")
 	@Mapping(target = "vnfMonitoringParameter", source = "monitoringParameters")
 	BlueprintParameters map(VnfInstanceInstantiatedVnfInfo viivi);
 
+	@Mapping(target = "aliasName", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "changeType", ignore = true)
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "endTime", ignore = true)
+	@Mapping(target = "instantiationLevel", ignore = true)
+	@Mapping(target = "manoResourceId", ignore = true)
+	@Mapping(target = "removedInstantiated", ignore = true)
+	@Mapping(target = "resourceDefinitionId", ignore = true)
+	@Mapping(target = "resourceGroupId", ignore = true)
+	@Mapping(target = "resourceId", ignore = true)
+	@Mapping(target = "resourceProviderId", ignore = true)
+	@Mapping(target = "startTime", ignore = true)
+	@Mapping(target = "status", ignore = true)
+	@Mapping(target = "toscaName", ignore = true)
+	@Mapping(target = "vduId", ignore = true)
+	@Mapping(target = "vimConnectionInformation", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	@Mapping(target = "vimLevelResourceType", ignore = true)
+	@Mapping(target = "vnfLcmOpOccs", ignore = true)
+	@Mapping(target = "zoneId", ignore = true)
+	@Mapping(target = "vfndId", ignore = true)
+	VirtualLinkInfo map(VnfVirtualLinkResourceInfo o);
+
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	VimResource mapToVimResource(ResourceHandle o);
+
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	@Mapping(target = "vnfNetAttDefResource", ignore = true)
 	@Mapping(target = "extManagedMultisiteVirtualLinkId", ignore = true)
 	@Mapping(target = "grants", ignore = true)
 	@Mapping(target = ".", source = "networkResource")
@@ -141,9 +183,13 @@ public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Conn
 	@Mapping(target = "audit", ignore = true)
 	VnfMonitoringParameter map(MonitoringParameter o);
 
+	@Mapping(target = "associatedVirtualCpId", ignore = true)
+	@Mapping(target = "netAttDefResourceId", ignore = true)
 	@Mapping(target = "certificateContentId", ignore = true)
 	ExtCpInfo map(VnfExtCpInfo o);
 
+	@Mapping(target = "extNetAttDefResource", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "extCps", ignore = true)
 	@Mapping(target = "resourceId", source = "resourceHandle.resourceId")
@@ -179,11 +225,13 @@ public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Conn
 	@Mapping(target = "zoneId", ignore = true)
 	ExtLinkPortDataEntity map(ExtLinkPortInfo ext);
 
+	@Mapping(target = "virtualCpAddress", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "vnfExtCpConfiguration", ignore = true)
 	CpProtocolDataEntity mapToCpProtocolDataEntity(CpProtocolInfo cpi);
 
 //	@Mapping(target = "scaleLevel", source = "scaleToLevel")
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleInfo si);
@@ -210,6 +258,7 @@ public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Conn
 	@Mapping(target = "numDynamicAddresses", ignore = true)
 	IpOverEthernetAddressDataIpAddressesEntity map(IpOverEthernetAddressInfoIpAddresses ipAddresses);
 
+	@Mapping(target = "virtualCpAddress", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.v2.CpProtocolInfo mapCpProtocolInfo(CpProtocolInfo cpi);
 

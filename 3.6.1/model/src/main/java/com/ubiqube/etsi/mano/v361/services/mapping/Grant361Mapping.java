@@ -29,12 +29,14 @@ import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.GrantVimAssetsEntity;
 import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
+import com.ubiqube.etsi.mano.dao.mano.VimResource;
 import com.ubiqube.etsi.mano.dao.mano.ZoneGroupInformation;
 import com.ubiqube.etsi.mano.dao.mano.ZoneInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.ConstraintResourceRef;
 import com.ubiqube.etsi.mano.dao.mano.grant.PlacementConstraint;
 import com.ubiqube.etsi.mano.dao.mano.grant.SnapshotResourceDefinitionEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.VimConstraint;
+import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 import com.ubiqube.etsi.mano.v361.model.vnfm.grant.Grant;
 import com.ubiqube.etsi.mano.v361.model.vnfm.grant.GrantInfo;
 import com.ubiqube.etsi.mano.v361.model.vnfm.grant.GrantRequest;
@@ -53,19 +55,17 @@ public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	VimConstraint map(com.ubiqube.etsi.mano.v361.model.vnfm.grant.VimConstraint o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleInfo o);
 
-	@Mapping(target = "containerNamespace", ignore = true)
-	@Mapping(target = "mcioConstraints", ignore = true)
 	@Mapping(target = "reservationId", ignore = true)
 	@Mapping(target = "resourceDefinitionId", ignore = true)
 	@Mapping(target = "resourceGroupId", ignore = true)
-	@Mapping(target = "resourceId", ignore = true)
-	@Mapping(target = "resourceProviderId", ignore = true)
-	@Mapping(target = "vimConnectionId", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
-	@Mapping(target = "vimLevelResourceType", ignore = true)
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "mcioConstraints", ignore = true)
+	@Mapping(target = ".", source = "resource")
 	@Mapping(target = "zoneId", ignore = true)
 	GrantInformationExt map(ResourceDefinition o);
 
@@ -80,6 +80,10 @@ public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	SnapshotResourceDefinitionEntity map(SnapshotResourceDefinition o);
 
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
+	VimResource mapToVimResource(ResourceHandle o);
+
 	@Mapping(target = "id", ignore = true)
 	ConstraintResourceRef map(com.ubiqube.etsi.mano.v361.model.vnfm.grant.ConstraintResourceRef o);
 
@@ -87,6 +91,8 @@ public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivi
 	@Mapping(target = "vimConnectionInfo", source = "vimConnections")
 	Grant map(GrantResponse grantResponse);
 
+	@Mapping(target = "cirConnectionInfo", ignore = true)
+	@Mapping(target = "mciopRepositoryInfo", ignore = true)
 	@Mapping(target = "paasAssets", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "automaticInvocation", ignore = true)
@@ -95,9 +101,9 @@ public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivi
 	@Mapping(target = "dstVnfdId", ignore = true)
 	@Mapping(target = "error", ignore = true)
 	@Mapping(target = "flavourId", ignore = true)
-	@Mapping(target = "instanceLink", ignore = true)
+	@Mapping(target = "instanceLink", source = "links.vnfInstance.href")
 	@Mapping(target = "instantiationLevelId", ignore = true)
-	@Mapping(target = "lcmLink", ignore = true)
+	@Mapping(target = "lcmLink", source = "links.vnfLcmOpOcc.href")
 	@Mapping(target = "networkReservationId", ignore = true)
 	@Mapping(target = "operation", ignore = true)
 	@Mapping(target = "placementConstraints", ignore = true)
@@ -108,6 +114,7 @@ public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivi
 	@Mapping(target = "vnfdId", ignore = true)
 	GrantResponse map(Grant grant);
 
+	@Mapping(target = "storageAssets", ignore = true)
 	GrantVimAssetsEntity map(GrantVimAssets gva);
 
 	GrantVimAssets map(GrantVimAssetsEntity gvae);
@@ -118,6 +125,8 @@ public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	ZoneGroupInformation map(ZoneGroupInfo zgi);
 
+	@Mapping(target = "containerNamespace", ignore = true)
+	@Mapping(target = "mcioConstraints", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "resourceId", ignore = true)
 	@Mapping(target = "resourceTemplateId", ignore = true)
@@ -132,6 +141,7 @@ public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivi
 
 	GrantInfo map(GrantInformationExt gie);
 
+	@Mapping(target = "targetScaleLevelInfo", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "automaticInvocation", ignore = true)
 	@Mapping(target = "available", ignore = true)
