@@ -53,6 +53,10 @@ import jakarta.annotation.Nullable;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VnfLcmOpOcc331Mapping extends StringToUriMapping, Connectivity331Mapping, VimConnectionInfo331Mapping, VimResource331Mapping {
 
+	@Mapping(target = "affectedVipCps", ignore = true)
+	@Mapping(target = "lcmCoordinations", ignore = true)
+	@Mapping(target = "rejectedLcmCoordinations", ignore = true)
+	@Mapping(target = "warnings", ignore = true)
 	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "automaticInvocation", source = "isAutomaticInvocation")
@@ -78,6 +82,8 @@ public interface VnfLcmOpOcc331Mapping extends StringToUriMapping, Connectivity3
 	@Mapping(target = "audit", ignore = true)
 	ExtVirtualLinkInfoEntity map(ExtVirtualLinkInfo o);
 
+	@Mapping(target = "secondaryCpInstanceId", ignore = true)
+	@Mapping(target = "trunkResourceId", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	ExtLinkPortInfoEntity map(ExtLinkPortInfo o);
 

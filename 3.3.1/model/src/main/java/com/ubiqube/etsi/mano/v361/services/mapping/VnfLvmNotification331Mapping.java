@@ -60,6 +60,8 @@ public interface VnfLvmNotification331Mapping extends StringToUriMapping, Connec
 	@Mapping(target = "extNetAttDefResource", ignore = true)
 	ExtVirtualLinkInfoEntity map(ExtVirtualLinkInfo o);
 
+	@Mapping(target = "secondaryCpInstanceId", ignore = true)
+	@Mapping(target = "trunkResourceId", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	ExtLinkPortInfoEntity map(ExtLinkPortInfo o);
 

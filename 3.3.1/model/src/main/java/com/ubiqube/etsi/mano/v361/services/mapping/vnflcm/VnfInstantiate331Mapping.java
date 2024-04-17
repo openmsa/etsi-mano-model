@@ -45,6 +45,7 @@ public interface VnfInstantiate331Mapping extends Connectivity331Mapping, VimCon
 	@Mapping(target = "vimId", source = "vimConnectionId")
 	ExternalManagedVirtualLink mapToExternalManagedVirtualLink(ExtManagedVirtualLinkData o);
 
+	@Mapping(target = "trunkResourceId", ignore = true)
 	@Override
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)

@@ -76,6 +76,7 @@ public interface GrantRequest331Mapping extends VimResource331Mapping {
 	@Mapping(target = "id", ignore = true)
 	ConstraintResourceRef map(com.ubiqube.etsi.mano.v331.model.vnfm.grant.ConstraintResourceRef o);
 
+	@Mapping(target = "secondaryResourceTemplateId", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	@Mapping(target = "mcioConstraints", ignore = true)

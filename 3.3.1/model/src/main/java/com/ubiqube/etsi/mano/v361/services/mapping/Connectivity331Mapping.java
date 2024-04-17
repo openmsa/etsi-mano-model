@@ -66,6 +66,7 @@ public interface Connectivity331Mapping {
 
 	ExtVirtualLinkData map(ExtVirtualLinkDataEntity evld);
 
+	@Mapping(target = "trunkResourceId", ignore = true)
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "changeType", ignore = true)
@@ -112,6 +113,7 @@ public interface Connectivity331Mapping {
 	@Mapping(target = "vnfExtCpConfiguration", ignore = true)
 	CpProtocolDataEntity map(CpProtocolData cpProtocolData);
 
+	@Mapping(target = "segmentationType", ignore = true)
 	@Mapping(target = "addressRange", ignore = true)
 	@Mapping(target = "addresses", ignore = true)
 	@Mapping(target = "id", ignore = true)

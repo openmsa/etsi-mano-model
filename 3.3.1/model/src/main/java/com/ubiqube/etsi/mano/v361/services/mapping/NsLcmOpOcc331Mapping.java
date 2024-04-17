@@ -31,6 +31,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.NsLcmOperationStateType;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface NsLcmOpOcc331Mapping extends StringToUriMapping {
+	@Mapping(target = "statusEnteredTime", ignore = true)
 	@Mapping(target = "isAutomaticInvocation", ignore = true)
 	@Mapping(target = "isCancelPending", ignore = true)
 	@Mapping(target = "lcmOperationType", source = "operation")
@@ -60,6 +61,10 @@ public interface NsLcmOpOcc331Mapping extends StringToUriMapping {
 	@ValueMapping(source = "PARTIALLY_COMPLETED", target = "FAILED_TEMP")
 	NsLcmOperationStateType map(OperationStatusType o);
 
+	@Mapping(target = "stateEnteredTime", ignore = true)
+	@Mapping(target = "lcmCoordinations", ignore = true)
+	@Mapping(target = "rejectedLcmCoordinations", ignore = true)
+	@Mapping(target = "warnings", ignore = true)
 	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "automaticInvocation", ignore = true)

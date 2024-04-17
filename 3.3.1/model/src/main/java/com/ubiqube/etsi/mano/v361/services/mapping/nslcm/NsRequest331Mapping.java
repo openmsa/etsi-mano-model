@@ -30,6 +30,7 @@ import com.ubiqube.etsi.mano.dao.mano.dto.CreateNsInstance;
 import com.ubiqube.etsi.mano.dao.mano.dto.ParamsForNestedNsd;
 import com.ubiqube.etsi.mano.dao.mano.dto.nsi.NsInstantiate;
 import com.ubiqube.etsi.mano.dao.mano.nfvo.ParamsForVnf;
+import com.ubiqube.etsi.mano.dao.mano.nsd.upd.InstantiateVnfData;
 import com.ubiqube.etsi.mano.dao.mano.nsd.upd.NfpData;
 import com.ubiqube.etsi.mano.dao.mano.nsd.upd.UpdateRequest;
 import com.ubiqube.etsi.mano.dao.mano.nsd.upd.UpdateTypeEnum;
@@ -136,6 +137,9 @@ public interface NsRequest331Mapping {
 	@Mapping(target = "terminateVnfData", ignore = true)
 	@Mapping(target = "realVnfInstanceToRemove", ignore = true)
 	UpdateRequest map(UpdateNsRequest body);
+
+	@Mapping(target = "vnfProfileId", ignore = true)
+	InstantiateVnfData map(com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.InstantiateVnfData o);
 
 	@Mapping(target = "id", ignore = true)
 	ConnectivityServiceEndpointInformation map(ConnectivityServiceEndpointInfo o);
