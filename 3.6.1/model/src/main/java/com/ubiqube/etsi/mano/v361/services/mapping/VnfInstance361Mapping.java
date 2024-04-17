@@ -31,7 +31,6 @@ import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataIpAddressesEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
-import com.ubiqube.etsi.mano.dao.mano.VimResource;
 import com.ubiqube.etsi.mano.dao.mano.VirtualLinkInfo;
 import com.ubiqube.etsi.mano.dao.mano.VirtualStorageResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
@@ -47,7 +46,6 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.IpOverEthernetAddressInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.IpOverEthernetAddressInfoIpAddresses;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.MonitoringParameter;
-import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfExtCpInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstanceInstantiatedVnfInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfVirtualLinkResourceInfo;
@@ -55,7 +53,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfcResourceInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfcResourceInfoVnfcCpInfo;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Connectivity361Mapping {
+public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Connectivity361Mapping, VimResourceMapping {
 
 	@Mapping(target = "links", ignore = true)
 	com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstance map(VnfInstance vnfInst);
@@ -166,10 +164,6 @@ public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Conn
 	@Mapping(target = "zoneId", ignore = true)
 	@Mapping(target = "vfndId", ignore = true)
 	VirtualLinkInfo map(VnfVirtualLinkResourceInfo o);
-
-	@Mapping(target = "containerNamespace", ignore = true)
-	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
-	VimResource mapToVimResource(ResourceHandle o);
 
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)

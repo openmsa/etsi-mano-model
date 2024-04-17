@@ -29,14 +29,12 @@ import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.GrantVimAssetsEntity;
 import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
-import com.ubiqube.etsi.mano.dao.mano.VimResource;
 import com.ubiqube.etsi.mano.dao.mano.ZoneGroupInformation;
 import com.ubiqube.etsi.mano.dao.mano.ZoneInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.ConstraintResourceRef;
 import com.ubiqube.etsi.mano.dao.mano.grant.PlacementConstraint;
 import com.ubiqube.etsi.mano.dao.mano.grant.SnapshotResourceDefinitionEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.VimConstraint;
-import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 import com.ubiqube.etsi.mano.v361.model.vnfm.grant.Grant;
 import com.ubiqube.etsi.mano.v361.model.vnfm.grant.GrantInfo;
 import com.ubiqube.etsi.mano.v361.model.vnfm.grant.GrantRequest;
@@ -49,7 +47,7 @@ import com.ubiqube.etsi.mano.v361.model.vnfm.grant.ZoneInfo;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivity361Mapping {
+public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivity361Mapping, VimResourceMapping {
 
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "id", ignore = true)
@@ -79,10 +77,6 @@ public interface Grant361Mapping extends VimConnectionInfo361Mapping, Connectivi
 
 	@Mapping(target = "id", ignore = true)
 	SnapshotResourceDefinitionEntity map(SnapshotResourceDefinition o);
-
-	@Mapping(target = "containerNamespace", ignore = true)
-	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
-	VimResource mapToVimResource(ResourceHandle o);
 
 	@Mapping(target = "id", ignore = true)
 	ConstraintResourceRef map(com.ubiqube.etsi.mano.v361.model.vnfm.grant.ConstraintResourceRef o);

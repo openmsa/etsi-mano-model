@@ -25,12 +25,10 @@ import org.mapstruct.MappingConstants;
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
-import com.ubiqube.etsi.mano.dao.mano.VimResource;
 import com.ubiqube.etsi.mano.dao.mano.grant.ConstraintResourceRef;
 import com.ubiqube.etsi.mano.dao.mano.grant.PlacementConstraint;
 import com.ubiqube.etsi.mano.dao.mano.grant.SnapshotResourceDefinitionEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.VimConstraint;
-import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 import com.ubiqube.etsi.mano.v361.model.vnfm.grant.GrantInfo;
 import com.ubiqube.etsi.mano.v361.model.vnfm.grant.GrantRequest;
 import com.ubiqube.etsi.mano.v361.model.vnfm.grant.ResourceDefinition;
@@ -39,7 +37,7 @@ import com.ubiqube.etsi.mano.v361.model.vnfm.grant.SnapshotResourceDefinition;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface GrantRequest361Mapping {
+public interface GrantRequest361Mapping extends VimResourceMapping {
 
 	@Mapping(target = "targetScaleLevelInfo", ignore = true)
 	@Mapping(target = "paasAssets", ignore = true)
@@ -97,10 +95,6 @@ public interface GrantRequest361Mapping {
 
 	@Mapping(target = "id", ignore = true)
 	SnapshotResourceDefinitionEntity map(SnapshotResourceDefinition o);
-
-	@Mapping(target = "containerNamespace", ignore = true)
-	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
-	VimResource map(ResourceHandle o);
 
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "id", ignore = true)

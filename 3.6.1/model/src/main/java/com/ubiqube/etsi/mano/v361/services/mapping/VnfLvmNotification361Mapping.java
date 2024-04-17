@@ -22,18 +22,16 @@ import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.dao.mano.ExtLinkPortInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.ExtVirtualLinkInfoEntity;
-import com.ubiqube.etsi.mano.dao.mano.VimResource;
 import com.ubiqube.etsi.mano.dao.mano.vnflcm.VnfLcmNotification;
 import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtLinkPortInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtVirtualLinkInfo;
-import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfIdentifierDeletionNotification;
 import com.ubiqube.etsi.mano.v361.model.vnfm.vnflcm.VnfIdentifierCreationNotification;
 import com.ubiqube.etsi.mano.v361.model.vnfm.vnflcm.VnfLcmOperationOccurrenceNotification;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfLvmNotification361Mapping extends StringToUriMapping, Connectivity361Mapping {
+public interface VnfLvmNotification361Mapping extends StringToUriMapping, Connectivity361Mapping, VimResourceMapping {
 
 	@Mapping(target = "affectedVnfcs", ignore = true)
 	@Mapping(target = "changedExtConnectivity", ignore = true)
@@ -64,9 +62,5 @@ public interface VnfLvmNotification361Mapping extends StringToUriMapping, Connec
 
 	@Mapping(target = "audit", ignore = true)
 	ExtLinkPortInfoEntity map(ExtLinkPortInfo o);
-
-	@Mapping(target = "containerNamespace", ignore = true)
-	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
-	VimResource mapToVimResource(ResourceHandle o);
 
 }

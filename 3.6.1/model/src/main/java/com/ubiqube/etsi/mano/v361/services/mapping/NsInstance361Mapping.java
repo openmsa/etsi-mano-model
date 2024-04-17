@@ -26,7 +26,6 @@ import org.mapstruct.ValueMapping;
 import com.ubiqube.etsi.mano.dao.mano.CpProtocolInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.IpOverEthernetAddressDataIpAddressesEntity;
 import com.ubiqube.etsi.mano.dao.mano.NsdInstance;
-import com.ubiqube.etsi.mano.dao.mano.VimResource;
 import com.ubiqube.etsi.mano.dao.mano.VirtualStorageResourceInfo;
 import com.ubiqube.etsi.mano.dao.mano.VnfMonitoringParameter;
 import com.ubiqube.etsi.mano.dao.mano.VnfScaleInfo;
@@ -53,7 +52,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.VnffgInfo;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface NsInstance361Mapping {
+public interface NsInstance361Mapping extends VimResourceMapping {
 	@Mapping(target = "additionalAffinityOrAntiAffinityRule", ignore = true)
 	@Mapping(target = "monitoringParameter", ignore = true)
 	@Mapping(target = "nestedNsInstanceId", ignore = true)
@@ -180,10 +179,6 @@ public interface NsInstance361Mapping {
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "zoneId", ignore = true)
 	VirtualStorageResourceInfo map(com.ubiqube.etsi.mano.v361.model.em.vnflcm.VirtualStorageResourceInfo p);
-
-	@Mapping(target = "containerNamespace", ignore = true)
-	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
-	VimResource map(ResourceHandle o);
 
 	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")

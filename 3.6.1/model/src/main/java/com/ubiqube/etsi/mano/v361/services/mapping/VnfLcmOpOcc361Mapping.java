@@ -28,7 +28,6 @@ import org.mapstruct.MappingConstants;
 import com.ubiqube.etsi.mano.dao.mano.ChangeType;
 import com.ubiqube.etsi.mano.dao.mano.ExtLinkPortInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.ExtVirtualLinkInfoEntity;
-import com.ubiqube.etsi.mano.dao.mano.VimResource;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedCompute;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedExtLinkPort;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedStorage;
@@ -48,7 +47,6 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.AffectedVnfc;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtLinkPortInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LcmOperationType;
-import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInfoModifications;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfLcmOpOcc;
@@ -59,7 +57,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfLcmOpOccResourceChanges;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfLcmOpOcc361Mapping extends StringToUriMapping, Connectivity361Mapping, VimConnectionInfo361Mapping {
+public interface VnfLcmOpOcc361Mapping extends StringToUriMapping, Connectivity361Mapping, VimConnectionInfo361Mapping, VimResourceMapping {
 
 	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "audit", ignore = true)
@@ -109,10 +107,6 @@ public interface VnfLcmOpOcc361Mapping extends StringToUriMapping, Connectivity3
 
 	@Mapping(target = "audit", ignore = true)
 	ExtLinkPortInfoEntity map(ExtLinkPortInfo o);
-
-	@Mapping(target = "containerNamespace", ignore = true)
-	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
-	VimResource mapToVimResource(ResourceHandle o);
 
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "vnfcInfoModifications", ignore = true)
