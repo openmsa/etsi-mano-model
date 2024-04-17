@@ -21,9 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -32,6 +29,8 @@ import com.ubiqube.etsi.mano.v351.model.em.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.v351.services.VnfLcmOpOcc351Deserializer;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a VNF lifecycle management operation occurrence. Shall
@@ -610,7 +609,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 		this.warnings = warnings;
 	}
 
-	public VnfLcmOpOcc _links(final VnfLcmOpOccLinks _links) {
+	public VnfLcmOpOcc links(final VnfLcmOpOccLinks _links) {
 		this.links = _links;
 		return this;
 	}

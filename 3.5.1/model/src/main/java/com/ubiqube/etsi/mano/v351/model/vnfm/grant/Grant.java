@@ -22,18 +22,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.ExtVirtualLinkData;
 
-import java.util.Map;
-
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a grant. NOTE 1: This interface allows to signal the use
@@ -137,7 +134,7 @@ public class Grant {
 	private Map<String, String> additionalParams = null;
 
 	@JsonProperty("_links")
-	private GrantLinks _links = null;
+	private GrantLinks links = null;
 
 	public Grant id(final String id) {
 		this.id = id;
@@ -527,8 +524,8 @@ public class Grant {
 		this.additionalParams = additionalParams;
 	}
 
-	public Grant _links(final GrantLinks _links) {
-		this._links = _links;
+	public Grant links(final GrantLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -542,11 +539,11 @@ public class Grant {
 
 	@Valid
 	public GrantLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final GrantLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -554,7 +551,7 @@ public class Grant {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final Grant grant = (Grant) o;
@@ -572,12 +569,12 @@ public class Grant {
 				Objects.equals(this.extVirtualLinks, grant.extVirtualLinks) &&
 				Objects.equals(this.extManagedVirtualLinks, grant.extManagedVirtualLinks) &&
 				Objects.equals(this.additionalParams, grant.additionalParams) &&
-				Objects.equals(this._links, grant._links);
+				Objects.equals(this.links, grant.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, vnfInstanceId, vnfLcmOpOccId, vimConnectionInfo, zones, zoneGroups, addResources, tempResources, removeResources, updateResources, vimAssets, extVirtualLinks, extManagedVirtualLinks, additionalParams, _links);
+		return Objects.hash(id, vnfInstanceId, vnfLcmOpOccId, vimConnectionInfo, zones, zoneGroups, addResources, tempResources, removeResources, updateResources, vimAssets, extVirtualLinks, extManagedVirtualLinks, additionalParams, links);
 	}
 
 	@Override
@@ -599,7 +596,7 @@ public class Grant {
 		sb.append("    extVirtualLinks: ").append(toIndentedString(extVirtualLinks)).append("\n");
 		sb.append("    extManagedVirtualLinks: ").append(toIndentedString(extManagedVirtualLinks)).append("\n");
 		sb.append("    additionalParams: ").append(toIndentedString(additionalParams)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

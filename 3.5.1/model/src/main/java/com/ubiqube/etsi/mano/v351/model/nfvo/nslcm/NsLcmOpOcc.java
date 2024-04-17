@@ -22,9 +22,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -34,6 +31,8 @@ import com.ubiqube.etsi.mano.v351.model.em.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.CancelModeType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a request a NS lifecycle operation occurrence. It shall
@@ -150,7 +149,7 @@ public class NsLcmOpOcc {
 	private List<String> warnings = null;
 
 	@JsonProperty("_links")
-	private NsLcmOpOccLinks _links = null;
+	private NsLcmOpOccLinks links = null;
 
 	public NsLcmOpOcc id(final String id) {
 		this.id = id;
@@ -509,8 +508,8 @@ public class NsLcmOpOcc {
 		this.warnings = warnings;
 	}
 
-	public NsLcmOpOcc _links(final NsLcmOpOccLinks _links) {
-		this._links = _links;
+	public NsLcmOpOcc links(final NsLcmOpOccLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -524,11 +523,11 @@ public class NsLcmOpOcc {
 
 	@Valid
 	public NsLcmOpOccLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final NsLcmOpOccLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -555,12 +554,12 @@ public class NsLcmOpOcc {
 				Objects.equals(this.lcmCoordinations, nsLcmOpOcc.lcmCoordinations) &&
 				Objects.equals(this.rejectedLcmCoordinations, nsLcmOpOcc.rejectedLcmCoordinations) &&
 				Objects.equals(this.warnings, nsLcmOpOcc.warnings) &&
-				Objects.equals(this._links, nsLcmOpOcc._links);
+				Objects.equals(this.links, nsLcmOpOcc.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, operationState, stateEnteredTime, nsInstanceId, lcmOperationType, startTime, isAutomaticInvocation, operationParams, isCancelPending, cancelMode, error, resourceChanges, lcmCoordinations, rejectedLcmCoordinations, warnings, _links);
+		return Objects.hash(id, operationState, stateEnteredTime, nsInstanceId, lcmOperationType, startTime, isAutomaticInvocation, operationParams, isCancelPending, cancelMode, error, resourceChanges, lcmCoordinations, rejectedLcmCoordinations, warnings, links);
 	}
 
 	@Override
@@ -583,7 +582,7 @@ public class NsLcmOpOcc {
 		sb.append("    lcmCoordinations: ").append(toIndentedString(lcmCoordinations)).append("\n");
 		sb.append("    rejectedLcmCoordinations: ").append(toIndentedString(rejectedLcmCoordinations)).append("\n");
 		sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

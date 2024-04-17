@@ -22,9 +22,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -33,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.VnfInstance;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a response for Query NS operation. It shall comply with
@@ -153,7 +152,7 @@ public class NsInstance {
 	private List<WanConnectionInfo> wanConnectionInfo = null;
 
 	@JsonProperty("_links")
-	private NsInstanceLinks _links = null;
+	private NsInstanceLinks links = null;
 
 	public NsInstance id(final String id) {
 		this.id = id;
@@ -640,8 +639,8 @@ public class NsInstance {
 		this.wanConnectionInfo = wanConnectionInfo;
 	}
 
-	public NsInstance _links(final NsInstanceLinks _links) {
-		this._links = _links;
+	public NsInstance links(final NsInstanceLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -655,11 +654,11 @@ public class NsInstance {
 
 	@Valid
 	public NsInstanceLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final NsInstanceLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -667,7 +666,7 @@ public class NsInstance {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final NsInstance nsInstance = (NsInstance) o;
@@ -690,12 +689,12 @@ public class NsInstance {
 				Objects.equals(this.nsScaleStatus, nsInstance.nsScaleStatus) &&
 				Objects.equals(this.additionalAffinityOrAntiAffinityRule, nsInstance.additionalAffinityOrAntiAffinityRule) &&
 				Objects.equals(this.wanConnectionInfo, nsInstance.wanConnectionInfo) &&
-				Objects.equals(this._links, nsInstance._links);
+				Objects.equals(this.links, nsInstance.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nsInstanceName, nsInstanceDescription, nsdId, nsdInfoId, flavourId, priority, vnfInstance, pnfInfo, virtualLinkInfo, vnffgInfo, sapInfo, nestedNsInstanceId, vnfSnapshotInfoIds, nsState, monitoringParameter, nsScaleStatus, additionalAffinityOrAntiAffinityRule, wanConnectionInfo, _links);
+		return Objects.hash(id, nsInstanceName, nsInstanceDescription, nsdId, nsdInfoId, flavourId, priority, vnfInstance, pnfInfo, virtualLinkInfo, vnffgInfo, sapInfo, nestedNsInstanceId, vnfSnapshotInfoIds, nsState, monitoringParameter, nsScaleStatus, additionalAffinityOrAntiAffinityRule, wanConnectionInfo, links);
 	}
 
 	@Override
@@ -722,7 +721,7 @@ public class NsInstance {
 		sb.append("    nsScaleStatus: ").append(toIndentedString(nsScaleStatus)).append("\n");
 		sb.append("    additionalAffinityOrAntiAffinityRule: ").append(toIndentedString(additionalAffinityOrAntiAffinityRule)).append("\n");
 		sb.append("    wanConnectionInfo: ").append(toIndentedString(wanConnectionInfo)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
