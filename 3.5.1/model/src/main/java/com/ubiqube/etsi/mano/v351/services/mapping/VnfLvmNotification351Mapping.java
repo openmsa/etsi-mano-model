@@ -26,8 +26,8 @@ import com.ubiqube.etsi.mano.dao.mano.vnflcm.VnfLcmNotification;
 import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.ExtLinkPortInfo;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.ExtVirtualLinkInfo;
-import com.ubiqube.etsi.mano.v351.model.em.vnflcm.VnfIdentifierDeletionNotification;
 import com.ubiqube.etsi.mano.v351.model.vnfm.vnflcm.VnfIdentifierCreationNotification;
+import com.ubiqube.etsi.mano.v351.model.vnfm.vnflcm.VnfIdentifierDeletionNotification;
 import com.ubiqube.etsi.mano.v351.model.vnfm.vnflcm.VnfLcmOperationOccurrenceNotification;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
