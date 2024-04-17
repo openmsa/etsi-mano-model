@@ -19,9 +19,6 @@ package com.ubiqube.etsi.mano.v361.model.vnfm.vnflcm;
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -30,6 +27,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LccnLinks;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a VNF identifier creation notification, which informs
@@ -88,7 +87,7 @@ public class VnfIdentifierCreationNotification {
 	private String vnfInstanceId = null;
 
 	@JsonProperty("_links")
-	private LccnLinks _links = null;
+	private LccnLinks links = null;
 
 	public VnfIdentifierCreationNotification id(final String id) {
 		this.id = id;
@@ -197,8 +196,8 @@ public class VnfIdentifierCreationNotification {
 		this.vnfInstanceId = vnfInstanceId;
 	}
 
-	public VnfIdentifierCreationNotification _links(final LccnLinks _links) {
-		this._links = _links;
+	public VnfIdentifierCreationNotification links(final LccnLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -212,11 +211,11 @@ public class VnfIdentifierCreationNotification {
 
 	@Valid
 	public LccnLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final LccnLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -224,7 +223,7 @@ public class VnfIdentifierCreationNotification {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final VnfIdentifierCreationNotification vnfIdentifierCreationNotification = (VnfIdentifierCreationNotification) o;
@@ -233,12 +232,12 @@ public class VnfIdentifierCreationNotification {
 				Objects.equals(this.subscriptionId, vnfIdentifierCreationNotification.subscriptionId) &&
 				Objects.equals(this.timeStamp, vnfIdentifierCreationNotification.timeStamp) &&
 				Objects.equals(this.vnfInstanceId, vnfIdentifierCreationNotification.vnfInstanceId) &&
-				Objects.equals(this._links, vnfIdentifierCreationNotification._links);
+				Objects.equals(this.links, vnfIdentifierCreationNotification.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, notificationType, subscriptionId, timeStamp, vnfInstanceId, _links);
+		return Objects.hash(id, notificationType, subscriptionId, timeStamp, vnfInstanceId, links);
 	}
 
 	@Override
@@ -251,7 +250,7 @@ public class VnfIdentifierCreationNotification {
 		sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
 		sb.append("    timeStamp: ").append(toIndentedString(timeStamp)).append("\n");
 		sb.append("    vnfInstanceId: ").append(toIndentedString(vnfInstanceId)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

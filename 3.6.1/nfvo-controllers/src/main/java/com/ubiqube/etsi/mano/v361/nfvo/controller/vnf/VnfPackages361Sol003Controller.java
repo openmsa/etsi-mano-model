@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v361.nfvo.service.LinksSol003;
+import com.ubiqube.etsi.mano.v361.services.mapping.VnfPkgInfo361Mapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -39,9 +39,9 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class VnfPackages361Sol003Controller implements VnfPackages361Sol003Api {
 	private final VnfPackageFrontController frontController;
-	private final MapperFacade mapper;
+	private final VnfPkgInfo361Mapping mapper;
 
-	public VnfPackages361Sol003Controller(final VnfPackageFrontController frontController, final MapperFacade mapper) {
+	public VnfPackages361Sol003Controller(final VnfPackageFrontController frontController, final VnfPkgInfo361Mapping mapper) {
 		this.frontController = frontController;
 		this.mapper = mapper;
 	}
@@ -59,7 +59,7 @@ public class VnfPackages361Sol003Controller implements VnfPackages361Sol003Api {
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdGet(final String vnfPkgId) {
-		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
+		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x), LinksSol003::makeLinks);
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class VnfPackages361Sol003Controller implements VnfPackages361Sol003Api {
 
 	@Override
 	public ResponseEntity<String> vnfPackagesGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks, VnfPkgInfo.class);
+		return frontController.search(requestParams, x -> mapper.map(x), LinksSol003::makeLinks, VnfPkgInfo.class);
 	}
 
 }

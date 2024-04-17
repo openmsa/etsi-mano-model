@@ -19,9 +19,6 @@ package com.ubiqube.etsi.mano.v361.model.vnfm.vnffm;
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -30,6 +27,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v361.model.em.vnffm.Alarm;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents an alarm notification about VNF faults. This
@@ -87,7 +86,7 @@ public class AlarmNotification {
 	private Alarm alarm = null;
 
 	@JsonProperty("_links")
-	private AlarmNotificationLinks _links = null;
+	private AlarmNotificationLinks links = null;
 
 	public AlarmNotification id(final String id) {
 		this.id = id;
@@ -197,8 +196,8 @@ public class AlarmNotification {
 		this.alarm = alarm;
 	}
 
-	public AlarmNotification _links(final AlarmNotificationLinks _links) {
-		this._links = _links;
+	public AlarmNotification links(final AlarmNotificationLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -212,11 +211,11 @@ public class AlarmNotification {
 
 	@Valid
 	public AlarmNotificationLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final AlarmNotificationLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -233,12 +232,12 @@ public class AlarmNotification {
 				Objects.equals(this.subscriptionId, alarmNotification.subscriptionId) &&
 				Objects.equals(this.timeStamp, alarmNotification.timeStamp) &&
 				Objects.equals(this.alarm, alarmNotification.alarm) &&
-				Objects.equals(this._links, alarmNotification._links);
+				Objects.equals(this.links, alarmNotification.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, notificationType, subscriptionId, timeStamp, alarm, _links);
+		return Objects.hash(id, notificationType, subscriptionId, timeStamp, alarm, links);
 	}
 
 	@Override
@@ -251,7 +250,7 @@ public class AlarmNotification {
 		sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
 		sb.append("    timeStamp: ").append(toIndentedString(timeStamp)).append("\n");
 		sb.append("    alarm: ").append(toIndentedString(alarm)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

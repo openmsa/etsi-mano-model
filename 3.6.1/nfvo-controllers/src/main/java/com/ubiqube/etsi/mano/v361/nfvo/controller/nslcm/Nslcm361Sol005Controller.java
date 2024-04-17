@@ -27,10 +27,10 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.CancelMode;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.NsLcmOpOccLinks;
+import com.ubiqube.etsi.mano.v361.services.mapping.NsLcmOpOcc361Mapping;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -40,9 +40,9 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class Nslcm361Sol005Controller implements Nslcm361Sol005Api {
 	private final NsLcmGenericFrontController nsLcmGenericFrontController;
-	private final MapperFacade mapper;
+	private final NsLcmOpOcc361Mapping mapper;
 
-	public Nslcm361Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final MapperFacade mapper) {
+	public Nslcm361Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final NsLcmOpOcc361Mapping mapper) {
 		this.nsLcmGenericFrontController = nsLcmGenericFrontController;
 		this.mapper = mapper;
 	}
@@ -54,7 +54,7 @@ public class Nslcm361Sol005Controller implements Nslcm361Sol005Api {
 
 	@Override
 	public ResponseEntity<NsLcmOpOcc> nslcmV1NsLcmOpOccsNsLcmOpOccIdFailPost(final String nsLcmOpOccId) {
-		return nsLcmGenericFrontController.fail(nsLcmOpOccId, x -> mapper.map(x, NsLcmOpOcc.class), Nslcm361Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.fail(nsLcmOpOccId, x -> mapper.map(x), Nslcm361Sol005Controller::makeLinks);
 	}
 
 	public static void makeLinks(@NotNull final NsLcmOpOcc nsLcmOpOccs) {

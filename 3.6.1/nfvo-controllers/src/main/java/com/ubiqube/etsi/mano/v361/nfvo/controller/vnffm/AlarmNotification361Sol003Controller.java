@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnffm.VnffmNotificationFrontController;
 import com.ubiqube.etsi.mano.v361.model.vnfm.vnffm.AlarmNotification;
+import com.ubiqube.etsi.mano.v361.services.mapping.AlarmsNotification361Mapping;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -33,9 +33,9 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class AlarmNotification361Sol003Controller implements AlarmNotification361Sol003Api {
 	private final VnffmNotificationFrontController fc;
-	private final MapperFacade mapper;
+	private final AlarmsNotification361Mapping mapper;
 
-	public AlarmNotification361Sol003Controller(final VnffmNotificationFrontController fc, final MapperFacade mapper) {
+	public AlarmNotification361Sol003Controller(final VnffmNotificationFrontController fc, final AlarmsNotification361Mapping mapper) {
 		this.fc = fc;
 		this.mapper = mapper;
 	}
@@ -47,7 +47,7 @@ public class AlarmNotification361Sol003Controller implements AlarmNotification36
 
 	@Override
 	public ResponseEntity<Void> alarmNotificationPost(@Valid final AlarmNotification body) {
-		final com.ubiqube.etsi.mano.dao.mano.alarm.AlarmNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.alarm.AlarmNotification.class);
+		final com.ubiqube.etsi.mano.dao.mano.alarm.AlarmNotification req = mapper.map(body);
 		return fc.alarmNotification(req, "3.6.1");
 	}
 
