@@ -48,10 +48,12 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleVnfToLevelRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstanceLinks;
+import com.ubiqube.etsi.mano.v361.services.mapping.VnfInstance361Mapping;
+import com.ubiqube.etsi.mano.v361.services.mapping.vnflcm.VnfInstanceRequest361Mapping;
+import com.ubiqube.etsi.mano.v361.services.mapping.vnflcm.VnfInstantiate361Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfInstanceGenericFrontController;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -61,27 +63,31 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class VnfInstances361Sol002Controller implements VnfInstances361Sol002Api {
 	private final VnfInstanceGenericFrontController frontController;
-	private final MapperFacade mapper;
+	private final VnfInstance361Mapping mapper;
+	private final VnfInstantiate361Mapping vnfInstantiate361Mapping;
+	private final VnfInstanceRequest361Mapping vnfInstanceRequest361Mapping;
 
-	public VnfInstances361Sol002Controller(final VnfInstanceGenericFrontController frontController, final MapperFacade mapper) {
+	public VnfInstances361Sol002Controller(final VnfInstanceGenericFrontController frontController, final VnfInstance361Mapping mapper, final VnfInstantiate361Mapping vnfInstantiate361Mapping, final VnfInstanceRequest361Mapping vnfInstanceRequest361Mapping) {
 		this.frontController = frontController;
 		this.mapper = mapper;
+		this.vnfInstantiate361Mapping = vnfInstantiate361Mapping;
+		this.vnfInstanceRequest361Mapping = vnfInstanceRequest361Mapping;
 	}
 
 	@Override
 	public ResponseEntity<String> vnfInstancesGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, x -> mapper.map(x, VnfInstance.class), nextpageOpaqueMarker, VnfInstances361Sol002Controller::makeLinks, VnfInstance.class);
+		return frontController.search(requestParams, x -> mapper.map(x), nextpageOpaqueMarker, VnfInstances361Sol002Controller::makeLinks, VnfInstance.class);
 	}
 
 	@Override
 	public ResponseEntity<VnfInstance> vnfInstancesPost(@Valid final CreateVnfRequest body) {
-		return frontController.create(body.getVnfdId(), body.getVnfInstanceName(), body.getVnfInstanceDescription(), x -> mapper.map(x, VnfInstance.class),
+		return frontController.create(body.getVnfdId(), body.getVnfInstanceName(), body.getVnfInstanceDescription(), x -> mapper.map(x),
 				VnfInstances361Sol002Controller::makeLinks, "");
 	}
 
 	@Override
 	public ResponseEntity<Void> vnfInstancesVnfInstanceIdChangeExtConnPost(final String vnfInstanceId, @Valid final ChangeExtVnfConnectivityRequest body) {
-		final ChangeExtVnfConnRequest req = mapper.map(body, ChangeExtVnfConnRequest.class);
+		final ChangeExtVnfConnRequest req = vnfInstanceRequest361Mapping.map(body);
 		return frontController.changeExtConn(getSafeUUID(vnfInstanceId), req, VnfInstances361Sol002Controller::getLcmLink);
 	}
 
@@ -107,7 +113,7 @@ public class VnfInstances361Sol002Controller implements VnfInstances361Sol002Api
 
 	@Override
 	public ResponseEntity<VnfInstance> vnfInstancesVnfInstanceIdGet(final String vnfInstanceId) {
-		return frontController.findById(getSafeUUID(vnfInstanceId), x -> mapper.map(x, VnfInstance.class), VnfInstances361Sol002Controller::makeLinks, "");
+		return frontController.findById(getSafeUUID(vnfInstanceId), x -> mapper.map(x), VnfInstances361Sol002Controller::makeLinks, "");
 	}
 
 	@Override
@@ -117,13 +123,13 @@ public class VnfInstances361Sol002Controller implements VnfInstances361Sol002Api
 
 	@Override
 	public ResponseEntity<Void> vnfInstancesVnfInstanceIdInstantiatePost(final String vnfInstanceId, @Valid final InstantiateVnfRequest body) {
-		final VnfInstantiate req = mapper.map(body, VnfInstantiate.class);
+		final VnfInstantiate req = vnfInstantiate361Mapping.map(body);
 		return frontController.instantiate(getSafeUUID(vnfInstanceId), req, VnfInstances361Sol002Controller::getLcmLink);
 	}
 
 	@Override
 	public ResponseEntity<Void> vnfInstancesVnfInstanceIdOperatePost(final String vnfInstanceId, @Valid final OperateVnfRequest body) {
-		final VnfOperateRequest req = mapper.map(body, VnfOperateRequest.class);
+		final VnfOperateRequest req = vnfInstanceRequest361Mapping.map(body);
 		return frontController.operate(getSafeUUID(vnfInstanceId), req, VnfInstances361Sol002Controller::getLcmLink);
 	}
 
@@ -139,13 +145,13 @@ public class VnfInstances361Sol002Controller implements VnfInstances361Sol002Api
 
 	@Override
 	public ResponseEntity<Void> vnfInstancesVnfInstanceIdScalePost(final String vnfInstanceId, @Valid final ScaleVnfRequest body) {
-		final VnfScaleRequest req = mapper.map(body, VnfScaleRequest.class);
+		final VnfScaleRequest req = vnfInstanceRequest361Mapping.map(body);
 		return frontController.scale(getSafeUUID(vnfInstanceId), req, VnfInstances361Sol002Controller::getLcmLink);
 	}
 
 	@Override
 	public ResponseEntity<Void> vnfInstancesVnfInstanceIdScaleToLevelPost(final String vnfInstanceId, @Valid final ScaleVnfToLevelRequest body) {
-		final VnfScaleToLevelRequest req = mapper.map(body, VnfScaleToLevelRequest.class);
+		final VnfScaleToLevelRequest req = vnfInstanceRequest361Mapping.map(body);
 		return frontController.scaleToLevel(getSafeUUID(vnfInstanceId), req, VnfInstances361Sol002Controller::getLcmLink);
 	}
 
