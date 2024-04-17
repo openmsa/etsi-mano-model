@@ -27,13 +27,13 @@ import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
-import com.ubiqube.etsi.mano.nfvo.v331.OrikaConfigurationNfvo331;
-import com.ubiqube.etsi.mano.nfvo.v331.model.nsd.NsdInfo;
-import com.ubiqube.etsi.mano.nfvo.v331.model.nslcm.NsInstance;
-import com.ubiqube.etsi.mano.nfvo.v331.model.nslcm.NsLcmOpOcc;
-import com.ubiqube.etsi.mano.nfvo.v331.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.test.TestHelper;
-import com.ubiqube.etsi.mano.vnfm.v331.model.grant.GrantRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvo.nsd.NsdInfo;
+import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.NsInstance;
+import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.NsLcmOpOcc;
+import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.VnfPkgInfo;
+import com.ubiqube.etsi.mano.v331.model.vnfm.grant.GrantRequest;
+import com.ubiqube.etsi.mano.v331.nfvo.service.OrikaConfigurationNfvo331;
 
 /**
  *
@@ -92,7 +92,7 @@ class MappingTest extends TestHelper {
 	void testVnfInstance() throws Exception {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
-		doTest(com.ubiqube.etsi.mano.em.v331.model.vnflcm.VnfInstance.class, VnfInstance.class, ignore);
+		doTest(com.ubiqube.etsi.mano.v331.model.em.vnflcm.VnfInstance.class, VnfInstance.class, ignore);
 	}
 
 }
