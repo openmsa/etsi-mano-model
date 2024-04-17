@@ -16,32 +16,57 @@
  */
 package com.ubiqube.etsi.mano.v451.controller.em.vnfind;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.v451.model.em.vnfind.VnfIndicator;
+import com.ubiqube.etsi.mano.v451.model.em.vnfind.VnfIndicatorLinks;
+import com.ubiqube.etsi.mano.v451.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.vnfm.fc.vnfind.Sol002IndicatorsFrontController;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class Indicators451Sol002Controller implements Indicators451Sol002Api {
 
-    private final ObjectMapper objectMapper;
+	private final Sol002IndicatorsFrontController indicatorsFrontController;
 
-    private final HttpServletRequest request;
+	public Indicators451Sol002Controller(final Sol002IndicatorsFrontController indicatorsFrontController) {
+		this.indicatorsFrontController = indicatorsFrontController;
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public Indicators451Sol002Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@Override
+	public ResponseEntity<List<VnfIndicator>> indicatorsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
+		return indicatorsFrontController.search(filter, nextpageOpaqueMarker, VnfIndicator.class, Indicators451Sol002Controller::makeLink);
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+	@Override
+	public ResponseEntity<List<VnfIndicator>> indicatorsVnfInstanceIdGet(final String vnfInstanceId, @Valid final String filter, @Valid final String nextpageOpaqueMarker) {
+		return indicatorsFrontController.findByVnfInstanceId(vnfInstanceId, filter, nextpageOpaqueMarker, VnfIndicator.class, Indicators451Sol002Controller::makeLink);
+	}
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<VnfIndicator> indicatorsVnfInstanceIdIndicatorIdGet(final String vnfInstanceId, final String indicatorId) {
+		return indicatorsFrontController.findByVnfInstanceIdAndIndicatorId(vnfInstanceId, indicatorId, VnfIndicator.class, Indicators451Sol002Controller::makeLink);
+	}
+
+	private static void makeLink(final VnfIndicator x) {
+		final VnfIndicatorLinks links = new VnfIndicatorLinks();
+		Link link = new Link();
+		link.setHref(linkTo(methodOn(Indicators451Sol002Api.class).indicatorsVnfInstanceIdIndicatorIdGet(x.getVnfInstanceId(), x.getId())).withSelfRel().getHref());
+		links.setSelf(link);
+
+		link = new Link();
+
+//		link.setHref(linkTo(methodOn(VnfInstances451Sol002Api.class).vnfInstancesVnfInstanceIdGet(x.getVnfInstanceId())).withSelfRel().getHref())
+//		links.setVnfInstance(link)
+
+		x.setLinks(links);
+	}
 
 }

@@ -35,6 +35,11 @@
 			<version>${version.nfv-front-controller}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.ubiqube.mano</groupId>
+			<artifactId>em-front-controller</artifactId>
+			<version>${version.nfv-front-controller}</version>
+		</dependency>
+		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<scope>provided</scope>
