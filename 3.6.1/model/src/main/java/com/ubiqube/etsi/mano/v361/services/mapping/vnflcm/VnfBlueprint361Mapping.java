@@ -49,11 +49,11 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfLcmOpOccLcmCoordinations;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfLcmOpOccRejectedLcmCoordinations;
-import com.ubiqube.etsi.mano.v361.services.mapping.Connectivity431Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.VimConnectionInfo431Mapping;
+import com.ubiqube.etsi.mano.v361.services.mapping.Connectivity361Mapping;
+import com.ubiqube.etsi.mano.v361.services.mapping.VimConnectionInfo361Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfBlueprint431Mapping extends StringToUriMapping, Connectivity431Mapping, VimConnectionInfo431Mapping {
+public interface VnfBlueprint361Mapping extends StringToUriMapping, Connectivity361Mapping, VimConnectionInfo361Mapping {
 
 	@Mapping(target = "operationState", source = "operationStatus")
 	@Mapping(target = "links", ignore = true)

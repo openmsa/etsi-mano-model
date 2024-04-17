@@ -38,7 +38,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.SubscriptionAuthentication;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.SubscriptionAuthenticationParamsOauth2ClientCredentials;
 
 @Mapper
-public interface BaseSubscription431Mapping extends StringToUriMapping {
+public interface BaseSubscription361Mapping extends StringToUriMapping {
 	@ValueMapping(source = "BASIC", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "TLS_CERT", target = MappingConstants.THROW_EXCEPTION)
 	SubscriptionAuthentication.AuthTypeEnum map(AuthType o);

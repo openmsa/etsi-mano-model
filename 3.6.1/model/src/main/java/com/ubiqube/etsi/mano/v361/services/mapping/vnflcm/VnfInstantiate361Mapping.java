@@ -32,11 +32,11 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtLinkPortData;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.InstantiateVnfRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VimConnectionInfo;
-import com.ubiqube.etsi.mano.v361.services.mapping.Connectivity431Mapping;
-import com.ubiqube.etsi.mano.v361.services.mapping.VimConnectionInfo431Mapping;
+import com.ubiqube.etsi.mano.v361.services.mapping.Connectivity361Mapping;
+import com.ubiqube.etsi.mano.v361.services.mapping.VimConnectionInfo361Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfInstantiate431Mapping extends Connectivity431Mapping, VimConnectionInfo431Mapping {
+public interface VnfInstantiate361Mapping extends Connectivity361Mapping, VimConnectionInfo361Mapping {
 
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	VnfInstantiate map(InstantiateVnfRequest o);

@@ -33,10 +33,10 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.OperateVnfRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleVnfRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleVnfToLevelRequest;
-import com.ubiqube.etsi.mano.v361.services.mapping.Connectivity431Mapping;
+import com.ubiqube.etsi.mano.v361.services.mapping.Connectivity361Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfInstanceRequest431Mapping extends Connectivity431Mapping {
+public interface VnfInstanceRequest361Mapping extends Connectivity361Mapping {
 
 	ChangeExtVnfConnRequest map(ChangeExtVnfConnRequest o);
 

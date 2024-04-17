@@ -27,7 +27,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PkgmSubscriptionRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PkgmSubscriptionRequest431Mapping extends BaseSubscription431Mapping {
+public interface PkgmSubscriptionRequest361Mapping extends BaseSubscription361Mapping {
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	PkgmSubscriptionRequest mapRequest(Subscription o, @Context final Class<PkgmNotificationsFilter> clazz);

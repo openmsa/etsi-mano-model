@@ -22,35 +22,33 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.NsdmNotificationsFilter;
-import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.NsdmSubscription;
-import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.NsdmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v361.model.vnfm.vrqan.VrQuotaAvailNotificationsFilter;
+import com.ubiqube.etsi.mano.v361.model.vnfm.vrqan.VrQuotaAvailSubscription;
+import com.ubiqube.etsi.mano.v361.model.vnfm.vrqan.VrQuotaAvailSubscriptionRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface NsdmSubscription431Mapping extends BaseSubscription431Mapping {
-
+public interface VrQuotaAvailSubscription361Mapping extends BaseSubscription361Mapping {
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	NsdmSubscription map(Subscription o, @Context final Class<NsdmNotificationsFilter> clazz);
+	VrQuotaAvailSubscription map(Subscription o, @Context final Class<VrQuotaAvailNotificationsFilter> clazz);
 
-	@Mapping(target = "verbosity", ignore = true)
-	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", constant = "NSD")
+	@Mapping(target = "subscriptionType", constant = "VRQAN")
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "version", ignore = true)
-	Subscription map(NsdmSubscription o);
+	Subscription map(VrQuotaAvailSubscription o);
 
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", constant = "NSD")
+	@Mapping(target = "subscriptionType", constant = "VRQAN")
 	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "version", ignore = true)
-	Subscription map(NsdmSubscriptionRequest body);
-
+	Subscription map(VrQuotaAvailSubscriptionRequest body);
 }

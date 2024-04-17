@@ -30,13 +30,13 @@ import com.ubiqube.etsi.mano.dao.mano.pm.PmJob;
 import com.ubiqube.etsi.mano.dao.mano.pm.PmReport;
 import com.ubiqube.etsi.mano.v361.model.em.vnfpm.CreatePmJobRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnfpm.PmJobReports;
-import com.ubiqube.etsi.mano.v361.services.mapping.subscription.BaseSubscription431Mapping;
+import com.ubiqube.etsi.mano.v361.services.mapping.subscription.BaseSubscription361Mapping;
 
 import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PmJob431Mapping extends BaseSubscription431Mapping {
+public interface PmJob361Mapping extends BaseSubscription361Mapping {
 
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "remoteMonitoring", ignore = true)

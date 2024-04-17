@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see https://www.gnu.org/licenses/.
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.ubiqube.etsi.mano.v361.services.mapping.subscription;
 
@@ -22,36 +22,36 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LccnSubscription;
-import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LccnSubscriptionRequest;
-import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LifecycleChangeNotificationsFilter;
+import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorNotificationsFilter;
+import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorSubscription;
+import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorSubscriptionRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface LccnSubscription431Mapping extends BaseSubscription431Mapping {
+public interface VnfIndicatorSubscription361Mapping extends BaseSubscription361Mapping {
 
-	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
-	LccnSubscription map(Subscription o, @Context final Class<LifecycleChangeNotificationsFilter> clazz);
+	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
+	VnfIndicatorSubscription map(Subscription o, @Context final Class<VnfIndicatorNotificationsFilter> clazz);
 
 	@Mapping(target = "authentication", ignore = true)
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
+	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", constant = "VNFLCM")
+	@Mapping(target = "subscriptionType", ignore = true)
 	@Mapping(target = "version", ignore = true)
-	Subscription map(LccnSubscription o);
-
-	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	LccnSubscriptionRequest mapToLccnSubscriptionRequest(Subscription o, @Context final Class<LifecycleChangeNotificationsFilter> clazz);
+	Subscription map(VnfIndicatorSubscription o);
 
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", constant = "VNFLCM")
+	@Mapping(target = "subscriptionType", constant = "VNFIND")
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "version", ignore = true)
-	Subscription map(LccnSubscriptionRequest o);
+	Subscription map(VnfIndicatorSubscriptionRequest body);
 
 }

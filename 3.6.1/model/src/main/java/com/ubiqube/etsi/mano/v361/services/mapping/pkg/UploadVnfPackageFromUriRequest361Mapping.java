@@ -14,29 +14,24 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-package com.ubiqube.etsi.mano.v361.services.mapping;
+package com.ubiqube.etsi.mano.v361.services.mapping.pkg;
+
+import java.net.URI;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.dao.mano.VnfIndicator;
+import com.ubiqube.etsi.mano.dao.mano.pkg.UploadUriParameters;
+import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.UploadVnfPkgFromUriRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfIndicator431Mapping {
+public interface UploadVnfPackageFromUriRequest361Mapping {
 
-	@Mapping(target = "value", ignore = true)
-	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "indicators", ignore = true)
-	@Mapping(target = "source", ignore = true)
-	@Mapping(target = "state", ignore = true)
-	@Mapping(target = "targets", ignore = true)
-	@Mapping(target = "toscaId", ignore = true)
-	@Mapping(target = "toscaName", source = "name")
-	@Mapping(target = "triggers", ignore = true)
-	VnfIndicator map(com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicator o);
+	@Mapping(target = "id", ignore = true)
+	UploadUriParameters map(UploadVnfPkgFromUriRequest o);
 
-	@Mapping(target = "links", ignore = true)
-	@Mapping(target = "value", ignore = true)
-	com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicator map(VnfIndicator o);
+	default URI toURI(final String string) {
+		return URI.create(string);
+	}
 }

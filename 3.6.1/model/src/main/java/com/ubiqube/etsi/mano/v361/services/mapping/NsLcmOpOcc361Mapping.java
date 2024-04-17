@@ -34,7 +34,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.NsLcmOpType;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.NsLcmOperationStateType;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface NsLcmOpOcc431Mapping extends StringToUriMapping {
+public interface NsLcmOpOcc361Mapping extends StringToUriMapping {
 	@Mapping(target = "isAutomaticInvocation", ignore = true)
 	@Mapping(target = "isCancelPending", ignore = true)
 	@Mapping(target = "lcmOperationType", source = "operation")

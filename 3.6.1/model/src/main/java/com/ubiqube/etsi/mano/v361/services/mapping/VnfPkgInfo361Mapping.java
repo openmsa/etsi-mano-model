@@ -35,7 +35,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.VnfPackageSoftwareImageInfo;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.VnfPkgInfo;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfPkgInfo431Mapping extends StringToUriMapping {
+public interface VnfPkgInfo361Mapping extends StringToUriMapping {
 
 	@Mapping(target = "links", ignore = true)
 	VnfPkgInfo map(VnfPackage vnfInst);

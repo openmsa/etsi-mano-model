@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 package com.ubiqube.etsi.mano.v361.services.mapping.subscription;
 
@@ -22,36 +22,35 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorNotificationsFilter;
-import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorSubscription;
-import com.ubiqube.etsi.mano.v361.model.em.vnfind.VnfIndicatorSubscriptionRequest;
+import com.ubiqube.etsi.mano.v361.model.em.vnffm.FmNotificationsFilter;
+import com.ubiqube.etsi.mano.v361.model.em.vnffm.FmSubscription;
+import com.ubiqube.etsi.mano.v361.model.em.vnffm.FmSubscriptionRequest;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfIndicatorSubscription431Mapping extends BaseSubscription431Mapping {
+public interface FmSubscription361Mapping extends BaseSubscription361Mapping {
 
-	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
-	VnfIndicatorSubscription map(Subscription o, @Context final Class<VnfIndicatorNotificationsFilter> clazz);
+	@Mapping(target = "links", ignore = true)
+	FmSubscription map(Subscription o, @Context final Class<FmNotificationsFilter> obj);
 
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "authentication", ignore = true)
-	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
-	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", ignore = true)
+	@Mapping(target = "subscriptionType", constant = "VNFFM")
 	@Mapping(target = "version", ignore = true)
-	Subscription map(VnfIndicatorSubscription o);
+	Subscription map(FmSubscription o);
 
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", constant = "VNFIND")
+	@Mapping(target = "subscriptionType", constant = "VNFFM")
 	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "version", ignore = true)
-	Subscription map(VnfIndicatorSubscriptionRequest body);
+	Subscription map(FmSubscriptionRequest body);
 
 }

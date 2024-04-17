@@ -38,7 +38,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.vnfsnapshotpkgm.Checksum;
 import jakarta.annotation.Nullable;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface Nsd431Mapping extends StringToUriMapping {
+public interface Nsd361Mapping extends StringToUriMapping {
 
 	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "pnfdInfoIds", source = "pnfdInfoIds")

@@ -31,7 +31,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.nsd.PnfdOnboardingStateType;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnfsnapshotpkgm.Checksum;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface Pnfd431Mapping extends StringToUriMapping {
+public interface Pnfd361Mapping extends StringToUriMapping {
 
 	@Mapping(target = "pnfdersion", source = "pnfdVersion")
 	@Mapping(target = "links", ignore = true)

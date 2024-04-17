@@ -51,7 +51,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfcResourceInfo;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfcResourceInfoVnfcCpInfo;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Connectivity431Mapping {
+public interface VnfInstance361Mapping extends VimConnectionInfo361Mapping, Connectivity361Mapping {
 
 	@Mapping(target = "links", ignore = true)
 	com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstance map(VnfInstance vnfInst);

@@ -16,22 +16,22 @@
  */
 package com.ubiqube.etsi.mano.v361.services.mapping.pkg;
 
-import java.net.URI;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import com.ubiqube.etsi.mano.dao.mano.pkg.UploadUriParameters;
-import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.UploadVnfPkgFromUriRequest;
+import com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification;
+import com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification;
+
+import jakarta.validation.Valid;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface UploadVnfPackageFromUriRequest431Mapping {
+public interface VnfPackageOnboardingNotification361Mapping {
 
-	@Mapping(target = "id", ignore = true)
-	UploadUriParameters map(UploadVnfPkgFromUriRequest o);
+	VnfPackageChangeNotification map(com.ubiqube.etsi.mano.v361.model.nfvo.vnf.@Valid VnfPackageChangeNotification body);
 
-	default URI toURI(final String string) {
-		return URI.create(string);
-	}
+	@Mapping(target = "nfvoId", ignore = true)
+	@Mapping(target = "version", ignore = true)
+	VnfPackageOnboardingNotification map(com.ubiqube.etsi.mano.v361.model.nfvo.vnf.@Valid VnfPackageOnboardingNotification body);
+
 }

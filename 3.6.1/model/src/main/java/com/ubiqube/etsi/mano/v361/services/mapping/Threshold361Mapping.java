@@ -33,7 +33,7 @@ import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface Threshold431Mapping extends StringToUriMapping {
+public interface Threshold361Mapping extends StringToUriMapping {
 	@Mapping(target = "remoteResource", ignore = true)
 	@Mapping(target = "subscription", ignore = true)
 	Threshold map(com.ubiqube.etsi.mano.v361.model.em.vnfpm.Threshold o);

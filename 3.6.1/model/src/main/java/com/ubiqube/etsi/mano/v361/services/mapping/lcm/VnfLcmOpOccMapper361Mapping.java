@@ -33,10 +33,10 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleVnfRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ScaleVnfToLevelRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInfoModificationRequest;
-import com.ubiqube.etsi.mano.v361.services.mapping.VimConnectionInfo431Mapping;
+import com.ubiqube.etsi.mano.v361.services.mapping.VimConnectionInfo361Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfLcmOpOccMapper431Mapping extends VimConnectionInfo431Mapping {
+public interface VnfLcmOpOccMapper361Mapping extends VimConnectionInfo361Mapping {
 
 	@Mapping(target = "extManagedVirtualLinks", ignore = true)
 	@Mapping(target = "extVirtualLinks", ignore = true)
