@@ -21,6 +21,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-orika</artifactId>
+			<version>${version.mano-orika}</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.validation</groupId>
@@ -34,6 +35,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>vnfm-front-controller</artifactId>
+			<version>${version.nfv-front-controller}</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.servlet</groupId>

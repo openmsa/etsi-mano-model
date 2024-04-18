@@ -21,6 +21,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-orika</artifactId>
+			<version>${version.mano-orika}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -33,6 +34,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>nfvo-front-controller</artifactId>
+			<version>${version.nfv-front-controller}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
