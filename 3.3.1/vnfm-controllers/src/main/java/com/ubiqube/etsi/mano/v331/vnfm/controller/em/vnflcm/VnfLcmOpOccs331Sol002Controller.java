@@ -28,12 +28,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.VnfLcmOpOccLinks;
+import com.ubiqube.etsi.mano.v331.services.mapping.vnflcm.VnfBlueprint331Mapping;
 import com.ubiqube.etsi.mano.v331.vnfm.service.VnfLcmClassMaping331;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -43,10 +43,10 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class VnfLcmOpOccs331Sol002Controller implements VnfLcmOpOccs331Sol002Api {
 	private final VnfLcmOpOccGenericFrontController frontController;
-	private final MapperFacade mapper;
+	private final VnfBlueprint331Mapping mapper;
 	private final VnfLcmClassMaping331 vnfLcmClassMaping331;
 
-	public VnfLcmOpOccs331Sol002Controller(final VnfLcmOpOccGenericFrontController frontController, final MapperFacade mapper, final VnfLcmClassMaping331 vnfLcmClassMaping331) {
+	public VnfLcmOpOccs331Sol002Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfBlueprint331Mapping mapper, final VnfLcmClassMaping331 vnfLcmClassMaping331) {
 		this.frontController = frontController;
 		this.mapper = mapper;
 		this.vnfLcmClassMaping331 = vnfLcmClassMaping331;
@@ -54,7 +54,7 @@ public class VnfLcmOpOccs331Sol002Controller implements VnfLcmOpOccs331Sol002Api
 
 	@Override
 	public ResponseEntity<String> vnfLcmOpOccsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, x -> mapper.map(x, VnfLcmOpOcc.class), VnfLcmOpOccs331Sol002Controller::makeLinks, VnfLcmOpOcc.class);
+		return frontController.search(requestParams, x -> mapper.map(x), VnfLcmOpOccs331Sol002Controller::makeLinks, VnfLcmOpOcc.class);
 	}
 
 	@Override

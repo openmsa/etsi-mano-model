@@ -31,36 +31,37 @@ import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v331.model.em.vnffm.FmNotificationsFilter;
 import com.ubiqube.etsi.mano.v331.model.em.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.v331.model.em.vnffm.FmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v331.model.em.vnffm.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v331.services.mapping.subscription.FmSubscription331Mapping;
 import com.ubiqube.etsi.mano.v331.vnfm.service.SubscriptionLinkable331Vnfm;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 @Conditional(SingleControllerCondition.class)
 public class VnfFmSubscriptions331Sol003Controller implements VnfFmSubscriptions331Sol003Api, SubscriptionLinkable331Vnfm {
 	private final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController;
-	private final MapperFacade mapper;
+	private final FmSubscription331Mapping mapper;
 
-	public VnfFmSubscriptions331Sol003Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController, final MapperFacade mapper) {
+	public VnfFmSubscriptions331Sol003Controller(final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController, final FmSubscription331Mapping mapper) {
 		this.faultMngtSubscriptionsFrontController = faultMngtSubscriptionsFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<FmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return faultMngtSubscriptionsFrontController.search(requestParams, x -> mapper.map(x, FmSubscription.class), VnfFmSubscriptions331Sol003Controller::makeLinks);
+		return faultMngtSubscriptionsFrontController.search(requestParams, x -> mapper.map(x, FmNotificationsFilter.class), VnfFmSubscriptions331Sol003Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
-		return faultMngtSubscriptionsFrontController.create(req, x -> mapper.map(x, FmSubscription.class), VnfFmSubscriptions331Sol003Api.class, VnfFmSubscriptions331Sol003Controller::makeLinks, VnfFmSubscriptions331Sol003Controller::makeSelf);
+		final Subscription req = mapper.map(body);
+		return faultMngtSubscriptionsFrontController.create(req, x -> mapper.map(x, FmNotificationsFilter.class), VnfFmSubscriptions331Sol003Api.class, VnfFmSubscriptions331Sol003Controller::makeLinks, VnfFmSubscriptions331Sol003Controller::makeSelf);
 	}
 
 	@Override
@@ -70,7 +71,7 @@ public class VnfFmSubscriptions331Sol003Controller implements VnfFmSubscriptions
 
 	@Override
 	public ResponseEntity<FmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return faultMngtSubscriptionsFrontController.findById(subscriptionId, x -> mapper.map(x, FmSubscription.class), VnfFmSubscriptions331Sol003Controller::makeLinks);
+		return faultMngtSubscriptionsFrontController.findById(subscriptionId, x -> mapper.map(x, FmNotificationsFilter.class), VnfFmSubscriptions331Sol003Controller::makeLinks);
 	}
 
 	private static void makeLinks(final FmSubscription subscription) {

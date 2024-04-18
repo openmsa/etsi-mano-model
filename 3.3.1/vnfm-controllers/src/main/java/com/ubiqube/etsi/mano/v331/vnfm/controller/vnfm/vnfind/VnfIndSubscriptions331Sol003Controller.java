@@ -31,34 +31,35 @@ import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v331.model.em.vnfind.VnfIndicatorNotificationsFilter;
 import com.ubiqube.etsi.mano.v331.model.em.vnfind.VnfIndicatorSubscription;
 import com.ubiqube.etsi.mano.v331.model.em.vnfind.VnfIndicatorSubscriptionLinks;
 import com.ubiqube.etsi.mano.v331.model.em.vnfind.VnfIndicatorSubscriptionRequest;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v331.services.mapping.subscription.VnfIndicatorSubscription331Mapping;
 import com.ubiqube.etsi.mano.v331.vnfm.service.SubscriptionLinkable331Vnfm;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnfIndSubscriptions331Sol003Controller implements VnfIndSubscriptions331Sol003Api, SubscriptionLinkable331Vnfm {
 	private final SubscriptionFrontController subscriptionService;
-	private final MapperFacade mapper;
+	private final VnfIndicatorSubscription331Mapping mapper;
 
-	public VnfIndSubscriptions331Sol003Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
+	public VnfIndSubscriptions331Sol003Controller(final SubscriptionFrontController subscriptionService, final VnfIndicatorSubscription331Mapping mapper) {
 		this.subscriptionService = subscriptionService;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<VnfIndicatorSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, x -> mapper.map(x, VnfIndicatorSubscription.class), VnfIndSubscriptions331Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
+		return subscriptionService.search(requestParams, x -> mapper.map(x, VnfIndicatorNotificationsFilter.class), VnfIndSubscriptions331Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
 	}
 
 	@Override
 	public ResponseEntity<VnfIndicatorSubscription> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
-		return subscriptionService.create(req, x -> mapper.map(x, VnfIndicatorSubscription.class), VnfIndSubscriptions331Sol003Api.class, VnfIndSubscriptions331Sol003Controller::makeLinks, VnfIndSubscriptions331Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFPM);
+		final Subscription req = mapper.map(body);
+		return subscriptionService.create(req, x -> mapper.map(x, VnfIndicatorNotificationsFilter.class), VnfIndSubscriptions331Sol003Api.class, VnfIndSubscriptions331Sol003Controller::makeLinks, VnfIndSubscriptions331Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFPM);
 	}
 
 	@Override
@@ -68,7 +69,7 @@ public class VnfIndSubscriptions331Sol003Controller implements VnfIndSubscriptio
 
 	@Override
 	public ResponseEntity<VnfIndicatorSubscription> indicatorsSubscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, VnfIndicatorSubscription.class), VnfIndSubscriptions331Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, VnfIndicatorNotificationsFilter.class), VnfIndSubscriptions331Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
 	}
 
 	private static String makeSelf(final VnfIndicatorSubscription subscription) {

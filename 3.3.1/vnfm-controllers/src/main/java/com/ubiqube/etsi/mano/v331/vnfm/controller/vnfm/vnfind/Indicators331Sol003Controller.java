@@ -27,35 +27,35 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.v331.model.em.vnfind.VnfIndicator;
 import com.ubiqube.etsi.mano.v331.model.em.vnfind.VnfIndicatorLinks;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v331.services.mapping.VnfIndicator331Mapping;
 import com.ubiqube.etsi.mano.v331.vnfm.controller.vnfm.vnflcm.VnfInstances331Sol003Api;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfind.IndicatorsFrontController;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class Indicators331Sol003Controller implements Indicators331Sol003Api {
 	private final IndicatorsFrontController indicatorsFrontController;
-	private final MapperFacade mapper;
+	private final VnfIndicator331Mapping mapper;
 
-	public Indicators331Sol003Controller(final IndicatorsFrontController indicatorsFrontController, final MapperFacade mapper) {
+	public Indicators331Sol003Controller(final IndicatorsFrontController indicatorsFrontController, final VnfIndicator331Mapping mapper) {
 		this.indicatorsFrontController = indicatorsFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<VnfIndicator>> indicatorsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		return indicatorsFrontController.search(filter, nextpageOpaqueMarker, x -> mapper.map(x, VnfIndicator.class), Indicators331Sol003Controller::makeLink);
+		return indicatorsFrontController.search(filter, nextpageOpaqueMarker, x -> mapper.map(x), Indicators331Sol003Controller::makeLink);
 	}
 
 	@Override
 	public ResponseEntity<List<VnfIndicator>> indicatorsVnfInstanceIdGet(final String vnfInstanceId, @Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		return indicatorsFrontController.findByVnfInstanceId(vnfInstanceId, filter, nextpageOpaqueMarker, x -> mapper.map(x, VnfIndicator.class), Indicators331Sol003Controller::makeLink);
+		return indicatorsFrontController.findByVnfInstanceId(vnfInstanceId, filter, nextpageOpaqueMarker, x -> mapper.map(x), Indicators331Sol003Controller::makeLink);
 	}
 
 	@Override
 	public ResponseEntity<VnfIndicator> indicatorsVnfInstanceIdIndicatorIdGet(final String vnfInstanceId, final String indicatorId) {
-		return indicatorsFrontController.findByVnfInstanceIdAndIndicatorId(vnfInstanceId, indicatorId, x -> mapper.map(x, VnfIndicator.class), Indicators331Sol003Controller::makeLink);
+		return indicatorsFrontController.findByVnfInstanceIdAndIndicatorId(vnfInstanceId, indicatorId, x -> mapper.map(x), Indicators331Sol003Controller::makeLink);
 	}
 
 	private static void makeLink(final VnfIndicator x) {
