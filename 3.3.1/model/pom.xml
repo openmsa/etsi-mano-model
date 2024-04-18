@@ -64,15 +64,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.ubiqube.orika</groupId>
-			<artifactId>orika-spring-boot-starter</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>ma.glasnost.orika</groupId>
-			<artifactId>ubi-orika-core</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-orika</artifactId>
 			<version>${version.mano-orika}</version>
