@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnffm.VnffmNotificationFrontController;
 import com.ubiqube.etsi.mano.v361.model.vnfm.vnffm.AlarmNotification;
-import com.ubiqube.etsi.mano.v361.service.mapping.AlarmsNotification361Mapping;
+import com.ubiqube.etsi.mano.v361.service.mapping.Alarm361Mapping;
 
 import jakarta.validation.Valid;
 
@@ -33,9 +33,9 @@ import jakarta.validation.Valid;
 @RestController
 public class AlarmNotification361Sol003Controller implements AlarmNotification361Sol003Api {
 	private final VnffmNotificationFrontController fc;
-	private final AlarmsNotification361Mapping mapper;
+	private final Alarm361Mapping mapper;
 
-	public AlarmNotification361Sol003Controller(final VnffmNotificationFrontController fc, final AlarmsNotification361Mapping mapper) {
+	public AlarmNotification361Sol003Controller(final VnffmNotificationFrontController fc, final Alarm361Mapping mapper) {
 		this.fc = fc;
 		this.mapper = mapper;
 	}
