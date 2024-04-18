@@ -28,11 +28,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.v281.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v281.model.em.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v281.model.em.vnflcm.VnfLcmOpOccLinks;
+import com.ubiqube.etsi.mano.v281.service.mapping.vnflcm.VnfBlueprint281Mapping;
 import com.ubiqube.etsi.mano.v281.vnfm.service.VnfLcmClassMaping281;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmOpOccGenericFrontController;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -42,10 +42,10 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class VnfLcmOpOccs281Sol003Controller implements VnfLcmOpOccs281Sol003Api {
 	private final VnfLcmOpOccGenericFrontController frontController;
-	private final MapperFacade mapper;
+	private final VnfBlueprint281Mapping mapper;
 	private final VnfLcmClassMaping281 vnfLcmClassMaping281;
 
-	public VnfLcmOpOccs281Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final MapperFacade mapper, final VnfLcmClassMaping281 vnfLcmClassMaping281) {
+	public VnfLcmOpOccs281Sol003Controller(final VnfLcmOpOccGenericFrontController frontController, final VnfBlueprint281Mapping mapper, final VnfLcmClassMaping281 vnfLcmClassMaping281) {
 		this.frontController = frontController;
 		this.mapper = mapper;
 		this.vnfLcmClassMaping281 = vnfLcmClassMaping281;
@@ -53,7 +53,7 @@ public class VnfLcmOpOccs281Sol003Controller implements VnfLcmOpOccs281Sol003Api
 
 	@Override
 	public ResponseEntity<String> vnfLcmOpOccsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, x -> mapper.map(x, VnfLcmOpOcc.class), VnfLcmOpOccs281Sol003Controller::makeLinks, VnfLcmOpOcc.class);
+		return frontController.search(requestParams, x -> mapper.map(x), VnfLcmOpOccs281Sol003Controller::makeLinks, VnfLcmOpOcc.class);
 	}
 
 	@Override
