@@ -18,10 +18,11 @@ package com.ubiqube.etsi.mano.v351.nfvo.controller.nfvo.nsfm;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
@@ -37,7 +38,7 @@ import jakarta.validation.Valid;
  *
  */
 @RestController
-@ConditionalOnMissingClass("com.ubiqube.etsi.mano.nfvo.v331.controller.nsfm.FaultMngtSubscriptions331Sol005Api")
+@Conditional(SingleControllerCondition.class)
 public class AlarmsSubscriptions351Sol005Controller implements AlarmsSubscriptions351Sol005Api, SubscriptionLinkable351Nfvo {
 
 	@Override

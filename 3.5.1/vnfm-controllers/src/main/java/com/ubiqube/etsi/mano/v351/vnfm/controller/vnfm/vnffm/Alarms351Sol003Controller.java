@@ -19,11 +19,12 @@ package com.ubiqube.etsi.mano.v351.vnfm.controller.vnfm.vnffm;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.dao.mano.alarm.AckState;
 import com.ubiqube.etsi.mano.v351.model.em.lcmcoord.Link;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.Alarm;
@@ -39,7 +40,7 @@ import jakarta.validation.Valid;
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
-@ConditionalOnMissingClass("com.ubiqube.etsi.mano.vnfm.v331.controller.vnffm.Alarms331Sol003Api")
+@Conditional(SingleControllerCondition.class)
 @RestController
 public class Alarms351Sol003Controller implements Alarms351Sol003Api {
 	private final AlarmFrontController alarmFrontController;

@@ -21,11 +21,12 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
@@ -46,7 +47,7 @@ import jakarta.validation.Valid;
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
-@ConditionalOnMissingClass("com.ubiqube.etsi.mano.em.v331.controller.vnffm.FaultMngtSubscriptions331Sol002Api")
+@Conditional(SingleControllerCondition.class)
 @RestController
 public class AlarmsSubscriptions351Sol002Controller implements AlarmsSubscriptions351Sol002Api, SubscriptionLinkable351Vnfm {
 	private final FaultMngtSubscriptionsFrontController faultMngtSubscriptionsFrontController;

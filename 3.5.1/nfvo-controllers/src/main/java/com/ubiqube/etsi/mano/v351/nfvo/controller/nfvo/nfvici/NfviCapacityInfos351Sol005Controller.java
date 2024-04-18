@@ -18,13 +18,14 @@ package com.ubiqube.etsi.mano.v351.nfvo.controller.nfvo.nfvici;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nfvici.NfviCapacityInfo;
+
+import jakarta.validation.Valid;
 
 /**
  *
@@ -32,7 +33,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.nfvici.NfviCapacityInfo;
  *
  */
 @RestController
-@ConditionalOnMissingClass("com.ubiqube.etsi.mano.nfvo.v331.controller.nfvici.NfviCapacityInfos331Sol005Api")
+@Conditional(SingleControllerCondition.class)
 public class NfviCapacityInfos351Sol005Controller implements NfviCapacityInfos351Sol005Api {
 
 	@Override

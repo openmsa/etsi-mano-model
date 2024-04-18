@@ -19,11 +19,12 @@ package com.ubiqube.etsi.mano.v351.vnfm.controller.vnfm.vnfpm;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.v351.model.em.lcmcoord.Link;
 import com.ubiqube.etsi.mano.v351.model.em.vnfpm.CreateThresholdRequest;
 import com.ubiqube.etsi.mano.v351.model.em.vnfpm.Threshold;
@@ -39,7 +40,7 @@ import jakarta.validation.Valid;
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
-@ConditionalOnMissingClass("com.ubiqube.etsi.mano.vnfm.v331.controller.vnfpm.Thresholds331Sol003Api")
+@Conditional(SingleControllerCondition.class)
 @RestController
 public class Thresholds351Sol003Controller implements Thresholds351Sol003Api {
 	private final VnfmThresholdFrontController vnfmThresholdFrontController;

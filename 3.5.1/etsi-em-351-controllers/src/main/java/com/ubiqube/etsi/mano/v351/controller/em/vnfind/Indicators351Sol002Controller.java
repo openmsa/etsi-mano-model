@@ -21,10 +21,11 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.v351.model.em.lcmcoord.Link;
 import com.ubiqube.etsi.mano.v351.model.em.vnfind.VnfIndicator;
 import com.ubiqube.etsi.mano.v351.model.em.vnfind.VnfIndicatorLinks;
@@ -37,7 +38,7 @@ import jakarta.validation.Valid;
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
-@ConditionalOnMissingClass("com.ubiqube.etsi.mano.em.v331.controller.vnfind.Indicators331Sol002Api")
+@Conditional(SingleControllerCondition.class)
 @RestController
 public class Indicators351Sol002Controller implements Indicators351Sol002Api {
 	private final Sol002IndicatorsFrontController indicatorsFrontController;

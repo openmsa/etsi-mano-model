@@ -21,11 +21,12 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.controller.SubscriptionFrontController;
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
@@ -48,7 +49,7 @@ import jakarta.validation.Valid;
  *
  */
 @RestController
-@ConditionalOnMissingClass("com.ubiqube.etsi.mano.vnfm.v331.controller.vnfind.VnfIndSubscriptions331Sol003Api")
+@Conditional(SingleControllerCondition.class)
 public class VnfIndSubscriptions351Sol003Controller implements VnfIndSubscriptions351Sol003Api, SubscriptionLinkable351Vnfm {
 	private final SubscriptionFrontController subscriptionService;
 	private final VnfIndicatorSubscription351Mapping mapper;

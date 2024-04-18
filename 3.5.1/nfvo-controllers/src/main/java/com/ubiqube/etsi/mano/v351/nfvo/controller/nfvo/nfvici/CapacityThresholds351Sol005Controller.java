@@ -18,15 +18,16 @@ package com.ubiqube.etsi.mano.v351.nfvo.controller.nfvo.nfvici;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nfvici.CapacityThreshold;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nfvici.CapacityThresholdModifications;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nfvici.CreateCapacityThresholdRequest;
+
+import jakarta.validation.Valid;
 
 /**
  *
@@ -34,7 +35,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.nfvici.CreateCapacityThresholdReque
  *
  */
 @RestController
-@ConditionalOnMissingClass("com.ubiqube.etsi.mano.nfvo.v331.controller.nfvici.CapacityThresholds331Sol005Api")
+@Conditional(SingleControllerCondition.class)
 public class CapacityThresholds351Sol005Controller implements CapacityThresholds351Sol005Api {
 
 	@Override
