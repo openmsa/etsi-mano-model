@@ -24,7 +24,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
-@RequestMapping(value = "/sol003/vnfpm/v2/notification/", headers = { "Version=2.1.0" })
+@RequestMapping(value = "/sol003/vnflcm/v2/notification/", headers = { "Version=2.1.0" })
 @RolesAllowed({ "ROLE_VNFM" })
 @Validated
 public interface VnfLcmOperationOccurrenceNotification351Sol003Api {
