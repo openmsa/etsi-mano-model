@@ -27,7 +27,7 @@ import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.v281.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v281.model.vnfm.grant.GrantRequest;
 import com.ubiqube.etsi.mano.v281.model.vnfm.grant.GrantRequestLinks;
-import com.ubiqube.etsi.mano.v281.services.VnfmFactory;
+import com.ubiqube.etsi.mano.v281.service.VnfmFactory;
 import com.ubiqube.etsi.mano.v281.vnfm.controller.em.vnflcm.VnfInstances281Sol002Api;
 import com.ubiqube.etsi.mano.v281.vnfm.controller.em.vnflcm.VnfInstances281Sol002Controller;
 

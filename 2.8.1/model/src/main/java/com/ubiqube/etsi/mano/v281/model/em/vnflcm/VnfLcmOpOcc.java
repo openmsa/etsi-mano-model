@@ -29,7 +29,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.ubiqube.etsi.mano.v281.model.em.vnfconfig.ProblemDetails2;
-import com.ubiqube.etsi.mano.v281.services.VnfLcmOpOcc281Deserializer;
+import com.ubiqube.etsi.mano.v281.service.VnfLcmOpOcc281Deserializer;
 
 /**
  * This type represents a VNF lifecycle management operation occurrence.

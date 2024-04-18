@@ -14,24 +14,35 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.v281.services;
+package com.ubiqube.etsi.mano.v281.service;
 
-import java.util.UUID;
+import java.time.OffsetDateTime;
 
-import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
-import com.ubiqube.etsi.mano.service.event.model.EventMessage;
+import org.springframework.stereotype.Service;
+
+import com.ubiqube.etsi.mano.controller.AbstractEtsiImplementation;
 
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
-public interface NfvoFactory {
+@Service
+public class EtsiImplementation281 extends AbstractEtsiImplementation {
 
-	Object createNotificationVnfPackageOnboardingNotification(final UUID subscriptionId, EventMessage eventMessage);
+  @Override
+  public String getVersion() {
+    return "2.8.1";
+  }
 
-	Object createVnfPackageChangeNotification(final UUID subscriptionId, EventMessage eventMessage);
+  @Override
+  public boolean isDeprecated() {
+    return false;
+  }
 
-	String createSubscriptionLink(ApiAndType at, String id);
+  @Override
+  public OffsetDateTime getRetirementDate() {
+    return null;
+  }
 
 }
