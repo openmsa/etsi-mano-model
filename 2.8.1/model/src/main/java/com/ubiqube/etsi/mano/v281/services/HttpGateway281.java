@@ -40,45 +40,45 @@ import com.ubiqube.etsi.mano.dao.mano.pm.PmJob;
 import com.ubiqube.etsi.mano.dao.mano.pm.Threshold;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.dao.mano.vnfi.ChangeExtVnfConnRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnffm.FmSubscription;
-import com.ubiqube.etsi.mano.em.v281.model.vnffm.FmSubscriptionRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnfind.CreatePmJobRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnfind.CreateThresholdRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnfind.VnfIndicator;
-import com.ubiqube.etsi.mano.em.v281.model.vnfind.VnfIndicatorSubscription;
-import com.ubiqube.etsi.mano.em.v281.model.vnfind.VnfIndicatorSubscriptionRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.ChangeExtVnfConnectivityRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.ChangeVnfFlavourRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.CreateVnfRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.LccnSubscriptionRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.Link;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.OperateVnfRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.ScaleVnfRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.ScaleVnfToLevelRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.TerminateVnfRequest;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.TerminateVnfRequest.TerminationTypeEnum;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.VnfInstance;
-import com.ubiqube.etsi.mano.em.v281.model.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.model.VnfHealRequest;
 import com.ubiqube.etsi.mano.model.VnfInstantiate;
 import com.ubiqube.etsi.mano.model.VnfOperateRequest;
 import com.ubiqube.etsi.mano.model.VnfScaleToLevelRequest;
-import com.ubiqube.etsi.mano.nfvo.v281.model.nsd.CreateNsdInfoRequest;
-import com.ubiqube.etsi.mano.nfvo.v281.model.nsd.NsdInfo;
-import com.ubiqube.etsi.mano.nfvo.v281.model.vnf.CreateVnfPkgInfoRequest;
-import com.ubiqube.etsi.mano.nfvo.v281.model.vnf.PkgmSubscription;
-import com.ubiqube.etsi.mano.nfvo.v281.model.vnf.PkgmSubscriptionRequest;
-import com.ubiqube.etsi.mano.nfvo.v281.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.service.AbstractHttpGateway;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.utils.Version;
-import com.ubiqube.etsi.mano.vnfm.v281.model.grant.Grant;
-import com.ubiqube.etsi.mano.vnfm.v281.model.grant.GrantRequest;
-import com.ubiqube.etsi.mano.vnfm.v281.model.grant.GrantRequestLinks;
-import com.ubiqube.etsi.mano.vnfm.v281.model.vrqan.VrQuotaAvailSubscription;
+import com.ubiqube.etsi.mano.v281.model.em.vnffm.FmSubscription;
+import com.ubiqube.etsi.mano.v281.model.em.vnffm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnfind.CreatePmJobRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnfind.CreateThresholdRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnfind.VnfIndicator;
+import com.ubiqube.etsi.mano.v281.model.em.vnfind.VnfIndicatorSubscription;
+import com.ubiqube.etsi.mano.v281.model.em.vnfind.VnfIndicatorSubscriptionRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.ChangeExtVnfConnectivityRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.ChangeVnfFlavourRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.CreateVnfRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.InstantiateVnfRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.OperateVnfRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.ScaleVnfRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.ScaleVnfToLevelRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.TerminateVnfRequest;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.VnfInstance;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v281.model.em.vnflcm.TerminateVnfRequest.TerminationTypeEnum;
+import com.ubiqube.etsi.mano.v281.model.nfvo.nsd.CreateNsdInfoRequest;
+import com.ubiqube.etsi.mano.v281.model.nfvo.nsd.NsdInfo;
+import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.CreateVnfPkgInfoRequest;
+import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.PkgmSubscription;
+import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.PkgmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.VnfPkgInfo;
+import com.ubiqube.etsi.mano.v281.model.vnfm.grant.Grant;
+import com.ubiqube.etsi.mano.v281.model.vnfm.grant.GrantRequest;
+import com.ubiqube.etsi.mano.v281.model.vnfm.grant.GrantRequestLinks;
+import com.ubiqube.etsi.mano.v281.model.vnfm.vrqan.VrQuotaAvailSubscription;
 
 import ma.glasnost.orika.MapperFacade;
 
@@ -331,7 +331,7 @@ public class HttpGateway281 extends AbstractHttpGateway {
 
 	@Override
 	public Class<?> getVnfThresholdClass() {
-		return com.ubiqube.etsi.mano.em.v281.model.vnfind.Threshold.class;
+		return com.ubiqube.etsi.mano.v281.model.em.vnfind.Threshold.class;
 	}
 
 	@Override

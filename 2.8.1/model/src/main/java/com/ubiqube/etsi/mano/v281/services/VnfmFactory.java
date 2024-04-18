@@ -20,7 +20,7 @@ import java.util.UUID;
 
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
-import com.ubiqube.etsi.mano.vnfm.v281.model.grant.GrantRequest;
+import com.ubiqube.etsi.mano.v281.model.vnfm.grant.GrantRequest;
 
 /**
  *
