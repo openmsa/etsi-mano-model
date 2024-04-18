@@ -363,7 +363,7 @@ public class HttpGateway361 extends AbstractHttpGateway {
 	// =====
 	@Override
 	public Object getPkgmSubscriptionRequest(final Subscription req) {
-		return pkgmSubscriptionRequestMapping.map(req, PkgmNotificationsFilter.class);
+		return pkgmSubscriptionRequestMapping.mapToRequest(req, PkgmNotificationsFilter.class);
 	}
 
 	@Override
