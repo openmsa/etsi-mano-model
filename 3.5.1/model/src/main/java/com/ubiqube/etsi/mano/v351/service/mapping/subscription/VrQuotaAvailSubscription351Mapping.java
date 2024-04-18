@@ -51,4 +51,8 @@ public interface VrQuotaAvailSubscription351Mapping extends BaseSubscription351M
 	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "version", ignore = true)
 	Subscription map(VrQuotaAvailSubscriptionRequest body);
+
+	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
+	VrQuotaAvailSubscriptionRequest mapToRequest(Subscription o, @Context final Class<VrQuotaAvailNotificationsFilter> clazz);
+
 }
