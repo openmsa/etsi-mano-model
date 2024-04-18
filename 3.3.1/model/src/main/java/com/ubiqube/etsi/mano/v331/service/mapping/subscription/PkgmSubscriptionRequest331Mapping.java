@@ -45,4 +45,7 @@ public interface PkgmSubscriptionRequest331Mapping extends BaseSubscription331Ma
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
 	PkgmSubscription map(Subscription o, @Context final Class<PkgmNotificationsFilter> clazz);
+
+	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
+	PkgmSubscriptionRequest mapToRequest(Subscription req, @Context Class<PkgmNotificationsFilter> clazz);
 }
