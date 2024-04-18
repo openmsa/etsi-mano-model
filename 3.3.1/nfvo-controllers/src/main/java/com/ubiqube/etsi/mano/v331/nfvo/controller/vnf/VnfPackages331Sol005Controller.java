@@ -36,7 +36,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.ExternalArtifactsAccessConfig;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.UploadVnfPkgFromUriRequest;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.VnfPkgInfoLinks;
-import com.ubiqube.etsi.mano.v331.services.mapping.VnfPkgInfo331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.VnfPkgInfo331Mapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

@@ -75,21 +75,21 @@ import com.ubiqube.etsi.mano.v331.model.vnfm.grant.GrantRequest;
 import com.ubiqube.etsi.mano.v331.model.vnfm.grant.GrantRequestLinks;
 import com.ubiqube.etsi.mano.v331.model.vnfm.vrqan.VrQuotaAvailNotificationsFilter;
 import com.ubiqube.etsi.mano.v331.model.vnfm.vrqan.VrQuotaAvailSubscription;
-import com.ubiqube.etsi.mano.v331.services.mapping.Grant331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.Nsd331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.PmJob331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.Threshold331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.VnfIndicator331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.VnfInstance331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.VnfLcmOpOcc331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.VnfPkgInfo331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.subscription.FmSubscription331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.subscription.LccnSubscription331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.subscription.PkgmSubscriptionRequest331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.subscription.VnfIndicatorSubscription331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.subscription.VrQuotaAvailSubscription331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.vnflcm.VnfInstanceRequest331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.vnflcm.VnfInstantiate331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.Grant331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.Nsd331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.PmJob331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.Threshold331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.VnfIndicator331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.VnfInstance331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.VnfLcmOpOcc331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.VnfPkgInfo331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.subscription.FmSubscription331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.subscription.LccnSubscription331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.subscription.PkgmSubscriptionRequest331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.subscription.VnfIndicatorSubscription331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.subscription.VrQuotaAvailSubscription331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.vnflcm.VnfInstanceRequest331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.vnflcm.VnfInstantiate331Mapping;
 
 /**
  *

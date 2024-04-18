@@ -39,8 +39,8 @@ import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.NsInstanceLinks;
 import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.ScaleNsRequest;
 import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.TerminateNsRequest;
 import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.UpdateNsRequest;
-import com.ubiqube.etsi.mano.v331.services.mapping.NsInstance331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.nslcm.NsRequest331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.NsInstance331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.nslcm.NsRequest331Mapping;
 
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;

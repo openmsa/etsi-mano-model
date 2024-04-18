@@ -33,7 +33,7 @@ import com.ubiqube.etsi.mano.v331.model.em.vnflcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.LifecycleChangeNotificationsFilter;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v331.nfvo.service.SubscriptionLinkable331Nfvo;
-import com.ubiqube.etsi.mano.v331.services.mapping.subscription.LccnSubscription331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.subscription.LccnSubscription331Mapping;
 
 import jakarta.validation.Valid;
 

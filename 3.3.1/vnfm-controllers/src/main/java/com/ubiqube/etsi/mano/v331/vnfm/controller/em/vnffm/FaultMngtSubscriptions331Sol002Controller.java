@@ -36,7 +36,7 @@ import com.ubiqube.etsi.mano.v331.model.em.vnffm.FmSubscription;
 import com.ubiqube.etsi.mano.v331.model.em.vnffm.FmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v331.model.em.vnffm.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
-import com.ubiqube.etsi.mano.v331.services.mapping.subscription.FmSubscription331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.subscription.FmSubscription331Mapping;
 import com.ubiqube.etsi.mano.v331.vnfm.service.SubscriptionLinkable331Vnfm;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
 

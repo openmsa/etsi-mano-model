@@ -27,7 +27,7 @@ import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v331.nfvo.service.LinksSol003;
-import com.ubiqube.etsi.mano.v331.services.mapping.VnfPkgInfo331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.VnfPkgInfo331Mapping;
 
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.security.RolesAllowed;

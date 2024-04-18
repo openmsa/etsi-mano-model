@@ -31,7 +31,7 @@ import com.ubiqube.etsi.mano.v331.model.em.vnfind.PmJob;
 import com.ubiqube.etsi.mano.v331.model.em.vnfind.PmJobLinks;
 import com.ubiqube.etsi.mano.v331.model.em.vnfind.PmJobModifications;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
-import com.ubiqube.etsi.mano.v331.services.mapping.PmJob331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.PmJob331Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfpm.VnfmPmGenericFrontController;
 
 import jakarta.validation.Valid;

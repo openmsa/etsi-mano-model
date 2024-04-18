@@ -27,7 +27,7 @@ import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v331.model.vnfm.grant.Grant;
 import com.ubiqube.etsi.mano.v331.model.vnfm.grant.GrantRequest;
-import com.ubiqube.etsi.mano.v331.services.mapping.Grant331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.Grant331Mapping;
 
 import jakarta.validation.Valid;
 

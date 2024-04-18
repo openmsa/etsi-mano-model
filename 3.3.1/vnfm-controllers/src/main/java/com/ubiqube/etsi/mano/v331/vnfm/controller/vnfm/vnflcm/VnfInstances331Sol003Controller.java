@@ -48,9 +48,9 @@ import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ScaleVnfToLevelRequest;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.TerminateVnfRequest;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.VnfInstanceLinks;
-import com.ubiqube.etsi.mano.v331.services.mapping.VnfInstance331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.vnflcm.VnfInstanceRequest331Mapping;
-import com.ubiqube.etsi.mano.v331.services.mapping.vnflcm.VnfInstantiate331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.VnfInstance331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.vnflcm.VnfInstanceRequest331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.vnflcm.VnfInstantiate331Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfInstanceGenericFrontController;
 
 import jakarta.annotation.security.RolesAllowed;

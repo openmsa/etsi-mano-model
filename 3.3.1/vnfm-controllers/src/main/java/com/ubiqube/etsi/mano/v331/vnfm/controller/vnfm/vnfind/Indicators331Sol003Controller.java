@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.v331.model.em.vnfind.VnfIndicator;
 import com.ubiqube.etsi.mano.v331.model.em.vnfind.VnfIndicatorLinks;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
-import com.ubiqube.etsi.mano.v331.services.mapping.VnfIndicator331Mapping;
+import com.ubiqube.etsi.mano.v331.service.mapping.VnfIndicator331Mapping;
 import com.ubiqube.etsi.mano.v331.vnfm.controller.vnfm.vnflcm.VnfInstances331Sol003Api;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfind.IndicatorsFrontController;
 
