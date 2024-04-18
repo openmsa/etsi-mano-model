@@ -27,9 +27,9 @@ import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v331.model.vnfm.grant.Grant;
 import com.ubiqube.etsi.mano.v331.model.vnfm.grant.GrantRequest;
+import com.ubiqube.etsi.mano.v331.services.mapping.Grant331Mapping;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -39,22 +39,22 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class LcmGrants331Sol003Controller implements LcmGrants331Sol003Api {
 	private final LcmGrantsFrontController lcmGrantsFrontController;
-	private final MapperFacade mapper;
+	private final Grant331Mapping mapper;
 
-	public LcmGrants331Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final MapperFacade mapper) {
+	public LcmGrants331Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final Grant331Mapping mapper) {
 		this.lcmGrantsFrontController = lcmGrantsFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Grant> grantsGrantIdGet(final String grantId) {
-		return lcmGrantsFrontController.grantsGrantIdGet(grantId, x -> mapper.map(x, Grant.class), LcmGrants331Sol003Controller::makeSelfLinks);
+		return lcmGrantsFrontController.grantsGrantIdGet(grantId, x -> mapper.map(x), LcmGrants331Sol003Controller::makeSelfLinks);
 	}
 
 	@Override
 	public ResponseEntity<Grant> grantsPost(@Valid final GrantRequest body) {
-		final GrantResponse req = mapper.map(body, GrantResponse.class);
-		return lcmGrantsFrontController.grantsPost(req, x -> mapper.map(x, Grant.class), LcmGrants331Sol003Controller::getSelfLink);
+		final GrantResponse req = mapper.map(body);
+		return lcmGrantsFrontController.grantsPost(req, x -> mapper.map(x), LcmGrants331Sol003Controller::getSelfLink);
 	}
 
 	private static void makeSelfLinks(final Grant jsonGrant) {

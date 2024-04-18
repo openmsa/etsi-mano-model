@@ -32,12 +32,12 @@ import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.PkgmNotificationsFilter;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.PkgmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v331.nfvo.service.SubscriptionLinkable331Nfvo;
-
-import ma.glasnost.orika.MapperFacade;
+import com.ubiqube.etsi.mano.v331.services.mapping.subscription.PkgmSubscriptionRequest331Mapping;
 
 /**
  *
@@ -48,9 +48,9 @@ import ma.glasnost.orika.MapperFacade;
 @Conditional(SingleControllerCondition.class)
 public class VnfSubscriptions331Sol005Controller implements VnfSubscriptions331Sol005Api, SubscriptionLinkable331Nfvo {
 	private final VnfSubscriptionSol005FrontController vnfSubscriptionSol03FrontController;
-	private final MapperFacade mapper;
+	private final PkgmSubscriptionRequest331Mapping mapper;
 
-	public VnfSubscriptions331Sol005Controller(final VnfSubscriptionSol005FrontController vnfSubscriptionSol03FrontController, final MapperFacade mapper) {
+	public VnfSubscriptions331Sol005Controller(final VnfSubscriptionSol005FrontController vnfSubscriptionSol03FrontController, final PkgmSubscriptionRequest331Mapping mapper) {
 		this.vnfSubscriptionSol03FrontController = vnfSubscriptionSol03FrontController;
 		this.mapper = mapper;
 	}
@@ -66,7 +66,7 @@ public class VnfSubscriptions331Sol005Controller implements VnfSubscriptions331S
 	 */
 	@Override
 	public ResponseEntity<List<PkgmSubscription>> subscriptionsGet(final String filter) {
-		return vnfSubscriptionSol03FrontController.search(filter, x -> mapper.map(x, PkgmSubscription.class), VnfSubscriptions331Sol005Controller::makeLinks);
+		return vnfSubscriptionSol03FrontController.search(filter, x -> mapper.map(x, PkgmNotificationsFilter.class), VnfSubscriptions331Sol005Controller::makeLinks);
 	}
 
 	/**
@@ -90,8 +90,8 @@ public class VnfSubscriptions331Sol005Controller implements VnfSubscriptions331S
 	 */
 	@Override
 	public ResponseEntity<PkgmSubscription> subscriptionsPost(final PkgmSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
-		return vnfSubscriptionSol03FrontController.create(req, VnfSubscriptions331Sol005Api.class, x -> mapper.map(x, PkgmSubscription.class), VnfSubscriptions331Sol005Controller::makeLinks);
+		final Subscription req = mapper.map(body);
+		return vnfSubscriptionSol03FrontController.create(req, VnfSubscriptions331Sol005Api.class, x -> mapper.map(x, PkgmNotificationsFilter.class), VnfSubscriptions331Sol005Controller::makeLinks);
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class VnfSubscriptions331Sol005Controller implements VnfSubscriptions331S
 	 */
 	@Override
 	public ResponseEntity<PkgmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return vnfSubscriptionSol03FrontController.findById(subscriptionId, x -> mapper.map(x, PkgmSubscription.class), VnfSubscriptions331Sol005Controller::makeLinks);
+		return vnfSubscriptionSol03FrontController.findById(subscriptionId, x -> mapper.map(x, PkgmNotificationsFilter.class), VnfSubscriptions331Sol005Controller::makeLinks);
 	}
 
 	public static void makeLinks(final PkgmSubscription pkgmSubscription) {

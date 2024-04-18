@@ -27,9 +27,9 @@ import com.ubiqube.etsi.mano.controller.nslcm.NsLcmGenericFrontController;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.NsLcmOpOccLinks;
+import com.ubiqube.etsi.mano.v331.services.mapping.NsLcmOpOcc331Mapping;
 
 import jakarta.validation.constraints.NotNull;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -39,16 +39,16 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class NsLcmOpOccs331Sol005Controller implements NsLcmOpOccs331Sol005Api {
 	private final NsLcmGenericFrontController nsLcmGenericFrontController;
-	private final MapperFacade mapper;
+	private final NsLcmOpOcc331Mapping mapper;
 
-	public NsLcmOpOccs331Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final MapperFacade mapper) {
+	public NsLcmOpOccs331Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final NsLcmOpOcc331Mapping mapper) {
 		this.nsLcmGenericFrontController = nsLcmGenericFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<String> nsLcmOpOccsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x, NsLcmOpOcc.class), nextpageOpaqueMarker, NsLcmOpOccs331Sol005Controller::makeLinks, NsLcmOpOcc.class);
+		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x), nextpageOpaqueMarker, NsLcmOpOccs331Sol005Controller::makeLinks, NsLcmOpOcc.class);
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class NsLcmOpOccs331Sol005Controller implements NsLcmOpOccs331Sol005Api {
 
 	@Override
 	public ResponseEntity<NsLcmOpOcc> nsLcmOpOccsNsLcmOpOccIdGet(final String nsLcmOpOccId) {
-		return nsLcmGenericFrontController.findById(nsLcmOpOccId, x -> mapper.map(x, NsLcmOpOcc.class), NsLcmOpOccs331Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.findById(nsLcmOpOccId, x -> mapper.map(x), NsLcmOpOccs331Sol005Controller::makeLinks);
 	}
 
 	@Override

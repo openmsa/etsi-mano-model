@@ -27,12 +27,12 @@ import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v331.nfvo.service.LinksSol003;
+import com.ubiqube.etsi.mano.v331.services.mapping.VnfPkgInfo331Mapping;
 
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -44,9 +44,9 @@ import ma.glasnost.orika.MapperFacade;
 @Conditional(SingleControllerCondition.class)
 public class VnfPackages331Sol003Controller implements VnfPackages331Sol003Api {
 	private final VnfPackageFrontController frontController;
-	private final MapperFacade mapper;
+	private final VnfPkgInfo331Mapping mapper;
 
-	public VnfPackages331Sol003Controller(final VnfPackageFrontController frontController, final MapperFacade mapper) {
+	public VnfPackages331Sol003Controller(final VnfPackageFrontController frontController, final VnfPkgInfo331Mapping mapper) {
 		this.frontController = frontController;
 		this.mapper = mapper;
 	}
@@ -63,7 +63,7 @@ public class VnfPackages331Sol003Controller implements VnfPackages331Sol003Api {
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdGet(final String vnfPkgId, @Valid final String includeSignature) {
-		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
+		return frontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x), LinksSol003::makeLinks);
 	}
 
 	@Override

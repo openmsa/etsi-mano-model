@@ -26,11 +26,11 @@ import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.controller.vnf.OnboardedPackageFrontController;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v331.nfvo.service.LinksSol003;
+import com.ubiqube.etsi.mano.v331.services.mapping.VnfPkgInfo331Mapping;
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -42,16 +42,16 @@ import ma.glasnost.orika.MapperFacade;
 @Conditional(SingleControllerCondition.class)
 public class OnboardedVnfPackages331Sol003Controller implements OnboardedVnfPackages331Sol003Api {
 	private final OnboardedPackageFrontController vnfPackageFrontController;
-	private final MapperFacade mapper;
+	private final VnfPkgInfo331Mapping mapper;
 
-	public OnboardedVnfPackages331Sol003Controller(final OnboardedPackageFrontController vnfPackageFrontController, final MapperFacade mapper) {
+	public OnboardedVnfPackages331Sol003Controller(final OnboardedPackageFrontController vnfPackageFrontController, final VnfPkgInfo331Mapping mapper) {
 		this.vnfPackageFrontController = vnfPackageFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<String> onboardedVnfPackagesGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return vnfPackageFrontController.onboardedSearch(requestParams, x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks, VnfPkgInfo.class);
+		return vnfPackageFrontController.onboardedSearch(requestParams, x -> mapper.map(x), LinksSol003::makeLinks, VnfPkgInfo.class);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class OnboardedVnfPackages331Sol003Controller implements OnboardedVnfPack
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> onboardedVnfPackagesVnfdIdGet(final String vnfdId) {
-		return vnfPackageFrontController.onboardedFindById(vnfdId, x -> mapper.map(x, VnfPkgInfo.class), LinksSol003::makeLinks);
+		return vnfPackageFrontController.onboardedFindById(vnfdId, x -> mapper.map(x), LinksSol003::makeLinks);
 	}
 
 	@Override
