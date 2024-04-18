@@ -19,22 +19,9 @@ package com.ubiqube.etsi.mano.v331.vnfm.service;
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ChangeCurrentVnfPkgRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ChangeExtVnfConnectivityRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ChangeVnfFlavourRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.CreateVnfSnapshotRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.HealVnfRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.OperateVnfRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.RevertToVnfSnapshotRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ScaleVnfRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ScaleVnfToLevelRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.TerminateVnfRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.VnfInfoModificationRequest;
-import com.ubiqube.etsi.mano.v331.model.em.vnflcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v331.services.mapping.lcm.VnfLcmOpOccMapper331Mapping;
+import com.ubiqube.etsi.mano.v331.services.mapping.vnflcm.VnfBlueprint331Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
-
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -43,75 +30,77 @@ import ma.glasnost.orika.MapperFacade;
  */
 @Service
 public class VnfLcmClassMaping331 implements VnfLcmClassMaping {
-	private final MapperFacade mapper;
+	private final VnfLcmOpOccMapper331Mapping vnfLcmOpOcc351Mapping;
+	private final VnfBlueprint331Mapping mapper2;
 
-	public VnfLcmClassMaping331(final MapperFacade mapper) {
-		this.mapper = mapper;
+	public VnfLcmClassMaping331(final VnfBlueprint331Mapping mapper2, final VnfLcmOpOccMapper331Mapping vnfLcmOpOcc351Mapping) {
+		this.vnfLcmOpOcc351Mapping = vnfLcmOpOcc351Mapping;
+		this.mapper2 = mapper2;
 	}
 
 	@Override
 	public <R> R getInstantiateVnfRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, InstantiateVnfRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToInstantiateVnfRequest(o);
 	}
 
 	@Override
 	public <R> R getScaleVnfRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, ScaleVnfRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToScaleVnfRequest(o);
 	}
 
 	@Override
 	public <R> R getScaleVnfToLevelRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, ScaleVnfToLevelRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToScaleVnfToLevelRequest(o);
 	}
 
 	@Override
 	public <R> R getChangeVnfFlavourRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, ChangeVnfFlavourRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToChangeVnfFlavourRequest(o);
 	}
 
 	@Override
 	public <R> R getOperateVnfRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, OperateVnfRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToOperateVnfRequest(o);
 	}
 
 	@Override
 	public <R> R getHealVnfRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, HealVnfRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToHealVnfRequest(o);
 	}
 
 	@Override
 	public <R> R getChangeExtVnfConnectivityRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, ChangeExtVnfConnectivityRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToChangeExtVnfConnectivityRequest(o);
 	}
 
 	@Override
 	public <R> R getTerminateVnfRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, TerminateVnfRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToTerminateVnfRequest(o);
 	}
 
 	@Override
 	public <R> R getVnfInfoModificationRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, VnfInfoModificationRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToVnfInfoModificationRequest(o);
 	}
 
 	@Override
 	public <R> R getCreateVnfSnapshotRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, CreateVnfSnapshotRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToCreateVnfSnapshotRequest(o);
 	}
 
 	@Override
 	public <R> R getRevertToVnfSnapshotRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, RevertToVnfSnapshotRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToRevertToVnfSnapshotRequest(o);
 	}
 
 	@Override
 	public <R> R getChangeCurrentVnfPkgRequest(final VnfBlueprint o) {
-		return (R) mapper.map(o, ChangeCurrentVnfPkgRequest.class);
+		return (R) vnfLcmOpOcc351Mapping.mapToChangeCurrentVnfPkgRequest(o);
 	}
 
 	@Override
 	public <R> R mapToVnfLcmOpOcc(final VnfBlueprint o) {
-		return (R) mapper.map(o, VnfLcmOpOcc.class);
+		return (R) mapper2.map(o);
 	}
 
 }
