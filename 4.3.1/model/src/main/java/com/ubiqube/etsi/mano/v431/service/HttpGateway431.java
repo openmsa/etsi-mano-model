@@ -153,8 +153,8 @@ public class HttpGateway431 extends AbstractHttpGateway {
 	}
 
 	@Override
-	public Class<?> getVnfIndicatorValueChangeSubscriptionRequest() {
-		return VnfIndicatorSubscriptionRequest.class;
+	public Object getVnfIndicatorValueChangeSubscriptionRequest(final Subscription req) {
+		return vnfIndicatorSubscriptionMapping.mapToRequest(req, VnfIndicatorNotificationsFilter.class);
 	}
 
 	@Override
