@@ -58,7 +58,7 @@ public class AlarmsSubscriptions351Sol002Controller implements AlarmsSubscriptio
 	}
 
 	@Override
-	public ResponseEntity<List<FmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+	public ResponseEntity<List<FmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
 		return faultMngtSubscriptionsFrontController.search(requestParams, x -> mapper.map(x, FmNotificationsFilter.class), AlarmsSubscriptions351Sol002Controller::makeLinks);
 	}
 

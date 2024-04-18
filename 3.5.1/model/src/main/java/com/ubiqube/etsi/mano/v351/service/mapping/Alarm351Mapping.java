@@ -22,12 +22,15 @@ import org.mapstruct.MappingConstants;
 import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
+import com.ubiqube.etsi.mano.dao.mano.alarm.AlarmNotification;
 import com.ubiqube.etsi.mano.dao.mano.alarm.Alarms;
 import com.ubiqube.etsi.mano.dao.mano.alarm.ResourceHandle;
 import com.ubiqube.etsi.mano.service.mapping.DateTimeMapping;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.Alarm;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.AlarmModifications;
 import com.ubiqube.etsi.mano.v351.model.em.vnffm.FaultyResourceType;
+import com.ubiqube.etsi.mano.v351.model.vnfm.vnfm.AlarmClearedNotification;
+import com.ubiqube.etsi.mano.v351.model.vnfm.vnfm.AlarmListRebuiltNotification;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface Alarm351Mapping extends DateTimeMapping {
@@ -50,4 +53,20 @@ public interface Alarm351Mapping extends DateTimeMapping {
 	ResourceTypeEnum map(FaultyResourceType o);
 
 	AlarmModifications mapAlarmModifications(Alarms o);
+
+	@Mapping(target = "alarmClearedTime", ignore = true)
+	@Mapping(target = "alarmId", ignore = true)
+	@Mapping(target = "nfvoId", ignore = true)
+	AlarmNotification map(AlarmNotification o);
+
+	@Mapping(target = "alarm", ignore = true)
+	@Mapping(target = "nfvoId", ignore = true)
+	AlarmNotification map(AlarmClearedNotification body);
+
+	@Mapping(target = "alarm", ignore = true)
+	@Mapping(target = "alarmClearedTime", ignore = true)
+	@Mapping(target = "alarmId", ignore = true)
+	@Mapping(target = "nfvoId", ignore = true)
+	AlarmNotification map(AlarmListRebuiltNotification body);
+
 }
