@@ -14,25 +14,25 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 /**
- * This type represents a VNF identifier deletion notification, which informs
- * the receiver of the deletion of a new \&quot;Individual VNF instance\&quot;
+ * This type represents a VNF identifier creation notification, which informs
+ * the receiver of the creation of a new \&quot;Individual VNF instance\&quot;
  * resource and the associated VNF instance identifier. This notification shall
- * be triggered by the VNFM when it has deleted an \&quot;Individual VNF
+ * be triggered by the VNFM when it has created an \&quot;Individual VNF
  * instance\&quot; resource and the associated VNF instance identifier.
  */
-@Schema(description = "This type represents a VNF identifier deletion notification, which informs the receiver of the deletion of a new \"Individual VNF instance\" resource and the associated VNF instance identifier. This notification shall be triggered by the VNFM when it has deleted an \"Individual VNF instance\" resource and the associated VNF instance identifier. ")
+@Schema(description = "This type represents a VNF identifier creation notification, which informs the receiver of the creation of a new \"Individual VNF instance\" resource and the associated VNF instance identifier. This notification shall be triggered by the VNFM when it has created an \"Individual VNF instance\" resource and the associated VNF instance identifier. ")
 @Validated
 
-public class VnfIdentifierDeletionNotification {
+public class VnfIdentifierCreationNotification {
 	@JsonProperty("id")
 	private String id = null;
 
 	/**
 	 * Discriminator for the different notification types. Shall be set to
-	 * \"VnfIdentifierDeletionNotification\" for this notification type.
+	 * \"VnfIdentifierCreationNotification\" for this notification type.
 	 */
 	public enum NotificationTypeEnum {
-		VNFIDENTIFIERDELETIONNOTIFICATION("VnfIdentifierDeletionNotification");
+		VNFIDENTIFIERCREATIONNOTIFICATION("VnfIdentifierCreationNotification");
 
 		private final String value;
 
@@ -72,7 +72,7 @@ public class VnfIdentifierDeletionNotification {
 	@JsonProperty("_links")
 	private LccnLinks _links = null;
 
-	public VnfIdentifierDeletionNotification id(final String id) {
+	public VnfIdentifierCreationNotification id(final String id) {
 		this.id = id;
 		return this;
 	}
@@ -93,18 +93,18 @@ public class VnfIdentifierDeletionNotification {
 		this.id = id;
 	}
 
-	public VnfIdentifierDeletionNotification notificationType(final NotificationTypeEnum notificationType) {
+	public VnfIdentifierCreationNotification notificationType(final NotificationTypeEnum notificationType) {
 		this.notificationType = notificationType;
 		return this;
 	}
 
 	/**
 	 * Discriminator for the different notification types. Shall be set to
-	 * \"VnfIdentifierDeletionNotification\" for this notification type.
+	 * \"VnfIdentifierCreationNotification\" for this notification type.
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"VnfIdentifierDeletionNotification\" for this notification type. ")
+	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"VnfIdentifierCreationNotification\" for this notification type. ")
 	@NotNull
 
 	public NotificationTypeEnum getNotificationType() {
@@ -115,7 +115,7 @@ public class VnfIdentifierDeletionNotification {
 		this.notificationType = notificationType;
 	}
 
-	public VnfIdentifierDeletionNotification subscriptionId(final String subscriptionId) {
+	public VnfIdentifierCreationNotification subscriptionId(final String subscriptionId) {
 		this.subscriptionId = subscriptionId;
 		return this;
 	}
@@ -136,7 +136,7 @@ public class VnfIdentifierDeletionNotification {
 		this.subscriptionId = subscriptionId;
 	}
 
-	public VnfIdentifierDeletionNotification timeStamp(final OffsetDateTime timeStamp) {
+	public VnfIdentifierCreationNotification timeStamp(final OffsetDateTime timeStamp) {
 		this.timeStamp = timeStamp;
 		return this;
 	}
@@ -158,7 +158,7 @@ public class VnfIdentifierDeletionNotification {
 		this.timeStamp = timeStamp;
 	}
 
-	public VnfIdentifierDeletionNotification vnfInstanceId(final String vnfInstanceId) {
+	public VnfIdentifierCreationNotification vnfInstanceId(final String vnfInstanceId) {
 		this.vnfInstanceId = vnfInstanceId;
 		return this;
 	}
@@ -179,7 +179,7 @@ public class VnfIdentifierDeletionNotification {
 		this.vnfInstanceId = vnfInstanceId;
 	}
 
-	public VnfIdentifierDeletionNotification _links(final LccnLinks _links) {
+	public VnfIdentifierCreationNotification _links(final LccnLinks _links) {
 		this._links = _links;
 		return this;
 	}
@@ -209,13 +209,13 @@ public class VnfIdentifierDeletionNotification {
 		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
-		final VnfIdentifierDeletionNotification vnfIdentifierDeletionNotification = (VnfIdentifierDeletionNotification) o;
-		return Objects.equals(this.id, vnfIdentifierDeletionNotification.id) &&
-				Objects.equals(this.notificationType, vnfIdentifierDeletionNotification.notificationType) &&
-				Objects.equals(this.subscriptionId, vnfIdentifierDeletionNotification.subscriptionId) &&
-				Objects.equals(this.timeStamp, vnfIdentifierDeletionNotification.timeStamp) &&
-				Objects.equals(this.vnfInstanceId, vnfIdentifierDeletionNotification.vnfInstanceId) &&
-				Objects.equals(this._links, vnfIdentifierDeletionNotification._links);
+		final VnfIdentifierCreationNotification vnfIdentifierCreationNotification = (VnfIdentifierCreationNotification) o;
+		return Objects.equals(this.id, vnfIdentifierCreationNotification.id) &&
+				Objects.equals(this.notificationType, vnfIdentifierCreationNotification.notificationType) &&
+				Objects.equals(this.subscriptionId, vnfIdentifierCreationNotification.subscriptionId) &&
+				Objects.equals(this.timeStamp, vnfIdentifierCreationNotification.timeStamp) &&
+				Objects.equals(this.vnfInstanceId, vnfIdentifierCreationNotification.vnfInstanceId) &&
+				Objects.equals(this._links, vnfIdentifierCreationNotification._links);
 	}
 
 	@Override
@@ -226,7 +226,7 @@ public class VnfIdentifierDeletionNotification {
 	@Override
 	public String toString() {
 		final StringBuilder sb = new StringBuilder();
-		sb.append("class VnfIdentifierDeletionNotification {\n");
+		sb.append("class VnfIdentifierCreationNotification {\n");
 
 		sb.append("    id: ").append(toIndentedString(id)).append("\n");
 		sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
