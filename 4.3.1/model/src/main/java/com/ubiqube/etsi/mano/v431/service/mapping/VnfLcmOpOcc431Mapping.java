@@ -253,7 +253,7 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "containerNamespace", source = "networkResource.containerNamespace")
 	@Mapping(target = "endTime", ignore = true)
-	@Mapping(target = "manoResourceId", source = "vnfVirtualLinkDescId")
+	@Mapping(target = "manoResourceId", ignore = true)
 	@Mapping(target = "removedInstantiated", ignore = true)
 	@Mapping(target = "reservationId", ignore = true)
 	@Mapping(target = "resourceDefinitionId", ignore = true)
