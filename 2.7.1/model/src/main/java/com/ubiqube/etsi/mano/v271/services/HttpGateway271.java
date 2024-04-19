@@ -30,7 +30,6 @@ import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.mano.CancelModeTypeEnum;
-import com.ubiqube.etsi.mano.dao.mano.GrantInterface;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.ScaleTypeEnum;
@@ -241,7 +240,7 @@ public class HttpGateway271 extends AbstractHttpGateway {
 	}
 
 	@Override
-	public Object createGrantRequest(final GrantInterface grant) {
+	public Object createGrantRequest(final GrantResponse grant) {
 		final GrantRequest g = mapper.map(grant, GrantRequest.class);
 		final GrantRequestLinks links = new GrantRequestLinks();
 		final Link vnfLink = new Link();
@@ -325,7 +324,7 @@ public class HttpGateway271 extends AbstractHttpGateway {
 	}
 
 	@Override
-	public Object mapGrantRequest(final GrantInterface o) {
+	public Object mapGrantRequest(final GrantResponse o) {
 		return mapper.map(o, GrantRequest.class);
 	}
 
