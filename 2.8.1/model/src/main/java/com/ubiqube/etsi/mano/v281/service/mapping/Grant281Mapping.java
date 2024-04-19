@@ -55,11 +55,12 @@ public interface Grant281Mapping extends VimConnectionInfo281Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v281.model.em.vnflcm.ScaleInfo o);
 
+	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "snapshotResDef", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "secondaryResourceTemplateId", ignore = true)
 	@Mapping(target = "reservationId", ignore = true)
-	@Mapping(target = "resourceDefinitionId", ignore = true)
+	@Mapping(target = "resourceDefinitionId", source = "id")
 	@Mapping(target = "resourceGroupId", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
@@ -160,6 +161,7 @@ public interface Grant281Mapping extends VimConnectionInfo281Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	PlacementConstraint map(com.ubiqube.etsi.mano.v281.model.vnfm.grant.PlacementConstraint o);
 
+	@Mapping(target = "id", source = "resourceDefinitionId")
 	@Mapping(target = "resource", source = ".", conditionExpression = "java(isNotEmptyResource(o))")
 	ResourceDefinition mapToResourceDefinition(GrantInformationExt o);
 
