@@ -206,7 +206,8 @@ public interface Grant351Mapping extends VimConnectionInfo351Mapping, Connectivi
 	ResourceDefinition.TypeEnum map(ResourceTypeEnum o);
 
 	@Mapping(target = "isAutomaticInvocation", source = "automaticInvocation")
-	@Mapping(target = "links", ignore = true)
+	@Mapping(target = "links.vnfInstance.href", source = "instanceLink")
+	@Mapping(target = "links.vnfLcmOpOcc.href", source = "lcmLink")
 	GrantRequest mapToRequest(GrantResponse grantResponse);
 
 	@ValueMapping(source = "CIS_NODE", target = MappingConstants.THROW_EXCEPTION)
