@@ -21,9 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -32,11 +29,13 @@ import com.ubiqube.etsi.mano.em.v271.model.vnflcm.ExtVirtualLinkData;
 import com.ubiqube.etsi.mano.vnfm.v271.model.vnflcm.VimConnectionInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a grant.
  */
-@Schema (description= "This type represents a grant. " )
+@Schema(description = "This type represents a grant. ")
 @Validated
 
 public class Grant {
@@ -101,7 +100,7 @@ public class Grant {
 	private Map<String, String> additionalParams = null;
 
 	@JsonProperty("_links")
-	private GrantLinks links = null;
+	private GrantLinks links = new GrantLinks();
 
 	public Grant id(final String id) {
 		this.id = id;
@@ -113,7 +112,7 @@ public class Grant {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true , description = "Identifier of the grant. ")
+	@Schema(required = true, description = "Identifier of the grant. ")
 	@NotNull
 
 	public String getId() {
@@ -134,7 +133,7 @@ public class Grant {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true , description = "Identifier of the related VNF instance. ")
+	@Schema(required = true, description = "Identifier of the related VNF instance. ")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -155,7 +154,7 @@ public class Grant {
 	 *
 	 * @return vnfLcmOpOccId
 	 **/
-	@Schema(required = true , description = "Identifier of the related VNF lifecycle management operation occurrence. ")
+	@Schema(required = true, description = "Identifier of the related VNF lifecycle management operation occurrence. ")
 	@NotNull
 
 	public String getVnfLcmOpOccId() {
@@ -611,7 +610,7 @@ public class Grant {
 	 *
 	 * @return links
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
@@ -629,28 +628,28 @@ public class Grant {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final Grant grant = (Grant) o;
 		return Objects.equals(this.id, grant.id) &&
-		Objects.equals(this.vnfInstanceId, grant.vnfInstanceId) &&
-		Objects.equals(this.vnfLcmOpOccId, grant.vnfLcmOpOccId) &&
-		Objects.equals(this.vimConnections, grant.vimConnections) &&
-		Objects.equals(this.zones, grant.zones) &&
-		Objects.equals(this.zoneGroups, grant.zoneGroups) &&
-		Objects.equals(this.computeReservationId, grant.computeReservationId) &&
-		Objects.equals(this.networkReservationId, grant.networkReservationId) &&
-		Objects.equals(this.storageReservationId, grant.storageReservationId) &&
-		Objects.equals(this.addResources, grant.addResources) &&
-		Objects.equals(this.tempResources, grant.tempResources) &&
-		Objects.equals(this.removeResources, grant.removeResources) &&
-		Objects.equals(this.updateResources, grant.updateResources) &&
-		Objects.equals(this.vimAssets, grant.vimAssets) &&
-		Objects.equals(this.extVirtualLinks, grant.extVirtualLinks) &&
-		Objects.equals(this.extManagedVirtualLinks, grant.extManagedVirtualLinks) &&
-		Objects.equals(this.additionalParams, grant.additionalParams) &&
-		Objects.equals(this.links, grant.links);
+				Objects.equals(this.vnfInstanceId, grant.vnfInstanceId) &&
+				Objects.equals(this.vnfLcmOpOccId, grant.vnfLcmOpOccId) &&
+				Objects.equals(this.vimConnections, grant.vimConnections) &&
+				Objects.equals(this.zones, grant.zones) &&
+				Objects.equals(this.zoneGroups, grant.zoneGroups) &&
+				Objects.equals(this.computeReservationId, grant.computeReservationId) &&
+				Objects.equals(this.networkReservationId, grant.networkReservationId) &&
+				Objects.equals(this.storageReservationId, grant.storageReservationId) &&
+				Objects.equals(this.addResources, grant.addResources) &&
+				Objects.equals(this.tempResources, grant.tempResources) &&
+				Objects.equals(this.removeResources, grant.removeResources) &&
+				Objects.equals(this.updateResources, grant.updateResources) &&
+				Objects.equals(this.vimAssets, grant.vimAssets) &&
+				Objects.equals(this.extVirtualLinks, grant.extVirtualLinks) &&
+				Objects.equals(this.extManagedVirtualLinks, grant.extManagedVirtualLinks) &&
+				Objects.equals(this.additionalParams, grant.additionalParams) &&
+				Objects.equals(this.links, grant.links);
 	}
 
 	@Override
