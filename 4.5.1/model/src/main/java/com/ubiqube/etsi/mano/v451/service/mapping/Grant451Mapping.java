@@ -24,7 +24,6 @@ import org.mapstruct.MappingConstants;
 import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
-import com.ubiqube.etsi.mano.dao.mano.GrantInterface;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.GrantVimAssetsEntity;
 import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
@@ -176,22 +175,6 @@ public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivi
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	PlacementConstraint map(com.ubiqube.etsi.mano.v451.model.vnfm.grant.PlacementConstraint o);
-
-	@Mapping(target = "additionalParams", ignore = true)
-	@Mapping(target = "dstVnfdId", ignore = true)
-	@Mapping(target = "flavourId", ignore = true)
-	@Mapping(target = "instantiationLevelId", ignore = true)
-	@Mapping(target = "isAutomaticInvocation", ignore = true)
-	@Mapping(target = "links", ignore = true)
-	@Mapping(target = "operation", ignore = true)
-	@Mapping(target = "placementConstraints", ignore = true)
-	@Mapping(target = "selectedDeployableModule", ignore = true)
-	@Mapping(target = "targetScaleLevelInfo", ignore = true)
-	@Mapping(target = "vimConstraints", ignore = true)
-	@Mapping(target = "vnfInstanceId", ignore = true)
-	@Mapping(target = "vnfLcmOpOccId", ignore = true)
-	@Mapping(target = "vnfdId", ignore = true)
-	GrantRequest map(GrantInterface grant);
 
 	@Mapping(target = "resource", source = ".")
 	ResourceDefinition mapToResourceDefinition(GrantInformationExt o);
