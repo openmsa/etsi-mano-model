@@ -56,7 +56,7 @@ public class NfvoFactory281 extends AbstractSubscriptionFactory implements NfvoF
 		} catch (final RuntimeException e) {
 			deleted = true;
 		}
-		return VnfSubscriptionFactory281.createVnfPackageChangeNotification(deleted, subscriptionId, event.getObjectId(), event.getAdditionalParameters().get("vnfdId"),
+		return VnfSubscriptionFactory281.createVnfPackageChangeNotification(deleted, subscriptionId, event.getObjectId(), event.getObjectId(), event.getAdditionalParameters().get("vnfdId"),
 				PackageOperationalStateType.fromValue(event.getAdditionalParameters().get("state")), new Sol003Linkable());
 	}
 }
