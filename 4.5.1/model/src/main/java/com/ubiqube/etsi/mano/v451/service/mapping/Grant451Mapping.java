@@ -57,6 +57,7 @@ public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	VimConstraint map(com.ubiqube.etsi.mano.v451.model.vnfm.grant.VimConstraint o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.ScaleInfo o);
 
@@ -176,8 +177,12 @@ public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	PlacementConstraint map(com.ubiqube.etsi.mano.v451.model.vnfm.grant.PlacementConstraint o);
 
-	@Mapping(target = "resource", source = ".")
+	@Mapping(target = "resource", source = ".", conditionExpression = "java(isNotEmptyResource(o))")
 	ResourceDefinition mapToResourceDefinition(GrantInformationExt o);
+
+	default boolean isNotEmptyResource(final GrantInformationExt o) {
+		return o.getResourceId() != null;
+	}
 
 	@Nullable
 	default String mapString(final @Nullable Set<String> value) {
