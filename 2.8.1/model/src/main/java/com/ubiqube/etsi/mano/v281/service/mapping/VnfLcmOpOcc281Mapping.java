@@ -53,6 +53,8 @@ import jakarta.annotation.Nullable;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity281Mapping, VimConnectionInfo281Mapping, VimResource281Mapping {
 
+	@Mapping(target = "modificationsTriggeredByVnfPkgChange", ignore = true)
+	@Mapping(target = "vnfSnapshotInfoId", ignore = true)
 	@Mapping(target = "affectedVipCps", ignore = true)
 	@Mapping(target = "lcmCoordinations", ignore = true)
 	@Mapping(target = "rejectedLcmCoordinations", ignore = true)
@@ -78,6 +80,7 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "zones", ignore = true)
 	VnfBlueprint map(VnfLcmOpOcc lcm);
 
+	@Mapping(target = "currentVnfExtCpData", ignore = true)
 	@Mapping(target = "extNetAttDefResource", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	ExtVirtualLinkInfoEntity map(ExtVirtualLinkInfo o);
@@ -143,6 +146,7 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	VnfInstantiatedExtLinkPort map(AffectedExtLinkPort o);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
@@ -180,6 +184,7 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	VnfInstantiatedCompute map(AffectedVnfc o);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
@@ -214,12 +219,14 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	VnfInstantiatedStorage map(AffectedVirtualStorage o);
 
+	@Mapping(target = "vnfdId", ignore = true)
+	@Mapping(target = "vnfLinkPortIds", ignore = true)
 	@Mapping(target = "virtualLinkDescId", source = "vnfVirtualLinkDescId")
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "endTime", ignore = true)
-	@Mapping(target = "manoResourceId", source = "vnfVirtualLinkDescId")
+	@Mapping(target = "manoResourceId", ignore = true)
 	@Mapping(target = "removedInstantiated", ignore = true)
 	@Mapping(target = "reservationId", ignore = true)
 	@Mapping(target = "resourceDefinitionId", ignore = true)
