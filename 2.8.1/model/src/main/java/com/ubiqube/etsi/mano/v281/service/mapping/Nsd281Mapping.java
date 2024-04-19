@@ -27,11 +27,13 @@ import org.mapstruct.MappingConstants;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackageNsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackageVnfPackage;
+import com.ubiqube.etsi.mano.dao.mano.PkgChecksum;
 import com.ubiqube.etsi.mano.dao.mano.PnfDescriptor;
 import com.ubiqube.etsi.mano.dao.mano.nfvo.NsArchiveArtifactInfo;
 import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
 import com.ubiqube.etsi.mano.v281.model.nfvo.nsd.NsdArchiveArtifactInfo;
 import com.ubiqube.etsi.mano.v281.model.nfvo.nsd.NsdInfo;
+import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.Checksum;
 
 import jakarta.annotation.Nullable;
 
@@ -98,6 +100,11 @@ public interface Nsd281Mapping extends StringToUriMapping {
 
 	@Mapping(target = "id", ignore = true)
 	NsArchiveArtifactInfo map(NsdArchiveArtifactInfo artifacts);
+
+	@Mapping(target = "md5", ignore = true)
+	@Mapping(target = "sha256", ignore = true)
+	@Mapping(target = "sha512", ignore = true)
+	PkgChecksum map(Checksum o);
 
 	Set<NsdPackageVnfPackage> map(List<String> value);
 

@@ -33,6 +33,7 @@ public interface LccnSubscription281Mapping extends BaseSubscription281Mapping {
 	@Mapping(target = "links", ignore = true)
 	LccnSubscription map(Subscription o, @Context final Class<LifecycleChangeNotificationsFilter> clazz);
 
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
@@ -45,6 +46,7 @@ public interface LccnSubscription281Mapping extends BaseSubscription281Mapping {
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	LccnSubscriptionRequest mapToLccnSubscriptionRequest(Subscription o, @Context final Class<LifecycleChangeNotificationsFilter> clazz);
 
+	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")

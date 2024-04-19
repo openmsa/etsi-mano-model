@@ -80,6 +80,7 @@ public interface NsInstance281Mapping extends VimResource281Mapping {
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")
 	ScaleInfo map(NsScaleInfo o);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nsScaleLevelId", ignore = true)
@@ -104,6 +105,7 @@ public interface NsInstance281Mapping extends VimResource281Mapping {
 
 	com.ubiqube.etsi.mano.v281.model.nfvo.nslcm.NsCpHandle map(@Nullable NsCpHandle value);
 
+	@Mapping(target = "virtualLinkResourceInfo", ignore = true)
 	@Mapping(target = "vnfcInfo", ignore = true)
 	@Mapping(target = "extCpInfo", ignore = true)
 	@Mapping(target = "extManagedVirtualLinkInfo", ignore = true)
@@ -132,10 +134,14 @@ public interface NsInstance281Mapping extends VimResource281Mapping {
 	@Mapping(target = "virtualStorageResourceInfo", ignore = true)
 	VnfInstanceInstantiatedVnfInfoDto map(VnfInstanceInstantiatedVnfInfo o);
 
+	@Mapping(target = "vnfdId", ignore = true)
+	VnfcResourceInfoDto map(VnfcResourceInfo o);
+
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.alarm.ResourceHandle mapResourceHandleToResourceHandle(ResourceHandle o);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.VnfMonitoringParameter map(com.ubiqube.etsi.mano.v281.model.em.vnflcm.MonitoringParameter o);
 
@@ -144,6 +150,7 @@ public interface NsInstance281Mapping extends VimResource281Mapping {
 	@Mapping(target = "scaleType", ignore = true)
 	VnfScaleInfo mapToVnfScaleInfo(ScaleInfo o);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	VnfMonitoringParameter map(com.ubiqube.etsi.mano.v281.model.nfvo.nslcm.VnfMonitoringParameter o);
 
@@ -168,6 +175,7 @@ public interface NsInstance281Mapping extends VimResource281Mapping {
 	@Mapping(target = "id", ignore = true)
 	NsCpHandle map(com.ubiqube.etsi.mano.v281.model.nfvo.nslcm.NsCpHandle o);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "zoneId", ignore = true)
 	VirtualStorageResourceInfo map(com.ubiqube.etsi.mano.v281.model.em.vnflcm.VirtualStorageResourceInfo p);

@@ -126,6 +126,13 @@ public interface NsRequest281Mapping {
 	@Mapping(target = "id", ignore = true)
 	LocConstCivicAddrElmnt map(LocationConstraintsCivicAddressElement o);
 
+	@Mapping(target = "addNsVirtualLinkData", ignore = true)
+	@Mapping(target = "changeVnfPackageData", ignore = true)
+	@Mapping(target = "createSnapshotData", ignore = true)
+	@Mapping(target = "deleteNsVirtualLinkId", ignore = true)
+	@Mapping(target = "deleteVnfSnapshotData", ignore = true)
+	@Mapping(target = "modifyWanConnectionInfoData", ignore = true)
+	@Mapping(target = "revertVnfToSnapshotData", ignore = true)
 	@Mapping(target = "terminateVnfData", ignore = true)
 	@Mapping(target = "realVnfInstanceToRemove", ignore = true)
 	UpdateRequest map(UpdateNsRequest body);

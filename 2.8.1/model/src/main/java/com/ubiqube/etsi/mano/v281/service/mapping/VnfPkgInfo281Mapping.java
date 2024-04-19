@@ -22,11 +22,13 @@ import org.mapstruct.MappingConstants;
 import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.dao.mano.AdditionalArtifact;
+import com.ubiqube.etsi.mano.dao.mano.PkgChecksum;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
 import com.ubiqube.etsi.mano.dao.mano.pkg.UploadUriParameters;
 import com.ubiqube.etsi.mano.dao.mano.vim.ContainerFormatType;
 import com.ubiqube.etsi.mano.dao.mano.vim.SoftwareImage;
 import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
+import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.Checksum;
 import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.UploadVnfPkgFromUriRequest;
 import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.VnfPackageArtifactInfo;
 import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.VnfPackageSoftwareImageInfo;
@@ -83,12 +85,22 @@ public interface VnfPkgInfo281Mapping extends StringToUriMapping {
 	@Mapping(target = "vnfmInfo281", ignore = true)
 	VnfPackage map(VnfPkgInfo pkg);
 
+	@Mapping(target = "md5", ignore = true)
+	@Mapping(target = "sha256", ignore = true)
+	@Mapping(target = "sha512", ignore = true)
+	PkgChecksum map(Checksum o);
+
 	@Mapping(target = "certificate", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nonManoSetIndentifier", ignore = true)
 	@Mapping(target = "repository", ignore = true)
 	@Mapping(target = "signature", ignore = true)
 	AdditionalArtifact map(VnfPackageArtifactInfo o);
+
+	@Mapping(target = "md5", ignore = true)
+	@Mapping(target = "sha256", ignore = true)
+	@Mapping(target = "sha512", ignore = true)
+	com.ubiqube.etsi.mano.dao.mano.vim.Checksum mapDbChecksum(Checksum o);
 
 	@Mapping(target = "architecture", ignore = true)
 	@Mapping(target = "audit", ignore = true)

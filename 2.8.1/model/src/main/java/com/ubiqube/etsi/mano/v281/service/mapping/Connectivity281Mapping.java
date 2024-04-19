@@ -126,6 +126,7 @@ public interface Connectivity281Mapping {
 		return o.stream().collect(Collectors.toMap(VnfExtCpConfig::getCpInstanceId, this::map));
 	}
 
+	@Mapping(target = "parentCpConfigId", ignore = true)
 	@Mapping(target = "netAttDefResourceId", ignore = true)
 	@Mapping(target = "cpInstanceId", ignore = true)
 	@Mapping(target = "id", ignore = true)
@@ -137,6 +138,7 @@ public interface Connectivity281Mapping {
 	@Mapping(target = "vnfExtCpConfiguration", ignore = true)
 	CpProtocolDataEntity map(CpProtocolData cpProtocolData);
 
+	@Mapping(target = "segmentationId", ignore = true)
 	@Mapping(target = "segmentationType", ignore = true)
 	@Mapping(target = "addressRange", ignore = true)
 	@Mapping(target = "addresses", ignore = true)

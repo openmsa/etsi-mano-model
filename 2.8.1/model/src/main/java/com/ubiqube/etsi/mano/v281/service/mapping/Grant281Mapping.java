@@ -16,8 +16,6 @@
  */
 package com.ubiqube.etsi.mano.v281.service.mapping;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.mapstruct.Mapper;
@@ -30,13 +28,11 @@ import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.GrantVimAssetsEntity;
 import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
-import com.ubiqube.etsi.mano.dao.mano.VnfExtCpConfiguration;
 import com.ubiqube.etsi.mano.dao.mano.ZoneGroupInformation;
 import com.ubiqube.etsi.mano.dao.mano.ZoneInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.ConstraintResourceRef;
 import com.ubiqube.etsi.mano.dao.mano.grant.PlacementConstraint;
 import com.ubiqube.etsi.mano.dao.mano.grant.VimConstraint;
-import com.ubiqube.etsi.mano.v281.model.em.vnflcm.VnfExtCpConfig;
 import com.ubiqube.etsi.mano.v281.model.vnfm.grant.Grant;
 import com.ubiqube.etsi.mano.v281.model.vnfm.grant.GrantInfo;
 import com.ubiqube.etsi.mano.v281.model.vnfm.grant.GrantRequest;
@@ -54,19 +50,13 @@ public interface Grant281Mapping extends VimConnectionInfo281Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	VimConstraint map(com.ubiqube.etsi.mano.v281.model.vnfm.grant.VimConstraint o);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v281.model.em.vnflcm.ScaleInfo o);
 
-	@Override
-	default List<VnfExtCpConfig> mapToListOfVnfExtCpConfig(final Map<String, VnfExtCpConfiguration> value) {
-		if (null == value) {
-			return List.of();
-		}
-		return value.values().stream().map(this::map).toList();
-
-	}
-
+	@Mapping(target = "snapshotResDef", ignore = true)
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "secondaryResourceTemplateId", ignore = true)
 	@Mapping(target = "reservationId", ignore = true)
 	@Mapping(target = "resourceDefinitionId", ignore = true)
@@ -115,6 +105,7 @@ public interface Grant281Mapping extends VimConnectionInfo281Mapping, Connectivi
 	@Mapping(target = "vnfdId", ignore = true)
 	GrantResponse map(Grant grant);
 
+	@Mapping(target = "snapshotResources", ignore = true)
 	@Mapping(target = "storageAssets", ignore = true)
 	GrantVimAssetsEntity map(GrantVimAssets gva);
 
@@ -142,6 +133,7 @@ public interface Grant281Mapping extends VimConnectionInfo281Mapping, Connectivi
 
 	GrantInfo map(GrantInformationExt gie);
 
+	@Mapping(target = "dstVnfdId", ignore = true)
 	@Mapping(target = "targetScaleLevelInfo", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "automaticInvocation", ignore = true)
