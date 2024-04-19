@@ -22,7 +22,10 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
+import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
+import com.ubiqube.etsi.mano.repository.VnfPackageRepository;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
+import com.ubiqube.etsi.mano.v431.model.nfvo.vnf.PackageOperationalStateType;
 import com.ubiqube.etsi.mano.v431.service.NfvoFactory;
 
 /**
@@ -30,21 +33,29 @@ import com.ubiqube.etsi.mano.v431.service.NfvoFactory;
  */
 @Service
 public class NfvoFactory443 extends AbstractSubscriptionFactory implements NfvoFactory {
+	private final VnfPackageRepository vnfPackageRepository;
 
-	public NfvoFactory443(final List<SubscriptionLinkable431Nfvo> subs) {
+	public NfvoFactory443(final VnfPackageRepository vnfPackageRepository, final List<SubscriptionLinkable431Nfvo> subs) {
 		super(subs);
+		this.vnfPackageRepository = vnfPackageRepository;
 	}
 
 	@Override
-	public Object createNotificationVnfPackageOnboardingNotification(final UUID subscriptionId, final EventMessage eventMessage) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object createNotificationVnfPackageOnboardingNotification(final UUID subscriptionId, final EventMessage event) {
+		final VnfPackage vnfPkg = vnfPackageRepository.get(event.getObjectId());
+		return VnfSubscriptionFactory431.createNotificationVnfPackageOnboardingNotification(subscriptionId, event.getObjectId(), vnfPkg.getVnfdId(), new Sol005Linkable());
 	}
 
 	@Override
-	public Object createVnfPackageChangeNotification(final UUID subscriptionId, final EventMessage eventMessage) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object createVnfPackageChangeNotification(final UUID subscriptionId, final EventMessage event) {
+		boolean deleted = false;
+		try {
+			vnfPackageRepository.get(event.getObjectId());
+		} catch (final RuntimeException e) {
+			deleted = true;
+		}
+		return VnfSubscriptionFactory431.createVnfPackageChangeNotification(deleted, subscriptionId, event.getId(), event.getAdditionalParameters().get("vnfdId"), event.getObjectId(),
+				PackageOperationalStateType.fromValue(event.getAdditionalParameters().get("state")), new Sol005Linkable());
 	}
 
 }

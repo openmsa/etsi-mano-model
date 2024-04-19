@@ -38,6 +38,9 @@ public class PkgmLinks {
 	@JsonProperty("vnfPackage")
 	private NotificationLink vnfPackage = null;
 
+	@JsonProperty("vnfPackageByVnfdId")
+	private NotificationLink vnfPackageByVnfdId = null;
+
 	@JsonProperty("subscription")
 	private NotificationLink subscription = null;
 
@@ -83,6 +86,27 @@ public class PkgmLinks {
 
 	public void setSubscription(final NotificationLink subscription) {
 		this.subscription = subscription;
+	}
+
+	public PkgmLinks vnfPackageByVnfdId(final NotificationLink vnfPackageByVnfdId) {
+		this.vnfPackageByVnfdId = vnfPackageByVnfdId;
+		return this;
+	}
+
+	/**
+	 * Get vnfPackageByVnfdId
+	 *
+	 * @return vnfPackageByVnfdId
+	 **/
+	@Schema(description = "")
+
+	@Valid
+	public NotificationLink getVnfPackageByVnfdId() {
+		return vnfPackageByVnfdId;
+	}
+
+	public void setVnfPackageByVnfdId(final NotificationLink vnfPackageByVnfdId) {
+		this.vnfPackageByVnfdId = vnfPackageByVnfdId;
 	}
 
 	@Override
