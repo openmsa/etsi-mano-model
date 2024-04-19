@@ -281,8 +281,8 @@ public class HttpGateway331 extends AbstractHttpGateway {
 	}
 
 	@Override
-	public Object createGrantRequest(final GrantInterface grant) {
-		final GrantRequest g = grantMapping.map(grant);
+	public Object createGrantRequest(final GrantResponse grant) {
+		final GrantRequest g = grantMapping.mapToRequest(grant);
 		final GrantRequestLinks links = new GrantRequestLinks();
 		final Link link = new Link();
 		link.setHref("http://");
