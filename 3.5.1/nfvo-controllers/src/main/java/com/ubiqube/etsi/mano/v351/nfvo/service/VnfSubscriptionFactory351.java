@@ -19,13 +19,13 @@ package com.ubiqube.etsi.mano.v351.nfvo.service;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
-import jakarta.annotation.Nonnull;
-
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PackageChangeType;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.PackageOperationalStateType;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.v351.model.nfvo.vnf.VnfPackageOnboardingNotification;
 import com.ubiqube.etsi.mano.v351.service.Linkable;
+
+import jakarta.annotation.Nonnull;
 
 /**
  *
@@ -39,8 +39,9 @@ public class VnfSubscriptionFactory351 {
 	}
 
 	@Nonnull
-	public static VnfPackageChangeNotification createVnfPackageChangeNotification(final boolean deleted, final UUID subscriptionId, @Nonnull final UUID vnfPkgId, final String vnfdId, final PackageOperationalStateType state, final Linkable links) {
+	public static VnfPackageChangeNotification createVnfPackageChangeNotification(final boolean deleted, final UUID subscriptionId, @Nonnull final UUID vnfPkgId, final UUID eventId, final String vnfdId, final PackageOperationalStateType state, final Linkable links) {
 		final VnfPackageChangeNotification ret = new VnfPackageChangeNotification();
+		ret.setId(eventId.toString());
 		if (deleted) {
 			ret.setChangeType(PackageChangeType.PKG_DELETE);
 		} else {
