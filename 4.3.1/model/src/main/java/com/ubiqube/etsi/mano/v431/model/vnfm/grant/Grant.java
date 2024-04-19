@@ -160,7 +160,7 @@ public class Grant {
 	private Map<String, String> additionalParams = null;
 
 	@JsonProperty("_links")
-	private GrantLinks links = null;
+	private GrantLinks links = new GrantLinks();
 
 	public Grant id(final String id) {
 		this.id = id;
