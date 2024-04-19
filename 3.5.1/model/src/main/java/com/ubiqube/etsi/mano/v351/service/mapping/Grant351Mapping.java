@@ -160,8 +160,12 @@ public interface Grant351Mapping extends VimConnectionInfo351Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	PlacementConstraint map(com.ubiqube.etsi.mano.v351.model.vnfm.grant.PlacementConstraint o);
 
-	@Mapping(target = "resource", source = ".")
+	@Mapping(target = "resource", source = ".", conditionExpression = "java(isNotEmptyResource(o))")
 	ResourceDefinition mapToResourceDefinition(GrantInformationExt o);
+
+	default boolean isNotEmptyResource(final GrantInformationExt o) {
+		return o.getResourceId() != null;
+	}
 
 	@Nullable
 	default String mapString(final @Nullable Set<String> value) {
