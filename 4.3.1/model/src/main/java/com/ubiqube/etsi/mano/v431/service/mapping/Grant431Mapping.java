@@ -24,7 +24,6 @@ import org.mapstruct.MappingConstants;
 import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
-import com.ubiqube.etsi.mano.dao.mano.GrantInterface;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.GrantVimAssetsEntity;
 import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
@@ -162,21 +161,6 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	PlacementConstraint map(com.ubiqube.etsi.mano.v431.model.vnfm.grant.PlacementConstraint o);
 
-	@Mapping(target = "additionalParams", ignore = true)
-	@Mapping(target = "dstVnfdId", ignore = true)
-	@Mapping(target = "flavourId", ignore = true)
-	@Mapping(target = "instantiationLevelId", ignore = true)
-	@Mapping(target = "isAutomaticInvocation", ignore = true)
-	@Mapping(target = "links", ignore = true)
-	@Mapping(target = "operation", ignore = true)
-	@Mapping(target = "placementConstraints", ignore = true)
-	@Mapping(target = "targetScaleLevelInfo", ignore = true)
-	@Mapping(target = "vimConstraints", ignore = true)
-	@Mapping(target = "vnfInstanceId", ignore = true)
-	@Mapping(target = "vnfLcmOpOccId", ignore = true)
-	@Mapping(target = "vnfdId", ignore = true)
-	GrantRequest map(GrantInterface grant);
-
 	@Mapping(target = "resource", source = ".")
 	ResourceDefinition mapToResourceDefinition(GrantInformationExt o);
 
@@ -219,4 +203,10 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	@ValueMapping(source = "VNF_INDICATOR", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "VNF_INSTANTIATE", target = MappingConstants.THROW_EXCEPTION)
 	ResourceDefinition.TypeEnum map(ResourceTypeEnum o);
+
+	@Mapping(target = "isAutomaticInvocation", source = "automaticInvocation")
+	@Mapping(target = "links.vnfInstance.href", source = "instanceLink")
+	@Mapping(target = "links.vnfLcmOpOcc.href", source = "lcmLink")
+	GrantRequest mapToRequest(GrantResponse grantResponse);
+
 }
