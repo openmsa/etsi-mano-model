@@ -49,4 +49,14 @@ public interface PkgmSubscriptionRequest361Mapping extends BaseSubscription361Ma
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	PkgmSubscriptionRequest mapToRequest(Subscription req, @Context Class<PkgmNotificationsFilter> clazz);
 
+	@Mapping(target = "api", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "authentication", ignore = true)
+	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
+	@Mapping(target = "nodeFilter", ignore = true)
+	@Mapping(target = "subscriptionType", ignore = true)
+	@Mapping(target = "verbosity", ignore = true)
+	@Mapping(target = "version", ignore = true)
+	Subscription map(PkgmSubscription o);
+
 }
