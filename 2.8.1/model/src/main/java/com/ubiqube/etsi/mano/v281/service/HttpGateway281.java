@@ -68,7 +68,6 @@ import com.ubiqube.etsi.mano.v281.model.nfvo.nsd.NsdInfo;
 import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.CreateVnfPkgInfoRequest;
 import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.PkgmNotificationsFilter;
 import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.PkgmSubscription;
-import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v281.model.vnfm.grant.Grant;
 import com.ubiqube.etsi.mano.v281.model.vnfm.grant.GrantRequest;
@@ -423,7 +422,7 @@ public class HttpGateway281 extends AbstractHttpGateway {
 
 	@Override
 	public Subscription mapToPkgmSubscription(final Object o) {
-		return pkgmSubscriptionRequestMapping.map((PkgmSubscriptionRequest) o);
+		return pkgmSubscriptionRequestMapping.map((PkgmSubscription) o);
 	}
 
 	@Override

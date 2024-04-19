@@ -38,8 +38,8 @@ public interface PkgmSubscriptionRequest281Mapping extends BaseSubscription281Ma
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", ignore = true)
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "subscriptionType", constant = "VNF")
+	@Mapping(target = "version", constant = "2.8.1")
 	Subscription map(PkgmSubscriptionRequest o);
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
@@ -48,4 +48,14 @@ public interface PkgmSubscriptionRequest281Mapping extends BaseSubscription281Ma
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	PkgmSubscriptionRequest mapToRequest(Subscription req, @Context Class<PkgmNotificationsFilter> clazz);
+
+	@Mapping(target = "api", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "authentication", ignore = true)
+	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
+	@Mapping(target = "nodeFilter", ignore = true)
+	@Mapping(target = "subscriptionType", constant = "VNF")
+	@Mapping(target = "verbosity", ignore = true)
+	@Mapping(target = "version", constant = "2.8.1")
+	Subscription map(PkgmSubscription o);
 }
