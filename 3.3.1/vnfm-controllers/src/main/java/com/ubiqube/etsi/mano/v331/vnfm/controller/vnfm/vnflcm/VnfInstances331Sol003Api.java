@@ -21,10 +21,6 @@
  */
 package com.ubiqube.etsi.mano.v331.vnfm.controller.vnfm.vnflcm;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -62,6 +58,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 
 /**
  *
@@ -191,7 +190,7 @@ public interface VnfInstances331Sol003Api {
 			@ApiResponse(responseCode = "412", description = "412 PRECONDITION FAILED Error: A precondition given in an HTTP request header is not fulfilled. Typically, this is due to an ETag mismatch, indicating that the resource was modified by another entity. The response body should contain a ProblemDetails structure, in which the \"detail\" attribute should convey more information about the error. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-	@DeleteMapping(value = "/vnf_instances/{vnfInstanceId}", produces = { "application/json" })
+	@DeleteMapping(value = "/{vnfInstanceId}", produces = { "application/json" })
 	ResponseEntity<Void> vnfInstancesVnfInstanceIdDelete(@Nonnull @Parameter(in = ParameterIn.PATH, description = "Identifier of the VNF instance for the VNF snapshot to be reverted to. This identifier can be retrieved from the resource  referenced by the \"Location\" HTTP header in the response to a POST request creating a new \"Individual VNF instance\" resource.  It can also be retrieved from the \"id\" attribute in the payload body of that response. ", required = true, schema = @Schema()) @PathVariable("vnfInstanceId") final String vnfInstanceId);
 
 	@Operation(summary = "", description = "Query VNF.  The GET method retrieves information about a VNF instance by reading an \"Individual VNF instance\" resource. This method shall follow the provisions specified in the tables 5.4.3.3.2-1 and 5.4.3.3.2-2 for URI query parameters, request and response data structures, and response codes. ", tags = {})
