@@ -16,32 +16,106 @@
  */
 package com.ubiqube.etsi.mano.v451.nfvo.controller.nfvo.nsd;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
+
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ubiqube.etsi.mano.controller.nsd.NsDescriptorGenericFrontController;
+import com.ubiqube.etsi.mano.v451.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v451.model.nfvo.nsd.CreateNsdInfoRequest;
+import com.ubiqube.etsi.mano.v451.model.nfvo.nsd.NsdInfo;
+import com.ubiqube.etsi.mano.v451.model.nfvo.nsd.NsdInfoLinks;
+import com.ubiqube.etsi.mano.v451.model.nfvo.nsd.NsdInfoModifications;
+import com.ubiqube.etsi.mano.v451.service.mapping.Nsd451Mapping;
+
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 @RestController
 public class NsDescriptors451Sol005Controller implements NsDescriptors451Sol005Api {
+	private final NsDescriptorGenericFrontController nsDescriptorGenericFrontController;
+	private final Nsd451Mapping mapper;
 
-    private final ObjectMapper objectMapper;
+	public NsDescriptors451Sol005Controller(final NsDescriptorGenericFrontController nsDescriptorGenericFrontController, final Nsd451Mapping mapper) {
+		this.nsDescriptorGenericFrontController = nsDescriptorGenericFrontController;
+		this.mapper = mapper;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<String> nsDescriptorsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
+		return nsDescriptorGenericFrontController.search(requestParams, x -> mapper.map(x), NsDescriptors451Sol005Controller::makeLinks, NsdInfo.class);
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public NsDescriptors451Sol005Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@Override
+	public ResponseEntity<Void> nsDescriptorsNsdInfoIdDelete(final String nsdInfoId) {
+		return nsDescriptorGenericFrontController.delete(nsdInfoId);
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+	@Override
+	public ResponseEntity<NsdInfo> nsDescriptorsNsdInfoIdGet(final String nsdInfoId) {
+		return nsDescriptorGenericFrontController.finsById(nsdInfoId, x -> mapper.map(x), NsDescriptors451Sol005Controller::makeLinks);
+	}
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<Resource> nsDescriptorsNsdInfoIdNsdContentGet(final String nsdInfoId, final String accept) {
+		return nsDescriptorGenericFrontController.getNsdContent(nsdInfoId, accept);
+	}
+
+	@Override
+	public ResponseEntity<Void> nsDescriptorsNsdInfoIdNsdContentPut(final String nsdInfoId, final String accept, final MultipartFile file) {
+		return nsDescriptorGenericFrontController.putNsdContent(nsdInfoId, accept, file);
+	}
+
+	@Override
+	public ResponseEntity<NsdInfoModifications> nsDescriptorsNsdInfoIdPatch(final String nsdInfoId, final String body, final String ifMatch) {
+		nsDescriptorGenericFrontController.modify(nsdInfoId, body, ifMatch, x -> mapper.map(x), NsDescriptors451Sol005Controller::makeLinks);
+		final NsdInfoModifications modif = new NsdInfoModifications();
+		return ResponseEntity.ok(modif);
+	}
+
+	@Override
+	public ResponseEntity<NsdInfo> nsDescriptorsPost(@Valid final CreateNsdInfoRequest body) {
+		return nsDescriptorGenericFrontController.create("", body.getUserDefinedData(), x -> mapper.map(x), NsDescriptors451Sol005Controller::makeLinks, NsDescriptors451Sol005Controller::makeSelfLink);
+	}
+
+	@Override
+	public ResponseEntity<Resource> nsDescriptorsNsdInfoIdArtifactsArtifactPathGet(final String nsdInfoId, final String artifactPath, @Valid final String includeSignatures) {
+		return nsDescriptorGenericFrontController.getArtifact(nsdInfoId, artifactPath, includeSignatures);
+	}
+
+	@Override
+	public ResponseEntity<Resource> nsDescriptorsNsdInfoIdManifestGet(final String nsdInfoId, @Valid final String includeSignatures) {
+		return nsDescriptorGenericFrontController.getManifest(nsdInfoId, includeSignatures);
+	}
+
+	@Override
+	public ResponseEntity<Resource> nsDescriptorsNsdInfoIdNsdGet(final String nsdInfoId, @Valid final String includeSignatures) {
+		return nsDescriptorGenericFrontController.getNsd(nsdInfoId, includeSignatures);
+	}
+
+	private static void makeLinks(@Nonnull final NsdInfo nsdInfo) {
+		final String id = nsdInfo.getId();
+		final NsdInfoLinks ret = new NsdInfoLinks();
+		final Link nsdSelf = new Link();
+		final String _self = makeSelfLink(nsdInfo);
+		nsdSelf.setHref(_self);
+		ret.setSelf(nsdSelf);
+
+		final String _nsdContent = linkTo(methodOn(NsDescriptors451Sol005Api.class).nsDescriptorsNsdInfoIdNsdContentGet(id, "")).withSelfRel().getHref();
+		final Link nsdContent = new Link();
+		nsdContent.setHref(_nsdContent);
+		ret.setNsdContent(nsdContent);
+
+		nsdInfo.setLinks(ret);
+	}
+
+	private static String makeSelfLink(final NsdInfo nsdInfo) {
+		return linkTo(methodOn(NsDescriptors451Sol005Api.class).nsDescriptorsNsdInfoIdGet(nsdInfo.getId())).withSelfRel().getHref();
+	}
 
 }
