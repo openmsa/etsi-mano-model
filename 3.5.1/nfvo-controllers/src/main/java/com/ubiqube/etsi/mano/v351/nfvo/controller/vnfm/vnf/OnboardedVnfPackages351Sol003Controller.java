@@ -45,12 +45,12 @@ public class OnboardedVnfPackages351Sol003Controller implements OnboardedVnfPack
 	}
 
 	@Override
-	public ResponseEntity<String> onboardedVnfPackagesGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+	public ResponseEntity<String> onboardedVnfPackagesGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
 		return onboardedVnfPackageFrontController.onboardedSearch(requestParams, x -> mapper.map(x), LinksSol003::makeLinks, VnfPkgInfo.class);
 	}
 
 	@Override
-	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsArtifactPathGet(final HttpServletRequest request, final String vnfdId, final String range, @Valid final String includeSignature) {
+	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsArtifactPathGet(final HttpServletRequest request, final String vnfdId, final String range, final String includeSignature) {
 		return onboardedVnfPackageFrontController.onboardedGetArtifact(request, vnfdId, includeSignature);
 	}
 
@@ -75,7 +75,7 @@ public class OnboardedVnfPackages351Sol003Controller implements OnboardedVnfPack
 	}
 
 	@Override
-	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdVnfdGet(final String vnfdId, @Valid final String includeSignature) {
+	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdVnfdGet(final String vnfdId, final String includeSignature) {
 		return onboardedVnfPackageFrontController.onboardedGetVnfdByVnfdId(vnfdId, includeSignature);
 	}
 
