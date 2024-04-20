@@ -48,9 +48,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
 @Validated
+@RequestMapping(value = "/sol003/vnflcm/v2", headers = { "Version=2.12.0" })
+@RolesAllowed({ "ROLE_VNFM" })
 public interface VnfSnapshots451Sol003Api {
 
 	@Operation(summary = "", description = "The GET method queries information about multiple VNF snapshots. This method shall follow the provisions specified in the tables 5.4.23.3.2-1  and 5.4.23.3.2-2 for URI query parameters, request and response data structures,  and response codes. ", tags = {})

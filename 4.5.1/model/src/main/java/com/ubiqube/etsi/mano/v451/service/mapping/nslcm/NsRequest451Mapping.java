@@ -67,7 +67,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.UpdateNsRequest;
 import jakarta.validation.Valid;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface NsRequest431Mapping {
+public interface NsRequest451Mapping {
 
 	@Mapping(target = "id", ignore = true)
 	NsHeal map(HealNsRequest o);

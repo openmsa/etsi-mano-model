@@ -40,9 +40,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
 @Validated
+@RequestMapping(value = "/sol003/vnflcm/v2", headers = { "Version=2.12.0" })
+@RolesAllowed({ "ROLE_VNFM" })
 public interface VnfLcmOpOccs451Sol003Api {
 
 	@Operation(summary = "", description = "The API consumer can use this method to query status information about multiple VNF lifecycle management operation occurrences. See clause 5.4.12.3.2. ", tags = {})

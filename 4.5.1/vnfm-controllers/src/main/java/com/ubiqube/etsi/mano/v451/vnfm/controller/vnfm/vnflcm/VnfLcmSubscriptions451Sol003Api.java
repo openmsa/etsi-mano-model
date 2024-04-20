@@ -44,9 +44,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
 @Validated
+@RequestMapping(value = "/sol003/vnflcm/v2", headers = { "Version=2.12.0" })
+@RolesAllowed({ "ROLE_VNFM" })
 public interface VnfLcmSubscriptions451Sol003Api {
 
 	@Operation(summary = "", description = "The GET method queries the list of active subscriptions of the functional block that invokes the method. It can be used e.g. for resynchronization after error situations. See clause 5.4.18.3.2. ", tags = {})
