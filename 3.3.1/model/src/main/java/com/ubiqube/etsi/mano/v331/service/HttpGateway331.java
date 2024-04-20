@@ -263,8 +263,10 @@ public class HttpGateway331 extends AbstractHttpGateway {
 
 	@Override
 	public ParameterizedTypeReference<List<Class<?>>> getNsdPackageClassList() {
-		// TODO Auto-generated method stub
-		return null;
+		final ParameterizedTypeReference<List<NsdInfo>> res = new ParameterizedTypeReference<>() {
+			// Nothing.
+		};
+		return (ParameterizedTypeReference<List<Class<?>>>) (Object) res;
 	}
 
 	@Override
