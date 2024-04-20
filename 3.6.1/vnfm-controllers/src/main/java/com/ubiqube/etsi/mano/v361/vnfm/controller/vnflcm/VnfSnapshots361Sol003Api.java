@@ -24,17 +24,22 @@ package com.ubiqube.etsi.mano.v361.vnfm.controller.vnflcm;
 import java.util.List;
 import java.util.Optional;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.CreateVnfSnapshotInfoRequest;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfSnapshotInfo;
@@ -49,6 +54,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 @RequestMapping(value = "/sol003/vnflcm/v2", headers = "Version=2.2.0")
 @RolesAllowed({ "ROLE_NFVO" })
@@ -80,9 +88,9 @@ public interface VnfSnapshots361Sol003Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))) })
-            @GetMapping(value = "/vnf_snapshots", produces = {"application/json"})
+	@GetMapping(value = "/vnf_snapshots", produces = { "application/json" })
 	ResponseEntity<List<VnfSnapshotInfo>> vnfSnapshotsGet(
-			@Parameter(in = ParameterIn.QUERY, description = "Attribute-based filtering expression according to clause 5.2 of ETSI GS NFV-SOL 013 [8]. The VNFM shall support receiving this parameter as part of the URI query string. The NFVO may supply this parameter. All attribute names that appear in the VnfSnapshot and in data types referenced from it shall be supported by the VNFM in the filter expression. ", schema = @Schema()) MultiValueMap<String, String> requestParams,
+			@Parameter(in = ParameterIn.QUERY, description = "Attribute-based filtering expression according to clause 5.2 of ETSI GS NFV-SOL 013 [8]. The VNFM shall support receiving this parameter as part of the URI query string. The NFVO may supply this parameter. All attribute names that appear in the VnfSnapshot and in data types referenced from it shall be supported by the VNFM in the filter expression. ", schema = @Schema()) @RequestParam MultiValueMap<String, String> requestParams,
 			@Parameter(in = ParameterIn.QUERY, description = "Marker to obtain the next page of a paged response. Shall be supported by the VNFM if the VNFM supports alternative 2 (paging) according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 [8] for this resource. ", schema = @Schema()) @Valid @RequestParam(value = "nextpage_opaque_marker", required = false) final String nextpageOpaqueMarker);
 
 	@Operation(summary = "", description = "The POST method creates a new \"Individual VNF snapshot\" resource. See clause 5.4.23.3.1. ", tags = {})
@@ -97,7 +105,7 @@ public interface VnfSnapshots361Sol003Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))) })
-            @PostMapping(value = "/vnf_snapshots", produces = {"application/json"}, consumes = {"application/json"})
+	@PostMapping(value = "/vnf_snapshots", produces = { "application/json" }, consumes = { "application/json" })
 	ResponseEntity<VnfSnapshotInfo> vnfSnapshotsPost(
 			@Parameter(in = ParameterIn.DEFAULT, description = "The VNF snapshot resource creation parameters, as defined in clause 5.5.2.20.", required = true, schema = @Schema()) @Valid @RequestBody final CreateVnfSnapshotInfoRequest body);
 
@@ -114,7 +122,7 @@ public interface VnfSnapshots361Sol003Api {
 			@ApiResponse(responseCode = "412", description = "412 PRECONDITION FAILED Error: A precondition given in an HTTP request header is not fulfilled. Typically, this is due to an ETag mismatch, indicating that the resource was modified by another entity. The response body should contain a ProblemDetails structure, in which the \"detail\" attribute should convey more information about the error. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))) })
-            @DeleteMapping(value = "/vnf_snapshots/{vnfSnapshotInfoId}", produces = {"application/json"})
+	@DeleteMapping(value = "/vnf_snapshots/{vnfSnapshotInfoId}", produces = { "application/json" })
 	ResponseEntity<Void> vnfSnapshotsVnfSnapshotInfoIdDelete(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the \"Individual VNF snapshot\" resource. This identifier can be retrieved  from the resource referenced by the \"Location\" HTTP header in the response to a POST request  creating a new VNF snapshot resource. It can also be retrieved from the \"id\" attribute in the payload body of that response.         ", required = true, schema = @Schema()) @PathVariable("vnfSnapshotInfoId") final String vnfSnapshotInfoId);
 
@@ -131,7 +139,7 @@ public interface VnfSnapshots361Sol003Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))) })
-            @GetMapping(value = "/vnf_snapshots/{vnfSnapshotInfoId}", produces = {"application/json"})
+	@GetMapping(value = "/vnf_snapshots/{vnfSnapshotInfoId}", produces = { "application/json" })
 	ResponseEntity<List<VnfSnapshotInfo>> vnfSnapshotsVnfSnapshotInfoIdGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the \"Individual VNF snapshot\" resource. This identifier can be retrieved  from the resource referenced by the \"Location\" HTTP header in the response to a POST request  creating a new VNF snapshot resource. It can also be retrieved from the \"id\" attribute in the payload body of that response.         ", required = true, schema = @Schema()) @PathVariable("vnfSnapshotInfoId") final String vnfSnapshotInfoId);
 
@@ -150,7 +158,7 @@ public interface VnfSnapshots361Sol003Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))) })
-            @PatchMapping(value = "/vnf_snapshots/{vnfSnapshotInfoId}", produces = {"application/json"}, consumes = {"application/json"})
+	@PatchMapping(value = "/vnf_snapshots/{vnfSnapshotInfoId}", produces = { "application/json" }, consumes = { "application/json" })
 	ResponseEntity<VnfSnapshotInfoModifications> vnfSnapshotsVnfSnapshotInfoIdPatch(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the \"Individual VNF snapshot\" resource. This identifier can be retrieved  from the resource referenced by the \"Location\" HTTP header in the response to a POST request  creating a new VNF snapshot resource. It can also be retrieved from the \"id\" attribute in the payload body of that response.         ", required = true, schema = @Schema()) @PathVariable("vnfSnapshotInfoId") final String vnfSnapshotInfoId,
 			@Parameter(in = ParameterIn.DEFAULT, description = "Parameters for the VNF snapshot information modification, as defined in clause 5.5.2.24.", required = true, schema = @Schema()) @Valid @RequestBody final String body,
@@ -171,7 +179,7 @@ public interface VnfSnapshots361Sol003Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails2.class))) })
-            @GetMapping(value = "/vnf_snapshots/{vnfSnapshotInfoId}/vnf_state_snapshot", produces = {"application/_*", "application/json"})
+	@GetMapping(value = "/vnf_snapshots/{vnfSnapshotInfoId}/vnf_state_snapshot", produces = { "application/_*", "application/json" })
 	ResponseEntity<Resource> vnfSnapshotsVnfSnapshotInfoIdVnfStateSnapshotGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the \"Individual VNF snapshot\" resource. This identifier can be retrieved  from the resource referenced by the \"Location\" HTTP header in the response to a POST request  creating a new VNF snapshot resource. It can also be retrieved from the \"id\" attribute in the payload body of that response.         ", required = true, schema = @Schema()) @PathVariable("vnfSnapshotInfoId") final String vnfSnapshotInfoId);
 }
