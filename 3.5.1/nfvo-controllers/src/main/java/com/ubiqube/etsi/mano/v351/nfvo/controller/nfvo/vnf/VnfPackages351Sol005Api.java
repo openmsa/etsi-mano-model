@@ -312,8 +312,8 @@ public interface VnfPackages351Sol005Api {
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
 	@PatchMapping(value = "/vnf_packages/{vnfPkgId}", produces = { "application/json" }, consumes = { "application/json" })
 	ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdPatch(
-			@Parameter(in = ParameterIn.PATH, description = "Identifier of the VNF package. The identifier is allocated by the NFVO. ", required = true, schema = @Schema()) @PathVariable("vnfPkgId") final String vnfPkgId,
 			@Parameter(in = ParameterIn.DEFAULT, description = "Parameters for VNF package information modifications.", required = true, schema = @Schema()) @Valid @RequestBody final String body,
+			@Parameter(in = ParameterIn.PATH, description = "Identifier of the VNF package. The identifier is allocated by the NFVO. ", required = true, schema = @Schema()) @PathVariable("vnfPkgId") final String vnfPkgId,
 			@RequestHeader(name = HttpHeaders.IF_MATCH, required = false) String ifMatch);
 
 	@Operation(summary = "", description = "The GET method reads the content of the VNFD within a VNF package. See clause 9.4.4.3.2. ", tags = {})
