@@ -21,14 +21,20 @@
  */
 package com.ubiqube.etsi.mano.v351.nfvo.controller.nfvo.nsd;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ubiqube.etsi.mano.v351.model.em.vnfconfig.ProblemDetails;
@@ -44,6 +50,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 
 /**
  *
@@ -66,7 +74,7 @@ public interface NsDescriptors351Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/ns_descriptors", produces = {"application/json"})
+	@GetMapping(value = "/ns_descriptors", produces = { "application/json" })
 	ResponseEntity<String> nsDescriptorsGet(
 			@Parameter(in = ParameterIn.QUERY, description = "Attribute-based filtering expression according to clause 5.2 of ETSI GS NFV-SOL 013. The NFV-MANO functional entity shall support receiving this parameter as part of the URI query string. The API consumer may supply this parameter. All attribute names that appear in the FmSubscription and in data types referenced from it shall be supported by the NFV-MANO functional entity in the filter expression. ", schema = @Schema()) @Valid @RequestParam(value = "filter", required = false) final MultiValueMap<String, String> requestParams);
 
@@ -85,7 +93,7 @@ public interface NsDescriptors351Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/ns_descriptors/{nsdInfoId}/artifacts/{artifactPath}", produces = {"application/json"})
+	@GetMapping(value = "/ns_descriptors/{nsdInfoId}/artifacts/{artifactPath}", produces = { "application/json" })
 	ResponseEntity<Resource> nsDescriptorsNsdInfoIdArtifactsArtifactPathGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual NS descriptor resource. ", required = true, schema = @Schema()) @PathVariable("nsdInfoId") final String nsdInfoId,
 			@Parameter(in = ParameterIn.PATH, description = "For an artifact contained as a file in the NSD archive, this variable shall  contain a sequence of one or path segments representing the path of the  artifact within the NSD archive, relative to the root of the package.  EXAMPLE: foo/bar/m%40ster.sh  For an external artifact represented as a URI in the NSD archive manifest,  this variable shall contain the URI as provided in the NS archive.  This identifier can be retrieved from the \"artifactPath\" attribute of the  applicable \"artifacts\" entry in the body of the response to a GET request  querying the \"Individual NSD\" resource.  Since multiple path segments are allowed to be contained in this variable,  the \"/\" character that separates these segments is not percent-encoded.  Each individual segment is percent-encoded if necessary as defined in  clause 4.1 of ETSI GS NFV-SOL 013. ", required = true, schema = @Schema()) @PathVariable("artifactPath") final String artifactPath,
@@ -105,7 +113,7 @@ public interface NsDescriptors351Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-            @DeleteMapping(value = "/ns_descriptors/{nsdInfoId}", produces = {"application/json"})
+	@DeleteMapping(value = "/ns_descriptors/{nsdInfoId}", produces = { "application/json" })
 	ResponseEntity<Void> nsDescriptorsNsdInfoIdDelete(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual NS descriptor resource. ", required = true, schema = @Schema()) @PathVariable("nsdInfoId") final String nsdInfoId);
 
@@ -121,7 +129,7 @@ public interface NsDescriptors351Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/ns_descriptors/{nsdInfoId}", produces = {"application/json"})
+	@GetMapping(value = "/ns_descriptors/{nsdInfoId}", produces = { "application/json" })
 	ResponseEntity<NsdInfo> nsDescriptorsNsdInfoIdGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual NS descriptor resource. ", required = true, schema = @Schema()) @PathVariable("nsdInfoId") final String nsdInfoId);
 
@@ -137,7 +145,7 @@ public interface NsDescriptors351Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/ns_descriptors/{nsdInfoId}/manifest", produces = {"application/json"})
+	@GetMapping(value = "/ns_descriptors/{nsdInfoId}/manifest", produces = { "application/json" })
 	ResponseEntity<Resource> nsDescriptorsNsdInfoIdManifestGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual NS descriptor resource. ", required = true, schema = @Schema()) @PathVariable("nsdInfoId") final String nsdInfoId,
 			@Parameter(in = ParameterIn.QUERY, description = "If this parameter is provided, the NFVO shall include in the ZIP archive the security information as specified above. This URI query parameter is a flag, i.e. it shall have no value. The NFVO shall support this parameter. ", schema = @Schema()) @Valid @RequestParam(value = "include_signatures", required = false) final String includeSignatures);
@@ -156,7 +164,7 @@ public interface NsDescriptors351Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/ns_descriptors/{nsdInfoId}/nsd_content", produces = {"application/json"})
+	@GetMapping(value = "/ns_descriptors/{nsdInfoId}/nsd_content", produces = { "application/json" })
 	ResponseEntity<Resource> nsDescriptorsNsdInfoIdNsdContentGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual NS descriptor resource. ", required = true, schema = @Schema()) @PathVariable("nsdInfoId") final String nsdInfoId,
 			@Parameter(in = ParameterIn.HEADER, description = "The request shall contain the appropriate entries in the \"Accept\" HTTP header. ", required = true, schema = @Schema(allowableValues = { "text/plain", "application/zip" })) @RequestHeader(value = "Accept", required = true) final String accept,
@@ -176,7 +184,7 @@ public interface NsDescriptors351Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-            @PutMapping(value = "/ns_descriptors/{nsdInfoId}/nsd_content", produces = {"application/json"})
+	@PutMapping(value = "/ns_descriptors/{nsdInfoId}/nsd_content", produces = { "application/json" })
 	ResponseEntity<Void> nsDescriptorsNsdInfoIdNsdContentPut(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual NS descriptor resource. ", required = true, schema = @Schema()) @PathVariable("nsdInfoId") final String nsdInfoId,
 			@Parameter(in = ParameterIn.HEADER, description = "The payload body contains a ZIP file that represents the NSD archive, as specified above.     The request shall set the \"Content-Type\" HTTP header to \"application/zip\". ", required = true, schema = @Schema(allowableValues = { "application/zip" })) @RequestHeader(value = "Content-Type", required = true) final String contentType,
@@ -195,7 +203,7 @@ public interface NsDescriptors351Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-            @GetMapping(value = "/ns_descriptors/{nsdInfoId}/nsd", produces = {"application/json"})
+	@GetMapping(value = "/ns_descriptors/{nsdInfoId}/nsd", produces = { "application/json" })
 	ResponseEntity<Resource> nsDescriptorsNsdInfoIdNsdGet(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual NS descriptor resource. ", required = true, schema = @Schema()) @PathVariable("nsdInfoId") final String nsdInfoId,
 			@Parameter(in = ParameterIn.QUERY, description = "If this parameter is provided, the NFVO shall include in the ZIP archive the security information as specified above. This URI query parameter is a flag, i.e. it shall have no value. The NFVO shall support this parameter. ", schema = @Schema()) @Valid @RequestParam(value = "include_signatures", required = false) final String includeSignatures);
@@ -214,7 +222,7 @@ public interface NsDescriptors351Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-            @PatchMapping(value = "/ns_descriptors/{nsdInfoId}", produces = {"application/json"}, consumes = {"application/json"})
+	@PatchMapping(value = "/ns_descriptors/{nsdInfoId}", produces = { "application/json" }, consumes = { "application/json" })
 	ResponseEntity<NsdInfoModifications> nsDescriptorsNsdInfoIdPatch(
 			@Parameter(in = ParameterIn.PATH, description = "Identifier of the individual NS descriptor resource. ", required = true, schema = @Schema()) @PathVariable("nsdInfoId") final String nsdInfoId,
 			@Parameter(in = ParameterIn.DEFAULT, description = "Parameters for the modification of an individual NS descriptor resource, as defined in clause 5.5.2.1.The Content-Type header shall be set to \"application/merge-patch+json\" according to IETF RFC 7396.", required = true, schema = @Schema()) @Valid @RequestBody final String body,
@@ -232,7 +240,7 @@ public interface NsDescriptors351Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-            @PostMapping(value = "/ns_descriptors", produces = {"application/json"}, consumes = {"application/json"})
+	@PostMapping(value = "/ns_descriptors", produces = { "application/json" }, consumes = { "application/json" })
 	ResponseEntity<NsdInfo> nsDescriptorsPost(
 			@Parameter(in = ParameterIn.DEFAULT, description = "Parameters of creating an NS descriptor resource, as defined in clause 5.5.2.3.", required = true, schema = @Schema()) @Valid @RequestBody final CreateNsdInfoRequest body);
 
