@@ -14,7 +14,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.v451.vnfm.controller.em.vnfind;
+package com.ubiqube.etsi.mano.v451.em.controller.em.vnfm;
 
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
