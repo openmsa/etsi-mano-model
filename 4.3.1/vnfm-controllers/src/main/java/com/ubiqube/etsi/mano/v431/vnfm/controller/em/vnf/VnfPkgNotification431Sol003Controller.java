@@ -49,7 +49,7 @@ public class VnfPkgNotification431Sol003Controller implements VnfPkgNotification
 	@Override
 	public ResponseEntity<Void> onboardingAction(final VnfPackageOnboardingNotification body) {
 		final com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification req = mapper.map(body);
-		return fc.onNotification(req, "2.6.1");
+		return fc.onNotification(req, "4.3.1");
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class VnfPkgNotification431Sol003Controller implements VnfPkgNotification
 	@Override
 	public ResponseEntity<Void> changeAction(@Valid final VnfPackageChangeNotification body) {
 		final com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification req = mapper.map(body);
-		return fc.onChange(req, "2.6.1");
+		return fc.onChange(req, "4.3.1");
 	}
 
 }
