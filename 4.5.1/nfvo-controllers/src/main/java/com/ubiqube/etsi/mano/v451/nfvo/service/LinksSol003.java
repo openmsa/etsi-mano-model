@@ -22,7 +22,7 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnf.VnfPkgInfoLinks;
-import com.ubiqube.etsi.mano.v451.nfvo.controller.nfvo.vnf.VnfPackages451Sol005Api;
+import com.ubiqube.etsi.mano.v451.nfvo.controller.vnfm.vnf.VnfPackages451Sol005Api;
 
 public class LinksSol003 {
 	private LinksSol003() {
