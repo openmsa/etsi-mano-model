@@ -54,4 +54,7 @@ public interface VnfIndicatorSubscription451Mapping extends BaseSubscription451M
 	@Mapping(target = "version", ignore = true)
 	Subscription map(VnfIndicatorSubscriptionRequest body);
 
+	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
+	VnfIndicatorSubscriptionRequest mapToRequest(Subscription req, @Context Class<VnfIndicatorNotificationsFilter> class1);
+
 }

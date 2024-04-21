@@ -224,4 +224,10 @@ public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivi
 	@ValueMapping(source = "VNF_INDICATOR", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "VNF_INSTANTIATE", target = MappingConstants.THROW_EXCEPTION)
 	ResourceDefinition.TypeEnum map(ResourceTypeEnum o);
+
+	@Mapping(target = "isAutomaticInvocation", source = "automaticInvocation")
+	@Mapping(target = "links.vnfInstance.href", source = "instanceLink")
+	@Mapping(target = "links.vnfLcmOpOcc.href", source = "lcmLink")
+	@Mapping(target = "selectedDeployableModule", ignore = true)
+	GrantRequest mapToRequest(GrantResponse grant);
 }

@@ -38,11 +38,24 @@ public interface PkgmSubscriptionRequest451Mapping extends BaseSubscription451Ma
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
-	@Mapping(target = "subscriptionType", ignore = true)
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "subscriptionType", constant = "VNF")
+	@Mapping(target = "version", constant = "4.5.1")
 	Subscription map(PkgmSubscriptionRequest o);
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
 	@Mapping(target = "links", ignore = true)
 	PkgmSubscription map(Subscription o, @Context final Class<PkgmNotificationsFilter> clazz);
+
+	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
+	PkgmSubscriptionRequest mapToRequest(Subscription req, @Context Class<PkgmNotificationsFilter> class1);
+
+	@Mapping(target = "api", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "authentication", ignore = true)
+	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
+	@Mapping(target = "nodeFilter", ignore = true)
+	@Mapping(target = "subscriptionType", constant = "VNF")
+	@Mapping(target = "verbosity", ignore = true)
+	@Mapping(target = "version", constant = "4.5.1")
+	Subscription map(PkgmSubscription o);
 }
