@@ -16,32 +16,108 @@
  */
 package com.ubiqube.etsi.mano.v451.nfvo.controller.nfvo.vnfsnapshotpkgm;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
+
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.BuildVnfSnapshotPkgRequest;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.CancelVnfSnapshotPkgOperationRequest;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.CreateVnfSnapshotPkgInfoRequest;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.ExtractVnfSnapshotPkgRequest;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.UploadVnfSnapshotPkgFromUriRequest;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.VnfSnapshotPkgExtArtifactsAccessConfig;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.VnfSnapshotPkgInfo;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.VnfSnapshotPkgInfoModifications;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfSnapshotPackages451Sol005Controller implements VnfSnapshotPackages451Sol005Api {
 
-    private final ObjectMapper objectMapper;
+	@Override
+	public ResponseEntity<List<VnfSnapshotPkgInfo>> vnfSnapshotPackagesGet(@Valid final String filter, @Valid final String allFields, @Valid final String fields, @Valid final String excludeFields, @Valid final String excludeDefault, @Valid final String nextpageOpaqueMarker) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<VnfSnapshotPkgInfo> vnfSnapshotPackagesPost(@Valid final CreateVnfSnapshotPkgInfoRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public VnfSnapshotPackages451Sol005Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@Override
+	public ResponseEntity<Resource> vnfSnapshotPackagesVnfSnapshotPkgIdArtifactsArtifactPathGet(final String vnfSnapshotPkgId, final String artifactPath) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+	@Override
+	public ResponseEntity<Void> vnfSnapshotPackagesVnfSnapshotPkgIdDelete(final String vnfSnapshotPkgId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<VnfSnapshotPkgExtArtifactsAccessConfig> vnfSnapshotPackagesVnfSnapshotPkgIdExtArtifactsAccessGet(final String vnfSnapshotPkgId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<VnfSnapshotPkgExtArtifactsAccessConfig> vnfSnapshotPackagesVnfSnapshotPkgIdExtArtifactsAccessPut(final String vnfSnapshotPkgId, @Valid final VnfSnapshotPkgExtArtifactsAccessConfig body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<VnfSnapshotPkgInfo> vnfSnapshotPackagesVnfSnapshotPkgIdGet(final String vnfSnapshotPkgId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<Void> vnfSnapshotPackagesVnfSnapshotPkgIdPackageContentBuildPost(final String vnfSnapshotPkgId, @Valid final BuildVnfSnapshotPkgRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<Void> vnfSnapshotPackagesVnfSnapshotPkgIdPackageContentCancelPost(final String vnfSnapshotPkgId, @Valid final CancelVnfSnapshotPkgOperationRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<Void> vnfSnapshotPackagesVnfSnapshotPkgIdPackageContentExtractPost(final String vnfSnapshotPkgId, @Valid final ExtractVnfSnapshotPkgRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<Resource> vnfSnapshotPackagesVnfSnapshotPkgIdPackageContentGet(final String vnfSnapshotPkgId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<Void> vnfSnapshotPackagesVnfSnapshotPkgIdPackageContentPut(final String vnfSnapshotPkgId, final String contentType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<Void> vnfSnapshotPackagesVnfSnapshotPkgIdPackageContentUploadFromUriPost(final String vnfSnapshotPkgId, @Valid final UploadVnfSnapshotPkgFromUriRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<VnfSnapshotPkgInfoModifications> vnfSnapshotPackagesVnfSnapshotPkgIdPatch(final String vnfSnapshotPkgId, @Valid final VnfSnapshotPkgInfoModifications body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

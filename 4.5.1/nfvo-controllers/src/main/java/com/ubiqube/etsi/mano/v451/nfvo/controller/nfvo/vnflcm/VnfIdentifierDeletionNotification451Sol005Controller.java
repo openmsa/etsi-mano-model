@@ -16,32 +16,35 @@
  */
 package com.ubiqube.etsi.mano.v451.nfvo.controller.nfvo.vnflcm;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.controller.vnflcm.VnfLcmNotificationFrontController;
+import com.ubiqube.etsi.mano.dao.mano.vnflcm.VnfLcmNotification;
+import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfIdentifierDeletionNotification;
+import com.ubiqube.etsi.mano.v451.service.mapping.VnfLvmNotification451Mapping;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class VnfIdentifierDeletionNotification451Sol005Controller implements VnfIdentifierDeletionNotification451Sol005Api {
+	private final VnfLcmNotificationFrontController fc;
+	private final VnfLvmNotification451Mapping mapper;
 
-    private final ObjectMapper objectMapper;
+	public VnfIdentifierDeletionNotification451Sol005Controller(final VnfLcmNotificationFrontController fc, final VnfLvmNotification451Mapping mapper) {
+		this.fc = fc;
+		this.mapper = mapper;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<Void> deletionCheck() {
+		return fc.deletionCheck();
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public VnfIdentifierDeletionNotification451Sol005Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
-
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
-
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<Void> deletionNotificationPost(@Valid final VnfIdentifierDeletionNotification body) {
+		final VnfLcmNotification req = mapper.map(body);
+		return fc.deletionNotification(req, "4.5.1");
+	}
 
 }

@@ -16,40 +16,31 @@
  */
 package com.ubiqube.etsi.mano.v451.nfvo.controller.nfvo.lcmcoord;
 
-import java.util.Optional;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ubiqube.etsi.mano.v451.model.nfvo.lcmcoord.LcmCoord;
+import com.ubiqube.etsi.mano.v451.model.nfvo.lcmcoord.LcmCoordRequest;
 
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 @RestController
 public class Coordinations451Sol005Controller implements Coordinations451Sol005Api {
 
-	private final ObjectMapper objectMapper;
-
-	private final HttpServletRequest request;
-
-	@org.springframework.beans.factory.annotation.Autowired
-	public Coordinations451Sol005Controller(final ObjectMapper objectMapper, final HttpServletRequest request) {
-		this.objectMapper = objectMapper;
-		this.request = request;
-	}
-
-	@Override
-	public Optional<ObjectMapper> getObjectMapper() {
-		return Optional.ofNullable(objectMapper);
-	}
-
-	@Override
-	public Optional<HttpServletRequest> getRequest() {
-		return Optional.ofNullable(request);
-	}
-
 	@Override
 	public ResponseEntity<Void> coordinationsCancelPost(final String version, final String accept, final String authorization) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<LcmCoord> coordinationsCoordinationIdGet(final String coordinationId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<LcmCoord> coordinationsPost(@Valid final LcmCoordRequest body) {
 		// TODO Auto-generated method stub
 		return null;
 	}

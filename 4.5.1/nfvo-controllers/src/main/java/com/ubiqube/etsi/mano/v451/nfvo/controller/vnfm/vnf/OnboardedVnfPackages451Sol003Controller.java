@@ -16,32 +16,62 @@
  */
 package com.ubiqube.etsi.mano.v451.nfvo.controller.vnfm.vnf;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ubiqube.etsi.mano.controller.vnf.OnboardedPackageFrontController;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnf.VnfPkgInfo;
+import com.ubiqube.etsi.mano.v451.nfvo.service.LinksSol003;
+import com.ubiqube.etsi.mano.v451.service.mapping.VnfPkgInfo451Mapping;
+
 import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+import jakarta.validation.Valid;
 
 @RestController
 public class OnboardedVnfPackages451Sol003Controller implements OnboardedVnfPackages451Sol003Api {
+	private final OnboardedPackageFrontController onboardedVnfPackageFrontController;
+	private final VnfPkgInfo451Mapping mapper;
 
-    private final ObjectMapper objectMapper;
+	public OnboardedVnfPackages451Sol003Controller(final OnboardedPackageFrontController vnfPackageFrontController, final VnfPkgInfo451Mapping mapper) {
+		this.onboardedVnfPackageFrontController = vnfPackageFrontController;
+		this.mapper = mapper;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<String> onboardedVnfPackagesGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
+		return onboardedVnfPackageFrontController.onboardedSearch(requestParams, x -> mapper.map(x), LinksSol003::makeLinks, VnfPkgInfo.class);
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public OnboardedVnfPackages451Sol003Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@Override
+	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsArtifactPathGet(final HttpServletRequest request, final String vnfdId, @Valid final String includeSignature) {
+		return onboardedVnfPackageFrontController.onboardedGetArtifact(request, vnfdId, includeSignature);
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+	@Override
+	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsGet(final String vnfdId, final String excludeAllManoArtifacts, final String excludeAllNonManoArtifacts, final String includeExternalArtifacts, final String selectNonManoArtifactSets, final String includeSignatures) {
+		return onboardedVnfPackageFrontController.onboardedGetArtifactByVnfdId(vnfdId);
+	}
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<VnfPkgInfo> onboardedVnfPackagesVnfdIdGet(final String vnfdId) {
+		return onboardedVnfPackageFrontController.onboardedFindById(vnfdId, x -> mapper.map(x), LinksSol003::makeLinks);
+	}
+
+	@Override
+	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdManifestGet(final String vnfdId, @Valid final String includeSignature) {
+		return onboardedVnfPackageFrontController.onboardedGetManifestByVnfd(vnfdId, includeSignature);
+	}
+
+	@Override
+	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdPackageContentGet(final String vnfdId, final String accept, final String includeSignature) {
+		return onboardedVnfPackageFrontController.onboardedGetContentByVnfdId(vnfdId, accept, includeSignature);
+	}
+
+	@Override
+	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdVnfdGet(final String vnfdId, @Valid final String includeSignature) {
+		return onboardedVnfPackageFrontController.onboardedGetVnfdByVnfdId(vnfdId, includeSignature);
+	}
 
 }
