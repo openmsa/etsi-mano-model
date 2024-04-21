@@ -59,9 +59,11 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfcResourceInfoVnfcCpInfo;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Connectivity451Mapping {
 
+	@Mapping(target = "certificateInfo", ignore = true)
 	@Mapping(target = "links", ignore = true)
 	com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfInstance map(VnfInstance vnfInst);
 
+	@Mapping(target = "vnfPkg", ignore = true)
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "blueprints", ignore = true)
@@ -85,6 +87,8 @@ public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Conn
 	@ValueMapping(source = "ETHERNET", target = MappingConstants.THROW_EXCEPTION)
 	CpProtocolInfo.LayerProtocolEnum map(CpProtocolInfoEntity.LayerProtocolEnum en);
 
+	@Mapping(target = "selectedDeployableModule", ignore = true)
+	@Mapping(target = "vnfPaasServiceInfo", ignore = true)
 	@Mapping(target = "extManagedVirtualLinkInfo", source = "extManagedVirtualLinks")
 	@Mapping(target = "monitoringParameters", source = "vnfMonitoringParameter")
 	@Mapping(target = "vnfState", source = "state")
@@ -202,6 +206,7 @@ public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Conn
 	NetAttDefResourceInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.NetAttDefResourceInfo nadr);
 
 //	@Mapping(target = "scaleLevel", source = "scaleToLevel")
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.ScaleInfo si);
