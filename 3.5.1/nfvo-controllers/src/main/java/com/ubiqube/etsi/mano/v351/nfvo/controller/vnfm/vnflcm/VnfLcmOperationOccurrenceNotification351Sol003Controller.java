@@ -8,8 +8,6 @@ import com.ubiqube.etsi.mano.dao.mano.vnflcm.VnfLcmNotification;
 import com.ubiqube.etsi.mano.v351.model.vnfm.vnflcm.VnfLcmOperationOccurrenceNotification;
 import com.ubiqube.etsi.mano.v351.service.mapping.VnfLvmNotification351Mapping;
 
-import jakarta.validation.Valid;
-
 @RestController
 public class VnfLcmOperationOccurrenceNotification351Sol003Controller implements VnfLcmOperationOccurrenceNotification351Sol003Api {
 	private final VnfLcmNotificationFrontController fc;
@@ -26,7 +24,7 @@ public class VnfLcmOperationOccurrenceNotification351Sol003Controller implements
 	}
 
 	@Override
-	public ResponseEntity<Void> lcmOperationOccurrenceNotificationPost(@Valid final VnfLcmOperationOccurrenceNotification body) {
+	public ResponseEntity<Void> lcmOperationOccurrenceNotificationPost(final VnfLcmOperationOccurrenceNotification body) {
 		final VnfLcmNotification req = mapper.map(body);
 		return fc.vnflcmopoccNotification(req, "3.5.1");
 	}
