@@ -25,11 +25,11 @@ import org.junit.jupiter.api.Test;
 import com.ubiqube.etsi.mano.dao.mano.v2.BlueprintParameters;
 import com.ubiqube.etsi.mano.dao.mano.v2.PlanOperationType;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
-import com.ubiqube.etsi.mano.em.v271.model.vnflcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.em.v271.model.vnflcm.TerminateVnfRequest;
-import com.ubiqube.etsi.mano.em.v271.model.vnflcm.VnfLcmOpOcc;
-import com.ubiqube.etsi.mano.nfvo.v271.OrikaConfigurationNfvo271;
 import com.ubiqube.etsi.mano.test.UUIDManufacturer;
+import com.ubiqube.etsi.mano.v271.model.em.vnflcm.InstantiateVnfRequest;
+import com.ubiqube.etsi.mano.v271.model.em.vnflcm.TerminateVnfRequest;
+import com.ubiqube.etsi.mano.v271.model.em.vnflcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v271.nfvo.service.OrikaConfigurationNfvo271;
 
 import ma.glasnost.orika.OrikaSystemProperties;
 import ma.glasnost.orika.converter.ConverterFactory;

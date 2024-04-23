@@ -26,12 +26,12 @@ import com.ubiqube.etsi.mano.dao.mano.NsdInstance;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
-import com.ubiqube.etsi.mano.model.v271.sol003.lcmgrant.GrantRequest;
-import com.ubiqube.etsi.mano.model.v271.sol005.nsd.NsdInfo;
-import com.ubiqube.etsi.mano.model.v271.sol005.nslcm.NsInstance;
-import com.ubiqube.etsi.mano.model.v271.sol005.nslcm.NsLcmOpOcc;
-import com.ubiqube.etsi.mano.nfvo.v271.OrikaConfigurationNfvo271;
 import com.ubiqube.etsi.mano.test.TestHelper;
+import com.ubiqube.etsi.mano.v271.model.sol003.lcmgrant.GrantRequest;
+import com.ubiqube.etsi.mano.v271.model.sol005.nsd.NsdInfo;
+import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.NsInstance;
+import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.NsLcmOpOcc;
+import com.ubiqube.etsi.mano.v271.nfvo.service.OrikaConfigurationNfvo271;
 
 public class MappingTest extends TestHelper {
 
@@ -86,6 +86,6 @@ public class MappingTest extends TestHelper {
 		final Set<String> ignore = new HashSet<>();
 		ignore.add("getLinks");
 		// ignore.add("getExtLinkPortId");
-		doTest(com.ubiqube.etsi.mano.em.v271.model.vnflcm.VnfInstance.class, VnfInstance.class, ignore);
+		doTest(com.ubiqube.etsi.mano.v271.model.em.vnflcm.VnfInstance.class, VnfInstance.class, ignore);
 	}
 }
