@@ -24,6 +24,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>em-front-controller</artifactId>
+			<version>${version.nfv-front-controller}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
