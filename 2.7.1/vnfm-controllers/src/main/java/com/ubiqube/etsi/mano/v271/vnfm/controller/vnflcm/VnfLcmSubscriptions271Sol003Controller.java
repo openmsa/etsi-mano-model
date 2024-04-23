@@ -32,12 +32,13 @@ import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.LccnSubscription;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.LccnSubscriptionLinks;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.v271.model.em.vnflcm.LifecycleChangeNotificationsFilter;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v271.service.mapping.subscription.LccnSubscription271Mapping;
 import com.ubiqube.etsi.mano.v271.vnfm.service.SubscriptionLinkable271Vnfm;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -47,22 +48,22 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class VnfLcmSubscriptions271Sol003Controller implements VnfLcmSubscriptions271Sol003Api, SubscriptionLinkable271Vnfm {
 	private final VnfLcmSubscriptionFrontController frontController;
-	private final MapperFacade mapper;
+	private final LccnSubscription271Mapping mapper;
 
-	public VnfLcmSubscriptions271Sol003Controller(final VnfLcmSubscriptionFrontController frontController, final MapperFacade mapper) {
+	public VnfLcmSubscriptions271Sol003Controller(final VnfLcmSubscriptionFrontController frontController, final LccnSubscription271Mapping mapper) {
 		this.frontController = frontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<LccnSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, LccnSubscription.class), VnfLcmSubscriptions271Sol003Controller::makeLinks);
+		return frontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, LifecycleChangeNotificationsFilter.class), VnfLcmSubscriptions271Sol003Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsPost(@Valid final LccnSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
-		return frontController.create(req, x -> mapper.map(x, LccnSubscription.class), VnfLcmSubscriptions271Sol003Api.class, VnfLcmSubscriptions271Sol003Controller::makeLinks, VnfLcmSubscriptions271Sol003Controller::getSelfLink);
+		final Subscription req = mapper.map(body);
+		return frontController.create(req, x -> mapper.map(x, LifecycleChangeNotificationsFilter.class), VnfLcmSubscriptions271Sol003Api.class, VnfLcmSubscriptions271Sol003Controller::makeLinks, VnfLcmSubscriptions271Sol003Controller::getSelfLink);
 	}
 
 	@Override
@@ -72,7 +73,7 @@ public class VnfLcmSubscriptions271Sol003Controller implements VnfLcmSubscriptio
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return frontController.findById(subscriptionId, x -> mapper.map(x, LccnSubscription.class), VnfLcmSubscriptions271Sol003Controller::makeLinks);
+		return frontController.findById(subscriptionId, x -> mapper.map(x, LifecycleChangeNotificationsFilter.class), VnfLcmSubscriptions271Sol003Controller::makeLinks);
 	}
 
 	private static String getSelfLink(final LccnSubscription subscription) {

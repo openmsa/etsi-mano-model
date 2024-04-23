@@ -16,33 +16,34 @@ import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.Link;
+import com.ubiqube.etsi.mano.v271.model.vnfm.vrqan.VrQuotaAvailNotificationsFilter;
 import com.ubiqube.etsi.mano.v271.model.vnfm.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.v271.model.vnfm.vrqan.VrQuotaAvailSubscriptionLinks;
 import com.ubiqube.etsi.mano.v271.model.vnfm.vrqan.VrQuotaAvailSubscriptionRequest;
+import com.ubiqube.etsi.mano.v271.service.mapping.subscription.VrQuotaAvailSubscription271Mapping;
 import com.ubiqube.etsi.mano.v271.vnfm.service.SubscriptionLinkable271Vnfm;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VrQanSubscriptions271Sol003Controller implements VrQanSubscriptions271Sol003Api, SubscriptionLinkable271Vnfm {
 	private final SubscriptionFrontController subscriptionService;
-	private final MapperFacade mapper;
+	private final VrQuotaAvailSubscription271Mapping mapper;
 
-	public VrQanSubscriptions271Sol003Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
+	public VrQanSubscriptions271Sol003Controller(final SubscriptionFrontController subscriptionService, final VrQuotaAvailSubscription271Mapping mapper) {
 		this.subscriptionService = subscriptionService;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<VrQuotaAvailSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, x -> mapper.map(x, VrQuotaAvailSubscription.class), VrQanSubscriptions271Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
+		return subscriptionService.search(requestParams, x -> mapper.map(x, VrQuotaAvailNotificationsFilter.class), VrQanSubscriptions271Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override
 	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsPost(@Valid final VrQuotaAvailSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
-		return subscriptionService.create(req, x -> mapper.map(x, VrQuotaAvailSubscription.class), VrQanSubscriptions271Sol003Api.class, VrQanSubscriptions271Sol003Controller::makeLinks, VrQanSubscriptions271Sol003Controller::makeSelf, ApiVersionType.SOL003_VRQAN);
+		final Subscription req = mapper.map(body);
+		return subscriptionService.create(req, x -> mapper.map(x, VrQuotaAvailNotificationsFilter.class), VrQanSubscriptions271Sol003Api.class, VrQanSubscriptions271Sol003Controller::makeLinks, VrQanSubscriptions271Sol003Controller::makeSelf, ApiVersionType.SOL003_VRQAN);
 	}
 
 	@Override
@@ -52,7 +53,7 @@ public class VrQanSubscriptions271Sol003Controller implements VrQanSubscriptions
 
 	@Override
 	public ResponseEntity<VrQuotaAvailSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, VrQuotaAvailSubscription.class), VrQanSubscriptions271Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, VrQuotaAvailNotificationsFilter.class), VrQanSubscriptions271Sol003Controller::makeLinks, ApiVersionType.SOL003_VRQAN);
 	}
 
 	private static String makeSelf(final VrQuotaAvailSubscription subscription) {
