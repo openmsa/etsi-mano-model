@@ -1,32 +1,25 @@
 package com.ubiqube.etsi.mano.v451.nfvem.controller.nfvmanologm;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
 
+import com.ubiqube.etsi.mano.v451.model.nfvmanologm2.LogReportAvailableNotification;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class LogNotification451Controller implements LogNotification451Api {
 
-    private final ObjectMapper objectMapper;
+	@Override
+	public ResponseEntity<Void> logNotificationGet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    private final HttpServletRequest request;
-
-    @org.springframework.beans.factory.annotation.Autowired
-    public LogNotification451Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
-
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
-
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<Void> logNotificationPost(@Valid final LogReportAvailableNotification body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
