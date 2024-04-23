@@ -101,6 +101,7 @@ public interface VnfLcmOpOcc271Mapping extends StringToUriMapping, Connectivity2
 		return value.stream().map(this::map).collect(Collectors.toMap(x -> x.getVimId(), x -> x));
 	}
 
+	@Mapping(target = "affectedExtLinkPorts", ignore = true)
 	@Mapping(target = "affectedExtCp", ignore = true)
 	@Mapping(target = "dnsZones", ignore = true)
 	@Mapping(target = "instanceMonitors", ignore = true)

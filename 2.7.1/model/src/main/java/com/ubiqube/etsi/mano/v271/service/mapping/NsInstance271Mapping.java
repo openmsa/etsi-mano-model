@@ -73,6 +73,7 @@ public interface NsInstance271Mapping extends VimResource271Mapping {
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo mapNsScaleInfo(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
+	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "links", ignore = true)
 	VnfInstance map(VnfInstanceDto o);
 
@@ -114,6 +115,7 @@ public interface NsInstance271Mapping extends VimResource271Mapping {
 	@Mapping(target = "scaleLevel", ignore = true)
 	ScaleInfo map(VnfScaleInfo o);
 
+	@Mapping(target = "zoneId", ignore = true)
 	@Mapping(target = "vnfcCpInfo", ignore = true)
 	VnfcResourceInfo map(VnfcResourceInfoDto vnfcResourceInfo);
 

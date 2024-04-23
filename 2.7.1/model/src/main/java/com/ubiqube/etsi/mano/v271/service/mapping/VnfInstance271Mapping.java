@@ -56,6 +56,7 @@ import com.ubiqube.etsi.mano.v271.model.em.vnflcm.VnfcResourceInfoVnfcCpInfo;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VnfInstance271Mapping extends VimConnectionInfo271Mapping, Connectivity271Mapping, VimResource271Mapping {
 
+	@Mapping(target = "vnfPkgId", source = "vnfPkg.id")
 	@Mapping(target = "links", ignore = true)
 	com.ubiqube.etsi.mano.v271.model.em.vnflcm.VnfInstance map(VnfInstance vnfInst);
 
@@ -106,6 +107,7 @@ public interface VnfInstance271Mapping extends VimConnectionInfo271Mapping, Conn
 
 	VnfcResourceInfo map(VnfcResourceInfoEntity vnfcResourceInfo);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "certificateContentId", ignore = true)
 	@Mapping(target = "zoneId", ignore = true)
 	VnfcResourceInfoEntity map(VnfcResourceInfo vnfcResourceInfo);
@@ -141,6 +143,7 @@ public interface VnfInstance271Mapping extends VimConnectionInfo271Mapping, Conn
 	@Mapping(target = "vnfMonitoringParameter", source = "monitoringParameters")
 	BlueprintParameters map(VnfInstanceInstantiatedVnfInfo viivi);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "changeType", ignore = true)
@@ -169,6 +172,7 @@ public interface VnfInstance271Mapping extends VimConnectionInfo271Mapping, Conn
 	@Mapping(target = "vipCpInstanceId", ignore = true)
 	LinkPortInfo map(VnfLinkPortInfo o);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	@Mapping(target = "vnfNetAttDefResource", ignore = true)
@@ -178,15 +182,19 @@ public interface VnfInstance271Mapping extends VimConnectionInfo271Mapping, Conn
 	@Mapping(target = "vnfInstance", ignore = true)
 	ExtManagedVirtualLinkDataEntity map(ExtManagedVirtualLinkInfo o);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	VnfMonitoringParameter map(MonitoringParameter o);
 
+	@Mapping(target = "cpConfigId", ignore = true)
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "associatedVipCpId", ignore = true)
 	@Mapping(target = "associatedVirtualCpId", ignore = true)
 	@Mapping(target = "netAttDefResourceId", ignore = true)
 	@Mapping(target = "certificateContentId", ignore = true)
 	ExtCpInfo map(VnfExtCpInfo o);
 
+	@Mapping(target = "currentVnfExtCpData", ignore = true)
 	@Mapping(target = "extNetAttDefResource", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
@@ -232,17 +240,20 @@ public interface VnfInstance271Mapping extends VimConnectionInfo271Mapping, Conn
 	CpProtocolDataEntity mapToCpProtocolDataEntity(CpProtocolInfo cpi);
 
 //	@Mapping(target = "scaleLevel", source = "scaleToLevel")
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v271.model.em.vnflcm.ScaleInfo si);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "zoneId", ignore = true)
 	VirtualStorageResourceInfo map(com.ubiqube.etsi.mano.v271.model.em.vnflcm.VirtualStorageResourceInfo virtualStorageResourceInfo);
 
 	com.ubiqube.etsi.mano.v271.model.em.vnflcm.VirtualStorageResourceInfo map(VirtualStorageResourceInfo vsri);
 
+	@Mapping(target = "segmentationId", ignore = true)
 	@Mapping(target = "addressRange", ignore = true)
 	@Mapping(target = "addresses", ignore = true)
 	@Mapping(target = "id", ignore = true)
@@ -260,6 +271,7 @@ public interface VnfInstance271Mapping extends VimConnectionInfo271Mapping, Conn
 	@Mapping(target = "id", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.v2.CpProtocolInfo mapCpProtocolInfo(CpProtocolInfo cpi);
 
+	@Mapping(target = "segmentationId", ignore = true)
 	@Mapping(target = "segmentationType", ignore = true)
 	@Mapping(target = "addressRange", ignore = true)
 	@Mapping(target = "addresses", ignore = true)

@@ -37,6 +37,7 @@ import jakarta.annotation.Nullable;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface GrantRequest271Mapping extends VimResource271Mapping {
 
+	@Mapping(target = "dstVnfdId", ignore = true)
 	@Mapping(target = "targetScaleLevelInfo", ignore = true)
 	@Mapping(target = "paasAssets", ignore = true)
 	@Mapping(target = "audit", ignore = true)
@@ -74,6 +75,8 @@ public interface GrantRequest271Mapping extends VimResource271Mapping {
 	@Mapping(target = "id", ignore = true)
 	ConstraintResourceRef map(com.ubiqube.etsi.mano.v271.model.sol003.lcmgrant.ConstraintResourceRef o);
 
+	@Mapping(target = "snapshotResDef", ignore = true)
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "secondaryResourceTemplateId", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
@@ -88,6 +91,7 @@ public interface GrantRequest271Mapping extends VimResource271Mapping {
 	@Mapping(target = "zoneId", ignore = true)
 	GrantInformationExt map(ResourceDefinition o);
 
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v271.model.em.vnflcm.ScaleInfo o);

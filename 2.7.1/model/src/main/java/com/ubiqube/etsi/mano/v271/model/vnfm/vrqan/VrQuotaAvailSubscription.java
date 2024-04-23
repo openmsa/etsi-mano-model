@@ -44,7 +44,7 @@ public class VrQuotaAvailSubscription {
 	private String callbackUri = null;
 
 	@JsonProperty("_links")
-	private VrQuotaAvailSubscriptionLinks _links = null;
+	private VrQuotaAvailSubscriptionLinks links = null;
 
 	public VrQuotaAvailSubscription id(final String id) {
 		this.id = id;
@@ -109,8 +109,8 @@ public class VrQuotaAvailSubscription {
 		this.callbackUri = callbackUri;
 	}
 
-	public VrQuotaAvailSubscription _links(final VrQuotaAvailSubscriptionLinks _links) {
-		this._links = _links;
+	public VrQuotaAvailSubscription links(final VrQuotaAvailSubscriptionLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -124,11 +124,11 @@ public class VrQuotaAvailSubscription {
 
 	@Valid
 	public VrQuotaAvailSubscriptionLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final VrQuotaAvailSubscriptionLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -143,12 +143,12 @@ public class VrQuotaAvailSubscription {
 		return Objects.equals(this.id, vrQuotaAvailSubscription.id) &&
 				Objects.equals(this.filter, vrQuotaAvailSubscription.filter) &&
 				Objects.equals(this.callbackUri, vrQuotaAvailSubscription.callbackUri) &&
-				Objects.equals(this._links, vrQuotaAvailSubscription._links);
+				Objects.equals(this.links, vrQuotaAvailSubscription.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, filter, callbackUri, _links);
+		return Objects.hash(id, filter, callbackUri, links);
 	}
 
 	@Override
@@ -159,7 +159,7 @@ public class VrQuotaAvailSubscription {
 		sb.append("    id: ").append(toIndentedString(id)).append("\n");
 		sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
 		sb.append("    callbackUri: ").append(toIndentedString(callbackUri)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

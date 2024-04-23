@@ -44,6 +44,7 @@ public interface VnfPkgInfo271Mapping extends StringToUriMapping {
 	@ValueMapping(source = "ARI", target = MappingConstants.THROW_EXCEPTION)
 	VnfPackageSoftwareImageInfo.DiskFormatEnum map(DiskFormatType o);
 
+	@Mapping(target = "vnfmInfo281", ignore = true)
 	@Mapping(target = "vnfdExtInvariantId", ignore = true)
 	@Mapping(target = "affinityRules", ignore = true)
 	@Mapping(target = "attributes", ignore = true)
@@ -105,6 +106,7 @@ public interface VnfPkgInfo271Mapping extends StringToUriMapping {
 	@Mapping(target = "sha512", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.vim.Checksum mapDbChecksum(Checksum o);
 
+	@Mapping(target = "imageUri", ignore = true)
 	@Mapping(target = "architecture", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "nfvoPath", ignore = true)

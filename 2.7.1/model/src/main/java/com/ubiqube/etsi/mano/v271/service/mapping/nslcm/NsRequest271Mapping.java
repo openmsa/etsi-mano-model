@@ -49,6 +49,7 @@ import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.ScaleVnfData;
 import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.VnfLocationConstraint;
 import com.ubiqube.etsi.mano.service.mapping.DateTimeMapping;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.CpProtocolData;
+import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.ChangeVnfFlavourData;
 import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.CreateNsRequest;
 import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.HealNsRequest;
 import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.InstantiateNsRequest;
@@ -102,6 +103,7 @@ public interface NsRequest271Mapping extends DateTimeMapping {
 	@Mapping(target = "vnfdId", ignore = true)
 	NsScaleInfo map(com.ubiqube.etsi.mano.v271.model.sol005.nslcm.NsScaleInfo o);
 
+	@Mapping(target = "vnfInstanceId", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleVnfData map(com.ubiqube.etsi.mano.v271.model.sol005.nslcm.ScaleVnfData o);
 
@@ -137,6 +139,10 @@ public interface NsRequest271Mapping extends DateTimeMapping {
 	@Mapping(target = "terminateVnfData", ignore = true)
 	@Mapping(target = "realVnfInstanceToRemove", ignore = true)
 	UpdateRequest map(UpdateNsRequest body);
+
+	@Mapping(target = "extensions", ignore = true)
+	@Mapping(target = "vnfConfigurableProperties", ignore = true)
+	com.ubiqube.etsi.mano.dao.mano.nsd.upd.ChangeVnfFlavourData map(ChangeVnfFlavourData o);
 
 	@Mapping(target = "vnfProfileId", ignore = true)
 	InstantiateVnfData map(com.ubiqube.etsi.mano.v271.model.sol005.nslcm.InstantiateVnfData o);

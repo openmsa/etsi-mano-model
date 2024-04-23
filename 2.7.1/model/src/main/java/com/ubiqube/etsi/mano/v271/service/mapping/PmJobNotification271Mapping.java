@@ -36,6 +36,7 @@ public interface PmJobNotification271Mapping extends DateTimeMapping {
 	@Mapping(target = "value", ignore = true)
 	VnfIndiValueChangeNotification map(VnfIndicatorValueChangeNotification body);
 
+	@Mapping(target = "pmJobId", ignore = true)
 	@Mapping(target = "nfvoId", ignore = true)
 	@Mapping(target = "subscriptionId", ignore = true)
 	PerformanceInformationAvailableNotification map(com.ubiqube.etsi.mano.v271.model.vnfpm.@Valid PerformanceInformationAvailableNotification body);

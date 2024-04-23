@@ -47,6 +47,7 @@ public interface VnfInstanceRequest271Mapping extends Connectivity271Mapping {
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	ChangeExtVnfConnRequest map(ChangeExtVnfConnectivityRequest o);
 
+	@Mapping(target = "gracefulStopTimeout", ignore = true)
 	VnfOperateRequest map(OperateVnfRequest o);
 
 	@Mapping(target = "instantiationLevelId", ignore = true)

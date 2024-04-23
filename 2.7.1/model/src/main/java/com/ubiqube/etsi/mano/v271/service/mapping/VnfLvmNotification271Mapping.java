@@ -57,6 +57,7 @@ public interface VnfLvmNotification271Mapping extends StringToUriMapping, Connec
 	@Mapping(target = "nfvoId", ignore = true)
 	VnfLcmNotification map(VnfLcmOperationOccurrenceNotification body);
 
+	@Mapping(target = "currentVnfExtCpData", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "extNetAttDefResource", ignore = true)
 	ExtVirtualLinkInfoEntity map(ExtVirtualLinkInfo o);
