@@ -1,32 +1,34 @@
 package com.ubiqube.etsi.mano.v451.nfvem.controller.nfvmanofm;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ubiqube.etsi.mano.v451.model.em.vnffm.Alarm;
+import com.ubiqube.etsi.mano.v451.model.em.vnffm.AlarmModifications;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class AlarmsApiController implements AlarmsApi {
 
-    private final ObjectMapper objectMapper;
+	@Override
+	public ResponseEntity<Alarm> alarmsAlarmIdGet(final String alarmId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<AlarmModifications> alarmsAlarmIdPatch(final String alarmId, @Valid final AlarmModifications body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public AlarmsApiController(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
-
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
-
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<List<Alarm>> alarmsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
