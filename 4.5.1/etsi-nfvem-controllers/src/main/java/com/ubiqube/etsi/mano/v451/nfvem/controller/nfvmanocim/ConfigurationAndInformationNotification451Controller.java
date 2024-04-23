@@ -1,32 +1,23 @@
 package com.ubiqube.etsi.mano.v451.nfvem.controller.nfvmanocim;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
 
+import jakarta.validation.Valid;
 
 @RestController
 public class ConfigurationAndInformationNotification451Controller implements ConfigurationAndInformationNotification451Api {
 
-    private final ObjectMapper objectMapper;
+	@Override
+	public ResponseEntity<Void> configurationAndInformationNotificationGet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    private final HttpServletRequest request;
-
-    @org.springframework.beans.factory.annotation.Autowired
-    public ConfigurationAndInformationNotification451Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
-
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
-
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<Void> configurationAndInformationNotificationPost(@Valid final Object body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

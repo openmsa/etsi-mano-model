@@ -1,32 +1,48 @@
 package com.ubiqube.etsi.mano.v451.nfvem.controller.nfvmanocim;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ubiqube.etsi.mano.v451.model.nfvmanocim.CreatePeerEntityRequest;
+import com.ubiqube.etsi.mano.v451.model.nfvmanocim.PeerEntity;
+import com.ubiqube.etsi.mano.v451.model.nfvmanocim.PeerEntityConfigModificationRequest;
+import com.ubiqube.etsi.mano.v451.model.nfvmanocim.PeerEntityConfigModifications;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class PeerEntitiesApiController implements PeerEntitiesApi {
 
-    private final ObjectMapper objectMapper;
+	@Override
+	public ResponseEntity<List<PeerEntity>> peerEntitiesGet(@Valid final String filter, @Valid final String allFields, @Valid final String fields, @Valid final String excludeFields, @Valid final String excludeDefault, @Valid final String nextpageOpaqueMarker) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<Void> peerEntitiesPeerEntityIdDelete(final String peerEntityId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public PeerEntitiesApiController(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@Override
+	public ResponseEntity<PeerEntity> peerEntitiesPeerEntityIdGet(final String peerEntityId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+	@Override
+	public ResponseEntity<PeerEntityConfigModifications> peerEntitiesPeerEntityIdPatch(final String peerEntityId, @Valid final PeerEntityConfigModificationRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<PeerEntity> peerEntitiesPost(@Valid final CreatePeerEntityRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
