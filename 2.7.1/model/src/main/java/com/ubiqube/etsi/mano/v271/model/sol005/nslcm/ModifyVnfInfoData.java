@@ -19,14 +19,13 @@ package com.ubiqube.etsi.mano.v271.model.sol005.nslcm;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents the information that is requested to be modified for a
@@ -35,7 +34,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * only be updated with a value that matches the identifier value of a VNF
  * package whose vnfdId is present in the associated profile of the NSD.
  */
-@Schema (description= "This type represents the information that is requested to be modified for a VNF instance. The information to be modified shall comply with the associated NSD. EXAMPLE. The vnfPkgId attribute value for a particular VNF instance can only be updated with a value that matches the identifier value of a VNF package whose vnfdId is present in the associated profile of the NSD. " )
+@Schema(description = "This type represents the information that is requested to be modified for a VNF instance. The information to be modified shall comply with the associated NSD. EXAMPLE. The vnfPkgId attribute value for a particular VNF instance can only be updated with a value that matches the identifier value of a VNF package whose vnfdId is present in the associated profile of the NSD. ")
 @Validated
 public class ModifyVnfInfoData {
 	@JsonProperty("vnfInstanceId")
@@ -51,13 +50,13 @@ public class ModifyVnfInfoData {
 	private String vnfdId = null;
 
 	@JsonProperty("vnfConfigurableProperties")
-	private Map<String, Object> vnfConfigurableProperties = null;
+	private Map<String, String> vnfConfigurableProperties = null;
 
 	@JsonProperty("metadata")
-	private Map<String, Object> metadata = null;
+	private Map<String, String> metadata = null;
 
 	@JsonProperty("extensions")
-	private Map<String, Object> extensions = null;
+	private Map<String, String> extensions = null;
 
 	public ModifyVnfInfoData vnfInstanceId(final String vnfInstanceId) {
 		this.vnfInstanceId = vnfInstanceId;
@@ -69,7 +68,7 @@ public class ModifyVnfInfoData {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -142,7 +141,7 @@ public class ModifyVnfInfoData {
 		this.vnfdId = vnfdId;
 	}
 
-	public ModifyVnfInfoData vnfConfigurableProperties(final Map<String, Object> vnfConfigurableProperties) {
+	public ModifyVnfInfoData vnfConfigurableProperties(final Map<String, String> vnfConfigurableProperties) {
 		this.vnfConfigurableProperties = vnfConfigurableProperties;
 		return this;
 	}
@@ -155,15 +154,15 @@ public class ModifyVnfInfoData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getVnfConfigurableProperties() {
+	public Map<String, String> getVnfConfigurableProperties() {
 		return vnfConfigurableProperties;
 	}
 
-	public void setVnfConfigurableProperties(final Map<String, Object> vnfConfigurableProperties) {
+	public void setVnfConfigurableProperties(final Map<String, String> vnfConfigurableProperties) {
 		this.vnfConfigurableProperties = vnfConfigurableProperties;
 	}
 
-	public ModifyVnfInfoData metadata(final Map<String, Object> metadata) {
+	public ModifyVnfInfoData metadata(final Map<String, String> metadata) {
 		this.metadata = metadata;
 		return this;
 	}
@@ -176,15 +175,15 @@ public class ModifyVnfInfoData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getMetadata() {
+	public Map<String, String> getMetadata() {
 		return metadata;
 	}
 
-	public void setMetadata(final Map<String, Object> metadata) {
+	public void setMetadata(final Map<String, String> metadata) {
 		this.metadata = metadata;
 	}
 
-	public ModifyVnfInfoData extensions(final Map<String, Object> extensions) {
+	public ModifyVnfInfoData extensions(final Map<String, String> extensions) {
 		this.extensions = extensions;
 		return this;
 	}
@@ -197,11 +196,11 @@ public class ModifyVnfInfoData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getExtensions() {
+	public Map<String, String> getExtensions() {
 		return extensions;
 	}
 
-	public void setExtensions(final Map<String, Object> extensions) {
+	public void setExtensions(final Map<String, String> extensions) {
 		this.extensions = extensions;
 	}
 
@@ -215,12 +214,12 @@ public class ModifyVnfInfoData {
 		}
 		final ModifyVnfInfoData modifyVnfInfoData = (ModifyVnfInfoData) o;
 		return Objects.equals(this.vnfInstanceId, modifyVnfInfoData.vnfInstanceId) &&
-		Objects.equals(this.vnfInstanceName, modifyVnfInfoData.vnfInstanceName) &&
-		Objects.equals(this.vnfInstanceDescription, modifyVnfInfoData.vnfInstanceDescription) &&
-		Objects.equals(this.vnfdId, modifyVnfInfoData.vnfdId) &&
-		Objects.equals(this.vnfConfigurableProperties, modifyVnfInfoData.vnfConfigurableProperties) &&
-		Objects.equals(this.metadata, modifyVnfInfoData.metadata) &&
-		Objects.equals(this.extensions, modifyVnfInfoData.extensions);
+				Objects.equals(this.vnfInstanceName, modifyVnfInfoData.vnfInstanceName) &&
+				Objects.equals(this.vnfInstanceDescription, modifyVnfInfoData.vnfInstanceDescription) &&
+				Objects.equals(this.vnfdId, modifyVnfInfoData.vnfdId) &&
+				Objects.equals(this.vnfConfigurableProperties, modifyVnfInfoData.vnfConfigurableProperties) &&
+				Objects.equals(this.metadata, modifyVnfInfoData.metadata) &&
+				Objects.equals(this.extensions, modifyVnfInfoData.extensions);
 	}
 
 	@Override

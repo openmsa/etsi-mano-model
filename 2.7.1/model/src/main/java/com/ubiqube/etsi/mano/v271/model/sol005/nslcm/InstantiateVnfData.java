@@ -21,9 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,6 +28,8 @@ import com.ubiqube.etsi.mano.v271.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents the information related to a SAP of a NS. The
@@ -41,7 +40,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * parameters are then passed by the NFVO to the VNFM. It shall comply with the
  * provisions defined in Table 6.5.3.24-1.
  */
-@Schema (description= "This type represents the information related to a SAP of a NS. The InstantiateVnfData data type specifies the parameters that are needed for VNF instantiation. This information element is used for the bottom-up NS creation when the OSS/BSS explicitly requests VNF instantiation for a given NS. When the NFVO invokes the Instantiate VNF update operation, a set of these parameters are then passed by the NFVO to the VNFM. It shall comply with the provisions defined in Table 6.5.3.24-1. " )
+@Schema(description = "This type represents the information related to a SAP of a NS. The InstantiateVnfData data type specifies the parameters that are needed for VNF instantiation. This information element is used for the bottom-up NS creation when the OSS/BSS explicitly requests VNF instantiation for a given NS. When the NFVO invokes the Instantiate VNF update operation, a set of these parameters are then passed by the NFVO to the VNFM. It shall comply with the provisions defined in Table 6.5.3.24-1. ")
 @Validated
 public class InstantiateVnfData {
 	@JsonProperty("vnfdId")
@@ -71,16 +70,16 @@ public class InstantiateVnfData {
 	private String localizationLanguage = null;
 
 	@JsonProperty("vnfConfigurableProperties")
-	private Map<String, Object> vnfConfigurableProperties = null;
+	private Map<String, String> vnfConfigurableProperties = null;
 
 	@JsonProperty("additionalParams")
-	private Map<String, Object> additionalParams = null;
+	private Map<String, String> additionalParams = null;
 
 	@JsonProperty("metadata")
-	private Map<String, Object> metadata = null;
+	private Map<String, String> metadata = null;
 
 	@JsonProperty("extensions")
-	private Map<String, Object> extensions = null;
+	private Map<String, String> extensions = null;
 
 	@JsonProperty("locationConstraints")
 	private VnfLocationConstraint locationConstraints = null;
@@ -95,7 +94,7 @@ public class InstantiateVnfData {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getVnfdId() {
@@ -116,7 +115,7 @@ public class InstantiateVnfData {
 	 *
 	 * @return vnfFlavourId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getVnfFlavourId() {
@@ -265,7 +264,7 @@ public class InstantiateVnfData {
 		this.localizationLanguage = localizationLanguage;
 	}
 
-	public InstantiateVnfData vnfConfigurableProperties(final Map<String, Object> vnfConfigurableProperties) {
+	public InstantiateVnfData vnfConfigurableProperties(final Map<String, String> vnfConfigurableProperties) {
 		this.vnfConfigurableProperties = vnfConfigurableProperties;
 		return this;
 	}
@@ -278,15 +277,15 @@ public class InstantiateVnfData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getVnfConfigurableProperties() {
+	public Map<String, String> getVnfConfigurableProperties() {
 		return vnfConfigurableProperties;
 	}
 
-	public void setVnfConfigurableProperties(final Map<String, Object> vnfConfigurableProperties) {
+	public void setVnfConfigurableProperties(final Map<String, String> vnfConfigurableProperties) {
 		this.vnfConfigurableProperties = vnfConfigurableProperties;
 	}
 
-	public InstantiateVnfData additionalParams(final Map<String, Object> additionalParams) {
+	public InstantiateVnfData additionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 		return this;
 	}
@@ -299,15 +298,15 @@ public class InstantiateVnfData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getAdditionalParams() {
+	public Map<String, String> getAdditionalParams() {
 		return additionalParams;
 	}
 
-	public void setAdditionalParams(final Map<String, Object> additionalParams) {
+	public void setAdditionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 	}
 
-	public InstantiateVnfData metadata(final Map<String, Object> metadata) {
+	public InstantiateVnfData metadata(final Map<String, String> metadata) {
 		this.metadata = metadata;
 		return this;
 	}
@@ -320,15 +319,15 @@ public class InstantiateVnfData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getMetadata() {
+	public Map<String, String> getMetadata() {
 		return metadata;
 	}
 
-	public void setMetadata(final Map<String, Object> metadata) {
+	public void setMetadata(final Map<String, String> metadata) {
 		this.metadata = metadata;
 	}
 
-	public InstantiateVnfData extensions(final Map<String, Object> extensions) {
+	public InstantiateVnfData extensions(final Map<String, String> extensions) {
 		this.extensions = extensions;
 		return this;
 	}
@@ -341,11 +340,11 @@ public class InstantiateVnfData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getExtensions() {
+	public Map<String, String> getExtensions() {
 		return extensions;
 	}
 
-	public void setExtensions(final Map<String, Object> extensions) {
+	public void setExtensions(final Map<String, String> extensions) {
 		this.extensions = extensions;
 	}
 
@@ -375,23 +374,23 @@ public class InstantiateVnfData {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final InstantiateVnfData instantiateVnfData = (InstantiateVnfData) o;
 		return Objects.equals(this.vnfdId, instantiateVnfData.vnfdId) &&
-		Objects.equals(this.vnfFlavourId, instantiateVnfData.vnfFlavourId) &&
-		Objects.equals(this.vnfInstantiationLevelId, instantiateVnfData.vnfInstantiationLevelId) &&
-		Objects.equals(this.vnfInstanceName, instantiateVnfData.vnfInstanceName) &&
-		Objects.equals(this.vnfInstanceDescription, instantiateVnfData.vnfInstanceDescription) &&
-		Objects.equals(this.extVirtualLinks, instantiateVnfData.extVirtualLinks) &&
-		Objects.equals(this.extManagedVirtualLinks, instantiateVnfData.extManagedVirtualLinks) &&
-		Objects.equals(this.localizationLanguage, instantiateVnfData.localizationLanguage) &&
-		Objects.equals(this.vnfConfigurableProperties, instantiateVnfData.vnfConfigurableProperties) &&
-		Objects.equals(this.additionalParams, instantiateVnfData.additionalParams) &&
-		Objects.equals(this.metadata, instantiateVnfData.metadata) &&
-		Objects.equals(this.extensions, instantiateVnfData.extensions) &&
-		Objects.equals(this.locationConstraints, instantiateVnfData.locationConstraints);
+				Objects.equals(this.vnfFlavourId, instantiateVnfData.vnfFlavourId) &&
+				Objects.equals(this.vnfInstantiationLevelId, instantiateVnfData.vnfInstantiationLevelId) &&
+				Objects.equals(this.vnfInstanceName, instantiateVnfData.vnfInstanceName) &&
+				Objects.equals(this.vnfInstanceDescription, instantiateVnfData.vnfInstanceDescription) &&
+				Objects.equals(this.extVirtualLinks, instantiateVnfData.extVirtualLinks) &&
+				Objects.equals(this.extManagedVirtualLinks, instantiateVnfData.extManagedVirtualLinks) &&
+				Objects.equals(this.localizationLanguage, instantiateVnfData.localizationLanguage) &&
+				Objects.equals(this.vnfConfigurableProperties, instantiateVnfData.vnfConfigurableProperties) &&
+				Objects.equals(this.additionalParams, instantiateVnfData.additionalParams) &&
+				Objects.equals(this.metadata, instantiateVnfData.metadata) &&
+				Objects.equals(this.extensions, instantiateVnfData.extensions) &&
+				Objects.equals(this.locationConstraints, instantiateVnfData.locationConstraints);
 	}
 
 	@Override

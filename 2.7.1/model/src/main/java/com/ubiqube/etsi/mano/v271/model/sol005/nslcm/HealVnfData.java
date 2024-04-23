@@ -19,21 +19,20 @@ package com.ubiqube.etsi.mano.v271.model.sol005.nslcm;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents the information to heal a VNF that is part of an NS. The
  * NFVO shall then invoke the HealVNF operation towards the appropriate VNFM. It
  * shall comply with the provisions defined in Table 6.5.3.44-1.
  */
-@Schema (description= "This type represents the information to heal a VNF that is part of an NS.  The NFVO shall then invoke the HealVNF operation towards the appropriate VNFM.  It shall comply with the provisions defined in Table 6.5.3.44-1. " )
+@Schema(description = "This type represents the information to heal a VNF that is part of an NS.  The NFVO shall then invoke the HealVNF operation towards the appropriate VNFM.  It shall comply with the provisions defined in Table 6.5.3.44-1. ")
 @Validated
 public class HealVnfData {
 	@JsonProperty("vnfInstanceId")
@@ -43,7 +42,7 @@ public class HealVnfData {
 	private String cause = null;
 
 	@JsonProperty("additionalParams")
-	private Map<String, Object> additionalParams = null;
+	private Map<String, String> additionalParams = null;
 
 	public HealVnfData vnfInstanceId(final String vnfInstanceId) {
 		this.vnfInstanceId = vnfInstanceId;
@@ -55,7 +54,7 @@ public class HealVnfData {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -86,7 +85,7 @@ public class HealVnfData {
 		this.cause = cause;
 	}
 
-	public HealVnfData additionalParams(final Map<String, Object> additionalParams) {
+	public HealVnfData additionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 		return this;
 	}
@@ -99,11 +98,11 @@ public class HealVnfData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getAdditionalParams() {
+	public Map<String, String> getAdditionalParams() {
 		return additionalParams;
 	}
 
-	public void setAdditionalParams(final Map<String, Object> additionalParams) {
+	public void setAdditionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 	}
 
@@ -117,8 +116,8 @@ public class HealVnfData {
 		}
 		final HealVnfData healVnfData = (HealVnfData) o;
 		return Objects.equals(this.vnfInstanceId, healVnfData.vnfInstanceId) &&
-		Objects.equals(this.cause, healVnfData.cause) &&
-		Objects.equals(this.additionalParams, healVnfData.additionalParams);
+				Objects.equals(this.cause, healVnfData.cause) &&
+				Objects.equals(this.additionalParams, healVnfData.additionalParams);
 	}
 
 	@Override

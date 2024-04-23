@@ -27,6 +27,10 @@
 			<artifactId>mano-commons</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.ubiqube.mano</groupId>
+			<artifactId>mano-orika</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>uk.co.jemos.podam</groupId>
 			<artifactId>podam</artifactId>
 			<scope>test</scope>

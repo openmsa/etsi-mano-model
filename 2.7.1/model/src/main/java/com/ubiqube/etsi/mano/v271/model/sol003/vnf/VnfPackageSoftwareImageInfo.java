@@ -20,9 +20,6 @@ import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -30,12 +27,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents an artifact contained in a VNF package which represents
  * a software image.
  */
-@Schema (description= "This type represents an artifact contained in a VNF package which represents a software image. " )
+@Schema(description = "This type represents an artifact contained in a VNF package which represents a software image. ")
 @Validated
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-24T10:38:36.740+02:00")
 
@@ -178,7 +177,7 @@ public class VnfPackageSoftwareImageInfo {
 	private Long size = null;
 
 	@JsonProperty("userMetadata")
-	private HashMap<String, Object> userMetadata = null;
+	private HashMap<String, String> userMetadata = null;
 
 	@JsonProperty("imagePath")
 	private String imagePath = null;
@@ -193,7 +192,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true , description = "Identifier of the software image. ")
+	@Schema(required = true, description = "Identifier of the software image. ")
 	@NotNull
 
 	public String getId() {
@@ -214,7 +213,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return name
 	 **/
-	@Schema(required = true , description = "Name of the software image. ")
+	@Schema(required = true, description = "Name of the software image. ")
 	@NotNull
 
 	public String getName() {
@@ -235,7 +234,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return provider
 	 **/
-	@Schema(required = true , description = "Provider of the software image. ")
+	@Schema(required = true, description = "Provider of the software image. ")
 	@NotNull
 
 	public String getProvider() {
@@ -256,7 +255,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return version
 	 **/
-	@Schema(required = true , description = "Version of the software image. ")
+	@Schema(required = true, description = "Version of the software image. ")
 	@NotNull
 
 	public String getVersion() {
@@ -277,7 +276,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return checksum
 	 **/
-	@Schema(required = true , description = "Checksum of the software image file. ")
+	@Schema(required = true, description = "Checksum of the software image file. ")
 	@NotNull
 
 	@Valid
@@ -300,7 +299,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return isEncrypted
 	 **/
-	@Schema(required = true , description = "Reflects whether the image is encrypted (true) or not (false). ")
+	@Schema(required = true, description = "Reflects whether the image is encrypted (true) or not (false). ")
 	@NotNull
 
 	public Boolean getIsEncrypted() {
@@ -327,7 +326,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return containerFormat
 	 **/
-	@Schema(required = true , description = "Container format indicates whether the software image is in a file format that also contains metadata about the actual software. Permitted values: - AKI: a kernel image format - AMI: a machine image format - ARI: a ramdisk image format - BARE: the image does not have a container or metadata envelope - DOCKER: docker container format - OVA: OVF package in a tarfile - OVF: OVF container format The list of permitted values was taken from \"Container formats\" in http://docs.openstack.org/image-guide/image-formats.html ")
+	@Schema(required = true, description = "Container format indicates whether the software image is in a file format that also contains metadata about the actual software. Permitted values: - AKI: a kernel image format - AMI: a machine image format - ARI: a ramdisk image format - BARE: the image does not have a container or metadata envelope - DOCKER: docker container format - OVA: OVF package in a tarfile - OVF: OVF container format The list of permitted values was taken from \"Container formats\" in http://docs.openstack.org/image-guide/image-formats.html ")
 	@NotNull
 
 	public ContainerFormatEnum getContainerFormat() {
@@ -356,7 +355,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return diskFormat
 	 **/
-	@Schema(required = true , description = "Disk format of a software image is the format of the underlying disk image. Permitted values: - AKI: a kernel image format - AMI: a machine image format - ARI: a ramdisk image format - ISO: an archive format for the data contents of an optical disc,   such as CD-ROM - QCOW2: a common disk image format, which can expand dynamically   and supports copy on write - RAW: an unstructured disk image format - VDI: a common disk image format - VHD: a common disk image format - VHDX: enhanced version of VHD format - VMDK: a common disk image format The list of permitted values was adapted from \"Disk formats\" in http://docs.openstack.org/image-guide/image-formats.html ")
+	@Schema(required = true, description = "Disk format of a software image is the format of the underlying disk image. Permitted values: - AKI: a kernel image format - AMI: a machine image format - ARI: a ramdisk image format - ISO: an archive format for the data contents of an optical disc,   such as CD-ROM - QCOW2: a common disk image format, which can expand dynamically   and supports copy on write - RAW: an unstructured disk image format - VDI: a common disk image format - VHD: a common disk image format - VHDX: enhanced version of VHD format - VMDK: a common disk image format The list of permitted values was adapted from \"Disk formats\" in http://docs.openstack.org/image-guide/image-formats.html ")
 	@NotNull
 
 	public DiskFormatEnum getDiskFormat() {
@@ -377,7 +376,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return createdAt
 	 **/
-	@Schema(required = true , description = "Time when this software image was created. ")
+	@Schema(required = true, description = "Time when this software image was created. ")
 	@NotNull
 
 	public OffsetDateTime getCreatedAt() {
@@ -398,7 +397,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return minDisk
 	 **/
-	@Schema(required = true , description = "The minimal disk for this software image in bytes. ")
+	@Schema(required = true, description = "The minimal disk for this software image in bytes. ")
 	@NotNull
 
 	public Long getMinDisk() {
@@ -419,7 +418,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return minRam
 	 **/
-	@Schema(required = true , description = "The minimal RAM for this software image in bytes. ")
+	@Schema(required = true, description = "The minimal RAM for this software image in bytes. ")
 	@NotNull
 
 	public Long getMinRam() {
@@ -440,7 +439,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return size
 	 **/
-	@Schema(required = true , description = "Size of this software image in bytes. ")
+	@Schema(required = true, description = "Size of this software image in bytes. ")
 	@NotNull
 
 	public Long getSize() {
@@ -451,7 +450,7 @@ public class VnfPackageSoftwareImageInfo {
 		this.size = size;
 	}
 
-	public VnfPackageSoftwareImageInfo userMetadata(final HashMap<String, Object> userMetadata) {
+	public VnfPackageSoftwareImageInfo userMetadata(final HashMap<String, String> userMetadata) {
 		this.userMetadata = userMetadata;
 		return this;
 	}
@@ -465,11 +464,11 @@ public class VnfPackageSoftwareImageInfo {
 
 	@Valid
 
-	public HashMap<String, Object> getUserMetadata() {
+	public HashMap<String, String> getUserMetadata() {
 		return userMetadata;
 	}
 
-	public void setUserMetadata(final HashMap<String, Object> userMetadata) {
+	public void setUserMetadata(final HashMap<String, String> userMetadata) {
 		this.userMetadata = userMetadata;
 	}
 
@@ -484,7 +483,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return imagePath
 	 **/
-	@Schema(required = true , description = "Path in the VNF package, which identifies the image artifact and also allows to access a copy of the image artifact. ")
+	@Schema(required = true, description = "Path in the VNF package, which identifies the image artifact and also allows to access a copy of the image artifact. ")
 	@NotNull
 
 	public String getImagePath() {
@@ -505,19 +504,19 @@ public class VnfPackageSoftwareImageInfo {
 		}
 		final VnfPackageSoftwareImageInfo vnfPackageSoftwareImageInfo = (VnfPackageSoftwareImageInfo) o;
 		return Objects.equals(this.id, vnfPackageSoftwareImageInfo.id) &&
-		Objects.equals(this.name, vnfPackageSoftwareImageInfo.name) &&
-		Objects.equals(this.provider, vnfPackageSoftwareImageInfo.provider) &&
-		Objects.equals(this.version, vnfPackageSoftwareImageInfo.version) &&
-		Objects.equals(this.checksum, vnfPackageSoftwareImageInfo.checksum) &&
-		Objects.equals(this.isEncrypted, vnfPackageSoftwareImageInfo.isEncrypted) &&
-		Objects.equals(this.containerFormat, vnfPackageSoftwareImageInfo.containerFormat) &&
-		Objects.equals(this.diskFormat, vnfPackageSoftwareImageInfo.diskFormat) &&
-		Objects.equals(this.createdAt, vnfPackageSoftwareImageInfo.createdAt) &&
-		Objects.equals(this.minDisk, vnfPackageSoftwareImageInfo.minDisk) &&
-		Objects.equals(this.minRam, vnfPackageSoftwareImageInfo.minRam) &&
-		Objects.equals(this.size, vnfPackageSoftwareImageInfo.size) &&
-		Objects.equals(this.userMetadata, vnfPackageSoftwareImageInfo.userMetadata) &&
-		Objects.equals(this.imagePath, vnfPackageSoftwareImageInfo.imagePath);
+				Objects.equals(this.name, vnfPackageSoftwareImageInfo.name) &&
+				Objects.equals(this.provider, vnfPackageSoftwareImageInfo.provider) &&
+				Objects.equals(this.version, vnfPackageSoftwareImageInfo.version) &&
+				Objects.equals(this.checksum, vnfPackageSoftwareImageInfo.checksum) &&
+				Objects.equals(this.isEncrypted, vnfPackageSoftwareImageInfo.isEncrypted) &&
+				Objects.equals(this.containerFormat, vnfPackageSoftwareImageInfo.containerFormat) &&
+				Objects.equals(this.diskFormat, vnfPackageSoftwareImageInfo.diskFormat) &&
+				Objects.equals(this.createdAt, vnfPackageSoftwareImageInfo.createdAt) &&
+				Objects.equals(this.minDisk, vnfPackageSoftwareImageInfo.minDisk) &&
+				Objects.equals(this.minRam, vnfPackageSoftwareImageInfo.minRam) &&
+				Objects.equals(this.size, vnfPackageSoftwareImageInfo.size) &&
+				Objects.equals(this.userMetadata, vnfPackageSoftwareImageInfo.userMetadata) &&
+				Objects.equals(this.imagePath, vnfPackageSoftwareImageInfo.imagePath);
 	}
 
 	@Override

@@ -19,20 +19,19 @@ package com.ubiqube.etsi.mano.v271.model.sol005.nslcm;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type describes the information to scale a VNF instance by steps. The
  * NFVO shall then invoke the Scale VNF operation towards the appropriate VNFM.
  */
-@Schema (description= "This type describes the information to scale a VNF instance by steps.  The NFVO shall then invoke the Scale VNF operation towards the appropriate VNFM. " )
+@Schema(description = "This type describes the information to scale a VNF instance by steps.  The NFVO shall then invoke the Scale VNF operation towards the appropriate VNFM. ")
 @Validated
 public class ScaleByStepData {
 	@JsonProperty("aspectId")
@@ -42,7 +41,7 @@ public class ScaleByStepData {
 	private Integer numberOfSteps = null;
 
 	@JsonProperty("additionalParams")
-	private Map<String, Object> additionalParams = null;
+	private Map<String, String> additionalParams = null;
 
 	public ScaleByStepData aspectId(final String aspectId) {
 		this.aspectId = aspectId;
@@ -54,7 +53,7 @@ public class ScaleByStepData {
 	 *
 	 * @return aspectId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getAspectId() {
@@ -88,7 +87,7 @@ public class ScaleByStepData {
 		this.numberOfSteps = numberOfSteps;
 	}
 
-	public ScaleByStepData additionalParams(final Map<String, Object> additionalParams) {
+	public ScaleByStepData additionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 		return this;
 	}
@@ -101,11 +100,11 @@ public class ScaleByStepData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getAdditionalParams() {
+	public Map<String, String> getAdditionalParams() {
 		return additionalParams;
 	}
 
-	public void setAdditionalParams(final Map<String, Object> additionalParams) {
+	public void setAdditionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 	}
 
@@ -119,8 +118,8 @@ public class ScaleByStepData {
 		}
 		final ScaleByStepData scaleByStepData = (ScaleByStepData) o;
 		return Objects.equals(this.aspectId, scaleByStepData.aspectId) &&
-		Objects.equals(this.numberOfSteps, scaleByStepData.numberOfSteps) &&
-		Objects.equals(this.additionalParams, scaleByStepData.additionalParams);
+				Objects.equals(this.numberOfSteps, scaleByStepData.numberOfSteps) &&
+				Objects.equals(this.additionalParams, scaleByStepData.additionalParams);
 	}
 
 	@Override

@@ -19,21 +19,20 @@ package com.ubiqube.etsi.mano.v271.model.sol005.nsd;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v271.model.sol003.vnf.Checksum;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents an artifact contained in an NSD archive. It shall comply
  * with provisions defined in Table 5.5.3.5-1.
  */
-@Schema (description= "This type represents an artifact contained in an NSD archive. It shall comply with provisions defined in Table 5.5.3.5-1. " )
+@Schema(description = "This type represents an artifact contained in an NSD archive. It shall comply with provisions defined in Table 5.5.3.5-1. ")
 @Validated
 public class NsdArchiveArtifactInfo {
 	@JsonProperty("artifactPath")
@@ -43,7 +42,7 @@ public class NsdArchiveArtifactInfo {
 	private Checksum checksum = null;
 
 	@JsonProperty("metadata")
-	private Map<String, Object> metadata = null;
+	private Map<String, String> metadata = null;
 
 	public NsdArchiveArtifactInfo artifactPath(final String artifactPath) {
 		this.artifactPath = artifactPath;
@@ -55,7 +54,7 @@ public class NsdArchiveArtifactInfo {
 	 *
 	 * @return artifactPath
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getArtifactPath() {
@@ -76,7 +75,7 @@ public class NsdArchiveArtifactInfo {
 	 *
 	 * @return checksum
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
@@ -88,7 +87,7 @@ public class NsdArchiveArtifactInfo {
 		this.checksum = checksum;
 	}
 
-	public NsdArchiveArtifactInfo metadata(final Map<String, Object> metadata) {
+	public NsdArchiveArtifactInfo metadata(final Map<String, String> metadata) {
 		this.metadata = metadata;
 		return this;
 	}
@@ -101,11 +100,11 @@ public class NsdArchiveArtifactInfo {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getMetadata() {
+	public Map<String, String> getMetadata() {
 		return metadata;
 	}
 
-	public void setMetadata(final Map<String, Object> metadata) {
+	public void setMetadata(final Map<String, String> metadata) {
 		this.metadata = metadata;
 	}
 
@@ -114,13 +113,13 @@ public class NsdArchiveArtifactInfo {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final NsdArchiveArtifactInfo nsdArchiveArtifactInfo = (NsdArchiveArtifactInfo) o;
 		return Objects.equals(this.artifactPath, nsdArchiveArtifactInfo.artifactPath) &&
-		Objects.equals(this.checksum, nsdArchiveArtifactInfo.checksum) &&
-		Objects.equals(this.metadata, nsdArchiveArtifactInfo.metadata);
+				Objects.equals(this.checksum, nsdArchiveArtifactInfo.checksum) &&
+				Objects.equals(this.metadata, nsdArchiveArtifactInfo.metadata);
 	}
 
 	@Override

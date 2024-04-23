@@ -19,22 +19,21 @@ package com.ubiqube.etsi.mano.v271.model.sol005.nslcm;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v271.model.vnfm.vnflcm.StopType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a VNF instance for which the operational state needs to
  * be changed and the requested new state. It shall comply with the provisions
  * defined in Table 6.5.3.31-1.
  */
-@Schema (description= "This type represents a VNF instance for which the operational state  needs to be changed and the requested new state. It shall comply with the provisions defined in Table 6.5.3.31-1. " )
+@Schema(description = "This type represents a VNF instance for which the operational state  needs to be changed and the requested new state. It shall comply with the provisions defined in Table 6.5.3.31-1. ")
 @Validated
 public class OperateVnfData {
 	@JsonProperty("vnfInstanceId")
@@ -50,7 +49,7 @@ public class OperateVnfData {
 	private Integer gracefulStopTimeout = null;
 
 	@JsonProperty("additionalParam")
-	private Map<String, Object> additionalParam = null;
+	private Map<String, String> additionalParam = null;
 
 	public OperateVnfData vnfInstanceId(final String vnfInstanceId) {
 		this.vnfInstanceId = vnfInstanceId;
@@ -62,7 +61,7 @@ public class OperateVnfData {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -83,7 +82,7 @@ public class OperateVnfData {
 	 *
 	 * @return changeStateTo
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
@@ -137,7 +136,7 @@ public class OperateVnfData {
 		this.gracefulStopTimeout = gracefulStopTimeout;
 	}
 
-	public OperateVnfData additionalParam(final Map<String, Object> additionalParam) {
+	public OperateVnfData additionalParam(final Map<String, String> additionalParam) {
 		this.additionalParam = additionalParam;
 		return this;
 	}
@@ -150,11 +149,11 @@ public class OperateVnfData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getAdditionalParam() {
+	public Map<String, String> getAdditionalParam() {
 		return additionalParam;
 	}
 
-	public void setAdditionalParam(final Map<String, Object> additionalParam) {
+	public void setAdditionalParam(final Map<String, String> additionalParam) {
 		this.additionalParam = additionalParam;
 	}
 
@@ -163,15 +162,15 @@ public class OperateVnfData {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final OperateVnfData operateVnfData = (OperateVnfData) o;
 		return Objects.equals(this.vnfInstanceId, operateVnfData.vnfInstanceId) &&
-		Objects.equals(this.changeStateTo, operateVnfData.changeStateTo) &&
-		Objects.equals(this.stopType, operateVnfData.stopType) &&
-		Objects.equals(this.gracefulStopTimeout, operateVnfData.gracefulStopTimeout) &&
-		Objects.equals(this.additionalParam, operateVnfData.additionalParam);
+				Objects.equals(this.changeStateTo, operateVnfData.changeStateTo) &&
+				Objects.equals(this.stopType, operateVnfData.stopType) &&
+				Objects.equals(this.gracefulStopTimeout, operateVnfData.gracefulStopTimeout) &&
+				Objects.equals(this.additionalParam, operateVnfData.additionalParam);
 	}
 
 	@Override

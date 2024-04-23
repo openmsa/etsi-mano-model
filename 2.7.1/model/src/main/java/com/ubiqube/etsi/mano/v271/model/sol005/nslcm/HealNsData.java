@@ -21,9 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,12 +28,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents the information used to heal a NS. It shall comply with
  * the provisions defined in Table 6.5.3.43-1.
  */
-@Schema (description= "This type represents the information used to heal a NS.  It shall comply with the provisions defined in Table 6.5.3.43-1. " )
+@Schema(description = "This type represents the information used to heal a NS.  It shall comply with the provisions defined in Table 6.5.3.43-1. ")
 @Validated
 public class HealNsData {
 	/**
@@ -89,7 +88,7 @@ public class HealNsData {
 	private String healScript = null;
 
 	@JsonProperty("additionalParamsforNs")
-	private Map<String, Object> additionalParamsforNs = null;
+	private Map<String, String> additionalParamsforNs = null;
 
 	public HealNsData degreeHealing(final DegreeHealingEnum degreeHealing) {
 		this.degreeHealing = degreeHealing;
@@ -105,7 +104,7 @@ public class HealNsData {
 	 *
 	 * @return degreeHealing
 	 **/
-	@Schema(required = true , description = "Indicates the degree of healing. Possible values include: - HEAL_RESTORE: Complete the healing of the NS restoring the state of the NS before the failure occurred - HEAL_QOS: Complete the healing of the NS based on the newest QoS values - HEAL_RESET: Complete the healing of the NS resetting to the original instantiation state of the NS - PARTIAL_HEALING ")
+	@Schema(required = true, description = "Indicates the degree of healing. Possible values include: - HEAL_RESTORE: Complete the healing of the NS restoring the state of the NS before the failure occurred - HEAL_QOS: Complete the healing of the NS based on the newest QoS values - HEAL_RESET: Complete the healing of the NS resetting to the original instantiation state of the NS - PARTIAL_HEALING ")
 	@NotNull
 
 	public DegreeHealingEnum getDegreeHealing() {
@@ -167,7 +166,7 @@ public class HealNsData {
 		this.healScript = healScript;
 	}
 
-	public HealNsData additionalParamsforNs(final Map<String, Object> additionalParamsforNs) {
+	public HealNsData additionalParamsforNs(final Map<String, String> additionalParamsforNs) {
 		this.additionalParamsforNs = additionalParamsforNs;
 		return this;
 	}
@@ -180,11 +179,11 @@ public class HealNsData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getAdditionalParamsforNs() {
+	public Map<String, String> getAdditionalParamsforNs() {
 		return additionalParamsforNs;
 	}
 
-	public void setAdditionalParamsforNs(final Map<String, Object> additionalParamsforNs) {
+	public void setAdditionalParamsforNs(final Map<String, String> additionalParamsforNs) {
 		this.additionalParamsforNs = additionalParamsforNs;
 	}
 
@@ -198,9 +197,9 @@ public class HealNsData {
 		}
 		final HealNsData healNsData = (HealNsData) o;
 		return Objects.equals(this.degreeHealing, healNsData.degreeHealing) &&
-		Objects.equals(this.actionsHealing, healNsData.actionsHealing) &&
-		Objects.equals(this.healScript, healNsData.healScript) &&
-		Objects.equals(this.additionalParamsforNs, healNsData.additionalParamsforNs);
+				Objects.equals(this.actionsHealing, healNsData.actionsHealing) &&
+				Objects.equals(this.healScript, healNsData.healScript) &&
+				Objects.equals(this.additionalParamsforNs, healNsData.additionalParamsforNs);
 	}
 
 	@Override

@@ -19,21 +19,20 @@ package com.ubiqube.etsi.mano.v271.model.sol005.nsd;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v271.model.sol003.vnf.Checksum;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents an artifact contained in a PNFD archive. It shall comply
  * with provisions defined in Table 5.5.3.6-1.
  */
-@Schema (description= "This type represents an artifact contained in a PNFD archive. It shall comply with provisions defined in Table 5.5.3.6-1. " )
+@Schema(description = "This type represents an artifact contained in a PNFD archive. It shall comply with provisions defined in Table 5.5.3.6-1. ")
 @Validated
 public class PnfdArchiveArtifactInfo {
 	@JsonProperty("artifactPath")
@@ -46,7 +45,7 @@ public class PnfdArchiveArtifactInfo {
 	private String nonManoArtifactSetId = null;
 
 	@JsonProperty("metadata")
-	private Map<String, Object> metadata = null;
+	private Map<String, String> metadata = null;
 
 	public PnfdArchiveArtifactInfo artifactPath(final String artifactPath) {
 		this.artifactPath = artifactPath;
@@ -58,7 +57,7 @@ public class PnfdArchiveArtifactInfo {
 	 *
 	 * @return artifactPath
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getArtifactPath() {
@@ -79,7 +78,7 @@ public class PnfdArchiveArtifactInfo {
 	 *
 	 * @return checksum
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	@Valid
@@ -111,7 +110,7 @@ public class PnfdArchiveArtifactInfo {
 		this.nonManoArtifactSetId = nonManoArtifactSetId;
 	}
 
-	public PnfdArchiveArtifactInfo metadata(final Map<String, Object> metadata) {
+	public PnfdArchiveArtifactInfo metadata(final Map<String, String> metadata) {
 		this.metadata = metadata;
 		return this;
 	}
@@ -124,11 +123,11 @@ public class PnfdArchiveArtifactInfo {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getMetadata() {
+	public Map<String, String> getMetadata() {
 		return metadata;
 	}
 
-	public void setMetadata(final Map<String, Object> metadata) {
+	public void setMetadata(final Map<String, String> metadata) {
 		this.metadata = metadata;
 	}
 
@@ -137,14 +136,14 @@ public class PnfdArchiveArtifactInfo {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final PnfdArchiveArtifactInfo pnfdArchiveArtifactInfo = (PnfdArchiveArtifactInfo) o;
 		return Objects.equals(this.artifactPath, pnfdArchiveArtifactInfo.artifactPath) &&
-		Objects.equals(this.checksum, pnfdArchiveArtifactInfo.checksum) &&
-		Objects.equals(this.nonManoArtifactSetId, pnfdArchiveArtifactInfo.nonManoArtifactSetId) &&
-		Objects.equals(this.metadata, pnfdArchiveArtifactInfo.metadata);
+				Objects.equals(this.checksum, pnfdArchiveArtifactInfo.checksum) &&
+				Objects.equals(this.nonManoArtifactSetId, pnfdArchiveArtifactInfo.nonManoArtifactSetId) &&
+				Objects.equals(this.metadata, pnfdArchiveArtifactInfo.metadata);
 	}
 
 	@Override

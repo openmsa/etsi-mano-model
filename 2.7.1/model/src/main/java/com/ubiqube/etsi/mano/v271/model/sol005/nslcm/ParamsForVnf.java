@@ -19,21 +19,20 @@ package com.ubiqube.etsi.mano.v271.model.sol005.nslcm;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type defines the additional parameters for the VNF instance to be
  * created associated with an NS instance. It shall comply with the provisions
  * defined in Table 6.5.3.22-1.
  */
-@Schema (description= "This type defines the additional parameters for the VNF instance to be created associated with an NS instance. It shall comply with the provisions defined in Table 6.5.3.22-1. " )
+@Schema(description = "This type defines the additional parameters for the VNF instance to be created associated with an NS instance. It shall comply with the provisions defined in Table 6.5.3.22-1. ")
 @Validated
 public class ParamsForVnf {
 	@JsonProperty("vnfProfileId")
@@ -46,16 +45,16 @@ public class ParamsForVnf {
 	private String vnfInstanceDescription = null;
 
 	@JsonProperty("vnfConfigurableProperties")
-	private Map<String, Object> vnfConfigurableProperties = null;
+	private Map<String, String> vnfConfigurableProperties = null;
 
 	@JsonProperty("metadata")
-	private Map<String, Object> metadata = null;
+	private Map<String, String> metadata = null;
 
 	@JsonProperty("extensions")
-	private Map<String, Object> extensions = null;
+	private Map<String, String> extensions = null;
 
 	@JsonProperty("additionalParams")
-	private Map<String, Object> additionalParams = null;
+	private Map<String, String> additionalParams = null;
 
 	public ParamsForVnf vnfProfileId(final String vnfProfileId) {
 		this.vnfProfileId = vnfProfileId;
@@ -67,7 +66,7 @@ public class ParamsForVnf {
 	 *
 	 * @return vnfProfileId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getVnfProfileId() {
@@ -118,7 +117,7 @@ public class ParamsForVnf {
 		this.vnfInstanceDescription = vnfInstanceDescription;
 	}
 
-	public ParamsForVnf vnfConfigurableProperties(final Map<String, Object> vnfConfigurableProperties) {
+	public ParamsForVnf vnfConfigurableProperties(final Map<String, String> vnfConfigurableProperties) {
 		this.vnfConfigurableProperties = vnfConfigurableProperties;
 		return this;
 	}
@@ -131,15 +130,15 @@ public class ParamsForVnf {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getVnfConfigurableProperties() {
+	public Map<String, String> getVnfConfigurableProperties() {
 		return vnfConfigurableProperties;
 	}
 
-	public void setVnfConfigurableProperties(final Map<String, Object> vnfConfigurableProperties) {
+	public void setVnfConfigurableProperties(final Map<String, String> vnfConfigurableProperties) {
 		this.vnfConfigurableProperties = vnfConfigurableProperties;
 	}
 
-	public ParamsForVnf metadata(final Map<String, Object> metadata) {
+	public ParamsForVnf metadata(final Map<String, String> metadata) {
 		this.metadata = metadata;
 		return this;
 	}
@@ -152,15 +151,15 @@ public class ParamsForVnf {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getMetadata() {
+	public Map<String, String> getMetadata() {
 		return metadata;
 	}
 
-	public void setMetadata(final Map<String, Object> metadata) {
+	public void setMetadata(final Map<String, String> metadata) {
 		this.metadata = metadata;
 	}
 
-	public ParamsForVnf extensions(final Map<String, Object> extensions) {
+	public ParamsForVnf extensions(final Map<String, String> extensions) {
 		this.extensions = extensions;
 		return this;
 	}
@@ -173,15 +172,15 @@ public class ParamsForVnf {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getExtensions() {
+	public Map<String, String> getExtensions() {
 		return extensions;
 	}
 
-	public void setExtensions(final Map<String, Object> extensions) {
+	public void setExtensions(final Map<String, String> extensions) {
 		this.extensions = extensions;
 	}
 
-	public ParamsForVnf additionalParams(final Map<String, Object> additionalParams) {
+	public ParamsForVnf additionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 		return this;
 	}
@@ -194,11 +193,11 @@ public class ParamsForVnf {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getAdditionalParams() {
+	public Map<String, String> getAdditionalParams() {
 		return additionalParams;
 	}
 
-	public void setAdditionalParams(final Map<String, Object> additionalParams) {
+	public void setAdditionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 	}
 
@@ -212,12 +211,12 @@ public class ParamsForVnf {
 		}
 		final ParamsForVnf paramsForVnf = (ParamsForVnf) o;
 		return Objects.equals(this.vnfProfileId, paramsForVnf.vnfProfileId) &&
-		Objects.equals(this.vnfInstanceName, paramsForVnf.vnfInstanceName) &&
-		Objects.equals(this.vnfInstanceDescription, paramsForVnf.vnfInstanceDescription) &&
-		Objects.equals(this.vnfConfigurableProperties, paramsForVnf.vnfConfigurableProperties) &&
-		Objects.equals(this.metadata, paramsForVnf.metadata) &&
-		Objects.equals(this.extensions, paramsForVnf.extensions) &&
-		Objects.equals(this.additionalParams, paramsForVnf.additionalParams);
+				Objects.equals(this.vnfInstanceName, paramsForVnf.vnfInstanceName) &&
+				Objects.equals(this.vnfInstanceDescription, paramsForVnf.vnfInstanceDescription) &&
+				Objects.equals(this.vnfConfigurableProperties, paramsForVnf.vnfConfigurableProperties) &&
+				Objects.equals(this.metadata, paramsForVnf.metadata) &&
+				Objects.equals(this.extensions, paramsForVnf.extensions) &&
+				Objects.equals(this.additionalParams, paramsForVnf.additionalParams);
 	}
 
 	@Override

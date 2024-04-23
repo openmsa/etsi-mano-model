@@ -22,14 +22,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * InstantiateNsRequest
@@ -60,7 +59,7 @@ public class InstantiateNsRequest {
 	private List<VnfLocationConstraint> locationConstraints = null;
 
 	@JsonProperty("additionalParamsForNs")
-	private Map<String, Object> additionalParamsForNs = null;
+	private Map<String, String> additionalParamsForNs = null;
 
 	@JsonProperty("additionalParamForNestedNs")
 	@Valid
@@ -90,7 +89,7 @@ public class InstantiateNsRequest {
 	 *
 	 * @return nsFlavourId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getNsFlavourId() {
@@ -251,7 +250,7 @@ public class InstantiateNsRequest {
 		this.locationConstraints = locationConstraints;
 	}
 
-	public InstantiateNsRequest additionalParamsForNs(final Map<String, Object> additionalParamsForNs) {
+	public InstantiateNsRequest additionalParamsForNs(final Map<String, String> additionalParamsForNs) {
 		this.additionalParamsForNs = additionalParamsForNs;
 		return this;
 	}
@@ -264,11 +263,11 @@ public class InstantiateNsRequest {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getAdditionalParamsForNs() {
+	public Map<String, String> getAdditionalParamsForNs() {
 		return additionalParamsForNs;
 	}
 
-	public void setAdditionalParamsForNs(final Map<String, Object> additionalParamsForNs) {
+	public void setAdditionalParamsForNs(final Map<String, String> additionalParamsForNs) {
 		this.additionalParamsForNs = additionalParamsForNs;
 	}
 
@@ -419,17 +418,17 @@ public class InstantiateNsRequest {
 		}
 		final InstantiateNsRequest instantiateNsRequest = (InstantiateNsRequest) o;
 		return Objects.equals(this.nsFlavourId, instantiateNsRequest.nsFlavourId) &&
-		Objects.equals(this.sapData, instantiateNsRequest.sapData) &&
-		Objects.equals(this.addpnfData, instantiateNsRequest.addpnfData) &&
-		Objects.equals(this.vnfInstanceData, instantiateNsRequest.vnfInstanceData) &&
-		Objects.equals(this.nestedNsInstanceData, instantiateNsRequest.nestedNsInstanceData) &&
-		Objects.equals(this.locationConstraints, instantiateNsRequest.locationConstraints) &&
-		Objects.equals(this.additionalParamsForNs, instantiateNsRequest.additionalParamsForNs) &&
-		Objects.equals(this.additionalParamForNestedNs, instantiateNsRequest.additionalParamForNestedNs) &&
-		Objects.equals(this.additionalParamsForVnf, instantiateNsRequest.additionalParamsForVnf) &&
-		Objects.equals(this.startTime, instantiateNsRequest.startTime) &&
-		Objects.equals(this.nsInstantiationLevelId, instantiateNsRequest.nsInstantiationLevelId) &&
-		Objects.equals(this.additionalAffinityOrAntiAffinityRule, instantiateNsRequest.additionalAffinityOrAntiAffinityRule);
+				Objects.equals(this.sapData, instantiateNsRequest.sapData) &&
+				Objects.equals(this.addpnfData, instantiateNsRequest.addpnfData) &&
+				Objects.equals(this.vnfInstanceData, instantiateNsRequest.vnfInstanceData) &&
+				Objects.equals(this.nestedNsInstanceData, instantiateNsRequest.nestedNsInstanceData) &&
+				Objects.equals(this.locationConstraints, instantiateNsRequest.locationConstraints) &&
+				Objects.equals(this.additionalParamsForNs, instantiateNsRequest.additionalParamsForNs) &&
+				Objects.equals(this.additionalParamForNestedNs, instantiateNsRequest.additionalParamForNestedNs) &&
+				Objects.equals(this.additionalParamsForVnf, instantiateNsRequest.additionalParamsForVnf) &&
+				Objects.equals(this.startTime, instantiateNsRequest.startTime) &&
+				Objects.equals(this.nsInstantiationLevelId, instantiateNsRequest.nsInstantiationLevelId) &&
+				Objects.equals(this.additionalAffinityOrAntiAffinityRule, instantiateNsRequest.additionalAffinityOrAntiAffinityRule);
 	}
 
 	@Override

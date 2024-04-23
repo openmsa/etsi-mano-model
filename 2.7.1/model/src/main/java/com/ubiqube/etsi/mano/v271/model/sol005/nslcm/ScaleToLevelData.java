@@ -21,13 +21,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
 
 /**
  * This type describes the information used to scale a VNF instance to a target
@@ -37,7 +36,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * declared in the VNFD. The NFVO shall then invoke the ScaleVnfToLevel
  * operation towards the appropriate VNFM..
  */
-@Schema (description= "This type describes the information used to scale a VNF instance to a target size. The target size is either expressed as an instantiation level of that DF as defined in the VNFD, or given as a list of scale levels, one per scaling aspect of that DF. Instantiation levels and scaling aspects are declared in the VNFD. The NFVO shall then invoke the ScaleVnfToLevel operation towards the appropriate VNFM.. " )
+@Schema(description = "This type describes the information used to scale a VNF instance to a target size. The target size is either expressed as an instantiation level of that DF as defined in the VNFD, or given as a list of scale levels, one per scaling aspect of that DF. Instantiation levels and scaling aspects are declared in the VNFD. The NFVO shall then invoke the ScaleVnfToLevel operation towards the appropriate VNFM.. ")
 @Validated
 public class ScaleToLevelData {
 	@JsonProperty("vnfInstantiationLevelId")
@@ -48,7 +47,7 @@ public class ScaleToLevelData {
 	private List<VnfScaleInfo> vnfScaleInfo = null;
 
 	@JsonProperty("additionalParams")
-	private Map<String, Object> additionalParams = null;
+	private Map<String, String> additionalParams = null;
 
 	public ScaleToLevelData vnfInstantiationLevelId(final String vnfInstantiationLevelId) {
 		this.vnfInstantiationLevelId = vnfInstantiationLevelId;
@@ -99,7 +98,7 @@ public class ScaleToLevelData {
 		this.vnfScaleInfo = vnfScaleInfo;
 	}
 
-	public ScaleToLevelData additionalParams(final Map<String, Object> additionalParams) {
+	public ScaleToLevelData additionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 		return this;
 	}
@@ -112,11 +111,11 @@ public class ScaleToLevelData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getAdditionalParams() {
+	public Map<String, String> getAdditionalParams() {
 		return additionalParams;
 	}
 
-	public void setAdditionalParams(final Map<String, Object> additionalParams) {
+	public void setAdditionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 	}
 
@@ -130,8 +129,8 @@ public class ScaleToLevelData {
 		}
 		final ScaleToLevelData scaleToLevelData = (ScaleToLevelData) o;
 		return Objects.equals(this.vnfInstantiationLevelId, scaleToLevelData.vnfInstantiationLevelId) &&
-		Objects.equals(this.vnfScaleInfo, scaleToLevelData.vnfScaleInfo) &&
-		Objects.equals(this.additionalParams, scaleToLevelData.additionalParams);
+				Objects.equals(this.vnfScaleInfo, scaleToLevelData.vnfScaleInfo) &&
+				Objects.equals(this.additionalParams, scaleToLevelData.additionalParams);
 	}
 
 	@Override

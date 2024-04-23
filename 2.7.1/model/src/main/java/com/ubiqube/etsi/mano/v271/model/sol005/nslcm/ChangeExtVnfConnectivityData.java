@@ -21,15 +21,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type describes the information invoked by the NFVO to change the
@@ -43,7 +42,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * another one with the modified configuration. This type shall comply with the
  * provisions defined in Table 6.5.3.33-1.
  */
-@Schema (description= "This type describes the information invoked by the NFVO to change the external VNF connectivity information maintained by the VNFM. The types of changes that this operation supports are: 1) Disconnect the external CPs that are connected to a particular external VL, and connect them to a different external VL. 2) Change the connectivity parameters of the existing external CPs, including changing addresses. NOTE: Depending on the capabilities of the underlying VIM resources, certain changes (e.g. modifying the IP address assignment) might not be supported without deleting the resource and creating another one with the modified configuration. This type shall comply with the provisions defined in Table 6.5.3.33-1. " )
+@Schema(description = "This type describes the information invoked by the NFVO to change the external VNF connectivity information maintained by the VNFM. The types of changes that this operation supports are: 1) Disconnect the external CPs that are connected to a particular external VL, and connect them to a different external VL. 2) Change the connectivity parameters of the existing external CPs, including changing addresses. NOTE: Depending on the capabilities of the underlying VIM resources, certain changes (e.g. modifying the IP address assignment) might not be supported without deleting the resource and creating another one with the modified configuration. This type shall comply with the provisions defined in Table 6.5.3.33-1. ")
 @Validated
 public class ChangeExtVnfConnectivityData {
 	@JsonProperty("vnfInstanceId")
@@ -54,7 +53,7 @@ public class ChangeExtVnfConnectivityData {
 	private List<ExtVirtualLinkData> extVirtualLinks = new ArrayList<>();
 
 	@JsonProperty("additionalParams")
-	private Map<String, Object> additionalParams = null;
+	private Map<String, String> additionalParams = null;
 
 	public ChangeExtVnfConnectivityData vnfInstanceId(final String vnfInstanceId) {
 		this.vnfInstanceId = vnfInstanceId;
@@ -66,7 +65,7 @@ public class ChangeExtVnfConnectivityData {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -92,7 +91,7 @@ public class ChangeExtVnfConnectivityData {
 	 *
 	 * @return extVirtualLinks
 	 **/
-	@Schema(required = true , description = "Information about external VLs to change (e.g. connect the VNF to). ")
+	@Schema(required = true, description = "Information about external VLs to change (e.g. connect the VNF to). ")
 	@NotNull
 	@Valid
 	public List<ExtVirtualLinkData> getExtVirtualLinks() {
@@ -103,7 +102,7 @@ public class ChangeExtVnfConnectivityData {
 		this.extVirtualLinks = extVirtualLinks;
 	}
 
-	public ChangeExtVnfConnectivityData additionalParams(final Map<String, Object> additionalParams) {
+	public ChangeExtVnfConnectivityData additionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 		return this;
 	}
@@ -116,11 +115,11 @@ public class ChangeExtVnfConnectivityData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getAdditionalParams() {
+	public Map<String, String> getAdditionalParams() {
 		return additionalParams;
 	}
 
-	public void setAdditionalParams(final Map<String, Object> additionalParams) {
+	public void setAdditionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 	}
 
@@ -129,13 +128,13 @@ public class ChangeExtVnfConnectivityData {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final ChangeExtVnfConnectivityData changeExtVnfConnectivityData = (ChangeExtVnfConnectivityData) o;
 		return Objects.equals(this.vnfInstanceId, changeExtVnfConnectivityData.vnfInstanceId) &&
-		Objects.equals(this.extVirtualLinks, changeExtVnfConnectivityData.extVirtualLinks) &&
-		Objects.equals(this.additionalParams, changeExtVnfConnectivityData.additionalParams);
+				Objects.equals(this.extVirtualLinks, changeExtVnfConnectivityData.extVirtualLinks) &&
+				Objects.equals(this.additionalParams, changeExtVnfConnectivityData.additionalParams);
 	}
 
 	@Override

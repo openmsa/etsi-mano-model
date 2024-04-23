@@ -21,9 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,13 +28,15 @@ import com.ubiqube.etsi.mano.v271.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * The type represents the information that is requested to be changed
  * deployment flavor for an existing VNF instance. It shall comply with the
  * provisions defined in Table 6.5.3.25-1.
  */
-@Schema (description= "The type represents the information that is requested to be changed deployment flavor for an existing VNF instance. It shall comply with the provisions defined in Table 6.5.3.25-1. " )
+@Schema(description = "The type represents the information that is requested to be changed deployment flavor for an existing VNF instance. It shall comply with the provisions defined in Table 6.5.3.25-1. ")
 @Validated
 public class ChangeVnfFlavourData {
 	@JsonProperty("vnfInstanceId")
@@ -58,7 +57,7 @@ public class ChangeVnfFlavourData {
 	private List<ExtManagedVirtualLinkData> extManagedVirtualLinks = null;
 
 	@JsonProperty("additionalParams")
-	private Map<String, Object> additionalParams = null;
+	private Map<String, String> additionalParams = null;
 
 	public ChangeVnfFlavourData vnfInstanceId(final String vnfInstanceId) {
 		this.vnfInstanceId = vnfInstanceId;
@@ -70,7 +69,7 @@ public class ChangeVnfFlavourData {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -91,7 +90,7 @@ public class ChangeVnfFlavourData {
 	 *
 	 * @return newFlavourId
 	 **/
-	@Schema(required = true , description = "")
+	@Schema(required = true, description = "")
 	@NotNull
 
 	public String getNewFlavourId() {
@@ -178,7 +177,7 @@ public class ChangeVnfFlavourData {
 		this.extManagedVirtualLinks = extManagedVirtualLinks;
 	}
 
-	public ChangeVnfFlavourData additionalParams(final Map<String, Object> additionalParams) {
+	public ChangeVnfFlavourData additionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 		return this;
 	}
@@ -191,11 +190,11 @@ public class ChangeVnfFlavourData {
 	@Schema(description = "")
 
 	@Valid
-	public Map<String, Object> getAdditionalParams() {
+	public Map<String, String> getAdditionalParams() {
 		return additionalParams;
 	}
 
-	public void setAdditionalParams(final Map<String, Object> additionalParams) {
+	public void setAdditionalParams(final Map<String, String> additionalParams) {
 		this.additionalParams = additionalParams;
 	}
 
@@ -204,16 +203,16 @@ public class ChangeVnfFlavourData {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final ChangeVnfFlavourData changeVnfFlavourData = (ChangeVnfFlavourData) o;
 		return Objects.equals(this.vnfInstanceId, changeVnfFlavourData.vnfInstanceId) &&
-		Objects.equals(this.newFlavourId, changeVnfFlavourData.newFlavourId) &&
-		Objects.equals(this.instantiationLevelId, changeVnfFlavourData.instantiationLevelId) &&
-		Objects.equals(this.extVirtualLinks, changeVnfFlavourData.extVirtualLinks) &&
-		Objects.equals(this.extManagedVirtualLinks, changeVnfFlavourData.extManagedVirtualLinks) &&
-		Objects.equals(this.additionalParams, changeVnfFlavourData.additionalParams);
+				Objects.equals(this.newFlavourId, changeVnfFlavourData.newFlavourId) &&
+				Objects.equals(this.instantiationLevelId, changeVnfFlavourData.instantiationLevelId) &&
+				Objects.equals(this.extVirtualLinks, changeVnfFlavourData.extVirtualLinks) &&
+				Objects.equals(this.extManagedVirtualLinks, changeVnfFlavourData.extManagedVirtualLinks) &&
+				Objects.equals(this.additionalParams, changeVnfFlavourData.additionalParams);
 	}
 
 	@Override
