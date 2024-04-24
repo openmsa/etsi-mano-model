@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
-		<artifactId>mano-super-pom</artifactId>
+		<artifactId>etsi-model-261-aggregator</artifactId>
 		<version>4.0.0-SNAPSHOT</version>
 		<relativePath />
 	</parent>
@@ -20,10 +20,6 @@
 		</repository>
 	</distributionManagement>
 	<dependencies>
-		<dependency>
-			<groupId>ma.glasnost.orika</groupId>
-			<artifactId>ubi-orika-core</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>jakarta.validation</groupId>
 			<artifactId>jakarta.validation-api</artifactId>
@@ -60,6 +56,17 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 	<repositories>

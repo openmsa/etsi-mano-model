@@ -45,7 +45,7 @@ import jakarta.validation.Valid;
 @Schema(description = "This type represents a subscription filter related to notifications about VNF faults. At a particular nesting level in the filter structure, the following applies: All attributes shall match in order for the filter to match (logical \"and\" between different filter attributes). If an attribute is an array, the attribute shall match if at least one of the values in the array matches (logical \"or\" between the values of one filter attribute). ")
 @Validated
 
-public class FmNotificationsFilter {
+public class FmNotificationsVnfFilter {
 	@JsonProperty("vnfInstanceSubscriptionFilter")
 	private VnfInstanceSubscriptionFilter vnfInstanceSubscriptionFilter = null;
 
@@ -102,7 +102,7 @@ public class FmNotificationsFilter {
 	@Valid
 	private List<String> probableCauses = null;
 
-	public FmNotificationsFilter vnfInstanceSubscriptionFilter(final VnfInstanceSubscriptionFilter vnfInstanceSubscriptionFilter) {
+	public FmNotificationsVnfFilter vnfInstanceSubscriptionFilter(final VnfInstanceSubscriptionFilter vnfInstanceSubscriptionFilter) {
 		this.vnfInstanceSubscriptionFilter = vnfInstanceSubscriptionFilter;
 		return this;
 	}
@@ -124,12 +124,12 @@ public class FmNotificationsFilter {
 		this.vnfInstanceSubscriptionFilter = vnfInstanceSubscriptionFilter;
 	}
 
-	public FmNotificationsFilter notificationTypes(final List<NotificationTypesEnum> notificationTypes) {
+	public FmNotificationsVnfFilter notificationTypes(final List<NotificationTypesEnum> notificationTypes) {
 		this.notificationTypes = notificationTypes;
 		return this;
 	}
 
-	public FmNotificationsFilter addNotificationTypesItem(final NotificationTypesEnum notificationTypesItem) {
+	public FmNotificationsVnfFilter addNotificationTypesItem(final NotificationTypesEnum notificationTypesItem) {
 		if (this.notificationTypes == null) {
 			this.notificationTypes = new ArrayList<>();
 		}
@@ -155,12 +155,12 @@ public class FmNotificationsFilter {
 		this.notificationTypes = notificationTypes;
 	}
 
-	public FmNotificationsFilter faultyResourceTypes(final List<FaultyResourceType> faultyResourceTypes) {
+	public FmNotificationsVnfFilter faultyResourceTypes(final List<FaultyResourceType> faultyResourceTypes) {
 		this.faultyResourceTypes = faultyResourceTypes;
 		return this;
 	}
 
-	public FmNotificationsFilter addFaultyResourceTypesItem(final FaultyResourceType faultyResourceTypesItem) {
+	public FmNotificationsVnfFilter addFaultyResourceTypesItem(final FaultyResourceType faultyResourceTypesItem) {
 		if (this.faultyResourceTypes == null) {
 			this.faultyResourceTypes = new ArrayList<>();
 		}
@@ -185,12 +185,12 @@ public class FmNotificationsFilter {
 		this.faultyResourceTypes = faultyResourceTypes;
 	}
 
-	public FmNotificationsFilter perceivedSeverities(final List<PerceivedSeverityType> perceivedSeverities) {
+	public FmNotificationsVnfFilter perceivedSeverities(final List<PerceivedSeverityType> perceivedSeverities) {
 		this.perceivedSeverities = perceivedSeverities;
 		return this;
 	}
 
-	public FmNotificationsFilter addPerceivedSeveritiesItem(final PerceivedSeverityType perceivedSeveritiesItem) {
+	public FmNotificationsVnfFilter addPerceivedSeveritiesItem(final PerceivedSeverityType perceivedSeveritiesItem) {
 		if (this.perceivedSeverities == null) {
 			this.perceivedSeverities = new ArrayList<>();
 		}
@@ -215,12 +215,12 @@ public class FmNotificationsFilter {
 		this.perceivedSeverities = perceivedSeverities;
 	}
 
-	public FmNotificationsFilter eventTypes(final List<EventType> eventTypes) {
+	public FmNotificationsVnfFilter eventTypes(final List<EventType> eventTypes) {
 		this.eventTypes = eventTypes;
 		return this;
 	}
 
-	public FmNotificationsFilter addEventTypesItem(final EventType eventTypesItem) {
+	public FmNotificationsVnfFilter addEventTypesItem(final EventType eventTypesItem) {
 		if (this.eventTypes == null) {
 			this.eventTypes = new ArrayList<>();
 		}
@@ -245,12 +245,12 @@ public class FmNotificationsFilter {
 		this.eventTypes = eventTypes;
 	}
 
-	public FmNotificationsFilter probableCauses(final List<String> probableCauses) {
+	public FmNotificationsVnfFilter probableCauses(final List<String> probableCauses) {
 		this.probableCauses = probableCauses;
 		return this;
 	}
 
-	public FmNotificationsFilter addProbableCausesItem(final String probableCausesItem) {
+	public FmNotificationsVnfFilter addProbableCausesItem(final String probableCausesItem) {
 		if (this.probableCauses == null) {
 			this.probableCauses = new ArrayList<>();
 		}
@@ -281,7 +281,7 @@ public class FmNotificationsFilter {
 		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
-		final FmNotificationsFilter fmNotificationsFilter = (FmNotificationsFilter) o;
+		final FmNotificationsVnfFilter fmNotificationsFilter = (FmNotificationsVnfFilter) o;
 		return Objects.equals(this.vnfInstanceSubscriptionFilter, fmNotificationsFilter.vnfInstanceSubscriptionFilter) &&
 				Objects.equals(this.notificationTypes, fmNotificationsFilter.notificationTypes) &&
 				Objects.equals(this.faultyResourceTypes, fmNotificationsFilter.faultyResourceTypes) &&

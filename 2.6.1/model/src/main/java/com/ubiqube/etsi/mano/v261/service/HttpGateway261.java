@@ -58,10 +58,10 @@ import com.ubiqube.etsi.mano.v261.model.nfvo.lcmgrant.GrantRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.lcmgrant.GrantRequestLinks;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.CreateNsdInfoRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdInfo;
-import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FmSubscription;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FmNsSubscription;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LifecycleChangeNotificationsFilter;
 import com.ubiqube.etsi.mano.v261.model.nfvo.vnf.CreateVnfPkgInfoRequest;
-import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.FmNotificationsFilter;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.FmNotificationsVnfFilter;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.CreateVnfRequest;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.ScaleVnfRequest;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.TerminateVnfRequest;
@@ -344,12 +344,12 @@ public class HttpGateway261 extends AbstractHttpGateway {
 
 	@Override
 	public Object createVnfFmSubscriptionRequest(final Subscription subscription) {
-		return fmSubscriptionMapping.map(subscription, FmNotificationsFilter.class);
+		return fmSubscriptionMapping.map(subscription, FmNotificationsVnfFilter.class);
 	}
 
 	@Override
 	public Class<?> getVnfFmSubscriptionClass() {
-		return FmSubscription.class;
+		return FmNsSubscription.class;
 	}
 
 	@Override
@@ -410,7 +410,7 @@ public class HttpGateway261 extends AbstractHttpGateway {
 
 	@Override
 	public Subscription mapVnfFmSubscription(final Object o) {
-		return fmSubscriptionMapping.map((FmSubscription) o);
+		return fmSubscriptionMapping.map((FmNsSubscription) o);
 	}
 
 	@Override

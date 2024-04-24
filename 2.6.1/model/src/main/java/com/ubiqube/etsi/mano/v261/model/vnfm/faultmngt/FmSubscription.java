@@ -41,7 +41,7 @@ public class FmSubscription {
 	private String id = null;
 
 	@JsonProperty("filter")
-	private FmNotificationsFilter filter = null;
+	private FmNotificationsVnfFilter filter = null;
 
 	@JsonProperty("callbackUri")
 	private String callbackUri = null;
@@ -70,7 +70,7 @@ public class FmSubscription {
 		this.id = id;
 	}
 
-	public FmSubscription filter(final FmNotificationsFilter filter) {
+	public FmSubscription filter(final FmNotificationsVnfFilter filter) {
 		this.filter = filter;
 		return this;
 	}
@@ -86,11 +86,11 @@ public class FmSubscription {
 
 	@Valid
 
-	public FmNotificationsFilter getFilter() {
+	public FmNotificationsVnfFilter getFilter() {
 		return filter;
 	}
 
-	public void setFilter(final FmNotificationsFilter filter) {
+	public void setFilter(final FmNotificationsVnfFilter filter) {
 		this.filter = filter;
 	}
 

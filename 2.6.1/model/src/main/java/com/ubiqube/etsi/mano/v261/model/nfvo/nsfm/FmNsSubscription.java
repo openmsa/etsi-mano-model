@@ -33,12 +33,12 @@ import jakarta.validation.Valid;
  */
 @Schema(description = "This type represents a subscription related to notifications about VNF faults. ")
 @Validated
-public class FmSubscription {
+public class FmNsSubscription {
 	@JsonProperty("id")
 	private String id = null;
 
 	@JsonProperty("filter")
-	private FmNotificationsFilter filter = null;
+	private FmNotificationsNsFilter filter = null;
 
 	@JsonProperty("callbackUri")
 	private String callbackUri = null;
@@ -46,7 +46,7 @@ public class FmSubscription {
 	@JsonProperty("_links")
 	private AlarmLinks links = null;
 
-	public FmSubscription id(final String id) {
+	public FmNsSubscription id(final String id) {
 		this.id = id;
 		return this;
 	}
@@ -67,7 +67,7 @@ public class FmSubscription {
 		this.id = id;
 	}
 
-	public FmSubscription filter(final FmNotificationsFilter filter) {
+	public FmNsSubscription filter(final FmNotificationsNsFilter filter) {
 		this.filter = filter;
 		return this;
 	}
@@ -80,15 +80,15 @@ public class FmSubscription {
 	@Schema(description = "")
 
 	@Valid
-	public FmNotificationsFilter getFilter() {
+	public FmNotificationsNsFilter getFilter() {
 		return filter;
 	}
 
-	public void setFilter(final FmNotificationsFilter filter) {
+	public void setFilter(final FmNotificationsNsFilter filter) {
 		this.filter = filter;
 	}
 
-	public FmSubscription callbackUri(final String callbackUri) {
+	public FmNsSubscription callbackUri(final String callbackUri) {
 		this.callbackUri = callbackUri;
 		return this;
 	}
@@ -109,7 +109,7 @@ public class FmSubscription {
 		this.callbackUri = callbackUri;
 	}
 
-	public FmSubscription links(final AlarmLinks _links) {
+	public FmNsSubscription links(final AlarmLinks _links) {
 		this.links = _links;
 		return this;
 	}
@@ -139,7 +139,7 @@ public class FmSubscription {
 		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
-		final FmSubscription fmSubscription = (FmSubscription) o;
+		final FmNsSubscription fmSubscription = (FmNsSubscription) o;
 		return Objects.equals(this.id, fmSubscription.id) &&
 				Objects.equals(this.filter, fmSubscription.filter) &&
 				Objects.equals(this.callbackUri, fmSubscription.callbackUri) &&
