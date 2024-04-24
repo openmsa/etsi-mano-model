@@ -36,6 +36,9 @@ import jakarta.validation.Valid;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface PmJob261Mapping extends BaseSubscription261Mapping, DateTimeMapping {
 
+	@Mapping(target = "callbackUri", ignore = true)
+	@Mapping(target = "objectType", ignore = true)
+	@Mapping(target = "subObjectInstanceIds", ignore = true)
 	@Mapping(target = "authentication", ignore = true)
 	@Mapping(target = "remoteMonitoring", ignore = true)
 	@Mapping(target = "resolvedSubObjectInstanceIds", ignore = true)
@@ -67,6 +70,10 @@ public interface PmJob261Mapping extends BaseSubscription261Mapping, DateTimeMap
 		return Set.of(map(value));
 	}
 
+	@Mapping(target = "authentication", ignore = true)
+	@Mapping(target = "callbackUri", ignore = true)
+	@Mapping(target = "objectType", ignore = true)
+	@Mapping(target = "subObjectInstanceIds", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "remoteMonitoring", ignore = true)
 	@Mapping(target = "reports", ignore = true)

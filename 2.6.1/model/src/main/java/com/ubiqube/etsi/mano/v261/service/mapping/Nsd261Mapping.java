@@ -84,6 +84,9 @@ public interface Nsd261Mapping extends StringToUriMapping {
 		return value.getVnfPackage().getId().toString();
 	}
 
+	@Mapping(target = "archiveSecurityOption", ignore = true)
+	@Mapping(target = "artifacts", ignore = true)
+	@Mapping(target = "signingCertificate", ignore = true)
 	@Mapping(target = "nsdExtInvariantId", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "autoHealEnabled", ignore = true)

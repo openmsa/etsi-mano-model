@@ -33,6 +33,9 @@ import jakarta.validation.Valid;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface Threshold261Mapping extends StringToUriMapping {
+	@Mapping(target = "callbackUri", ignore = true)
+	@Mapping(target = "objectType", ignore = true)
+	@Mapping(target = "subObjectInstanceIds", ignore = true)
 	@Mapping(target = "remoteResource", ignore = true)
 	@Mapping(target = "subscription", ignore = true)
 	Threshold map(com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold o);
@@ -62,6 +65,9 @@ public interface Threshold261Mapping extends StringToUriMapping {
 		return value.getResource();
 	}
 
+	@Mapping(target = "callbackUri", ignore = true)
+	@Mapping(target = "objectType", ignore = true)
+	@Mapping(target = "subObjectInstanceIds", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "remoteResource", ignore = true)
 	@Mapping(target = "subscription", ignore = true)

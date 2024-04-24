@@ -34,11 +34,27 @@ public interface PmJobNotification261Mapping extends DateTimeMapping {
 	@Mapping(target = "value", ignore = true)
 	VnfIndiValueChangeNotification map(VnfIndicatorValueChangeNotification body);
 
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "notificationType", ignore = true)
+	@Mapping(target = "objectInstanceId", ignore = true)
+	@Mapping(target = "objectType", ignore = true)
+	@Mapping(target = "subObjectInstanceIds", ignore = true)
+	@Mapping(target = "timeStamp", ignore = true)
 	@Mapping(target = "pmJobId", ignore = true)
 	@Mapping(target = "nfvoId", ignore = true)
 	@Mapping(target = "subscriptionId", ignore = true)
 	PerformanceInformationAvailableNotification map(com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.PerformanceInformationAvailableNotification body);
 
+	@Mapping(target = "context", ignore = true)
+	@Mapping(target = "crossingDirection", ignore = true)
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "notificationType", ignore = true)
+	@Mapping(target = "objectInstanceId", ignore = true)
+	@Mapping(target = "objectType", ignore = true)
+	@Mapping(target = "performanceMetric", ignore = true)
+	@Mapping(target = "subObjectInstanceId", ignore = true)
+	@Mapping(target = "thresholdId", ignore = true)
+	@Mapping(target = "timeStamp", ignore = true)
 	@Mapping(target = "nfvoId", ignore = true)
 	@Mapping(target = "subscriptionId", ignore = true)
 	@Mapping(target = "performanceValue", ignore = true)

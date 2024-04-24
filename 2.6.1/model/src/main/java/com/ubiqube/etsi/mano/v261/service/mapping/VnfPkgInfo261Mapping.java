@@ -44,6 +44,11 @@ public interface VnfPkgInfo261Mapping extends StringToUriMapping {
 	@ValueMapping(source = "ARI", target = MappingConstants.THROW_EXCEPTION)
 	VnfPackageSoftwareImageInfo.DiskFormatEnum map(DiskFormatType o);
 
+	@Mapping(target = "compatibleSpecificationVersions", ignore = true)
+	@Mapping(target = "onboardingFailureDetails", ignore = true)
+	@Mapping(target = "packageSecurityOption", ignore = true)
+	@Mapping(target = "signingCertificate", ignore = true)
+	@Mapping(target = "vnfmInfo", ignore = true)
 	@Mapping(target = "vnfmInfo281", ignore = true)
 	@Mapping(target = "vnfdExtInvariantId", ignore = true)
 	@Mapping(target = "affinityRules", ignore = true)
@@ -94,6 +99,10 @@ public interface VnfPkgInfo261Mapping extends StringToUriMapping {
 	@Mapping(target = "sha512", ignore = true)
 	PkgChecksum map(Checksum o);
 
+	@Mapping(target = "artifactClassification", ignore = true)
+	@Mapping(target = "artifactURI", ignore = true)
+	@Mapping(target = "isEncrypted", ignore = true)
+	@Mapping(target = "nonManoArtifactSetId", ignore = true)
 	@Mapping(target = "certificate", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nonManoSetIndentifier", ignore = true)
@@ -106,6 +115,7 @@ public interface VnfPkgInfo261Mapping extends StringToUriMapping {
 	@Mapping(target = "sha512", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.vim.Checksum mapDbChecksum(Checksum o);
 
+	@Mapping(target = "isEncrypted", ignore = true)
 	@Mapping(target = "imageUri", ignore = true)
 	@Mapping(target = "architecture", ignore = true)
 	@Mapping(target = "audit", ignore = true)
@@ -120,6 +130,9 @@ public interface VnfPkgInfo261Mapping extends StringToUriMapping {
 	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "DOCKER")
 	VnfPackageSoftwareImageInfo.ContainerFormatEnum map(ContainerFormatType en);
 
+	@Mapping(target = "authType", ignore = true)
+	@Mapping(target = "paramsOauth2ClientCredentials", ignore = true)
+	@Mapping(target = "username", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	UploadUriParameters map(UploadVnfPkgFromUriRequest body);
 }

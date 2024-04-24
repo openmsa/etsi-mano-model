@@ -40,6 +40,7 @@ public interface Alarm261Mapping extends DateTimeMapping {
 	@Mapping(target = "links", ignore = true)
 	Alarm map(Alarms o);
 
+	@Mapping(target = "alarmAcknowledgedTime", source = "alarmClearedTime")
 	@Mapping(target = "rootCause", source = "isRootCause")
 	@Mapping(target = "version", ignore = true)
 	Alarms map(Alarm o);

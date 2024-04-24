@@ -35,6 +35,8 @@ import com.ubiqube.etsi.mano.v261.service.mapping.VimConnectionInfo261Mapping;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VnfLcmOpOccMapper261Mapping extends VimConnectionInfo261Mapping {
 
+	@Mapping(target = "vimConnectionInfo", source = "vimConnections")
+	@Mapping(target = "vnfPkgId", source = "vnfInstance.vnfPkg.id")
 	@Mapping(target = "extensions", ignore = true)
 	@Mapping(target = "metadata", ignore = true)
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
@@ -46,16 +48,19 @@ public interface VnfLcmOpOccMapper261Mapping extends VimConnectionInfo261Mapping
 	@Mapping(target = "terminationType", ignore = true)
 	TerminateVnfRequest mapToTerminateVnfRequest(VnfBlueprint o);
 
+	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "extVirtualLinks", ignore = true)
 	ChangeExtVnfConnectivityRequest mapToChangeExtVnfConnectivityRequest(VnfBlueprint o);
 
 	@Mapping(target = "cause", ignore = true)
 	HealVnfRequest mapToHealVnfRequest(VnfBlueprint o);
 
+	@Mapping(target = "gracefulStopTimeout", ignore = true)
 	@Mapping(target = "changeStateTo", ignore = true)
 	@Mapping(target = "stopType", ignore = true)
 	OperateVnfRequest mapToOperateVnfRequest(VnfBlueprint o);
 
+	@Mapping(target = "vimConnectionInfo", source = "vimConnections")
 	@Mapping(target = "extManagedVirtualLinks", ignore = true)
 	@Mapping(target = "extVirtualLinks", ignore = true)
 	@Mapping(target = "instantiationLevelId", ignore = true)

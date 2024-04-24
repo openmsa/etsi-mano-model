@@ -22,6 +22,8 @@ import org.mapstruct.MappingConstants;
 import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.CpProtocolData;
+import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtManagedVirtualLinkData;
+import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtVirtualLinkData;
 import com.ubiqube.etsi.mano.dao.mano.NestedNsInstanceData;
 import com.ubiqube.etsi.mano.dao.mano.NsCpProtocolData;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstanceData;
@@ -48,11 +50,13 @@ import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.ScaleToLevelData;
 import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.ScaleVnfData;
 import com.ubiqube.etsi.mano.dao.mano.nslcm.scale.VnfLocationConstraint;
 import com.ubiqube.etsi.mano.service.mapping.DateTimeMapping;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.ChangeExtVnfConnectivityData;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.ChangeVnfFlavourData;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.CreateNsRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.HealNsRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.InstantiateNsRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LocationConstraintsCivicAddressElement;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.OperateVnfData;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.ScaleNsRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.UpdateNsRequest;
 
@@ -70,6 +74,11 @@ public interface NsRequest261Mapping extends DateTimeMapping {
 	@Mapping(target = "additionalParamForNestedNs", ignore = true)
 	NsInstantiate map(InstantiateNsRequest body);
 
+	@Mapping(target = "extensions", ignore = true)
+	@Mapping(target = "metadata", ignore = true)
+	@Mapping(target = "vnfConfigurableProperties", ignore = true)
+	@Mapping(target = "vnfInstanceDescription", ignore = true)
+	@Mapping(target = "vnfInstanceName", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ParamsForVnf map(com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.ParamsForVnf o);
 
@@ -135,12 +144,27 @@ public interface NsRequest261Mapping extends DateTimeMapping {
 	@Mapping(target = "realVnfInstanceToRemove", ignore = true)
 	UpdateRequest map(UpdateNsRequest body);
 
+	@Mapping(target = "extVirtualLinks", ignore = true)
+	com.ubiqube.etsi.mano.dao.mano.nsd.upd.ChangeExtVnfConnectivityData map(ChangeExtVnfConnectivityData o);
+
+	@Mapping(target = "additionalParam", ignore = true)
+	com.ubiqube.etsi.mano.dao.mano.nsd.upd.OperateVnfData map(OperateVnfData o);
+
 	@Mapping(target = "extensions", ignore = true)
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.nsd.upd.ChangeVnfFlavourData map(ChangeVnfFlavourData o);
 
+	@Mapping(target = "locationConstraints", ignore = true)
+	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	@Mapping(target = "vnfProfileId", ignore = true)
 	InstantiateVnfData map(com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.InstantiateVnfData o);
+
+	@Mapping(target = "id", ignore = true)
+	com.ubiqube.etsi.mano.dao.mano.nsd.upd.ExtVirtualLinkData map(ExtVirtualLinkData o);
+
+	@Mapping(target = "vimConnectionId", source = "vimId")
+	@Mapping(target = "vnfVirtualLinkDescId", source = "vmfVirtualLinkDescId")
+	com.ubiqube.etsi.mano.dao.mano.nsd.upd.ExtManagedVirtualLinkData map(ExtManagedVirtualLinkData o);
 
 	@Mapping(target = "addressData", ignore = true)
 	@Mapping(target = "associatedLayerProtocol", ignore = true)

@@ -28,6 +28,9 @@ import com.ubiqube.etsi.mano.v261.model.nfvo.vnf.UploadVnfPkgFromUriRequest;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UploadVnfPackageFromUriRequest261Mapping {
 
+	@Mapping(target = "authType", ignore = true)
+	@Mapping(target = "paramsOauth2ClientCredentials", ignore = true)
+	@Mapping(target = "username", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	UploadUriParameters map(UploadVnfPkgFromUriRequest o);
 

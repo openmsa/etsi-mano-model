@@ -62,6 +62,7 @@ public interface Connectivity261Mapping {
 	@ValueMapping(source = MappingConstants.ANY_REMAINING, target = "IP_OVER_ETHERNET")
 	CpProtocolData.LayerProtocolEnum map(LayerProtocolType lpt);
 
+	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "extNetAttDefResource", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "currentVnfExtCpData", ignore = true)
@@ -70,6 +71,7 @@ public interface Connectivity261Mapping {
 	@Mapping(target = "vnfInstance", ignore = true)
 	ExtVirtualLinkDataEntity map(ExtVirtualLinkData evld);
 
+	@Mapping(target = "extVirtualLinkId", ignore = true)
 	ExtVirtualLinkData mapToExtVirtualLinkData(ExtVirtualLinkDataEntity evld);
 
 	@Nullable
@@ -156,6 +158,8 @@ public interface Connectivity261Mapping {
 
 	IpOverEthernetAddressDataIpAddresses map(IpOverEthernetAddressDataIpAddressesEntity ipAddresses);
 
+	@Mapping(target = "vimConnectionId", ignore = true)
+	@Mapping(target = "vnfVirtualLinkDescId", ignore = true)
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "extManagedMultisiteVirtualLinkId", ignore = true)
 	@Mapping(target = "grants", ignore = true)

@@ -41,6 +41,9 @@ public interface Pnfd261Mapping extends StringToUriMapping {
 	@ValueMapping(source = "ONBOARDING", target = "ONBOARDED")
 	OnboardingStateType map(PnfdOnboardingStateType o);
 
+	@Mapping(target = "archiveSecurityOption", ignore = true)
+	@Mapping(target = "artifacts", ignore = true)
+	@Mapping(target = "signingCertificate", ignore = true)
 	@Mapping(target = "pnfdExtInvariantId", ignore = true)
 	@Mapping(target = "virtualLink", ignore = true)
 	PnfDescriptor map(PnfdInfo o);
