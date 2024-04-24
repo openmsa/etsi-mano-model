@@ -28,12 +28,12 @@ import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.nsfm.NsAlarmFrontController;
 import com.ubiqube.etsi.mano.dao.mano.alarm.AckState;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.Alarm;
-import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.AlarmLinks;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.AlarmModifications;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.AlarmLinks;
+import com.ubiqube.etsi.mano.v261.service.mapping.Alarm261Mapping;
 
 import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -43,26 +43,26 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class Alarms261Sol005Controller implements Alarms261Sol005Api {
 	private final NsAlarmFrontController nsAlarmFrontController;
-	private final MapperFacade mapper;
+	private final Alarm261Mapping mapper;
 
-	public Alarms261Sol005Controller(final NsAlarmFrontController nsAlarmFrontController, final MapperFacade mapper) {
+	public Alarms261Sol005Controller(final NsAlarmFrontController nsAlarmFrontController, final Alarm261Mapping mapper) {
 		this.nsAlarmFrontController = nsAlarmFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<Alarm> alarmsAlarmIdGet(final String alarmId) {
-		return nsAlarmFrontController.findById(getSafeUUID(alarmId), x -> mapper.map(x, Alarm.class), Alarms261Sol005Controller::makeLinks);
+		return nsAlarmFrontController.findById(getSafeUUID(alarmId), x -> mapper.map(x), Alarms261Sol005Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<AlarmModifications> alarmsAlarmIdPatch(@Valid final AlarmModifications body, final String alarmId, final String ifMatch) {
-		return nsAlarmFrontController.patch(alarmId, AckState.valueOf(body.getAckState().toString()), ifMatch, x -> mapper.map(x, AlarmModifications.class));
+		return nsAlarmFrontController.patch(alarmId, AckState.valueOf(body.getAckState().toString()), ifMatch, x -> mapper.mapAlarmModifications(x));
 	}
 
 	@Override
 	public ResponseEntity<String> alarmsGet(final MultiValueMap<String, String> requestParams, @Nullable final String nextpageOpaqueMarker) {
-		return nsAlarmFrontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, Alarm.class), Alarms261Sol005Controller::makeLinks, Alarm.class);
+		return nsAlarmFrontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x), Alarms261Sol005Controller::makeLinks, Alarm.class);
 	}
 
 	private static void makeLinks(final Alarm alarm) {

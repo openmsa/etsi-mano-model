@@ -29,14 +29,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nspm.NfvoThresholdController;
 import com.ubiqube.etsi.mano.dao.mano.pm.Threshold;
-import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.CreateThresholdRequest;
-import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.ThresholdsCreateThresholdRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.ThresholdsPostResponse;
-import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.ThresholdsThreshold;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.CreateThresholdRequest;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.ThresholdLinks;
+import com.ubiqube.etsi.mano.v261.service.mapping.Threshold261Mapping;
 
 import jakarta.validation.constraints.NotNull;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -46,14 +44,11 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class Thresholds261Sol005Controller implements Thresholds261Sol005Api {
 	private static final Set<String> THR_SEARCH_MANDATORY_FIELDS = new HashSet<>(Arrays.asList("id"));
-
 	private static final String THR_SEARCH_DEFAULT_EXCLUDE_FIELDS = "";
-
 	private final NfvoThresholdController nfvoThresholdController;
+	private final Threshold261Mapping mapper;
 
-	private final MapperFacade mapper;
-
-	public Thresholds261Sol005Controller(final NfvoThresholdController nfvoThresholdController, final MapperFacade mapper) {
+	public Thresholds261Sol005Controller(final NfvoThresholdController nfvoThresholdController, final Threshold261Mapping mapper) {
 		this.nfvoThresholdController = nfvoThresholdController;
 		this.mapper = mapper;
 	}
@@ -67,7 +62,7 @@ public class Thresholds261Sol005Controller implements Thresholds261Sol005Api {
 	@Override
 	public ResponseEntity<String> thresholdsGet(final String filter) {
 		final Consumer<com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold> setLink = x -> x.setLinks(makeLinks(x.getId()));
-		return nfvoThresholdController.search(new LinkedMultiValueMap<>(), x -> mapper.map(x, com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold.class), THR_SEARCH_DEFAULT_EXCLUDE_FIELDS, THR_SEARCH_MANDATORY_FIELDS, setLink, com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold.class);
+		return nfvoThresholdController.search(new LinkedMultiValueMap<>(), x -> mapper.map(x), THR_SEARCH_DEFAULT_EXCLUDE_FIELDS, THR_SEARCH_MANDATORY_FIELDS, setLink, com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold.class);
 	}
 
 	private ThresholdLinks makeLinks(@NotNull final String id) {
@@ -85,11 +80,10 @@ public class Thresholds261Sol005Controller implements Thresholds261Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<ThresholdsPostResponse> thresholdsPost(final CreateThresholdRequest createThresholdRequest) {
-		final ThresholdsCreateThresholdRequest req = createThresholdRequest.getCreateThresholdRequest();
-		final Threshold threshold = mapper.map(req, Threshold.class);
+		final Threshold threshold = mapper.map(createThresholdRequest);
 		final Threshold res = nfvoThresholdController.save(threshold);
 		final ThresholdsPostResponse resp = new ThresholdsPostResponse();
-		resp.setThreshold(mapper.map(res, ThresholdsThreshold.class));
+//		resp.setThreshold(mapper.map(res));
 		return ResponseEntity.ok(resp);
 	}
 
@@ -117,7 +111,7 @@ public class Thresholds261Sol005Controller implements Thresholds261Sol005Api {
 	public ResponseEntity<ThresholdsPostResponse> thresholdsThresholdIdGet(final String thresholdId) {
 		final Threshold threshold = nfvoThresholdController.findById(getSafeUUID(thresholdId));
 		final ThresholdsPostResponse resp = new ThresholdsPostResponse();
-		resp.setThreshold(mapper.map(threshold, ThresholdsThreshold.class));
+//		resp.setThreshold(mapper.map(threshold));
 		return ResponseEntity.ok(resp);
 	}
 

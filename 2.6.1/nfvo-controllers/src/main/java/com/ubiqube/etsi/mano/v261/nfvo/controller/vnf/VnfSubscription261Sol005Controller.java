@@ -21,6 +21,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.common.v261.model.vnf.PkgmNotificationsFilter;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.PkgmSubscription;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.PkgmSubscriptionRequest;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPackageChangeNotification;
@@ -33,8 +34,8 @@ import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.v261.nfvo.service.Sol005Linkable;
 import com.ubiqube.etsi.mano.v261.nfvo.service.SubscriptionLinkable261Nfvo;
-
-import ma.glasnost.orika.MapperFacade;
+import com.ubiqube.etsi.mano.v261.service.mapping.pkg.VnfPackageOnboardingNotification261Mapping;
+import com.ubiqube.etsi.mano.v261.service.mapping.subscription.PkgmSubscriptionRequest261Mapping;
 
 /**
  *
@@ -44,23 +45,25 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class VnfSubscription261Sol005Controller implements VnfSubscription261Sol005Api, SubscriptionLinkable261Nfvo {
 	private final VnfSubscriptionSol005FrontController vnfSubscriptionSol005FrontController;
-	private final MapperFacade mapper;
+	private final PkgmSubscriptionRequest261Mapping mapper;
+	private final VnfPackageOnboardingNotification261Mapping notificationMapper;
 	private final Linkable links = new Sol005Linkable();
 
-	public VnfSubscription261Sol005Controller(final VnfSubscriptionSol005FrontController vnfSubscriptionSol005FrontController, final MapperFacade mapper) {
+	public VnfSubscription261Sol005Controller(final VnfSubscriptionSol005FrontController vnfSubscriptionSol005FrontController, final PkgmSubscriptionRequest261Mapping mapper, final VnfPackageOnboardingNotification261Mapping notificationMapper) {
 		this.vnfSubscriptionSol005FrontController = vnfSubscriptionSol005FrontController;
 		this.mapper = mapper;
+		this.notificationMapper = notificationMapper;
 	}
 
 	@Override
 	public ResponseEntity<List<PkgmSubscription>> subscriptionsGet(final String filters) {
-		return vnfSubscriptionSol005FrontController.search(filters, x -> mapper.map(x, PkgmSubscription.class), links::makeSubscriptionLink);
+		return vnfSubscriptionSol005FrontController.search(filters, x -> mapper.map(x, PkgmNotificationsFilter.class), links::makeSubscriptionLink);
 	}
 
 	@Override
 	public ResponseEntity<PkgmSubscription> subscriptionsPost(final PkgmSubscriptionRequest subscriptionsPostQuery) {
-		final Subscription req = mapper.map(subscriptionsPostQuery, Subscription.class);
-		return vnfSubscriptionSol005FrontController.create(req, VnfSubscription261Sol005Api.class, x -> mapper.map(x, PkgmSubscription.class), links::makeSubscriptionLink);
+		final Subscription req = mapper.map(subscriptionsPostQuery);
+		return vnfSubscriptionSol005FrontController.create(req, VnfSubscription261Sol005Api.class, x -> mapper.map(x, PkgmNotificationsFilter.class), links::makeSubscriptionLink);
 	}
 
 	@Override
@@ -70,19 +73,19 @@ public class VnfSubscription261Sol005Controller implements VnfSubscription261Sol
 
 	@Override
 	public ResponseEntity<PkgmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return vnfSubscriptionSol005FrontController.findById(subscriptionId, x -> mapper.map(x, PkgmSubscription.class), links::makeSubscriptionLink);
+		return vnfSubscriptionSol005FrontController.findById(subscriptionId, x -> mapper.map(x, PkgmNotificationsFilter.class), links::makeSubscriptionLink);
 
 	}
 
 	@Override
 	public void vnfPackageChangeNotificationPost(final VnfPackageChangeNotification notificationsMessage) {
-		final com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification req = mapper.map(notificationsMessage, com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification.class);
+		final com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification req = notificationMapper.map(notificationsMessage);
 		vnfSubscriptionSol005FrontController.vnfPackageChangeNotificationPost(req);
 	}
 
 	@Override
 	public void vnfPackageOnboardingNotificationPost(final VnfPackageOnboardingNotification notificationsMessage) {
-		final com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification req = mapper.map(notificationsMessage, com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification.class);
+		final com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification req = notificationMapper.map(notificationsMessage);
 		vnfSubscriptionSol005FrontController.vnfPackageOnboardingNotificationPost(req);
 	}
 

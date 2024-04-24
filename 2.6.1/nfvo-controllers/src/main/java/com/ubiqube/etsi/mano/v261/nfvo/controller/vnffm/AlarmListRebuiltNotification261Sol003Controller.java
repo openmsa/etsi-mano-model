@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.controller.vnffm.VnffmNotificationFrontController;
 import com.ubiqube.etsi.mano.dao.mano.alarm.AlarmNotification;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmListRebuiltNotification;
+import com.ubiqube.etsi.mano.v261.service.mapping.AlarmNotification261Mapping;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -34,9 +34,9 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class AlarmListRebuiltNotification261Sol003Controller implements AlarmListRebuiltNotification261Sol003Api {
 	private final VnffmNotificationFrontController fc;
-	private final MapperFacade mapper;
+	private final AlarmNotification261Mapping mapper;
 
-	public AlarmListRebuiltNotification261Sol003Controller(final VnffmNotificationFrontController fc, final MapperFacade mapper) {
+	public AlarmListRebuiltNotification261Sol003Controller(final VnffmNotificationFrontController fc, final AlarmNotification261Mapping mapper) {
 		this.fc = fc;
 		this.mapper = mapper;
 	}
@@ -48,7 +48,7 @@ public class AlarmListRebuiltNotification261Sol003Controller implements AlarmLis
 
 	@Override
 	public ResponseEntity<Void> alarmListRebuiltNotificationPost(@Valid final AlarmListRebuiltNotification body) {
-		final AlarmNotification req = mapper.map(body, AlarmNotification.class);
+		final AlarmNotification req = mapper.map(body);
 		return fc.alarmRebuiltNotification(req, "2.6.1");
 	}
 

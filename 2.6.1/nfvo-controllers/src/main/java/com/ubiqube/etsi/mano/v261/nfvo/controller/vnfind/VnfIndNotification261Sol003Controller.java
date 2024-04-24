@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfIndicatorValueChangeNotification;
 import com.ubiqube.etsi.mano.controller.vnfind.VnfIndicatorNotificationFrontController;
 import com.ubiqube.etsi.mano.dao.mano.ind.VnfIndiValueChangeNotification;
+import com.ubiqube.etsi.mano.v261.service.mapping.PmJobNotification261Mapping;
 
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -35,9 +35,9 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class VnfIndNotification261Sol003Controller implements VnfIndNotification261Sol003Api {
 	private final VnfIndicatorNotificationFrontController fc;
-	private final MapperFacade mapper;
+	private final PmJobNotification261Mapping mapper;
 
-	public VnfIndNotification261Sol003Controller(final VnfIndicatorNotificationFrontController fc, final MapperFacade mapper) {
+	public VnfIndNotification261Sol003Controller(final VnfIndicatorNotificationFrontController fc, final PmJobNotification261Mapping mapper) {
 		this.fc = fc;
 		this.mapper = mapper;
 	}
@@ -49,7 +49,7 @@ public class VnfIndNotification261Sol003Controller implements VnfIndNotification
 
 	@Override
 	public ResponseEntity<Void> valueChangePost(@Valid final @Nonnull VnfIndicatorValueChangeNotification body) {
-		final VnfIndiValueChangeNotification req = mapper.map(body, VnfIndiValueChangeNotification.class);
+		final VnfIndiValueChangeNotification req = mapper.map(body);
 		return fc.valueChangeNotification(req, "3.6.1");
 	}
 
@@ -60,7 +60,7 @@ public class VnfIndNotification261Sol003Controller implements VnfIndNotification
 
 	@Override
 	public ResponseEntity<Void> supportedChangePost(@Valid final @Nonnull VnfIndicatorValueChangeNotification body) {
-		final VnfIndiValueChangeNotification req = mapper.map(body, VnfIndiValueChangeNotification.class);
+		final VnfIndiValueChangeNotification req = mapper.map(body);
 		return fc.supportedChangeNotification(req, "3.6.1");
 	}
 

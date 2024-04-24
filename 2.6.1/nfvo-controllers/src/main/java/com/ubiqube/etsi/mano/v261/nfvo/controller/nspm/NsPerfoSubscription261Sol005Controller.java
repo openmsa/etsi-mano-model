@@ -34,12 +34,13 @@ import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.SubscriptionsPmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmNotificationsFilter;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmSubscription;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v261.nfvo.service.SubscriptionLinkable261Nfvo;
+import com.ubiqube.etsi.mano.v261.service.mapping.subscription.PmSubscription261Mapping;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -49,9 +50,9 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscription261Sol005Api, SubscriptionLinkable261Nfvo {
 	private final SubscriptionFrontController subscriptionService;
-	private final MapperFacade mapper;
+	private final PmSubscription261Mapping mapper;
 
-	public NsPerfoSubscription261Sol005Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
+	public NsPerfoSubscription261Sol005Controller(final SubscriptionFrontController subscriptionService, final PmSubscription261Mapping mapper) {
 		this.subscriptionService = subscriptionService;
 		this.mapper = mapper;
 	}
@@ -68,7 +69,7 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 	 */
 	@Override
 	public ResponseEntity<List<PmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, x -> mapper.map(x, PmSubscription.class), NsPerfoSubscription261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSPM);
+		return subscriptionService.search(requestParams, x -> mapper.map(x, PmNotificationsFilter.class), NsPerfoSubscription261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSPM);
 	}
 
 	/**
@@ -93,8 +94,8 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 	 */
 	@Override
 	public ResponseEntity<PmSubscription> subscriptionsPost(final SubscriptionsPmSubscriptionRequest pmSubscriptionRequest) throws URISyntaxException {
-		final Subscription req = mapper.map(pmSubscriptionRequest, Subscription.class);
-		return subscriptionService.create(req, x -> mapper.map(x, PmSubscription.class), NsPerfoSubscription261Sol005Api.class, NsPerfoSubscription261Sol005Controller::makeLinks, NsPerfoSubscription261Sol005Controller::makeSelf, ApiVersionType.SOL005_NSPM);
+		final Subscription req = mapper.map(pmSubscriptionRequest);
+		return subscriptionService.create(req, x -> mapper.map(x, PmNotificationsFilter.class), NsPerfoSubscription261Sol005Api.class, NsPerfoSubscription261Sol005Controller::makeLinks, NsPerfoSubscription261Sol005Controller::makeSelf, ApiVersionType.SOL005_NSPM);
 	}
 
 	/**
@@ -122,7 +123,7 @@ public class NsPerfoSubscription261Sol005Controller implements NsPerfoSubscripti
 	 */
 	@Override
 	public ResponseEntity<PmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, PmSubscription.class), NsPerfoSubscription261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSPM);
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, PmNotificationsFilter.class), NsPerfoSubscription261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSPM);
 	}
 
 	private static void makeLinks(final PmSubscription subscription) {

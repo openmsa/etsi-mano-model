@@ -16,9 +16,6 @@
  */
 package com.ubiqube.etsi.mano.v261.nfvo.controller.nspm;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.CreateThresholdRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.ThresholdsPostResponse;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.CreateThresholdRequest;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -38,6 +35,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 
 /**
  *
@@ -65,13 +64,15 @@ public interface Thresholds261Sol005Api {
 			@ApiResponse(responseCode = "406", description = "406 NOT ACCEPTABLE If the \"Accept\" header does not contain at least one name of a content type that is acceptable to the API producer, the API producer shall respond with this response code. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-	@GetMapping( produces = { "application/json" })
+	@GetMapping(produces = { "application/json" })
 	ResponseEntity<String> thresholdsGet(@RequestParam("filter") String filter);
 
 	/**
 	 * Create a threshold.
 	 *
-	 * The POST method can be used by the client to create a threshold. This method shall follow the provisions specified in the table 7.4.5.3.1-2 for URI query parameters, request and response data structures, and response codes.
+	 * The POST method can be used by the client to create a threshold. This method
+	 * shall follow the provisions specified in the table 7.4.5.3.1-2 for URI query
+	 * parameters, request and response data structures, and response codes.
 	 *
 	 */
 	@Operation(summary = "Create a threshold.", description = "The POST method can be used by the client to create a threshold. This method shall follow the provisions specified in the  table 7.4.5.3.1-2 for URI query parameters, request and response data structures, and response codes.   As the result of successfully executing this method, a new  \"Individual threshold\" resource shall exist as defined  in clause 7.4.6.       ", tags = {})
@@ -105,13 +106,16 @@ public interface Thresholds261Sol005Api {
 			@ApiResponse(responseCode = "406", description = "406 NOT ACCEPTABLE If the \"Accept\" header does not contain at least one name of a content type that is acceptable to the API producer, the API producer shall respond with this response code. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-	@DeleteMapping(value = "/{thresholdId}",  produces = { "application/json" })
+	@DeleteMapping(value = "/{thresholdId}", produces = { "application/json" })
 	void thresholdsThresholdIdDelete(@PathVariable("thresholdId") String thresholdId);
 
 	/**
 	 * Query a single threshold.
 	 *
-	 * The client can use this method for reading an individual threshold. This method shall follow the provisions specified in the Tables 7.4.6.3.2-1 and 7.4.6.3.2-2 for URI query parameters, request and response data structures, and response codes.
+	 * The client can use this method for reading an individual threshold. This
+	 * method shall follow the provisions specified in the Tables 7.4.6.3.2-1 and
+	 * 7.4.6.3.2-2 for URI query parameters, request and response data structures,
+	 * and response codes.
 	 *
 	 */
 	@Operation(summary = "Query a single threshold.", description = "The client can use this method for reading an individual threshold. This method shall follow the provisions specified in the  Tables 7.4.6.3.2-1 and 7.4.6.3.2-2 for URI query parameters, request and response data structures, and response codes. ", tags = {})
@@ -125,7 +129,7 @@ public interface Thresholds261Sol005Api {
 			@ApiResponse(responseCode = "406", description = "406 NOT ACCEPTABLE If the \"Accept\" header does not contain at least one name of a content type that is acceptable to the API producer, the API producer shall respond with this response code. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
-	@GetMapping(value = "/{thresholdId}",  produces = { "application/json" })
+	@GetMapping(value = "/{thresholdId}", produces = { "application/json" })
 	ResponseEntity<ThresholdsPostResponse> thresholdsThresholdIdGet(@PathVariable("thresholdId") String thresholdId);
 
 }

@@ -27,10 +27,10 @@ import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.common.v261.services.Linkable;
 import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
 import com.ubiqube.etsi.mano.v261.nfvo.service.Sol003Linkable;
+import com.ubiqube.etsi.mano.v261.service.mapping.VnfPkgInfo261Mapping;
 
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.http.HttpServletRequest;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  * SOL005 - VNF Package Management Interface
@@ -50,9 +50,9 @@ public class VnfPackage261Sol003Controller implements VnfPackage261Sol003Api {
 	private final VnfPackageFrontController vnfPackageFrontController;
 	@Nonnull
 	private final Linkable links = new Sol003Linkable();
-	private final MapperFacade mapper;
+	private final VnfPkgInfo261Mapping mapper;
 
-	public VnfPackage261Sol003Controller(final VnfPackageFrontController vnfPackageFrontController, final MapperFacade mapper) {
+	public VnfPackage261Sol003Controller(final VnfPackageFrontController vnfPackageFrontController, final VnfPkgInfo261Mapping mapper) {
 		this.vnfPackageFrontController = vnfPackageFrontController;
 		this.mapper = mapper;
 	}
@@ -68,7 +68,7 @@ public class VnfPackage261Sol003Controller implements VnfPackage261Sol003Api {
 	 */
 	@Override
 	public ResponseEntity<String> vnfPackagesGet(final MultiValueMap<String, String> requestParams) {
-		return vnfPackageFrontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), links::makeLinks, VnfPkgInfo.class);
+		return vnfPackageFrontController.search(requestParams, x -> mapper.map(x), links::makeLinks, VnfPkgInfo.class);
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class VnfPackage261Sol003Controller implements VnfPackage261Sol003Api {
 	 */
 	@Override
 	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdGet(final String vnfPkgId) {
-		return vnfPackageFrontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x, VnfPkgInfo.class), links::makeLinks);
+		return vnfPackageFrontController.findByIdReadOnly(getSafeUUID(vnfPkgId), x -> mapper.map(x), links::makeLinks);
 	}
 
 	/**

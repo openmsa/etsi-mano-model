@@ -32,16 +32,16 @@ import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.CreatePnfdInfoRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.PnfdInfo;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.PnfdInfoLinks;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.PnfdInfoModifications;
+import com.ubiqube.etsi.mano.v261.service.mapping.Pnfd261Mapping;
 
 import jakarta.annotation.Nonnull;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class PnfDescriptors261Sol005Controller implements PnfDescriptors261Sol005Api {
 	private final PnfFrontController pnfFrontController;
-	private final MapperFacade mapper;
+	private final Pnfd261Mapping mapper;
 
-	public PnfDescriptors261Sol005Controller(final PnfFrontController pnfFrontController, final MapperFacade mapper) {
+	public PnfDescriptors261Sol005Controller(final PnfFrontController pnfFrontController, final Pnfd261Mapping mapper) {
 		this.pnfFrontController = pnfFrontController;
 		this.mapper = mapper;
 	}
@@ -56,7 +56,7 @@ public class PnfDescriptors261Sol005Controller implements PnfDescriptors261Sol00
 	@Override
 	public ResponseEntity<String> pnfDescriptorsGet(@Nonnull @RequestParam final MultiValueMap<String, String> requestParams) {
 		final Consumer<PnfdInfo> setLink = x -> x.setLinks(makeLinks(x));
-		return pnfFrontController.search(requestParams, x -> mapper.map(x, PnfdInfo.class), setLink, PnfdInfo.class);
+		return pnfFrontController.search(requestParams, x -> mapper.map(x), setLink, PnfdInfo.class);
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class PnfDescriptors261Sol005Controller implements PnfDescriptors261Sol00
 	 */
 	@Override
 	public ResponseEntity<PnfdInfo> pnfDescriptorsPnfdInfoIdGet(final String pnfdInfoId) {
-		return pnfFrontController.findById(pnfdInfoId, x -> mapper.map(x, PnfdInfo.class), PnfDescriptors261Sol005Controller::makeLinks);
+		return pnfFrontController.findById(pnfdInfoId, x -> mapper.map(x), PnfDescriptors261Sol005Controller::makeLinks);
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class PnfDescriptors261Sol005Controller implements PnfDescriptors261Sol00
 	 */
 	@Override
 	public ResponseEntity<PnfdInfo> pnfDescriptorsPost(final String contentType, final CreatePnfdInfoRequest body) {
-		return pnfFrontController.create(body.getUserDefinedData(), x -> mapper.map(x, PnfdInfo.class), PnfDescriptors261Sol005Controller::makeLinks);
+		return pnfFrontController.create(body.getUserDefinedData(), x -> mapper.map(x), PnfDescriptors261Sol005Controller::makeLinks);
 	}
 
 	private static PnfdInfoLinks makeLinks(final PnfdInfo x) {

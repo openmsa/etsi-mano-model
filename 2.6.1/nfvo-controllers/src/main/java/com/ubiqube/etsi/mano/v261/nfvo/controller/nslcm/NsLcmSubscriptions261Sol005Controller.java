@@ -33,9 +33,9 @@ import com.ubiqube.etsi.mano.service.event.model.Subscription;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscription;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscriptionLinks;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LifecycleChangeNotificationsFilter;
 import com.ubiqube.etsi.mano.v261.nfvo.service.SubscriptionLinkable261Nfvo;
-
-import ma.glasnost.orika.MapperFacade;
+import com.ubiqube.etsi.mano.v261.service.mapping.subscription.LccnSubscription261Mapping;
 
 /**
  *
@@ -45,22 +45,22 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class NsLcmSubscriptions261Sol005Controller implements NsLcmSubscriptions261Sol005Api, SubscriptionLinkable261Nfvo {
 	private final NsLcmSubscriptionsGenericFrontController nsLcmSubscriptionsGenericFrontController;
-	private final MapperFacade mapper;
+	private final LccnSubscription261Mapping mapper;
 
-	public NsLcmSubscriptions261Sol005Controller(final NsLcmSubscriptionsGenericFrontController nsLcmSubscriptionsGenericFrontController, final MapperFacade mapper) {
+	public NsLcmSubscriptions261Sol005Controller(final NsLcmSubscriptionsGenericFrontController nsLcmSubscriptionsGenericFrontController, final LccnSubscription261Mapping mapper) {
 		this.nsLcmSubscriptionsGenericFrontController = nsLcmSubscriptionsGenericFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<LccnSubscription>> subscriptionsGet(final String filter) {
-		return nsLcmSubscriptionsGenericFrontController.search(filter, x -> mapper.map(x, LccnSubscription.class), NsLcmSubscriptions261Sol005Controller::makeLink);
+		return nsLcmSubscriptionsGenericFrontController.search(filter, x -> mapper.map(x, LifecycleChangeNotificationsFilter.class), NsLcmSubscriptions261Sol005Controller::makeLink);
 	}
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsPost(final LccnSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
-		return nsLcmSubscriptionsGenericFrontController.create(req, x -> mapper.map(x, LccnSubscription.class), NsLcmSubscriptions261Sol005Api.class, NsLcmSubscriptions261Sol005Controller::makeLink, NsLcmSubscriptions261Sol005Controller::getSelfLink);
+		final Subscription req = mapper.map(body);
+		return nsLcmSubscriptionsGenericFrontController.create(req, x -> mapper.map(x, LifecycleChangeNotificationsFilter.class), NsLcmSubscriptions261Sol005Api.class, NsLcmSubscriptions261Sol005Controller::makeLink, NsLcmSubscriptions261Sol005Controller::getSelfLink);
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class NsLcmSubscriptions261Sol005Controller implements NsLcmSubscriptions
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return nsLcmSubscriptionsGenericFrontController.findById(subscriptionId, x -> mapper.map(x, LccnSubscription.class), NsLcmSubscriptions261Sol005Controller::makeLink);
+		return nsLcmSubscriptionsGenericFrontController.findById(subscriptionId, x -> mapper.map(x, LifecycleChangeNotificationsFilter.class), NsLcmSubscriptions261Sol005Controller::makeLink);
 	}
 
 	private static void makeLink(final LccnSubscription lccnSubscription) {

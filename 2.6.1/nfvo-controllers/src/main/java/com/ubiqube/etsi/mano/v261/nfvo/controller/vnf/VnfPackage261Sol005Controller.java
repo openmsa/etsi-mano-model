@@ -31,10 +31,10 @@ import com.ubiqube.etsi.mano.dao.mano.pkg.UploadUriParameters;
 import com.ubiqube.etsi.mano.v261.model.nfvo.vnf.CreateVnfPkgInfoRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.vnf.UploadVnfPkgFromUriRequest;
 import com.ubiqube.etsi.mano.v261.nfvo.service.Sol005Linkable;
+import com.ubiqube.etsi.mano.v261.service.mapping.VnfPkgInfo261Mapping;
 
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.http.HttpServletRequest;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  * SOL005 - VNF Package Management Interface
@@ -58,16 +58,16 @@ public class VnfPackage261Sol005Controller implements VnfPackage261Sol005Api {
 	private final VnfPackageFrontController vnfPackageFrontController;
 	@Nonnull
 	private final Linkable links = new Sol005Linkable();
-	private final MapperFacade mapper;
+	private final VnfPkgInfo261Mapping mapper;
 
-	public VnfPackage261Sol005Controller(final VnfPackageFrontController vnfPackageFrontController, final MapperFacade mapper) {
+	public VnfPackage261Sol005Controller(final VnfPackageFrontController vnfPackageFrontController, final VnfPkgInfo261Mapping mapper) {
 		this.vnfPackageFrontController = vnfPackageFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<String> vnfPackagesGet(final MultiValueMap<String, String> requestParams) {
-		return vnfPackageFrontController.search(requestParams, x -> mapper.map(x, VnfPkgInfo.class), links::makeLinks, VnfPkgInfo.class);
+		return vnfPackageFrontController.search(requestParams, x -> mapper.map(x), links::makeLinks, VnfPkgInfo.class);
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class VnfPackage261Sol005Controller implements VnfPackage261Sol005Api {
 
 	@Override
 	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdGet(final String vnfPkgId, final String accept) {
-		return vnfPackageFrontController.findById(getSafeUUID(vnfPkgId), x -> mapper.map(x, VnfPkgInfo.class), links::makeLinks);
+		return vnfPackageFrontController.findById(getSafeUUID(vnfPkgId), x -> mapper.map(x), links::makeLinks);
 	}
 
 	@Override
@@ -98,7 +98,7 @@ public class VnfPackage261Sol005Controller implements VnfPackage261Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<VnfPkgInfo> vnfPackagesPost(final String accept, final String contentType, final CreateVnfPkgInfoRequest vnfPackagePostQuery) {
-		return vnfPackageFrontController.create(vnfPackagePostQuery.getUserDefinedData(), x -> mapper.map(x, VnfPkgInfo.class), links::makeLinks, links::getSelfLink);
+		return vnfPackageFrontController.create(vnfPackagePostQuery.getUserDefinedData(), x -> mapper.map(x), links::makeLinks, links::getSelfLink);
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class VnfPackage261Sol005Controller implements VnfPackage261Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<VnfPkgInfo> vnfPackagesVnfPkgIdPatch(final String vnfPkgId, final String body, final String ifMatch, final String contentType) {
-		return vnfPackageFrontController.modify(body, getSafeUUID(vnfPkgId), ifMatch, x -> mapper.map(x, VnfPkgInfo.class), links::makeLinks);
+		return vnfPackageFrontController.modify(body, getSafeUUID(vnfPkgId), ifMatch, x -> mapper.map(x), links::makeLinks);
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class VnfPackage261Sol005Controller implements VnfPackage261Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<Void> vnfPackagesVnfPkgIdPackageContentUploadFromUriPost(final String accept, final String contentType, final String vnfPkgId, final UploadVnfPkgFromUriRequest contentUploadFromUriPostRequest) {
-		final UploadUriParameters req = mapper.map(contentUploadFromUriPostRequest, UploadUriParameters.class);
+		final UploadUriParameters req = mapper.map(contentUploadFromUriPostRequest);
 		return vnfPackageFrontController.uploadFromUri(req, getSafeUUID(vnfPkgId), contentType);
 	}
 

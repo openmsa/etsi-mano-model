@@ -32,13 +32,14 @@ import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.AlarmLinks;
-import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FmSubscription;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FmNotificationsNsFilter;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FmNsSubscription;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.AlarmLinks;
 import com.ubiqube.etsi.mano.v261.nfvo.service.SubscriptionLinkable261Nfvo;
+import com.ubiqube.etsi.mano.v261.service.mapping.subscription.FmNsSubscription261Mapping;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -48,22 +49,22 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class NsfmSubscriptions261Sol005Controller implements NsfmSubscriptions261Sol005Api, SubscriptionLinkable261Nfvo {
 	private final SubscriptionFrontController subscriptionService;
-	private final MapperFacade mapper;
+	private final FmNsSubscription261Mapping mapper;
 
-	public NsfmSubscriptions261Sol005Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
+	public NsfmSubscriptions261Sol005Controller(final SubscriptionFrontController subscriptionService, final FmNsSubscription261Mapping mapper) {
 		this.subscriptionService = subscriptionService;
 		this.mapper = mapper;
 	}
 
 	@Override
-	public ResponseEntity<List<FmSubscription>> subscriptionsGet(@Valid final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, x -> mapper.map(x, FmSubscription.class), NsfmSubscriptions261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSFM);
+	public ResponseEntity<List<FmNsSubscription>> subscriptionsGet(@Valid final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+		return subscriptionService.search(requestParams, x -> mapper.map(x, FmNotificationsNsFilter.class), NsfmSubscriptions261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSFM);
 	}
 
 	@Override
-	public ResponseEntity<FmSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
-		return subscriptionService.create(req, x -> mapper.map(x, FmSubscription.class), getClass(), NsfmSubscriptions261Sol005Controller::makeLinks, NsfmSubscriptions261Sol005Controller::makeSelf, ApiVersionType.SOL005_NSFM);
+	public ResponseEntity<FmNsSubscription> subscriptionsPost(@Valid final FmSubscriptionRequest body) {
+		final Subscription req = mapper.map(body);
+		return subscriptionService.create(req, x -> mapper.map(x, FmNotificationsNsFilter.class), getClass(), NsfmSubscriptions261Sol005Controller::makeLinks, NsfmSubscriptions261Sol005Controller::makeSelf, ApiVersionType.SOL005_NSFM);
 	}
 
 	@Override
@@ -72,11 +73,11 @@ public class NsfmSubscriptions261Sol005Controller implements NsfmSubscriptions26
 	}
 
 	@Override
-	public ResponseEntity<FmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, FmSubscription.class), NsfmSubscriptions261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSFM);
+	public ResponseEntity<FmNsSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, FmNotificationsNsFilter.class), NsfmSubscriptions261Sol005Controller::makeLinks, ApiVersionType.SOL005_NSFM);
 	}
 
-	private static void makeLinks(final FmSubscription subscription) {
+	private static void makeLinks(final FmNsSubscription subscription) {
 		final AlarmLinks links = new AlarmLinks();
 		final Link link = new Link();
 		link.setHref(linkTo(methodOn(NsfmSubscriptions261Sol005Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref());
@@ -85,7 +86,7 @@ public class NsfmSubscriptions261Sol005Controller implements NsfmSubscriptions26
 		subscription.setLinks(links);
 	}
 
-	private static String makeSelf(final FmSubscription subscription) {
+	private static String makeSelf(final FmNsSubscription subscription) {
 		return linkTo(methodOn(NsfmSubscriptions261Sol005Api.class).subscriptionsSubscriptionIdGet(subscription.getId())).withSelfRel().getHref();
 	}
 

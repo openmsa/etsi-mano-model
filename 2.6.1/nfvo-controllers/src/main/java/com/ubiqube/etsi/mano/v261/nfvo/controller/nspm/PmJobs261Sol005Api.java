@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ubiqube.etsi.mano.common.v261.model.nsperfo.PerformanceReport;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.CreatePmJobRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.CreatePmJobRequest;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob;
 
 import io.swagger.v3.oas.annotations.Operation;

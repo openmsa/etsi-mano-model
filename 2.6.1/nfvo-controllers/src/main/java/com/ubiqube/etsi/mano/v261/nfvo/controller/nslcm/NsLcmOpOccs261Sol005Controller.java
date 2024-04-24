@@ -28,9 +28,9 @@ import com.ubiqube.etsi.mano.controller.nslcm.NsLcmGenericFrontController;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.NsLcmOpOccLinks;
+import com.ubiqube.etsi.mano.v261.service.mapping.NsLcmOpOcc261Mapping;
 
 import jakarta.validation.constraints.NotNull;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -40,9 +40,9 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class NsLcmOpOccs261Sol005Controller implements NsLcmOpOccs261Sol005Api {
 	private final NsLcmGenericFrontController nsLcmGenericFrontController;
-	private final MapperFacade mapper;
+	private final NsLcmOpOcc261Mapping mapper;
 
-	public NsLcmOpOccs261Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final MapperFacade mapper) {
+	public NsLcmOpOccs261Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final NsLcmOpOcc261Mapping mapper) {
 		this.nsLcmGenericFrontController = nsLcmGenericFrontController;
 		this.mapper = mapper;
 	}
@@ -59,7 +59,7 @@ public class NsLcmOpOccs261Sol005Controller implements NsLcmOpOccs261Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<String> nsLcmOpOccsGet(final MultiValueMap<String, String> requestParams) {
-		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x, NsLcmOpOcc.class), null, NsLcmOpOccs261Sol005Controller::makeLinks, NsLcmOpOcc.class);
+		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x), null, NsLcmOpOccs261Sol005Controller::makeLinks, NsLcmOpOcc.class);
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class NsLcmOpOccs261Sol005Controller implements NsLcmOpOccs261Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<NsLcmOpOcc> nsLcmOpOccsNsLcmOpOccIdGet(final String nsLcmOpOccId, final String contentType) {
-		return nsLcmGenericFrontController.findById(nsLcmOpOccId, x -> mapper.map(x, NsLcmOpOcc.class), NsLcmOpOccs261Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.findById(nsLcmOpOccId, x -> mapper.map(x), NsLcmOpOccs261Sol005Controller::makeLinks);
 	}
 
 	/**
