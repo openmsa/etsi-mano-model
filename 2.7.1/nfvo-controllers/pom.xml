@@ -51,7 +51,8 @@
 			<artifactId>mano-test-helper</artifactId>
 			<version>4.0.0-SNAPSHOT</version>
 			<scope>test</scope>
-		</dependency><dependency>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
