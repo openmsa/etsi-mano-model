@@ -25,9 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.dao.mano.alarm.AckState;
-import com.ubiqube.etsi.mano.v261.vnfm.faultmngt.Alarm;
-import com.ubiqube.etsi.mano.v261.vnfm.faultmngt.AlarmLinks;
-import com.ubiqube.etsi.mano.v261.vnfm.faultmngt.AlarmModifications;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.Alarm;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.AlarmLinks;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.AlarmModifications;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.AlarmFrontController;
 
 import jakarta.validation.Valid;

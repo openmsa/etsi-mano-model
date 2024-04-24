@@ -28,10 +28,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.nsd.PnfFrontController;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.CreatePnfdInfoRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.PnfdInfo;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.PnfdInfoLinks;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.PnfdInfoModifications;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.CreatePnfdInfoRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.PnfdInfo;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.PnfdInfoLinks;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.PnfdInfoModifications;
 
 import jakarta.annotation.Nonnull;
 import ma.glasnost.orika.MapperFacade;

@@ -32,9 +32,9 @@ import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.v261.nfvo.nsfm.AlarmLinks;
-import com.ubiqube.etsi.mano.v261.nfvo.nsfm.FmSubscription;
-import com.ubiqube.etsi.mano.v261.nfvo.nsfm.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.AlarmLinks;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FmSubscription;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v261.nfvo.service.SubscriptionLinkable261Nfvo;
 
 import jakarta.validation.Valid;

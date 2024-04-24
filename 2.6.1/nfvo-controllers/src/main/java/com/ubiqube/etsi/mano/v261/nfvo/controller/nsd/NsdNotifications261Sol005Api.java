@@ -25,13 +25,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.NsdChangeNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.NsdDeletionNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.NsdOnBoardingFailureNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.NsdOnBoardingNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.PnfdDeletionNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.PnfdOnBoardingFailureNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.PnfdOnBoardingNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.NsdChangeNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.NsdDeletionNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.NsdOnBoardingFailureNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.NsdOnBoardingNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.PnfdDeletionNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.PnfdOnBoardingFailureNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.PnfdOnBoardingNotification;
 
 @RequestMapping("/sol005/nsd/v1/notification")
 @RolesAllowed({ "ROLE_OSSBSS" })

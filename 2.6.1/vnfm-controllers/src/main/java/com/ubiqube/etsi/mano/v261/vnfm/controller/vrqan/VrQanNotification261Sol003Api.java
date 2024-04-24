@@ -25,9 +25,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ubiqube.etsi.mano.v261.vnfm.vrqan.AlarmClearedNotification;
-import com.ubiqube.etsi.mano.v261.vnfm.vrqan.AlarmListRebuiltNotification;
-import com.ubiqube.etsi.mano.v261.vnfm.vrqan.AlarmNotification;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmClearedNotification;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmListRebuiltNotification;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmNotification;
 
 /**
  *

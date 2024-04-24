@@ -30,10 +30,10 @@ import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.LccnSubscription;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.LccnSubscriptionLinks;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.v261.vnfm.controller.vnflcm.sol003.VnfLcmSubscriptions261Sol003Api;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.LccnSubscription;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.LccnSubscriptionLinks;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.v261.vnfm.service.SubscriptionLinkable261Vnfm;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
 

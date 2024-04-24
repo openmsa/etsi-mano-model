@@ -39,8 +39,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.vnfm.vrqan.VrQuotaAvailSubscription;
-import com.ubiqube.etsi.mano.v261.vnfm.vrqan.VrQuotaAvailSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.VrQuotaAvailSubscription;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.VrQuotaAvailSubscriptionRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

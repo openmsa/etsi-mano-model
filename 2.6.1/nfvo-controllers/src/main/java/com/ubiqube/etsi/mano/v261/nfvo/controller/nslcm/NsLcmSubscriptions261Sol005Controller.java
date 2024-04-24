@@ -30,9 +30,9 @@ import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.LccnSubscription;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.LccnSubscriptionLinks;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscription;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscriptionLinks;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscriptionRequest;
 import com.ubiqube.etsi.mano.v261.nfvo.service.SubscriptionLinkable261Nfvo;
 
 import ma.glasnost.orika.MapperFacade;

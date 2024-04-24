@@ -18,8 +18,8 @@ package com.ubiqube.etsi.mano.v261.nfvo.controller.nspm;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.PerformanceInformationAvailableNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.ThresholdCrossedNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.PerformanceInformationAvailableNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.ThresholdCrossedNotification;
 
 /**
  * SOL005 - NS Performance Management Interface

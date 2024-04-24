@@ -30,9 +30,9 @@ import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.common.v261.model.nsperfo.PerformanceReport;
 import com.ubiqube.etsi.mano.controller.nspm.NfvoPmController;
 import com.ubiqube.etsi.mano.dao.mano.pm.PmJob;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.CreatePmJobRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.PmJobsCreatePmJobRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJobLinks;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.CreatePmJobRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.PmJobsCreatePmJobRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJobLinks;
 
 import jakarta.annotation.Nonnull;
 import ma.glasnost.orika.MapperFacade;
@@ -67,7 +67,7 @@ public class PmJobs261Sol005Controller implements PmJobs261Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<String> pmJobsGet(final MultiValueMap<String, String> requestParams) {
-		return nfvoPmController.search(requestParams, x -> mapper.map(x, com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob.class), PMJ_SEARCH_DEFAULT_EXCLUDE_FIELDS, PMJ_SEARCH_MANDATORY_FIELDS, PmJobs261Sol005Controller::makeLinks, com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob.class);
+		return nfvoPmController.search(requestParams, x -> mapper.map(x, com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob.class), PMJ_SEARCH_DEFAULT_EXCLUDE_FIELDS, PMJ_SEARCH_MANDATORY_FIELDS, PmJobs261Sol005Controller::makeLinks, com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob.class);
 	}
 
 	/**
@@ -91,9 +91,9 @@ public class PmJobs261Sol005Controller implements PmJobs261Sol005Api {
 	 *
 	 */
 	@Override
-	public ResponseEntity<com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob> pmJobsPmJobIdGet(final String pmJobId) {
+	public ResponseEntity<com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob> pmJobsPmJobIdGet(final String pmJobId) {
 		final PmJob entity = nfvoPmController.getById(getSafeUUID(pmJobId));
-		final com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob res = mapper.map(entity, com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob.class);
+		final com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob res = mapper.map(entity, com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob.class);
 		return ResponseEntity.ok(res);
 	}
 
@@ -119,16 +119,16 @@ public class PmJobs261Sol005Controller implements PmJobs261Sol005Api {
 	 *
 	 */
 	@Override
-	public ResponseEntity<com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob> pmJobsPost(final CreatePmJobRequest createPmJobRequest) {
+	public ResponseEntity<com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob> pmJobsPost(final CreatePmJobRequest createPmJobRequest) {
 		final PmJobsCreatePmJobRequest pmJob = createPmJobRequest.getCreatePmJobRequest();
 		final PmJob req = mapper.map(pmJob, PmJob.class);
 		final PmJob res = nfvoPmController.save(req);
-		final com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob ret = mapper.map(res, com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob.class);
+		final com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob ret = mapper.map(res, com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob.class);
 		makeLinks(ret);
 		return ResponseEntity.ok(ret);
 	}
 
-	private static void makeLinks(final com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob x) {
+	private static void makeLinks(final com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob x) {
 		final PmJobLinks links = new PmJobLinks();
 		Link link = new Link();
 		link.setHref(linkTo(methodOn(PmJobs261Sol005Api.class).pmJobsPmJobIdGet(x.getId())).withSelfRel().getHref());

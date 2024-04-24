@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import com.ubiqube.etsi.mano.dao.mano.PnfDescriptor;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.PnfdInfo;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.PnfdInfo;
 import com.ubiqube.etsi.mano.v261.nfvo.service.OrikaConfigurationNfvo261;
 
 import ma.glasnost.orika.MapperFacade;

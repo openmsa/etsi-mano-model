@@ -19,16 +19,16 @@ package com.ubiqube.etsi.mano.v261.vnfm.service;
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.ChangeExtVnfConnectivityRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.ChangeVnfFlavourRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.HealVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.OperateVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.ScaleVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.ScaleVnfToLevelRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.TerminateVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfInfoModificationRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.ChangeExtVnfConnectivityRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.ChangeVnfFlavourRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.HealVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.InstantiateVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.OperateVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.ScaleVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.ScaleVnfToLevelRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.TerminateVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfInfoModificationRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmClassMaping;
 
 import ma.glasnost.orika.MapperFacade;

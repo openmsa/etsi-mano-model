@@ -29,8 +29,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.CreateThresholdRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.Threshold;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.CreateThresholdRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

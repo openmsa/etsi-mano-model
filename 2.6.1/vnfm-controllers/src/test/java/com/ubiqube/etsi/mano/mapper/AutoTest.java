@@ -27,8 +27,8 @@ import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.test.TestHelper;
-import com.ubiqube.etsi.mano.v261.nfvo.lcmgrant.GrantRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v261.model.nfvo.lcmgrant.GrantRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v261.vnfm.service.OrikaMapperVnfm261;
 
 /**

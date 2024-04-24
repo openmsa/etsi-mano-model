@@ -31,9 +31,9 @@ import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdmSubscription;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdmSubscriptionLinks;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdmSubscription;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdmSubscriptionLinks;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v261.nfvo.service.SubscriptionLinkable261Nfvo;
 
 import jakarta.validation.constraints.NotNull;

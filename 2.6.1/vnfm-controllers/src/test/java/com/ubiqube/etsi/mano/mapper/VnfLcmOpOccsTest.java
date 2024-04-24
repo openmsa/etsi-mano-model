@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfLcmOpOccs;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v261.vnfm.service.OrikaMapperVnfm261;
 
 import ma.glasnost.orika.MapperFacade;

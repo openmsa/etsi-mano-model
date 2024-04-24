@@ -29,11 +29,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nspm.NfvoThresholdController;
 import com.ubiqube.etsi.mano.dao.mano.pm.Threshold;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.CreateThresholdRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.ThresholdsCreateThresholdRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.ThresholdsPostResponse;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.ThresholdsThreshold;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.ThresholdLinks;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.CreateThresholdRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.ThresholdsCreateThresholdRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.ThresholdsPostResponse;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.ThresholdsThreshold;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.ThresholdLinks;
 
 import jakarta.validation.constraints.NotNull;
 import ma.glasnost.orika.MapperFacade;
@@ -66,8 +66,8 @@ public class Thresholds261Sol005Controller implements Thresholds261Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<String> thresholdsGet(final String filter) {
-		final Consumer<com.ubiqube.etsi.mano.v261.vnfm.nsperfo.Threshold> setLink = x -> x.setLinks(makeLinks(x.getId()));
-		return nfvoThresholdController.search(new LinkedMultiValueMap<>(), x -> mapper.map(x, com.ubiqube.etsi.mano.v261.vnfm.nsperfo.Threshold.class), THR_SEARCH_DEFAULT_EXCLUDE_FIELDS, THR_SEARCH_MANDATORY_FIELDS, setLink, com.ubiqube.etsi.mano.v261.vnfm.nsperfo.Threshold.class);
+		final Consumer<com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold> setLink = x -> x.setLinks(makeLinks(x.getId()));
+		return nfvoThresholdController.search(new LinkedMultiValueMap<>(), x -> mapper.map(x, com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold.class), THR_SEARCH_DEFAULT_EXCLUDE_FIELDS, THR_SEARCH_MANDATORY_FIELDS, setLink, com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold.class);
 	}
 
 	private ThresholdLinks makeLinks(@NotNull final String id) {

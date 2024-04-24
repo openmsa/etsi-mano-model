@@ -30,9 +30,9 @@ import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.v261.vnfm.faultmngt.FmSubscription;
-import com.ubiqube.etsi.mano.v261.vnfm.faultmngt.FmSubscriptionLinks;
-import com.ubiqube.etsi.mano.v261.vnfm.faultmngt.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.FmSubscription;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.FmSubscriptionLinks;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.FmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v261.vnfm.service.SubscriptionLinkable261Vnfm;
 import com.ubiqube.etsi.mano.vnfm.fc.vnffm.FaultMngtSubscriptionsFrontController;
 

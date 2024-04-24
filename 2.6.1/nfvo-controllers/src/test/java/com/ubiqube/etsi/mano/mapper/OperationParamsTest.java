@@ -30,9 +30,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.ubiqube.etsi.mano.dao.mano.v2.BlueprintParameters;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
 import com.ubiqube.etsi.mano.test.UUIDManufacturer;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.InstantiateVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v261.nfvo.service.OrikaConfigurationNfvo261;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfLcmOpOcc;
 
 import ma.glasnost.orika.OrikaSystemProperties;
 import ma.glasnost.orika.converter.ConverterFactory;

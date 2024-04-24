@@ -28,9 +28,9 @@ import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.common.v261.services.Linkable;
 import com.ubiqube.etsi.mano.controller.vnf.VnfPackageFrontController;
 import com.ubiqube.etsi.mano.dao.mano.pkg.UploadUriParameters;
+import com.ubiqube.etsi.mano.v261.model.nfvo.vnf.CreateVnfPkgInfoRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.vnf.UploadVnfPkgFromUriRequest;
 import com.ubiqube.etsi.mano.v261.nfvo.service.Sol005Linkable;
-import com.ubiqube.etsi.mano.v261.nfvo.vnf.CreateVnfPkgInfoRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.vnf.UploadVnfPkgFromUriRequest;
 
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.http.HttpServletRequest;

@@ -20,13 +20,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.NsdChangeNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.NsdDeletionNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.NsdOnBoardingFailureNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.NsdOnBoardingNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.PnfdDeletionNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.PnfdOnBoardingFailureNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.notification.PnfdOnBoardingNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.NsdChangeNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.NsdDeletionNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.NsdOnBoardingFailureNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.NsdOnBoardingNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.PnfdDeletionNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.PnfdOnBoardingFailureNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.notification.PnfdOnBoardingNotification;
 
 @RestController
 public class NsdNotifications261Sol005Controller implements NsdNotifications261Sol005Api {

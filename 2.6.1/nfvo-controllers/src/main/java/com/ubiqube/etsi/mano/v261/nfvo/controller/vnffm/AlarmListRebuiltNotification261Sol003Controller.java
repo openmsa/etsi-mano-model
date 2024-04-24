@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnffm.VnffmNotificationFrontController;
 import com.ubiqube.etsi.mano.dao.mano.alarm.AlarmNotification;
-import com.ubiqube.etsi.mano.v261.vnfm.vrqan.AlarmListRebuiltNotification;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmListRebuiltNotification;
 
 import jakarta.validation.Valid;
 import ma.glasnost.orika.MapperFacade;

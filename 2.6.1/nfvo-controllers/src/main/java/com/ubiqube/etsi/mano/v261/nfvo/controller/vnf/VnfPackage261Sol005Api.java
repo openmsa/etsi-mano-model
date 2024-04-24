@@ -40,8 +40,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.nfvo.vnf.CreateVnfPkgInfoRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.vnf.UploadVnfPkgFromUriRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.vnf.CreateVnfPkgInfoRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.vnf.UploadVnfPkgFromUriRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

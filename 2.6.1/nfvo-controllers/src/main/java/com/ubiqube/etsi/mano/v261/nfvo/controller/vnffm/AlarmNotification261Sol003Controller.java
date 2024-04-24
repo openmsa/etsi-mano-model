@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnffm.VnffmNotificationFrontController;
-import com.ubiqube.etsi.mano.v261.vnfm.vnffm.AlarmNotification;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vnffm.AlarmNotification;
 
 import jakarta.validation.Valid;
 import ma.glasnost.orika.MapperFacade;

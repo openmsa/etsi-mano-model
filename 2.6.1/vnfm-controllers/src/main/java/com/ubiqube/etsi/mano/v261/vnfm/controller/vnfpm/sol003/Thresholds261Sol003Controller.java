@@ -24,9 +24,9 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.CreateThresholdRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.Threshold;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.ThresholdLinks;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.CreateThresholdRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.ThresholdLinks;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfpm.VnfmThresholdFrontController;
 
 import jakarta.validation.Valid;

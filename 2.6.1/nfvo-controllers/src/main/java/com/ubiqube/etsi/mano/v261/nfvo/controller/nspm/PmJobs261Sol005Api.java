@@ -27,8 +27,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ubiqube.etsi.mano.common.v261.model.nsperfo.PerformanceReport;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.CreatePmJobRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.CreatePmJobRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -109,7 +109,7 @@ public interface PmJobs261Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
 	@GetMapping(value = "/{pmJobId}", produces = { "application/json" })
-	ResponseEntity<com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob> pmJobsPmJobIdGet(@PathVariable("pmJobId") @NotNull String pmJobId);
+	ResponseEntity<com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob> pmJobsPmJobIdGet(@PathVariable("pmJobId") @NotNull String pmJobId);
 
 	/**
 	 * Read an individual performance report.
@@ -151,6 +151,6 @@ public interface PmJobs261Sol005Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
 	@PostMapping(consumes = { "application/json" }, produces = { "application/json" })
-	ResponseEntity<com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmJob> pmJobsPost(@Valid @NotNull CreatePmJobRequest createPmJobRequest);
+	ResponseEntity<com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJob> pmJobsPost(@Valid @NotNull CreatePmJobRequest createPmJobRequest);
 
 }

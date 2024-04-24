@@ -29,9 +29,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.nsd.NsDescriptorGenericFrontController;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.CreateNsdInfoRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdInfo;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdInfoLinks;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.CreateNsdInfoRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdInfo;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdInfoLinks;
 
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;

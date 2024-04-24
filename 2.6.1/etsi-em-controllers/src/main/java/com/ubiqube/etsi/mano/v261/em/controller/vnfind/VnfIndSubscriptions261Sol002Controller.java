@@ -29,9 +29,9 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
-import com.ubiqube.etsi.mano.v261.vnfm.vnfind.VnfIndicatorSubscription;
-import com.ubiqube.etsi.mano.v261.vnfm.vnfind.VnfIndicatorSubscriptionLinks;
-import com.ubiqube.etsi.mano.v261.vnfm.vnfind.VnfIndicatorSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vnfind.VnfIndicatorSubscription;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vnfind.VnfIndicatorSubscriptionLinks;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vnfind.VnfIndicatorSubscriptionRequest;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfind.Sol002VnfIndSubscriptionsFrontController;
 
 /**

@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.vnfm.vnflcm.VnfIdentifierDeletionNotification;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vnflcm.VnfIdentifierDeletionNotification;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

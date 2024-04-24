@@ -28,9 +28,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.CreateThresholdRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.ThresholdsPostResponse;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.Threshold;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.CreateThresholdRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.ThresholdsPostResponse;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.Threshold;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;

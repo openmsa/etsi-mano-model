@@ -29,10 +29,10 @@ import com.ubiqube.etsi.mano.dao.mano.vim.Checksum;
 import com.ubiqube.etsi.mano.dao.mano.vim.ContainerFormatType;
 import com.ubiqube.etsi.mano.dao.mano.vim.SoftwareImage;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.NsdOnboardingStateType;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdInfo;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdOperationalStateType;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdUsageStateType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.NsdOnboardingStateType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdInfo;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdOperationalStateType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdUsageStateType;
 import com.ubiqube.etsi.mano.v261.nfvo.service.NsdFactories;
 
 public class TestFactory {

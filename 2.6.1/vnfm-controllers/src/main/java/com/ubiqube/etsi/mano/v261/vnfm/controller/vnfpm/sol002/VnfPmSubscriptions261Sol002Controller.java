@@ -32,10 +32,10 @@ import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmSubscription;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmSubscriptionLinks;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v261.vnfm.controller.vnffm.sol002.FaultmngtSubscriptions261Sol002Api;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmSubscription;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmSubscriptionLinks;
-import com.ubiqube.etsi.mano.v261.vnfm.nsperfo.PmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v261.vnfm.service.SubscriptionLinkable261Vnfm;
 
 import jakarta.validation.Valid;

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.vnflcm.VnfLcmNotificationFrontController;
 import com.ubiqube.etsi.mano.dao.mano.vnflcm.VnfLcmNotification;
-import com.ubiqube.etsi.mano.v261.vnfm.vnflcm.VnfIdentifierCreationNotification;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vnflcm.VnfIdentifierCreationNotification;
 
 import jakarta.validation.Valid;
 import ma.glasnost.orika.MapperFacade;

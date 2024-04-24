@@ -31,19 +31,19 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.LcmOperationStateType;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.LcmOperationType;
 import com.ubiqube.etsi.mano.exception.GenericException;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.ChangeExtVnfConnectivityRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.ChangeVnfFlavourRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.HealVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.OperateVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.ScaleVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.ScaleVnfToLevelRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.TerminateVnfRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfInfoModificationRequest;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfInfoModifications;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfLcmOpOcc;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfLcmOpOccLinks;
-import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfLcmOpOccResourceChanges;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.ChangeExtVnfConnectivityRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.ChangeVnfFlavourRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.HealVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.InstantiateVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.OperateVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.ScaleVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.ScaleVnfToLevelRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.TerminateVnfRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfInfoModificationRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfInfoModifications;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfLcmOpOccLinks;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfLcmOpOccResourceChanges;
 
 /**
  *

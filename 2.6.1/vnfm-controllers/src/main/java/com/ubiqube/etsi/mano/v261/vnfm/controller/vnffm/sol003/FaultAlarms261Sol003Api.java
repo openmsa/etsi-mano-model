@@ -35,8 +35,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.vnfm.faultmngt.Alarm;
-import com.ubiqube.etsi.mano.v261.vnfm.faultmngt.AlarmModifications;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.Alarm;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.AlarmModifications;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

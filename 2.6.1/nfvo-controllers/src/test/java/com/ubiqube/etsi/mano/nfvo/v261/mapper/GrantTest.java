@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test;
 
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
-import com.ubiqube.etsi.mano.v261.nfvo.lcmgrant.GrantRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.lcmgrant.GrantRequest;
 import com.ubiqube.etsi.mano.v261.nfvo.service.OrikaConfigurationNfvo261;
 
 import ma.glasnost.orika.MapperFacade;

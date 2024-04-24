@@ -31,14 +31,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.nfvo.nsfm.InlineResponse200;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.CreateNsRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.HealNsRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.InstantiateNsRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.NsInstance;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.ScaleNsRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.TerminateNsRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.UpdateNsRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.InlineResponse200;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.CreateNsRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.HealNsRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.InstantiateNsRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.NsInstance;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.ScaleNsRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.TerminateNsRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.UpdateNsRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

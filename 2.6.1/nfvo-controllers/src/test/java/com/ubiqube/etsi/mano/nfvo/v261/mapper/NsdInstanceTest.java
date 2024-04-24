@@ -26,8 +26,8 @@ import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
 import com.ubiqube.etsi.mano.dao.mano.NsdInstance;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.InstantiateNsRequest;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.NsInstance;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.InstantiateNsRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.NsInstance;
 import com.ubiqube.etsi.mano.v261.nfvo.service.OrikaConfigurationNfvo261;
 
 import ma.glasnost.orika.MapperFacade;

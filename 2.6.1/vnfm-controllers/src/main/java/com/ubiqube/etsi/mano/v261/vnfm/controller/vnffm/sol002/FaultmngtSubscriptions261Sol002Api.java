@@ -30,8 +30,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.vnfm.faultmngt.FmSubscription;
-import com.ubiqube.etsi.mano.v261.vnfm.faultmngt.FmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.FmSubscription;
+import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.FmSubscriptionRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

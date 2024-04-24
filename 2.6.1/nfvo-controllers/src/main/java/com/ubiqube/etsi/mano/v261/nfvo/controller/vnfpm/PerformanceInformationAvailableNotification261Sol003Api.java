@@ -31,8 +31,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.PerformanceInformationAvailableNotification;
-import com.ubiqube.etsi.mano.v261.nfvo.nsperfo.ThresholdCrossedNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.PerformanceInformationAvailableNotification;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.ThresholdCrossedNotification;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

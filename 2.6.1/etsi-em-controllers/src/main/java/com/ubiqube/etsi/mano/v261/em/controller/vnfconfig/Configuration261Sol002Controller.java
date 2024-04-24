@@ -21,8 +21,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.v261.vnfm.vnfconfig.VnfConfigModifications;
-import com.ubiqube.etsi.mano.v261.vnfm.vnfconfig.VnfConfiguration;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vnfconfig.VnfConfigModifications;
+import com.ubiqube.etsi.mano.v261.model.vnfm.vnfconfig.VnfConfiguration;
 import com.ubiqube.etsi.mano.vnfm.fc.vnfconfig.VnfConfigurationFrontController;
 
 /**

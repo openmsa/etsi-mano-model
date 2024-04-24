@@ -26,8 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.controller.nslcm.NsLcmGenericFrontController;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.NsLcmOpOcc;
-import com.ubiqube.etsi.mano.v261.nfvo.nslcm.NsLcmOpOccLinks;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.NsLcmOpOcc;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.NsLcmOpOccLinks;
 
 import jakarta.validation.constraints.NotNull;
 import ma.glasnost.orika.MapperFacade;

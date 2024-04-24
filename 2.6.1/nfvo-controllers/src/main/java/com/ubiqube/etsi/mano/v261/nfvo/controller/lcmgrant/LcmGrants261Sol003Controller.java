@@ -26,7 +26,7 @@ import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.common.v261.model.lcmgrant.Grant;
 import com.ubiqube.etsi.mano.controller.lcmgrant.LcmGrantsFrontController;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
-import com.ubiqube.etsi.mano.v261.nfvo.lcmgrant.GrantRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.lcmgrant.GrantRequest;
 
 import jakarta.validation.Valid;
 import ma.glasnost.orika.MapperFacade;

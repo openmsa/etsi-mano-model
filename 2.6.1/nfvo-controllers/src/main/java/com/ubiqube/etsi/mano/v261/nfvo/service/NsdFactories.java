@@ -19,14 +19,14 @@ package com.ubiqube.etsi.mano.v261.nfvo.service;
 import java.util.ArrayList;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.NsdOnboardingStateType;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdInfo;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdInfoLinks;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdOperationalStateType;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdUsageStateType;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.PnfdInfo;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.PnfdOnboardingStateType;
-import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.PnfdUsageStateType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.NsdOnboardingStateType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdInfo;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdInfoLinks;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdOperationalStateType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.NsdUsageStateType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.PnfdInfo;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.PnfdOnboardingStateType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.sol005.PnfdUsageStateType;
 
 public final class NsdFactories {
 
