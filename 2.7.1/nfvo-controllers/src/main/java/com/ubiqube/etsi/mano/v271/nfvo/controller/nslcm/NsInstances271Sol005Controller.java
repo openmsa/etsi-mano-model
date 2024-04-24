@@ -39,9 +39,10 @@ import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.NsInstanceLinks;
 import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.ScaleNsRequest;
 import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.TerminateNsRequest;
 import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.UpdateNsRequest;
+import com.ubiqube.etsi.mano.v271.service.mapping.NsInstance271Mapping;
+import com.ubiqube.etsi.mano.v271.service.mapping.nslcm.NsRequest271Mapping;
 
 import jakarta.annotation.Nonnull;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -51,11 +52,13 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	private final NsInstanceGenericFrontController frontController;
-	private final MapperFacade mapper;
+	private final NsInstance271Mapping mapper;
+	private final NsRequest271Mapping requestMapper;
 
-	public NsInstances271Sol005Controller(final NsInstanceGenericFrontController frontController, final MapperFacade mapper) {
+	public NsInstances271Sol005Controller(final NsInstanceGenericFrontController frontController, final NsInstance271Mapping mapper, final NsRequest271Mapping requestMapper) {
 		this.frontController = frontController;
 		this.mapper = mapper;
+		this.requestMapper = requestMapper;
 	}
 
 	/**
@@ -69,7 +72,7 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<String> nsInstancesGet(final MultiValueMap<String, String> requestParams) {
-		return frontController.search(requestParams, x -> mapper.map(x, NsInstance.class), null, NsInstances271Sol005Controller::makeLinks, NsInstance.class);
+		return frontController.search(requestParams, x -> mapper.map(x), null, NsInstances271Sol005Controller::makeLinks, NsInstance.class);
 	}
 
 	/**
@@ -92,7 +95,7 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdGet(final String nsInstanceId) {
-		return frontController.findById(nsInstanceId, x -> mapper.map(x, NsInstance.class), NsInstances271Sol005Controller::makeLinks);
+		return frontController.findById(nsInstanceId, x -> mapper.map(x), NsInstances271Sol005Controller::makeLinks);
 	}
 
 	/**
@@ -106,7 +109,7 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdHealPost(final String nsInstanceId, final HealNsRequest body) {
-		final NsHeal req = mapper.map(body, NsHeal.class);
+		final NsHeal req = requestMapper.map(body);
 		return frontController.heal(nsInstanceId, req, NsInstances271Sol005Controller::getSelfLink);
 	}
 
@@ -118,7 +121,7 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdInstantiatePost(final String nsInstanceId, final InstantiateNsRequest body) {
-		final NsInstantiate req = mapper.map(body, NsInstantiate.class);
+		final NsInstantiate req = requestMapper.map(body);
 		return frontController.instantiate(nsInstanceId, req, NsInstances271Sol005Controller::getSelfLink);
 	}
 
@@ -130,7 +133,7 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdScalePost(final String nsInstanceId, final ScaleNsRequest body) {
-		final NsScale req = mapper.map(body, NsScale.class);
+		final NsScale req = requestMapper.map(body);
 		return frontController.scale(nsInstanceId, req, NsInstances271Sol005Controller::getSelfLink);
 	}
 
@@ -158,7 +161,7 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesNsInstanceIdUpdatePost(final String nsInstanceId, final UpdateNsRequest body) {
-		final UpdateRequest req = mapper.map(body, UpdateRequest.class);
+		final UpdateRequest req = requestMapper.map(body);
 		return frontController.update(nsInstanceId, req, NsInstances271Sol005Controller::getSelfLink);
 	}
 
@@ -170,8 +173,8 @@ public class NsInstances271Sol005Controller implements NsInstances271Sol005Api {
 	 */
 	@Override
 	public ResponseEntity<NsInstance> nsInstancesPost(final CreateNsRequest request) {
-		final CreateNsInstance req = mapper.map(request, CreateNsInstance.class);
-		return frontController.create(req, x -> mapper.map(x, NsInstance.class), NsInstances271Sol005Controller::makeLinks, NsInstances271Sol005Controller::getSelfLink);
+		final CreateNsInstance req = requestMapper.map(request);
+		return frontController.create(req, x -> mapper.map(x), NsInstances271Sol005Controller::makeLinks, NsInstances271Sol005Controller::getSelfLink);
 	}
 
 	private static void makeLinks(@Nonnull final NsInstance nsdInfo) {

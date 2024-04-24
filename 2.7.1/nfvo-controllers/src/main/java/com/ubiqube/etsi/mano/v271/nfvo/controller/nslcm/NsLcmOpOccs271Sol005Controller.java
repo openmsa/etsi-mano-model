@@ -28,10 +28,10 @@ import com.ubiqube.etsi.mano.v271.model.em.vnflcm.CancelMode;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.Link;
 import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.NsLcmOpOccLinks;
+import com.ubiqube.etsi.mano.v271.service.mapping.NsLcmOpOcc271Mapping;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -41,16 +41,16 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class NsLcmOpOccs271Sol005Controller implements NsLcmOpOccs271Sol005Api {
 	private final NsLcmGenericFrontController nsLcmGenericFrontController;
-	private final MapperFacade mapper;
+	private final NsLcmOpOcc271Mapping mapper;
 
-	public NsLcmOpOccs271Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final MapperFacade mapper) {
+	public NsLcmOpOccs271Sol005Controller(final NsLcmGenericFrontController nsLcmGenericFrontController, final NsLcmOpOcc271Mapping mapper) {
 		this.nsLcmGenericFrontController = nsLcmGenericFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<String> nsLcmOpOccsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
-		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x, NsLcmOpOcc.class), nextpageOpaqueMarker, NsLcmOpOccs271Sol005Controller::makeLinks, NsLcmOpOcc.class);
+		return nsLcmGenericFrontController.search(requestParams, x -> mapper.map(x), nextpageOpaqueMarker, NsLcmOpOccs271Sol005Controller::makeLinks, NsLcmOpOcc.class);
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class NsLcmOpOccs271Sol005Controller implements NsLcmOpOccs271Sol005Api {
 
 	@Override
 	public ResponseEntity<NsLcmOpOcc> nsLcmOpOccsNsLcmOpOccIdGet(final String nsLcmOpOccId) {
-		return nsLcmGenericFrontController.findById(nsLcmOpOccId, x -> mapper.map(x, NsLcmOpOcc.class), NsLcmOpOccs271Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.findById(nsLcmOpOccId, x -> mapper.map(x), NsLcmOpOccs271Sol005Controller::makeLinks);
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class NsLcmOpOccs271Sol005Controller implements NsLcmOpOccs271Sol005Api {
 
 	@Override
 	public ResponseEntity<NsLcmOpOcc> nslcmV1NsLcmOpOccsNsLcmOpOccIdFailPost(final String nsLcmOpOccId) {
-		return nsLcmGenericFrontController.fail(nsLcmOpOccId, x -> mapper.map(x, NsLcmOpOcc.class), NsLcmOpOccs271Sol005Controller::makeLinks);
+		return nsLcmGenericFrontController.fail(nsLcmOpOccId, x -> mapper.map(x), NsLcmOpOccs271Sol005Controller::makeLinks);
 	}
 
 	public static void makeLinks(@NotNull final NsLcmOpOcc nsLcmOpOccs) {
