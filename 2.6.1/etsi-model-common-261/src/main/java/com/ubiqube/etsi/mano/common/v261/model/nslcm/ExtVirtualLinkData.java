@@ -20,16 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.VnfExtCpData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents an external VL. It shall comply with the provisions
@@ -41,8 +39,8 @@ public class ExtVirtualLinkData {
 	@JsonProperty("extVirtualLinkId")
 	private String extVirtualLinkId = null;
 
-	@JsonProperty("vimId")
-	private String vimId = null;
+	@JsonProperty("vimConnectionId")
+	private String vimConnectionId = null;
 
 	@JsonProperty("resourceProviderId")
 	private String resourceProviderId = null;
@@ -78,8 +76,8 @@ public class ExtVirtualLinkData {
 		this.extVirtualLinkId = extVirtualLinkId;
 	}
 
-	public ExtVirtualLinkData vimId(final String vimId) {
-		this.vimId = vimId;
+	public ExtVirtualLinkData vimConnectionId(final String vimId) {
+		this.vimConnectionId = vimId;
 		return this;
 	}
 
@@ -92,12 +90,12 @@ public class ExtVirtualLinkData {
 	 **/
 	@Schema(description = "Identifier of the VIM that manages this resource. This attribute shall only be supported and present if VNFrelated resource management in direct mode is applicable. ")
 
-	public String getVimId() {
-		return vimId;
+	public String getVimConnectionId() {
+		return vimConnectionId;
 	}
 
-	public void setVimId(final String vimId) {
-		this.vimId = vimId;
+	public void setVimConnectionId(final String vimId) {
+		this.vimConnectionId = vimId;
 	}
 
 	public ExtVirtualLinkData resourceProviderId(final String resourceProviderId) {
@@ -214,7 +212,7 @@ public class ExtVirtualLinkData {
 		}
 		final ExtVirtualLinkData extVirtualLinkData = (ExtVirtualLinkData) o;
 		return Objects.equals(this.extVirtualLinkId, extVirtualLinkData.extVirtualLinkId) &&
-				Objects.equals(this.vimId, extVirtualLinkData.vimId) &&
+				Objects.equals(this.vimConnectionId, extVirtualLinkData.vimConnectionId) &&
 				Objects.equals(this.resourceProviderId, extVirtualLinkData.resourceProviderId) &&
 				Objects.equals(this.resourceId, extVirtualLinkData.resourceId) &&
 				Objects.equals(this.extCps, extVirtualLinkData.extCps) &&
@@ -223,7 +221,7 @@ public class ExtVirtualLinkData {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(extVirtualLinkId, vimId, resourceProviderId, resourceId, extCps, extLinkPorts);
+		return Objects.hash(extVirtualLinkId, vimConnectionId, resourceProviderId, resourceId, extCps, extLinkPorts);
 	}
 
 	@Override
@@ -232,7 +230,7 @@ public class ExtVirtualLinkData {
 		sb.append("class ExtVirtualLinkData {\n");
 
 		sb.append("    extVirtualLinkId: ").append(toIndentedString(extVirtualLinkId)).append("\n");
-		sb.append("    vimId: ").append(toIndentedString(vimId)).append("\n");
+		sb.append("    vimId: ").append(toIndentedString(vimConnectionId)).append("\n");
 		sb.append("    resourceProviderId: ").append(toIndentedString(resourceProviderId)).append("\n");
 		sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
 		sb.append("    extCps: ").append(toIndentedString(extCps)).append("\n");
