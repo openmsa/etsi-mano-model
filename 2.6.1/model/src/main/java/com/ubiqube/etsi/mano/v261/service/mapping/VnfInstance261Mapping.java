@@ -30,6 +30,7 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.IpOverEthernetAddressInfoIp
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfExtCpInfo;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfInstanceInstantiatedVnfInfo;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfLinkPortInfo;
+import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfScaleInfo;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfVirtualLinkResourceInfo;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfcResourceInfo;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfcResourceInfoVnfcCpInfo;
@@ -60,8 +61,7 @@ public interface VnfInstance261Mapping extends VimConnectionInfo261Mapping, Conn
 	@Mapping(target = "links", ignore = true)
 	com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfInstance map(VnfInstance vnfInst);
 
-	@Mapping(target = "vnfPkg", ignore = true)
-	@Mapping(target = "vimConnectionInfo", ignore = true)
+	@Mapping(target = "vnfPkg.id", source = "vnfPkgId")
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "blueprints", ignore = true)
 	@Mapping(target = "cirConnectionInfo", ignore = true)
@@ -123,6 +123,7 @@ public interface VnfInstance261Mapping extends VimConnectionInfo261Mapping, Conn
 	@Mapping(target = "id", ignore = true)
 	CpProtocolInfoEntity map(CpProtocolInfo cpi);
 
+	@Mapping(target = "maxScaleLevels", ignore = true)
 	@Mapping(target = "vipCpInfo", ignore = true)
 	@Mapping(target = "mcioInfo", ignore = true)
 	@Mapping(target = "virtualCpInfo", ignore = true)
@@ -142,6 +143,15 @@ public interface VnfInstance261Mapping extends VimConnectionInfo261Mapping, Conn
 	@Mapping(target = "virtualLinkResourceInfo", ignore = true)
 	@Mapping(target = "vnfMonitoringParameter", source = "monitoringParameters")
 	BlueprintParameters map(VnfInstanceInstantiatedVnfInfo viivi);
+
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "vnfdId", ignore = true)
+	VnfMonitoringParameter map(com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfMonitoringParameter o);
+
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "scaleToLevel", ignore = true)
+	@Mapping(target = "vnfdId", ignore = true)
+	ScaleInfo map(VnfScaleInfo o);
 
 	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "aliasName", ignore = true)

@@ -40,6 +40,7 @@ import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.AffectedVirtualLink;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.AffectedVirtualStorage;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.AffectedVnfc;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfInfoModifications;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v261.service.mapping.Connectivity261Mapping;
 import com.ubiqube.etsi.mano.v261.service.mapping.VimConnectionInfo261Mapping;
@@ -51,6 +52,9 @@ public interface VnfBlueprint261Mapping extends StringToUriMapping, Connectivity
 	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "vnfInstanceId", source = "vnfInstance.id")
 	VnfLcmOpOcc map(VnfBlueprint x);
+
+	@Mapping(target = "vnfPkgId", ignore = true)
+	VnfInfoModifications map(com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications o);
 
 	default List<VimConnectionInfo> mapListOfVimConn(final Map<String, VimConnectionInformation> o) {
 		return o.values().stream().map(this::map).toList();

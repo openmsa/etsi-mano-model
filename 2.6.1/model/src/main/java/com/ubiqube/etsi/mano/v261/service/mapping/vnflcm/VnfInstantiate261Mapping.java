@@ -41,6 +41,7 @@ public interface VnfInstantiate261Mapping extends Connectivity261Mapping, VimCon
  	@Mapping(target = "vimConnectionInfo", ignore = true)
 	VnfInstantiate map(InstantiateVnfRequest o);
 
+	@Mapping(target = "vnfVirtualLinkDescId", source ="vmfVirtualLinkDescId")
 	@Mapping(target = "extManagedVirtualLinkId", ignore = true)
 	ExternalManagedVirtualLink mapToExternalManagedVirtualLink(ExtManagedVirtualLinkData o);
 
@@ -106,12 +107,13 @@ public interface VnfInstantiate261Mapping extends Connectivity261Mapping, VimCon
 	InstantiateVnfRequest map(VnfInstantiate req);
 
 	@SuppressWarnings("null")
-	default Map<String,VimConnectionInfo> mapToMapOfVimConnectionInfo(List<VimConnectionInformation> value) {
+	default Map<String,VimConnectionInfo> mapToMapOfVimConnectionInfo(final List<VimConnectionInformation> value) {
 		if (null == value) {
 			return Map.of();
 		}
 		return value.stream().collect(Collectors.toMap(x -> x.getVimId(), x -> map(x)));
 	}
 
+	@Mapping(target = "vmfVirtualLinkDescId", source ="vnfVirtualLinkDescId")
 	ExtManagedVirtualLinkData map(ExternalManagedVirtualLink o);
 }

@@ -16,14 +16,17 @@
  */
 package com.ubiqube.etsi.mano.v261.service.mapping;
 
+import java.util.List;
 import java.util.Set;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.Named;
 import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
+import com.ubiqube.etsi.mano.common.v261.model.VimConnectionInfo;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.CpProtocolInfo;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.IpOverEthernetAddressInfoIpAddresses;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfInstance;
@@ -74,6 +77,7 @@ public interface NsInstance261Mapping extends VimResource261Mapping {
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo mapNsScaleInfo(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
+	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "links", ignore = true)
 	VnfInstance map(VnfInstanceDto o);
 
@@ -113,6 +117,9 @@ public interface NsInstance261Mapping extends VimResource261Mapping {
 	VnfInstanceInstantiatedVnfInfo map(VnfInstanceInstantiatedVnfInfoDto o);
 
 	@Mapping(target = "scaleLevel", ignore = true)
+	com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfScaleInfo mapVnfScaleInfo(VnfScaleInfo o);
+
+	@Mapping(target = "scaleLevel", ignore = true)
 	ScaleInfo map(VnfScaleInfo o);
 
 	@Mapping(target = "vnfcCpInfo", ignore = true)
@@ -127,12 +134,27 @@ public interface NsInstance261Mapping extends VimResource261Mapping {
 	@Mapping(target = "vnfdId", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.ScaleInfo map(com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.NsScaleInfo o);
 
-	@Mapping(target = "vimId", ignore = true)
+	@Mapping(target = "vimId", source = "vimConnectionInfo", qualifiedByName = "singleVim")
 	@Mapping(target = "vnfPkgId", ignore = true)
 	VnfInstanceDto map(VnfInstance o);
 
+	@Nullable
+	@Named("singleVim")
+	default String mapSingleVim(final @Nullable List<VimConnectionInfo> value) {
+		if ((null == value) || value.isEmpty()) {
+			return null;
+		}
+		return value.get(0).getVimId();
+	}
+
+	@Mapping(target = "maxScaleLevels", ignore = true)
 	@Mapping(target = "virtualStorageResourceInfo", ignore = true)
 	VnfInstanceInstantiatedVnfInfoDto map(VnfInstanceInstantiatedVnfInfo o);
+
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "numberOfSteps", ignore = true)
+	@Mapping(target = "scaleType", ignore = true)
+	VnfScaleInfo map(com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfScaleInfo o);
 
 	@Mapping(target = "vnfdId", ignore = true)
 	VnfcResourceInfoDto map(VnfcResourceInfo o);

@@ -158,8 +158,8 @@ public interface Connectivity261Mapping {
 
 	IpOverEthernetAddressDataIpAddresses map(IpOverEthernetAddressDataIpAddressesEntity ipAddresses);
 
-	@Mapping(target = "vimConnectionId", ignore = true)
-	@Mapping(target = "vnfVirtualLinkDescId", ignore = true)
+	@Mapping(target = "vimConnectionId", source = "vimId")
+	@Mapping(target = "vnfVirtualLinkDescId", source = "vmfVirtualLinkDescId")
 	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "extManagedMultisiteVirtualLinkId", ignore = true)
 	@Mapping(target = "grants", ignore = true)

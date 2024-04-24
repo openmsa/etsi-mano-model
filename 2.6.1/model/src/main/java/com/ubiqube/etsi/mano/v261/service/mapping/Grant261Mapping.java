@@ -28,6 +28,8 @@ import com.ubiqube.etsi.mano.common.v261.model.lcmgrant.GrantInfo;
 import com.ubiqube.etsi.mano.common.v261.model.lcmgrant.GrantVimAssets;
 import com.ubiqube.etsi.mano.common.v261.model.lcmgrant.ZoneGroupInfo;
 import com.ubiqube.etsi.mano.common.v261.model.lcmgrant.ZoneInfo;
+import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtManagedVirtualLinkData;
+import com.ubiqube.etsi.mano.dao.mano.ExtManagedVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.GrantVimAssetsEntity;
@@ -82,6 +84,10 @@ public interface Grant261Mapping extends VimConnectionInfo261Mapping, Connectivi
 
 	@Mapping(target = "links", ignore = true)
 	Grant map(GrantResponse grantResponse);
+
+	@Mapping(target = "vimId", source = "vimConnectionId")
+	@Mapping(target = "vmfVirtualLinkDescId", source = "vnfVirtualLinkDescId")
+	ExtManagedVirtualLinkData map(ExtManagedVirtualLinkDataEntity o);
 
 	@Mapping(target = "cirConnectionInfo", ignore = true)
 	@Mapping(target = "mciopRepositoryInfo", ignore = true)
