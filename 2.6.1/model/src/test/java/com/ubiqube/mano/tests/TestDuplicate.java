@@ -28,8 +28,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-public class TestDuplicate {
-	@Test
+class TestDuplicate {
 	void scanDuplicatedClasses() throws IOException {
 		final MultiValueMap<Path, Path> all = new LinkedMultiValueMap<>();
 		Files.walk(Paths.get("/home/olivier/workspace/workspace17.1.1/ubi-etsi-mano/etsi-models/2.6.1"))
