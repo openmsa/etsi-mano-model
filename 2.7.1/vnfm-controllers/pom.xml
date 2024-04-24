@@ -10,16 +10,6 @@
 	<name>etsi-vnfm-271</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		<!--
-		<dependency>
-			<groupId>com.ubiqube.orika</groupId>
-			<artifactId>orika-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>ma.glasnost.orika</groupId>
-			<artifactId>ubi-orika-core</artifactId>
-		</dependency>
-		-->
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-orika</artifactId>
@@ -75,11 +65,6 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>ma.glasnost.orika</groupId>
-			<artifactId>ubi-orika-eclipse-tools</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>uk.co.jemos.podam</groupId>
 			<artifactId>podam</artifactId>
 			<scope>test</scope>
@@ -94,5 +79,4 @@
 			</snapshots>
 		</repository>
 	</repositories>
-
 </project>
