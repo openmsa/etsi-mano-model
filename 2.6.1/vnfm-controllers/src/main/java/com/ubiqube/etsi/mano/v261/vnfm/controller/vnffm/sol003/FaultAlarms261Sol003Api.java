@@ -21,9 +21,6 @@
  */
 package com.ubiqube.etsi.mano.v261.vnfm.controller.vnffm.sol003;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -35,8 +32,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.Alarm;
-import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.AlarmModifications;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.Alarm;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.AlarmModifications;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -46,6 +43,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 
 @RequestMapping("/sol003/vnffm/v1/alarms")
 @RolesAllowed({ "ROLE_NFVO" })
