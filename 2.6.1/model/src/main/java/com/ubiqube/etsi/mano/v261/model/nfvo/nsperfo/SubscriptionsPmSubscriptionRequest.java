@@ -17,6 +17,8 @@
 package com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ubiqube.etsi.mano.common.v261.model.SubscriptionAuthentication;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
@@ -41,7 +43,7 @@ public class SubscriptionsPmSubscriptionRequest  {
 
   @Schema(description = "")
   @Valid
-  private SubscriptionsPmSubscriptionRequestAuthentication authentication = null;
+  private SubscriptionAuthentication authentication = null;
  /**
    * Get filter
    * @return filter
@@ -84,15 +86,15 @@ public class SubscriptionsPmSubscriptionRequest  {
    * @return authentication
   **/
   @JsonProperty("authentication")
-  public SubscriptionsPmSubscriptionRequestAuthentication getAuthentication() {
+  public SubscriptionAuthentication getAuthentication() {
     return authentication;
   }
 
-  public void setAuthentication(SubscriptionsPmSubscriptionRequestAuthentication authentication) {
+  public void setAuthentication(SubscriptionAuthentication authentication) {
     this.authentication = authentication;
   }
 
-  public SubscriptionsPmSubscriptionRequest authentication(SubscriptionsPmSubscriptionRequestAuthentication authentication) {
+  public SubscriptionsPmSubscriptionRequest authentication(SubscriptionAuthentication authentication) {
     this.authentication = authentication;
     return this;
   }

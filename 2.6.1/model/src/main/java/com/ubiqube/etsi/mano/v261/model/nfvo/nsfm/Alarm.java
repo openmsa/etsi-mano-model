@@ -119,7 +119,8 @@ public class Alarm {
 	private List<String> correlatedAlarmIds = null;
 
 	@JsonProperty("faultDetails")
-	private String faultDetails = null;
+	@Valid
+	private List<String> faultDetails = null;
 
 	@JsonProperty("_links")
 	private AlarmLinks links = null;
@@ -134,7 +135,7 @@ public class Alarm {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(required = true, description = "Identifier of this Alarm information element. ")
 	@Nonnull
 
 	public String getId() {
@@ -155,7 +156,7 @@ public class Alarm {
 	 *
 	 * @return managedObjectId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(required = true, description = "Identifier of the affected VNF instance. ")
 	@Nonnull
 
 	public String getManagedObjectId() {
@@ -305,7 +306,7 @@ public class Alarm {
 	 *
 	 * @return perceivedSeverity
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(required = true, description = "Perceived severity of the managed object failure. ")
 	@Nonnull
 
 	@Valid
@@ -327,7 +328,7 @@ public class Alarm {
 	 *
 	 * @return eventTime
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(required = true, description = "Time stamp indicating when the fault was observed. ")
 	@Nonnull
 
 	@Valid
@@ -349,7 +350,7 @@ public class Alarm {
 	 *
 	 * @return eventType
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(required = true, description = "Type of event. ")
 	@Nonnull
 
 	@Valid
@@ -453,23 +454,31 @@ public class Alarm {
 		this.correlatedAlarmIds = correlatedAlarmIds;
 	}
 
-	public Alarm faultDetails(final String faultDetails) {
+	public Alarm faultDetails(final List<String> faultDetails) {
 		this.faultDetails = faultDetails;
 		return this;
 	}
 
+	public Alarm addFaultDetailsItem(final String faultDetailsItem) {
+		if (this.faultDetails == null) {
+			this.faultDetails = new ArrayList<>();
+		}
+		this.faultDetails.add(faultDetailsItem);
+		return this;
+	}
+
 	/**
-	 * Provides additional information about the fault..
+	 * Provides additional information about the fault.
 	 *
 	 * @return faultDetails
 	 **/
-	@Schema(description = "Provides additional information about the fault.. ")
+	@Schema(description = "Provides additional information about the fault. ")
 
-	public String getFaultDetails() {
+	public List<String> getFaultDetails() {
 		return faultDetails;
 	}
 
-	public void setFaultDetails(final String faultDetails) {
+	public void setFaultDetails(final List<String> faultDetails) {
 		this.faultDetails = faultDetails;
 	}
 
