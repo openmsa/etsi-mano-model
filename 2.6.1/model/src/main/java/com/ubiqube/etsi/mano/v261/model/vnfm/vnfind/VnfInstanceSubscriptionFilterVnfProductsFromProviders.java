@@ -23,6 +23,7 @@ import java.util.Objects;
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ubiqube.etsi.mano.v261.model.vnfm.VnfInstanceSubscriptionFilterVnfProducts;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Nonnull;

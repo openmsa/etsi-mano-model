@@ -21,17 +21,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.annotation.Nonnull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtVirtualLinkInfo;
+import com.ubiqube.etsi.mano.common.v261.model.nslcm.LcmOperationStateType;
+import com.ubiqube.etsi.mano.common.v261.model.nslcm.LcmOperationType;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.AffectedVirtualLink;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.AffectedVirtualStorage;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.AffectedVnfc;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfInfoModifications;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 /**
  * This type represents a VNF lifecycle management operation occurrence
@@ -612,7 +618,7 @@ public class VnfLcmOperationOccurrenceNotification {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final VnfLcmOperationOccurrenceNotification vnfLcmOperationOccurrenceNotification = (VnfLcmOperationOccurrenceNotification) o;

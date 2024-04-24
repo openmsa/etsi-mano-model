@@ -18,15 +18,14 @@ package com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt;
 
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.annotation.Nonnull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.PerceivedSeverityType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 /**
  * This type represents the escalated value of the perceived severity for an

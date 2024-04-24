@@ -18,16 +18,15 @@ package com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt;
 
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.annotation.Nonnull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FaultyResourceType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 /**
  * This type represents the faulty virtual resources that have a negative impact
@@ -35,7 +34,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Schema(description = "This type represents the faulty virtual resources that have a negative impact on a VNF. ")
 @Validated
-
 
 public class FaultyResourceInfo {
 	@JsonProperty("faultyResource")

@@ -20,17 +20,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.EventType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FaultyResourceType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.PerceivedSeverityType;
 import com.ubiqube.etsi.mano.v261.model.vnfm.VnfInstanceSubscriptionFilter;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import jakarta.validation.Valid;
 
 /**
  * This type represents a subscription filter related to notifications about VNF
@@ -43,7 +44,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Schema(description = "This type represents a subscription filter related to notifications about VNF faults. At a particular nesting level in the filter structure, the following applies: All attributes shall match in order for the filter to match (logical \"and\" between different filter attributes). If an attribute is an array, the attribute shall match if at least one of the values in the array matches (logical \"or\" between the values of one filter attribute). ")
 @Validated
-
 
 public class FmNotificationsFilter {
 	@JsonProperty("vnfInstanceSubscriptionFilter")
@@ -109,7 +109,7 @@ public class FmNotificationsFilter {
 
 	/**
 	 * Filter criteria to select VNF instances about which to notify.
-	 * 
+	 *
 	 * @return vnfInstanceSubscriptionFilter
 	 **/
 	@Schema(description = "Filter criteria to select VNF instances about which to notify.     ")
@@ -142,7 +142,7 @@ public class FmNotificationsFilter {
 	 * AlarmClearedNotification * AlarmListRebuiltNotification The permitted values
 	 * of the \"notificationTypes\" attribute are spelled exactly as the names of
 	 * the notification types to facilitate automated code generation systems.
-	 * 
+	 *
 	 * @return notificationTypes
 	 **/
 	@Schema(description = "Match particular notification types. Permitted values: * AlarmNotification * AlarmClearedNotification * AlarmListRebuiltNotification The permitted values of the \"notificationTypes\" attribute are spelled exactly as the names of the notification types to facilitate automated code generation systems. ")
@@ -170,7 +170,7 @@ public class FmNotificationsFilter {
 
 	/**
 	 * Match VNF alarms with a faulty resource type listed in this attribute.
-	 * 
+	 *
 	 * @return faultyResourceTypes
 	 **/
 	@Schema(description = "Match VNF alarms with a faulty resource type listed in this attribute. ")
@@ -200,7 +200,7 @@ public class FmNotificationsFilter {
 
 	/**
 	 * Match VNF alarms with a perceived severity listed in this attribute.
-	 * 
+	 *
 	 * @return perceivedSeverities
 	 **/
 	@Schema(description = "Match VNF alarms with a perceived severity listed in this attribute. ")
@@ -230,7 +230,7 @@ public class FmNotificationsFilter {
 
 	/**
 	 * Match VNF alarms with an event type listed in this attribute.
-	 * 
+	 *
 	 * @return eventTypes
 	 **/
 	@Schema(description = "Match VNF alarms with an event type listed in this attribute. ")
@@ -260,7 +260,7 @@ public class FmNotificationsFilter {
 
 	/**
 	 * Match VNF alarms with a probable cause listed in this attribute.
-	 * 
+	 *
 	 * @return probableCauses
 	 **/
 	@Schema(description = "Match VNF alarms with a probable cause listed in this attribute. ")

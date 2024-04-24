@@ -18,15 +18,14 @@ package com.ubiqube.etsi.mano.v261.model.vnfm.vnffm;
 
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.annotation.Nonnull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ubiqube.etsi.mano.v261.model.vnfm.vnflcm.NotificationLink;
+import com.ubiqube.etsi.mano.common.v261.model.vnf.NotificationLink;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 /**
  * Links to resources related to this notification.

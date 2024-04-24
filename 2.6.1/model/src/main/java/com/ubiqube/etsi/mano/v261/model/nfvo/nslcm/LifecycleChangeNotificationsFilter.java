@@ -20,17 +20,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.LcmOperationStateType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.NsInstanceSubscriptionFilter;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import jakarta.validation.Valid;
 
 /**
  * This type represents a subscription filter related to notifications about NS
@@ -44,7 +43,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Schema(description = "This type represents a subscription filter related to notifications about  NS lifecycle changes. It shall comply with the provisions defined in Table 6.5.3.8-1. At a particular nesting level in the filter structure, the following applies:  All attributes shall match in order for the filter to match (logical \"and\" between different filter attributes).  If an attribute is an array, the attribute shall match if at least one of the values in the array matches (logical \"or\" between the values of one filter attribute). ")
 @Validated
-
 
 public class LifecycleChangeNotificationsFilter {
 	@JsonProperty("nsInstanceSubscriptionFilter")

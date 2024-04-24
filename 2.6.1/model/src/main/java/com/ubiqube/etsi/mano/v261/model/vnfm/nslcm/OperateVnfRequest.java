@@ -30,13 +30,12 @@ package com.ubiqube.etsi.mano.v261.model.vnfm.nslcm;
 
 import java.util.Map;
 
-import jakarta.annotation.Nonnull;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfOperationalStateType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.StopType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import jakarta.annotation.Nonnull;
 
 /**
  * This type represents request parameters for the \&quot;Operate VNF\&quot;

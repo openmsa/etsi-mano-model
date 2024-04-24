@@ -20,24 +20,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.annotation.Nonnull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.EventType;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.PerceivedSeverityType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import jakarta.annotation.Nonnull;
+import jakarta.validation.Valid;
 
 /**
  * The alarm data type encapsulates information about an alarm.
  */
 @Schema(description = "The alarm data type encapsulates information about an alarm. ")
 @Validated
-
 
 public class Alarm {
 	@JsonProperty("id")
@@ -133,7 +132,7 @@ public class Alarm {
 
 	/**
 	 * Identifier of this Alarm information element.
-	 * 
+	 *
 	 * @return id
 	 **/
 	@Schema(required = true, description = "Identifier of this Alarm information element. ")
@@ -154,7 +153,7 @@ public class Alarm {
 
 	/**
 	 * Identifier of the affected VNF instance.
-	 * 
+	 *
 	 * @return managedObjectId
 	 **/
 	@Schema(required = true, description = "Identifier of the affected VNF instance. ")
@@ -201,7 +200,7 @@ public class Alarm {
 
 	/**
 	 * The virtualised resources that are causing the VNF fault.
-	 * 
+	 *
 	 * @return rootCauseFaultyResource
 	 **/
 	@Schema(required = true, description = "The virtualised resources that are causing the VNF fault. ")
@@ -224,7 +223,7 @@ public class Alarm {
 
 	/**
 	 * Time stamp indicating when the alarm is raised by the managed object.
-	 * 
+	 *
 	 * @return alarmRaisedTime
 	 **/
 	@Schema(required = true, description = "Time stamp indicating when the alarm is raised by the managed object. ")
@@ -246,7 +245,7 @@ public class Alarm {
 	/**
 	 * Time stamp indicating when the alarm was last changed. It shall be present if
 	 * the alarm has been updated.
-	 * 
+	 *
 	 * @return alarmChangedTime
 	 **/
 	@Schema(description = "Time stamp indicating when the alarm was last changed. It shall be present if the alarm has been updated. ")
@@ -267,7 +266,7 @@ public class Alarm {
 	/**
 	 * Time stamp indicating when the alarm was cleared. It shall be present if the
 	 * alarm has been cleared.
-	 * 
+	 *
 	 * @return alarmClearedTime
 	 **/
 	@Schema(description = "Time stamp indicating when the alarm was cleared. It shall be present if the alarm has been cleared. ")
@@ -288,7 +287,7 @@ public class Alarm {
 	/**
 	 * Acknowledgement state of the alarm. Permitted values: * UNACKNOWLEDGED *
 	 * ACKNOWLEDGED.
-	 * 
+	 *
 	 * @return ackState
 	 **/
 	@Schema(required = true, description = "Acknowledgement state of the alarm. Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. ")
@@ -309,7 +308,7 @@ public class Alarm {
 
 	/**
 	 * Perceived severity of the managed object failure.
-	 * 
+	 *
 	 * @return perceivedSeverity
 	 **/
 	@Schema(required = true, description = "Perceived severity of the managed object failure. ")
@@ -332,7 +331,7 @@ public class Alarm {
 
 	/**
 	 * Time stamp indicating when the fault was observed.
-	 * 
+	 *
 	 * @return eventTime
 	 **/
 	@Schema(required = true, description = "Time stamp indicating when the fault was observed. ")
@@ -353,7 +352,7 @@ public class Alarm {
 
 	/**
 	 * Type of event.
-	 * 
+	 *
 	 * @return eventType
 	 **/
 	@Schema(required = true, description = "Type of event. ")
@@ -376,7 +375,7 @@ public class Alarm {
 
 	/**
 	 * Additional information to clarify the type of the fault.
-	 * 
+	 *
 	 * @return faultType
 	 **/
 	@Schema(description = "Additional information to clarify the type of the fault. ")
@@ -396,7 +395,7 @@ public class Alarm {
 
 	/**
 	 * Information about the probable cause of the fault.
-	 * 
+	 *
 	 * @return probableCause
 	 **/
 	@Schema(required = true, description = "Information about the probable cause of the fault. ")
@@ -419,7 +418,7 @@ public class Alarm {
 	 * Attribute indicating if this fault is the root for other correlated alarms.
 	 * If TRUE, then the alarms listed in the attribute CorrelatedAlarmId are caused
 	 * by this fault.
-	 * 
+	 *
 	 * @return isRootCause
 	 **/
 	@Schema(required = true, description = "Attribute indicating if this fault is the root for other correlated alarms. If TRUE, then the alarms listed in the attribute CorrelatedAlarmId are caused by this fault. ")
@@ -448,7 +447,7 @@ public class Alarm {
 
 	/**
 	 * List of identifiers of other alarms correlated to this fault.
-	 * 
+	 *
 	 * @return correlatedAlarmIds
 	 **/
 	@Schema(description = "List of identifiers of other alarms correlated to this fault. ")
@@ -476,7 +475,7 @@ public class Alarm {
 
 	/**
 	 * Provides additional information about the fault.
-	 * 
+	 *
 	 * @return faultDetails
 	 **/
 	@Schema(description = "Provides additional information about the fault. ")
@@ -496,7 +495,7 @@ public class Alarm {
 
 	/**
 	 * Get links
-	 * 
+	 *
 	 * @return links
 	 **/
 	@Schema(required = true, description = "")
