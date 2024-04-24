@@ -26,10 +26,10 @@ import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
-import com.ubiqube.etsi.mano.nfvo.v261.model.lcmgrant.GrantRequest;
 import com.ubiqube.etsi.mano.test.TestHelper;
-import com.ubiqube.etsi.mano.vnfm.v261.OrikaMapperVnfm261;
-import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v261.nfvo.lcmgrant.GrantRequest;
+import com.ubiqube.etsi.mano.v261.vnfm.nslcm.VnfLcmOpOcc;
+import com.ubiqube.etsi.mano.v261.vnfm.service.OrikaMapperVnfm261;
 
 /**
  *

@@ -26,12 +26,12 @@ import com.ubiqube.etsi.mano.dao.mano.NsdInstance;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.v2.nfvo.NsBlueprint;
-import com.ubiqube.etsi.mano.nfvo.v261.OrikaConfigurationNfvo261;
-import com.ubiqube.etsi.mano.nfvo.v261.model.lcmgrant.GrantRequest;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.NsdInfo;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.NsInstance;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.NsLcmOpOcc;
 import com.ubiqube.etsi.mano.test.TestHelper;
+import com.ubiqube.etsi.mano.v261.nfvo.lcmgrant.GrantRequest;
+import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdInfo;
+import com.ubiqube.etsi.mano.v261.nfvo.nslcm.NsInstance;
+import com.ubiqube.etsi.mano.v261.nfvo.nslcm.NsLcmOpOcc;
+import com.ubiqube.etsi.mano.v261.nfvo.service.OrikaConfigurationNfvo261;
 
 class MappingTest extends TestHelper {
 

@@ -28,7 +28,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfInstance;
 import com.ubiqube.etsi.mano.dao.mano.ExtVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.v2.BlueprintParameters;
-import com.ubiqube.etsi.mano.nfvo.v261.OrikaConfigurationNfvo261;
+import com.ubiqube.etsi.mano.v261.nfvo.service.OrikaConfigurationNfvo261;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.OrikaSystemProperties;

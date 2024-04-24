@@ -27,12 +27,12 @@ import com.ubiqube.etsi.mano.dao.mano.NsdPackageNsdPackage;
 import com.ubiqube.etsi.mano.dao.mano.NsdPackageVnfPackage;
 import com.ubiqube.etsi.mano.dao.mano.PnfDescriptor;
 import com.ubiqube.etsi.mano.dao.rfc7807.FailureDetails;
-import com.ubiqube.etsi.mano.nfvo.v261.OrikaConfigurationNfvo261;
 import com.ubiqube.etsi.mano.nfvo.v261.factory.TestFactory;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.NsdOnboardingStateType;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.NsdInfo;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.NsdOperationalStateType;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nsd.sol005.NsdUsageStateType;
+import com.ubiqube.etsi.mano.v261.nfvo.nsd.NsdOnboardingStateType;
+import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdInfo;
+import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdOperationalStateType;
+import com.ubiqube.etsi.mano.v261.nfvo.nsd.sol005.NsdUsageStateType;
+import com.ubiqube.etsi.mano.v261.nfvo.service.OrikaConfigurationNfvo261;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.impl.DefaultMapperFactory;

@@ -24,13 +24,13 @@ import java.time.OffsetDateTime;
 import org.junit.jupiter.api.Test;
 
 import com.ubiqube.etsi.mano.dao.mano.dto.NsLcmOpOccs;
-import com.ubiqube.etsi.mano.nfvo.v261.OrikaConfigurationNfvo261;
 import com.ubiqube.etsi.mano.nfvo.v261.factory.TestFactory;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.AffectedVnf;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.AffectedVnf.ChangeResultEnum;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.AffectedVnf.ChangeTypeEnum;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.NsLcmOpOcc;
-import com.ubiqube.etsi.mano.nfvo.v261.model.nslcm.NsLcmOpOccResourceChanges;
+import com.ubiqube.etsi.mano.v261.nfvo.nslcm.AffectedVnf;
+import com.ubiqube.etsi.mano.v261.nfvo.nslcm.NsLcmOpOcc;
+import com.ubiqube.etsi.mano.v261.nfvo.nslcm.NsLcmOpOccResourceChanges;
+import com.ubiqube.etsi.mano.v261.nfvo.nslcm.AffectedVnf.ChangeResultEnum;
+import com.ubiqube.etsi.mano.v261.nfvo.nslcm.AffectedVnf.ChangeTypeEnum;
+import com.ubiqube.etsi.mano.v261.nfvo.service.OrikaConfigurationNfvo261;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.impl.DefaultMapperFactory;

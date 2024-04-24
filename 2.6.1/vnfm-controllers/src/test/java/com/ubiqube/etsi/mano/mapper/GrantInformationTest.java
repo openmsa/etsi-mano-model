@@ -22,8 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
-import com.ubiqube.etsi.mano.nfvo.v261.model.lcmgrant.ResourceDefinition;
-import com.ubiqube.etsi.mano.vnfm.v261.OrikaMapperVnfm261;
+import com.ubiqube.etsi.mano.v261.nfvo.lcmgrant.ResourceDefinition;
+import com.ubiqube.etsi.mano.v261.vnfm.service.OrikaMapperVnfm261;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.impl.DefaultMapperFactory;

@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 
 import com.ubiqube.etsi.mano.dao.mano.VnfCompute;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedCompute;
-import com.ubiqube.etsi.mano.vnfm.v261.OrikaMapperVnfm261;
+import com.ubiqube.etsi.mano.v261.vnfm.service.OrikaMapperVnfm261;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.impl.DefaultMapperFactory;

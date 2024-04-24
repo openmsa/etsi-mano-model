@@ -45,8 +45,8 @@ import com.ubiqube.etsi.mano.dao.mano.dto.VnfInstantiatedInfo;
 import com.ubiqube.etsi.mano.dao.mano.dto.VnfLcmOpOccs;
 import com.ubiqube.etsi.mano.dao.mano.v2.BlueprintParameters;
 import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
-import com.ubiqube.etsi.mano.vnfm.v261.OrikaMapperVnfm261;
-import com.ubiqube.etsi.mano.vnfm.v261.model.nslcm.InstantiateVnfRequest;
+import com.ubiqube.etsi.mano.v261.vnfm.nslcm.InstantiateVnfRequest;
+import com.ubiqube.etsi.mano.v261.vnfm.service.OrikaMapperVnfm261;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.impl.DefaultMapperFactory;

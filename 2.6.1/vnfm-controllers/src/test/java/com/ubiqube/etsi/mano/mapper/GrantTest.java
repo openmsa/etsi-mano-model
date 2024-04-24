@@ -29,8 +29,8 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.dao.mano.ExtManagedVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.GrantVimAssetsEntity;
-import com.ubiqube.etsi.mano.nfvo.v261.model.lcmgrant.GrantRequest;
-import com.ubiqube.etsi.mano.vnfm.v261.OrikaMapperVnfm261;
+import com.ubiqube.etsi.mano.v261.nfvo.lcmgrant.GrantRequest;
+import com.ubiqube.etsi.mano.v261.vnfm.service.OrikaMapperVnfm261;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.impl.DefaultMapperFactory;

@@ -16,7 +16,7 @@
  */
 package com.ubiqube.etsi.mano.mapper;
 
-import com.ubiqube.etsi.mano.vnfm.v261.OrikaMapperVnfm261;
+import com.ubiqube.etsi.mano.v261.vnfm.service.OrikaMapperVnfm261;
 
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;

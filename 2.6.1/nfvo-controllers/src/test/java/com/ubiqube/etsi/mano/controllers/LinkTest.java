@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test;
 
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPkgInfoLinks;
-import com.ubiqube.etsi.mano.nfvo.v261.controller.vnf.VnfPackage261Sol003Api;
+import com.ubiqube.etsi.mano.v261.nfvo.controller.vnf.VnfPackage261Sol003Api;
 
 /**
  *
