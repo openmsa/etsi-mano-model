@@ -62,11 +62,6 @@
 			<artifactId>mapstruct</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.ubiqube.orika</groupId>
-			<artifactId>orika-spring-boot-starter</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
