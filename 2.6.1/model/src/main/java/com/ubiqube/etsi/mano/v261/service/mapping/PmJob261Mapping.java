@@ -31,7 +31,6 @@ import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmJobReports;
 import com.ubiqube.etsi.mano.v261.service.mapping.subscription.BaseSubscription261Mapping;
 
 import jakarta.annotation.Nullable;
-import jakarta.validation.Valid;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface PmJob261Mapping extends BaseSubscription261Mapping, DateTimeMapping {
@@ -80,7 +79,7 @@ public interface PmJob261Mapping extends BaseSubscription261Mapping, DateTimeMap
 	@Mapping(target = "resolvedSubObjectInstanceIds", ignore = true)
 	@Mapping(target = "subscriptionRemoteId", ignore = true)
 	@Mapping(target = "vimConnectionInformation", ignore = true)
-	PmJob map(@Valid CreatePmJobRequest createPmJobRequest);
+	PmJob map(CreatePmJobRequest createPmJobRequest);
 
 	@Mapping(target = "entries", ignore = true)
 	com.ubiqube.etsi.mano.common.v261.model.nsperfo.PerformanceReport map(PerformanceReport x);

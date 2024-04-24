@@ -27,19 +27,21 @@ import com.ubiqube.etsi.mano.dao.mano.alarm.AlarmNotification;
 import com.ubiqube.etsi.mano.dao.mano.alarm.Alarms;
 import com.ubiqube.etsi.mano.dao.mano.alarm.ResourceHandle;
 import com.ubiqube.etsi.mano.service.mapping.DateTimeMapping;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.Alarm;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.AlarmModifications;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FaultyResourceType;
-import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.Alarm;
-import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.AlarmModifications;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmClearedNotification;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmListRebuiltNotification;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface Alarm261Mapping extends DateTimeMapping {
 
+	@Mapping(target = "rootCauseFaultyComponent", ignore = true)
 	@Mapping(target = "isRootCause", source = "rootCause")
 	@Mapping(target = "links", ignore = true)
 	Alarm map(Alarms o);
 
+	@Mapping(target = "vnfcInstanceIds", ignore = true)
 	@Mapping(target = "alarmAcknowledgedTime", source = "alarmClearedTime")
 	@Mapping(target = "rootCause", source = "isRootCause")
 	@Mapping(target = "version", ignore = true)

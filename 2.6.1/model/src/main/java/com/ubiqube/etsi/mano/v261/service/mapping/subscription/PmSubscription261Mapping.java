@@ -22,6 +22,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo.SubscriptionsPmSubscriptionRequest;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmNotificationsFilter;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmSubscription;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmSubscriptionRequest;
@@ -42,5 +43,15 @@ public interface PmSubscription261Mapping extends BaseSubscription261Mapping {
 	@Mapping(target = "verbosity", ignore = true)
 	@Mapping(target = "version", constant = "2.6.1")
 	Subscription map(PmSubscriptionRequest body);
+
+	@Mapping(target = "api", ignore = true)
+	@Mapping(target = "audit", ignore = true)
+	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "nodeFilter", ignore = true)
+	@Mapping(target = "subscriptionType", constant = "VNFPM")
+	@Mapping(target = "verbosity", ignore = true)
+	@Mapping(target = "version", constant = "2.6.1")
+	Subscription map(SubscriptionsPmSubscriptionRequest pmSubscriptionRequest);
 
 }

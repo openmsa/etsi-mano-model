@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v261.service.mapping;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -225,13 +226,21 @@ public interface NsInstance261Mapping extends VimResource261Mapping {
 
 	@Mapping(target = "flavourId", ignore = true)
 	@Mapping(target = "links", ignore = true)
-	@Mapping(target = "nestedNsInstanceId", ignore = true)
-	@Mapping(target = "nsState", ignore = true)
-	@Mapping(target = "nsdId", ignore = true)
-	@Mapping(target = "nsdInfoId", ignore = true)
+	@Mapping(target = "nestedNsInstanceId", source = "nestedNsInstance")
+	@Mapping(target = "nsState", source = "instantiationState")
+	@Mapping(target = "nsdId", source = "nsdInfo.nsdId")
+	@Mapping(target = "nsdInfoId", source = "nsdInfo.id")
 	@Mapping(target = "pnfInfo", ignore = true)
 	@Mapping(target = "virtualLinkInfo", ignore = true)
 	NsInstance map(NsdInstance o);
+
+	@Nullable
+	default List<UUID> map(final @Nullable List<NsdInstance> value) {
+		if (null == value) {
+			return null;
+		}
+		return value.stream().map(NsdInstance::getId).toList();
+	}
 
 	@Mapping(target = "isDynamic", ignore = true)
 	IpOverEthernetAddressInfoIpAddresses map(IpOverEthernetAddressDataIpAddressesEntity o);
