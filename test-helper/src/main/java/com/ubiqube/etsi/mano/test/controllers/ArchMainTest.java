@@ -33,7 +33,7 @@ public class ArchMainTest {
 
 	private static final String PACKAGE_INFO = "package-info";
 
-	private static final String V_CONTROLLER = "..v*.controller..";
+	private static final String V_CONTROLLER = "..v*.[vnfm|nfvo|em].controller..";
 
 	@ArchTest
 	public static final ArchRule ensure_interface_name = classes()
