@@ -26,17 +26,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.VnfPackageOnboardingNotification;
+import com.ubiqube.etsi.mano.v261.service.mapping.pkg.VnfPackageOnboardingNotification261Mapping;
 import com.ubiqube.etsi.mano.vnfm.fc.vnf.VnfNotificationFrontController;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnfPkgNotification261Sol003Controller implements VnfPkgNotification261Sol003Api {
 	private final VnfNotificationFrontController fc;
-	private final MapperFacade mapper;
+	private final VnfPackageOnboardingNotification261Mapping mapper;
 
-	public VnfPkgNotification261Sol003Controller(final VnfNotificationFrontController fc, final MapperFacade mapper) {
+	public VnfPkgNotification261Sol003Controller(final VnfNotificationFrontController fc, final VnfPackageOnboardingNotification261Mapping mapper) {
 		this.fc = fc;
 		this.mapper = mapper;
 	}
@@ -48,7 +48,7 @@ public class VnfPkgNotification261Sol003Controller implements VnfPkgNotification
 
 	@Override
 	public ResponseEntity<Void> onboardingAction(final VnfPackageOnboardingNotification body) {
-		final com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification.class);
+		final com.ubiqube.etsi.mano.dao.mano.VnfPackageOnboardingNotification req = mapper.map(body);
 		return fc.onNotification(req, "2.6.1");
 	}
 
@@ -59,7 +59,7 @@ public class VnfPkgNotification261Sol003Controller implements VnfPkgNotification
 
 	@Override
 	public ResponseEntity<Void> changeAction(@Valid final VnfPackageChangeNotification body) {
-		final com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification req = mapper.map(body, com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification.class);
+		final com.ubiqube.etsi.mano.dao.mano.VnfPackageChangeNotification req = mapper.map(body);
 		return fc.onChange(req, "2.6.1");
 	}
 

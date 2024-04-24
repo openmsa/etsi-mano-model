@@ -32,14 +32,15 @@ import com.ubiqube.etsi.mano.dao.mano.version.ApiVersionType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmNotificationsFilter;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmSubscription;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmSubscriptionLinks;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nsperfo.PmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.service.mapping.subscription.PmSubscription261Mapping;
 import com.ubiqube.etsi.mano.v261.vnfm.controller.vnffm.sol002.FaultmngtSubscriptions261Sol002Api;
 import com.ubiqube.etsi.mano.v261.vnfm.service.SubscriptionLinkable261Vnfm;
 
 import jakarta.validation.Valid;
-import ma.glasnost.orika.MapperFacade;
 
 /**
  *
@@ -49,22 +50,22 @@ import ma.glasnost.orika.MapperFacade;
 @RestController
 public class VnfPmSubscriptions261Sol002Controller implements VnfPmSubscriptions261Sol002Api, SubscriptionLinkable261Vnfm {
 	private final SubscriptionFrontController subscriptionService;
-	private final MapperFacade mapper;
+	private final PmSubscription261Mapping mapper;
 
-	public VnfPmSubscriptions261Sol002Controller(final SubscriptionFrontController subscriptionService, final MapperFacade mapper) {
+	public VnfPmSubscriptions261Sol002Controller(final SubscriptionFrontController subscriptionService, final PmSubscription261Mapping mapper) {
 		this.subscriptionService = subscriptionService;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<PmSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return subscriptionService.search(requestParams, x -> mapper.map(x, PmSubscription.class), VnfPmSubscriptions261Sol002Controller::makeLinks, ApiVersionType.SOL003_VNFPM);
+		return subscriptionService.search(requestParams, x -> mapper.map(x, PmNotificationsFilter.class), VnfPmSubscriptions261Sol002Controller::makeLinks, ApiVersionType.SOL003_VNFPM);
 	}
 
 	@Override
 	public ResponseEntity<PmSubscription> subscriptionsPost(@Valid final PmSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
-		return subscriptionService.create(req, x -> mapper.map(x, PmSubscription.class), VnfPmSubscriptions261Sol002Api.class, VnfPmSubscriptions261Sol002Controller::makeLinks, VnfPmSubscriptions261Sol002Controller::makeSelf, ApiVersionType.SOL003_VNFPM);
+		final Subscription req = mapper.map(body);
+		return subscriptionService.create(req, x -> mapper.map(x, PmNotificationsFilter.class), VnfPmSubscriptions261Sol002Api.class, VnfPmSubscriptions261Sol002Controller::makeLinks, VnfPmSubscriptions261Sol002Controller::makeSelf, ApiVersionType.SOL003_VNFPM);
 	}
 
 	@Override
@@ -74,7 +75,7 @@ public class VnfPmSubscriptions261Sol002Controller implements VnfPmSubscriptions
 
 	@Override
 	public ResponseEntity<PmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, PmSubscription.class), VnfPmSubscriptions261Sol002Controller::makeLinks, ApiVersionType.SOL003_VNFPM);
+		return subscriptionService.findById(subscriptionId, x -> mapper.map(x, PmNotificationsFilter.class), VnfPmSubscriptions261Sol002Controller::makeLinks, ApiVersionType.SOL003_VNFPM);
 	}
 
 	private static String makeSelf(final PmSubscription subscription) {

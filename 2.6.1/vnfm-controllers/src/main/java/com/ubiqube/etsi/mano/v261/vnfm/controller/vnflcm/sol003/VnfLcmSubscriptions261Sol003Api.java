@@ -18,9 +18,6 @@ package com.ubiqube.etsi.mano.v261.vnfm.controller.vnflcm.sol003;
 
 import java.util.List;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,8 +29,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ubiqube.etsi.mano.model.ProblemDetails;
-import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.LccnSubscription;
-import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscription;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscriptionRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -42,6 +39,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 
 @RequestMapping(value = { "/sol003/vnflcm/v1/subscriptions", "/sol002/vnflcm/v1/subscriptions" })
 @RolesAllowed({ "ROLE_NFVO" })

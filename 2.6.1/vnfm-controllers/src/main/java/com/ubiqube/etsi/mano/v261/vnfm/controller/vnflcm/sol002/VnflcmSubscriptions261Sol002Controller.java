@@ -30,36 +30,37 @@ import com.ubiqube.etsi.mano.controller.subscription.ApiAndType;
 import com.ubiqube.etsi.mano.dao.subscription.SubscriptionType;
 import com.ubiqube.etsi.mano.service.auth.model.ApiTypesEnum;
 import com.ubiqube.etsi.mano.service.event.model.Subscription;
-import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.LccnSubscription;
-import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.LccnSubscriptionLinks;
-import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscription;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscriptionLinks;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LccnSubscriptionRequest;
+import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.LifecycleChangeNotificationsFilter;
+import com.ubiqube.etsi.mano.v261.service.mapping.subscription.LccnSubscription261Mapping;
 import com.ubiqube.etsi.mano.v261.vnfm.controller.vnflcm.sol003.VnfLcmSubscriptions261Sol003Api;
 import com.ubiqube.etsi.mano.v261.vnfm.service.SubscriptionLinkable261Vnfm;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfLcmSubscriptionFrontController;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import ma.glasnost.orika.MapperFacade;
 
 @RestController
 public class VnflcmSubscriptions261Sol002Controller implements VnflcmSubscriptions261Sol002Api, SubscriptionLinkable261Vnfm {
 	private final VnfLcmSubscriptionFrontController frontController;
-	private final MapperFacade mapper;
+	private final LccnSubscription261Mapping mapper;
 
-	public VnflcmSubscriptions261Sol002Controller(final VnfLcmSubscriptionFrontController frontController, final MapperFacade mapper) {
+	public VnflcmSubscriptions261Sol002Controller(final VnfLcmSubscriptionFrontController frontController, final LccnSubscription261Mapping mapper) {
 		this.frontController = frontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<LccnSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
-		return frontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, LccnSubscription.class), VnflcmSubscriptions261Sol002Controller::makeLinks);
+		return frontController.search(requestParams, nextpageOpaqueMarker, x -> mapper.map(x, LifecycleChangeNotificationsFilter.class), VnflcmSubscriptions261Sol002Controller::makeLinks);
 	}
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsPost(@Valid final LccnSubscriptionRequest body) {
-		final Subscription req = mapper.map(body, Subscription.class);
-		return frontController.create(req, x -> mapper.map(x, LccnSubscription.class), VnflcmSubscriptions261Sol002Api.class, VnflcmSubscriptions261Sol002Controller::makeLinks, VnflcmSubscriptions261Sol002Controller::getSelfLink);
+		final Subscription req = mapper.map(body);
+		return frontController.create(req, x -> mapper.map(x, LifecycleChangeNotificationsFilter.class), VnflcmSubscriptions261Sol002Api.class, VnflcmSubscriptions261Sol002Controller::makeLinks, VnflcmSubscriptions261Sol002Controller::getSelfLink);
 	}
 
 	@Override
@@ -69,7 +70,7 @@ public class VnflcmSubscriptions261Sol002Controller implements VnflcmSubscriptio
 
 	@Override
 	public ResponseEntity<LccnSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return frontController.findById(subscriptionId, x -> mapper.map(x, LccnSubscription.class), VnflcmSubscriptions261Sol002Controller::makeLinks);
+		return frontController.findById(subscriptionId, x -> mapper.map(x, LifecycleChangeNotificationsFilter.class), VnflcmSubscriptions261Sol002Controller::makeLinks);
 	}
 
 	private static String getSelfLink(final LccnSubscription subscription) {

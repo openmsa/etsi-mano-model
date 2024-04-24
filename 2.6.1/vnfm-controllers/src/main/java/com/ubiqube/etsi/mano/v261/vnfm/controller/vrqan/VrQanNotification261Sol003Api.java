@@ -16,18 +16,18 @@
  */
 package com.ubiqube.etsi.mano.v261.vnfm.controller.vrqan;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ubiqube.etsi.mano.v261.model.vnfm.vnffm.AlarmNotification;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmClearedNotification;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmListRebuiltNotification;
-import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmNotification;
+
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 
 /**
  *
