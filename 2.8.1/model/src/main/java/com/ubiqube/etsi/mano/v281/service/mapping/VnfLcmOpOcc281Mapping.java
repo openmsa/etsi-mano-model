@@ -91,7 +91,6 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	ExtLinkPortInfoEntity map(ExtLinkPortInfo o);
 
 	@Mapping(target = "vimConnectionInfo", ignore = true)
-	@Mapping(target = "vnfcInfoModifications", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications map(VnfInfoModifications o);
 
@@ -155,7 +154,6 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "manoResourceId", ignore = true)
 	@Mapping(target = "removedInstantiated", ignore = true)
 	@Mapping(target = "reservationId", ignore = true)
-	@Mapping(target = "resourceDefinitionId", ignore = true)
 	@Mapping(target = "resourceGroupId", ignore = true)
 	@Mapping(target = "resourceId", source = "computeResource.resourceId")
 	@Mapping(target = "resourceProviderId", source = "computeResource.resourceProviderId")
@@ -166,7 +164,6 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	@Mapping(target = "vimLevelResourceType", source = "computeResource.vimLevelResourceType")
 	@Mapping(target = "vnfLcmOpOccs", ignore = true)
-	@Mapping(target = "zoneId", ignore = true)
 	@Mapping(target = "flavorId", ignore = true)
 	@Mapping(target = "imageId", ignore = true)
 	@Mapping(target = "storageResourceIds", ignore = true)
@@ -184,6 +181,7 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	VnfInstantiatedCompute map(AffectedVnfc o);
 
+	@Mapping(target = "zoneId", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "aliasName", ignore = true)
 	@Mapping(target = "audit", ignore = true)
@@ -193,7 +191,6 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "manoResourceId", ignore = true)
 	@Mapping(target = "removedInstantiated", ignore = true)
 	@Mapping(target = "reservationId", ignore = true)
-	@Mapping(target = "resourceDefinitionId", ignore = true)
 	@Mapping(target = "resourceGroupId", ignore = true)
 	@Mapping(target = "resourceId", source = "storageResource.resourceId")
 	@Mapping(target = "resourceProviderId", source = "storageResource.resourceProviderId")
@@ -205,7 +202,6 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	@Mapping(target = "vimLevelResourceType", source = "storageResource.vimLevelResourceType")
 	@Mapping(target = "vnfLcmOpOccs", ignore = true)
-	@Mapping(target = "zoneId", ignore = true)
 	@Mapping(target = "vimConnectionInformation.accessInfo", ignore = true)
 	@Mapping(target = "vimConnectionInformation.audit", ignore = true)
 	@Mapping(target = "vimConnectionInformation.cnfInfo", ignore = true)
@@ -229,7 +225,6 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "manoResourceId", ignore = true)
 	@Mapping(target = "removedInstantiated", ignore = true)
 	@Mapping(target = "reservationId", ignore = true)
-	@Mapping(target = "resourceDefinitionId", ignore = true)
 	@Mapping(target = "resourceGroupId", ignore = true)
 	@Mapping(target = "resourceId", source = "networkResource.resourceId")
 	@Mapping(target = "resourceProviderId", source = "networkResource.resourceProviderId")
@@ -241,7 +236,6 @@ public interface VnfLcmOpOcc281Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
 	@Mapping(target = "vimLevelResourceType", source = "networkResource.vimLevelResourceType")
 	@Mapping(target = "vnfLcmOpOccs", ignore = true)
-	@Mapping(target = "zoneId", ignore = true)
 	@Mapping(target = "instantiationLevel", ignore = true)
 	@Mapping(target = "vimConnectionInformation.accessInfo", ignore = true)
 	@Mapping(target = "vimConnectionInformation.audit", ignore = true)
