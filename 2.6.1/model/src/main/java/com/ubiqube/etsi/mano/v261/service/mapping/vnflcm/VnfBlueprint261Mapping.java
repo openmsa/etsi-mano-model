@@ -57,10 +57,12 @@ public interface VnfBlueprint261Mapping extends StringToUriMapping, Connectivity
 	VnfInfoModifications map(com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications o);
 
 	default List<VimConnectionInfo> mapListOfVimConn(final Map<String, VimConnectionInformation> o) {
+		if (null == o) {
+			return List.of();
+		}
 		return o.values().stream().map(this::map).toList();
 	}
 
-	@ValueMapping(source = "PARTIALLY_COMPLETED", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "STARTED", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "SUCCESS", target = MappingConstants.THROW_EXCEPTION)
 	LcmOperationStateType map(OperationStatusType o);

@@ -54,6 +54,9 @@ public interface VnfBlueprint281Mapping extends StringToUriMapping, Connectivity
 	VnfLcmOpOcc map(VnfBlueprint x);
 
 	default List<VimConnectionInfo> mapListOfVimConn(final Map<String, VimConnectionInformation> o) {
+		if (null == o) {
+			return List.of();
+		}
 		return o.values().stream().map(this::map).toList();
 	}
 
