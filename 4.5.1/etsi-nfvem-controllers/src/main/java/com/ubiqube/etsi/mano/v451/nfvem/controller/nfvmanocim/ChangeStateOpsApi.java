@@ -25,8 +25,11 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
+@RequestMapping(value = "/sol009/nfvmanocim/v1", headers = { "Version=1.1.0" })
+@RolesAllowed({ "ROLE_OSSBSS" })
 @Validated
 public interface ChangeStateOpsApi {
 	@Operation(summary = "", description = "The API consumer can use the GET method to retrieve status  information about a change state operation occurrence by reading  an \"Individual change state operation occurrence\" resource. See clause 5.5.9.3.2. ", tags = {})

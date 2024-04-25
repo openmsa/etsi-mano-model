@@ -21,8 +21,11 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
+@RequestMapping(value = "/sol009/nfvmanologm/v1", headers = { "Version=1.1.0" })
+@RolesAllowed({ "ROLE_OSSBSS" })
 @Validated
 public interface LogNotification451Api {
 	@Operation(summary = "", description = "The GET method allows the API producer to test the notification endpoint that is provided by the API consumer, e.g. during subscription. See clause 8.5.9.3.2.", tags = {})

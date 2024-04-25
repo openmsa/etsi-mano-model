@@ -29,8 +29,11 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
+@RequestMapping(value = "/sol009/nfvmanocim/v1", headers = { "Version=1.1.0" })
+@RolesAllowed({ "ROLE_OSSBSS" })
 @Validated
 public interface PeerEntitiesApi {
 	@Operation(summary = "", description = "The GET method queries information and configuration in the producer NFV-MANO functional entity with regards to multiple peer entities. See clause 5.5.13.3.2. ", tags = {})

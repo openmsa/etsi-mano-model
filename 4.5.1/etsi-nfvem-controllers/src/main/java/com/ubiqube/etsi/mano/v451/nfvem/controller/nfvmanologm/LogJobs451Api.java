@@ -29,8 +29,11 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
+@RequestMapping(value = "/sol009/nfvmanologm/v1", headers = { "Version=1.1.0" })
+@RolesAllowed({ "ROLE_OSSBSS" })
 @Validated
 public interface LogJobs451Api {
 
