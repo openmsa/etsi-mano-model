@@ -27,7 +27,7 @@ public class SwaggerDocumentationConfigNfvo261 {
 	GroupedOpenApi customImplementationNfvo261() {
 		return GroupedOpenApi.builder()
 				.group("nfvo-etsi-mano-2.6.1")
-				.packagesToScan("com.ubiqube.etsi.mano.nfvo.v261")
+				.packagesToScan("com.ubiqube.etsi.mano.v261.nfvo")
 				.build();
 	}
 
