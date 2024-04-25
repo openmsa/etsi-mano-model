@@ -23,9 +23,6 @@ package com.ubiqube.etsi.mano.v261.vnfm.controller.vnfind.sol003;
 
 import java.util.List;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -49,6 +46,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 
 @RequestMapping("/sol003/vnfind/v1/subscriptions")
 @RolesAllowed({ "ROLE_NFVO" })
@@ -69,7 +68,7 @@ public interface VnfIndSubscriptions261Sol003Api {
 			@ApiResponse(responseCode = "504", description = "504 GATEWAY TIMEOUT If the API producer encounters a timeout while waiting for a response from an upstream server (i.e. a server that the API producer communicates with when fulfilling a request), it should respond with this response code. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
 	@GetMapping(produces = { "application/json" })
 	ResponseEntity<List<VnfIndicatorSubscription>> subscriptionsGet(
-			@Parameter(in = ParameterIn.QUERY, description = "Attribute-based filtering expression according to clause 5.2 of ETSI GS NFV SOL 013. The VNFM shall support receiving this parameter as part of the  URI query string. The NFVO may supply this parameter.  All attribute names that appear in the VnfIndicatorSubscription and in data types referenced from it shall be supported by the  VNFM in the filter expression. ", schema = @Schema()) @Valid @RequestParam(value = "filter", required = false) MultiValueMap<String, String> requestParams,
+			@Parameter(in = ParameterIn.QUERY, description = "Attribute-based filtering expression according to clause 5.2 of ETSI GS NFV SOL 013. The VNFM shall support receiving this parameter as part of the  URI query string. The NFVO may supply this parameter.  All attribute names that appear in the VnfIndicatorSubscription and in data types referenced from it shall be supported by the  VNFM in the filter expression. ", schema = @Schema()) @RequestParam MultiValueMap<String, String> requestParams,
 			@Parameter(in = ParameterIn.QUERY, description = "Marker to obtain the next page of a paged response. Shall be  supported by the VNFM if the VNFM supports alternative 2 (paging)  according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource. ", schema = @Schema()) @Valid @RequestParam(value = "nextpage_opaque_marker", required = false) String nextpageOpaqueMarker);
 
 	@Operation(summary = "", description = "Subscribe. The POST method creates a new subscription. As the result of successfully executing this method, a new \"Individual subscription\" resource as defined in clause 8.4.6 shall have been created. This method shall not trigger any notification. Creation of two \"Individual subscription\" resources with the same callbackURI and the same filter can result in performance degradation and will provide duplicates of notifications to the NFVO, and might make sense only in very rare use cases. Consequently, the VNFM may either allow creating a new \"Individual subscription\" resource if another \"Individual subscription\" resource with the same filter and callbackUri already exists (in which case it shall return the \"201 Created\" response code), or may decide to not create a duplicate \"Individual subscription\" resource (in which case it shall return a \"303 See Other\" response code referencing the existing \"Individual subscription\" resource with the same filter and callbackUri). This method shall follow the provisions specified in the tables 8.4.5.3.1-1 and 8.4.5.3.1-2 for URI query parameters, request and response data structures, and response codes. ", tags = {})
