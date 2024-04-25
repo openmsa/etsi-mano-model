@@ -128,7 +128,6 @@ public interface Connectivity271Mapping {
 
 	@Mapping(target = "parentCpConfigId", ignore = true)
 	@Mapping(target = "netAttDefResourceId", ignore = true)
-	@Mapping(target = "cpInstanceId", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "vnfExtCpDataEntity", ignore = true)
 	VnfExtCpConfiguration map(VnfExtCpConfig cpConfig);

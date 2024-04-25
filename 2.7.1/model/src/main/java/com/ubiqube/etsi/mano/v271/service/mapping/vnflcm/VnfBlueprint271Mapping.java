@@ -67,7 +67,7 @@ public interface VnfBlueprint271Mapping extends StringToUriMapping, Connectivity
 	@Mapping(target = "networkResource.resourceProviderId", source = "resourceProviderId")
 	@Mapping(target = "networkResource.resourceId", source = "resourceId")
 	@Mapping(target = "networkResource.vimLevelResourceType", source = "vimLevelResourceType")
-	@Mapping(target = "vnfVirtualLinkDescId", source = "virtualLinkDescId")
+	@Mapping(target = "vnfVirtualLinkDescId", source = "toscaName")
 	AffectedVirtualLink map(VnfInstantiatedVirtualLink o);
 
 	@Mapping(target = "computeResource.vimConnectionId", source = "vimConnectionInformation.vimId")

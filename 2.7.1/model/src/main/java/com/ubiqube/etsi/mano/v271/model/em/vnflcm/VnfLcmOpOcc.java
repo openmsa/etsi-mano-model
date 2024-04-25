@@ -21,9 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -32,11 +29,13 @@ import com.ubiqube.etsi.mano.v271.model.em.vnfconfig.ProblemDetails2;
 import com.ubiqube.etsi.mano.v271.service.VnfLcmOpOcc271Deserializer;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * This type represents a VNF lifecycle management operation occurrence.
  */
-@Schema (description= "This type represents a VNF lifecycle management operation occurrence. " )
+@Schema(description = "This type represents a VNF lifecycle management operation occurrence. ")
 @Validated
 @JsonDeserialize(using = VnfLcmOpOcc271Deserializer.class)
 public class VnfLcmOpOcc {
@@ -99,7 +98,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true , description = "Identifier of this VNF lifecycle management operation occurrence. ")
+	@Schema(required = true, description = "Identifier of this VNF lifecycle management operation occurrence. ")
 	@NotNull
 
 	public String getId() {
@@ -120,7 +119,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return operationState
 	 **/
-	@Schema(required = true , description = "The state of the LCM operation. ")
+	@Schema(required = true, description = "The state of the LCM operation. ")
 	@NotNull
 
 	@Valid
@@ -143,7 +142,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return stateEnteredTime
 	 **/
-	@Schema(required = true , description = "Date-time when the current state has been entered. ")
+	@Schema(required = true, description = "Date-time when the current state has been entered. ")
 	@NotNull
 
 	public OffsetDateTime getStateEnteredTime() {
@@ -164,7 +163,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return startTime
 	 **/
-	@Schema(required = true , description = "Date-time of the start of the operation. ")
+	@Schema(required = true, description = "Date-time of the start of the operation. ")
 	@NotNull
 
 	public OffsetDateTime getStartTime() {
@@ -185,7 +184,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true , description = "Identifier of the VNF instance to which the operation applies ")
+	@Schema(required = true, description = "Identifier of the VNF instance to which the operation applies ")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -228,7 +227,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return operation
 	 **/
-	@Schema(required = true , description = "Type of the actual LCM operation represented by this VNF LCM operation occurrence. ")
+	@Schema(required = true, description = "Type of the actual LCM operation represented by this VNF LCM operation occurrence. ")
 	@NotNull
 
 	@Valid
@@ -254,7 +253,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return isAutomaticInvocation
 	 **/
-	@Schema(required = true , description = "Set to true if this VNF LCM operation occurrence has been triggered by an automated procedure inside the VNFM (i.e. ScaleVnf / ScaleVnfToLevel triggered by auto-scale, or HealVnf triggered by auto-heal). Set to false otherwise. ")
+	@Schema(required = true, description = "Set to true if this VNF LCM operation occurrence has been triggered by an automated procedure inside the VNFM (i.e. ScaleVnf / ScaleVnfToLevel triggered by auto-scale, or HealVnf triggered by auto-heal). Set to false otherwise. ")
 	@NotNull
 
 	public Boolean getIsAutomaticInvocation() {
@@ -304,7 +303,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return isCancelPending
 	 **/
-	@Schema(required = true , description = "If the VNF LCM operation occurrence is in \"STARTING\", \"PROCESSING\" or \"ROLLING_BACK\" state and the operation is being cancelled, this attribute shall be set to true. Otherwise, it shall be set to false. ")
+	@Schema(required = true, description = "If the VNF LCM operation occurrence is in \"STARTING\", \"PROCESSING\" or \"ROLLING_BACK\" state and the operation is being cancelled, this attribute shall be set to true. Otherwise, it shall be set to false. ")
 	@NotNull
 
 	public Boolean getIsCancelPending() {
@@ -471,26 +470,26 @@ public class VnfLcmOpOcc {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final VnfLcmOpOcc vnfLcmOpOcc = (VnfLcmOpOcc) o;
 		return Objects.equals(this.id, vnfLcmOpOcc.id) &&
-		Objects.equals(this.operationState, vnfLcmOpOcc.operationState) &&
-		Objects.equals(this.stateEnteredTime, vnfLcmOpOcc.stateEnteredTime) &&
-		Objects.equals(this.startTime, vnfLcmOpOcc.startTime) &&
-		Objects.equals(this.vnfInstanceId, vnfLcmOpOcc.vnfInstanceId) &&
-		Objects.equals(this.grantId, vnfLcmOpOcc.grantId) &&
-		Objects.equals(this.operation, vnfLcmOpOcc.operation) &&
-		Objects.equals(this.isAutomaticInvocation, vnfLcmOpOcc.isAutomaticInvocation) &&
-		Objects.equals(this.operationParams, vnfLcmOpOcc.operationParams) &&
-		Objects.equals(this.isCancelPending, vnfLcmOpOcc.isCancelPending) &&
-		Objects.equals(this.cancelMode, vnfLcmOpOcc.cancelMode) &&
-		Objects.equals(this.error, vnfLcmOpOcc.error) &&
-		Objects.equals(this.resourceChanges, vnfLcmOpOcc.resourceChanges) &&
-		Objects.equals(this.changedInfo, vnfLcmOpOcc.changedInfo) &&
-		Objects.equals(this.changedExtConnectivity, vnfLcmOpOcc.changedExtConnectivity) &&
-		Objects.equals(this.links, vnfLcmOpOcc.links);
+				Objects.equals(this.operationState, vnfLcmOpOcc.operationState) &&
+				Objects.equals(this.stateEnteredTime, vnfLcmOpOcc.stateEnteredTime) &&
+				Objects.equals(this.startTime, vnfLcmOpOcc.startTime) &&
+				Objects.equals(this.vnfInstanceId, vnfLcmOpOcc.vnfInstanceId) &&
+				Objects.equals(this.grantId, vnfLcmOpOcc.grantId) &&
+				Objects.equals(this.operation, vnfLcmOpOcc.operation) &&
+				Objects.equals(this.isAutomaticInvocation, vnfLcmOpOcc.isAutomaticInvocation) &&
+				Objects.equals(this.operationParams, vnfLcmOpOcc.operationParams) &&
+				Objects.equals(this.isCancelPending, vnfLcmOpOcc.isCancelPending) &&
+				Objects.equals(this.cancelMode, vnfLcmOpOcc.cancelMode) &&
+				Objects.equals(this.error, vnfLcmOpOcc.error) &&
+				Objects.equals(this.resourceChanges, vnfLcmOpOcc.resourceChanges) &&
+				Objects.equals(this.changedInfo, vnfLcmOpOcc.changedInfo) &&
+				Objects.equals(this.changedExtConnectivity, vnfLcmOpOcc.changedExtConnectivity) &&
+				Objects.equals(this.links, vnfLcmOpOcc.links);
 	}
 
 	@Override
