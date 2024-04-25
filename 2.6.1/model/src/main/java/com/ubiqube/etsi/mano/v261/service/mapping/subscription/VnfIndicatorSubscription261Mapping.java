@@ -50,7 +50,7 @@ public interface VnfIndicatorSubscription261Mapping extends BaseSubscription261M
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "VNFIND")
 	@Mapping(target = "verbosity", ignore = true)
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "2.6.1")
 	Subscription map(VnfIndicatorSubscriptionRequest body);
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
