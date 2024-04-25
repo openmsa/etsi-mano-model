@@ -23,9 +23,7 @@ import org.mapstruct.Context;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingConstants;
 import org.mapstruct.Named;
-import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.exception.GenericException;
 import com.ubiqube.etsi.mano.mapper.DotMapper;
@@ -39,8 +37,6 @@ import com.ubiqube.etsi.mano.v431.model.vnfm.vrqan.SubscriptionAuthentication;
 
 @Mapper
 public interface BaseSubscription431Mapping extends StringToUriMapping {
-	@ValueMapping(source = "BASIC", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "TLS_CERT", target = MappingConstants.THROW_EXCEPTION)
 	SubscriptionAuthentication.AuthTypeEnum map(AuthType o);
 
 	@SuppressWarnings("unchecked")
