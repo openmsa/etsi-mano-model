@@ -21,9 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * This type represents criteria that define a threshold.
@@ -38,11 +35,8 @@ public class ThresholdsThresholdCriteria {
 	 **/
 	private String performanceMetric = null;
 
-	@XmlType(name = "ThresholdTypeEnum")
-	@XmlEnum(String.class)
 	public enum ThresholdTypeEnum {
 
-		@XmlEnumValue("SIMPLE")
 		SIMPLE(String.valueOf("SIMPLE"));
 
 		private final String value;

@@ -23,9 +23,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * This type represents a notification that is sent when a threshold has been
@@ -65,12 +62,9 @@ public class SubscriptionThresholdCrossedNotificationThresholdCrossedNotificatio
 	 **/
 	private String thresholdId = null;
 
-	@XmlType(name = "CrossingDirectionEnum")
-	@XmlEnum(String.class)
 	public enum CrossingDirectionEnum {
 
-		@XmlEnumValue("UP")
-		UP(String.valueOf("UP")), @XmlEnumValue("DOWN")
+		UP(String.valueOf("UP")),
 		DOWN(String.valueOf("DOWN"));
 
 		private final String value;
