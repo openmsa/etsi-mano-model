@@ -43,7 +43,6 @@
 		<dependency>
 			<groupId>uk.co.jemos.podam</groupId>
 			<artifactId>podam</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -66,7 +65,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-orika</artifactId>
-			<version>3.0.0</version>
+			<version>${version.mano-commons}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
