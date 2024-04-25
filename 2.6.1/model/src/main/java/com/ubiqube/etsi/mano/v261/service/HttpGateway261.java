@@ -71,7 +71,6 @@ import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vnfind.VnfIndicator;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vnfind.VnfIndicatorNotificationsFilter;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vnfind.VnfIndicatorSubscription;
-import com.ubiqube.etsi.mano.v261.model.vnfm.vnfind.VnfIndicatorSubscriptionRequest;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.VrQuotaAvailNotificationsFilter;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.VrQuotaAvailSubscription;
 import com.ubiqube.etsi.mano.v261.service.mapping.Grant261Mapping;
@@ -317,17 +316,17 @@ public class HttpGateway261 extends AbstractHttpGateway {
 
 	@Override
 	public Class<?> getVnfIndicatorSubscriptionClass() {
-		return VnfIndicatorSubscriptionRequest.class;
+		return VnfIndicatorSubscription.class;
 	}
 
 	@Override
 	public Object createVnfInstanceSubscriptionRequest(final Subscription subscription) {
-		return lccnSubscriptionMapping.map(subscription, LifecycleChangeNotificationsFilter.class);
+		return lccnSubscriptionMapping.mapToLccnSubscriptionRequest(subscription, LifecycleChangeNotificationsFilter.class);
 	}
 
 	@Override
 	public Object createVnfIndicatorSubscriptionRequest(final Subscription subscription) {
-		return vnfIndicatorSubscriptionMapping.map(subscription, VnfIndicatorNotificationsFilter.class);
+		return vnfIndicatorSubscriptionMapping.mapToRequest(subscription, VnfIndicatorNotificationsFilter.class);
 	}
 
 	@Override
