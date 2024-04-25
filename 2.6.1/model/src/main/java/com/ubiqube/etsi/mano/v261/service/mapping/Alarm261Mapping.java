@@ -33,6 +33,8 @@ import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FaultyResourceType;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmClearedNotification;
 import com.ubiqube.etsi.mano.v261.model.vnfm.vrqan.AlarmListRebuiltNotification;
 
+import jakarta.validation.Valid;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface Alarm261Mapping extends DateTimeMapping {
 
@@ -75,5 +77,10 @@ public interface Alarm261Mapping extends DateTimeMapping {
 	@Mapping(target = "alarmId", ignore = true)
 	@Mapping(target = "nfvoId", ignore = true)
 	AlarmNotification map(AlarmListRebuiltNotification body);
+
+	@Mapping(target = "alarmClearedTime", ignore = true)
+	@Mapping(target = "alarmId", ignore = true)
+	@Mapping(target = "nfvoId", ignore = true)
+	AlarmNotification map(com.ubiqube.etsi.mano.v261.model.vnfm.vnffm.@Valid AlarmNotification body);
 
 }
