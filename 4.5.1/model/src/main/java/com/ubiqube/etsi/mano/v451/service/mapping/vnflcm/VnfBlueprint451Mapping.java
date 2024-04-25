@@ -141,7 +141,6 @@ public interface VnfBlueprint451Mapping extends StringToUriMapping, Connectivity
 	@ValueMapping(source = "CHANGE_EXTERNAL_VNF_CONNECTIVITY", target = "CHANGE_EXT_CONN")
 	@ValueMapping(source = "MODIFY_INFORMATION", target = "MODIFY_INFO")
 	@ValueMapping(source = "UPDATE", target = MappingConstants.THROW_EXCEPTION)
-	@ValueMapping(source = "SELECT_DEPL_MODS", target = MappingConstants.THROW_EXCEPTION)
 	LcmOperationType map(PlanOperationType o);
 
 }
