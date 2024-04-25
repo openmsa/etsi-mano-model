@@ -38,7 +38,6 @@ public interface VnfIndicatorSubscription281Mapping extends BaseSubscription281M
 	@Mapping(target = "api", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
-	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", ignore = true)
 	@Mapping(target = "version", ignore = true)
