@@ -22,14 +22,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @RestController
-public class LogJobsApiController implements LogJobsApi {
+public class LogJobs331Controller implements LogJobs331Api {
 
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public LogJobsApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public LogJobs331Controller(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }

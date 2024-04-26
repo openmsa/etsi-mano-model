@@ -14,7 +14,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.nfvem.v331.controller.nfvmanologm;
+package com.ubiqube.etsi.mano.nfvem.v331.controller.nfvmanopm;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,14 +22,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @RestController
-public class SubscriptionsApiController implements SubscriptionsApi {
+public class NfvManoPmPmJobs331Controller implements NfvManoPmPmJobs331Api {
 
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public SubscriptionsApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public NfvManoPmPmJobs331Controller(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }

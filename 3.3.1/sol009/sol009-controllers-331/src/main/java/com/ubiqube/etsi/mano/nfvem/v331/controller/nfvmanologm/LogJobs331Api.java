@@ -59,9 +59,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public interface LogJobsApi {
+public interface LogJobs331Api {
 
-    Logger log = LoggerFactory.getLogger(LogJobsApi.class);
+    Logger log = LoggerFactory.getLogger(LogJobs331Api.class);
 
     default Optional<ObjectMapper> getObjectMapper(){
         return Optional.empty();

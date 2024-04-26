@@ -37,7 +37,7 @@ import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ManoServiceInterfaceMod
  *
  */
 @RestController
-public class ManoEntityApiController implements ManoEntityApi {
+public class ManoEntity331Controller implements ManoEntity331Api {
 
 	@Override
 	public ResponseEntity<Void> manoEntityChangeStatePost(@Valid final ChangeStateRequest body) {

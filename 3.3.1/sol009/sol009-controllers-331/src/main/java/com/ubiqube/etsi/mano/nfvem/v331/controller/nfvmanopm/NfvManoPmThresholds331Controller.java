@@ -22,14 +22,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @RestController
-public class ThresholdsApiController implements ThresholdsApi {
+public class NfvManoPmThresholds331Controller implements NfvManoThresholds331Api {
 
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public ThresholdsApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public NfvManoPmThresholds331Controller(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }

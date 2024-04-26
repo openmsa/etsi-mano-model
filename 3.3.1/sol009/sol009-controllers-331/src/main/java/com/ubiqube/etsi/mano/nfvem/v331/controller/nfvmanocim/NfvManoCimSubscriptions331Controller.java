@@ -23,10 +23,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.CreatePeerEntityRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntity;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModificationRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModifications;
+import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.CimSubscription;
+import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.CimSubscriptionRequest;
 
 /**
  *
@@ -34,34 +32,28 @@ import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModific
  *
  */
 @RestController
-public class PeerEntitiesApiController implements PeerEntitiesApi {
+public class NfvManoCimSubscriptions331Controller implements NfvManoCimSubscriptions331Api {
 
 	@Override
-	public ResponseEntity<List<PeerEntity>> peerEntitiesGet(@Valid final String nextpageOpaqueMarker) {
+	public ResponseEntity<List<CimSubscription>> subscriptionsGet(@Valid final String nextpageOpaqueMarker) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<Void> peerEntitiesPeerEntityIdDelete(final String peerEntityId) {
+	public ResponseEntity<CimSubscription> subscriptionsPost(@Valid final CimSubscriptionRequest body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<PeerEntity> peerEntitiesPeerEntityIdGet(final String peerEntityId) {
+	public ResponseEntity<Void> subscriptionsSubscriptionIdDelete(final String subscriptionId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<PeerEntityConfigModifications> peerEntitiesPeerEntityIdPatch(@Valid final PeerEntityConfigModificationRequest body, final String peerEntityId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<PeerEntity> peerEntitiesPost(@Valid final CreatePeerEntityRequest body) {
+	public ResponseEntity<CimSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

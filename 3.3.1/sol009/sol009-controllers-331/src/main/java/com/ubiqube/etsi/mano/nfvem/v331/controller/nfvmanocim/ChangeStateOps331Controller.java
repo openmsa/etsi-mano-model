@@ -14,34 +14,35 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.nfvem.v331.controller.nfvmanopm;
+package com.ubiqube.etsi.mano.nfvem.v331.controller.nfvmanocim;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
+
+import jakarta.validation.Valid;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
 
+import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ChangeStateOpOcc;
+
+/**
+ *
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
+ *
+ */
 @RestController
-public class PmJobsApiController implements PmJobsApi {
+public class ChangeStateOps331Controller implements ChangeStateOps331Api {
 
-    private final ObjectMapper objectMapper;
+	@Override
+	public ResponseEntity<ChangeStateOpOcc> changeStateOpsChangeStateOpOccIdGet(final String changeStateOpOccId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    private final HttpServletRequest request;
-
-    @org.springframework.beans.factory.annotation.Autowired
-    public PmJobsApiController(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
-
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
-
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<List<ChangeStateOpOcc>> changeStateOpsGet(@Valid final String nextpageOpaqueMarker) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

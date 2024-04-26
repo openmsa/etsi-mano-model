@@ -57,9 +57,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public interface SubscriptionsApi {
+public interface NfvManoLogmSubscriptions331Api {
 
-    Logger log = LoggerFactory.getLogger(SubscriptionsApi.class);
+    Logger log = LoggerFactory.getLogger(NfvManoLogmSubscriptions331Api.class);
 
     default Optional<ObjectMapper> getObjectMapper(){
         return Optional.empty();
