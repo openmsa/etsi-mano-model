@@ -58,16 +58,11 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	ScaleInfo map(com.ubiqube.etsi.mano.v431.model.em.vnflcm.ScaleInfo o);
 
 	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "containerNamespace", ignore = true)
 	@Mapping(target = "mcioConstraints", ignore = true)
 	@Mapping(target = "reservationId", ignore = true)
 	@Mapping(target = "resourceDefinitionId", source = "id")
 	@Mapping(target = "resourceGroupId", ignore = true)
-	@Mapping(target = "resourceId", ignore = true)
-	@Mapping(target = "resourceProviderId", ignore = true)
-	@Mapping(target = "vimConnectionId", ignore = true)
-	@Mapping(target = "vimLevelAdditionalResourceInfo", ignore = true)
-	@Mapping(target = "vimLevelResourceType", ignore = true)
+	@Mapping(target = ".", source = "resource")
 	@Mapping(target = "zoneId", ignore = true)
 	GrantInformationExt map(ResourceDefinition o);
 
@@ -97,9 +92,9 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	@Mapping(target = "dstVnfdId", ignore = true)
 	@Mapping(target = "error", ignore = true)
 	@Mapping(target = "flavourId", ignore = true)
-	@Mapping(target = "instanceLink", ignore = true)
+	@Mapping(target = "instanceLink", source = "links.vnfInstance.href")
 	@Mapping(target = "instantiationLevelId", ignore = true)
-	@Mapping(target = "lcmLink", ignore = true)
+	@Mapping(target = "lcmLink", source = "links.vnfLcmOpOcc.href")
 	@Mapping(target = "networkReservationId", ignore = true)
 	@Mapping(target = "operation", ignore = true)
 	@Mapping(target = "placementConstraints", ignore = true)
