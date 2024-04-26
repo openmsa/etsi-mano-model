@@ -82,7 +82,7 @@ public class VnfIndicatorNotificationsFilter {
 	}
 
 	@JsonProperty("notificationTypes")
-	private NotificationTypesEnum notificationTypes = null;
+	private List<NotificationTypesEnum> notificationTypes = null;
 
 	@JsonProperty("indicatorIds")
 	@Valid
@@ -109,7 +109,7 @@ public class VnfIndicatorNotificationsFilter {
 		this.vnfInstanceSubscriptionFilter = vnfInstanceSubscriptionFilter;
 	}
 
-	public VnfIndicatorNotificationsFilter notificationTypes(final NotificationTypesEnum notificationTypes) {
+	public VnfIndicatorNotificationsFilter notificationTypes(final List<NotificationTypesEnum> notificationTypes) {
 		this.notificationTypes = notificationTypes;
 		return this;
 	}
@@ -123,11 +123,11 @@ public class VnfIndicatorNotificationsFilter {
 	 **/
 	@Schema(description = "Match particular notification types.  Permitted values: - VnfIndicatorValueChangeNotification - SupportedIndicatorsChangeNotification See note. ")
 
-	public NotificationTypesEnum getNotificationTypes() {
+	public List<NotificationTypesEnum> getNotificationTypes() {
 		return notificationTypes;
 	}
 
-	public void setNotificationTypes(final NotificationTypesEnum notificationTypes) {
+	public void setNotificationTypes(final List<NotificationTypesEnum> notificationTypes) {
 		this.notificationTypes = notificationTypes;
 	}
 
