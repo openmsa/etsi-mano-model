@@ -21,6 +21,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.nfvmanologm.LogJobsSubscriptionFrontController;
 import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.LogmSubscription;
 import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.LogmSubscriptionRequest;
 
@@ -28,29 +29,30 @@ import jakarta.validation.Valid;
 
 @RestController
 public class NfvManoLogmSubscriptions331Controller implements NfvManoLogmSubscriptions331Api {
+	private final LogJobsSubscriptionFrontController logJobsFrontController;
+
+	public NfvManoLogmSubscriptions331Controller(final LogJobsSubscriptionFrontController logJobsFrontController) {
+		this.logJobsFrontController = logJobsFrontController;
+	}
 
 	@Override
 	public ResponseEntity<List<LogmSubscription>> subscriptionsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		// TODO Auto-generated method stub
-		return null;
+		return logJobsFrontController.search(filter, LogmSubscription.class);
 	}
 
 	@Override
 	public ResponseEntity<LogmSubscription> subscriptionsPost(@Valid final LogmSubscriptionRequest body) {
-		// TODO Auto-generated method stub
-		return null;
+		return logJobsFrontController.create(body, LogmSubscription.class);
 	}
 
 	@Override
 	public ResponseEntity<Void> subscriptionsSubscriptionIdDelete(final String subscriptionId) {
-		// TODO Auto-generated method stub
-		return null;
+		return logJobsFrontController.delete(subscriptionId);
 	}
 
 	@Override
 	public ResponseEntity<LogmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		// TODO Auto-generated method stub
-		return null;
+		return logJobsFrontController.findById(subscriptionId, LogmSubscription.class);
 	}
 
 }

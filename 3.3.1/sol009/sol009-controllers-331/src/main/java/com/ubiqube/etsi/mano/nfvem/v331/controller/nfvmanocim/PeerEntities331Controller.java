@@ -18,15 +18,16 @@ package com.ubiqube.etsi.mano.nfvem.v331.controller.nfvmanocim;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.controller.nfvmanocim.PeerEntityFrontController;
 import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.CreatePeerEntityRequest;
 import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntity;
 import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModificationRequest;
 import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModifications;
+
+import jakarta.validation.Valid;
 
 /**
  *
@@ -35,35 +36,35 @@ import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModific
  */
 @RestController
 public class PeerEntities331Controller implements PeerEntities331Api {
+	private final PeerEntityFrontController peerEntityFrontController;
+
+	public PeerEntities331Controller(final PeerEntityFrontController peerEntityFrontController) {
+		this.peerEntityFrontController = peerEntityFrontController;
+	}
 
 	@Override
-	public ResponseEntity<List<PeerEntity>> peerEntitiesGet(@Valid final String nextpageOpaqueMarker) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseEntity<List<PeerEntity>> peerEntitiesGet(@Valid final String filter, @Valid final String allFields, @Valid final String fields, @Valid final String excludeFields, @Valid final String excludeDefault, @Valid final String nextpageOpaqueMarker) {
+		return peerEntityFrontController.search(filter, PeerEntity.class);
 	}
 
 	@Override
 	public ResponseEntity<Void> peerEntitiesPeerEntityIdDelete(final String peerEntityId) {
-		// TODO Auto-generated method stub
-		return null;
+		return peerEntityFrontController.delete(peerEntityId);
 	}
 
 	@Override
 	public ResponseEntity<PeerEntity> peerEntitiesPeerEntityIdGet(final String peerEntityId) {
-		// TODO Auto-generated method stub
-		return null;
+		return peerEntityFrontController.findById(peerEntityId, PeerEntity.class);
 	}
 
 	@Override
-	public ResponseEntity<PeerEntityConfigModifications> peerEntitiesPeerEntityIdPatch(@Valid final PeerEntityConfigModificationRequest body, final String peerEntityId) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseEntity<PeerEntityConfigModifications> peerEntitiesPeerEntityIdPatch(final String peerEntityId, @Valid final PeerEntityConfigModificationRequest body) {
+		return peerEntityFrontController.patch(peerEntityId, body, PeerEntityConfigModifications.class);
 	}
 
 	@Override
 	public ResponseEntity<PeerEntity> peerEntitiesPost(@Valid final CreatePeerEntityRequest body) {
-		// TODO Auto-generated method stub
-		return null;
+		return peerEntityFrontController.create(body, PeerEntity.class);
 	}
 
 }
