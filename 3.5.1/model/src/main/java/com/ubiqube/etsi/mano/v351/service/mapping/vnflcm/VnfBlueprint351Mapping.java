@@ -70,7 +70,7 @@ public interface VnfBlueprint351Mapping extends StringToUriMapping, Connectivity
 	ModificationsTriggeredByVnfPkgChange map(VnfPkgChange o);
 
 	default VnfLcmOpOccLcmCoordinations mapToVnfLcmOpOccLcmCoordinations(final Set<VnfLcmCoordination> value) {
-		if (null == value) {
+		if ((null == value) || value.isEmpty()) {
 			return null;
 		}
 		return map(value.iterator().next());
@@ -79,7 +79,7 @@ public interface VnfBlueprint351Mapping extends StringToUriMapping, Connectivity
 	VnfLcmOpOccLcmCoordinations map(VnfLcmCoordination next);
 
 	default VnfLcmOpOccRejectedLcmCoordinations mapToVnfLcmOpOccRejectedLcmCoordinations(final Set<RejectedLcmCoordination> value) {
-		if (null == value) {
+		if ((null == value) || value.isEmpty()) {
 			return null;
 		}
 		return map(value.iterator().next());
