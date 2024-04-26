@@ -16,32 +16,41 @@
  */
 package com.ubiqube.etsi.mano.nfvem.v331.controller.nfvmanopm;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanopm.CreateThresholdRequest;
+import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanopm.Threshold;
+
+import jakarta.validation.Valid;
 
 @RestController
-public class NfvManoPmThresholds331Controller implements NfvManoThresholds331Api {
+public class NfvManoPmThresholds331Controller implements NfvManoPmThresholds331Api {
 
-    private final ObjectMapper objectMapper;
+	@Override
+	public ResponseEntity<List<Threshold>> thresholdsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<Threshold> thresholdsPost(@Valid final CreateThresholdRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public NfvManoPmThresholds331Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@Override
+	public ResponseEntity<Void> thresholdsThresholdIdDelete(final String thresholdId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
-
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<Threshold> thresholdsThresholdIdGet(final String thresholdId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
