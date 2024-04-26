@@ -16,32 +16,55 @@
  */
 package com.ubiqube.etsi.mano.nfvem.v331.controller.nfvmanologm;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+
+import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.CompileLogRequest;
+import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.CreateLoggingJobRequest;
+import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.LogReport;
+import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.LoggingJob;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class LogJobs331Controller implements LogJobs331Api {
 
-    private final ObjectMapper objectMapper;
+	@Override
+	public ResponseEntity<List<LoggingJob>> logJobsGet(@Valid final String filter, @Valid final String allFields, @Valid final String fields, @Valid final String excludeFields, @Valid final String excludeDefault, @Valid final String nextpageOpaqueMarker) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    private final HttpServletRequest request;
+	@Override
+	public ResponseEntity<LogReport> logJobsLogJobIdCompileLogPost(final String logJobId, @Valid final CompileLogRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public LogJobs331Controller(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+	@Override
+	public ResponseEntity<Void> logJobsLogJobIdDelete(final String logJobId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public Optional<ObjectMapper> getObjectMapper() {
-        return Optional.ofNullable(objectMapper);
-    }
+	@Override
+	public ResponseEntity<LoggingJob> logJobsLogJobIdGet(final String logJobId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public Optional<HttpServletRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public ResponseEntity<LogReport> logJobsLogJobIdLogReportsLogReportIdGet(final String logJobId, final String logReportId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<LoggingJob> logJobsPost(@Valid final CreateLoggingJobRequest body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
