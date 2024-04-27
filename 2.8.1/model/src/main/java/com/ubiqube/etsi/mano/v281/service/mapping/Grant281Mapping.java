@@ -98,7 +98,6 @@ public interface Grant281Mapping extends VimConnectionInfo281Mapping, Connectivi
 	@Mapping(target = "operation", ignore = true)
 	@Mapping(target = "placementConstraints", ignore = true)
 	@Mapping(target = "targetScaleLevelInfo", ignore = true)
-	@Mapping(target = "vimConnections", ignore = true)
 	@Mapping(target = "vimConstraints", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	GrantResponse map(Grant grant);
