@@ -50,7 +50,7 @@ public class VnfIndNotification261Sol003Controller implements VnfIndNotification
 	@Override
 	public ResponseEntity<Void> valueChangePost(@Valid final @Nonnull VnfIndicatorValueChangeNotification body) {
 		final VnfIndiValueChangeNotification req = mapper.map(body);
-		return fc.valueChangeNotification(req, "3.6.1");
+		return fc.valueChangeNotification(req, "2.6.1");
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class VnfIndNotification261Sol003Controller implements VnfIndNotification
 	@Override
 	public ResponseEntity<Void> supportedChangePost(@Valid final @Nonnull VnfIndicatorValueChangeNotification body) {
 		final VnfIndiValueChangeNotification req = mapper.map(body);
-		return fc.supportedChangeNotification(req, "3.6.1");
+		return fc.supportedChangeNotification(req, "2.6.1");
 	}
 
 }
