@@ -56,8 +56,6 @@ import com.ubiqube.etsi.mano.v451.service.mapping.vnflcm.VnfInstantiate451Mappin
 import com.ubiqube.etsi.mano.v451.vnfm.controller.vnfm.vnfind.Indicators451Sol003Api;
 import com.ubiqube.etsi.mano.vnfm.fc.vnflcm.VnfInstanceGenericFrontController;
 
-import jakarta.validation.Valid;
-
 @RestController
 public class VnfInstances451Sol003Controller implements VnfInstances451Sol003Api {
 	private final VnfInstanceGenericFrontController frontController;
@@ -115,46 +113,46 @@ public class VnfInstances451Sol003Controller implements VnfInstances451Sol003Api
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdHealPost(final String vnfInstanceId, @Valid final HealVnfRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdHealPost(final String vnfInstanceId, final HealVnfRequest body) {
 		return frontController.heal(getSafeUUID(vnfInstanceId), body.getCause(), new HashMap<>(), VnfInstances451Sol003Controller::getLcmLink);
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdInstantiatePost(final String vnfInstanceId, @Valid final InstantiateVnfRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdInstantiatePost(final String vnfInstanceId, final InstantiateVnfRequest body) {
 		final VnfInstantiate req = vnfInstantiateMapping.map(body);
 		return frontController.instantiate(getSafeUUID(vnfInstanceId), req, VnfInstances451Sol003Controller::getLcmLink);
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdOperatePost(final String vnfInstanceId, @Valid final OperateVnfRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdOperatePost(final String vnfInstanceId, final OperateVnfRequest body) {
 		final VnfOperateRequest req = vnfOperateRequestMapping.map(body);
 		return frontController.operate(getSafeUUID(vnfInstanceId), req, VnfInstances451Sol003Controller::getLcmLink);
 	}
 
 	@Override
-	public ResponseEntity<VnfInstance> vnfInstancesVnfInstanceIdPatch(final String vnfInstanceId, @Valid final String body, final OffsetDateTime ifUnmodifiedSince, final String ifMatch) {
+	public ResponseEntity<VnfInstance> vnfInstancesVnfInstanceIdPatch(final String vnfInstanceId, final String body, final OffsetDateTime ifUnmodifiedSince, final String ifMatch) {
 		return frontController.modify(getSafeUUID(vnfInstanceId), body, ifMatch, VnfInstances451Sol003Controller::getInstanceLink);
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdRevertToSnapshotPost(final String vnfInstanceId, @Valid final RevertToVnfSnapshotRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdRevertToSnapshotPost(final String vnfInstanceId, final RevertToVnfSnapshotRequest body) {
 		return frontController.snapshot(getSafeUUID(vnfInstanceId), body);
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdScalePost(final String vnfInstanceId, @Valid final ScaleVnfRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdScalePost(final String vnfInstanceId, final ScaleVnfRequest body) {
 		final VnfScaleRequest req = vnfOperateRequestMapping.map(body);
 		return frontController.scale(getSafeUUID(vnfInstanceId), req, VnfInstances451Sol003Controller::getLcmLink);
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdScaleToLevelPost(final String vnfInstanceId, @Valid final ScaleVnfToLevelRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdScaleToLevelPost(final String vnfInstanceId, final ScaleVnfToLevelRequest body) {
 		final VnfScaleToLevelRequest req = vnfOperateRequestMapping.map(body);
 		return frontController.scaleToLevel(getSafeUUID(vnfInstanceId), req, VnfInstances451Sol003Controller::getLcmLink);
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdTerminatePost(final String vnfInstanceId, @Valid final TerminateVnfRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdTerminatePost(final String vnfInstanceId, final TerminateVnfRequest body) {
 		return frontController.terminate(getSafeUUID(vnfInstanceId), CancelModeTypeEnum.valueOf(body.getTerminationType().toString()), body.getGracefulTerminationTimeout(), VnfInstances451Sol003Controller::getLcmLink);
 	}
 
@@ -238,7 +236,7 @@ public class VnfInstances451Sol003Controller implements VnfInstances451Sol003Api
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdSelectDeplModsPost(final String vnfInstanceId, @Valid final SelectVnfDeployableModulesRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdSelectDeplModsPost(final String vnfInstanceId, final SelectVnfDeployableModulesRequest body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
