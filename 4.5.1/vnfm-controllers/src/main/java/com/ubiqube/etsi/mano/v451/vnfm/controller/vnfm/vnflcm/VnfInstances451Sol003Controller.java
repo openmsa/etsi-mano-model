@@ -73,34 +73,34 @@ public class VnfInstances451Sol003Controller implements VnfInstances451Sol003Api
 	}
 
 	@Override
-	public ResponseEntity<String> vnfInstancesGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+	public ResponseEntity<String> vnfInstancesGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
 		return frontController.search(requestParams, vnfInstanceMapping::map, nextpageOpaqueMarker, VnfInstances451Sol003Controller::makeLinks, VnfInstance.class);
 	}
 
 	@Override
-	public ResponseEntity<VnfInstance> vnfInstancesPost(@Valid final CreateVnfRequest createVnfRequest) {
+	public ResponseEntity<VnfInstance> vnfInstancesPost(final CreateVnfRequest createVnfRequest) {
 		return frontController.create(createVnfRequest.getVnfdId(), createVnfRequest.getVnfInstanceName(), createVnfRequest.getVnfInstanceDescription(), vnfInstanceMapping::map,
 				VnfInstances451Sol003Controller::makeLinks, "");
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdChangeExtConnPost(final String vnfInstanceId, @Valid final ChangeExtVnfConnectivityRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdChangeExtConnPost(final String vnfInstanceId, final ChangeExtVnfConnectivityRequest body) {
 		final ChangeExtVnfConnRequest req = vnfOperateRequestMapping.map(body);
 		return frontController.changeExtConn(getSafeUUID(vnfInstanceId), req, VnfInstances451Sol003Controller::getLcmLink);
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdChangeFlavourPost(final String vnfInstanceId, @Valid final ChangeVnfFlavourRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdChangeFlavourPost(final String vnfInstanceId, final ChangeVnfFlavourRequest body) {
 		return frontController.changeFlavour(getSafeUUID(vnfInstanceId), body, VnfInstances451Sol003Controller::getLcmLink);
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdChangeVnfpkgPost(final String vnfInstanceId, @Valid final ChangeCurrentVnfPkgRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdChangeVnfpkgPost(final String vnfInstanceId, final ChangeCurrentVnfPkgRequest body) {
 		return frontController.changeVnfPkg(getSafeUUID(vnfInstanceId), body, VnfInstances451Sol003Controller::getLcmLink);
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfInstancesVnfInstanceIdCreateSnapshotPost(final String vnfInstanceId, @Valid final CreateVnfSnapshotRequest body) {
+	public ResponseEntity<Void> vnfInstancesVnfInstanceIdCreateSnapshotPost(final String vnfInstanceId, final CreateVnfSnapshotRequest body) {
 		return frontController.createSnapshot(getSafeUUID(vnfInstanceId), body, VnfInstances451Sol003Controller::getLcmLink);
 	}
 
@@ -111,7 +111,7 @@ public class VnfInstances451Sol003Controller implements VnfInstances451Sol003Api
 
 	@Override
 	public ResponseEntity<VnfInstance> vnfInstancesVnfInstanceIdGet(final String vnfInstanceId) {
-		return frontController.findById(getSafeUUID(vnfInstanceId), x -> vnfInstanceMapping.map(x), VnfInstances451Sol003Controller::makeLinks, "");
+		return frontController.findById(getSafeUUID(vnfInstanceId), vnfInstanceMapping::map, VnfInstances451Sol003Controller::makeLinks, "");
 	}
 
 	@Override
