@@ -60,7 +60,6 @@ public interface VnfInstance281Mapping extends VimConnectionInfo281Mapping, Conn
 	com.ubiqube.etsi.mano.v281.model.em.vnflcm.VnfInstance map(VnfInstance vnfInst);
 
 	@Mapping(target = "vnfPkg", ignore = true)
-	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "blueprints", ignore = true)
 	@Mapping(target = "cirConnectionInfo", ignore = true)
