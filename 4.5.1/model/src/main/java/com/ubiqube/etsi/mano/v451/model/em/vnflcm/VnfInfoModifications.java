@@ -17,13 +17,15 @@
 package com.ubiqube.etsi.mano.v451.model.em.vnflcm;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Map;
+import com.ubiqube.etsi.mano.v451.model.nfvo.vnflcm.VimConnectionInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
@@ -59,6 +61,10 @@ public class VnfInfoModifications {
 
 	@JsonProperty("extensions")
 	private Map<String, String> extensions = null;
+
+	@JsonProperty("vimConnectionInfo")
+	@Valid
+	private Map<String, VimConnectionInfo> vimConnectionInfo = null;
 
 	@JsonProperty("vnfdId")
 	private String vnfdId = null;
@@ -183,6 +189,35 @@ public class VnfInfoModifications {
 
 	public void setExtensions(final Map<String, String> extensions) {
 		this.extensions = extensions;
+	}
+
+	public VnfInfoModifications vimConnectionInfo(final Map<String, VimConnectionInfo> vimConnectionInfo) {
+		this.vimConnectionInfo = vimConnectionInfo;
+		return this;
+	}
+
+	public VnfInfoModifications putVimConnectionInfoItem(final String key, final VimConnectionInfo vimConnectionInfoItem) {
+		if (this.vimConnectionInfo == null) {
+			this.vimConnectionInfo = new HashMap<>();
+		}
+		this.vimConnectionInfo.put(key, vimConnectionInfoItem);
+		return this;
+	}
+
+	/**
+	 * If present, this attribute signals modifications the \"vimConnectionInfo\"
+	 * attribute array in \"VnfInstance\".
+	 *
+	 * @return vimConnectionInfo
+	 **/
+	@Schema(description = "If present, this attribute signals modifications the \"vimConnectionInfo\"  attribute array in \"VnfInstance\". ")
+	@Valid
+	public Map<String, VimConnectionInfo> getVimConnectionInfo() {
+		return vimConnectionInfo;
+	}
+
+	public void setVimConnectionInfo(final Map<String, VimConnectionInfo> vimConnectionInfo) {
+		this.vimConnectionInfo = vimConnectionInfo;
 	}
 
 	public VnfInfoModifications vnfdId(final String vnfdId) {
