@@ -53,7 +53,7 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
-@RequestMapping(value = "/sol003/vnfpkgm/v2/", headers = "Version=2.12.0")
+@RequestMapping(value = "/sol005/vnfpkgm/v2/", headers = "Version=2.12.0")
 @RolesAllowed({ "ROLE_VNFM" })
 @Validated
 public interface VnfPackages451Sol005Api {
