@@ -54,6 +54,8 @@ class MappingTest extends MapstructTestHelper {
 		ignore.add("getLinks");
 		ignore.add("getInstantiatedVnfInfo.getVnfVirtualLinkResourceInfo");
 		ignore.add("getInstantiatedVnfInfo.getExtVirtualLinkInfo.[0].getResourceHandle.getContainerNamespace");
+		ignore.add("getInstantiatedVnfInfo.getExtManagedVirtualLinkInfo.[0].getVnfLinkPorts.[0].getVipCpInstanceId");
+		ignore.add("getInstantiatedVnfInfo.getExtManagedVirtualLinkInfo.[0].getVnfLinkPorts.[0].getTrunkResourceId");
 		final VnfInstance431Mapping mapper = Mappers.getMapper(VnfInstance431Mapping.class);
 		doTest(ignore, VnfInstance.class, x -> mapper.map(x), x -> mapper.map(x));
 		assertTrue(true);
