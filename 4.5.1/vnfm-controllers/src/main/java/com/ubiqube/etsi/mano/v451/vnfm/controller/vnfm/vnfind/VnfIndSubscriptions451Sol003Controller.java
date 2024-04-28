@@ -52,7 +52,7 @@ public class VnfIndSubscriptions451Sol003Controller implements VnfIndSubscriptio
 	}
 
 	@Override
-	public ResponseEntity<List<VnfIndicatorSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, @Valid final String nextpageOpaqueMarker) {
+	public ResponseEntity<List<VnfIndicatorSubscription>> subscriptionsGet(final MultiValueMap<String, String> requestParams, final String nextpageOpaqueMarker) {
 		return subscriptionService.search(requestParams, x -> mapper.map(x, VnfIndicatorNotificationsFilter.class), VnfIndSubscriptions451Sol003Controller::makeLinks, ApiVersionType.SOL003_VNFIND);
 	}
 
