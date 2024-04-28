@@ -34,34 +34,34 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnfind.IndicatorsFrontController;
 import jakarta.validation.Valid;
 
 @RestController
-public class Indicators431Sol003Controller implements Indicators431Sol003Api {
+public class VnfInd431Sol003Controller implements VnfInd431Sol003Api {
 	private final IndicatorsFrontController indicatorsFrontController;
 	private final VnfIndicator431Mapping mapper;
 
-	public Indicators431Sol003Controller(final IndicatorsFrontController indicatorsFrontController, final VnfIndicator431Mapping mapper) {
+	public VnfInd431Sol003Controller(final IndicatorsFrontController indicatorsFrontController, final VnfIndicator431Mapping mapper) {
 		this.indicatorsFrontController = indicatorsFrontController;
 		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<VnfIndicator>> indicatorsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		return indicatorsFrontController.search(filter, nextpageOpaqueMarker, x -> mapper.map(x), Indicators431Sol003Controller::makeLink);
+		return indicatorsFrontController.search(filter, nextpageOpaqueMarker, x -> mapper.map(x), VnfInd431Sol003Controller::makeLink);
 	}
 
 	@Override
 	public ResponseEntity<List<VnfIndicator>> indicatorsVnfInstanceIdGet(final String vnfInstanceId, @Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		return indicatorsFrontController.findByVnfInstanceId(vnfInstanceId, filter, nextpageOpaqueMarker, x -> mapper.map(x), Indicators431Sol003Controller::makeLink);
+		return indicatorsFrontController.findByVnfInstanceId(vnfInstanceId, filter, nextpageOpaqueMarker, x -> mapper.map(x), VnfInd431Sol003Controller::makeLink);
 	}
 
 	@Override
 	public ResponseEntity<VnfIndicator> indicatorsVnfInstanceIdIndicatorIdGet(final String vnfInstanceId, final String indicatorId) {
-		return indicatorsFrontController.findByVnfInstanceIdAndIndicatorId(vnfInstanceId, indicatorId, x -> mapper.map(x), Indicators431Sol003Controller::makeLink);
+		return indicatorsFrontController.findByVnfInstanceIdAndIndicatorId(vnfInstanceId, indicatorId, x -> mapper.map(x), VnfInd431Sol003Controller::makeLink);
 	}
 
 	private static void makeLink(final VnfIndicator x) {
 		final VnfIndicatorLinks links = new VnfIndicatorLinks();
 		Link link = new Link();
-		link.setHref(linkTo(methodOn(Indicators431Sol003Api.class).indicatorsVnfInstanceIdIndicatorIdGet(x.getVnfInstanceId(), x.getId())).withSelfRel().getHref());
+		link.setHref(linkTo(methodOn(VnfInd431Sol003Api.class).indicatorsVnfInstanceIdIndicatorIdGet(x.getVnfInstanceId(), x.getId())).withSelfRel().getHref());
 		links.setSelf(link);
 
 		link = new Link();

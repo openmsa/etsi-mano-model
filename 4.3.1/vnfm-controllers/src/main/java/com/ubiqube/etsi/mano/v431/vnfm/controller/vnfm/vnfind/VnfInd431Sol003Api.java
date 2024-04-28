@@ -47,7 +47,7 @@ import jakarta.validation.Valid;
 @Validated
 @RequestMapping(value = "/sol003/vnfind/v1", headers = { "Version=1.10.0" })
 @RolesAllowed({ "ROLE_VNFM" })
-public interface Indicators431Sol003Api {
+public interface VnfInd431Sol003Api {
 
 	@Operation(summary = "", description = "The GET method queries multiple VNF indicators. See clause 8.4.2.3.2. ", tags = {})
 	@ApiResponses(value = {

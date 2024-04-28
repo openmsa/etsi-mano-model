@@ -52,7 +52,7 @@ import jakarta.validation.Valid;
 @Validated
 @RequestMapping(value = "/sol003/vnfind/v1", headers = { "Version=1.10.0" })
 @RolesAllowed({ "ROLE_VNFM" })
-public interface IndicatorSubscriptions431Sol003Api {
+public interface VnfIndSubscriptions431Sol003Api {
 
 	@Operation(summary = "", description = "The GET method queries the list of active subscriptions of the functional block that invokes the method. It can be used e.g. for resynchronization after error situations. See clause 8.4.5.3.2. ", tags = {})
 	@ApiResponses(value = {
