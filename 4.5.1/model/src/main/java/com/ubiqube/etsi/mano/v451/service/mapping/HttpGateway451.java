@@ -240,7 +240,7 @@ public class HttpGateway451 extends AbstractHttpGateway {
 
 	@Override
 	public Version getVersion() {
-		return new Version("4.3.1");
+		return new Version("4.5.1");
 	}
 
 	@Override
