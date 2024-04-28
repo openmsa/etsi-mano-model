@@ -16,24 +16,28 @@
  */
 package com.ubiqube.etsi.mano.v451.vnfm.controller.vnfm.vnfind;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ubiqube.etsi.mano.v451.model.em.vnfind.VnfIndicatorSubscription;
+import com.ubiqube.etsi.mano.v451.model.em.vnfind.VnfIndicatorSubscriptionRequest;
 
 import jakarta.validation.Valid;
 
 @RestController
-public class VnfIndicatorValueChangeNotification451Sol003Controller implements VnfIndicatorValueChangeNotification451Sol003Api {
+public class VnfIndSubscriptions451Sol003Controller implements VnfIndSubscriptions451Sol003Api {
 
 	@Override
-	public ResponseEntity<Void> vnfIndicatorValueChangeNotificationGet() {
+	public ResponseEntity<List<VnfIndicatorSubscription>> subscriptionsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<Void> vnfIndicatorValueChangeNotificationPost(@Valid final Object body) {
+	public ResponseEntity<List<VnfIndicatorSubscription>> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
