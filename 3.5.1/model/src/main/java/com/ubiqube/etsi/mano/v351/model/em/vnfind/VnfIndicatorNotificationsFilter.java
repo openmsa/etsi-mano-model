@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.validation.Valid;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -30,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.VnfInstanceSubscriptionFilter;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
 
 /**
  * This type represents a subscription filter for notifications related to VNF
@@ -84,7 +83,7 @@ public class VnfIndicatorNotificationsFilter {
 	}
 
 	@JsonProperty("notificationTypes")
-	private NotificationTypesEnum notificationTypes = null;
+	private List<NotificationTypesEnum> notificationTypes = null;
 
 	@JsonProperty("indicatorIds")
 	@Valid
@@ -111,7 +110,7 @@ public class VnfIndicatorNotificationsFilter {
 		this.vnfInstanceSubscriptionFilter = vnfInstanceSubscriptionFilter;
 	}
 
-	public VnfIndicatorNotificationsFilter notificationTypes(final NotificationTypesEnum notificationTypes) {
+	public VnfIndicatorNotificationsFilter notificationTypes(final List<NotificationTypesEnum> notificationTypes) {
 		this.notificationTypes = notificationTypes;
 		return this;
 	}
@@ -125,11 +124,11 @@ public class VnfIndicatorNotificationsFilter {
 	 **/
 	@Schema(description = "Match particular notification types.  Permitted values: - VnfIndicatorValueChangeNotification - SupportedIndicatorsChangeNotification See note. ")
 
-	public NotificationTypesEnum getNotificationTypes() {
+	public List<NotificationTypesEnum> getNotificationTypes() {
 		return notificationTypes;
 	}
 
-	public void setNotificationTypes(final NotificationTypesEnum notificationTypes) {
+	public void setNotificationTypes(final List<NotificationTypesEnum> notificationTypes) {
 		this.notificationTypes = notificationTypes;
 	}
 
@@ -166,7 +165,7 @@ public class VnfIndicatorNotificationsFilter {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
 		final VnfIndicatorNotificationsFilter vnfIndicatorNotificationsFilter = (VnfIndicatorNotificationsFilter) o;
