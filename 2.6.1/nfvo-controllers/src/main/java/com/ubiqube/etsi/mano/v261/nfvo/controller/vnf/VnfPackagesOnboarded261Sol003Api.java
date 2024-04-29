@@ -16,11 +16,6 @@
  */
 package com.ubiqube.etsi.mano.v261.nfvo.controller.vnf;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -40,6 +35,10 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 /**
  *
@@ -127,7 +126,7 @@ public interface VnfPackagesOnboarded261Sol003Api {
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(schema = @Schema(implementation = ProblemDetails.class))) })
 	@GetMapping(value = "/{vnfdId}/vnfd")
-	ResponseEntity<Resource> onboardedVnfPackagesVnfdIdVnfdGet(@Nonnull @Parameter(in = ParameterIn.PATH, description = "Identifier of the on-boarded VNF package. The identifier is allocated by the NFVO. This identifier can be retrieved from the \"vnfPkgId\" attribute in the VnfPackageOnboardingNotification or VnfPackageChangeNotification. ", required = true, schema = @Schema()) @PathVariable("vnfPkgId") final String vnfdId,
+	ResponseEntity<Resource> onboardedVnfPackagesVnfdIdVnfdGet(@Nonnull @Parameter(in = ParameterIn.PATH, description = "Identifier of the on-boarded VNF package. The identifier is allocated by the NFVO. This identifier can be retrieved from the \"vnfPkgId\" attribute in the VnfPackageOnboardingNotification or VnfPackageChangeNotification. ", required = true, schema = @Schema()) @PathVariable("vnfdId") final String vnfdId,
 			@Parameter(in = ParameterIn.QUERY, description = "If this parameter is provided, the NFVO shall include in the ZIP archive the security information as specified above. This URI query parameter is a flag, i.e. it shall have no value. The NFVO shall support this parameter. ", schema = @Schema()) @Valid @RequestParam(value = "include_signatures", required = false) final String includeSignatures);
 
 }
