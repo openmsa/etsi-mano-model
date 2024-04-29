@@ -121,8 +121,7 @@ public class VnfSubscriptions431Sol003Controller implements VnfSubscriptions431S
 
 	@Override
 	public String makeSelfLink(final String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return linkTo(methodOn(VnfSubscriptions431Sol003Api.class).subscriptionsSubscriptionIdGet(id)).withSelfRel().getHref();
 	}
 
 	@Override
