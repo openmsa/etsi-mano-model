@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v451.model.em.vnflcm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.validation.annotation.Validated;
@@ -25,7 +26,6 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
@@ -86,7 +86,7 @@ public class CmfInfo {
 
 	@JsonProperty("certificateChain")
 	@Valid
-	private List<Map<String, String>> certificateChain = null;
+	private Map<String, String> certificateChain = null;
 
 	public CmfInfo id(final String id) {
 		this.id = id;
@@ -159,16 +159,8 @@ public class CmfInfo {
 		this.supportedProtocols = supportedProtocols;
 	}
 
-	public CmfInfo certificateChain(final List<Map<String, String>> certificateChain) {
+	public CmfInfo certificateChain(final Map<String, String> certificateChain) {
 		this.certificateChain = certificateChain;
-		return this;
-	}
-
-	public CmfInfo addCertificateChainItem(final Map<String, String> certificateChainItem) {
-		if (this.certificateChain == null) {
-			this.certificateChain = new ArrayList<>();
-		}
-		this.certificateChain.add(certificateChainItem);
 		return this;
 	}
 
@@ -179,11 +171,11 @@ public class CmfInfo {
 	 **/
 	@Schema(description = "Certificate chain that this CMF provides.")
 	@Valid
-	public List<Map<String, String>> getCertificateChain() {
+	public Map<String, String> getCertificateChain() {
 		return certificateChain;
 	}
 
-	public void setCertificateChain(final List<Map<String, String>> certificateChain) {
+	public void setCertificateChain(final Map<String, String> certificateChain) {
 		this.certificateChain = certificateChain;
 	}
 
