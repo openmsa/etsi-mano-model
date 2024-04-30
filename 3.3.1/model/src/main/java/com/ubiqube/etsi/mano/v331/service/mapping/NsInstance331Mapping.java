@@ -67,10 +67,12 @@ public interface NsInstance331Mapping extends VimResource331Mapping {
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.NsScaleInfo map(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "nsScaleLevelId", source = "scaleLevel")
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo mapScaleInfo(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "nsScaleLevelId", source = "scaleLevel")
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo mapNsScaleInfo(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);

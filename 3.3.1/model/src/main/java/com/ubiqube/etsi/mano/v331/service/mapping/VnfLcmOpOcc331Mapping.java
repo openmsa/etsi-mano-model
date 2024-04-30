@@ -87,6 +87,7 @@ public interface VnfLcmOpOcc331Mapping extends StringToUriMapping, Connectivity3
 	@Mapping(target = "audit", ignore = true)
 	ExtLinkPortInfoEntity map(ExtLinkPortInfo o);
 
+	@Mapping(target = "vnfcInfoModificationsDeleteIds", ignore = true)
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "vnfcInfoModifications", ignore = true)
 	@Mapping(target = "id", ignore = true)
