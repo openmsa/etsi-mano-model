@@ -29,7 +29,6 @@ import com.ubiqube.etsi.mano.v451.model.vnfm.grant.Grant;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantLinks;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantRequest;
 import com.ubiqube.etsi.mano.v451.service.mapping.Grant451Mapping;
-import com.ubiqube.etsi.mano.v451.service.mapping.GrantRequest451Mapping;
 
 import jakarta.validation.Valid;
 
@@ -37,12 +36,10 @@ import jakarta.validation.Valid;
 public class Grants451Sol003Controller implements Grants451Sol003Api {
 	private final LcmGrantsFrontController lcmGrantsFrontController;
 	private final Grant451Mapping grantMapping;
-	private final GrantRequest451Mapping grantRequestMapping;
 
-	public Grants451Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final Grant451Mapping grantMapping, final GrantRequest451Mapping grantRequestMapping) {
+	public Grants451Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final Grant451Mapping grantMapping) {
 		this.lcmGrantsFrontController = lcmGrantsFrontController;
 		this.grantMapping = grantMapping;
-		this.grantRequestMapping = grantRequestMapping;
 	}
 
 	@Override
@@ -52,7 +49,7 @@ public class Grants451Sol003Controller implements Grants451Sol003Api {
 
 	@Override
 	public ResponseEntity<Grant> grantsPost(@Valid final GrantRequest grantRequest) {
-		final GrantResponse req = grantRequestMapping.map(grantRequest);
+		final GrantResponse req = grantMapping.map(grantRequest);
 		return lcmGrantsFrontController.grantsPost(req, grantMapping::map, Grants451Sol003Controller::getSelfLink);
 	}
 
