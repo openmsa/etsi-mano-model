@@ -89,6 +89,7 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "scaleLevel", source = "nsScaleLevelId")
 	ScaleInfo map(NsScaleInfo o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nsScaleLevelId", ignore = true)
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
