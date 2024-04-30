@@ -52,7 +52,6 @@ public interface Grant331Mapping extends VimConnectionInfo331Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	VimConstraint map(com.ubiqube.etsi.mano.v331.model.vnfm.grant.VimConstraint o);
 
-	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v331.model.em.vnflcm.ScaleInfo o);
 
