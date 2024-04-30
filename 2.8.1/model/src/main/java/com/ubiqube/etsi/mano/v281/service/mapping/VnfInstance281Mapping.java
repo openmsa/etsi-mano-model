@@ -230,9 +230,7 @@ public interface VnfInstance281Mapping extends VimConnectionInfo281Mapping, Conn
 	@Mapping(target = "vnfExtCpConfiguration", ignore = true)
 	CpProtocolDataEntity mapToCpProtocolDataEntity(CpProtocolInfo cpi);
 
-//	@Mapping(target = "scaleLevel", source = "scaleToLevel")
-	@Mapping(target = "scaleToLevel", ignore = true)
-	@Mapping(target = "scaleLevel", ignore = true)
+	@Mapping(target = "vnfdId", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v281.model.em.vnflcm.ScaleInfo si);
 
