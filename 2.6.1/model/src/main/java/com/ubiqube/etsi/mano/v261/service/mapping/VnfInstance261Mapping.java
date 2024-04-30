@@ -148,7 +148,6 @@ public interface VnfInstance261Mapping extends VimConnectionInfo261Mapping, Conn
 	VnfMonitoringParameter map(com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfMonitoringParameter o);
 
 	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	ScaleInfo map(VnfScaleInfo o);
 
@@ -250,8 +249,6 @@ public interface VnfInstance261Mapping extends VimConnectionInfo261Mapping, Conn
 
 //	@Mapping(target = "scaleLevel", source = "scaleToLevel")
 	@Mapping(target = "vnfdId", ignore = true)
-	@Mapping(target = "scaleToLevel", ignore = true)
-	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.ScaleInfo si);
 

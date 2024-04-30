@@ -128,7 +128,6 @@ public interface NsInstance261Mapping extends VimResource261Mapping {
 
 	NsInstanceDto map(NsInstance o);
 
-	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "scaleLevel", ignore = true)
@@ -203,7 +202,6 @@ public interface NsInstance261Mapping extends VimResource261Mapping {
 	@Mapping(target = "zoneId", ignore = true)
 	VirtualStorageResourceInfo map(com.ubiqube.etsi.mano.common.v261.model.nslcm.VirtualStorageResourceInfo p);
 
-	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")
 	@Mapping(target = "scaleLevel", source = "nsScaleLevelId")
 	com.ubiqube.etsi.mano.dao.mano.ScaleInfo mapDbScaleInfo(NsScaleInfo o);
