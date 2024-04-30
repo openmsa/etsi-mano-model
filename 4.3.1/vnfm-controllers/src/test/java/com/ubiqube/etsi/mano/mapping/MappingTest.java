@@ -27,7 +27,6 @@ import org.mapstruct.factory.Mappers;
 import com.ubiqube.etsi.mano.test.MapstructTestHelper;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfInstance;
 import com.ubiqube.etsi.mano.v431.model.nfvo.vnf.VnfPkgInfo;
-import com.ubiqube.etsi.mano.v431.service.mapping.GrantRequest431Mapping;
 import com.ubiqube.etsi.mano.v431.service.mapping.VnfInstance431Mapping;
 import com.ubiqube.etsi.mano.v431.service.mapping.VnfPkgInfo431Mapping;
 import com.ubiqube.etsi.mano.v431.service.mapping.vnflcm.VnfBlueprint431Mapping;
@@ -70,15 +69,6 @@ class MappingTest extends MapstructTestHelper {
 		ignore.add("getLinks");
 		final VnfBlueprint431Mapping mapper = Mappers.getMapper(VnfBlueprint431Mapping.class);
 //		doTest(VnfLcmOpOcc.class, x -> mapper.map(x), x -> mapper.map(x));
-		assertTrue(true);
-	}
-
-	@Test
-	void testGrant() throws Exception {
-		final Set<String> ignore = new HashSet<>();
-		ignore.add("getLinks");
-		final GrantRequest431Mapping mapper = Mappers.getMapper(GrantRequest431Mapping.class);
-//		doTest(GrantRequest.class, x -> mapper.map(x), x -> mapper.map(x));
 		assertTrue(true);
 	}
 
