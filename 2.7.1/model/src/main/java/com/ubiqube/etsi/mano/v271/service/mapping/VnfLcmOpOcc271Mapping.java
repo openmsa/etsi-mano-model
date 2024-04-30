@@ -88,6 +88,7 @@ public interface VnfLcmOpOcc271Mapping extends StringToUriMapping, Connectivity2
 	@Mapping(target = "audit", ignore = true)
 	ExtLinkPortInfoEntity map(ExtLinkPortInfo o);
 
+	@Mapping(target = "vnfcInfoModificationsDeleteIds", ignore = true)
 	@Mapping(target = "vnfcInfoModifications", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications map(VnfInfoModifications o);
