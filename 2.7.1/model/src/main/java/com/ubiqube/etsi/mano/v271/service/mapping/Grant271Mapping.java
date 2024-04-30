@@ -51,7 +51,6 @@ public interface Grant271Mapping extends VimConnectionInfo271Mapping, Connectivi
 	VimConstraint map(com.ubiqube.etsi.mano.v271.model.sol003.lcmgrant.VimConstraint o);
 
 	@Mapping(target = "vnfdId", ignore = true)
-	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v271.model.em.vnflcm.ScaleInfo o);
 
