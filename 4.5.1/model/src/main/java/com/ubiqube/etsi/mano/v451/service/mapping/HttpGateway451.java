@@ -82,6 +82,8 @@ import com.ubiqube.etsi.mano.v451.service.mapping.subscription.VrQuotaAvailSubsc
 import com.ubiqube.etsi.mano.v451.service.mapping.vnflcm.VnfInstanceRequest451Mapping;
 import com.ubiqube.etsi.mano.v451.service.mapping.vnflcm.VnfInstantiate451Mapping;
 
+import jakarta.annotation.Nullable;
+
 /**
  *
  * @author olivier
@@ -204,7 +206,7 @@ public class HttpGateway451 extends AbstractHttpGateway {
 	}
 
 	@Override
-	public Object createVnfInstanceScaleRequest(final ScaleTypeEnum scaleType, final String aspectId, final Integer numberOfSteps) {
+	public Object createVnfInstanceScaleRequest(final @Nullable ScaleTypeEnum scaleType, final @Nullable String aspectId, final @Nullable Integer numberOfSteps) {
 		final var req = new ScaleVnfRequest();
 		req.setAspectId(aspectId);
 		req.setNumberOfSteps(numberOfSteps);

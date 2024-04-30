@@ -232,9 +232,6 @@ public interface VnfInstance451Mapping extends VimConnectionInfo451Mapping, Conn
 	@Mapping(target = "id", ignore = true)
 	NetAttDefResourceInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.NetAttDefResourceInfo nadr);
 
-//	@Mapping(target = "scaleLevel", source = "scaleToLevel")
-	@Mapping(target = "scaleToLevel", ignore = true)
-	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v451.model.em.vnflcm.ScaleInfo si);
 
