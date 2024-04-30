@@ -69,14 +69,19 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.NsScaleInfo map(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "nsScaleLevelId", source = "scaleLevel")
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo mapScaleInfo(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "nsScaleLevelId", source = "scaleLevel")
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo mapNsScaleInfo(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
+	@Mapping(target = "cirConnectionInfo", ignore = true)
+	@Mapping(target = "mciopRepositoryInfo", ignore = true)
+	@Mapping(target = "vimConnectionInfo", ignore = true)
 	@Mapping(target = "links", ignore = true)
 	VnfInstance map(VnfInstanceDto o);
 
