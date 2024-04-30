@@ -68,10 +68,12 @@ public interface NsInstance361Mapping extends VimResource361Mapping {
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.NsScaleInfo map(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "nsScaleLevelId", source = "scaleLevel")
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo mapScaleInfo(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
 
+	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "nsScaleLevelId", source = "scaleLevel")
 	@Mapping(target = "nsScalingAspectId", source = "aspectId")
 	NsScaleInfo mapNsScaleInfo(com.ubiqube.etsi.mano.dao.mano.ScaleInfo o);
@@ -126,6 +128,7 @@ public interface NsInstance361Mapping extends VimResource361Mapping {
 
 	NsInstanceDto map(NsInstance o);
 
+	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
