@@ -14,7 +14,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.v451.service.mapping;
+package com.ubiqube.etsi.mano.v451.service;
 
 import java.util.List;
 import java.util.Map;
@@ -72,8 +72,14 @@ import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantRequest;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantRequestLinks;
 import com.ubiqube.etsi.mano.v451.model.vnfm.vrqan.VrQuotaAvailNotificationsFilter;
 import com.ubiqube.etsi.mano.v451.model.vnfm.vrqan.VrQuotaAvailSubscription;
-import com.ubiqube.etsi.mano.v451.service.NfvoFactory;
-import com.ubiqube.etsi.mano.v451.service.VnfmFactory;
+import com.ubiqube.etsi.mano.v451.service.mapping.Grant451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.Nsd451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.PmJob451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.Threshold451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.VnfIndicator451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.VnfInstance451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.VnfLcmOpOcc451Mapping;
+import com.ubiqube.etsi.mano.v451.service.mapping.VnfPkgInfo451Mapping;
 import com.ubiqube.etsi.mano.v451.service.mapping.subscription.FmSubscription451Mapping;
 import com.ubiqube.etsi.mano.v451.service.mapping.subscription.LccnSubscription451Mapping;
 import com.ubiqube.etsi.mano.v451.service.mapping.subscription.PkgmSubscriptionRequest451Mapping;
