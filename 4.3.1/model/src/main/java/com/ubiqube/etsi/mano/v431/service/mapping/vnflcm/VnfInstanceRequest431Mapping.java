@@ -53,12 +53,10 @@ public interface VnfInstanceRequest431Mapping extends Connectivity431Mapping {
 
 	VnfScaleToLevelRequest map(ScaleVnfToLevelRequest o);
 
-	@Mapping(target = "scaleLevel", source = "scaleToLevel")
 	CommScaleInfo map(ScaleInfo o);
 
 	ScaleVnfToLevelRequest map(VnfScaleToLevelRequest req);
 
-	@Mapping(target = "scaleToLevel", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	ScaleInfo map(CommScaleInfo o);
 

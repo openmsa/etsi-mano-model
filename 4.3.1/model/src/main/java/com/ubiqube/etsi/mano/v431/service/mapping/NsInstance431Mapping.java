@@ -86,7 +86,7 @@ public interface NsInstance431Mapping {
 	VnfInstance map(VnfInstanceDto o);
 
 	@Mapping(target = "aspectId", source = "nsScalingAspectId")
-	@Mapping(target = "scaleToLevel", source = "nsScaleLevelId")
+	@Mapping(target = "scaleLevel", source = "nsScaleLevelId")
 	ScaleInfo map(NsScaleInfo o);
 
 	@Mapping(target = "id", ignore = true)
@@ -121,7 +121,7 @@ public interface NsInstance431Mapping {
 	@Mapping(target = "vnfVirtualLinkResourceInfo", ignore = true)
 	VnfInstanceInstantiatedVnfInfo map(VnfInstanceInstantiatedVnfInfoDto o);
 
-	@Mapping(target = "scaleToLevel", ignore = true)
+	@Mapping(target = "scaleLevel", ignore = true)
 	@Mapping(target = "vnfdId", ignore = true)
 	ScaleInfo map(VnfScaleInfo o);
 
