@@ -95,9 +95,6 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "vnfVirtualLinkResourceInfo", source = "virtualLinkResourceInfo")
 	VnfInstanceInstantiatedVnfInfo map(BlueprintParameters bp);
 
-	@Mapping(target = "scaleToLevel", source = "scaleLevel")
-	com.ubiqube.etsi.mano.v431.model.em.vnflcm.ScaleInfo map(ScaleInfo o);
-
 	@Mapping(target = "networkResource.vimLevelAdditionalResourceInfo", source = "vimLevelAdditionalResourceInfo")
 	@Mapping(target = "networkResource.vimLevelResourceType", source = "vimLevelResourceType")
 	@Mapping(target = "networkResource.resourceId", source = "resourceId")
@@ -231,7 +228,6 @@ public interface VnfInstance431Mapping extends VimConnectionInfo431Mapping, Conn
 	@Mapping(target = "id", ignore = true)
 	NetAttDefResourceInfo map(com.ubiqube.etsi.mano.v431.model.em.vnflcm.NetAttDefResourceInfo nadr);
 
-	@Mapping(target = "scaleLevel", source = "scaleToLevel")
 	@Mapping(target = "id", ignore = true)
 	ScaleInfo map(com.ubiqube.etsi.mano.v431.model.em.vnflcm.ScaleInfo si);
 
