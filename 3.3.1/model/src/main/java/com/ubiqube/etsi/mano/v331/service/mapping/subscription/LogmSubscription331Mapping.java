@@ -40,7 +40,7 @@ public interface LogmSubscription331Mapping extends BaseSubscription331Mapping {
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "LOGM")
-	@Mapping(target = "version", constant = "4.3.1")
+	@Mapping(target = "version", constant = "3.3.1")
 	Subscription map(LogmSubscription o);
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
@@ -53,7 +53,7 @@ public interface LogmSubscription331Mapping extends BaseSubscription331Mapping {
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "LOGM")
-	@Mapping(target = "version", constant = "4.3.1")
+	@Mapping(target = "version", constant = "3.3.1")
 	Subscription map(LogmSubscriptionRequest o);
 
 }

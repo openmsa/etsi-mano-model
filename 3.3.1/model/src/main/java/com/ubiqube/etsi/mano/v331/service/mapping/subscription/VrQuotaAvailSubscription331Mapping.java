@@ -39,7 +39,7 @@ public interface VrQuotaAvailSubscription331Mapping extends BaseSubscription331M
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "VRQAN")
 	@Mapping(target = "verbosity", ignore = true)
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "3.3.1")
 	Subscription map(VrQuotaAvailSubscription o);
 
 	@Mapping(target = "api", ignore = true)
@@ -49,7 +49,7 @@ public interface VrQuotaAvailSubscription331Mapping extends BaseSubscription331M
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "VRQAN")
 	@Mapping(target = "verbosity", ignore = true)
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "3.3.1")
 	Subscription map(VrQuotaAvailSubscriptionRequest body);
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
