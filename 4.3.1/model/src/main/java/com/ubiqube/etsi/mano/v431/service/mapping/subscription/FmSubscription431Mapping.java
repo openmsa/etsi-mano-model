@@ -40,7 +40,7 @@ public interface FmSubscription431Mapping extends BaseSubscription431Mapping {
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "VNFFM")
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "4.3.1")
 	Subscription map(FmSubscription o);
 
 	@Mapping(target = "api", ignore = true)
@@ -50,7 +50,7 @@ public interface FmSubscription431Mapping extends BaseSubscription431Mapping {
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "VNFFM")
 	@Mapping(target = "verbosity", ignore = true)
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "4.3.1")
 	Subscription map(FmSubscriptionRequest body);
 
 }
