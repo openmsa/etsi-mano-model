@@ -19,6 +19,8 @@ package com.ubiqube.etsi.mano.v431.nfvo.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
 import com.ubiqube.etsi.mano.dao.mano.VnfPackage;
 import com.ubiqube.etsi.mano.repository.VnfPackageRepository;
@@ -29,6 +31,7 @@ import com.ubiqube.etsi.mano.v431.service.NfvoFactory;
 /**
  * @author olivier
  */
+@Service
 public class NfvoFactory443 extends AbstractSubscriptionFactory implements NfvoFactory {
 	private final VnfPackageRepository vnfPackageRepository;
 
