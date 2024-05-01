@@ -21,11 +21,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nfvmanologm.LogJobsFrontController;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.CompileLogRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.CreateLoggingJobRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.LogReport;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.LoggingJob;
-import com.ubiqube.etsi.mano.nfvem.v331.service.mapping.Logm331Mapping;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.CompileLogRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.CreateLoggingJobRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.LogReport;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.LoggingJob;
+import com.ubiqube.etsi.mano.v331.service.mapping.Logm331Mapping;
 
 import jakarta.validation.Valid;
 

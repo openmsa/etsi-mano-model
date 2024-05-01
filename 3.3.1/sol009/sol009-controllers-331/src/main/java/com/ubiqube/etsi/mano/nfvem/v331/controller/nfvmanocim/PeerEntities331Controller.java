@@ -22,10 +22,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nfvmanocim.PeerEntityFrontController;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.CreatePeerEntityRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntity;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModificationRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModifications;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.CreatePeerEntityRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.PeerEntity;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.PeerEntityConfigModificationRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.PeerEntityConfigModifications;
 
 import jakarta.validation.Valid;
 

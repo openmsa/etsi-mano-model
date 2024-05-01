@@ -27,7 +27,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
-			<artifactId>etsi-model-331-sol009</artifactId>
+			<artifactId>etsi-model-331</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

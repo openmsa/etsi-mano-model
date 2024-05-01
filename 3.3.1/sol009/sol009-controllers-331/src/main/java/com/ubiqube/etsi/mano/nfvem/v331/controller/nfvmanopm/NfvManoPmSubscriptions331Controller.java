@@ -21,8 +21,8 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanopm.PmSubscription;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanopm.PmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.PmSubscription;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.PmSubscriptionRequest;
 
 import jakarta.validation.Valid;
 

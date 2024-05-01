@@ -30,9 +30,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanopm.PmSubscription;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanopm.PmSubscriptionRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanopm.ProblemDetails;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.PmSubscription;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.PmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

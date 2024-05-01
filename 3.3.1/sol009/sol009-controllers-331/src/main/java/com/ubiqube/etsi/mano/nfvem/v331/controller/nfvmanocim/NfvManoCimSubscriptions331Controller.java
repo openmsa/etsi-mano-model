@@ -18,13 +18,13 @@ package com.ubiqube.etsi.mano.nfvem.v331.controller.nfvmanocim;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.CimSubscription;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.CimSubscriptionRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.CimSubscription;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.CimSubscriptionRequest;
+
+import jakarta.validation.Valid;
 
 /**
  *

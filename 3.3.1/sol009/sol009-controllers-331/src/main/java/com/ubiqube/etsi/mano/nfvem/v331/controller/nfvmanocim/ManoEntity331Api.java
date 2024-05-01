@@ -30,14 +30,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ChangeStateRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ManoConfigModificationRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ManoConfigModifications;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ManoEntity;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ManoServiceInterface;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ManoServiceInterfaceModificationRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ManoServiceInterfaceModifications;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ProblemDetails;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.ChangeStateRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.ManoConfigModificationRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.ManoConfigModifications;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.ManoEntity;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.ManoServiceInterface;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.ManoServiceInterfaceModificationRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.ManoServiceInterfaceModifications;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

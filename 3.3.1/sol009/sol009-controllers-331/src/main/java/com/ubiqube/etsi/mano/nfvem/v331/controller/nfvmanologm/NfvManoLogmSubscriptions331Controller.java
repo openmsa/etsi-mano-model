@@ -22,27 +22,33 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nfvmanologm.LogJobsSubscriptionFrontController;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.LogmSubscription;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanologm.LogmSubscriptionRequest;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.LogmNotificationsFilter;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.LogmSubscription;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.LogmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v331.service.mapping.subscription.LogmSubscription331Mapping;
 
 import jakarta.validation.Valid;
 
 @RestController
 public class NfvManoLogmSubscriptions331Controller implements NfvManoLogmSubscriptions331Api {
 	private final LogJobsSubscriptionFrontController logJobsFrontController;
+	private final LogmSubscription331Mapping mapper;
 
-	public NfvManoLogmSubscriptions331Controller(final LogJobsSubscriptionFrontController logJobsFrontController) {
+	public NfvManoLogmSubscriptions331Controller(final LogJobsSubscriptionFrontController logJobsFrontController, final LogmSubscription331Mapping mapper) {
 		this.logJobsFrontController = logJobsFrontController;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<LogmSubscription>> subscriptionsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		return logJobsFrontController.search(filter, LogmSubscription.class);
+		return logJobsFrontController.search(filter, x -> mapper.map(x, LogmNotificationsFilter.class));
 	}
 
 	@Override
 	public ResponseEntity<LogmSubscription> subscriptionsPost(@Valid final LogmSubscriptionRequest body) {
-		return logJobsFrontController.create(body, LogmSubscription.class);
+		final Subscription req = mapper.map(body);
+		return logJobsFrontController.create(req, x -> mapper.map(x, LogmNotificationsFilter.class));
 	}
 
 	@Override
@@ -52,7 +58,7 @@ public class NfvManoLogmSubscriptions331Controller implements NfvManoLogmSubscri
 
 	@Override
 	public ResponseEntity<LogmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return logJobsFrontController.findById(subscriptionId, LogmSubscription.class);
+		return logJobsFrontController.findById(subscriptionId, x -> mapper.map(x, LogmNotificationsFilter.class));
 	}
 
 }

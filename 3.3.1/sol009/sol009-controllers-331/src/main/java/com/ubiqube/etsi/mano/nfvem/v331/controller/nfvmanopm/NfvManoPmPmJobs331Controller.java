@@ -21,9 +21,9 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanopm.CreatePmJobRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanopm.PerformanceReport;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanopm.PmJob;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.CreatePmJobRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.PerformanceReport;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.PmJob;
 
 import jakarta.validation.Valid;
 

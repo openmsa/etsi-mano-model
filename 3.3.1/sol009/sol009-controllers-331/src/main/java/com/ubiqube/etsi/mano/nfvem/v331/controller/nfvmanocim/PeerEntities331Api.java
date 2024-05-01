@@ -30,11 +30,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.CreatePeerEntityRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntity;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModificationRequest;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.PeerEntityConfigModifications;
-import com.ubiqube.etsi.mano.nfvem.v331.model.nfvmanocim.ProblemDetails;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.CreatePeerEntityRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.PeerEntity;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.PeerEntityConfigModificationRequest;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.PeerEntityConfigModifications;
+import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanocim.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
