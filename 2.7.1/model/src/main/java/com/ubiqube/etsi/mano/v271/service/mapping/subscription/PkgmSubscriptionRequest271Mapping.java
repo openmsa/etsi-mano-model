@@ -39,7 +39,7 @@ public interface PkgmSubscriptionRequest271Mapping extends BaseSubscription271Ma
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "VNF")
-	@Mapping(target = "version", constant = "2.8.1")
+	@Mapping(target = "version", constant = "2.7.1")
 	Subscription map(PkgmSubscriptionRequest o);
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
@@ -56,6 +56,6 @@ public interface PkgmSubscriptionRequest271Mapping extends BaseSubscription271Ma
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "VNF")
 	@Mapping(target = "verbosity", ignore = true)
-	@Mapping(target = "version", constant = "2.8.1")
+	@Mapping(target = "version", constant = "2.7.1")
 	Subscription map(PkgmSubscription o);
 }

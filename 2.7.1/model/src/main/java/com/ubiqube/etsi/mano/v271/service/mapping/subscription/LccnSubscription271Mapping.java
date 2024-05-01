@@ -40,7 +40,7 @@ public interface LccnSubscription271Mapping extends BaseSubscription271Mapping {
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "VNFLCM")
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "2.7.1")
 	Subscription map(LccnSubscription o);
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
@@ -53,7 +53,7 @@ public interface LccnSubscription271Mapping extends BaseSubscription271Mapping {
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "VNFLCM")
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "2.7.1")
 	Subscription map(LccnSubscriptionRequest o);
 
 }
