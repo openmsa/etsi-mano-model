@@ -137,7 +137,6 @@ public interface VnfInstance281Mapping extends VimConnectionInfo281Mapping, Conn
 	@Mapping(target = "scaleType", ignore = true)
 	@Mapping(target = "state", source = "vnfState")
 	@Mapping(target = "updData", ignore = true)
-	@Mapping(target = "virtualLinkResourceInfo", ignore = true)
 	@Mapping(target = "vnfMonitoringParameter", source = "monitoringParameters")
 	BlueprintParameters map(VnfInstanceInstantiatedVnfInfo viivi);
 
