@@ -55,7 +55,7 @@ public class LoggingJob {
 	private List<LoggingJobLogReports> logReports = null;
 
 	@JsonProperty("_links")
-	private LoggingJobLinks _links = null;
+	private LoggingJobLinks links = null;
 
 	public LoggingJob id(final String id) {
 		this.id = id;
@@ -178,8 +178,8 @@ public class LoggingJob {
 		this.logReports = logReports;
 	}
 
-	public LoggingJob _links(final LoggingJobLinks _links) {
-		this._links = _links;
+	public LoggingJob links(final LoggingJobLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -193,11 +193,11 @@ public class LoggingJob {
 
 	@Valid
 	public LoggingJobLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final LoggingJobLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -214,12 +214,12 @@ public class LoggingJob {
 				Objects.equals(this.jobCriteria, loggingJob.jobCriteria) &&
 				Objects.equals(this.jobConfig, loggingJob.jobConfig) &&
 				Objects.equals(this.logReports, loggingJob.logReports) &&
-				Objects.equals(this._links, loggingJob._links);
+				Objects.equals(this.links, loggingJob.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, objectInstanceIds, jobCriteria, jobConfig, logReports, _links);
+		return Objects.hash(id, objectInstanceIds, jobCriteria, jobConfig, logReports, links);
 	}
 
 	@Override
@@ -232,7 +232,7 @@ public class LoggingJob {
 		sb.append("    jobCriteria: ").append(toIndentedString(jobCriteria)).append("\n");
 		sb.append("    jobConfig: ").append(toIndentedString(jobConfig)).append("\n");
 		sb.append("    logReports: ").append(toIndentedString(logReports)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

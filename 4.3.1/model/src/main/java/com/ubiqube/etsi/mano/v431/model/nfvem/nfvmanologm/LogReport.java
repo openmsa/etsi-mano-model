@@ -101,7 +101,7 @@ public class LogReport {
 	private LogReportSecurityAndIntegrityInfo securityAndIntegrityInfo = null;
 
 	@JsonProperty("_links")
-	private LoggingJobLinks _links = null;
+	private LoggingJobLinks links = null;
 
 	public LogReport id(final String id) {
 		this.id = id;
@@ -297,8 +297,8 @@ public class LogReport {
 		this.securityAndIntegrityInfo = securityAndIntegrityInfo;
 	}
 
-	public LogReport _links(final LoggingJobLinks _links) {
-		this._links = _links;
+	public LogReport links(final LoggingJobLinks _links) {
+		this.links = _links;
 		return this;
 	}
 
@@ -312,11 +312,11 @@ public class LogReport {
 
 	@Valid
 	public LoggingJobLinks getLinks() {
-		return _links;
+		return links;
 	}
 
 	public void setLinks(final LoggingJobLinks _links) {
-		this._links = _links;
+		this.links = _links;
 	}
 
 	@Override
@@ -337,12 +337,12 @@ public class LogReport {
 				Objects.equals(this.fileFormat, logReport.fileFormat) &&
 				Objects.equals(this.fileLocationInfo, logReport.fileLocationInfo) &&
 				Objects.equals(this.securityAndIntegrityInfo, logReport.securityAndIntegrityInfo) &&
-				Objects.equals(this._links, logReport._links);
+				Objects.equals(this.links, logReport.links);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, objectInstanceId, compilationTrigger, readyTime, expiryTime, fileSize, fileFormat, fileLocationInfo, securityAndIntegrityInfo, _links);
+		return Objects.hash(id, objectInstanceId, compilationTrigger, readyTime, expiryTime, fileSize, fileFormat, fileLocationInfo, securityAndIntegrityInfo, links);
 	}
 
 	@Override
@@ -359,7 +359,7 @@ public class LogReport {
 		sb.append("    fileFormat: ").append(toIndentedString(fileFormat)).append("\n");
 		sb.append("    fileLocationInfo: ").append(toIndentedString(fileLocationInfo)).append("\n");
 		sb.append("    securityAndIntegrityInfo: ").append(toIndentedString(securityAndIntegrityInfo)).append("\n");
-		sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+		sb.append("    _links: ").append(toIndentedString(links)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
