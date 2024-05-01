@@ -18,31 +18,37 @@ package com.ubiqube.etsi.mano.v431.controller.nfvem.nfvmanologm;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ubiqube.etsi.mano.controller.nfvmanologm.LogJobsSubscriptionFrontController;
+import com.ubiqube.etsi.mano.service.event.model.Subscription;
+import com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanologm.LogmNotificationsFilter;
 import com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanologm.LogmSubscription;
 import com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanologm.LogmSubscriptionRequest;
+import com.ubiqube.etsi.mano.v431.service.mapping.subscription.LogmSubscription451Mapping;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class LogJobsSubscriptions431Sol009Controller implements LogJobsSubscriptions431Sol009Api {
 	private final LogJobsSubscriptionFrontController logJobsFrontController;
+	private final LogmSubscription451Mapping logmSubscriptionMapping;
 
-	public LogJobsSubscriptions431Sol009Controller(final LogJobsSubscriptionFrontController logJobsFrontController) {
+	public LogJobsSubscriptions431Sol009Controller(final LogJobsSubscriptionFrontController logJobsFrontController, final LogmSubscription451Mapping logmSubscriptionMapping) {
 		this.logJobsFrontController = logJobsFrontController;
+		this.logmSubscriptionMapping = logmSubscriptionMapping;
 	}
 
 	@Override
 	public ResponseEntity<List<LogmSubscription>> subscriptionsGet(@Valid final String filter, @Valid final String nextpageOpaqueMarker) {
-		return logJobsFrontController.search(filter, LogmSubscription.class);
+		return logJobsFrontController.search(filter, x -> logmSubscriptionMapping.map(x, LogmNotificationsFilter.class));
 	}
 
 	@Override
 	public ResponseEntity<LogmSubscription> subscriptionsPost(@Valid final LogmSubscriptionRequest body) {
-		return logJobsFrontController.create(body, LogmSubscription.class);
+		final Subscription req = logmSubscriptionMapping.map(body);
+		return logJobsFrontController.create(req, x -> logmSubscriptionMapping.map(x, LogmNotificationsFilter.class));
 	}
 
 	@Override
@@ -52,7 +58,7 @@ public class LogJobsSubscriptions431Sol009Controller implements LogJobsSubscript
 
 	@Override
 	public ResponseEntity<LogmSubscription> subscriptionsSubscriptionIdGet(final String subscriptionId) {
-		return logJobsFrontController.findById(subscriptionId, LogmSubscription.class);
+		return logJobsFrontController.findById(subscriptionId, x -> logmSubscriptionMapping.map(x, LogmNotificationsFilter.class));
 	}
 
 }
