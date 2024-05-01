@@ -40,7 +40,7 @@ public interface NsdmSubscription351Mapping extends BaseSubscription351Mapping {
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "NSD")
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "3.5.1")
 	Subscription map(NsdmSubscription o);
 
 	@Mapping(target = "api", ignore = true)
@@ -50,7 +50,7 @@ public interface NsdmSubscription351Mapping extends BaseSubscription351Mapping {
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "NSD")
 	@Mapping(target = "verbosity", ignore = true)
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "3.5.1")
 	Subscription map(NsdmSubscriptionRequest body);
 
 }

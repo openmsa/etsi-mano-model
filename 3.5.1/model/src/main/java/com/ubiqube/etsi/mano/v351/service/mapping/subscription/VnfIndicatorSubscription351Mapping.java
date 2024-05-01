@@ -40,7 +40,7 @@ public interface VnfIndicatorSubscription351Mapping extends BaseSubscription351M
 	@Mapping(target = "filters", source = "filter", qualifiedByName = "fromObject")
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", ignore = true)
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "3.5.1")
 	Subscription map(VnfIndicatorSubscription o);
 
 	@Mapping(target = "api", ignore = true)
@@ -50,7 +50,7 @@ public interface VnfIndicatorSubscription351Mapping extends BaseSubscription351M
 	@Mapping(target = "nodeFilter", ignore = true)
 	@Mapping(target = "subscriptionType", constant = "VNFIND")
 	@Mapping(target = "verbosity", ignore = true)
-	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "version", constant = "3.5.1")
 	Subscription map(VnfIndicatorSubscriptionRequest body);
 
 	@Mapping(target = "filter", source = "filters", qualifiedByName = "toObject")
