@@ -16,6 +16,7 @@
  */
 package com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanologm;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.validation.annotation.Validated;
@@ -72,7 +73,7 @@ public class LogmNotificationsFilter {
 	}
 
 	@JsonProperty("notificationTypes")
-	private NotificationTypesEnum notificationTypes = null;
+	private List<NotificationTypesEnum> notificationTypes = null;
 
 	public LogmNotificationsFilter objectInstanceFilter(final ManoEntitySubscriptionFilter objectInstanceFilter) {
 		this.objectInstanceFilter = objectInstanceFilter;
@@ -95,7 +96,7 @@ public class LogmNotificationsFilter {
 		this.objectInstanceFilter = objectInstanceFilter;
 	}
 
-	public LogmNotificationsFilter notificationTypes(final NotificationTypesEnum notificationTypes) {
+	public LogmNotificationsFilter notificationTypes(final List<NotificationTypesEnum> notificationTypes) {
 		this.notificationTypes = notificationTypes;
 		return this;
 	}
@@ -108,11 +109,11 @@ public class LogmNotificationsFilter {
 	 **/
 	@Schema(description = "Match particular notification types. Permitted values: - LogReportAvailableNotification See note.")
 
-	public NotificationTypesEnum getNotificationTypes() {
+	public List<NotificationTypesEnum> getNotificationTypes() {
 		return notificationTypes;
 	}
 
-	public void setNotificationTypes(final NotificationTypesEnum notificationTypes) {
+	public void setNotificationTypes(final List<NotificationTypesEnum> notificationTypes) {
 		this.notificationTypes = notificationTypes;
 	}
 
