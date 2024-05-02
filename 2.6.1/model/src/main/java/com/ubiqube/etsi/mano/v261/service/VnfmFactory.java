@@ -39,4 +39,9 @@ public interface VnfmFactory {
 	String createVnfLcmSubscriptionLink(Map<String, String> params);
 
 	String createSubscriptionLink(ApiAndType at, String id);
+
+	String createGrantVnfInstanceLink(String vnfInstanceId);
+
+	String createGrantVnfLcmOpOccsLink(String vnfLcmOpOccId);
+
 }

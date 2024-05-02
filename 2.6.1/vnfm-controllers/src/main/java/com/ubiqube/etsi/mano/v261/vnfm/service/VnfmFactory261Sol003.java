@@ -35,6 +35,7 @@ import com.ubiqube.etsi.mano.v261.service.VnfmFactory;
 import com.ubiqube.etsi.mano.v261.vnfm.controller.vnfind.sol003.VnfIndSubscriptions261Sol003Controller;
 import com.ubiqube.etsi.mano.v261.vnfm.controller.vnflcm.sol003.VnfLcm261Sol003Api;
 import com.ubiqube.etsi.mano.v261.vnfm.controller.vnflcm.sol003.VnfLcm261Sol003Controller;
+import com.ubiqube.etsi.mano.v261.vnfm.controller.vnflcm.sol003.VnfLcmOpOccs261Sol003Api;
 import com.ubiqube.etsi.mano.v261.vnfm.controller.vnflcm.sol003.VnfLcmSubscriptions261Sol003Controller;
 
 /**
@@ -74,6 +75,16 @@ public class VnfmFactory261Sol003 extends AbstractSubscriptionFactory implements
 	@Override
 	public String createVnfLcmSubscriptionLink(final Map<String, String> params) {
 		return VnfLcmSubscriptions261Sol003Controller.getSelfLink(params.get("id"));
+	}
+
+	@Override
+	public String createGrantVnfInstanceLink(final String vnfInstanceId) {
+		return VnfLcm261Sol003Controller.getSelfLink(vnfInstanceId);
+	}
+
+	@Override
+	public String createGrantVnfLcmOpOccsLink(final String vnfLcmOpOccId) {
+		return linkTo(methodOn(VnfLcmOpOccs261Sol003Api.class).vnfLcmOpOccsVnfLcmOpOccIdGet(vnfLcmOpOccId)).withSelfRel().getHref();
 	}
 
 }
