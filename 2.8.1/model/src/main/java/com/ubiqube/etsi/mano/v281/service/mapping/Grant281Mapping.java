@@ -79,7 +79,8 @@ public interface Grant281Mapping extends VimConnectionInfo281Mapping, Connectivi
 	@Mapping(target = "id", ignore = true)
 	ConstraintResourceRef map(com.ubiqube.etsi.mano.v281.model.vnfm.grant.ConstraintResourceRef o);
 
-	@Mapping(target = "links", ignore = true)
+	@Mapping(target = "links.vnfInstance.href", source = "instanceLink")
+	@Mapping(target = "links.vnfLcmOpOcc.href", source = "lcmLink")
 	Grant map(GrantResponse grantResponse);
 
 	@Mapping(target = "cirConnectionInfo", ignore = true)
