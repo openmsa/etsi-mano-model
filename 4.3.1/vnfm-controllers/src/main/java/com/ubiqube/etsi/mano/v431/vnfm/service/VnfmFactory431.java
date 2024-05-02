@@ -16,6 +16,9 @@
  */
 package com.ubiqube.etsi.mano.v431.vnfm.service;
 
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -24,6 +27,8 @@ import org.springframework.stereotype.Service;
 import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.v431.service.VnfmFactory;
+import com.ubiqube.etsi.mano.v431.vnfm.controller.vnfm.vnflcm.VnfInstances431Sol003Api;
+import com.ubiqube.etsi.mano.v431.vnfm.controller.vnfm.vnflcm.VnfLcmOpOccs431Sol003Api;
 
 @Service
 public class VnfmFactory431 extends AbstractSubscriptionFactory implements VnfmFactory {
@@ -36,6 +41,16 @@ public class VnfmFactory431 extends AbstractSubscriptionFactory implements VnfmF
 	public Object createVnfIndicatorValueChangeNotification(final UUID subscriptionId, final EventMessage event) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String createGrantVnfInstanceLink(final String vnfInstanceId) {
+		return linkTo(methodOn(VnfInstances431Sol003Api.class).vnfInstancesVnfInstanceIdGet(vnfInstanceId)).withSelfRel().getHref();
+	}
+
+	@Override
+	public String createGrantVnfLcmOpOccsLink(final String vnfLcmOpOccId) {
+		return linkTo(methodOn(VnfLcmOpOccs431Sol003Api.class).vnfLcmOpOccsVnfLcmOpOccIdGet(vnfLcmOpOccId)).withSelfRel().getHref();
 	}
 
 }
