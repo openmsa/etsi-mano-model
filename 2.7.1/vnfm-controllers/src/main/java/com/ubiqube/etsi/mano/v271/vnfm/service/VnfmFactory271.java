@@ -32,6 +32,8 @@ import com.ubiqube.etsi.mano.v271.model.sol003.lcmgrant.GrantRequestLinks;
 import com.ubiqube.etsi.mano.v271.service.VnfmFactory;
 import com.ubiqube.etsi.mano.v271.vnfm.controller.em.vnflcm.VnfInstances271Sol002Api;
 import com.ubiqube.etsi.mano.v271.vnfm.controller.em.vnflcm.VnfInstances271Sol002Controller;
+import com.ubiqube.etsi.mano.v271.vnfm.controller.vnflcm.VnfInstances271Sol003Api;
+import com.ubiqube.etsi.mano.v271.vnfm.controller.vnflcm.VnfLcmOpOccs271Sol003Api;
 
 /**
  *
@@ -60,6 +62,16 @@ public class VnfmFactory271 extends AbstractSubscriptionFactory implements VnfmF
 	@Override
 	public Object createVnfIndicatorValueChangeNotification(final UUID subscriptionId, final EventMessage event) {
 		return null;
+	}
+
+	@Override
+	public String createGrantVnfInstanceLink(final String vnfInstanceId) {
+		return linkTo(methodOn(VnfInstances271Sol003Api.class).vnfInstancesVnfInstanceIdGet(vnfInstanceId)).withSelfRel().getHref();
+	}
+
+	@Override
+	public String createGrantVnfLcmOpOccsLink(final String vnfLcmOpOccId) {
+		return linkTo(methodOn(VnfLcmOpOccs271Sol003Api.class).vnfLcmOpOccsVnfLcmOpOccIdGet(vnfLcmOpOccId)).withSelfRel().getHref();
 	}
 
 }
