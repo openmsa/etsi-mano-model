@@ -16,6 +16,9 @@
  */
 package com.ubiqube.etsi.mano.v331.vnfm.service;
 
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
+import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -25,6 +28,8 @@ import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.v331.model.vnfm.grant.GrantRequest;
 import com.ubiqube.etsi.mano.v331.service.VnfmFactory;
+import com.ubiqube.etsi.mano.v331.vnfm.controller.vnfm.vnflcm.VnfInstances331Sol003Api;
+import com.ubiqube.etsi.mano.v331.vnfm.controller.vnfm.vnflcm.VnfLcmOpOccs331Sol003Api;
 
 /**
  * @author olivier
@@ -48,4 +53,15 @@ public class VnfmFactory331 extends AbstractSubscriptionFactory implements VnfmF
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String createGrantVnfInstanceLink(final String vnfInstanceId) {
+		return linkTo(methodOn(VnfInstances331Sol003Api.class).vnfInstancesVnfInstanceIdGet(vnfInstanceId)).withSelfRel().getHref();
+	}
+
+	@Override
+	public String createGrantVnfLcmOpOccsLink(final String vnfLcmOpOccId) {
+		return linkTo(methodOn(VnfLcmOpOccs331Sol003Api.class).vnfLcmOpOccsVnfLcmOpOccIdGet(vnfLcmOpOccId)).withSelfRel().getHref();
+	}
+
 }
