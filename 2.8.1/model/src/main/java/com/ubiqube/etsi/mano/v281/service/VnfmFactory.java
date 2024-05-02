@@ -33,4 +33,9 @@ public interface VnfmFactory {
 	String createSubscriptionLink(ApiAndType at, String id);
 
 	Object createVnfIndicatorValueChangeNotification(UUID subscriptionId, EventMessage event);
+
+	String createGrantVnfInstanceLink(String vnfInstanceId);
+
+	String createGrantVnfLcmOpOccsLink(String vnfLcmOpOccId);
+
 }
