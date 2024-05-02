@@ -19,6 +19,8 @@ package com.ubiqube.etsi.mano.v451.nfvo.controller.vnfm.grant;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
+import java.util.Optional;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +32,7 @@ import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantLinks;
 import com.ubiqube.etsi.mano.v451.model.vnfm.grant.GrantRequest;
 import com.ubiqube.etsi.mano.v451.service.mapping.Grant451Mapping;
 
+import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
 @RestController
@@ -37,7 +40,7 @@ public class Grants451Sol003Controller implements Grants451Sol003Api {
 	private final LcmGrantsFrontController lcmGrantsFrontController;
 	private final Grant451Mapping grantMapping;
 
-	public Grants451Sol003Controller(final LcmGrantsFrontController lcmGrantsFrontController, final Grant451Mapping grantMapping) {
+	public Grants451Sol003Controller(final @Nonnull LcmGrantsFrontController lcmGrantsFrontController, final @Nonnull Grant451Mapping grantMapping) {
 		this.lcmGrantsFrontController = lcmGrantsFrontController;
 		this.grantMapping = grantMapping;
 	}
@@ -54,7 +57,7 @@ public class Grants451Sol003Controller implements Grants451Sol003Api {
 	}
 
 	private static void makeSelfLinks(final Grant jsonGrant) {
-		final GrantLinks grantLinks = new GrantLinks();
+		final GrantLinks grantLinks = Optional.ofNullable(jsonGrant.getLinks()).orElseGet(GrantLinks::new);
 		final Link link = new Link();
 		link.setHref(linkTo(methodOn(Grants451Sol003Api.class).grantsGrantIdGet(jsonGrant.getId())).withSelfRel().getHref());
 		grantLinks.setSelf(link);
