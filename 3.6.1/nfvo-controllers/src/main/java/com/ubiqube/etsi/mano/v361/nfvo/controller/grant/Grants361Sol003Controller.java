@@ -19,6 +19,8 @@ package com.ubiqube.etsi.mano.v361.nfvo.controller.grant;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.linkTo;
 import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 
+import java.util.Optional;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -59,7 +61,7 @@ public class Grants361Sol003Controller implements Grants361Sol003Api {
 	}
 
 	private static void makeSelfLinks(final Grant jsonGrant) {
-		final GrantLinks grantLinks = new GrantLinks();
+		final GrantLinks grantLinks = Optional.ofNullable(jsonGrant.getLinks()).orElseGet(GrantLinks::new);
 		final Link link = new Link();
 		link.setHref(linkTo(methodOn(Grants361Sol003Api.class).grantsGrantIdGet(jsonGrant.getId())).withSelfRel().getHref());
 		grantLinks.setSelf(link);
