@@ -285,9 +285,11 @@ public class HttpGateway331 extends AbstractHttpGateway {
 		final GrantRequest g = grantMapping.mapToRequest(grant);
 		final GrantRequestLinks links = new GrantRequestLinks();
 		final Link link = new Link();
-		link.setHref("http://");
+		link.setHref(vnfmFactory.createGrantVnfInstanceLink(grant.getVnfInstanceId()));
 		links.setVnfInstance(link);
-		links.setVnfLcmOpOcc(link);
+		final Link linkLcm = new Link();
+		linkLcm.setHref(vnfmFactory.createGrantVnfLcmOpOccsLink(grant.getVnfLcmOpOccId()));
+		links.setVnfLcmOpOcc(linkLcm);
 		g.setLinks(links);
 		return g;
 	}
