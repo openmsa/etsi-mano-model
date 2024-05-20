@@ -26,11 +26,12 @@ import org.mapstruct.Mapping;
 import com.ubiqube.etsi.mano.common.v261.model.VimConnectionInfo;
 import com.ubiqube.etsi.mano.dao.mano.cnf.ConnectionInformation;
 import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
+import com.ubiqube.etsi.mano.service.mapping.ConnectionMapping;
 
 import jakarta.annotation.Nullable;
 
 @Mapper
-public interface VimConnectionInfo261Mapping {
+public interface VimConnectionInfo261Mapping extends ConnectionMapping {
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "cnfInfo", ignore = true)
 	@Mapping(target = "id", ignore = true)
