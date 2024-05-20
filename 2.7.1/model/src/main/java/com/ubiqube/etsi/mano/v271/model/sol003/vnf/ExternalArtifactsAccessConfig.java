@@ -16,55 +16,60 @@
  */
 package com.ubiqube.etsi.mano.v271.model.sol003.vnf;
 
+import java.util.List;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ubiqube.etsi.mano.v271.model.sol003.vnf.ExternalArtifactsAccessConfigArtifact;
-import com.fasterxml.jackson.annotation.JsonCreator;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 
 import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 
 /**
- * This type represents the access configuration information for downloading external VNF package artifacts. The NFVO can obtain the external VNF package artifact file through the information provided in this structure, together with information provided in the manifest / VNFD. The data structure shall comply with the provisions defined in Table 9.5.2.10-1. If the data structure is part of a response body, security-sensitive attributes shall be excluded as specified in Table 9.5.2.10-1. 
+ * This type represents the access configuration information for downloading
+ * external VNF package artifacts. The NFVO can obtain the external VNF package
+ * artifact file through the information provided in this structure, together
+ * with information provided in the manifest / VNFD. The data structure shall
+ * comply with the provisions defined in Table 9.5.2.10-1. If the data structure
+ * is part of a response body, security-sensitive attributes shall be excluded
+ * as specified in Table 9.5.2.10-1.
  */
-@Schema (description= "This type represents the access configuration information for downloading external VNF package artifacts. The NFVO can obtain the external VNF package artifact file through the information provided in this structure, together with information provided in the manifest / VNFD. The data structure shall comply with the provisions defined in Table 9.5.2.10-1. If the data structure is part of a response body, security-sensitive attributes shall be excluded as specified in Table 9.5.2.10-1. " )
+@Schema(description = "This type represents the access configuration information for downloading external VNF package artifacts. The NFVO can obtain the external VNF package artifact file through the information provided in this structure, together with information provided in the manifest / VNFD. The data structure shall comply with the provisions defined in Table 9.5.2.10-1. If the data structure is part of a response body, security-sensitive attributes shall be excluded as specified in Table 9.5.2.10-1. ")
 @Validated
-public class ExternalArtifactsAccessConfig   {
-  @JsonProperty("artifact")
-  private ExternalArtifactsAccessConfigArtifact artifact = null;
+public class ExternalArtifactsAccessConfig {
+	@JsonProperty("artifact")
+	private List<ExternalArtifactsAccessConfigArtifact> artifact = null;
 
-	public ExternalArtifactsAccessConfig artifact(ExternalArtifactsAccessConfigArtifact artifact) {
+	public ExternalArtifactsAccessConfig artifact(final List<ExternalArtifactsAccessConfigArtifact> artifact) {
 		this.artifact = artifact;
 		return this;
 	}
 
 	/**
-	* Get artifact
-	* @return artifact
-	*/
+	 * Get artifact
+	 *
+	 * @return artifact
+	 */
 	@Schema(description = "")
 	@Valid
-	public ExternalArtifactsAccessConfigArtifact getArtifact() {
+	public List<ExternalArtifactsAccessConfigArtifact> getArtifact() {
 		return artifact;
 	}
 
-	public void setArtifact(ExternalArtifactsAccessConfigArtifact artifact) {
+	public void setArtifact(final List<ExternalArtifactsAccessConfigArtifact> artifact) {
 		this.artifact = artifact;
 	}
 
-
 	@Override
-	public boolean equals(java.lang.Object o) {
+	public boolean equals(final java.lang.Object o) {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if ((o == null) || (getClass() != o.getClass())) {
 			return false;
 		}
-		ExternalArtifactsAccessConfig externalArtifactsAccessConfig = (ExternalArtifactsAccessConfig) o;
+		final ExternalArtifactsAccessConfig externalArtifactsAccessConfig = (ExternalArtifactsAccessConfig) o;
 		return Objects.equals(this.artifact, externalArtifactsAccessConfig.artifact);
 	}
 
@@ -75,7 +80,7 @@ public class ExternalArtifactsAccessConfig   {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		final StringBuilder sb = new StringBuilder();
 		sb.append("class ExternalArtifactsAccessConfig {\n");
 
 		sb.append("    artifact: ").append(toIndentedString(artifact)).append("\n");
@@ -84,10 +89,10 @@ public class ExternalArtifactsAccessConfig   {
 	}
 
 	/**
-	* Convert the given object to string with each line indented by 4 spaces
-	* (except the first line).
-	*/
-	private String toIndentedString(java.lang.Object o) {
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(final java.lang.Object o) {
 		if (o == null) {
 			return "null";
 		}
