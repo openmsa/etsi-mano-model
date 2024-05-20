@@ -35,6 +35,7 @@ import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.UploadVnfPkgFromUriRequest;
 import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.VnfPkgInfo;
 import com.ubiqube.etsi.mano.v281.model.nfvo.vnf.VnfPkgInfoLinks;
 import com.ubiqube.etsi.mano.v281.service.mapping.VnfPkgInfo281Mapping;
+import com.ubiqube.etsi.mano.v281.service.mapping.pkg.ExternalArtifactsAccessConfig281Mapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -48,10 +49,12 @@ import jakarta.validation.Valid;
 public class VnfPackages281Sol005Controller implements VnfPackages281Sol005Api {
 	private final VnfPackageFrontController frontController;
 	private final VnfPkgInfo281Mapping mapper;
+	private final ExternalArtifactsAccessConfig281Mapping externalMapping;
 
-	public VnfPackages281Sol005Controller(final VnfPackageFrontController frontController, final VnfPkgInfo281Mapping mapper) {
+	public VnfPackages281Sol005Controller(final VnfPackageFrontController frontController, final VnfPkgInfo281Mapping mapper, final ExternalArtifactsAccessConfig281Mapping externalMapping) {
 		this.frontController = frontController;
 		this.mapper = mapper;
+		this.externalMapping = externalMapping;
 	}
 
 	@Override
@@ -86,7 +89,8 @@ public class VnfPackages281Sol005Controller implements VnfPackages281Sol005Api {
 
 	@Override
 	public ResponseEntity<ExternalArtifactsAccessConfig> vnfPackagesVnfPkgIdExtArtifactsAccessPut(@Valid final ExternalArtifactsAccessConfig body, final String vnfPkgId) {
-		return frontController.putExternalArtifact(body, getSafeUUID(vnfPkgId));
+		final com.ubiqube.etsi.mano.dao.mano.pkg.ExternalArtifactsAccessConfig req = externalMapping.map(body);
+		return frontController.putExternalArtifactAccessConfig(req, getSafeUUID(vnfPkgId), externalMapping::map);
 	}
 
 	@Override
