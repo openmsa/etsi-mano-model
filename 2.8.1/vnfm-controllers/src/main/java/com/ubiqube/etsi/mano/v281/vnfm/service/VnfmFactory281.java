@@ -22,6 +22,8 @@ import static com.ubiqube.etsi.mano.uri.ManoWebMvcLinkBuilder.methodOn;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.ubiqube.etsi.mano.controller.subscription.AbstractSubscriptionFactory;
 import com.ubiqube.etsi.mano.service.event.model.EventMessage;
 import com.ubiqube.etsi.mano.v281.model.em.vnflcm.Link;
@@ -38,6 +40,7 @@ import com.ubiqube.etsi.mano.v281.vnfm.controller.vnfm.vnflcm.VnfLcmOpOccs281Sol
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
+@Service
 public class VnfmFactory281 extends AbstractSubscriptionFactory implements VnfmFactory {
 
 	public VnfmFactory281(final List<SubscriptionLinkable281Vnfm> subs) {
