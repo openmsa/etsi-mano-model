@@ -28,7 +28,7 @@ import com.ubiqube.etsi.mano.v281.model.vnfm.grant.GrantRequest;
  *
  */
 public interface VnfmFactory {
-	<T> void makeGrantRequestLink(final GrantRequest manoGrant);
+	void makeGrantRequestLink(final GrantRequest manoGrant);
 
 	String createSubscriptionLink(ApiAndType at, String id);
 
