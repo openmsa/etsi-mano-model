@@ -113,13 +113,4 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-	<repositories>
-		<repository>
-			<id>nexus</id>
-			<url>http://nexus.ubiqube.com:8081/repository/maven-public/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 </project>
