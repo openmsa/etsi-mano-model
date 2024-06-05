@@ -35,14 +35,18 @@ import jakarta.annotation.Nullable;
 
 @Mapper
 public interface VimConnectionInfo351Mapping extends ConnectionMapping {
-	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "cnfInfo", ignore = true)
-	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "jujuInfo", ignore = true)
-	@Mapping(target = "tenantId", ignore = true)
-	@Mapping(target = "version", ignore = true)
-	@Mapping(target = "vimCapabilities", ignore = true)
-	VimConnectionInformation map(VimConnectionInfo vci);
+	default VimConnectionInformation map(final VimConnectionInfo vci) {
+		if (null == vci) {
+			return null;
+		}
+		final VimConnectionInformation ret = new VimConnectionInformation<>();
+		ret.setVimId(vci.getVimId());
+		ret.setVimType(vci.getVimType());
+		ret.setAccessInfo(mapToAccessInfo(vci.getVimType(), vci.getAccessInfo()));
+		ret.setInterfaceInfo(mapToInterfaceInfo(vci.getVimType(), vci.getInterfaceInfo()));
+		ret.setExtra(vci.getExtra());
+		return ret;
+	}
 
 	VimConnectionInfo map(VimConnectionInformation vci);
 
