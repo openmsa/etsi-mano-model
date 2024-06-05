@@ -23,6 +23,8 @@ import java.util.stream.Collectors;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import com.ubiqube.etsi.mano.dao.mano.AccessInfo;
+import com.ubiqube.etsi.mano.dao.mano.InterfaceInfo;
 import com.ubiqube.etsi.mano.dao.mano.cnf.ConnectionInformation;
 import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.service.mapping.ConnectionMapping;
@@ -55,6 +57,16 @@ public interface VimConnectionInfo271Mapping extends ConnectionMapping {
 
 	@Nullable
 	default Map<String, VimConnectionInfo> map(final @Nullable Set<VimConnectionInformation> in) {
+		if (null == in) {
+			return null;
+		}
+		return in.stream()
+				.map(this::map)
+				.collect(Collectors.toMap(x -> x.getVimId(), x -> x));
+	}
+
+	@Nullable
+	default Map<String, VimConnectionInfo> mapWithNGeneric(final @Nullable Set<VimConnectionInformation<? extends InterfaceInfo, ? extends AccessInfo>> in) {
 		if (null == in) {
 			return null;
 		}
