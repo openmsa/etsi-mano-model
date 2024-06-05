@@ -119,7 +119,17 @@ public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivi
 	@Mapping(target = "vimCapabilities", ignore = true)
 	@Mapping(target = "vimId", ignore = true)
 	@Mapping(target = "vimType", constant = "PAAS")
-	VimConnectionInformation map(PaasServiceHandle o);
+	default VimConnectionInformation map(final PaasServiceHandle o) {
+		if (null == o) {
+			return null;
+		}
+		final VimConnectionInformation ret = new VimConnectionInformation<>();
+		ret.setVimType("PAAS");
+		ret.setAccessInfo(mapToAccessInfo("PAAS", o.getAccessInfo()));
+		ret.setInterfaceInfo(mapToInterfaceInfo("PAAS", o.getInterfaceInfo()));
+		ret.setExtra(o.getExtra());
+		return ret;
+	}
 
 	GrantVimAssetsEntity map(GrantVimAssets gva);
 
