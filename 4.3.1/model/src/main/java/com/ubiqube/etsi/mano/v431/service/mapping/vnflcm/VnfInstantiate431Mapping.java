@@ -91,16 +91,6 @@ public interface VnfInstantiate431Mapping extends Connectivity431Mapping, VimCon
 		return value.values().stream().map(this::map).toList();
 	}
 
-	@Override
-	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "cnfInfo", ignore = true)
-	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "jujuInfo", ignore = true)
-	@Mapping(target = "tenantId", ignore = true)
-	@Mapping(target = "version", ignore = true)
-	@Mapping(target = "vimCapabilities", ignore = true)
-	VimConnectionInformation map(VimConnectionInfo o);
-
 	@Mapping(target = "targetScaleLevelInfo", ignore = true)
 	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "extensions", ignore = true)
