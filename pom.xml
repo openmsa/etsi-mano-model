@@ -21,6 +21,7 @@
 		<module>3.5.1</module>
 		<module>3.6.1</module>
 		<module>4.3.1</module>
+		<module>4.5.1</module>
 	</modules>
 	<scm>
 		<developerConnection>scm:git:https://github.com/openmsa/etsi-mano-model.git</developerConnection>
