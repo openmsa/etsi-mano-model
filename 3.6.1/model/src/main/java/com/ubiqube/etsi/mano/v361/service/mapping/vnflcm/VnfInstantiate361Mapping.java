@@ -85,13 +85,6 @@ public interface VnfInstantiate361Mapping extends Connectivity361Mapping, VimCon
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	ExtLinkPortDataEntity map(ExtLinkPortData o);
 
-	default List<VimConnectionInformation> mapSetOfVimconn(final Map<String, VimConnectionInfo> value) {
-		if (null == value) {
-			return List.of();
-		}
-		return value.values().stream().map(this::map).toList();
-	}
-
 	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "extensions", ignore = true)
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
