@@ -35,7 +35,7 @@ import jakarta.annotation.Nullable;
 
 @Mapper
 public interface VimConnectionInfo451Mapping extends ConnectionMapping {
-	default VimConnectionInformation map(final VimConnectionInfo vci) {
+	default VimConnectionInformation<? extends InterfaceInfo, ? extends AccessInfo> map(final VimConnectionInfo vci) {
 		if (null == vci) {
 			return null;
 		}
@@ -88,16 +88,6 @@ public interface VimConnectionInfo451Mapping extends ConnectionMapping {
 		return in.values().stream()
 				.map(this::map)
 				.collect(Collectors.toSet());
-	}
-
-	@Nullable
-	default Map<String, VimConnectionInfo> map(final @Nullable Set<VimConnectionInformation> in) {
-		if (null == in) {
-			return null;
-		}
-		return in.stream()
-				.map(this::map)
-				.collect(Collectors.toMap(x -> x.getVimId(), x -> x));
 	}
 
 	@Mapping(target = "audit", ignore = true)

@@ -24,6 +24,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
+
+import com.ubiqube.etsi.mano.dao.mano.AccessInfo;
+import com.ubiqube.etsi.mano.dao.mano.InterfaceInfo;
 import com.ubiqube.etsi.mano.dao.mano.ExtLinkPortDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.model.ExternalManagedVirtualLink;
@@ -87,11 +90,14 @@ public interface VnfInstantiate451Mapping extends Connectivity451Mapping , VimCo
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	ExtLinkPortDataEntity map(ExtLinkPortData o);
 
-	default List<VimConnectionInformation> mapSetOfVimconn(final Map<String, VimConnectionInfo> value) {
+	default List<VimConnectionInformation<? extends InterfaceInfo, ? extends AccessInfo>> mapSetOfVimconn(final Map<String, VimConnectionInfo> value) {
 		if (null == value) {
-			return List.of();
+			return List.of(); 
 		}
-		return value.values().stream().map(this::map).toList();
+		// Problem with openjdk.
+		return value.values().stream()
+				.map(this::map)
+				.collect(Collectors.toList());
 	}
 
 	@Mapping(target = "selectedDeployableModule", ignore = true)
