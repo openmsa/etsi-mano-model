@@ -35,7 +35,7 @@ import jakarta.annotation.Nullable;
 
 @Mapper
 public interface VimConnectionInfo331Mapping extends ConnectionMapping {
-	default VimConnectionInformation map(final VimConnectionInfo vci) {
+	default VimConnectionInformation<? extends com.ubiqube.etsi.mano.dao.mano.InterfaceInfo, ? extends com.ubiqube.etsi.mano.dao.mano.AccessInfo> map(final VimConnectionInfo vci) {
 		if (null == vci) {
 			return null;
 		}
