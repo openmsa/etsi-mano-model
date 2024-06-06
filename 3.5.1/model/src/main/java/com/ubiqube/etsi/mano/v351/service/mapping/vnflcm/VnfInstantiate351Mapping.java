@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see https://www.gnu.org/licenses/.
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.ubiqube.etsi.mano.v351.service.mapping.vnflcm;
 
@@ -84,13 +84,6 @@ public interface VnfInstantiate351Mapping extends Connectivity351Mapping, VimCon
 	@Mapping(target = "vimConnectionInformation.vimType", ignore = true)
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	ExtLinkPortDataEntity map(ExtLinkPortData o);
-
-	default List<VimConnectionInformation> mapSetOfVimconn(final Map<String, VimConnectionInfo> value) {
-		if (null == value) {
-			return List.of();
-		}
-		return value.values().stream().map(this::map).toList();
-	}
 
 	@Mapping(target = "additionalParams", ignore = true)
 	@Mapping(target = "extensions", ignore = true)

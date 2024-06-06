@@ -12,7 +12,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see https://www.gnu.org/licenses/.
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.ubiqube.etsi.mano.v351.service.mapping;
 
@@ -35,7 +35,7 @@ import jakarta.annotation.Nullable;
 
 @Mapper
 public interface VimConnectionInfo351Mapping extends ConnectionMapping {
-	default VimConnectionInformation map(final VimConnectionInfo vci) {
+	default VimConnectionInformation<? extends com.ubiqube.etsi.mano.dao.mano.InterfaceInfo, ? extends com.ubiqube.etsi.mano.dao.mano.AccessInfo> map(final VimConnectionInfo vci) {
 		if (null == vci) {
 			return null;
 		}
