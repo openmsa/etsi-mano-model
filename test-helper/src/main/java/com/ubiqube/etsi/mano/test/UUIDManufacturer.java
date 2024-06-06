@@ -59,6 +59,9 @@ public class UUIDManufacturer extends StringTypeManufacturerImpl {
 		if (list.contains(attributeMetadata.getAttributeName())) {
 			return UUID.randomUUID().toString();
 		}
+		if ("vimType".equals(attributeMetadata.getAttributeName())) {
+			return "ETSINFV.OPENSTACK_KEYSTONE.V_3";
+		}
 		return super.getType(strategy, attributeMetadata, manufacturingCtx);
 	}
 
