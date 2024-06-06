@@ -17,6 +17,7 @@
 package com.ubiqube.etsi.mano.v451.service.mapping;
 
 import java.util.Set;
+import java.util.UUID;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -124,6 +125,7 @@ public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivi
 			return null;
 		}
 		final VimConnectionInformation ret = new VimConnectionInformation<>();
+		ret.setId(UUID.fromString(o.getId()));
 		ret.setVimType("PAAS");
 		ret.setAccessInfo(mapToAccessInfo("PAAS", o.getAccessInfo()));
 		ret.setInterfaceInfo(mapToInterfaceInfo("PAAS", o.getInterfaceInfo()));
