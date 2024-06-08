@@ -65,6 +65,9 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	@Mapping(target = "zoneId", ignore = true)
 	GrantInformationExt map(ResourceDefinition o);
 
+	@ValueMapping(source = "OSCONTAINER", target = "OS_CONTAINER")
+	ResourceTypeEnum map(ResourceDefinition.TypeEnum o);
+
 	@Nullable
 	default Set<String> map(final @Nullable String value) {
 		if (null == value) {
