@@ -179,7 +179,6 @@ public interface Grant261Mapping extends VimConnectionInfo261Mapping, Connectivi
 		return value.iterator().next();
 	}
 
-	@ValueMapping(source = "OSCONTAINER", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "VIRTUALCP", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "AFFINITY_RULE", target = MappingConstants.THROW_EXCEPTION)
 	@ValueMapping(source = "DNSHOST", target = MappingConstants.THROW_EXCEPTION)
