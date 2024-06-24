@@ -50,7 +50,7 @@ public class OnboardedVnfPackages351Sol003Controller implements OnboardedVnfPack
 	}
 
 	@Override
-	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsArtifactPathGet(final HttpServletRequest request, final String vnfdId, final String range, final String includeSignature) {
+	public ResponseEntity<Resource> onboardedVnfPackagesVnfdIdArtifactsArtifactPathGet(final HttpServletRequest request, final String vnfdId, final String includeSignature) {
 		return onboardedVnfPackageFrontController.onboardedGetArtifact(request, vnfdId, includeSignature);
 	}
 
