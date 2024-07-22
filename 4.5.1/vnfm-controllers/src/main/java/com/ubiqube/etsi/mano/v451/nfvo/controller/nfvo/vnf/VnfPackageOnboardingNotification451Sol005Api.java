@@ -40,7 +40,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
-@RequestMapping(value = "/sol005/vnfpkgm/v2/", headers = "Version=2.12.0")
+@RequestMapping(value = "/sol005/vnfpkgm/v2", headers = "Version=2.12.0")
 @RolesAllowed({ "ROLE_VNFM" })
 @Validated
 public interface VnfPackageOnboardingNotification451Sol005Api {

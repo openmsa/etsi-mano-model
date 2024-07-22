@@ -40,7 +40,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
-@RequestMapping(value = "/sol003/vnfpkgm/v2/notification/", headers = { "Version=2.12.0" })
+@RequestMapping(value = "/sol003/vnfpkgm/v2", headers = { "Version=2.12.0" })
 @RolesAllowed({ "ROLE_NFVO" })
 @Validated
 public interface VnfPackageOnboardingNotification451Sol003Api {
@@ -55,7 +55,7 @@ public interface VnfPackageOnboardingNotification451Sol003Api {
 			@ApiResponse(responseCode = "406", description = "406 NOT ACCEPTABLE If the \"Accept\" HTTP header does not contain at least one name of a content type that is acceptable to the API producer, the API producer shall respond with this response code. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-	@RequestMapping(value = "/onboarding", produces = { "application/json" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/notification/onboarding", produces = { "application/json" }, method = RequestMethod.GET)
 	ResponseEntity<Void> vnfPackageOnboardingCheck();
 
 	@Operation(summary = "", description = "The POST method delivers a notification from the API producer to an API consumer. The API consumer shall have previously created an \"Individual subscription\" resource with a matching filter. See clause 10.4.9.3.1. ", tags = {})
@@ -68,7 +68,7 @@ public interface VnfPackageOnboardingNotification451Sol003Api {
 			@ApiResponse(responseCode = "406", description = "406 NOT ACCEPTABLE If the \"Accept\" HTTP header does not contain at least one name of a content type that is acceptable to the API producer, the API producer shall respond with this response code. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "500", description = "500 INTERNAL SERVER ERROR If there is an application error not related to the client's input that cannot be easily mapped to any other HTTP response code (\"catch all error\"), the API producer shall respond with this response code. The \"ProblemDetails\" structure shall be provided, and shall include in the \"detail\" attribute more information about the source of the problem. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))),
 			@ApiResponse(responseCode = "503", description = "503 SERVICE UNAVAILABLE If the API producer encounters an internal overload situation of itself or of a system it relies on, it should respond with this response code, following the provisions in IETF RFC 7231 for the use of the \"Retry-After\" HTTP header and for the alternative to refuse the connection. The \"ProblemDetails\" structure may be omitted. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetails.class))) })
-	@RequestMapping(value = "/onboarding", produces = { "application/json" }, consumes = { "application/json" }, method = RequestMethod.POST)
+	@RequestMapping(value = "/notification/onboarding", produces = { "application/json" }, consumes = { "application/json" }, method = RequestMethod.POST)
 	ResponseEntity<Void> vnfPackageOnboardingNotificationPost(
 			@Parameter(in = ParameterIn.DEFAULT, description = "A notification about on-boarding of a VNF package.", required = true, schema = @Schema()) @Valid @RequestBody final VnfPackageOnboardingNotification body);
 }

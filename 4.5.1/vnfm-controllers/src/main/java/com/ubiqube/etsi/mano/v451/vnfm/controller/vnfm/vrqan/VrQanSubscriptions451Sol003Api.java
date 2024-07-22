@@ -47,7 +47,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
-@RequestMapping(value = "/sol003/vrqan/v1/subscriptions", headers = "Version=1.12.0")
+@RequestMapping(value = "/sol003/vrqan/v1", headers = "Version=1.12.0")
 @RolesAllowed({ "ROLE_NFVO" })
 @Validated
 public interface VrQanSubscriptions451Sol003Api {
