@@ -68,7 +68,7 @@ public interface Grant331Mapping extends VimConnectionInfo331Mapping, Connectivi
 	GrantInformationExt map(ResourceDefinition o);
 
 	@Nullable
-	default Set<String> map(final @Nullable String value) {
+	default Set<String> mapToSet(final @Nullable String value) {
 		if (null == value) {
 			return null;
 		}
