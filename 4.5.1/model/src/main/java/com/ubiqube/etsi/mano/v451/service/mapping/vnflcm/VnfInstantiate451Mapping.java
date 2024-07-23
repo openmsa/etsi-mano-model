@@ -24,9 +24,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-
-import com.ubiqube.etsi.mano.dao.mano.AccessInfo;
-import com.ubiqube.etsi.mano.dao.mano.InterfaceInfo;
 import com.ubiqube.etsi.mano.dao.mano.ExtLinkPortDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.model.ExternalManagedVirtualLink;
@@ -38,10 +35,8 @@ import com.ubiqube.etsi.mano.v451.model.nfvo.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v451.service.mapping.Connectivity451Mapping;
 import com.ubiqube.etsi.mano.v451.service.mapping.VimConnectionInfo451Mapping;
 
-import jakarta.annotation.Nullable;
-
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface VnfInstantiate451Mapping extends Connectivity451Mapping , VimConnectionInfo451Mapping{
+public interface VnfInstantiate451Mapping extends Connectivity451Mapping, VimConnectionInfo451Mapping {
 
 	@Mapping(target = "vimConnectionInfo", ignore = true)
 	VnfInstantiate map(InstantiateVnfRequest o);
@@ -90,9 +85,9 @@ public interface VnfInstantiate451Mapping extends Connectivity451Mapping , VimCo
 	@Mapping(target = "vimConnectionInformation.id", ignore = true)
 	ExtLinkPortDataEntity map(ExtLinkPortData o);
 
-	default List<VimConnectionInformation<? extends InterfaceInfo, ? extends AccessInfo>> mapSetOfVimconn(final Map<String, VimConnectionInfo> value) {
+	default List<VimConnectionInformation> mapSetOfVimconn(final Map<String, VimConnectionInfo> value) {
 		if (null == value) {
-			return List.of(); 
+			return List.of();
 		}
 		// Problem with openjdk.
 		return value.values().stream()
@@ -106,13 +101,6 @@ public interface VnfInstantiate451Mapping extends Connectivity451Mapping , VimCo
 	@Mapping(target = "extensions", ignore = true)
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	InstantiateVnfRequest map(VnfInstantiate req);
- 
-	@Nullable
-	default Map<String,VimConnectionInfo> map(@Nullable List<VimConnectionInformation> value) {
-		if (null == value) return null;
-		return value.stream().collect(Collectors.toMap(x -> x.getVimId(), x -> map(x)));
-		
-	}
 
 	@Mapping(target = "vimConnectionId", ignore = true)
 	ExtManagedVirtualLinkData map(ExternalManagedVirtualLink o);

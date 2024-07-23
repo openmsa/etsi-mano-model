@@ -70,14 +70,6 @@ public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivi
 	@Mapping(target = "zoneId", ignore = true)
 	GrantInformationExt map(ResourceDefinition o);
 
-	@Nullable
-	default Set<String> map(final @Nullable String value) {
-		if (null == value) {
-			return null;
-		}
-		return Set.of(value);
-	}
-
 	@Mapping(target = "id", ignore = true)
 	SnapshotResourceDefinitionEntity map(SnapshotResourceDefinition o);
 
@@ -124,7 +116,7 @@ public interface Grant451Mapping extends VimConnectionInfo451Mapping, Connectivi
 		if (null == o) {
 			return null;
 		}
-		final VimConnectionInformation ret = new VimConnectionInformation<>();
+		final VimConnectionInformation ret = new VimConnectionInformation();
 		ret.setId(UUID.fromString(o.getId()));
 		ret.setVimType("PAAS");
 		ret.setAccessInfo(mapToAccessInfo("PAAS", o.getAccessInfo()));

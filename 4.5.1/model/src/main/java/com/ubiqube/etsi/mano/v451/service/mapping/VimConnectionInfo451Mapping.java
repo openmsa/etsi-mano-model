@@ -24,8 +24,6 @@ import java.util.stream.Collectors;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.ubiqube.etsi.mano.dao.mano.AccessInfo;
-import com.ubiqube.etsi.mano.dao.mano.InterfaceInfo;
 import com.ubiqube.etsi.mano.dao.mano.cnf.ConnectionInformation;
 import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.service.mapping.ConnectionMapping;
@@ -36,11 +34,11 @@ import jakarta.annotation.Nullable;
 @Mapper
 public interface VimConnectionInfo451Mapping extends ConnectionMapping {
 	@Nullable
-	default VimConnectionInformation<? extends InterfaceInfo, ? extends AccessInfo> map(final @Nullable VimConnectionInfo vci) {
+	default VimConnectionInformation map(final @Nullable VimConnectionInfo vci) {
 		if (null == vci) {
 			return null;
 		}
-		final VimConnectionInformation ret = new VimConnectionInformation<>();
+		final VimConnectionInformation ret = new VimConnectionInformation();
 		ret.setVimId(vci.getVimId());
 		ret.setVimType(vci.getVimType());
 		ret.setAccessInfo(mapToAccessInfo(vci.getVimType(), vci.getAccessInfo()));
@@ -50,7 +48,7 @@ public interface VimConnectionInfo451Mapping extends ConnectionMapping {
 	}
 
 	@Nullable
-	default Set<VimConnectionInformation<? extends com.ubiqube.etsi.mano.dao.mano.InterfaceInfo, ? extends com.ubiqube.etsi.mano.dao.mano.AccessInfo>> mapNoGeneric(final @Nullable Map<String, VimConnectionInfo> in) {
+	default Set<VimConnectionInformation> mapNoGeneric(final @Nullable Map<String, VimConnectionInfo> in) {
 		if (null == in) {
 			return null;
 		}
@@ -60,7 +58,7 @@ public interface VimConnectionInfo451Mapping extends ConnectionMapping {
 	}
 
 	@Nullable
-	default Map<String, VimConnectionInfo> mapWithNGeneric(final @Nullable Set<VimConnectionInformation<? extends InterfaceInfo, ? extends AccessInfo>> in) {
+	default Map<String, VimConnectionInfo> mapWithNGeneric(final @Nullable Set<VimConnectionInformation> in) {
 		if (null == in) {
 			return null;
 		}
@@ -70,7 +68,7 @@ public interface VimConnectionInfo451Mapping extends ConnectionMapping {
 	}
 
 	@Nullable
-	default Map<String, VimConnectionInfo> mapWithNGenericAndList(final @Nullable List<VimConnectionInformation<? extends InterfaceInfo, ? extends AccessInfo>> in) {
+	default Map<String, VimConnectionInfo> mapWithNGenericAndList(final @Nullable List<VimConnectionInformation> in) {
 		if (null == in) {
 			return null;
 		}
@@ -80,16 +78,6 @@ public interface VimConnectionInfo451Mapping extends ConnectionMapping {
 	}
 
 	VimConnectionInfo map(VimConnectionInformation vci);
-
-	@Nullable
-	default Set<VimConnectionInformation> map(final @Nullable Map<String, VimConnectionInfo> in) {
-		if (null == in) {
-			return null;
-		}
-		return in.values().stream()
-				.map(this::map)
-				.collect(Collectors.toSet());
-	}
 
 	@Mapping(target = "audit", ignore = true)
 	@Mapping(target = "authentification", ignore = true)
