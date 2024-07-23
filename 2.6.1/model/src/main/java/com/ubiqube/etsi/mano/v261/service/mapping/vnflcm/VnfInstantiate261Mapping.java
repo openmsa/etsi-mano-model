@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtLinkPortData;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.dao.mano.ExtLinkPortDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
+import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.model.ExternalManagedVirtualLink;
 import com.ubiqube.etsi.mano.model.VnfInstantiate;
 import com.ubiqube.etsi.mano.v261.model.vnfm.nslcm.InstantiateVnfRequest;
