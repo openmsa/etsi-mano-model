@@ -16,10 +16,7 @@
  */
 package com.ubiqube.etsi.mano.v431.service.mapping;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -37,7 +34,6 @@ import com.ubiqube.etsi.mano.dao.mano.dto.VnfLcmResourceChanges;
 import com.ubiqube.etsi.mano.dao.mano.v2.AffectedVipCp;
 import com.ubiqube.etsi.mano.dao.mano.v2.PlanOperationType;
 import com.ubiqube.etsi.mano.dao.mano.v2.VnfBlueprint;
-import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.RejectedLcmCoordination;
 import com.ubiqube.etsi.mano.dao.mano.vnfm.VnfLcmCoordination;
 import com.ubiqube.etsi.mano.service.mapping.StringToUriMapping;
@@ -48,7 +44,6 @@ import com.ubiqube.etsi.mano.v431.model.em.vnflcm.AffectedVnfc;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ExtLinkPortInfo;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.LcmOperationType;
-import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfInfoModifications;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfLcmOpOcc;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.VnfLcmOpOccLcmCoordinations;
@@ -111,23 +106,6 @@ public interface VnfLcmOpOcc431Mapping extends StringToUriMapping, Connectivity4
 	@Mapping(target = "vnfcInfoModificationsDeleteIds", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	com.ubiqube.etsi.mano.dao.mano.v2.VnfInfoModifications map(VnfInfoModifications o);
-
-	@Nullable
-	default Map<String, VimConnectionInformation> mapToMapVimConnectionInformation(final @Nullable List<VimConnectionInfo> value) {
-		if (null == value) {
-			return Map.of();
-		}
-		return value.stream().map(this::map).collect(Collectors.toMap(x -> x.getVimId(), x -> x));
-	}
-//
-//	@Mapping(target = "audit", ignore = true)
-//	@Mapping(target = "cnfInfo", ignore = true)
-//	@Mapping(target = "id", ignore = true)
-//	@Mapping(target = "jujuInfo", ignore = true)
-//	@Mapping(target = "tenantId", ignore = true)
-//	@Mapping(target = "version", ignore = true)
-//	@Mapping(target = "vimCapabilities", ignore = true)
-//	VimConnectionInformation map(VimConnectionInfo x);
 
 	@Mapping(target = "id", ignore = true)
 	NetAttDefResourceInfo map(com.ubiqube.etsi.mano.v431.model.em.vnflcm.NetAttDefResourceInfo o);

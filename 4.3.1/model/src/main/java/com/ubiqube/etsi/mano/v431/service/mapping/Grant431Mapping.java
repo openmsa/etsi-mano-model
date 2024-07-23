@@ -69,7 +69,7 @@ public interface Grant431Mapping extends VimConnectionInfo431Mapping, Connectivi
 	ResourceTypeEnum map(ResourceDefinition.TypeEnum o);
 
 	@Nullable
-	default Set<String> map(final @Nullable String value) {
+	default Set<String> mapToSet(final @Nullable String value) {
 		if (null == value) {
 			return null;
 		}
