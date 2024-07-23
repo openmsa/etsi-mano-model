@@ -36,7 +36,7 @@ public interface VimConnectionInfo281Mapping extends ConnectionMapping {
 		if (null == vci) {
 			return null;
 		}
-		final VimConnectionInformation ret = new VimConnectionInformation<>();
+		final VimConnectionInformation ret = new VimConnectionInformation();
 		ret.setVimId(vci.getVimId());
 		ret.setVimType(vci.getVimType());
 		ret.setAccessInfo(mapToAccessInfo(vci.getVimType(), vci.getAccessInfo()));
