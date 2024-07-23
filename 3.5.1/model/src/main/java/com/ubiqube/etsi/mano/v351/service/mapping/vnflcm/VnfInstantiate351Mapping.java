@@ -16,22 +16,16 @@
  */
 package com.ubiqube.etsi.mano.v351.service.mapping.vnflcm;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ubiqube.etsi.mano.dao.mano.ExtLinkPortDataEntity;
-import com.ubiqube.etsi.mano.dao.mano.vim.VimConnectionInformation;
 import com.ubiqube.etsi.mano.model.ExternalManagedVirtualLink;
 import com.ubiqube.etsi.mano.model.VnfInstantiate;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.ExtLinkPortData;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.InstantiateVnfRequest;
-import com.ubiqube.etsi.mano.v351.model.vnfm.grant.VimConnectionInfo;
 import com.ubiqube.etsi.mano.v351.service.mapping.Connectivity351Mapping;
 import com.ubiqube.etsi.mano.v351.service.mapping.VimConnectionInfo351Mapping;
 
@@ -89,14 +83,6 @@ public interface VnfInstantiate351Mapping extends Connectivity351Mapping, VimCon
 	@Mapping(target = "extensions", ignore = true)
 	@Mapping(target = "vnfConfigurableProperties", ignore = true)
 	InstantiateVnfRequest map(VnfInstantiate req);
-
-	@SuppressWarnings("null")
-	default Map<String,VimConnectionInfo> map(List<VimConnectionInformation> value) {
-		if (null == value) {
-			return Map.of();
-		}
-		return value.stream().collect(Collectors.toMap(x -> x.getVimId(), x -> map(x)));
-	}
 
 	@Mapping(target = "vimConnectionId", ignore = true)
 	ExtManagedVirtualLinkData map(ExternalManagedVirtualLink o);
