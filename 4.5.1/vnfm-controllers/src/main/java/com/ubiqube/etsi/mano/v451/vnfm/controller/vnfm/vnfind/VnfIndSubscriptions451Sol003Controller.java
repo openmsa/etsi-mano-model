@@ -59,7 +59,7 @@ public class VnfIndSubscriptions451Sol003Controller implements VnfIndSubscriptio
 	@Override
 	public ResponseEntity<VnfIndicatorSubscription> subscriptionsPost(@Valid final VnfIndicatorSubscriptionRequest body) {
 		final Subscription req = mapper.map(body);
-		return subscriptionService.create(req, x -> mapper.map(x, VnfIndicatorNotificationsFilter.class), VnfIndSubscriptions451Sol003Api.class, VnfIndSubscriptions451Sol003Controller::makeLinks, VnfIndSubscriptions451Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFPM);
+		return subscriptionService.create(req, x -> mapper.map(x, VnfIndicatorNotificationsFilter.class), VnfIndSubscriptions451Sol003Api.class, VnfIndSubscriptions451Sol003Controller::makeLinks, VnfIndSubscriptions451Sol003Controller::makeSelf, ApiVersionType.SOL003_VNFIND);
 	}
 
 	@Override
