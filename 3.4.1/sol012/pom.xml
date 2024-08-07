@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
 		<artifactId>etsi-model-341-aggregator</artifactId>
-		<version>4.0.0-SNAPSHOT</version>
+		<version>4.0.0</version>
 	</parent>
 	<artifactId>etsi-sol012-341</artifactId>
 	<packaging>jar</packaging>
