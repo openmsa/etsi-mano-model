@@ -24,7 +24,7 @@
 		<module>4.5.1</module>
 	</modules>
 	<scm>
-		<developerConnection>scm:git:https://github.com/openmsa/etsi-mano-model.git</developerConnection>
+		<developerConnection>scm:git:ssh://git@github.com/openmsa/etsi-mano-model.git</developerConnection>
 		<tag>etsi-models-aggregator-3.2.0</tag>
   </scm>
 </project>
