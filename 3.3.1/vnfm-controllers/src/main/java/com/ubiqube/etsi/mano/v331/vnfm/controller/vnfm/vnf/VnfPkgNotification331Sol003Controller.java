@@ -1,8 +1,10 @@
 package com.ubiqube.etsi.mano.v331.vnfm.controller.vnfm.vnf;
 
+import org.springframework.context.annotation.Conditional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubiqube.etsi.mano.SingleControllerCondition;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.VnfPackageChangeNotification;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnf.VnfPackageOnboardingNotification;
 import com.ubiqube.etsi.mano.v331.service.mapping.pkg.VnfPackageOnboardingNotification331Mapping;
@@ -11,6 +13,7 @@ import com.ubiqube.etsi.mano.vnfm.fc.vnf.VnfNotificationFrontController;
 import jakarta.validation.Valid;
 
 @RestController
+@Conditional(SingleControllerCondition.class)
 public class VnfPkgNotification331Sol003Controller implements VnfPkgNotification331Sol003Api {
 	private final VnfNotificationFrontController fc;
 	private final VnfPackageOnboardingNotification331Mapping mapper;
