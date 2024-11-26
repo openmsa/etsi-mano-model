@@ -65,7 +65,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-orika</artifactId>
-			<version>${version.mano-commons}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
