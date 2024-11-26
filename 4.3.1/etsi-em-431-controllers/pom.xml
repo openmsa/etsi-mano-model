@@ -20,12 +20,10 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>em-front-controller</artifactId>
-			<version>${version.nfv-front-controller}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-test-helper</artifactId>
-			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
