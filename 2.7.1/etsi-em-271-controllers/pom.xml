@@ -24,7 +24,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>em-front-controller</artifactId>
-			<version>${version.nfv-front-controller}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -41,7 +40,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-test-helper</artifactId>
-			<version>4.0.1-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
