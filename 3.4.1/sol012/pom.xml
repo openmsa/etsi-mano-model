@@ -27,7 +27,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-commons</artifactId>
-			<version>${version.mano-commons}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
