@@ -30,6 +30,7 @@ public interface VnfPackageOnboardingNotification271Mapping {
 
 	@Mapping(target = "nfvoId", ignore = true)
 	@Mapping(target = "version", ignore = true)
+	@Mapping(target = "id", ignore = true)
 	VnfPackageOnboardingNotification map(com.ubiqube.etsi.mano.v271.model.vnf.VnfPackageOnboardingNotification body);
 
 }
