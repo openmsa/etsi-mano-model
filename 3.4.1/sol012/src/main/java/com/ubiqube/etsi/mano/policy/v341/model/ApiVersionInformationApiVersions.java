@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -50,7 +51,7 @@ public class ApiVersionInformationApiVersions   {
    * Identifies a supported version. The value of the version attribute shall be a version identifier as specified in clause 9.1 (SOL013). 
    * @return version
    **/
-  @Schema(required = true, description = "Identifies a supported version. The value of the version attribute shall be a version identifier as specified in clause 9.1 (SOL013). ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifies a supported version. The value of the version attribute shall be a version identifier as specified in clause 9.1 (SOL013). ")
       @NotNull
 
     public String getVersion() {

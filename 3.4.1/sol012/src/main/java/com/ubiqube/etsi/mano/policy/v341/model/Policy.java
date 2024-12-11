@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -78,7 +79,7 @@ public class Policy {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -99,7 +100,7 @@ public class Policy {
 	 *
 	 * @return designer
 	 **/
-	@Schema(required = true, description = "Human readable name of the designer of the policy. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable name of the designer of the policy. ")
 	@NotNull
 
 	public String getDesigner() {
@@ -120,7 +121,7 @@ public class Policy {
 	 *
 	 * @return name
 	 **/
-	@Schema(required = true, description = "Human readable name of the policy. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable name of the policy. ")
 	@NotNull
 
 	public String getName() {
@@ -210,7 +211,7 @@ public class Policy {
 	 *
 	 * @return activationStatus
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -232,7 +233,7 @@ public class Policy {
 	 *
 	 * @return transferStatus
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -288,7 +289,7 @@ public class Policy {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

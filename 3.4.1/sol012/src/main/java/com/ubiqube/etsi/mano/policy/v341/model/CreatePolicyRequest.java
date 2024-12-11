@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -56,7 +57,7 @@ public class CreatePolicyRequest   {
    * Human readable name of the designer of the policy. 
    * @return designer
    **/
-  @Schema(required = true, description = "Human readable name of the designer of the policy. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable name of the designer of the policy. ")
       @NotNull
 
     public String getDesigner() {
@@ -76,7 +77,7 @@ public class CreatePolicyRequest   {
    * Human readable name of the policy. 
    * @return name
    **/
-  @Schema(required = true, description = "Human readable name of the policy. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable name of the policy. ")
       @NotNull
 
     public String getName() {
