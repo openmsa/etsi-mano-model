@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v271.model.em.vnflcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -65,7 +66,7 @@ public class ChangeExtVnfConnectivityData {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -91,7 +92,7 @@ public class ChangeExtVnfConnectivityData {
 	 *
 	 * @return extVirtualLinks
 	 **/
-	@Schema(required = true, description = "Information about external VLs to change (e.g. connect the VNF to). ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about external VLs to change (e.g. connect the VNF to). ")
 	@NotNull
 	@Valid
 	public List<ExtVirtualLinkData> getExtVirtualLinks() {

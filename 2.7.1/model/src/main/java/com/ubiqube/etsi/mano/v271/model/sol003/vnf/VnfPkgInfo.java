@@ -33,6 +33,7 @@ import com.ubiqube.etsi.mano.v271.model.em.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.v271.model.vnf.PackageOperationalStateType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents the information of an VNF package.

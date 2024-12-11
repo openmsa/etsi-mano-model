@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type provides information about added, deleted, modified and temporary

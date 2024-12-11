@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -121,7 +122,7 @@ public class VnfPackageArtifactInfo {
 	 *
 	 * @return artifactPath
 	 **/
-	@Schema(required = true, description = "Path in the VNF package, which identifies the artifact and also allows to access a copy of the artifact. The For an artifact contained as a file in the VNF package, this attribute shall be present, and the value of this attribute shall start with the name of the first segment in the path in the package, i.e. it shall not be prefixed by path separator characters such as \".\" and \"/\". EXAMPLE: foo/bar/runm@ster.sh For an external artifact represented as a URI in the VNF descriptor, this attribute shall be present if the artifact has been downloaded by the NFVO and shall be absent otherwise. If present, it shall contain the artifactPath under which the artifact can be obtained using the \"Individual artifact in a VNF package\" resource defined in clause 10.4.6. It is the responsibility of the NFVO to synthesize this path in a manner that avoids any collision of the synthesized artifact path with the paths and names of artifacts included in the package. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Path in the VNF package, which identifies the artifact and also allows to access a copy of the artifact. The For an artifact contained as a file in the VNF package, this attribute shall be present, and the value of this attribute shall start with the name of the first segment in the path in the package, i.e. it shall not be prefixed by path separator characters such as \".\" and \"/\". EXAMPLE: foo/bar/runm@ster.sh For an external artifact represented as a URI in the VNF descriptor, this attribute shall be present if the artifact has been downloaded by the NFVO and shall be absent otherwise. If present, it shall contain the artifactPath under which the artifact can be obtained using the \"Individual artifact in a VNF package\" resource defined in clause 10.4.6. It is the responsibility of the NFVO to synthesize this path in a manner that avoids any collision of the synthesized artifact path with the paths and names of artifacts included in the package. ")
 	@NotNull
 
 	public String getArtifactPath() {
@@ -142,7 +143,7 @@ public class VnfPackageArtifactInfo {
 	 *
 	 * @return checksum
 	 **/
-	@Schema(required = true, description = "Checksum of the artifact file. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Checksum of the artifact file. ")
 	@NotNull
 
 	@Valid
@@ -165,7 +166,7 @@ public class VnfPackageArtifactInfo {
 	 *
 	 * @return isEncrypted
 	 **/
-	@Schema(required = true, description = "Reflects whether the artifact is encrypted (true) or not (false). ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reflects whether the artifact is encrypted (true) or not (false). ")
 	@NotNull
 
 	public Boolean getIsEncrypted() {

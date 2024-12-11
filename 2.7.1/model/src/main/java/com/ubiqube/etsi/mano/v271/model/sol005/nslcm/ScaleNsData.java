@@ -26,6 +26,7 @@ import com.ubiqube.etsi.mano.v271.model.sol005.nslcm.VnfLocationConstraint;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 import java.util.ArrayList;
 import java.util.List;
