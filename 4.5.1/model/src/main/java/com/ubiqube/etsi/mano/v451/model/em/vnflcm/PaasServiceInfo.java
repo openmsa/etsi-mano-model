@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -69,7 +70,7 @@ public class PaasServiceInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -90,7 +91,7 @@ public class PaasServiceInfo {
 	 *
 	 * @return paasServiceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getPaasServiceId() {
@@ -112,7 +113,7 @@ public class PaasServiceInfo {
 	 *
 	 * @return paasServiceType
 	 **/
-	@Schema(required = true, description = "The type of PaaS Service. The value of this attribute is expected to be matched against values of the registered PaaS Services in the PSR. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of PaaS Service. The value of this attribute is expected to be matched against values of the registered PaaS Services in the PSR. ")
 	@NotNull
 
 	public String getPaasServiceType() {
@@ -153,7 +154,7 @@ public class PaasServiceInfo {
 	 *
 	 * @return paasServiceRequestId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getPaasServiceRequestId() {
@@ -174,7 +175,7 @@ public class PaasServiceInfo {
 	 *
 	 * @return paasServiceHandle
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

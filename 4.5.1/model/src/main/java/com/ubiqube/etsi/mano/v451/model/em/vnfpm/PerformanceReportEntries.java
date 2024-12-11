@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v451.model.em.vnfpm.PerformanceReportPerformanceVal
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -60,7 +61,7 @@ public class PerformanceReportEntries   {
    * Type of the measured object. The applicable measured object type for a measurement is defined in clause 7.2 of ETSI GS NFV-IFA 027. 
    * @return objectType
    **/
-  @Schema(required = true, description = "Type of the measured object. The applicable measured object type for a measurement is defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the measured object. The applicable measured object type for a measurement is defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
       @NotNull
 
     public String getObjectType() {
@@ -80,7 +81,7 @@ public class PerformanceReportEntries   {
    * Get objectInstanceId
    * @return objectInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getObjectInstanceId() {
@@ -119,7 +120,7 @@ public class PerformanceReportEntries   {
    * Name of the metric collected. This attribute shall contain the related \"Measurement Name\" value as defined in clause 7.2 of ETSI GS NFV-IFA 027. 
    * @return performanceMetric
    **/
-  @Schema(required = true, description = "Name of the metric collected. This attribute shall contain the related \"Measurement Name\" value as defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the metric collected. This attribute shall contain the related \"Measurement Name\" value as defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
       @NotNull
 
     public String getPerformanceMetric() {

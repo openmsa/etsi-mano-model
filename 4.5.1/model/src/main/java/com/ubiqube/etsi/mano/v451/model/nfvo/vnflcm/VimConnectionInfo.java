@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -113,7 +114,7 @@ public class VimConnectionInfo {
 	 *
 	 * @return vimType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different types of the VIM information. The value of this attribute determines the structure of the \"interfaceInfo\" and \"accessInfo\" attributes, based on the type of the VIM., CISM, CIR or MCIOP repository. The set of permitted values is expected to change over time as new types or versions of VIMs become available. The ETSI NFV registry of VIM-related information provides access to information about VimConnectionInfo definitions for various VIM, CISM, CIR or MCIOP repository types. The structure of the registry is defined in annex C. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different types of the VIM information. The value of this attribute determines the structure of the \"interfaceInfo\" and \"accessInfo\" attributes, based on the type of the VIM., CISM, CIR or MCIOP repository. The set of permitted values is expected to change over time as new types or versions of VIMs become available. The ETSI NFV registry of VIM-related information provides access to information about VimConnectionInfo definitions for various VIM, CISM, CIR or MCIOP repository types. The structure of the registry is defined in annex C. ")
 	@NotNull
 
 	public String getVimType() {

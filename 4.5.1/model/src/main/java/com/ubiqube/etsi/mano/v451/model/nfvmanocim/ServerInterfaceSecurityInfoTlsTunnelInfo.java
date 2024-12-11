@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -53,7 +54,7 @@ public class ServerInterfaceSecurityInfoTlsTunnelInfo   {
    * List of cipher suites that shall be declared as supported by the API producer when performing the SSL or TLS negotiation with the API client. Valid values of cipher suites are defined in IETF RFC 8447. 
    * @return tlsTunnelCipherSuites
    **/
-  @Schema(required = true, description = "List of cipher suites that shall be declared as supported by the API producer when performing the SSL or TLS negotiation with the API client. Valid values of cipher suites are defined in IETF RFC 8447. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of cipher suites that shall be declared as supported by the API producer when performing the SSL or TLS negotiation with the API client. Valid values of cipher suites are defined in IETF RFC 8447. ")
       @NotNull
 
   @Size(min=1)   public List<String> getTlsTunnelCipherSuites() {

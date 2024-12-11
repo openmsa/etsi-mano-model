@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.LcmCoordResultType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -98,7 +99,7 @@ public class NsLcmOpOccLcmCoordinations {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -119,7 +120,7 @@ public class NsLcmOpOccLcmCoordinations {
 	 *
 	 * @return coordinationActionName
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCoordinationActionName() {
@@ -161,7 +162,7 @@ public class NsLcmOpOccLcmCoordinations {
 	 *
 	 * @return startTime
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -206,7 +207,7 @@ public class NsLcmOpOccLcmCoordinations {
 	 *
 	 * @return endpointType
 	 **/
-	@Schema(required = true, description = "The endpoint type used by this coordination action. Valid values: - MGMT: coordination with other operation supporting management systems (e.g. OSS/BSS) ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The endpoint type used by this coordination action. Valid values: - MGMT: coordination with other operation supporting management systems (e.g. OSS/BSS) ")
 	@NotNull
 
 	public EndpointTypeEnum getEndpointType() {

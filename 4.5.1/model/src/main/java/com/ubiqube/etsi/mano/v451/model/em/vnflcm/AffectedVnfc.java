@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -116,7 +117,7 @@ public class AffectedVnfc {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -137,7 +138,7 @@ public class AffectedVnfc {
 	 *
 	 * @return vduId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVduId() {
@@ -180,7 +181,7 @@ public class AffectedVnfc {
 	 *
 	 * @return changeType
 	 **/
-	@Schema(required = true, description = "Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVnfc structure exists as long as the temporary resource exists. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVnfc structure exists as long as the temporary resource exists. ")
 	@NotNull
 
 	public ChangeTypeEnum getChangeType() {
@@ -201,7 +202,7 @@ public class AffectedVnfc {
 	 *
 	 * @return computeResource
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

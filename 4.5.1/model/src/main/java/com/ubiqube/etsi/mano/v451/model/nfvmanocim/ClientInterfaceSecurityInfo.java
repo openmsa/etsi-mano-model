@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvmanocim.ClientInterfaceSecurityInfoOa
 import com.ubiqube.etsi.mano.v451.model.nfvmanocim.ClientInterfaceSecurityInfoTlsTunnelInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -95,7 +96,7 @@ public class ClientInterfaceSecurityInfo   {
    * Type of API request authorization to be used by the API consumer accessing the API. The support of authorization methods for the API consumer is specified in clause 8.3.6 of ETSI GS NFV-SOL 013. Permitted values: - TLS_TUNNEL: Using TLS tunnel, as defined by TLS 1.2 in IETF RFC 5246. - TLS_TUNNEL_13: Using TLS tunnel, as defined by TLS 1.3 in IETF RFC 8446. - OAUTH2: Using access token, as defined by the OAuth 2.0 specification in IETF RFC 6749. 
    * @return authType
    **/
-  @Schema(required = true, description = "Type of API request authorization to be used by the API consumer accessing the API. The support of authorization methods for the API consumer is specified in clause 8.3.6 of ETSI GS NFV-SOL 013. Permitted values: - TLS_TUNNEL: Using TLS tunnel, as defined by TLS 1.2 in IETF RFC 5246. - TLS_TUNNEL_13: Using TLS tunnel, as defined by TLS 1.3 in IETF RFC 8446. - OAUTH2: Using access token, as defined by the OAuth 2.0 specification in IETF RFC 6749. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of API request authorization to be used by the API consumer accessing the API. The support of authorization methods for the API consumer is specified in clause 8.3.6 of ETSI GS NFV-SOL 013. Permitted values: - TLS_TUNNEL: Using TLS tunnel, as defined by TLS 1.2 in IETF RFC 5246. - TLS_TUNNEL_13: Using TLS tunnel, as defined by TLS 1.3 in IETF RFC 8446. - OAUTH2: Using access token, as defined by the OAuth 2.0 specification in IETF RFC 6749. ")
       @NotNull
 
   @Size(min=1)   public List<AuthTypeEnum> getAuthType() {
@@ -115,7 +116,7 @@ public class ClientInterfaceSecurityInfo   {
    * Get oauthServerInfo
    * @return oauthServerInfo
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

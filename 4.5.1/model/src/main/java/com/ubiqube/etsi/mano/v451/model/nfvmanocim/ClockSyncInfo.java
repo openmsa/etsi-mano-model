@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -91,7 +92,7 @@ public class ClockSyncInfo {
 	 *
 	 * @return type
 	 **/
-	@Schema(required = true, description = "Type of clock synchronization. Permitted values:   - NTP: For Network Time Protocol (NTP) based clock synchronization.   - OTHER: For other types of clock synchronization. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of clock synchronization. Permitted values:   - NTP: For Network Time Protocol (NTP) based clock synchronization.   - OTHER: For other types of clock synchronization. ")
 	@NotNull
 
 	public TypeEnum getType() {

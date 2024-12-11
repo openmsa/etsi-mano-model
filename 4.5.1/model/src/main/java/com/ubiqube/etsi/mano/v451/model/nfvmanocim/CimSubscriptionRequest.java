@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.SubscriptionAuthentication;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -75,7 +76,7 @@ public class CimSubscriptionRequest {
 	 *
 	 * @return callbackUri
 	 **/
-	@Schema(required = true, description = "String formatted according to IETF RFC 3986. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "String formatted according to IETF RFC 3986. ")
 	@NotNull
 
 	public String getCallbackUri() {

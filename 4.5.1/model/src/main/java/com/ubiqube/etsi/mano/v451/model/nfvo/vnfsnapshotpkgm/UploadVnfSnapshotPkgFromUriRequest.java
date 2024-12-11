@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.UploadVnfSnapshotPkgFromUriRequestParamsOauth2ClientCredentials;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -81,7 +82,7 @@ public class UploadVnfSnapshotPkgFromUriRequest   {
    * Get addressInformation
    * @return addressInformation
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getAddressInformation() {

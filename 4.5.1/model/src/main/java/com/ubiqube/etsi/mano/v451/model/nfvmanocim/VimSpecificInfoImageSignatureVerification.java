@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -81,7 +82,7 @@ public class VimSpecificInfoImageSignatureVerification {
 	 *
 	 * @return signatureVerificationAlgorithms
 	 **/
-	@Schema(required = true, description = "List of algorithms for verifying the signature of software images that are supported by the VIM. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "List of algorithms for verifying the signature of software images that are supported by the VIM. ")
 	@NotNull
 	@Valid
 	public List<VimSpecificInfoImageSignatureVerificationSignatureVerificationAlgorithms> getSignatureVerificationAlgorithms() {

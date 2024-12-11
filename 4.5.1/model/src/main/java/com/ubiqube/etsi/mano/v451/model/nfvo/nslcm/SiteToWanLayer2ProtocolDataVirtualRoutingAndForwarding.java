@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -44,7 +45,7 @@ public class SiteToWanLayer2ProtocolDataVirtualRoutingAndForwarding   {
    * Name (or identifier) of the MAC-VRF instance. 
    * @return macVrfName
    **/
-  @Schema(required = true, description = "Name (or identifier) of the MAC-VRF instance. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Name (or identifier) of the MAC-VRF instance. ")
       @NotNull
 
     public String getMacVrfName() {

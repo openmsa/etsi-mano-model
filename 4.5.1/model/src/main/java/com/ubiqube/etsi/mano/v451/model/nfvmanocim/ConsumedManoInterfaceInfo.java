@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvmanocim.ConsumedManoInterfaceInfoApiE
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -63,7 +64,7 @@ public class ConsumedManoInterfaceInfo   {
    * Human-readable name of the NFV-MANO interface. 
    * @return name
    **/
-  @Schema(required = true, description = "Human-readable name of the NFV-MANO interface. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the NFV-MANO interface. ")
       @NotNull
 
     public String getName() {
@@ -83,7 +84,7 @@ public class ConsumedManoInterfaceInfo   {
    * Type of the NFV-MANO service interface consumed by the NFV-MANO functional entity. Valid values are defined in clause 5.6.4.3. 
    * @return type
    **/
-  @Schema(required = true, description = "Type of the NFV-MANO service interface consumed by the NFV-MANO functional entity. Valid values are defined in clause 5.6.4.3. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the NFV-MANO service interface consumed by the NFV-MANO functional entity. Valid values are defined in clause 5.6.4.3. ")
       @NotNull
 
     public String getType() {
@@ -103,7 +104,7 @@ public class ConsumedManoInterfaceInfo   {
    * A version. 
    * @return standardVersion
    **/
-  @Schema(required = true, description = "A version. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "A version. ")
       @NotNull
 
     public String getStandardVersion() {
@@ -123,7 +124,7 @@ public class ConsumedManoInterfaceInfo   {
    * A version. 
    * @return apiVersion
    **/
-  @Schema(required = true, description = "A version. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "A version. ")
       @NotNull
 
     public String getApiVersion() {
@@ -143,7 +144,7 @@ public class ConsumedManoInterfaceInfo   {
    * Get apiEndpoint
    * @return apiEndpoint
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

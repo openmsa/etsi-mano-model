@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -195,7 +196,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -216,7 +217,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return name
 	 **/
-	@Schema(required = true, description = "Name of the VNFC snapshot image.")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the VNFC snapshot image.")
 	@NotNull
 
 	public String getName() {
@@ -237,7 +238,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return checksum
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -259,7 +260,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return isEncrypted
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Boolean getIsEncrypted() {
@@ -280,7 +281,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return vnfcInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfcInstanceId() {
@@ -306,7 +307,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return containerFormat
 	 **/
-	@Schema(required = true, description = "Container format indicates whether the snapshot image is in a file format that also  contains metadata about the actual snapshot. Permitted values: - AKI: a kernel image format. - AMI: a machine image format. - ARI: a ramdisk image format. - BARE: the image does not have a container or metadata envelope. - DOCKER: docker container format. - OVA: OVF package in a tarfile. - OVF: OVF container format. See note 1. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Container format indicates whether the snapshot image is in a file format that also  contains metadata about the actual snapshot. Permitted values: - AKI: a kernel image format. - AMI: a machine image format. - ARI: a ramdisk image format. - BARE: the image does not have a container or metadata envelope. - DOCKER: docker container format. - OVA: OVF package in a tarfile. - OVF: OVF container format. See note 1. ")
 	@NotNull
 
 	public ContainerFormatEnum getContainerFormat() {
@@ -334,7 +335,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return diskFormat
 	 **/
-	@Schema(required = true, description = "Disk format of a snapshot image is the format of the underlying disk image. Permitted values: - AKI: a kernel image format. - AMI: a machine image format. - ARI: a ramdisk image format. - ISO: an archive format for the data contents of an optical disc, such as CD-ROM. - QCOW2: a common disk image format, which can expand dynamically and supports copy  on write. - RAW: an unstructured disk image format. - VDI: a common disk image format.  - VHD: a common disk image format.  - VHDX: enhanced version of VHD format. - VMDK: a common disk image format. See note 2. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Disk format of a snapshot image is the format of the underlying disk image. Permitted values: - AKI: a kernel image format. - AMI: a machine image format. - ARI: a ramdisk image format. - ISO: an archive format for the data contents of an optical disc, such as CD-ROM. - QCOW2: a common disk image format, which can expand dynamically and supports copy  on write. - RAW: an unstructured disk image format. - VDI: a common disk image format.  - VHD: a common disk image format.  - VHDX: enhanced version of VHD format. - VMDK: a common disk image format. See note 2. ")
 	@NotNull
 
 	public DiskFormatEnum getDiskFormat() {
@@ -355,7 +356,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return createdAt
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -377,7 +378,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return minDisk
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Integer getMinDisk() {
@@ -398,7 +399,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return minRam
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Integer getMinRam() {
@@ -419,7 +420,7 @@ public class VnfcSnapshotImageInfo {
 	 *
 	 * @return size
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Integer getSize() {

@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -95,7 +96,7 @@ public class LoggingJobMessagesCriteria {
 	 *
 	 * @return direction
 	 **/
-	@Schema(required = true, description = "The direction of the interface messages to match. Permitted values: - IN: input messages into the interface. - OUT: output messages from the interface. - ALL: both input and output messages into/from the interface.")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The direction of the interface messages to match. Permitted values: - IN: input messages into the interface. - OUT: output messages from the interface. - ALL: both input and output messages into/from the interface.")
 	@NotNull
 
 	public DirectionEnum getDirection() {

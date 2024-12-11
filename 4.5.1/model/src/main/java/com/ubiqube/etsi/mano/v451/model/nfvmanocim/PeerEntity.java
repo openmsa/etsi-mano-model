@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvmanocim.PeerEntityPeerEntityState;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -76,7 +77,7 @@ public class PeerEntity   {
    * An identifier with the intention of being globally unique. 
    * @return id
    **/
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
       @NotNull
 
     public String getId() {
@@ -96,7 +97,7 @@ public class PeerEntity   {
    * An identifier with the intention of being globally unique. 
    * @return peerEntityId
    **/
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
       @NotNull
 
     public String getPeerEntityId() {
@@ -116,7 +117,7 @@ public class PeerEntity   {
    * Human-readable name of the peer functional entity. This attribute can be modified with the PATCH method. 
    * @return name
    **/
-  @Schema(required = true, description = "Human-readable name of the peer functional entity. This attribute can be modified with the PATCH method. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the peer functional entity. This attribute can be modified with the PATCH method. ")
       @NotNull
 
     public String getName() {
@@ -136,7 +137,7 @@ public class PeerEntity   {
    * Get type
    * @return type
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -249,7 +250,7 @@ public class PeerEntity   {
    * Get peerEntityState
    * @return peerEntityState
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

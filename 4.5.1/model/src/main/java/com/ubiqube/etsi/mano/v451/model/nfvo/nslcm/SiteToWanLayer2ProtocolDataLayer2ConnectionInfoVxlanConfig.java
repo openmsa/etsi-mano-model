@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -81,7 +82,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfoVxlanConfig   {
    * Type of VXLAN access mode. Default value is \"STATIC\". Permitted values: - STATIC - BGP_EVPN 
    * @return peerMode
    **/
-  @Schema(required = true, description = "Type of VXLAN access mode. Default value is \"STATIC\". Permitted values: - STATIC - BGP_EVPN ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of VXLAN access mode. Default value is \"STATIC\". Permitted values: - STATIC - BGP_EVPN ")
       @NotNull
 
     public PeerModeEnum getPeerMode() {

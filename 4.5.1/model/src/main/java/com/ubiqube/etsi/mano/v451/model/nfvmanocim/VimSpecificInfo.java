@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvmanocim.VimSpecificInfoImageSignature
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -67,7 +68,7 @@ public class VimSpecificInfo   {
    * List of supported image container formats. Container format indicates whether a software image is in a file that also contains metadata about the actual software. Valid values are all values for \"container_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values for \"container-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. 
    * @return imageContainerFormats
    **/
-  @Schema(required = true, description = "List of supported image container formats. Container format indicates whether a software image is in a file that also contains metadata about the actual software. Valid values are all values for \"container_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values for \"container-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of supported image container formats. Container format indicates whether a software image is in a file that also contains metadata about the actual software. Valid values are all values for \"container_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values for \"container-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. ")
       @NotNull
 
     public List<String> getImageContainerFormats() {
@@ -92,7 +93,7 @@ public class VimSpecificInfo   {
    * List of supported image disk formats. The Disk format of a software image is the format of the underlying disk image. Valid values are all values for \"disk_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values of \"disk-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. 
    * @return imageDiskFormats
    **/
-  @Schema(required = true, description = "List of supported image disk formats. The Disk format of a software image is the format of the underlying disk image. Valid values are all values for \"disk_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values of \"disk-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of supported image disk formats. The Disk format of a software image is the format of the underlying disk image. Valid values are all values for \"disk_format\" as defined in ETSI GS NFV-SOL 001 [16] and all values of \"disk-format\" as defined in ETSI GS NFV-SOL 006 [i.17]. ")
       @NotNull
 
     public List<String> getImageDiskFormats() {
@@ -112,7 +113,7 @@ public class VimSpecificInfo   {
    * Get imageSignatureVerification
    * @return imageSignatureVerification
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -138,7 +139,7 @@ public class VimSpecificInfo   {
    * List of supported digest algorithms that can be used for digital signatures. 
    * @return imageDigestAlgorithms
    **/
-  @Schema(required = true, description = "List of supported digest algorithms that can be used for digital signatures. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of supported digest algorithms that can be used for digital signatures. ")
       @NotNull
     @Valid
     public List<VimSpecificInfoImageDigestAlgorithms> getImageDigestAlgorithms() {

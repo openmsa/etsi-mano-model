@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfExtCpConfig;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +54,7 @@ public class VnfExtCpData   {
    * Get cpdId
    * @return cpdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getCpdId() {

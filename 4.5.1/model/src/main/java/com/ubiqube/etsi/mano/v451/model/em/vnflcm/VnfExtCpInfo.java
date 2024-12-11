@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -97,7 +98,7 @@ public class VnfExtCpInfo implements OneOfVnfExtCpInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -118,7 +119,7 @@ public class VnfExtCpInfo implements OneOfVnfExtCpInfo {
 	 *
 	 * @return cpdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCpdId() {
@@ -139,7 +140,7 @@ public class VnfExtCpInfo implements OneOfVnfExtCpInfo {
 	 *
 	 * @return cpConfigId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCpConfigId() {
@@ -185,7 +186,7 @@ public class VnfExtCpInfo implements OneOfVnfExtCpInfo {
 	 *
 	 * @return cpProtocolInfo
 	 **/
-	@Schema(required = true, description = "Network protocol information for this CP. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Network protocol information for this CP. ")
 	@NotNull
 	@Valid
 	public List<CpProtocolInfo> getCpProtocolInfo() {

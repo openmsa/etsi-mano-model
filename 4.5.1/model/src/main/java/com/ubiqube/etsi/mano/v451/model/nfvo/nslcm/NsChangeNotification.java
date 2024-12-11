@@ -26,6 +26,7 @@ import com.ubiqube.etsi.mano.v451.model.em.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.LccnLinks;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -85,7 +86,7 @@ public class NsChangeNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -106,7 +107,7 @@ public class NsChangeNotification {
 	 *
 	 * @return nsInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getNsInstanceId() {
@@ -127,7 +128,7 @@ public class NsChangeNotification {
 	 *
 	 * @return nsComponentType
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -149,7 +150,7 @@ public class NsChangeNotification {
 	 *
 	 * @return nsComponentId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getNsComponentId() {
@@ -170,7 +171,7 @@ public class NsChangeNotification {
 	 *
 	 * @return lcmOpOccIdImpactingNsComponent
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getLcmOpOccIdImpactingNsComponent() {
@@ -191,7 +192,7 @@ public class NsChangeNotification {
 	 *
 	 * @return lcmOpNameImpactingNsComponent
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -235,7 +236,7 @@ public class NsChangeNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"NsChangeNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"NsChangeNotification\" for this notification type. ")
 	@NotNull
 
 	public String getNotificationType() {
@@ -256,7 +257,7 @@ public class NsChangeNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getSubscriptionId() {
@@ -277,7 +278,7 @@ public class NsChangeNotification {
 	 *
 	 * @return timestamp
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -320,7 +321,7 @@ public class NsChangeNotification {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfLinkPortInfo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -67,7 +68,7 @@ public class ExtManagedVirtualLinkInfo   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -87,7 +88,7 @@ public class ExtManagedVirtualLinkInfo   {
    * Get vnfVirtualLinkDescId
    * @return vnfVirtualLinkDescId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfVirtualLinkDescId() {
@@ -126,7 +127,7 @@ public class ExtManagedVirtualLinkInfo   {
    * Get networkResource
    * @return networkResource
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

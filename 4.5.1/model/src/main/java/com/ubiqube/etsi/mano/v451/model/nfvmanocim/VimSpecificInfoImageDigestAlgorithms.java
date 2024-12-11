@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -50,7 +51,7 @@ public class VimSpecificInfoImageDigestAlgorithms   {
    * The name of the algorithm. Permitted values are: “SHA2“,“SHA3“. 
    * @return algorithm
    **/
-  @Schema(required = true, description = "The name of the algorithm. Permitted values are: “SHA2“,“SHA3“. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The name of the algorithm. Permitted values are: “SHA2“,“SHA3“. ")
       @NotNull
 
     public String getAlgorithm() {
@@ -75,7 +76,7 @@ public class VimSpecificInfoImageDigestAlgorithms   {
    * List of supported key lengths of the algorithm. The key length indicates the number of bits, such as “256”, “512”, etc. See note. 
    * @return keyLengths
    **/
-  @Schema(required = true, description = "List of supported key lengths of the algorithm. The key length indicates the number of bits, such as “256”, “512”, etc. See note. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of supported key lengths of the algorithm. The key length indicates the number of bits, such as “256”, “512”, etc. See note. ")
       @NotNull
 
     public List<String> getKeyLengths() {

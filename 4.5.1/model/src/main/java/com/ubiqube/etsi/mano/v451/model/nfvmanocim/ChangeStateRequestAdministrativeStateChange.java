@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvmanocim.ChangeAdministrativeStateEnum
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -47,7 +48,7 @@ public class ChangeStateRequestAdministrativeStateChange   {
    * Get administrativeStateAction
    * @return administrativeStateAction
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

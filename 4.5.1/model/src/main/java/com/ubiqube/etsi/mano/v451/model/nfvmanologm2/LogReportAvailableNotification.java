@@ -24,6 +24,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -66,7 +67,7 @@ public class LogReportAvailableNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getId() {
@@ -88,7 +89,7 @@ public class LogReportAvailableNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"LogReportAvailableNotification\" for this notification type.")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"LogReportAvailableNotification\" for this notification type.")
 	@NotNull
 
 	public String getNotificationType() {
@@ -109,7 +110,7 @@ public class LogReportAvailableNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getSubscriptionId() {
@@ -130,7 +131,7 @@ public class LogReportAvailableNotification {
 	 *
 	 * @return timeStamp
 	 **/
-	@Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
 	@NotNull
 
 	@Valid
@@ -152,7 +153,7 @@ public class LogReportAvailableNotification {
 	 *
 	 * @return objectInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -174,7 +175,7 @@ public class LogReportAvailableNotification {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

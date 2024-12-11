@@ -27,6 +27,7 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.LcmCoordResultType;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -80,7 +81,7 @@ public class LcmCoord {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -101,7 +102,7 @@ public class LcmCoord {
 	 *
 	 * @return coordinationResult
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -123,7 +124,7 @@ public class LcmCoord {
 	 *
 	 * @return nsInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getNsInstanceId() {
@@ -144,7 +145,7 @@ public class LcmCoord {
 	 *
 	 * @return nsLcmOpOccId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getNsLcmOpOccId() {
@@ -165,7 +166,7 @@ public class LcmCoord {
 	 *
 	 * @return lcmOperationType
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -187,7 +188,7 @@ public class LcmCoord {
 	 *
 	 * @return coordinationActionName
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCoordinationActionName() {
@@ -270,7 +271,7 @@ public class LcmCoord {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

@@ -25,6 +25,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.WanLayer2ProtocolData;
 import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.WanLayer3ProtocolData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +96,7 @@ public class MscsConfigData   {
    * The type of connectivity that is requested to be provided to the virtualized networks in the NFVI-PoP and characterizes the connectivity service across the WAN. Permitted values: - L2 - L3 
    * @return mscsType
    **/
-  @Schema(required = true, description = "The type of connectivity that is requested to be provided to the virtualized networks in the NFVI-PoP and characterizes the connectivity service across the WAN. Permitted values: - L2 - L3 ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of connectivity that is requested to be provided to the virtualized networks in the NFVI-PoP and characterizes the connectivity service across the WAN. Permitted values: - L2 - L3 ")
       @NotNull
 
     public MscsTypeEnum getMscsType() {

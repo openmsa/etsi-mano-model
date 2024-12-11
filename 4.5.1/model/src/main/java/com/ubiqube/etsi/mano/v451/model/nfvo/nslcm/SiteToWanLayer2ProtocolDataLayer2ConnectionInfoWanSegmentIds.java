@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -47,7 +48,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfoWanSegmentIds   {
    * Identifier of the network segment (e.g., VLAN id or VNI). 
    * @return wanSegmentIdValue
    **/
-  @Schema(required = true, description = "Identifier of the network segment (e.g., VLAN id or VNI). ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the network segment (e.g., VLAN id or VNI). ")
       @NotNull
 
     public String getWanSegmentIdValue() {

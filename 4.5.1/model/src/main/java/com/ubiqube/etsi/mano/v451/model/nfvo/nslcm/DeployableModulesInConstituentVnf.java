@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -50,7 +51,7 @@ public class DeployableModulesInConstituentVnf   {
    * Get profileId
    * @return profileId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getProfileId() {
@@ -75,7 +76,7 @@ public class DeployableModulesInConstituentVnf   {
    * References a selected deployable module, as defined in the VNFD, for the VNF instances created from the VNF profile indicated in profileId attribute. 
    * @return selectedDeployableModule
    **/
-  @Schema(required = true, description = "References a selected deployable module, as defined in the VNFD, for the VNF instances created from the VNF profile indicated in profileId attribute. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "References a selected deployable module, as defined in the VNFD, for the VNF instances created from the VNF profile indicated in profileId attribute. ")
       @NotNull
 
     public List<String> getSelectedDeployableModule() {

@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.constraints.NotNull;
 
 /**
@@ -92,7 +93,7 @@ public class LoggingJobConfigReportingCondition {
 	 *
 	 * @return reportingType
 	 **/
-	@Schema(required = true, description = "Specifies the type of reporting condition. Permitted values: - REPORTING_ON_COMPILATION: the producer shall notify the consumer once the compilation of the                 collected logging data into a file is completed and a new log report is available. - NO_REPORTING: no reporting is requested (the consumer can query the logging jobs to know about the                 availability of new log reports).")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Specifies the type of reporting condition. Permitted values: - REPORTING_ON_COMPILATION: the producer shall notify the consumer once the compilation of the                 collected logging data into a file is completed and a new log report is available. - NO_REPORTING: no reporting is requested (the consumer can query the logging jobs to know about the                 availability of new log reports).")
 	@NotNull
 
 	public ReportingTypeEnum getReportingType() {

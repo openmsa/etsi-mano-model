@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvmanocim.ManoServiceLinks;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -62,7 +63,7 @@ public class ManoService   {
    * An identifier that is unique for the respective type within a NFV-MANO functional entity, but that need not be globally unique. Representation: string of variable length.. 
    * @return id
    **/
-  @Schema(required = true, description = "An identifier that is unique for the respective type within a NFV-MANO functional entity, but that need not be globally unique. Representation: string of variable length.. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier that is unique for the respective type within a NFV-MANO functional entity, but that need not be globally unique. Representation: string of variable length.. ")
       @NotNull
 
     public String getId() {
@@ -82,7 +83,7 @@ public class ManoService   {
    * Human-readable name of the NFV-MANO service. This attribute can be modified with the PATCH method. 
    * @return name
    **/
-  @Schema(required = true, description = "Human-readable name of the NFV-MANO service. This attribute can be modified with the PATCH method. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the NFV-MANO service. This attribute can be modified with the PATCH method. ")
       @NotNull
 
     public String getName() {
@@ -102,7 +103,7 @@ public class ManoService   {
    * Human-readable description of the NFV-MANO service. This attribute can be modified with the PATCH method. 
    * @return description
    **/
-  @Schema(required = true, description = "Human-readable description of the NFV-MANO service. This attribute can be modified with the PATCH method. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable description of the NFV-MANO service. This attribute can be modified with the PATCH method. ")
       @NotNull
 
     public String getDescription() {
@@ -127,7 +128,7 @@ public class ManoService   {
    * Reference to the NFV-MANO interfaces associated to the NFV-MANO service. If cardinality is greater than one, the type of ManoServiceInterface (see clause 5.6.3.3) shall be the same. The identifier of the ManoServiceInterface is referred. See note 
    * @return manoServiceInterfaceIds
    **/
-  @Schema(required = true, description = "Reference to the NFV-MANO interfaces associated to the NFV-MANO service. If cardinality is greater than one, the type of ManoServiceInterface (see clause 5.6.3.3) shall be the same. The identifier of the ManoServiceInterface is referred. See note ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the NFV-MANO interfaces associated to the NFV-MANO service. If cardinality is greater than one, the type of ManoServiceInterface (see clause 5.6.3.3) shall be the same. The identifier of the ManoServiceInterface is referred. See note ")
       @NotNull
 
   @Size(min=1)   public List<String> getManoServiceInterfaceIds() {
@@ -147,7 +148,7 @@ public class ManoService   {
    * Get _links
    * @return _links
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

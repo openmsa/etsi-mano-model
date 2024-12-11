@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvmanocim.CirSpecificInfoImageSignature
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -63,7 +64,7 @@ public class CirSpecificInfo   {
    * List of supported OS container image formats. Valid values are all values for \"container_format\" as defined in ETSI GS NFV-SOL 001 and all values for \"container-format\" as defined in ETSI GS NFV-SOL 006. 
    * @return osContainerImageFormats
    **/
-  @Schema(required = true, description = "List of supported OS container image formats. Valid values are all values for \"container_format\" as defined in ETSI GS NFV-SOL 001 and all values for \"container-format\" as defined in ETSI GS NFV-SOL 006. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of supported OS container image formats. Valid values are all values for \"container_format\" as defined in ETSI GS NFV-SOL 001 and all values for \"container-format\" as defined in ETSI GS NFV-SOL 006. ")
       @NotNull
 
   @Size(min=1)   public List<String> getOsContainerImageFormats() {
@@ -83,7 +84,7 @@ public class CirSpecificInfo   {
    * Get imageSignatureVerification
    * @return imageSignatureVerification
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -109,7 +110,7 @@ public class CirSpecificInfo   {
    * Get imageDigestAlgorithms
    * @return imageDigestAlgorithms
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
     @Valid
     public List<CirSpecificInfoImageDigestAlgorithms> getImageDigestAlgorithms() {

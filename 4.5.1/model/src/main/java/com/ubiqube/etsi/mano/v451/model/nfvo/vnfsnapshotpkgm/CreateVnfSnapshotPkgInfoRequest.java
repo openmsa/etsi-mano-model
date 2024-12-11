@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -52,7 +53,7 @@ public class CreateVnfSnapshotPkgInfoRequest {
 	 *
 	 * @return name
 	 **/
-	@Schema(required = true, description = "Human-readable name of the VNF snapshot package. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the VNF snapshot package. ")
 	@NotNull
 
 	public String getName() {

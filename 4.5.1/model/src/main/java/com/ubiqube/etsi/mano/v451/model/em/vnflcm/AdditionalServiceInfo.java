@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -65,7 +66,7 @@ public class AdditionalServiceInfo {
 	 *
 	 * @return portInfo
 	 **/
-	@Schema(required = true, description = "Service port numbers exposed by the virtual CP instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Service port numbers exposed by the virtual CP instance. ")
 	@NotNull
 	@Valid
 	@Size(min = 1)

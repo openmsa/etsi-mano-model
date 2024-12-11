@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -85,7 +86,7 @@ public class CertificateConfigurationInfo {
 	 *
 	 * @return securityPolicy
 	 **/
-	@Schema(required = true, description = "Information for security policy to be satisfied for certificate. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information for security policy to be satisfied for certificate. ")
 	@NotNull
 	@Valid
 	public List<SecurityPolicy> getSecurityPolicy() {

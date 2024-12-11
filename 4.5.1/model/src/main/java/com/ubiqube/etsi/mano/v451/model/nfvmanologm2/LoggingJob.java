@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -66,7 +67,7 @@ public class LoggingJob {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getId() {
@@ -94,7 +95,7 @@ public class LoggingJob {
 	 *
 	 * @return objectInstanceIds
 	 **/
-	@Schema(required = true, description = "Identifiers of the object instance for which logging information is collected. This attribute shall contain the identifier of the instance of the object that is logged according to their type.")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifiers of the object instance for which logging information is collected. This attribute shall contain the identifier of the instance of the object that is logged according to their type.")
 	@NotNull
 	@Valid
 	public List<ManoManagedObjectReference> getObjectInstanceIds() {
@@ -115,7 +116,7 @@ public class LoggingJob {
 	 *
 	 * @return jobCriteria
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -137,7 +138,7 @@ public class LoggingJob {
 	 *
 	 * @return jobConfig
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -187,7 +188,7 @@ public class LoggingJob {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

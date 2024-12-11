@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -158,7 +159,7 @@ public class VnfSnapshotPkgInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -199,7 +200,7 @@ public class VnfSnapshotPkgInfo {
 	 *
 	 * @return name
 	 **/
-	@Schema(required = true, description = "Human-readable name of the VNF snapshot package. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the VNF snapshot package. ")
 	@NotNull
 
 	public String getName() {
@@ -313,7 +314,7 @@ public class VnfSnapshotPkgInfo {
 	 *
 	 * @return isFullSnapshot
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Boolean getIsFullSnapshot() {
@@ -445,7 +446,7 @@ public class VnfSnapshotPkgInfo {
 	 *
 	 * @return state
 	 **/
-	@Schema(required = true, description = "State of the VNF snapshot package. Permitted values: - CREATED: the VNF snapshot package information has been created. - BUILDING: the VNF snapshot package is being built. - UPLOADING: the VNF snapshot package is being uploaded. - EXTRACTING: the VNF snapshot package’s content is being extracted. - AVAILABLE: the VNF snapshot package is available (i.e., build or upload is completed). - PROCESSING: the VNF snapshot package is being processed. - ERROR: failure during the VNF snapshot package building, uploading or processing. - ERROR_EXTRACTING: failure during the VNF snapshot package extraction task. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "State of the VNF snapshot package. Permitted values: - CREATED: the VNF snapshot package information has been created. - BUILDING: the VNF snapshot package is being built. - UPLOADING: the VNF snapshot package is being uploaded. - EXTRACTING: the VNF snapshot package’s content is being extracted. - AVAILABLE: the VNF snapshot package is available (i.e., build or upload is completed). - PROCESSING: the VNF snapshot package is being processed. - ERROR: failure during the VNF snapshot package building, uploading or processing. - ERROR_EXTRACTING: failure during the VNF snapshot package extraction task. ")
 	@NotNull
 
 	public StateEnum getState() {
@@ -466,7 +467,7 @@ public class VnfSnapshotPkgInfo {
 	 *
 	 * @return isCancelPending
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Boolean getIsCancelPending() {
@@ -529,7 +530,7 @@ public class VnfSnapshotPkgInfo {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

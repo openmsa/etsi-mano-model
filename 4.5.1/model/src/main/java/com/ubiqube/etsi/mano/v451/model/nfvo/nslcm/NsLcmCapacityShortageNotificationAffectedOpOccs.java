@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.NsLcmCapacityShortageNotificationLinks;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -85,7 +86,7 @@ public class NsLcmCapacityShortageNotificationAffectedOpOccs   {
    * Get affectedNsId
    * @return affectedNsId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getAffectedNsId() {
@@ -105,7 +106,7 @@ public class NsLcmCapacityShortageNotificationAffectedOpOccs   {
    * Get affectedOpOccId
    * @return affectedOpOccId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getAffectedOpOccId() {
@@ -125,7 +126,7 @@ public class NsLcmCapacityShortageNotificationAffectedOpOccs   {
    * This flag indicates in what condition (pre-empted or triggered) the operation occurrence(s) were affected by the resource shortage. Permitted values: - PRE_EMPTED: the operation was pre-empted and the \"operationState\" = \"FAILED_TEMP” of the NsLcmOpOcc     structure identified by \"affectedOpOccId\" attribute. - TRIGGERED: the operation was triggered by NFVO and the “operationState” = \"FAILED_TEMP” of the     NsLcmOpOcc structure identified by \"affectedOpOccId\" attribute.  In case the notification indicates the end of a shortage condition (“status“ = \"LCM_SHORTAGE_END\"), only entries with “affectedCondition“ = \"PRE_EMPTED\" shall be included. See note. 
    * @return affectedCondition
    **/
-  @Schema(required = true, description = "This flag indicates in what condition (pre-empted or triggered) the operation occurrence(s) were affected by the resource shortage. Permitted values: - PRE_EMPTED: the operation was pre-empted and the \"operationState\" = \"FAILED_TEMP” of the NsLcmOpOcc     structure identified by \"affectedOpOccId\" attribute. - TRIGGERED: the operation was triggered by NFVO and the “operationState” = \"FAILED_TEMP” of the     NsLcmOpOcc structure identified by \"affectedOpOccId\" attribute.  In case the notification indicates the end of a shortage condition (“status“ = \"LCM_SHORTAGE_END\"), only entries with “affectedCondition“ = \"PRE_EMPTED\" shall be included. See note. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "This flag indicates in what condition (pre-empted or triggered) the operation occurrence(s) were affected by the resource shortage. Permitted values: - PRE_EMPTED: the operation was pre-empted and the \"operationState\" = \"FAILED_TEMP” of the NsLcmOpOcc     structure identified by \"affectedOpOccId\" attribute. - TRIGGERED: the operation was triggered by NFVO and the “operationState” = \"FAILED_TEMP” of the     NsLcmOpOcc structure identified by \"affectedOpOccId\" attribute.  In case the notification indicates the end of a shortage condition (“status“ = \"LCM_SHORTAGE_END\"), only entries with “affectedCondition“ = \"PRE_EMPTED\" shall be included. See note. ")
       @NotNull
 
     public AffectedConditionEnum getAffectedCondition() {
@@ -145,7 +146,7 @@ public class NsLcmCapacityShortageNotificationAffectedOpOccs   {
    * Get _links
    * @return _links
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

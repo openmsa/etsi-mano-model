@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -75,7 +76,7 @@ public class VnfVirtualLinkResourceInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -96,7 +97,7 @@ public class VnfVirtualLinkResourceInfo {
 	 *
 	 * @return vnfVirtualLinkDescId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfVirtualLinkDescId() {
@@ -137,7 +138,7 @@ public class VnfVirtualLinkResourceInfo {
 	 *
 	 * @return networkResource
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -186,7 +187,7 @@ public class VnfVirtualLinkResourceInfo {
 	 *
 	 * @return vnfLinkPorts
 	 **/
-	@Schema(required = true, description = "Links ports of this VL. Shall be present when the linkPort is used for external connectivity by the VNF (refer to VnfLinkPortInfo). May be present otherwise. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Links ports of this VL. Shall be present when the linkPort is used for external connectivity by the VNF (refer to VnfLinkPortInfo). May be present otherwise. ")
 	@NotNull
 	@Valid
 	public List<VnfLinkPortInfo> getVnfLinkPorts() {

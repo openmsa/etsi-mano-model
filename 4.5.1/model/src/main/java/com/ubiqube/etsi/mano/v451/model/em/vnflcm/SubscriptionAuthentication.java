@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.SubscriptionAuthenticationPara
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.SubscriptionAuthenticationParamsOauth2ClientCredentials;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -90,7 +91,7 @@ public class SubscriptionAuthentication   {
    * Defines the types of Authentication / Authorization which the API consumer is willing to accept when receiving a notification. Permitted values:  * OAUTH2_CLIENT_CREDENTIALS: In every HTTP request to the   notification endpoint, use an OAuth 2.0 Bearer token, obtained   using the client credentials grant type. 
    * @return authType
    **/
-  @Schema(required = true, description = "Defines the types of Authentication / Authorization which the API consumer is willing to accept when receiving a notification. Permitted values:  * OAUTH2_CLIENT_CREDENTIALS: In every HTTP request to the   notification endpoint, use an OAuth 2.0 Bearer token, obtained   using the client credentials grant type. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Defines the types of Authentication / Authorization which the API consumer is willing to accept when receiving a notification. Permitted values:  * OAUTH2_CLIENT_CREDENTIALS: In every HTTP request to the   notification endpoint, use an OAuth 2.0 Bearer token, obtained   using the client credentials grant type. ")
       @NotNull
 
     public List<AuthTypeEnum> getAuthType() {

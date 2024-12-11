@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v451.model.nfvmanologm2.ManoManagedObjectReference;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -69,7 +70,7 @@ public class ChangeStateOpOcc {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getId() {
@@ -90,7 +91,7 @@ public class ChangeStateOpOcc {
 	 *
 	 * @return operationState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -112,7 +113,7 @@ public class ChangeStateOpOcc {
 	 *
 	 * @return stateEnteredTime
 	 **/
-	@Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
 	@NotNull
 
 	@Valid
@@ -134,7 +135,7 @@ public class ChangeStateOpOcc {
 	 *
 	 * @return startTime
 	 **/
-	@Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
 	@NotNull
 
 	@Valid
@@ -156,7 +157,7 @@ public class ChangeStateOpOcc {
 	 *
 	 * @return managedObjectRef
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

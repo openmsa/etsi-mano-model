@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvo.vnfsnapshotpkgm.Checksum;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -55,7 +56,7 @@ public class VnfdInfo   {
    * Get vnfdId
    * @return vnfdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfdId() {
@@ -75,7 +76,7 @@ public class VnfdInfo   {
    * Path which allows to access a copy of the VNFD. The VNFD is implemented as a collection  of one or more files, and the path refers to the ZIP archive file embedding these files. The VNF snapshot package format is defined in the ETSI GS NFV-SOL 010. The value of this attribute shall start with the name of the first segment of the path  in the package, i.e. it shall not be prefixed by path separator characters such  as \".\" and \"/\". EXAMPLE: foo/bar/m@ster 
    * @return vnfdPath
    **/
-  @Schema(required = true, description = "Path which allows to access a copy of the VNFD. The VNFD is implemented as a collection  of one or more files, and the path refers to the ZIP archive file embedding these files. The VNF snapshot package format is defined in the ETSI GS NFV-SOL 010. The value of this attribute shall start with the name of the first segment of the path  in the package, i.e. it shall not be prefixed by path separator characters such  as \".\" and \"/\". EXAMPLE: foo/bar/m@ster ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Path which allows to access a copy of the VNFD. The VNFD is implemented as a collection  of one or more files, and the path refers to the ZIP archive file embedding these files. The VNF snapshot package format is defined in the ETSI GS NFV-SOL 010. The value of this attribute shall start with the name of the first segment of the path  in the package, i.e. it shall not be prefixed by path separator characters such  as \".\" and \"/\". EXAMPLE: foo/bar/m@ster ")
       @NotNull
 
     public String getVnfdPath() {
@@ -95,7 +96,7 @@ public class VnfdInfo   {
    * Get checksum
    * @return checksum
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -116,7 +117,7 @@ public class VnfdInfo   {
    * Get isEncrypted
    * @return isEncrypted
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public Boolean getIsEncrypted() {

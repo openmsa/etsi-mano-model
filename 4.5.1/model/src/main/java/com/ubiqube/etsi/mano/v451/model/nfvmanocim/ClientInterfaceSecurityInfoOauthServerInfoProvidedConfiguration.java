@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -45,7 +46,7 @@ public class ClientInterfaceSecurityInfoOauthServerInfoProvidedConfiguration   {
    * Authorization server identifier as defined in ETSI GS NFV-SEC 022. 
    * @return authServerId
    **/
-  @Schema(required = true, description = "Authorization server identifier as defined in ETSI GS NFV-SEC 022. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Authorization server identifier as defined in ETSI GS NFV-SEC 022. ")
       @NotNull
 
     public String getAuthServerId() {

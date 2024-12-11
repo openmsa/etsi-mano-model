@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v451.model.nfvo.vnf.ExternalArtifactsAccessConfigArtifactParamsOauth2ClientCredentials;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -84,7 +85,7 @@ public class ExternalArtifactsAccessConfigArtifact   {
    * Get artifactUri
    * @return artifactUri
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getArtifactUri() {

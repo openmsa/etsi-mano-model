@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -48,7 +49,7 @@ public class PortRange   {
    * minimum: 0
    * @return lowerPort
    **/
-  @Schema(required = true, description = "Identifies the lower bound of the port range. upperPort Integer ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifies the lower bound of the port range. upperPort Integer ")
       @NotNull
 
   @Min(0)  public Integer getLowerPort() {
@@ -69,7 +70,7 @@ public class PortRange   {
    * minimum: 0
    * @return upperPort
    **/
-  @Schema(required = true, description = "Identifies the upper bound of the port range. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifies the upper bound of the port range. ")
       @NotNull
 
   @Min(0)  public Integer getUpperPort() {

@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.DataFlowData;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -70,7 +71,7 @@ public class MirroringInfo   {
    * Get mirroringId
    * @return mirroringId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getMirroringId() {
@@ -90,7 +91,7 @@ public class MirroringInfo   {
    * Name of Data Flow Mirroring. 
    * @return mirroringName
    **/
-  @Schema(required = true, description = "Name of Data Flow Mirroring. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of Data Flow Mirroring. ")
       @NotNull
 
     public String getMirroringName() {
@@ -110,7 +111,7 @@ public class MirroringInfo   {
    * Information description of Data Flow Mirroring 
    * @return description
    **/
-  @Schema(required = true, description = "Information description of Data Flow Mirroring ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Information description of Data Flow Mirroring ")
       @NotNull
 
     public String getDescription() {
@@ -130,7 +131,7 @@ public class MirroringInfo   {
    * Get collectorDetails
    * @return collectorDetails
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -156,7 +157,7 @@ public class MirroringInfo   {
    * Identifier of the VNF instance from where the data flows are requested to be mirrored. 
    * @return vnfInstanceId
    **/
-  @Schema(required = true, description = "Identifier of the VNF instance from where the data flows are requested to be mirrored. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF instance from where the data flows are requested to be mirrored. ")
       @NotNull
 
   @Size(min=1)   public List<String> getVnfInstanceId() {
@@ -181,7 +182,7 @@ public class MirroringInfo   {
    * Identifier of the CP instance from where the data flows are mirrored. 
    * @return cpInstanceId
    **/
-  @Schema(required = true, description = "Identifier of the CP instance from where the data flows are mirrored. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the CP instance from where the data flows are mirrored. ")
       @NotNull
 
   @Size(min=1)   public List<String> getCpInstanceId() {
@@ -206,7 +207,7 @@ public class MirroringInfo   {
    * Information about the data flows to be mirrored 
    * @return dataFlowData
    **/
-  @Schema(required = true, description = "Information about the data flows to be mirrored ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about the data flows to be mirrored ")
       @NotNull
     @Valid
   @Size(min=1)   public List<DataFlowData> getDataFlowData() {

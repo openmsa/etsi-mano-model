@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvmanocim.ManoConfigModificationsManoSe
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.VnfExtCpData;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -71,7 +72,7 @@ public class ExtVirtualLinkData   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -129,7 +130,7 @@ public class ExtVirtualLinkData   {
    * Get resourceId
    * @return resourceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getResourceId() {
@@ -154,7 +155,7 @@ public class ExtVirtualLinkData   {
    * External CPs of the VNF to be connected to this external VL. Entries in the list of external CP data that are unchanged need not be supplied if the ExtVirtualLinkData structure is part of a request or response that modifies the external connectivity. 
    * @return extCps
    **/
-  @Schema(required = true, description = "External CPs of the VNF to be connected to this external VL. Entries in the list of external CP data that are unchanged need not be supplied if the ExtVirtualLinkData structure is part of a request or response that modifies the external connectivity. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "External CPs of the VNF to be connected to this external VL. Entries in the list of external CP data that are unchanged need not be supplied if the ExtVirtualLinkData structure is part of a request or response that modifies the external connectivity. ")
       @NotNull
     @Valid
     public List<VnfExtCpData> getExtCps() {

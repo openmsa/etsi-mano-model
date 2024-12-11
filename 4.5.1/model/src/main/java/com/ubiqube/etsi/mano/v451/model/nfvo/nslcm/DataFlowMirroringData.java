@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.DataFlowData;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -62,7 +63,7 @@ public class DataFlowMirroringData   {
    * Get mirroringId
    * @return mirroringId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getMirroringId() {
@@ -82,7 +83,7 @@ public class DataFlowMirroringData   {
    * Name of Data Flow Mirroring. 
    * @return mirroringName
    **/
-  @Schema(required = true, description = "Name of Data Flow Mirroring. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of Data Flow Mirroring. ")
       @NotNull
 
     public String getMirroringName() {
@@ -102,7 +103,7 @@ public class DataFlowMirroringData   {
    * Information description of Data Flow Mirroring. 
    * @return description
    **/
-  @Schema(required = true, description = "Information description of Data Flow Mirroring. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Information description of Data Flow Mirroring. ")
       @NotNull
 
     public String getDescription() {
@@ -122,7 +123,7 @@ public class DataFlowMirroringData   {
    * Get collectorDetails
    * @return collectorDetails
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -148,7 +149,7 @@ public class DataFlowMirroringData   {
    * Information about the data flows to be mirrored. 
    * @return dataFlowData
    **/
-  @Schema(required = true, description = "Information about the data flows to be mirrored. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about the data flows to be mirrored. ")
       @NotNull
     @Valid
     public List<DataFlowData> getDataFlowData() {

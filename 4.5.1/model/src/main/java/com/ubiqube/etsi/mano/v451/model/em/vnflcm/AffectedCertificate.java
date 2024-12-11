@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -92,7 +93,7 @@ public class AffectedCertificate   {
    * Get certificateInfoId
    * @return certificateInfoId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getCertificateInfoId() {
@@ -188,7 +189,7 @@ public class AffectedCertificate   {
    * Signals the type of change. 
    * @return changeType
    **/
-  @Schema(required = true, description = "Signals the type of change. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the type of change. ")
       @NotNull
 
     public ChangeTypeEnum getChangeType() {

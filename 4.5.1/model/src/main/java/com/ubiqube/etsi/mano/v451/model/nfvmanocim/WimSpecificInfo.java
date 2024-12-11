@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvmanocim.WimSpecificInfoMaxMscsNums;
 import com.ubiqube.etsi.mano.v451.model.nfvmanocim.WimSpecificInfoMaxMsncNum;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -93,7 +94,7 @@ public class WimSpecificInfo   {
    * Get maxMscsNums
    * @return maxMscsNums
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -114,7 +115,7 @@ public class WimSpecificInfo   {
    * Get maxMsncNum
    * @return maxMsncNum
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -135,7 +136,7 @@ public class WimSpecificInfo   {
    * List of protocols of particular layers used to realize an MSCS that are supported by the WIM. Permitted values:   - EVPN_BGP_MPLS: L2 MSCS realized by BGP MPLS-based Ethernet VPN (EVPN) as specified in IETF RFC 7432.   - EVPN_VPWS: L2 MSCS realized by EVPN Virtual Private Wire Service (VPWS) as specified in IETF RFC 8214.   - VPLS_BGP: L2 MSCS realized by Virtual Private LAN Service (VPLS) using BGP as specified     in IETF RFC 4761 and IETF RFC.   - VPLS_LDP_L2TP: L2 MSCS realized by VPLS using Label Distribution Protocol (LDP) Layer 2     Tunnelling Protocol (L2TP) as specified in IETF RFC 4762 and IETF RFC 6074.   - VPWS_LDP_L2TP: L2 MSCS realized by VPWS using LDP L2TP as specified in IETF RFC 6074.   - BGP_IP_VPN: L3 MSCS realized by BGP/MPLS based IP VPN as specified in IETF RFC 4364. 
    * @return mscsLayerProtocolSupport
    **/
-  @Schema(required = true, description = "List of protocols of particular layers used to realize an MSCS that are supported by the WIM. Permitted values:   - EVPN_BGP_MPLS: L2 MSCS realized by BGP MPLS-based Ethernet VPN (EVPN) as specified in IETF RFC 7432.   - EVPN_VPWS: L2 MSCS realized by EVPN Virtual Private Wire Service (VPWS) as specified in IETF RFC 8214.   - VPLS_BGP: L2 MSCS realized by Virtual Private LAN Service (VPLS) using BGP as specified     in IETF RFC 4761 and IETF RFC.   - VPLS_LDP_L2TP: L2 MSCS realized by VPLS using Label Distribution Protocol (LDP) Layer 2     Tunnelling Protocol (L2TP) as specified in IETF RFC 4762 and IETF RFC 6074.   - VPWS_LDP_L2TP: L2 MSCS realized by VPWS using LDP L2TP as specified in IETF RFC 6074.   - BGP_IP_VPN: L3 MSCS realized by BGP/MPLS based IP VPN as specified in IETF RFC 4364. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of protocols of particular layers used to realize an MSCS that are supported by the WIM. Permitted values:   - EVPN_BGP_MPLS: L2 MSCS realized by BGP MPLS-based Ethernet VPN (EVPN) as specified in IETF RFC 7432.   - EVPN_VPWS: L2 MSCS realized by EVPN Virtual Private Wire Service (VPWS) as specified in IETF RFC 8214.   - VPLS_BGP: L2 MSCS realized by Virtual Private LAN Service (VPLS) using BGP as specified     in IETF RFC 4761 and IETF RFC.   - VPLS_LDP_L2TP: L2 MSCS realized by VPLS using Label Distribution Protocol (LDP) Layer 2     Tunnelling Protocol (L2TP) as specified in IETF RFC 4762 and IETF RFC 6074.   - VPWS_LDP_L2TP: L2 MSCS realized by VPWS using LDP L2TP as specified in IETF RFC 6074.   - BGP_IP_VPN: L3 MSCS realized by BGP/MPLS based IP VPN as specified in IETF RFC 4364. ")
       @NotNull
 
     public MscsLayerProtocolSupportEnum getMscsLayerProtocolSupport() {

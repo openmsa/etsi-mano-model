@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvo.nslcm.LocationConstraints;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -49,7 +50,7 @@ public class NestedNsLocationConstraint   {
    * Get nsProfileId
    * @return nsProfileId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getNsProfileId() {
@@ -69,7 +70,7 @@ public class NestedNsLocationConstraint   {
    * Get locationConstraints
    * @return locationConstraints
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

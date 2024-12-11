@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -50,7 +51,7 @@ public class UploadVnfPackageFromUriRequestParamsOauth2ClientCredentials   {
    * Client identifier to be used in the access token request of the OAuth 2.0 client credentials grant type. 
    * @return clientId
    **/
-  @Schema(required = true, description = "Client identifier to be used in the access token request of the OAuth 2.0 client credentials grant type. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Client identifier to be used in the access token request of the OAuth 2.0 client credentials grant type. ")
       @NotNull
 
     public String getClientId() {
@@ -70,7 +71,7 @@ public class UploadVnfPackageFromUriRequestParamsOauth2ClientCredentials   {
    * Client password to be used in the access token request of the OAuth 2.0 client credentials grant type. Shall not be present in response bodies. 
    * @return clientPassword
    **/
-  @Schema(required = true, description = "Client password to be used in the access token request of the OAuth 2.0 client credentials grant type. Shall not be present in response bodies. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Client password to be used in the access token request of the OAuth 2.0 client credentials grant type. Shall not be present in response bodies. ")
       @NotNull
 
     public String getClientPassword() {
@@ -90,7 +91,7 @@ public class UploadVnfPackageFromUriRequestParamsOauth2ClientCredentials   {
    * Get tokenEndpoint
    * @return tokenEndpoint
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getTokenEndpoint() {

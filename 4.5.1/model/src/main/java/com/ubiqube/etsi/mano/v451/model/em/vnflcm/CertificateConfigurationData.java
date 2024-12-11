@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v451.model.em.vnflcm.SecurityPolicy;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -90,7 +91,7 @@ public class CertificateConfigurationData   {
    * Security policy to be satisfied for certificate. 
    * @return securityPolicy
    **/
-  @Schema(required = true, description = "Security policy to be satisfied for certificate. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Security policy to be satisfied for certificate. ")
       @NotNull
     @Valid
     public List<SecurityPolicy> getSecurityPolicy() {

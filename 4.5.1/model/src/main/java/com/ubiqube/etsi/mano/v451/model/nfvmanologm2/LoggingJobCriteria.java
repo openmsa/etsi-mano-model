@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -101,7 +102,7 @@ public class LoggingJobCriteria {
 	 *
 	 * @return loggingType
 	 **/
-	@Schema(required = true, description = "Type of logging. This defines the types of logged information to collect. Permitted values: - MESSAGES: logged NFV-MANO service interface messages. - SERVICES: logged messages about processes pertaining to NFV-MANO services. - SYSTEM: logged messages about the NFV-MANO functional entity’s system enabled by the provider. See note.")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of logging. This defines the types of logged information to collect. Permitted values: - MESSAGES: logged NFV-MANO service interface messages. - SERVICES: logged messages about processes pertaining to NFV-MANO services. - SYSTEM: logged messages about the NFV-MANO functional entity’s system enabled by the provider. See note.")
 	@NotNull
 
 	public LoggingTypeEnum getLoggingType() {

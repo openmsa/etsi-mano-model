@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v451.model.nfvmanologm2.ManoManagedObjectReference;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -78,7 +79,7 @@ public class ChangeStateNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getId() {
@@ -100,7 +101,7 @@ public class ChangeStateNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"ChangeStateNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"ChangeStateNotification\" for this notification type. ")
 	@NotNull
 
 	public String getNotificationType() {
@@ -121,7 +122,7 @@ public class ChangeStateNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getSubscriptionId() {
@@ -142,7 +143,7 @@ public class ChangeStateNotification {
 	 *
 	 * @return timestamp
 	 **/
-	@Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
 	@NotNull
 
 	@Valid
@@ -164,7 +165,7 @@ public class ChangeStateNotification {
 	 *
 	 * @return changeStateOpOccId
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getChangeStateOpOccId() {
@@ -185,7 +186,7 @@ public class ChangeStateNotification {
 	 *
 	 * @return stateChangedTime
 	 **/
-	@Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
 	@NotNull
 
 	@Valid
@@ -207,7 +208,7 @@ public class ChangeStateNotification {
 	 *
 	 * @return changeStateOperationState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -229,7 +230,7 @@ public class ChangeStateNotification {
 	 *
 	 * @return managedObjectRef
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -293,7 +294,7 @@ public class ChangeStateNotification {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

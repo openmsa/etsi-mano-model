@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.CmfInfoEndPoint;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -87,7 +88,7 @@ public class CmfData   {
    * Get endPoint
    * @return endPoint
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -113,7 +114,7 @@ public class CmfData   {
    * Supported protocols by CMF instance.
    * @return supportedProtocol
    **/
-  @Schema(required = true, description = "Supported protocols by CMF instance.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Supported protocols by CMF instance.")
       @NotNull
 
     public List<SupportedProtocolEnum> getSupportedProtocol() {

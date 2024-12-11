@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -120,7 +121,7 @@ public class CertificateContent {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -161,7 +162,7 @@ public class CertificateContent {
 	 *
 	 * @return certificateType
 	 **/
-	@Schema(required = true, description = "Type of this certificate.")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of this certificate.")
 	@NotNull
 
 	public CertificateTypeEnum getCertificateType() {

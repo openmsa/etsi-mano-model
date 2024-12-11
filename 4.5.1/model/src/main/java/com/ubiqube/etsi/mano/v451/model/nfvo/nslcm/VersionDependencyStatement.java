@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -52,7 +53,7 @@ public class VersionDependencyStatement   {
    * Identifies a VNFD, NSD or PNFD upon which the entity using this data type depends. When more than one descriptor is indicated, they shall correspond to versions of the same VNF, NS or PNF and they represent alternatives, i.e. the presence of one of them fulfills the dependency.
    * @return descriptorId
    **/
-  @Schema(required = true, description = "Identifies a VNFD, NSD or PNFD upon which the entity using this data type depends. When more than one descriptor is indicated, they shall correspond to versions of the same VNF, NS or PNF and they represent alternatives, i.e. the presence of one of them fulfills the dependency.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifies a VNFD, NSD or PNFD upon which the entity using this data type depends. When more than one descriptor is indicated, they shall correspond to versions of the same VNF, NS or PNF and they represent alternatives, i.e. the presence of one of them fulfills the dependency.")
       @NotNull
 
     public List<String> getDescriptorId() {

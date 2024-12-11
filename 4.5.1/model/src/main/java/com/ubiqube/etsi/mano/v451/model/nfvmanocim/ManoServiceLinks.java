@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v451.model.em.vnflcm.Link;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -57,7 +58,7 @@ public class ManoServiceLinks {
 	 *
 	 * @return manoServiceInterfaces
 	 **/
-	@Schema(required = true, description = "Link to the \"individual NFV-MANO service interface\" resources with information about the associated interfaces to the NFV-MANO service. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Link to the \"individual NFV-MANO service interface\" resources with information about the associated interfaces to the NFV-MANO service. ")
 	@NotNull
 	@Valid
 	@Size(min = 1)

@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v451.model.nfvmanocim.NfvoSpecificInfoSupportedNsdF
 import com.ubiqube.etsi.mano.v451.model.nfvmanocim.NfvoSpecificInfoSupportedVnfdFormats;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -132,7 +133,7 @@ public class NfvoSpecificInfo   {
    * Get supportedVnfdFormats
    * @return supportedVnfdFormats
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -153,7 +154,7 @@ public class NfvoSpecificInfo   {
    * Get supportedNsdFormats
    * @return supportedNsdFormats
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -179,7 +180,7 @@ public class NfvoSpecificInfo   {
    * The supported list of VNF certificate management mode. Permitted Values: - DELEGATION-MODE: the CMF supports delegation-mode. - DIRECT-MODE: the CMF supports direct-mode. 
    * @return certificateManagementMode
    **/
-  @Schema(required = true, description = "The supported list of VNF certificate management mode. Permitted Values: - DELEGATION-MODE: the CMF supports delegation-mode. - DIRECT-MODE: the CMF supports direct-mode. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The supported list of VNF certificate management mode. Permitted Values: - DELEGATION-MODE: the CMF supports delegation-mode. - DIRECT-MODE: the CMF supports direct-mode. ")
       @NotNull
 
     public List<CertificateManagementModeEnum> getCertificateManagementMode() {

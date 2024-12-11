@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -55,7 +56,7 @@ public class VimSpecificInfoImageSignatureVerificationSignatureVerificationAlgor
 	 *
 	 * @return algorithm
 	 **/
-	@Schema(required = true, description = "The name of the algorithm. Permitted values are: \"RSA\", \"DSA\", \"ECDSA\". ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The name of the algorithm. Permitted values are: \"RSA\", \"DSA\", \"ECDSA\". ")
 	@NotNull
 
 	public String getAlgorithm() {
@@ -82,7 +83,7 @@ public class VimSpecificInfoImageSignatureVerificationSignatureVerificationAlgor
 	 *
 	 * @return keyLengths
 	 **/
-	@Schema(required = true, description = "List of supported key lengths of the algorithm. The key length indicates the number of bits, such as “256”, “512”, etc. See note. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "List of supported key lengths of the algorithm. The key length indicates the number of bits, such as “256”, “512”, etc. See note. ")
 	@NotNull
 
 	public List<String> getKeyLengths() {

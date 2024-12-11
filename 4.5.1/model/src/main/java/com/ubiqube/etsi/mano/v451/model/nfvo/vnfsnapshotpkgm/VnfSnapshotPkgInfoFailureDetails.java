@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v451.model.em.vnfconfig.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -96,7 +97,7 @@ public class VnfSnapshotPkgInfoFailureDetails {
 	 *
 	 * @return errorType
 	 **/
-	@Schema(required = true, description = "Type of error, when the failure happened (building, upload, processing, extracting). Permitted values:  - BUILD_ERROR - UPLOAD_ERROR - PROCESS_ERROR - CANCELLED - EXTRACTION_ERROR ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of error, when the failure happened (building, upload, processing, extracting). Permitted values:  - BUILD_ERROR - UPLOAD_ERROR - PROCESS_ERROR - CANCELLED - EXTRACTION_ERROR ")
 	@NotNull
 
 	public ErrorTypeEnum getErrorType() {
@@ -117,7 +118,7 @@ public class VnfSnapshotPkgInfoFailureDetails {
 	 *
 	 * @return details
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

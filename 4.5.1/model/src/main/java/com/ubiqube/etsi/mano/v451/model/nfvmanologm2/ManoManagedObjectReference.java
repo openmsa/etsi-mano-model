@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.constraints.NotNull;
 
 /**
@@ -97,7 +98,7 @@ public class ManoManagedObjectReference {
 	 *
 	 * @return type
 	 **/
-	@Schema(required = true, description = "Indicates the type of managed object. Permitted values:   - MANO_ENTITY   - MANO_SERVICE   - MANO_SERVICE_IF   - CONSUMED_MANO_IF   - MANO_ENTITY_COMPONENT  The \"MANO_ENTITY COMPONENT\" is only applicable if attribute \"manoEntityComponents\" in \"ManoEntity\" is supported by the API producer. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the type of managed object. Permitted values:   - MANO_ENTITY   - MANO_SERVICE   - MANO_SERVICE_IF   - CONSUMED_MANO_IF   - MANO_ENTITY_COMPONENT  The \"MANO_ENTITY COMPONENT\" is only applicable if attribute \"manoEntityComponents\" in \"ManoEntity\" is supported by the API producer. ")
 	@NotNull
 
 	public TypeEnum getType() {
@@ -118,7 +119,7 @@ public class ManoManagedObjectReference {
 	 *
 	 * @return objectId
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getObjectId() {
