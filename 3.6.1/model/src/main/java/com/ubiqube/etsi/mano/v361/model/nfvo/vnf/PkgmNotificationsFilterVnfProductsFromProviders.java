@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PkgmNotificationsFilterVersions
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -51,7 +52,7 @@ public class PkgmNotificationsFilterVnfProductsFromProviders   {
    * Name of the VNF product to match. 
    * @return vnfProductName
    **/
-  @Schema(required = true, description = "Name of the VNF product to match. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the VNF product to match. ")
       @NotNull
 
     public String getVnfProductName() {

@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LccnLinks;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * NsIdentifierCreationNotification
@@ -63,7 +64,7 @@ public class NsIdentifierCreationNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -85,7 +86,7 @@ public class NsIdentifierCreationNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"NsIdentifierDeletionNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"NsIdentifierDeletionNotification\" for this notification type. ")
 	@NotNull
 
 	public String getNotificationType() {
@@ -106,7 +107,7 @@ public class NsIdentifierCreationNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getSubscriptionId() {
@@ -127,7 +128,7 @@ public class NsIdentifierCreationNotification {
 	 *
 	 * @return timestamp
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -149,7 +150,7 @@ public class NsIdentifierCreationNotification {
 	 *
 	 * @return nsInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getNsInstanceId() {
@@ -170,7 +171,7 @@ public class NsIdentifierCreationNotification {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

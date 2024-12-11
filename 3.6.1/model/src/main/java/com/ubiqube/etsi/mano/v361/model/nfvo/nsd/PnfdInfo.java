@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v361.model.em.vnfconfig.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -124,7 +125,7 @@ public class PnfdInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -319,7 +320,7 @@ public class PnfdInfo {
 	 *
 	 * @return pnfdOnboardingState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -362,7 +363,7 @@ public class PnfdInfo {
 	 *
 	 * @return pnfdUsageState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -405,7 +406,7 @@ public class PnfdInfo {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents request parameters for the \&quot;Change external VNF
@@ -70,7 +71,7 @@ public class ChangeExtVnfConnectivityRequest {
 	 *
 	 * @return extVirtualLinks
 	 **/
-	@Schema(required = true, description = "Information about external VLs to change (e.g. connect the VNF to) including configuration information  for the CPs via which the VNF instance can attach to this VL. Entries in the list of external VLs that are unchanged need not be supplied as part of this request. The following applies to the \"ExtVirtualLinkData\" information provided in this request, together with the related \"ExtVirtualLinkInfo\" information known to the VNFM represented in the \"VnfInstance\" structure (see clause 5.5.2.2): Even if the VNF is not in fully scaled-out state, the API consumer shall provide enough CP configuration records to allow connecting the VNF instance, fully scaled out in all scaling aspects, to the external VLs. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about external VLs to change (e.g. connect the VNF to) including configuration information  for the CPs via which the VNF instance can attach to this VL. Entries in the list of external VLs that are unchanged need not be supplied as part of this request. The following applies to the \"ExtVirtualLinkData\" information provided in this request, together with the related \"ExtVirtualLinkInfo\" information known to the VNFM represented in the \"VnfInstance\" structure (see clause 5.5.2.2): Even if the VNF is not in fully scaled-out state, the API consumer shall provide enough CP configuration records to allow connecting the VNF instance, fully scaled out in all scaling aspects, to the external VLs. ")
 	@NotNull
 	@Valid
 	public List<ExtVirtualLinkData> getExtVirtualLinks() {

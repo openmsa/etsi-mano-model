@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents the information on virtualised compute and storage
@@ -86,7 +87,7 @@ public class VnfcResourceInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -107,7 +108,7 @@ public class VnfcResourceInfo {
 	 *
 	 * @return vduId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVduId() {
@@ -148,7 +149,7 @@ public class VnfcResourceInfo {
 	 *
 	 * @return computeResource
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v361.model.vnfm.vnfind.NotificationLink;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * Links to resources related to this notification.
@@ -72,7 +73,7 @@ public class ThresholdCrossedNotificationLinks {
 	 *
 	 * @return threshold
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

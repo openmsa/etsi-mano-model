@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfExtCpData;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -61,7 +62,7 @@ public class ExtVirtualLinkInfo   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -81,7 +82,7 @@ public class ExtVirtualLinkInfo   {
    * Get resourceHandle
    * @return resourceHandle
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -134,7 +135,7 @@ public class ExtVirtualLinkInfo   {
    * Allows the API consumer to read the current CP configuration information for the connection of external CPs  to the external virtual link. See note. 
    * @return currentVnfExtCpData
    **/
-  @Schema(required = true, description = "Allows the API consumer to read the current CP configuration information for the connection of external CPs  to the external virtual link. See note. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Allows the API consumer to read the current CP configuration information for the connection of external CPs  to the external virtual link. See note. ")
       @NotNull
     @Valid
     public List<VnfExtCpData> getCurrentVnfExtCpData() {

@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -60,7 +61,7 @@ public class OperateVnfData   {
    * Get vnfInstanceId
    * @return vnfInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfInstanceId() {
@@ -80,7 +81,7 @@ public class OperateVnfData   {
    * Get changeStateTo
    * @return changeStateTo
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

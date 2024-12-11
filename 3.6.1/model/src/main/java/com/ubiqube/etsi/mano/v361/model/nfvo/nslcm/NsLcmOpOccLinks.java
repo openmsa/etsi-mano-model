@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.Link;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * Links to resources related to this resource.
@@ -66,7 +67,7 @@ public class NsLcmOpOccLinks {
 	 *
 	 * @return self
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -88,7 +89,7 @@ public class NsLcmOpOccLinks {
 	 *
 	 * @return nsInstance
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

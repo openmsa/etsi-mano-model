@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -86,7 +87,7 @@ public class MscsEndpointInfo   {
    * Get mscsEndpointId
    * @return mscsEndpointId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getMscsEndpointId() {
@@ -106,7 +107,7 @@ public class MscsEndpointInfo   {
    * Directionality of the data traffic in the context of the terminating MSCS endpoint from WAN’s perspective. Permitted values: - INBOUND: to indicate into the WAN. - OUTBOUND: to indicate from the WAN. - BOTH: to indicate bidirectional data traffic to/from the WAN. 
    * @return directionality
    **/
-  @Schema(required = true, description = "Directionality of the data traffic in the context of the terminating MSCS endpoint from WAN’s perspective. Permitted values: - INBOUND: to indicate into the WAN. - OUTBOUND: to indicate from the WAN. - BOTH: to indicate bidirectional data traffic to/from the WAN. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Directionality of the data traffic in the context of the terminating MSCS endpoint from WAN’s perspective. Permitted values: - INBOUND: to indicate into the WAN. - OUTBOUND: to indicate from the WAN. - BOTH: to indicate bidirectional data traffic to/from the WAN. ")
       @NotNull
 
     public DirectionalityEnum getDirectionality() {
@@ -131,7 +132,7 @@ public class MscsEndpointInfo   {
    * References the connectivity service endpoint configuration information applicable to support the MSCS endpoint. More than one connectivity service endpoint can be referred when endpoints are in LAG mode. 
    * @return connectivityServiceEndpoinId
    **/
-  @Schema(required = true, description = "References the connectivity service endpoint configuration information applicable to support the MSCS endpoint. More than one connectivity service endpoint can be referred when endpoints are in LAG mode. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "References the connectivity service endpoint configuration information applicable to support the MSCS endpoint. More than one connectivity service endpoint can be referred when endpoints are in LAG mode. ")
       @NotNull
 
     public List<String> getConnectivityServiceEndpoinId() {

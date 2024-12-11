@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -48,7 +49,7 @@ public class CreateVnfSnapshotPkgInfoRequest   {
    * Human-readable name of the VNF snapshot package. 
    * @return name
    **/
-  @Schema(required = true, description = "Human-readable name of the VNF snapshot package. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the VNF snapshot package. ")
       @NotNull
 
     public String getName() {

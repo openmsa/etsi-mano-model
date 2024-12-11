@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -44,7 +45,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoOspfRouting   {
    * The routing area identifier, e.g., a number or an IP address. 
    * @return areaId
    **/
-  @Schema(required = true, description = "The routing area identifier, e.g., a number or an IP address. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The routing area identifier, e.g., a number or an IP address. ")
       @NotNull
 
     public String getAreaId() {

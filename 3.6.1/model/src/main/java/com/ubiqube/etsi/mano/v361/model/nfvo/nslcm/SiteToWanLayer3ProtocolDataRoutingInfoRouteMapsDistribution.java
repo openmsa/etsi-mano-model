@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Map;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -83,7 +84,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoRouteMapsDistribution   {
    * The policy to apply to the route distribution. Permitted values: - PERMIT - DENY 
    * @return policy
    **/
-  @Schema(required = true, description = "The policy to apply to the route distribution. Permitted values: - PERMIT - DENY ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The policy to apply to the route distribution. Permitted values: - PERMIT - DENY ")
       @NotNull
 
     public PolicyEnum getPolicy() {
@@ -103,7 +104,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoRouteMapsDistribution   {
    * Sequence or index number assigned to the route-map. 
    * @return sequence
    **/
-  @Schema(required = true, description = "Sequence or index number assigned to the route-map. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Sequence or index number assigned to the route-map. ")
       @NotNull
 
     @Valid
@@ -124,7 +125,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoRouteMapsDistribution   {
    * Get matchAndSetRule
    * @return matchAndSetRule
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

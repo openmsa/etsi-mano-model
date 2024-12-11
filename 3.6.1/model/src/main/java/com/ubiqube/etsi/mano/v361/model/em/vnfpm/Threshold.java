@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -67,7 +68,7 @@ public class Threshold {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -89,7 +90,7 @@ public class Threshold {
 	 *
 	 * @return objectType
 	 **/
-	@Schema(required = true, description = "Type of the measured object. The applicable measured object type for a measurement is defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the measured object. The applicable measured object type for a measurement is defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
 	@NotNull
 
 	public String getObjectType() {
@@ -110,7 +111,7 @@ public class Threshold {
 	 *
 	 * @return objectInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getObjectInstanceId() {
@@ -164,7 +165,7 @@ public class Threshold {
 	 *
 	 * @return criteria
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -186,7 +187,7 @@ public class Threshold {
 	 *
 	 * @return callbackUri
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCallbackUri() {
@@ -207,7 +208,7 @@ public class Threshold {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

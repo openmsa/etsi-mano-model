@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v361.model.em.vnffm.Alarm;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -98,7 +99,7 @@ public class AlarmNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -120,7 +121,7 @@ public class AlarmNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"AlarmNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"AlarmNotification\" for this notification type. ")
 	@NotNull
 
 	public NotificationTypeEnum getNotificationType() {
@@ -141,7 +142,7 @@ public class AlarmNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getSubscriptionId() {
@@ -162,7 +163,7 @@ public class AlarmNotification {
 	 *
 	 * @return timeStamp
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -184,7 +185,7 @@ public class AlarmNotification {
 	 *
 	 * @return alarm
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -206,7 +207,7 @@ public class AlarmNotification {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

@@ -35,6 +35,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LccnLinks;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LcmOpOccNotificationVerbosityType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * NsLcmOperationOccurrenceNotification
@@ -150,7 +151,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -171,7 +172,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return nsInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getNsInstanceId() {
@@ -192,7 +193,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return nsLcmOpOccId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getNsLcmOpOccId() {
@@ -213,7 +214,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return operation
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -236,7 +237,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"NsLcmOperationOccurrenceNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"NsLcmOperationOccurrenceNotification\" for this notification type. ")
 	@NotNull
 
 	public String getNotificationType() {
@@ -257,7 +258,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getSubscriptionId() {
@@ -278,7 +279,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return timestamp
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -304,7 +305,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return notificationStatus
 	 **/
-	@Schema(required = true, description = "Indicates whether this notification reports about the start of a NS lifecycle operation or the result of a NS lifecycle operation. Permitted values: - START: Informs about the start of the NS LCM operation occurrence. - RESULT: Informs about the final or intermediate result of the NS LCM operation occurrence. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates whether this notification reports about the start of a NS lifecycle operation or the result of a NS lifecycle operation. Permitted values: - START: Informs about the start of the NS LCM operation occurrence. - RESULT: Informs about the final or intermediate result of the NS LCM operation occurrence. ")
 	@NotNull
 
 	public NotificationStatusEnum getNotificationStatus() {
@@ -325,7 +326,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return operationState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -347,7 +348,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return isAutomaticInvocation
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Boolean getIsAutomaticInvocation() {
@@ -584,7 +585,7 @@ public class NsLcmOperationOccurrenceNotification {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

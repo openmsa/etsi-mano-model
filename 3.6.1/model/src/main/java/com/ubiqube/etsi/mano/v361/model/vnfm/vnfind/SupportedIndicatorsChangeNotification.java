@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v361.model.vnfm.vnfind.SupportedIndicatorsChangeNot
 import com.ubiqube.etsi.mano.v361.model.vnfm.vnfind.SupportedIndicatorsChangeNotificationSupportedIndicators;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,7 +99,7 @@ public class SupportedIndicatorsChangeNotification   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -118,7 +119,7 @@ public class SupportedIndicatorsChangeNotification   {
    * Discriminator for the different notification types. Shall be set to  \"SupportedIndicatorsChangeNotification\" for this notification type. 
    * @return notificationType
    **/
-  @Schema(required = true, description = "Discriminator for the different notification types. Shall be set to  \"SupportedIndicatorsChangeNotification\" for this notification type. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to  \"SupportedIndicatorsChangeNotification\" for this notification type. ")
       @NotNull
 
     public NotificationTypeEnum getNotificationType() {
@@ -138,7 +139,7 @@ public class SupportedIndicatorsChangeNotification   {
    * Get subscriptionId
    * @return subscriptionId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getSubscriptionId() {
@@ -158,7 +159,7 @@ public class SupportedIndicatorsChangeNotification   {
    * Get timeStamp
    * @return timeStamp
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -179,7 +180,7 @@ public class SupportedIndicatorsChangeNotification   {
    * Get vnfInstanceId
    * @return vnfInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfInstanceId() {
@@ -226,7 +227,7 @@ public class SupportedIndicatorsChangeNotification   {
    * Get _links
    * @return _links
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

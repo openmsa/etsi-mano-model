@@ -32,6 +32,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfcResourceInfo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -108,7 +109,7 @@ public class VnfInstanceInstantiatedVnfInfo   {
    * Get flavourId
    * @return flavourId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getFlavourId() {
@@ -128,7 +129,7 @@ public class VnfInstanceInstantiatedVnfInfo   {
    * Get vnfState
    * @return vnfState
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -208,7 +209,7 @@ public class VnfInstanceInstantiatedVnfInfo   {
    * Information about the external CPs exposed by the VNF instance. When trunking is enabled, the list of entries includes both, external CPs corresponding to parent ports of a trunk, and external CPs associated to sub-ports of a trunk. 
    * @return extCpInfo
    **/
-  @Schema(required = true, description = "Information about the external CPs exposed by the VNF instance. When trunking is enabled, the list of entries includes both, external CPs corresponding to parent ports of a trunk, and external CPs associated to sub-ports of a trunk. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about the external CPs exposed by the VNF instance. When trunking is enabled, the list of entries includes both, external CPs corresponding to parent ports of a trunk, and external CPs associated to sub-ports of a trunk. ")
       @NotNull
     @Valid
   @Size(min=1)   public List<VnfExtCpInfo> getExtCpInfo() {

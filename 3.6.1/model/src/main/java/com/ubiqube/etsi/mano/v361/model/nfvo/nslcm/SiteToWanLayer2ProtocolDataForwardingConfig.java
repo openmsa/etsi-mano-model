@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * Information related to the forwarding of the VN in the NFVI-PoP to the

@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnfpm.PerformanceReportEntries;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -54,7 +55,7 @@ public class PerformanceReport   {
    * List of performance information entries. Each performance report entry is for a given metric of a given object (i.e. VNF instance), but can include multiple collected values. 
    * @return entries
    **/
-  @Schema(required = true, description = "List of performance information entries. Each performance report entry is for a given metric of a given object (i.e. VNF instance), but can include multiple collected values. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of performance information entries. Each performance report entry is for a given metric of a given object (i.e. VNF instance), but can include multiple collected values. ")
       @NotNull
     @Valid
     public List<PerformanceReportEntries> getEntries() {

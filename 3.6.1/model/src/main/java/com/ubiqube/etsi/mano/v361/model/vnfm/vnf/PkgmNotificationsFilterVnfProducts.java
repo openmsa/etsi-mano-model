@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v361.model.nfvo.vnf.PkgmNotificationsFilterVersions;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * PkgmNotificationsFilterVnfProducts
@@ -53,7 +54,7 @@ public class PkgmNotificationsFilterVnfProducts {
 	 *
 	 * @return vnfProductName
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfProductName() {

@@ -31,6 +31,7 @@ import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * The type represents the information that is requested to be changed
@@ -87,7 +88,7 @@ public class ChangeVnfFlavourData {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -108,7 +109,7 @@ public class ChangeVnfFlavourData {
 	 *
 	 * @return newFlavourId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getNewFlavourId() {

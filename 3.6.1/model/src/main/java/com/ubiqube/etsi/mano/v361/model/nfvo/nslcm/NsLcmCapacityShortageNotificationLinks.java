@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.Link;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * Links related to NS resources affected by the shortage of this operation
@@ -52,7 +53,7 @@ public class NsLcmCapacityShortageNotificationLinks {
 	 *
 	 * @return affectedLcmOpOcc
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -74,7 +75,7 @@ public class NsLcmCapacityShortageNotificationLinks {
 	 *
 	 * @return affectedNs
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

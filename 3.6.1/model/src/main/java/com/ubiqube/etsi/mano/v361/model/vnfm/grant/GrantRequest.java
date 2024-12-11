@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -134,7 +135,7 @@ public class GrantRequest {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -155,7 +156,7 @@ public class GrantRequest {
 	 *
 	 * @return vnfLcmOpOccId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfLcmOpOccId() {
@@ -176,7 +177,7 @@ public class GrantRequest {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfdId() {
@@ -237,7 +238,7 @@ public class GrantRequest {
 	 *
 	 * @return operation
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -262,7 +263,7 @@ public class GrantRequest {
 	 *
 	 * @return isAutomaticInvocation
 	 **/
-	@Schema(required = true, description = "Set to true if this VNF LCM operation occurrence has been triggered by an automated procedure inside the VNFM (i.e. ScaleVnf / ScaleVnfToLevel triggered by auto-scale, or HealVnf triggered by auto-heal). Set to false otherwise. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Set to true if this VNF LCM operation occurrence has been triggered by an automated procedure inside the VNFM (i.e. ScaleVnf / ScaleVnfToLevel triggered by auto-scale, or HealVnf triggered by auto-heal). Set to false otherwise. ")
 	@NotNull
 
 	public Boolean isIsAutomaticInvocation() {
@@ -507,7 +508,7 @@ public class GrantRequest {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

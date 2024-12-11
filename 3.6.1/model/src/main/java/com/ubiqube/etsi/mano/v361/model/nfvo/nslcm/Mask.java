@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -50,7 +51,7 @@ public class Mask   {
    * Indicates the offset between the last bit of the source mac address and the first bit of the sequence of bits to be matched. 
    * @return startingPoint
    **/
-  @Schema(required = true, description = "Indicates the offset between the last bit of the source mac address and the first bit of the sequence of bits to be matched. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the offset between the last bit of the source mac address and the first bit of the sequence of bits to be matched. ")
       @NotNull
 
     public Integer getStartingPoint() {
@@ -70,7 +71,7 @@ public class Mask   {
    * Indicates the number of bits to be matched. 
    * @return length
    **/
-  @Schema(required = true, description = "Indicates the number of bits to be matched. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the number of bits to be matched. ")
       @NotNull
 
     public Integer getLength() {
@@ -90,7 +91,7 @@ public class Mask   {
    * Provide the sequence of bit values to be matched. 
    * @return value
    **/
-  @Schema(required = true, description = "Provide the sequence of bit values to be matched. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Provide the sequence of bit values to be matched. ")
       @NotNull
 
     public String getValue() {

@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type provides information of an existing or proposed resource used by
@@ -118,7 +119,7 @@ public class ResourceDefinition {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -140,7 +141,7 @@ public class ResourceDefinition {
 	 *
 	 * @return type
 	 **/
-	@Schema(required = true, description = "Type of the resource definition referenced. Permitted values: * COMPUTE * VL * STORAGE * LINKPORT ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the resource definition referenced. Permitted values: * COMPUTE * VL * STORAGE * LINKPORT ")
 	@NotNull
 
 	public TypeEnum getType() {

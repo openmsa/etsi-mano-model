@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents modifications of an entry in an array of
@@ -56,7 +57,7 @@ public class VnfcInfoModifications {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -77,7 +78,7 @@ public class VnfcInfoModifications {
 	 *
 	 * @return vnfcConfigurableProperties
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

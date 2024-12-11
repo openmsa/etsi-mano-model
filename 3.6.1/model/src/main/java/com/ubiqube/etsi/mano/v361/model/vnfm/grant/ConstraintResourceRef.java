@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -84,7 +85,7 @@ public class ConstraintResourceRef   {
    * The type of the identifier. Permitted values: * RES_MGMT: Resource-management-level identifier; this identifier is   managed by the VIM in the direct mode of VNF-related resource   management, and is managed by the NFVO in the indirect mode) * GRANT: Reference to the identifier of a \"ResourceDefinition\" structure in the \"GrantRequest\" structure. 
    * @return idType
    **/
-  @Schema(required = true, description = "The type of the identifier. Permitted values: * RES_MGMT: Resource-management-level identifier; this identifier is   managed by the VIM in the direct mode of VNF-related resource   management, and is managed by the NFVO in the indirect mode) * GRANT: Reference to the identifier of a \"ResourceDefinition\" structure in the \"GrantRequest\" structure. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of the identifier. Permitted values: * RES_MGMT: Resource-management-level identifier; this identifier is   managed by the VIM in the direct mode of VNF-related resource   management, and is managed by the NFVO in the indirect mode) * GRANT: Reference to the identifier of a \"ResourceDefinition\" structure in the \"GrantRequest\" structure. ")
       @NotNull
 
     public IdTypeEnum getIdType() {
@@ -104,7 +105,7 @@ public class ConstraintResourceRef   {
    * Get resourceId
    * @return resourceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getResourceId() {

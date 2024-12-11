@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -50,7 +51,7 @@ public class VnfStateSnapshotInfo   {
    * Checksum of the VNF state snapshot file. Hash algorithms applicable to VNF snapshot package artifacts are defined in ETSI GS NFV-SOL 010. $ref: \"../definitions/SOL002SOL003_def.yaml#/definitions/Checksum\" 
    * @return checksum
    **/
-  @Schema(required = true, description = "Checksum of the VNF state snapshot file. Hash algorithms applicable to VNF snapshot package artifacts are defined in ETSI GS NFV-SOL 010. $ref: \"../definitions/SOL002SOL003_def.yaml#/definitions/Checksum\" ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Checksum of the VNF state snapshot file. Hash algorithms applicable to VNF snapshot package artifacts are defined in ETSI GS NFV-SOL 010. $ref: \"../definitions/SOL002SOL003_def.yaml#/definitions/Checksum\" ")
       @NotNull
 
     public Object getChecksum() {
@@ -70,7 +71,7 @@ public class VnfStateSnapshotInfo   {
    * Reflects whether the VNF state snapshot content is encrypted (true) or not (false). $ref: \"../definitions/SOL002SOL003_def.yaml#/definitions/Boolean\" 
    * @return isEncrypted
    **/
-  @Schema(required = true, description = "Reflects whether the VNF state snapshot content is encrypted (true) or not (false). $ref: \"../definitions/SOL002SOL003_def.yaml#/definitions/Boolean\" ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Reflects whether the VNF state snapshot content is encrypted (true) or not (false). $ref: \"../definitions/SOL002SOL003_def.yaml#/definitions/Boolean\" ")
       @NotNull
 
     public Object getIsEncrypted() {

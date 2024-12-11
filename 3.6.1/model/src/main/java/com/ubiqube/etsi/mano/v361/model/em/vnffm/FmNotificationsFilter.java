@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.VnfInstanceSubscriptionFilter;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents a subscription filter related to notifications about VNF

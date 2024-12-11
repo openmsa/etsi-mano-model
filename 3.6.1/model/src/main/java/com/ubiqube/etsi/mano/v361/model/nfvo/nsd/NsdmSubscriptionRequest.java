@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.SubscriptionAuthentication;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents a subscription request related to notifications about
@@ -76,7 +77,7 @@ public class NsdmSubscriptionRequest {
 	 *
 	 * @return callbackUri
 	 **/
-	@Schema(required = true, description = "The URI of the endpoint to send the notification to. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The URI of the endpoint to send the notification to. ")
 	@NotNull
 
 	public String getCallbackUri() {

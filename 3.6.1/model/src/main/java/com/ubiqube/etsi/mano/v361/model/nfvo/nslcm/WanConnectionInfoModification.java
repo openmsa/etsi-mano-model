@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.MscsEndpointInfo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -71,7 +72,7 @@ public class WanConnectionInfoModification   {
    * Get wanConnectionInfoId
    * @return wanConnectionInfoId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getWanConnectionInfoId() {

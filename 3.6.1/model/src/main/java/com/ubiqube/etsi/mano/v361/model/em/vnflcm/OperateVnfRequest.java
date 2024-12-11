@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents request parameters for the \&quot;Operate VNF\&quot;
@@ -139,7 +140,7 @@ public class OperateVnfRequest {
 	 *
 	 * @return changeStateTo
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

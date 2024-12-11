@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.ScaleNsData;
 import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.ScaleVnfData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +92,7 @@ public class ScaleNsRequest  implements OneOfScaleNsRequest {
    * Indicates the type of scaling to be performed. Possible values: - SCALE_NS - SCALE_VNF 
    * @return scaleType
    **/
-  @Schema(required = true, description = "Indicates the type of scaling to be performed. Possible values: - SCALE_NS - SCALE_VNF ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the type of scaling to be performed. Possible values: - SCALE_NS - SCALE_VNF ")
       @NotNull
 
     public ScaleTypeEnum getScaleType() {

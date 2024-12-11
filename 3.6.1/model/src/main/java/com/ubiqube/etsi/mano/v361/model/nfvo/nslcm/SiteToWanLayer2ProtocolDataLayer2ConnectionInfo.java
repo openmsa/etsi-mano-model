@@ -27,6 +27,7 @@ import com.ubiqube.etsi.mano.v361.model.nfvo.nslcm.SiteToWanLayer2ProtocolDataLa
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -229,7 +230,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfo   {
    * The type of connection to be established on the connectivity service point. Permitted values: - CSE: defined by the characteristics of the existing referred connectivity service point. - AGGREGATE_CSE: create an aggregation of the connectivity service endpoints. 
    * @return connectionType
    **/
-  @Schema(required = true, description = "The type of connection to be established on the connectivity service point. Permitted values: - CSE: defined by the characteristics of the existing referred connectivity service point. - AGGREGATE_CSE: create an aggregation of the connectivity service endpoints. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of connection to be established on the connectivity service point. Permitted values: - CSE: defined by the characteristics of the existing referred connectivity service point. - AGGREGATE_CSE: create an aggregation of the connectivity service endpoints. ")
       @NotNull
 
     public ConnectionTypeEnum getConnectionType() {
@@ -249,7 +250,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfo   {
    * To indicate whether to create logical interfaces on the referred connectivity service endpoint or new aggregated connectivity service endpoint. Permitted values: - PARENT: use the mapped interface to the connectivity service endpoint as is, i.e., do not create logical interfaces. - LOGICAL: create logical interfaces. 
    * @return interfaceType
    **/
-  @Schema(required = true, description = "To indicate whether to create logical interfaces on the referred connectivity service endpoint or new aggregated connectivity service endpoint. Permitted values: - PARENT: use the mapped interface to the connectivity service endpoint as is, i.e., do not create logical interfaces. - LOGICAL: create logical interfaces. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "To indicate whether to create logical interfaces on the referred connectivity service endpoint or new aggregated connectivity service endpoint. Permitted values: - PARENT: use the mapped interface to the connectivity service endpoint as is, i.e., do not create logical interfaces. - LOGICAL: create logical interfaces. ")
       @NotNull
 
     public InterfaceTypeEnum getInterfaceType() {
@@ -269,7 +270,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfo   {
    * The type of frames to forward on the connectivity service point. Permitted values: - UNTAGGED: an interface where frames are not tagged. - TAGGED: an interface configured to forward tagged frames (i.e., enabled for VLAN tagging). 
    * @return interfaceTagging
    **/
-  @Schema(required = true, description = "The type of frames to forward on the connectivity service point. Permitted values: - UNTAGGED: an interface where frames are not tagged. - TAGGED: an interface configured to forward tagged frames (i.e., enabled for VLAN tagging). ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of frames to forward on the connectivity service point. Permitted values: - UNTAGGED: an interface where frames are not tagged. - TAGGED: an interface configured to forward tagged frames (i.e., enabled for VLAN tagging). ")
       @NotNull
 
     public InterfaceTaggingEnum getInterfaceTagging() {
@@ -289,7 +290,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfo   {
    * The type of encapsulation. If the interfaceTagging=\"TAGGED\", either \"VLAN\" or \"VXLAN\" shall be set. Permitted values: - ETH: generic Ethernet encapsulation. - VLAN: encapsulation based on VLAN. - VXLAN: encapsulation based on VXLAN. 
    * @return encapsulationType
    **/
-  @Schema(required = true, description = "The type of encapsulation. If the interfaceTagging=\"TAGGED\", either \"VLAN\" or \"VXLAN\" shall be set. Permitted values: - ETH: generic Ethernet encapsulation. - VLAN: encapsulation based on VLAN. - VXLAN: encapsulation based on VXLAN. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of encapsulation. If the interfaceTagging=\"TAGGED\", either \"VLAN\" or \"VXLAN\" shall be set. Permitted values: - ETH: generic Ethernet encapsulation. - VLAN: encapsulation based on VLAN. - VXLAN: encapsulation based on VXLAN. ")
       @NotNull
 
     public EncapsulationTypeEnum getEncapsulationType() {

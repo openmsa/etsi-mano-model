@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -59,7 +60,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfoLagInterfaceData   {
    * List of the connectivity service endpoints that are to be aggregated. Shall be present if connectionType=\"AGGREGATE_CSE\". In case of aggregating connectivity service endpoints, only one SiteToWanLayer2ProtocolData shall be provided for the whole set of aggregated endpoints. 
    * @return aggregatedEndpoints
    **/
-  @Schema(required = true, description = "List of the connectivity service endpoints that are to be aggregated. Shall be present if connectionType=\"AGGREGATE_CSE\". In case of aggregating connectivity service endpoints, only one SiteToWanLayer2ProtocolData shall be provided for the whole set of aggregated endpoints. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of the connectivity service endpoints that are to be aggregated. Shall be present if connectionType=\"AGGREGATE_CSE\". In case of aggregating connectivity service endpoints, only one SiteToWanLayer2ProtocolData shall be provided for the whole set of aggregated endpoints. ")
       @NotNull
 
     public List<String> getAggregatedEndpoints() {
@@ -79,7 +80,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfoLagInterfaceData   {
    * Indicates whether to activate LACP on the interface. If \"TRUE\", the LACP is to be activated, or \"FALSE\" otherwise. Default value is \"FALSE\". 
    * @return lacpActivation
    **/
-  @Schema(required = true, description = "Indicates whether to activate LACP on the interface. If \"TRUE\", the LACP is to be activated, or \"FALSE\" otherwise. Default value is \"FALSE\". ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates whether to activate LACP on the interface. If \"TRUE\", the LACP is to be activated, or \"FALSE\" otherwise. Default value is \"FALSE\". ")
       @NotNull
 
     public Boolean isLacpActivation() {
@@ -99,7 +100,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfoLagInterfaceData   {
    * Get lacpConfig
    * @return lacpConfig
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

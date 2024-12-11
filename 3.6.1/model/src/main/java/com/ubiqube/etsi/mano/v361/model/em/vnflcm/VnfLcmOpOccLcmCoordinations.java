@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v361.model.em.vnflcm.LcmCoordResultType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -96,7 +97,7 @@ public class VnfLcmOpOccLcmCoordinations   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -116,7 +117,7 @@ public class VnfLcmOpOccLcmCoordinations   {
    * Get coordinationActionName
    * @return coordinationActionName
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getCoordinationActionName() {
@@ -156,7 +157,7 @@ public class VnfLcmOpOccLcmCoordinations   {
    * Get startTime
    * @return startTime
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -197,7 +198,7 @@ public class VnfLcmOpOccLcmCoordinations   {
    * The endpoint type used by this coordination action. Valid values: - MGMT: coordination with other operation supporting management systems (e.g. EM) - VNF: coordination with the VNF instance 
    * @return endpointType
    **/
-  @Schema(required = true, description = "The endpoint type used by this coordination action. Valid values: - MGMT: coordination with other operation supporting management systems (e.g. EM) - VNF: coordination with the VNF instance ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The endpoint type used by this coordination action. Valid values: - MGMT: coordination with other operation supporting management systems (e.g. EM) - VNF: coordination with the VNF instance ")
       @NotNull
 
     public EndpointTypeEnum getEndpointType() {
