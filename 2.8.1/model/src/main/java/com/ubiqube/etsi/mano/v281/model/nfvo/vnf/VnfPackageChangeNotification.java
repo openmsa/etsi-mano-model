@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v281.model.nfvo.vnfconfig.PkgmLinks;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -116,7 +117,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -138,7 +139,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"VnfPackageChangeNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"VnfPackageChangeNotification\" for this notification type. ")
 	@NotNull
 
 	public NotificationTypeEnum getNotificationType() {
@@ -159,7 +160,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getSubscriptionId() {
@@ -180,7 +181,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return timeStamp
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -202,7 +203,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return vnfPkgId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfPkgId() {
@@ -223,7 +224,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfdId() {
@@ -244,7 +245,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return changeType
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -287,7 +288,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

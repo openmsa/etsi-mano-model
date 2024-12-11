@@ -28,6 +28,7 @@ import com.ubiqube.etsi.mano.v281.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v281.model.em.vnflcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -111,7 +112,7 @@ public class Grant {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of the grant. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the grant. ")
 	@NotNull
 
 	public String getId() {
@@ -134,7 +135,7 @@ public class Grant {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the related VNF instance. See note 6. NOTE 6: The NFVO shall set the value of the attribute by copying the value  from the associated GrantRequest. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the related VNF instance. See note 6. NOTE 6: The NFVO shall set the value of the attribute by copying the value  from the associated GrantRequest. ")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -157,7 +158,7 @@ public class Grant {
 	 *
 	 * @return vnfLcmOpOccId
 	 **/
-	@Schema(required = true, description = "Identifier of the related VNF lifecycle management operation occurrence. See note 6. NOTE 6: The NFVO shall set the value of the attribute by copying the value  from the associated GrantRequest. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the related VNF lifecycle management operation occurrence. See note 6. NOTE 6: The NFVO shall set the value of the attribute by copying the value  from the associated GrantRequest. ")
 	@NotNull
 
 	public String getVnfLcmOpOccId() {
@@ -625,7 +626,7 @@ public class Grant {
 	 *
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

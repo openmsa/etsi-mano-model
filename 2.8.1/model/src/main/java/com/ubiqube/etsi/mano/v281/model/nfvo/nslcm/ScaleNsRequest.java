@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v281.model.nfvo.nslcm.ScaleNsData;
 import com.ubiqube.etsi.mano.v281.model.nfvo.nslcm.ScaleVnfData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;

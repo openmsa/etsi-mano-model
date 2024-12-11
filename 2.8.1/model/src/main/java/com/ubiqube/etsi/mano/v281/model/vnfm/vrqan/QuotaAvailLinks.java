@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents the links to resources that a notification of type
@@ -49,7 +50,7 @@ public class QuotaAvailLinks {
    *
    * @return subscription
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
   @NotNull
 
   @Valid

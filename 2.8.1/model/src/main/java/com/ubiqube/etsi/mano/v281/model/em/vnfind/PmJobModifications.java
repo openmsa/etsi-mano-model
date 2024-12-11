@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v281.model.em.vnfind;
 
 import java.util.Objects;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 
 import org.springframework.validation.annotation.Validated;

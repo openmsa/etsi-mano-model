@@ -20,6 +20,7 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 import java.util.UUID;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 

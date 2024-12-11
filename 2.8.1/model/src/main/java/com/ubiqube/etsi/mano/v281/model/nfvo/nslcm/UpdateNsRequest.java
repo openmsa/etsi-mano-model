@@ -37,6 +37,7 @@ import com.ubiqube.etsi.mano.v281.model.nfvo.nslcm.UpdateVnffgData;
 import com.ubiqube.etsi.mano.v281.model.nfvo.nslcm.VnfInstanceData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;

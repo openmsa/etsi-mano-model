@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v281.model.nfvo.nslcm.Mask;
 import com.ubiqube.etsi.mano.v281.model.nfvo.nslcm.PortRange;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
