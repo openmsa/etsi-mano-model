@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v331.model.em.vnflcm.VnfExtCpData;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -60,7 +61,7 @@ public class ExtVirtualLinkInfo   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -80,7 +81,7 @@ public class ExtVirtualLinkInfo   {
    * Get resourceHandle
    * @return resourceHandle
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -133,7 +134,7 @@ public class ExtVirtualLinkInfo   {
    * Allows the API consumer to read the current CP configuration information for the connection of external CPs to the external virtual link. This attribute reflects the current configuration information that has resulted from merging into this attribute the \"VnfExtCpData\" information which was passed as part of the \"ExtVirtualLinkData\" structure in the input of the most recent VNF LCM operation such as \"InstantiateVnfRequest\", \"ChangeExtVnfConnectivityRequest\", \"ChangeVnfFlavourRequest\" or \"ChangeCurrentVnfPkgRequest\", or has been provided by the NFVO during the granting procedure. If applying such change results in an empty list of \"currentVnfExtCpData\" structure instances, the affected instance of \"ExtVirtualLinkInfo\" shall be removed from its parent data structure. 
    * @return currentVnfExtCpData
    **/
-  @Schema(required = true, description = "Allows the API consumer to read the current CP configuration information for the connection of external CPs to the external virtual link. This attribute reflects the current configuration information that has resulted from merging into this attribute the \"VnfExtCpData\" information which was passed as part of the \"ExtVirtualLinkData\" structure in the input of the most recent VNF LCM operation such as \"InstantiateVnfRequest\", \"ChangeExtVnfConnectivityRequest\", \"ChangeVnfFlavourRequest\" or \"ChangeCurrentVnfPkgRequest\", or has been provided by the NFVO during the granting procedure. If applying such change results in an empty list of \"currentVnfExtCpData\" structure instances, the affected instance of \"ExtVirtualLinkInfo\" shall be removed from its parent data structure. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Allows the API consumer to read the current CP configuration information for the connection of external CPs to the external virtual link. This attribute reflects the current configuration information that has resulted from merging into this attribute the \"VnfExtCpData\" information which was passed as part of the \"ExtVirtualLinkData\" structure in the input of the most recent VNF LCM operation such as \"InstantiateVnfRequest\", \"ChangeExtVnfConnectivityRequest\", \"ChangeVnfFlavourRequest\" or \"ChangeCurrentVnfPkgRequest\", or has been provided by the NFVO during the granting procedure. If applying such change results in an empty list of \"currentVnfExtCpData\" structure instances, the affected instance of \"ExtVirtualLinkInfo\" shall be removed from its parent data structure. ")
       @NotNull
     @Valid
     public List<VnfExtCpData> getCurrentVnfExtCpData() {

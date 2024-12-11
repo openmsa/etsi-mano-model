@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 import java.util.Map;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -74,7 +75,7 @@ public class VnfExtCpInfo  implements OneOfVnfExtCpInfo {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -94,7 +95,7 @@ public class VnfExtCpInfo  implements OneOfVnfExtCpInfo {
    * Get cpdId
    * @return cpdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getCpdId() {
@@ -114,7 +115,7 @@ public class VnfExtCpInfo  implements OneOfVnfExtCpInfo {
    * Get cpConfigId
    * @return cpConfigId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getCpConfigId() {
@@ -158,7 +159,7 @@ public class VnfExtCpInfo  implements OneOfVnfExtCpInfo {
    * Network protocol information for this CP. 
    * @return cpProtocolInfo
    **/
-  @Schema(required = true, description = "Network protocol information for this CP. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Network protocol information for this CP. ")
       @NotNull
     @Valid
     public List<CpProtocolInfo> getCpProtocolInfo() {

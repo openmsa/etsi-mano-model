@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.PerformanceReportPerform
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -61,7 +62,7 @@ public class PerformanceReportEntries   {
    * Type of measured object. The applicable measured object type for a measurement is  defined in clause 8.2 of ETSI GS NFV-IFA 031. 
    * @return objectType
    **/
-  @Schema(required = true, description = "Type of measured object. The applicable measured object type for a measurement is  defined in clause 8.2 of ETSI GS NFV-IFA 031. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of measured object. The applicable measured object type for a measurement is  defined in clause 8.2 of ETSI GS NFV-IFA 031. ")
       @NotNull
 
     public String getObjectType() {
@@ -81,7 +82,7 @@ public class PerformanceReportEntries   {
    * Get objectInstanceId
    * @return objectInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -121,7 +122,7 @@ public class PerformanceReportEntries   {
    * Name of the metric collected. This attribute shall contain the related  \"Measurement Name\" value as defined in clause 8.4 of ETSI GS NFV-IFA 031. 
    * @return performanceMetric
    **/
-  @Schema(required = true, description = "Name of the metric collected. This attribute shall contain the related  \"Measurement Name\" value as defined in clause 8.4 of ETSI GS NFV-IFA 031. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the metric collected. This attribute shall contain the related  \"Measurement Name\" value as defined in clause 8.4 of ETSI GS NFV-IFA 031. ")
       @NotNull
 
     public String getPerformanceMetric() {
@@ -146,7 +147,7 @@ public class PerformanceReportEntries   {
    * List of performance values with associated timestamp. 
    * @return performanceValues
    **/
-  @Schema(required = true, description = "List of performance values with associated timestamp. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of performance values with associated timestamp. ")
       @NotNull
     @Valid
   @Size(min=1)   public List<PerformanceReportPerformanceValues> getPerformanceValues() {

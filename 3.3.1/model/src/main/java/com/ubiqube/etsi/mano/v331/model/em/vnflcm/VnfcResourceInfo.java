@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -73,7 +74,7 @@ public class VnfcResourceInfo   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -93,7 +94,7 @@ public class VnfcResourceInfo   {
    * Get vduId
    * @return vduId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVduId() {
@@ -132,7 +133,7 @@ public class VnfcResourceInfo   {
    * Get computeResource
    * @return computeResource
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -204,7 +205,7 @@ public class VnfcResourceInfo   {
    * All the CPs of the VNFC instance. Shall be present when that particular CP of the VNFC instance is exposed as an external CP of the VNF instance or is connected to an external CP of the VNF instance. A VNFC CP is \"connected to\" an external CP if the VNFC CP is connected to an internal VL that exposes an external CP. A VNFC CP is \"exposed as\" an external CP if it is connected directly to an external VL. May be present otherwise. 
    * @return vnfcCpInfo
    **/
-  @Schema(required = true, description = "All the CPs of the VNFC instance. Shall be present when that particular CP of the VNFC instance is exposed as an external CP of the VNF instance or is connected to an external CP of the VNF instance. A VNFC CP is \"connected to\" an external CP if the VNFC CP is connected to an internal VL that exposes an external CP. A VNFC CP is \"exposed as\" an external CP if it is connected directly to an external VL. May be present otherwise. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "All the CPs of the VNFC instance. Shall be present when that particular CP of the VNFC instance is exposed as an external CP of the VNF instance or is connected to an external CP of the VNF instance. A VNFC CP is \"connected to\" an external CP if the VNFC CP is connected to an internal VL that exposes an external CP. A VNFC CP is \"exposed as\" an external CP if it is connected directly to an external VL. May be present otherwise. ")
       @NotNull
     @Valid
     public List<VnfcResourceInfoVnfcCpInfo> getVnfcCpInfo() {

@@ -31,6 +31,7 @@ import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents the information related to a SAP of a NS. The
@@ -96,7 +97,7 @@ public class InstantiateVnfData {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfdId() {
@@ -117,7 +118,7 @@ public class InstantiateVnfData {
 	 *
 	 * @return vnfFlavourId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfFlavourId() {

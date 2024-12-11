@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.ScaleByStepData;
 import com.ubiqube.etsi.mano.v331.model.nfvo.nslcm.ScaleToLevelData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -110,7 +111,7 @@ public class ScaleVnfData  implements OneOfScaleVnfData {
    * Type of the scale VNF operation requested. Allowed values are: - SCALE_OUT - SCALE_IN - SCALE_TO_INSTANTIATION_LEVEL - SCALE_TO_SCALE_LEVEL(S) The set of types actually supported depends on the capabilities of the VNF being managed. 
    * @return scaleVnfType
    **/
-  @Schema(required = true, description = "Type of the scale VNF operation requested. Allowed values are: - SCALE_OUT - SCALE_IN - SCALE_TO_INSTANTIATION_LEVEL - SCALE_TO_SCALE_LEVEL(S) The set of types actually supported depends on the capabilities of the VNF being managed. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the scale VNF operation requested. Allowed values are: - SCALE_OUT - SCALE_IN - SCALE_TO_INSTANTIATION_LEVEL - SCALE_TO_SCALE_LEVEL(S) The set of types actually supported depends on the capabilities of the VNF being managed. ")
       @NotNull
 
     public ScaleVnfTypeEnum getScaleVnfType() {

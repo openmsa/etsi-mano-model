@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v331.model.nfvo.vnfsnapshotpkgm.Checksum;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents an artifact other than a software image which is
@@ -149,7 +150,7 @@ public class VnfPackageArtifactInfo {
 	 *
 	 * @return checksum
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -196,7 +197,7 @@ public class VnfPackageArtifactInfo {
 	 *
 	 * @return isEncrypted
 	 **/
-	@Schema(required = true, description = "Reflects whether the artifact is encrypted (true) or not (false). ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reflects whether the artifact is encrypted (true) or not (false). ")
 	@NotNull
 
 	public Boolean isIsEncrypted() {

@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.v331.model.em.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.v331.service.VnfLcmOpOcc331Deserializer;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -107,7 +108,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -128,7 +129,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	 *
 	 * @return operationState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -150,7 +151,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	 *
 	 * @return stateEnteredTime
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -172,7 +173,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	 *
 	 * @return startTime
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -194,7 +195,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -235,7 +236,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	 *
 	 * @return operation
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -257,7 +258,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	 *
 	 * @return isAutomaticInvocation
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Boolean getIsAutomaticInvocation() {
@@ -307,7 +308,7 @@ public class VnfLcmOpOcc implements OneOfVnfLcmOpOcc {
 	 *
 	 * @return isCancelPending
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Boolean getIsCancelPending() {

@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v331.model.em.SubscriptionAuthentication;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents a subscription request related to notifications about NS
@@ -77,7 +78,7 @@ public class NsInstanceUsageSubscriptionRequest {
 	 *
 	 * @return callbackUri
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCallbackUri() {

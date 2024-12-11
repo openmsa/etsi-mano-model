@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -62,7 +63,7 @@ public class VirtualStorageResourceInfo   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -82,7 +83,7 @@ public class VirtualStorageResourceInfo   {
    * Get virtualStorageDescId
    * @return virtualStorageDescId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVirtualStorageDescId() {
@@ -121,7 +122,7 @@ public class VirtualStorageResourceInfo   {
    * Get storageResource
    * @return storageResource
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

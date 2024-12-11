@@ -26,6 +26,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanofm.ManoManagedObjectReferen
 import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanofm.PerceivedSeverityType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -130,7 +131,7 @@ public class Alarm   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -150,7 +151,7 @@ public class Alarm   {
    * Get managedObjectId
    * @return managedObjectId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getManagedObjectId() {
@@ -190,7 +191,7 @@ public class Alarm   {
    * Get alarmRaisedTime
    * @return alarmRaisedTime
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -251,7 +252,7 @@ public class Alarm   {
    * Acknowledgement state of the alarm. Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. 
    * @return ackState
    **/
-  @Schema(required = true, description = "Acknowledgement state of the alarm. Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Acknowledgement state of the alarm. Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. ")
       @NotNull
 
     public AckStateEnum getAckState() {
@@ -271,7 +272,7 @@ public class Alarm   {
    * Get perceivedSeverity
    * @return perceivedSeverity
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -292,7 +293,7 @@ public class Alarm   {
    * Get eventTime
    * @return eventTime
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -313,7 +314,7 @@ public class Alarm   {
    * Get eventType
    * @return eventType
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -353,7 +354,7 @@ public class Alarm   {
    * Information about the probable cause of the fault. 
    * @return probableCause
    **/
-  @Schema(required = true, description = "Information about the probable cause of the fault. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about the probable cause of the fault. ")
       @NotNull
 
     public String getProbableCause() {
@@ -373,7 +374,7 @@ public class Alarm   {
    * Attribute indicating if this fault is the root for other correlated alarms. If true, then the alarms listed in the attribute CorrelatedAlarmId are caused by this fault. 
    * @return isRootCause
    **/
-  @Schema(required = true, description = "Attribute indicating if this fault is the root for other correlated alarms. If true, then the alarms listed in the attribute CorrelatedAlarmId are caused by this fault. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Attribute indicating if this fault is the root for other correlated alarms. If true, then the alarms listed in the attribute CorrelatedAlarmId are caused by this fault. ")
       @NotNull
 
     public Boolean isIsRootCause() {
@@ -447,7 +448,7 @@ public class Alarm   {
    * Get _links
    * @return _links
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

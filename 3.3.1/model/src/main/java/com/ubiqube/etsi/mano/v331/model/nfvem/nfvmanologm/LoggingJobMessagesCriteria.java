@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.LoggingJobMessagesCriteriaMatchingPatterns;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -85,7 +86,7 @@ public class LoggingJobMessagesCriteria   {
    * The direction of the interface messages to match. Permitted values: - IN: input messages into the interface. - OUT: output messages from the interface. - ALL: both input and output messages into/from the interface.
    * @return direction
    **/
-  @Schema(required = true, description = "The direction of the interface messages to match. Permitted values: - IN: input messages into the interface. - OUT: output messages from the interface. - ALL: both input and output messages into/from the interface.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The direction of the interface messages to match. Permitted values: - IN: input messages into the interface. - OUT: output messages from the interface. - ALL: both input and output messages into/from the interface.")
       @NotNull
 
     public DirectionEnum getDirection() {

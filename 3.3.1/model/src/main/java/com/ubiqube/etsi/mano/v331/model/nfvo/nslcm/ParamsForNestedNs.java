@@ -27,6 +27,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type specifies additional parameters on a per-nested NS instance basis. It shall comply with the provisions defined in Table 6.5.3.21a-1.
@@ -52,7 +53,7 @@ public class ParamsForNestedNs {
 	 *
 	 * @return nsProfileId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getNsProfileId() {

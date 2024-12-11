@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -62,7 +63,7 @@ public class ManoService {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -84,7 +85,7 @@ public class ManoService {
 	 *
 	 * @return name
 	 **/
-	@Schema(required = true, description = "Human-readable name of the NFV-MANO service. This attribute can be modified with the PATCH method. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the NFV-MANO service. This attribute can be modified with the PATCH method. ")
 	@NotNull
 
 	public String getName() {
@@ -106,7 +107,7 @@ public class ManoService {
 	 *
 	 * @return description
 	 **/
-	@Schema(required = true, description = "Human-readable description of the NFV-MANO service. This attribute can be modified with the PATCH method. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable description of the NFV-MANO service. This attribute can be modified with the PATCH method. ")
 	@NotNull
 
 	public String getDescription() {
@@ -137,7 +138,7 @@ public class ManoService {
 	 *
 	 * @return manoServiceInterfaceIds
 	 **/
-	@Schema(required = true, description = "Reference to the NFV-MANO interfaces associated to the NFV-MANO service.  If cardinality is greater than one, the type of ManoServiceInterface  (see clause 5.6.3.3) shall be the same. The identifier of the  ManoServiceInterface is referred.  NOTE: A cardinality greater than one supports having different interface  versions or apiEndpoints to be used for accessing the same instance of a  NFV-MANO service. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the NFV-MANO interfaces associated to the NFV-MANO service.  If cardinality is greater than one, the type of ManoServiceInterface  (see clause 5.6.3.3) shall be the same. The identifier of the  ManoServiceInterface is referred.  NOTE: A cardinality greater than one supports having different interface  versions or apiEndpoints to be used for accessing the same instance of a  NFV-MANO service. ")
 	@NotNull
 
 	@Size(min = 1)
@@ -159,7 +160,7 @@ public class ManoService {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

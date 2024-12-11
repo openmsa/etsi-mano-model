@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ModificationsTriggeredByVnfPkgChange;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * Information about the changed VNF instance information, including VNF

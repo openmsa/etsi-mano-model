@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -48,7 +49,7 @@ public class ThresholdCriteriaSimpleThresholdDetails   {
    * Get thresholdValue
    * @return thresholdValue
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -69,7 +70,7 @@ public class ThresholdCriteriaSimpleThresholdDetails   {
    * Get hysteresis
    * @return hysteresis
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

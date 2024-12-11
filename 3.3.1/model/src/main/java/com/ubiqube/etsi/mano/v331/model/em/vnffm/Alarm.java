@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -137,7 +138,7 @@ public class Alarm {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -158,7 +159,7 @@ public class Alarm {
 	 *
 	 * @return managedObjectId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getManagedObjectId() {
@@ -230,7 +231,7 @@ public class Alarm {
 	 *
 	 * @return alarmRaisedTime
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -316,7 +317,7 @@ public class Alarm {
 	 *
 	 * @return ackState
 	 **/
-	@Schema(required = true, description = "Acknowledgement state of the alarm.  Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Acknowledgement state of the alarm.  Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. ")
 	@NotNull
 
 	public AckStateEnum getAckState() {
@@ -337,7 +338,7 @@ public class Alarm {
 	 *
 	 * @return perceivedSeverity
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -359,7 +360,7 @@ public class Alarm {
 	 *
 	 * @return eventTime
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -381,7 +382,7 @@ public class Alarm {
 	 *
 	 * @return eventType
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -423,7 +424,7 @@ public class Alarm {
 	 *
 	 * @return probableCause
 	 **/
-	@Schema(required = true, description = "Information about the probable cause of the fault. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about the probable cause of the fault. ")
 	@NotNull
 
 	public String getProbableCause() {
@@ -444,7 +445,7 @@ public class Alarm {
 	 *
 	 * @return isRootCause
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Boolean getIsRootCause() {
@@ -521,7 +522,7 @@ public class Alarm {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

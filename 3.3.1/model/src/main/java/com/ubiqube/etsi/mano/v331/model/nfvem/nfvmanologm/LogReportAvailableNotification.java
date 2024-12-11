@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.ManoManagedObjectRefer
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -63,7 +64,7 @@ public class LogReportAvailableNotification   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -83,7 +84,7 @@ public class LogReportAvailableNotification   {
    * Discriminator for the different notification types. Shall be set to \"LogReportAvailableNotification\" for this notification type.
    * @return notificationType
    **/
-  @Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"LogReportAvailableNotification\" for this notification type.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"LogReportAvailableNotification\" for this notification type.")
       @NotNull
 
     public String getNotificationType() {
@@ -103,7 +104,7 @@ public class LogReportAvailableNotification   {
    * Get subscriptionId
    * @return subscriptionId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getSubscriptionId() {
@@ -123,7 +124,7 @@ public class LogReportAvailableNotification   {
    * Get timeStamp
    * @return timeStamp
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -144,7 +145,7 @@ public class LogReportAvailableNotification   {
    * Get objectInstanceId
    * @return objectInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -165,7 +166,7 @@ public class LogReportAvailableNotification   {
    * Get _links
    * @return _links
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -207,7 +208,7 @@ public class AffinityOrAntiAffinityRule   {
    * The type of the constraint. Permitted values: AFFINITY ANTI_AFFINITY. 
    * @return affinityOrAntiAffiinty
    **/
-  @Schema(required = true, description = "The type of the constraint. Permitted values: AFFINITY ANTI_AFFINITY. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of the constraint. Permitted values: AFFINITY ANTI_AFFINITY. ")
       @NotNull
 
     public AffinityOrAntiAffiintyEnum getAffinityOrAntiAffiinty() {
@@ -227,7 +228,7 @@ public class AffinityOrAntiAffinityRule   {
    * Specifies the scope of the rule where the placement constraint applies. Permitted values: NFVI_POP ZONE ZONE_GROUP NFVI_NODE. 
    * @return scope
    **/
-  @Schema(required = true, description = "Specifies the scope of the rule where the placement constraint applies. Permitted values: NFVI_POP ZONE ZONE_GROUP NFVI_NODE. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Specifies the scope of the rule where the placement constraint applies. Permitted values: NFVI_POP ZONE ZONE_GROUP NFVI_NODE. ")
       @NotNull
 
     public ScopeEnum getScope() {

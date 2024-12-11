@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -46,7 +47,7 @@ public class LocationConstraintsCivicAddressElement   {
    * Describe the content type of caValue. The value of caType shall comply with Section 3.4 of IETF RFC 4776 [13]. 
    * @return caType
    **/
-  @Schema(required = true, description = "Describe the content type of caValue. The value of caType shall comply with Section 3.4 of IETF RFC 4776 [13]. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Describe the content type of caValue. The value of caType shall comply with Section 3.4 of IETF RFC 4776 [13]. ")
       @NotNull
 
     public Integer getCaType() {
@@ -66,7 +67,7 @@ public class LocationConstraintsCivicAddressElement   {
    * Content of civic address element corresponding to the caType. The format caValue shall comply with Section 3.4 of IETF RFC 4776 [13]. 
    * @return caValue
    **/
-  @Schema(required = true, description = "Content of civic address element corresponding to the caType. The format caValue shall comply with Section 3.4 of IETF RFC 4776 [13]. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Content of civic address element corresponding to the caType. The format caValue shall comply with Section 3.4 of IETF RFC 4776 [13]. ")
       @NotNull
 
     public String getCaValue() {

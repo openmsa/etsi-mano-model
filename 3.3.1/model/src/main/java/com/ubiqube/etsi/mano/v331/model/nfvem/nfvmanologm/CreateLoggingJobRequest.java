@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.ManoManagedObjectRefer
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -62,7 +63,7 @@ public class CreateLoggingJobRequest   {
    * Identifiers of the object instance for which logging information is requested to be collected. This attribute shall contain the identifier of the instance of the object to be logged according to their type. If more than one identifier is provided, values shall all refer to object instances of the same type, for which the same criteria is then applicable.
    * @return objectInstanceIds
    **/
-  @Schema(required = true, description = "Identifiers of the object instance for which logging information is requested to be collected. This attribute shall contain the identifier of the instance of the object to be logged according to their type. If more than one identifier is provided, values shall all refer to object instances of the same type, for which the same criteria is then applicable.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifiers of the object instance for which logging information is requested to be collected. This attribute shall contain the identifier of the instance of the object to be logged according to their type. If more than one identifier is provided, values shall all refer to object instances of the same type, for which the same criteria is then applicable.")
       @NotNull
     @Valid
   @Size(min=1)   public List<ManoManagedObjectReference> getObjectInstanceIds() {
@@ -82,7 +83,7 @@ public class CreateLoggingJobRequest   {
    * Get jobCriteria
    * @return jobCriteria
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -103,7 +104,7 @@ public class CreateLoggingJobRequest   {
    * Get jobConfig
    * @return jobConfig
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

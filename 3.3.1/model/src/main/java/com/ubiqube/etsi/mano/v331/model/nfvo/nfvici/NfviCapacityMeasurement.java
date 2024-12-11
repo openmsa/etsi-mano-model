@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvo.nfvici.NfviCapacityResourceTypeEnum
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -61,7 +62,7 @@ public class NfviCapacityMeasurement   {
    * Get resourceType
    * @return resourceType
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -82,7 +83,7 @@ public class NfviCapacityMeasurement   {
    * Name of the capacity measurement. Different resource types can have different associated capacity measurements, typically associated to different sub-types of the resource type. The present document and referred documents do not specify the capacity measurements, thus the capacity measurement names are not specified in the present document version. 
    * @return capacityMeasurementName
    **/
-  @Schema(required = true, description = "Name of the capacity measurement. Different resource types can have different associated capacity measurements, typically associated to different sub-types of the resource type. The present document and referred documents do not specify the capacity measurements, thus the capacity measurement names are not specified in the present document version. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the capacity measurement. Different resource types can have different associated capacity measurements, typically associated to different sub-types of the resource type. The present document and referred documents do not specify the capacity measurements, thus the capacity measurement names are not specified in the present document version. ")
       @NotNull
 
     public String getCapacityMeasurementName() {
@@ -102,7 +103,7 @@ public class NfviCapacityMeasurement   {
    * The total capacity. 
    * @return totalCapacity
    **/
-  @Schema(required = true, description = "The total capacity. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The total capacity. ")
       @NotNull
 
     public Object getTotalCapacity() {
@@ -122,7 +123,7 @@ public class NfviCapacityMeasurement   {
    * The allocated/used capacity. 
    * @return allocatedCapacity
    **/
-  @Schema(required = true, description = "The allocated/used capacity. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The allocated/used capacity. ")
       @NotNull
 
     public Object getAllocatedCapacity() {
@@ -161,7 +162,7 @@ public class NfviCapacityMeasurement   {
    * The available capacity. 
    * @return availableCapacity
    **/
-  @Schema(required = true, description = "The available capacity. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The available capacity. ")
       @NotNull
 
     public Object getAvailableCapacity() {

@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -71,7 +72,7 @@ public class VnfcSnapshotInfo   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -91,7 +92,7 @@ public class VnfcSnapshotInfo   {
    * Get vnfcInstanceId
    * @return vnfcInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfcInstanceId() {

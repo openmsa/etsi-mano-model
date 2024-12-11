@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * Information on the VNFFG(s) of the NS instance.
@@ -67,7 +68,7 @@ public class VnffgInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -88,7 +89,7 @@ public class VnffgInfo {
 	 *
 	 * @return vnffgdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnffgdId() {
@@ -114,7 +115,7 @@ public class VnffgInfo {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier(s) of the constituent VNF instance(s) of this VNFFG instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier(s) of the constituent VNF instance(s) of this VNFFG instance. ")
 	@NotNull
 
 	public List<String> getVnfInstanceId() {

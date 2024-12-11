@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.PmJobReports;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -71,7 +72,7 @@ public class PmJob   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -91,7 +92,7 @@ public class PmJob   {
    * Type of measured object. The applicable measured object type for a measurement is  defined in clause 8.2 of ETSI GS NFV-IFA 031. 
    * @return objectType
    **/
-  @Schema(required = true, description = "Type of measured object. The applicable measured object type for a measurement is  defined in clause 8.2 of ETSI GS NFV-IFA 031. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of measured object. The applicable measured object type for a measurement is  defined in clause 8.2 of ETSI GS NFV-IFA 031. ")
       @NotNull
 
     public String getObjectType() {
@@ -116,7 +117,7 @@ public class PmJob   {
    * Identifiers of the measured object instance for which performance information  is collected. This attribute shall contain the identifier of the instance of  the measure object according to their type. See also definitions in clause 8.2 of ETSI GS NFV-IFA 031. 
    * @return objectInstanceIds
    **/
-  @Schema(required = true, description = "Identifiers of the measured object instance for which performance information  is collected. This attribute shall contain the identifier of the instance of  the measure object according to their type. See also definitions in clause 8.2 of ETSI GS NFV-IFA 031. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifiers of the measured object instance for which performance information  is collected. This attribute shall contain the identifier of the instance of  the measure object according to their type. See also definitions in clause 8.2 of ETSI GS NFV-IFA 031. ")
       @NotNull
 
   @Size(min=1)   public List<String> getObjectInstanceIds() {
@@ -163,7 +164,7 @@ public class PmJob   {
    * Get criteria
    * @return criteria
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -211,7 +212,7 @@ public class PmJob   {
    * Get _links
    * @return _links
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

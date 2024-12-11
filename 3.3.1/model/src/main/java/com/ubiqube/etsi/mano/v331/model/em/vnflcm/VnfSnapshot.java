@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +74,7 @@ public class VnfSnapshot   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -93,7 +94,7 @@ public class VnfSnapshot   {
    * Get vnfInstanceId
    * @return vnfInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfInstanceId() {
@@ -153,7 +154,7 @@ public class VnfSnapshot   {
    * Get vnfdId
    * @return vnfdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfdId() {
@@ -198,7 +199,7 @@ public class VnfSnapshot   {
    * Information about VNFC snapshots constituting this VNF snapshot. 
    * @return vnfcSnapshots
    **/
-  @Schema(required = true, description = "Information about VNFC snapshots constituting this VNF snapshot. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about VNFC snapshots constituting this VNF snapshot. ")
       @NotNull
     @Valid
     public List<VnfcSnapshotInfo> getVnfcSnapshots() {

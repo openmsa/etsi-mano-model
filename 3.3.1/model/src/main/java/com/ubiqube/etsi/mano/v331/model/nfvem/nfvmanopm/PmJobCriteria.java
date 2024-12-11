@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,7 +116,7 @@ public class PmJobCriteria   {
    * Specifies the periodicity at which the producer will collect performance  information. The unit shall be seconds.  At the end of each reportingPeriod, the producer will inform the API consumer  about availability of the performance data collected for each completed  collection period during this reportingPeriod. The reportingPeriod should  be equal to or a multiple of the collectionPeriod. In the latter case, the  performance data for the collection periods within one reporting period  are reported together.  In particular when choosing short collection and reporting periods, the  number of PM jobs that can be supported depends on the capability of the  producing entity. 
    * @return collectionPeriod
    **/
-  @Schema(required = true, description = "Specifies the periodicity at which the producer will collect performance  information. The unit shall be seconds.  At the end of each reportingPeriod, the producer will inform the API consumer  about availability of the performance data collected for each completed  collection period during this reportingPeriod. The reportingPeriod should  be equal to or a multiple of the collectionPeriod. In the latter case, the  performance data for the collection periods within one reporting period  are reported together.  In particular when choosing short collection and reporting periods, the  number of PM jobs that can be supported depends on the capability of the  producing entity. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Specifies the periodicity at which the producer will collect performance  information. The unit shall be seconds.  At the end of each reportingPeriod, the producer will inform the API consumer  about availability of the performance data collected for each completed  collection period during this reportingPeriod. The reportingPeriod should  be equal to or a multiple of the collectionPeriod. In the latter case, the  performance data for the collection periods within one reporting period  are reported together.  In particular when choosing short collection and reporting periods, the  number of PM jobs that can be supported depends on the capability of the  producing entity. ")
       @NotNull
 
     public Integer getCollectionPeriod() {
@@ -135,7 +136,7 @@ public class PmJobCriteria   {
    * Specifies the periodicity at which the producer will report to the API consumer  about performance information. The unit shall be seconds. At the end of each reportingPeriod, the producer will inform the API consumer  about availability of the performance data collected for each completed  collection period during this reportingPeriod. The reportingPeriod should  be equal to or a multiple of the collectionPeriod. In the latter case, the  performance data for the collection periods within one reporting period  are reported together.  In particular when choosing short collection and reporting periods, the  number of PM jobs that can be supported depends on the capability of the  producing entity. 
    * @return reportingPeriod
    **/
-  @Schema(required = true, description = "Specifies the periodicity at which the producer will report to the API consumer  about performance information. The unit shall be seconds. At the end of each reportingPeriod, the producer will inform the API consumer  about availability of the performance data collected for each completed  collection period during this reportingPeriod. The reportingPeriod should  be equal to or a multiple of the collectionPeriod. In the latter case, the  performance data for the collection periods within one reporting period  are reported together.  In particular when choosing short collection and reporting periods, the  number of PM jobs that can be supported depends on the capability of the  producing entity. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Specifies the periodicity at which the producer will report to the API consumer  about performance information. The unit shall be seconds. At the end of each reportingPeriod, the producer will inform the API consumer  about availability of the performance data collected for each completed  collection period during this reportingPeriod. The reportingPeriod should  be equal to or a multiple of the collectionPeriod. In the latter case, the  performance data for the collection periods within one reporting period  are reported together.  In particular when choosing short collection and reporting periods, the  number of PM jobs that can be supported depends on the capability of the  producing entity. ")
       @NotNull
 
     public Integer getReportingPeriod() {

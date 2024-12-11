@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -52,7 +53,7 @@ public class LoggingJobSystemCriteria   {
    * Get systemLogs
    * @return systemLogs
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -92,7 +93,7 @@ public class LoggingJobSystemCriteria   {
    * The severity level, which determines the severity of the system messages to collect. The NFV-MANO functional entity shall collect system log messages, as indicated by the \"systemLogs\" attribute, with severity levels lower (i.e., more severe) or equal to the value provided by this present attribute.
    * @return severityLevel
    **/
-  @Schema(required = true, description = "The severity level, which determines the severity of the system messages to collect. The NFV-MANO functional entity shall collect system log messages, as indicated by the \"systemLogs\" attribute, with severity levels lower (i.e., more severe) or equal to the value provided by this present attribute.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The severity level, which determines the severity of the system messages to collect. The NFV-MANO functional entity shall collect system log messages, as indicated by the \"systemLogs\" attribute, with severity levels lower (i.e., more severe) or equal to the value provided by this present attribute.")
       @NotNull
 
     @Valid

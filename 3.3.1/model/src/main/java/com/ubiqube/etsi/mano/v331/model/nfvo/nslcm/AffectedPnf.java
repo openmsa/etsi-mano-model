@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -130,7 +131,7 @@ public class AffectedPnf   {
    * Get pnfId
    * @return pnfId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getPnfId() {
@@ -150,7 +151,7 @@ public class AffectedPnf   {
    * Get pnfdId
    * @return pnfdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getPnfdId() {
@@ -170,7 +171,7 @@ public class AffectedPnf   {
    * Get pnfProfileId
    * @return pnfProfileId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getPnfProfileId() {
@@ -214,7 +215,7 @@ public class AffectedPnf   {
    * Identifier of the CP in the scope of the PNF. 
    * @return cpInstanceId
    **/
-  @Schema(required = true, description = "Identifier of the CP in the scope of the PNF. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the CP in the scope of the PNF. ")
       @NotNull
 
     public List<String> getCpInstanceId() {

@@ -25,6 +25,7 @@ import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ResourceHandle;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -112,7 +113,7 @@ public class AffectedVnfc   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -132,7 +133,7 @@ public class AffectedVnfc   {
    * Get vduId
    * @return vduId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVduId() {
@@ -171,7 +172,7 @@ public class AffectedVnfc   {
    * Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVnfc structure exists as long as the temporary resource exists. 
    * @return changeType
    **/
-  @Schema(required = true, description = "Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVnfc structure exists as long as the temporary resource exists. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVnfc structure exists as long as the temporary resource exists. ")
       @NotNull
 
     public ChangeTypeEnum getChangeType() {
@@ -191,7 +192,7 @@ public class AffectedVnfc   {
    * Get computeResource
    * @return computeResource
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

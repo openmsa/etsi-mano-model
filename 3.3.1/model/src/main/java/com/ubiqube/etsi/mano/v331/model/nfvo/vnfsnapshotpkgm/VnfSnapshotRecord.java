@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvo.vnfsnapshotpkgm.Checksum;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -52,7 +53,7 @@ public class VnfSnapshotRecord   {
    * Path which identifies the VNF snapshot record and allows to access a copy of the VNF  snapshot record for the extraction. The value of this attribute shall start with the name of the first segment of the path  in the package, i.e. it shall not be prefixed by path separator characters such as \".\"  and \"/\". EXAMPLE: foo/bar/m@ster 
    * @return recordPath
    **/
-  @Schema(required = true, description = "Path which identifies the VNF snapshot record and allows to access a copy of the VNF  snapshot record for the extraction. The value of this attribute shall start with the name of the first segment of the path  in the package, i.e. it shall not be prefixed by path separator characters such as \".\"  and \"/\". EXAMPLE: foo/bar/m@ster ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Path which identifies the VNF snapshot record and allows to access a copy of the VNF  snapshot record for the extraction. The value of this attribute shall start with the name of the first segment of the path  in the package, i.e. it shall not be prefixed by path separator characters such as \".\"  and \"/\". EXAMPLE: foo/bar/m@ster ")
       @NotNull
 
     public String getRecordPath() {
@@ -72,7 +73,7 @@ public class VnfSnapshotRecord   {
    * Get checksum
    * @return checksum
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -93,7 +94,7 @@ public class VnfSnapshotRecord   {
    * Get isEncrypted
    * @return isEncrypted
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public Boolean getIsEncrypted() {

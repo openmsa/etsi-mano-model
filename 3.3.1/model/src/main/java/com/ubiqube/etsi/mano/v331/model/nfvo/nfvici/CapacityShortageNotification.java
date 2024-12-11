@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvo.nfvici.CapacityShortageNotification
 import com.ubiqube.etsi.mano.v331.model.nfvo.nfvici.NfviCapacityMeasurement;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -103,7 +104,7 @@ public class CapacityShortageNotification   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -123,7 +124,7 @@ public class CapacityShortageNotification   {
    * Discriminator for the different notification types. Shall be set to \"CapacityShortageNotification\" for this notification type. 
    * @return notificationType
    **/
-  @Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"CapacityShortageNotification\" for this notification type. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"CapacityShortageNotification\" for this notification type. ")
       @NotNull
 
     public String getNotificationType() {
@@ -143,7 +144,7 @@ public class CapacityShortageNotification   {
    * Get thresholdId
    * @return thresholdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getThresholdId() {
@@ -163,7 +164,7 @@ public class CapacityShortageNotification   {
    * Get timeStamp
    * @return timeStamp
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -184,7 +185,7 @@ public class CapacityShortageNotification   {
    * Get objectInstanceId
    * @return objectInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getObjectInstanceId() {
@@ -223,7 +224,7 @@ public class CapacityShortageNotification   {
    * Specifies if the threshold has been crossed in UP or DOWN direction. 
    * @return direction
    **/
-  @Schema(required = true, description = "Specifies if the threshold has been crossed in UP or DOWN direction. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Specifies if the threshold has been crossed in UP or DOWN direction. ")
       @NotNull
 
     public DirectionEnum getDirection() {
@@ -243,7 +244,7 @@ public class CapacityShortageNotification   {
    * Get capacityInformation
    * @return capacityInformation
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

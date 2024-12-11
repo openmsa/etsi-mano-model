@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -59,7 +60,7 @@ public class GrantNsLifecycleOperationRequest   {
    * Get nsInstanceId
    * @return nsInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getNsInstanceId() {
@@ -79,7 +80,7 @@ public class GrantNsLifecycleOperationRequest   {
    * Get nsdId
    * @return nsdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getNsdId() {
@@ -99,7 +100,7 @@ public class GrantNsLifecycleOperationRequest   {
    * Get nsLcmOpOccId
    * @return nsLcmOpOccId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getNsLcmOpOccId() {
@@ -119,7 +120,7 @@ public class GrantNsLifecycleOperationRequest   {
    * Get lifecycleOperation
    * @return lifecycleOperation
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

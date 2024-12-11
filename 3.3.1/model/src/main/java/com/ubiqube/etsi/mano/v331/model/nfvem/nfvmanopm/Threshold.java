@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.ThresholdLinks;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -64,7 +65,7 @@ public class Threshold   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -84,7 +85,7 @@ public class Threshold   {
    * Type of measured object. The applicable measured object type for a measurement is defined in clause 8.2 of ETSI GS NFV-IFA 031.
    * @return objectType
    **/
-  @Schema(required = true, description = "Type of measured object. The applicable measured object type for a measurement is defined in clause 8.2 of ETSI GS NFV-IFA 031.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of measured object. The applicable measured object type for a measurement is defined in clause 8.2 of ETSI GS NFV-IFA 031.")
       @NotNull
 
     public String getObjectType() {
@@ -104,7 +105,7 @@ public class Threshold   {
    * Get objectInstanceId
    * @return objectInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getObjectInstanceId() {
@@ -129,7 +130,7 @@ public class Threshold   {
    * Identifiers of the sub-object instances of the measured object instance  associated with this threshold.  May be present if a sub-object is defined in clause 8.2 of ETSI GS NFV-IFA 031 for the related measured object type. If this attribute is absent and a sub-object is defined in clause 8.2 of ETSI  GS NFV-IFA 031 for the related measured object type, thresholds are set for  all sub-object instances of the measured object instance. 
    * @return subjObjectInstanceIds
    **/
-  @Schema(required = true, description = "Identifiers of the sub-object instances of the measured object instance  associated with this threshold.  May be present if a sub-object is defined in clause 8.2 of ETSI GS NFV-IFA 031 for the related measured object type. If this attribute is absent and a sub-object is defined in clause 8.2 of ETSI  GS NFV-IFA 031 for the related measured object type, thresholds are set for  all sub-object instances of the measured object instance. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifiers of the sub-object instances of the measured object instance  associated with this threshold.  May be present if a sub-object is defined in clause 8.2 of ETSI GS NFV-IFA 031 for the related measured object type. If this attribute is absent and a sub-object is defined in clause 8.2 of ETSI  GS NFV-IFA 031 for the related measured object type, thresholds are set for  all sub-object instances of the measured object instance. ")
       @NotNull
 
     public List<String> getSubjObjectInstanceIds() {
@@ -149,7 +150,7 @@ public class Threshold   {
    * Get criteria
    * @return criteria
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -170,7 +171,7 @@ public class Threshold   {
    * Get _links
    * @return _links
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

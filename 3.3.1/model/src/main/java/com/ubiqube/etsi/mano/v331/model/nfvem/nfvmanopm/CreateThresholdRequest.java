@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.ThresholdCriteria;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -58,7 +59,7 @@ public class CreateThresholdRequest   {
    * Type of measured object. The applicable measured object type for a measurement  is defined in clause 8.2 of ETSI GS NFV-IFA 031. 
    * @return objectType
    **/
-  @Schema(required = true, description = "Type of measured object. The applicable measured object type for a measurement  is defined in clause 8.2 of ETSI GS NFV-IFA 031. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of measured object. The applicable measured object type for a measurement  is defined in clause 8.2 of ETSI GS NFV-IFA 031. ")
       @NotNull
 
     public String getObjectType() {
@@ -78,7 +79,7 @@ public class CreateThresholdRequest   {
    * Get objectInstanceId
    * @return objectInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getObjectInstanceId() {
@@ -125,7 +126,7 @@ public class CreateThresholdRequest   {
    * Get criteria
    * @return criteria
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

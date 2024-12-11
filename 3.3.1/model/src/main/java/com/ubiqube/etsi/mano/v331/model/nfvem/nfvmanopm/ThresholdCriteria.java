@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.ThresholdCriteriaSimpleThresholdDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -81,7 +82,7 @@ public class ThresholdCriteria   {
    * Defines the performance metric associated with the threshold.  This attribute’s value shall contain the related \"Measurement Name\" values  as defined in clause 8.4 of ETSI GS NFV-IFA 031  
    * @return performanceMetric
    **/
-  @Schema(required = true, description = "Defines the performance metric associated with the threshold.  This attribute’s value shall contain the related \"Measurement Name\" values  as defined in clause 8.4 of ETSI GS NFV-IFA 031  ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Defines the performance metric associated with the threshold.  This attribute’s value shall contain the related \"Measurement Name\" values  as defined in clause 8.4 of ETSI GS NFV-IFA 031  ")
       @NotNull
 
     public String getPerformanceMetric() {
@@ -101,7 +102,7 @@ public class ThresholdCriteria   {
    * Type of threshold. This attribute determines which other attributes are  present in the data structure. Permitted values:   - SIMPLE: Single-valued static threshold  In the present document, simple thresholds are defined. The definition  of additional threshold types is left for future specification. 
    * @return thresholdType
    **/
-  @Schema(required = true, description = "Type of threshold. This attribute determines which other attributes are  present in the data structure. Permitted values:   - SIMPLE: Single-valued static threshold  In the present document, simple thresholds are defined. The definition  of additional threshold types is left for future specification. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of threshold. This attribute determines which other attributes are  present in the data structure. Permitted values:   - SIMPLE: Single-valued static threshold  In the present document, simple thresholds are defined. The definition  of additional threshold types is left for future specification. ")
       @NotNull
 
     public ThresholdTypeEnum getThresholdType() {

@@ -25,6 +25,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.LoggingJobServicesCrit
 import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.LoggingJobSystemCriteria;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -90,7 +91,7 @@ public class LoggingJobCriteria   {
    * Type of logging. This defines the types of logged information to collect. Permitted values: - MESSAGES: logged NFV-MANO service interface messages. - SERVICES: logged messages about processes pertaining to NFV-MANO services. - SYSTEM: logged messages about the NFV-MANO functional entity’s system enabled by the provider.
    * @return loggingType
    **/
-  @Schema(required = true, description = "Type of logging. This defines the types of logged information to collect. Permitted values: - MESSAGES: logged NFV-MANO service interface messages. - SERVICES: logged messages about processes pertaining to NFV-MANO services. - SYSTEM: logged messages about the NFV-MANO functional entity’s system enabled by the provider.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of logging. This defines the types of logged information to collect. Permitted values: - MESSAGES: logged NFV-MANO service interface messages. - SERVICES: logged messages about processes pertaining to NFV-MANO services. - SYSTEM: logged messages about the NFV-MANO functional entity’s system enabled by the provider.")
       @NotNull
 
     public LoggingTypeEnum getLoggingType() {

@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvo.nfvici.TimeInterval;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -63,7 +64,7 @@ public class NfviCapacityInfo   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -83,7 +84,7 @@ public class NfviCapacityInfo   {
    * Get vimId
    * @return vimId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVimId() {
@@ -108,7 +109,7 @@ public class NfviCapacityInfo   {
    * Capacity information on a per resource zone basis under control by the associated VIM. 
    * @return capacityInfoPerZone
    **/
-  @Schema(required = true, description = "Capacity information on a per resource zone basis under control by the associated VIM. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Capacity information on a per resource zone basis under control by the associated VIM. ")
       @NotNull
     @Valid
     public List<NfviCapacityInfoPerZone> getCapacityInfoPerZone() {

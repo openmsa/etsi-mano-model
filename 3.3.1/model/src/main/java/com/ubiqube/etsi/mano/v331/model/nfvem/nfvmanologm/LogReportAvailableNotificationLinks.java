@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanologm.NotificationLink;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -58,7 +59,7 @@ public class LogReportAvailableNotificationLinks   {
    * Get subscription
    * @return subscription
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -124,7 +125,7 @@ public class LogReportAvailableNotificationLinks   {
    * Link from which the available log report can be obtained. Due to the relationship of the logging job compilation and the logging information availability reporting, more than one logReport notification link can be provided.
    * @return logReports
    **/
-  @Schema(required = true, description = "Link from which the available log report can be obtained. Due to the relationship of the logging job compilation and the logging information availability reporting, more than one logReport notification link can be provided.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Link from which the available log report can be obtained. Due to the relationship of the logging job compilation and the logging information availability reporting, more than one logReport notification link can be provided.")
       @NotNull
     @Valid
     public List<NotificationLink> getLogReports() {

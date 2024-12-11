@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v331.model.em.vnflcm.VnfInstance;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -151,7 +152,7 @@ public class NsInstance {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -172,7 +173,7 @@ public class NsInstance {
 	 *
 	 * @return nsInstanceName
 	 **/
-	@Schema(required = true, description = "Human readable name of the NS instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable name of the NS instance. ")
 	@NotNull
 
 	public String getNsInstanceName() {
@@ -193,7 +194,7 @@ public class NsInstance {
 	 *
 	 * @return nsInstanceDescription
 	 **/
-	@Schema(required = true, description = "Human readable description of the NS instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable description of the NS instance. ")
 	@NotNull
 
 	public String getNsInstanceDescription() {
@@ -214,7 +215,7 @@ public class NsInstance {
 	 *
 	 * @return nsdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public UUID getNsdId() {
@@ -235,7 +236,7 @@ public class NsInstance {
 	 *
 	 * @return nsdInfoId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public UUID getNsdInfoId() {
@@ -477,7 +478,7 @@ public class NsInstance {
 	 *
 	 * @return nsState
 	 **/
-	@Schema(required = true, description = "The state of the NS instance. Permitted values: NOT_INSTANTIATED: The NS instance is terminated or not instantiated. INSTANTIATED: The NS instance is instantiated. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The state of the NS instance. Permitted values: NOT_INSTANTIATED: The NS instance is terminated or not instantiated. INSTANTIATED: The NS instance is instantiated. ")
 	@NotNull
 
 	public NsStateEnum getNsState() {
@@ -615,7 +616,7 @@ public class NsInstance {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

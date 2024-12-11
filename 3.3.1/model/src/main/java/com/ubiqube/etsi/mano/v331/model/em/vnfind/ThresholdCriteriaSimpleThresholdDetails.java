@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -47,7 +48,7 @@ public class ThresholdCriteriaSimpleThresholdDetails   {
    * The threshold value. Shall be represented as a floating point number. 
    * @return thresholdValue
    **/
-  @Schema(required = true, description = "The threshold value. Shall be represented as a floating point number. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The threshold value. Shall be represented as a floating point number. ")
       @NotNull
 
     public Float getThresholdValue() {
@@ -69,7 +70,7 @@ public class ThresholdCriteriaSimpleThresholdDetails   {
    * maximum: 1024
    * @return hysteresis
    **/
-  @Schema(required = true, description = "The hysteresis of the threshold. Shall be represented as a non-negative floating point number. A notification with crossing direction \"UP\" will be generated if the measured value reaches or exceeds \"thresholdValue\" + \"hysteresis\". A notification with crossing direction \"DOWN\" will be generated if the measured value reaches or undercuts \"thresholdValue\" - \"hysteresis\". The hysteresis is defined to prevent storms of threshold crossing notifications. When processing a request to create a threshold, implementations should enforce a suitable minimum value for this attribute (e.g. override the value or reject the request). ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The hysteresis of the threshold. Shall be represented as a non-negative floating point number. A notification with crossing direction \"UP\" will be generated if the measured value reaches or exceeds \"thresholdValue\" + \"hysteresis\". A notification with crossing direction \"DOWN\" will be generated if the measured value reaches or undercuts \"thresholdValue\" - \"hysteresis\". The hysteresis is defined to prevent storms of threshold crossing notifications. When processing a request to create a threshold, implementations should enforce a suitable minimum value for this attribute (e.g. override the value or reject the request). ")
       @NotNull
 
   @DecimalMin("0") @DecimalMax("1024")   public Float getHysteresis() {

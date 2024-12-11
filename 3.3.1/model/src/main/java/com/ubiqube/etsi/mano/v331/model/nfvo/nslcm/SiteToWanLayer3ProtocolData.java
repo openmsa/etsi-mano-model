@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -82,7 +83,7 @@ public class SiteToWanLayer3ProtocolData   {
    * Get routingInfo
    * @return routingInfo
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

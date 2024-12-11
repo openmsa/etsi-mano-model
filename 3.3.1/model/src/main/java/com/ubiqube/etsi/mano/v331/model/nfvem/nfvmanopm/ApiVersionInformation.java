@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v331.model.nfvem.nfvmanopm.ApiVersionInformationApi
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -52,7 +53,7 @@ public class ApiVersionInformation   {
    * Specifies the URI prefix for the API, in the following form {apiRoot}/{apiName}/{apiMajorVersion}/. 
    * @return uriPrefix
    **/
-  @Schema(required = true, description = "Specifies the URI prefix for the API, in the following form {apiRoot}/{apiName}/{apiMajorVersion}/. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Specifies the URI prefix for the API, in the following form {apiRoot}/{apiName}/{apiMajorVersion}/. ")
       @NotNull
 
     public String getUriPrefix() {
@@ -77,7 +78,7 @@ public class ApiVersionInformation   {
    * Version(s) supported for the API signaled by the uriPrefix attribute. 
    * @return apiVersions
    **/
-  @Schema(required = true, description = "Version(s) supported for the API signaled by the uriPrefix attribute. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Version(s) supported for the API signaled by the uriPrefix attribute. ")
       @NotNull
     @Valid
     public List<ApiVersionInformationApiVersions> getApiVersions() {

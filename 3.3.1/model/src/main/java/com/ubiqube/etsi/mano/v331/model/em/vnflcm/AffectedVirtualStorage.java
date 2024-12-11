@@ -25,6 +25,7 @@ import com.ubiqube.etsi.mano.v331.model.em.vnflcm.ResourceHandle;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -98,7 +99,7 @@ public class AffectedVirtualStorage   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -118,7 +119,7 @@ public class AffectedVirtualStorage   {
    * Get virtualStorageDescId
    * @return virtualStorageDescId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVirtualStorageDescId() {
@@ -157,7 +158,7 @@ public class AffectedVirtualStorage   {
    * Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVirtualStorage structure exists as long as the temporary resource exists. 
    * @return changeType
    **/
-  @Schema(required = true, description = "Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVirtualStorage structure exists as long as the temporary resource exists. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVirtualStorage structure exists as long as the temporary resource exists. ")
       @NotNull
 
     public ChangeTypeEnum getChangeType() {
@@ -177,7 +178,7 @@ public class AffectedVirtualStorage   {
    * Get storageResource
    * @return storageResource
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
