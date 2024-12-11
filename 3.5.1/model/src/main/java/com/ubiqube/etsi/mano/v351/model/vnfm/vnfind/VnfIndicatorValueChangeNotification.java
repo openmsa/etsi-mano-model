@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -107,7 +108,7 @@ public class VnfIndicatorValueChangeNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -129,7 +130,7 @@ public class VnfIndicatorValueChangeNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"VnfIndicatorValueChangeNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"VnfIndicatorValueChangeNotification\" for this notification type. ")
 	@NotNull
 
 	public NotificationTypeEnum getNotificationType() {
@@ -150,7 +151,7 @@ public class VnfIndicatorValueChangeNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getSubscriptionId() {
@@ -171,7 +172,7 @@ public class VnfIndicatorValueChangeNotification {
 	 *
 	 * @return timeStamp
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -193,7 +194,7 @@ public class VnfIndicatorValueChangeNotification {
 	 *
 	 * @return vnfIndicatorId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfIndicatorId() {
@@ -236,7 +237,7 @@ public class VnfIndicatorValueChangeNotification {
 	 *
 	 * @return value
 	 **/
-	@Schema(required = true, description = "Provides the value of the VNF indicator. The value format is defined in the VNFD. See note. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Provides the value of the VNF indicator. The value format is defined in the VNFD. See note. ")
 	@NotNull
 
 	public Object getValue() {
@@ -257,7 +258,7 @@ public class VnfIndicatorValueChangeNotification {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -278,7 +279,7 @@ public class VnfIndicatorValueChangeNotification {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

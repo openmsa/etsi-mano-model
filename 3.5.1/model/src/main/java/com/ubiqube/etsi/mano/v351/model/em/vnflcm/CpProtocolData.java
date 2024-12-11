@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.IpOverEthernetAddressData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -78,7 +79,7 @@ public class CpProtocolData   {
    * Identifier of layer(s) and protocol(s). See note. 
    * @return layerProtocol
    **/
-  @Schema(required = true, description = "Identifier of layer(s) and protocol(s). See note. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of layer(s) and protocol(s). See note. ")
       @NotNull
 
     public LayerProtocolEnum getLayerProtocol() {

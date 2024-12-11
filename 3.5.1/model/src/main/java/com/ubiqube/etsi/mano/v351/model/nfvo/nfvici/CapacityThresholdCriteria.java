@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.nfvici.CapacityThresholdCriteriaCap
 import com.ubiqube.etsi.mano.v351.model.nfvo.nfvici.CapacityThresholdCriteriaSimpleThresholdDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -85,7 +86,7 @@ public class CapacityThresholdCriteria   {
    * Get capacityMetric
    * @return capacityMetric
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -106,7 +107,7 @@ public class CapacityThresholdCriteria   {
    * Type of capacity threshold. This attribute determines which other attributes are present in the data structure. Permitted values: - SIMPLE: Single-valued static threshold. See note 1. 
    * @return thresholdType
    **/
-  @Schema(required = true, description = "Type of capacity threshold. This attribute determines which other attributes are present in the data structure. Permitted values: - SIMPLE: Single-valued static threshold. See note 1. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of capacity threshold. This attribute determines which other attributes are present in the data structure. Permitted values: - SIMPLE: Single-valued static threshold. See note 1. ")
       @NotNull
 
     public ThresholdTypeEnum getThresholdType() {

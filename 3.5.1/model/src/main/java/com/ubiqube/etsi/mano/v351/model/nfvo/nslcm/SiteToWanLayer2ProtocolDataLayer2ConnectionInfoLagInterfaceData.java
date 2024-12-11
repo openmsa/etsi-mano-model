@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * Information for setting up a LAG interface aggregating multiple connectivity
@@ -66,7 +67,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfoLagInterfaceData {
 	 *
 	 * @return aggregatedEndpoints
 	 **/
-	@Schema(required = true, description = "List of the connectivity service endpoints that are to be aggregated. Shall be present if connectionType=\"AGGREGATE_CSE\". In case of aggregating connectivity service endpoints, only one SiteToWanLayer2ProtocolData shall be provided for the whole set of aggregated endpoints. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "List of the connectivity service endpoints that are to be aggregated. Shall be present if connectionType=\"AGGREGATE_CSE\". In case of aggregating connectivity service endpoints, only one SiteToWanLayer2ProtocolData shall be provided for the whole set of aggregated endpoints. ")
 	@NotNull
 
 	public List<String> getAggregatedEndpoints() {
@@ -88,7 +89,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfoLagInterfaceData {
 	 *
 	 * @return lacpActivation
 	 **/
-	@Schema(required = true, description = "Indicates whether to activate LACP on the interface. If \"TRUE\", the LACP is to be activated, or \"FALSE\" otherwise. Default value is \"FALSE\". ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates whether to activate LACP on the interface. If \"TRUE\", the LACP is to be activated, or \"FALSE\" otherwise. Default value is \"FALSE\". ")
 	@NotNull
 
 	public Boolean isLacpActivation() {
@@ -109,7 +110,7 @@ public class SiteToWanLayer2ProtocolDataLayer2ConnectionInfoLagInterfaceData {
 	 *
 	 * @return lacpConfig
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

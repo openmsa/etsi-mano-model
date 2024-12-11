@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v351.model.vnfm.grant.ConstraintResourceRef;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -123,7 +124,7 @@ public class PlacementConstraint   {
    * The type of the constraint. Permitted values: * AFFINITY * ANTI_AFFINITY 
    * @return affinityOrAntiAffinity
    **/
-  @Schema(required = true, description = "The type of the constraint. Permitted values: * AFFINITY * ANTI_AFFINITY ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of the constraint. Permitted values: * AFFINITY * ANTI_AFFINITY ")
       @NotNull
 
     public AffinityOrAntiAffinityEnum getAffinityOrAntiAffinity() {
@@ -143,7 +144,7 @@ public class PlacementConstraint   {
    * The scope of the placement constraint indicating the category of the \"place\" where the constraint applies. Permitted values: * NFVI_POP * ZONE * ZONE_GROUP * NFVI_NODE 
    * @return scope
    **/
-  @Schema(required = true, description = "The scope of the placement constraint indicating the category of the \"place\" where the constraint applies. Permitted values: * NFVI_POP * ZONE * ZONE_GROUP * NFVI_NODE ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The scope of the placement constraint indicating the category of the \"place\" where the constraint applies. Permitted values: * NFVI_POP * ZONE * ZONE_GROUP * NFVI_NODE ")
       @NotNull
 
     public ScopeEnum getScope() {
@@ -168,7 +169,7 @@ public class PlacementConstraint   {
    * References to resources in the constraint rule. 
    * @return resource
    **/
-  @Schema(required = true, description = "References to resources in the constraint rule. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "References to resources in the constraint rule. ")
       @NotNull
     @Valid
   @Size(min=2)   public List<ConstraintResourceRef> getResource() {

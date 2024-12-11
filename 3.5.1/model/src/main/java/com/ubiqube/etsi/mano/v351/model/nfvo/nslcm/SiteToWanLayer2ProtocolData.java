@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.nslcm.SiteToWanLayer2ProtocolDataVi
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -58,7 +59,7 @@ public class SiteToWanLayer2ProtocolData   {
    * Get layer2ConnectionInfo
    * @return layer2ConnectionInfo
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

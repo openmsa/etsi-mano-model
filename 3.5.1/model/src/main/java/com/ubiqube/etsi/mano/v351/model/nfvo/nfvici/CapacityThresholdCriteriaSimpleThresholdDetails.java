@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -47,7 +48,7 @@ public class CapacityThresholdCriteriaSimpleThresholdDetails   {
    * The threshold value. Shall be represented as a floating point number. 
    * @return thresholdValue
    **/
-  @Schema(required = true, description = "The threshold value. Shall be represented as a floating point number. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The threshold value. Shall be represented as a floating point number. ")
       @NotNull
 
     @Valid
@@ -68,7 +69,7 @@ public class CapacityThresholdCriteriaSimpleThresholdDetails   {
    * The hysteresis of the threshold. Shall be represented as a non-negative floating point number. A notification with crossing direction \"UP\" will be generated if the measured value reaches or exceeds \"thresholdValue\" + \"hysteresis\". A notification with crossing direction \"DOWN\" will be generated if the measured value reaches or undercuts \"thresholdValue\" - \"hysteresis\". See note 2. 
    * @return hysteresis
    **/
-  @Schema(required = true, description = "The hysteresis of the threshold. Shall be represented as a non-negative floating point number. A notification with crossing direction \"UP\" will be generated if the measured value reaches or exceeds \"thresholdValue\" + \"hysteresis\". A notification with crossing direction \"DOWN\" will be generated if the measured value reaches or undercuts \"thresholdValue\" - \"hysteresis\". See note 2. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The hysteresis of the threshold. Shall be represented as a non-negative floating point number. A notification with crossing direction \"UP\" will be generated if the measured value reaches or exceeds \"thresholdValue\" + \"hysteresis\". A notification with crossing direction \"DOWN\" will be generated if the measured value reaches or undercuts \"thresholdValue\" - \"hysteresis\". See note 2. ")
       @NotNull
 
     @Valid

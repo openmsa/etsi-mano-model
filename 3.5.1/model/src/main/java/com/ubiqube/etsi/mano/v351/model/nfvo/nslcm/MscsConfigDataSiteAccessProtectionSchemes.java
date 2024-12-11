@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nslcm.LocationConstraints;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -83,7 +84,7 @@ public class MscsConfigDataSiteAccessProtectionSchemes   {
    * Get locationConstraints
    * @return locationConstraints
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -104,7 +105,7 @@ public class MscsConfigDataSiteAccessProtectionSchemes   {
    * Defines the protection scheme. Permitted values: - UNPROTECTED - ONE_TO_ONE - ONE_PLUS_ONE - ONE_TO_N 
    * @return protectionScheme
    **/
-  @Schema(required = true, description = "Defines the protection scheme. Permitted values: - UNPROTECTED - ONE_TO_ONE - ONE_PLUS_ONE - ONE_TO_N ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Defines the protection scheme. Permitted values: - UNPROTECTED - ONE_TO_ONE - ONE_PLUS_ONE - ONE_TO_N ")
       @NotNull
 
     public ProtectionSchemeEnum getProtectionScheme() {

@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v351.model.em.vnffm;
 
 import java.util.Objects;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;

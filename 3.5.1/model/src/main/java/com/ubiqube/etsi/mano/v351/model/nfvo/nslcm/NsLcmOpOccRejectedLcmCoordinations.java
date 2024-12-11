@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -82,7 +83,7 @@ public class NsLcmOpOccRejectedLcmCoordinations   {
    * Get coordinationActionName
    * @return coordinationActionName
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getCoordinationActionName() {
@@ -102,7 +103,7 @@ public class NsLcmOpOccRejectedLcmCoordinations   {
    * Get rejectionTime
    * @return rejectionTime
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -123,7 +124,7 @@ public class NsLcmOpOccRejectedLcmCoordinations   {
    * The endpoint type used by this coordination action. Valid values: - MGMT: coordination with other operation supporting management systems (e.g. OSS/BSS) 
    * @return endpointType
    **/
-  @Schema(required = true, description = "The endpoint type used by this coordination action. Valid values: - MGMT: coordination with other operation supporting management systems (e.g. OSS/BSS) ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The endpoint type used by this coordination action. Valid values: - MGMT: coordination with other operation supporting management systems (e.g. OSS/BSS) ")
       @NotNull
 
     public EndpointTypeEnum getEndpointType() {
@@ -143,7 +144,7 @@ public class NsLcmOpOccRejectedLcmCoordinations   {
    * Get delay
    * @return delay
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

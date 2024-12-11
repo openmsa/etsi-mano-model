@@ -31,6 +31,7 @@ import com.ubiqube.etsi.mano.v351.model.em.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.v351.model.em.vnflcm.CancelModeType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -161,7 +162,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -182,7 +183,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return operationState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -225,7 +226,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return nsInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public UUID getNsInstanceId() {
@@ -246,7 +247,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return lcmOperationType
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -268,7 +269,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return startTime
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -293,7 +294,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return isAutomaticInvocation
 	 **/
-	@Schema(required = true, description = "Set to true if this NS LCM operation occurrence has been automatically triggered by the NFVO. This occurs in the case of auto-scaling, auto-healing and when a nested NS is modified as a result of an operation on its composite NS. Set to false otherwise. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Set to true if this NS LCM operation occurrence has been automatically triggered by the NFVO. This occurs in the case of auto-scaling, auto-healing and when a nested NS is modified as a result of an operation on its composite NS. Set to false otherwise. ")
 	@NotNull
 
 	public Boolean isIsAutomaticInvocation() {
@@ -345,7 +346,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return isCancelPending
 	 **/
-	@Schema(required = true, description = "If the LCM operation occurrence is in \"PROCESSING\" or \"ROLLING_BACK\" state and the operation is being cancelled, this attribute shall be set to true. Otherwise, it shall be set to false. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "If the LCM operation occurrence is in \"PROCESSING\" or \"ROLLING_BACK\" state and the operation is being cancelled, this attribute shall be set to true. Otherwise, it shall be set to false. ")
 	@NotNull
 
 	public Boolean isIsCancelPending() {
@@ -518,7 +519,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

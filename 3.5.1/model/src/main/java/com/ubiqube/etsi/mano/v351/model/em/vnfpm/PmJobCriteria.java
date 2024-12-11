@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -117,7 +118,7 @@ public class PmJobCriteria   {
    * maximum: 1024
    * @return collectionPeriod
    **/
-  @Schema(required = true, description = "SSpecifies the periodicity at which the API producer will collect performance information.  The unit shall be seconds. See notes 1 and 2. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "SSpecifies the periodicity at which the API producer will collect performance information.  The unit shall be seconds. See notes 1 and 2. ")
       @NotNull
 
   @Min(0) @Max(1024)   public Integer getCollectionPeriod() {
@@ -139,7 +140,7 @@ public class PmJobCriteria   {
    * maximum: 1024
    * @return reportingPeriod
    **/
-  @Schema(required = true, description = "Specifies the periodicity at which the API producer will report to the API consumer  about performance information. The unit shall be seconds. See notes 1 and 2. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Specifies the periodicity at which the API producer will report to the API consumer  about performance information. The unit shall be seconds. See notes 1 and 2. ")
       @NotNull
 
   @Min(0) @Max(1024)   public Integer getReportingPeriod() {

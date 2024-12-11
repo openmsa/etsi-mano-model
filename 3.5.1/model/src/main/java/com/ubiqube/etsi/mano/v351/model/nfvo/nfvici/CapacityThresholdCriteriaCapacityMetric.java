@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v351.model.nfvo.nfvici.NfviCapacityResourceTypeEnumeration;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -87,7 +88,7 @@ public class CapacityThresholdCriteriaCapacityMetric   {
    * Get resourceType
    * @return resourceType
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -108,7 +109,7 @@ public class CapacityThresholdCriteriaCapacityMetric   {
    * Name of the capacity measurement. Different resource types can have different associated capacity measurements, typically associated to different sub-types of the resource type. 
    * @return capacityMeasurementName
    **/
-  @Schema(required = true, description = "Name of the capacity measurement. Different resource types can have different associated capacity measurements, typically associated to different sub-types of the resource type. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the capacity measurement. Different resource types can have different associated capacity measurements, typically associated to different sub-types of the resource type. ")
       @NotNull
 
     public String getCapacityMeasurementName() {
@@ -128,7 +129,7 @@ public class CapacityThresholdCriteriaCapacityMetric   {
    * The type of capacity for the threshold. Permitted values: - TOTAL: for total capacity. - ALLOCATED: for allocated/used capacity. - RESERVED: for reserved capacity. - AVAILABLE: for available capacity. 
    * @return capacityType
    **/
-  @Schema(required = true, description = "The type of capacity for the threshold. Permitted values: - TOTAL: for total capacity. - ALLOCATED: for allocated/used capacity. - RESERVED: for reserved capacity. - AVAILABLE: for available capacity. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of capacity for the threshold. Permitted values: - TOTAL: for total capacity. - ALLOCATED: for allocated/used capacity. - RESERVED: for reserved capacity. - AVAILABLE: for available capacity. ")
       @NotNull
 
     public CapacityTypeEnum getCapacityType() {

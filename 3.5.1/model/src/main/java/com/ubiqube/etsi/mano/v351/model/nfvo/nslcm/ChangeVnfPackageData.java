@@ -32,6 +32,7 @@ import com.ubiqube.etsi.mano.v351.model.em.vnflcm.ExtVirtualLinkData;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type specifies the information needed to change the current VNF package
@@ -96,7 +97,7 @@ public class ChangeVnfPackageData {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -117,7 +118,7 @@ public class ChangeVnfPackageData {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfdId() {

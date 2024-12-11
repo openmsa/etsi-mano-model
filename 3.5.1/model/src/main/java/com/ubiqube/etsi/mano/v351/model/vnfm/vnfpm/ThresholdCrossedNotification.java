@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.dao.mano.pm.CrossingDirectionType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -121,7 +122,7 @@ public class ThresholdCrossedNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -143,7 +144,7 @@ public class ThresholdCrossedNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"ThresholdCrossedNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"ThresholdCrossedNotification\" for this notification type. ")
 	@NotNull
 
 	public NotificationTypeEnum getNotificationType() {
@@ -164,7 +165,7 @@ public class ThresholdCrossedNotification {
 	 *
 	 * @return timeStamp
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -186,7 +187,7 @@ public class ThresholdCrossedNotification {
 	 *
 	 * @return thresholdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getThresholdId() {
@@ -207,7 +208,7 @@ public class ThresholdCrossedNotification {
 	 *
 	 * @return crossingDirection
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -230,7 +231,7 @@ public class ThresholdCrossedNotification {
 	 *
 	 * @return objectType
 	 **/
-	@Schema(required = true, description = "Type of the measured object. The applicable measured object type for a measurement is defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the measured object. The applicable measured object type for a measurement is defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
 	@NotNull
 
 	public String getObjectType() {
@@ -251,7 +252,7 @@ public class ThresholdCrossedNotification {
 	 *
 	 * @return objectInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getObjectInstanceId() {
@@ -294,7 +295,7 @@ public class ThresholdCrossedNotification {
 	 *
 	 * @return performanceMetric
 	 **/
-	@Schema(required = true, description = "Performance metric associated with the threshold. This attribute shall contain the related \"Measurement Name\" value as defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Performance metric associated with the threshold. This attribute shall contain the related \"Measurement Name\" value as defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
 	@NotNull
 
 	public String getPerformanceMetric() {
@@ -317,7 +318,7 @@ public class ThresholdCrossedNotification {
 	 *
 	 * @return performanceValue
 	 **/
-	@Schema(required = true, description = "Value of the metric that resulted in threshold crossing. The type of this attribute shall correspond to the related \"Measurement Unit\" as defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Value of the metric that resulted in threshold crossing. The type of this attribute shall correspond to the related \"Measurement Unit\" as defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
 	@NotNull
 
 	public Object getPerformanceValue() {
@@ -359,7 +360,7 @@ public class ThresholdCrossedNotification {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

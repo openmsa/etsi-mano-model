@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.nfvici.NfviCapacityMeasurement;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -76,7 +77,7 @@ public class NfviCapacityInfoPerZone   {
    * Capacity measurement on a per resource type basis. 
    * @return capacityMeasurements
    **/
-  @Schema(required = true, description = "Capacity measurement on a per resource type basis. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Capacity measurement on a per resource type basis. ")
       @NotNull
     @Valid
     public List<NfviCapacityMeasurement> getCapacityMeasurements() {

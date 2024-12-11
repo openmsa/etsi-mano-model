@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.nslcm.NsCpHandle;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -66,7 +67,7 @@ public class VnffgInfo   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -86,7 +87,7 @@ public class VnffgInfo   {
    * Get vnffgdId
    * @return vnffgdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnffgdId() {
@@ -111,7 +112,7 @@ public class VnffgInfo   {
    * Identifier(s) of the constituent VNF instance(s) of this VNFFG instance. 
    * @return vnfInstanceId
    **/
-  @Schema(required = true, description = "Identifier(s) of the constituent VNF instance(s) of this VNFFG instance. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier(s) of the constituent VNF instance(s) of this VNFFG instance. ")
       @NotNull
 
     public List<String> getVnfInstanceId() {

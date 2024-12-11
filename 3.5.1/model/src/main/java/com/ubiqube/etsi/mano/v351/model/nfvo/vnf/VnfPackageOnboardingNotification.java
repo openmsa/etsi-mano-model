@@ -29,6 +29,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents a VNF package management notification, which informs the
@@ -79,7 +80,7 @@ public class VnfPackageOnboardingNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -101,7 +102,7 @@ public class VnfPackageOnboardingNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"VnfPackageOnboardingNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"VnfPackageOnboardingNotification\" for this notification type. ")
 	@NotNull
 
 	public String getNotificationType() {
@@ -122,7 +123,7 @@ public class VnfPackageOnboardingNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getSubscriptionId() {
@@ -143,7 +144,7 @@ public class VnfPackageOnboardingNotification {
 	 *
 	 * @return timeStamp
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -165,7 +166,7 @@ public class VnfPackageOnboardingNotification {
 	 *
 	 * @return vnfPkgId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfPkgId() {
@@ -186,7 +187,7 @@ public class VnfPackageOnboardingNotification {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfdId() {
@@ -213,7 +214,7 @@ public class VnfPackageOnboardingNotification {
 	 *
 	 * @return vnfmInfo
 	 **/
-	@Schema(required = true, description = "Specifies VNFMs compatible with the VNF. This information is copied from the VNFD. See Table 9.5.2.5-1. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Specifies VNFMs compatible with the VNF. This information is copied from the VNFD. See Table 9.5.2.5-1. ")
 	@NotNull
 
 	public List<String> getVnfmInfo() {
@@ -234,7 +235,7 @@ public class VnfPackageOnboardingNotification {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

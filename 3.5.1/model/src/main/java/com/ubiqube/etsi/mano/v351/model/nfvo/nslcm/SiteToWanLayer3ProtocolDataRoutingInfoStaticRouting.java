@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -85,7 +86,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoStaticRouting   {
    * The IP version applicable to the routing entry. Permitted values: - IPV4 - IPV6 
    * @return ipVersion
    **/
-  @Schema(required = true, description = "The IP version applicable to the routing entry. Permitted values: - IPV4 - IPV6 ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The IP version applicable to the routing entry. Permitted values: - IPV4 - IPV6 ")
       @NotNull
 
     public IpVersionEnum getIpVersion() {
@@ -105,7 +106,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoStaticRouting   {
    * Get ipPrefix
    * @return ipPrefix
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getIpPrefix() {
@@ -125,7 +126,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoStaticRouting   {
    * The IP prefix size. 
    * @return prefixSize
    **/
-  @Schema(required = true, description = "The IP prefix size. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The IP prefix size. ")
       @NotNull
 
     @Valid
@@ -146,7 +147,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoStaticRouting   {
    * Get nextHop
    * @return nextHop
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getNextHop() {

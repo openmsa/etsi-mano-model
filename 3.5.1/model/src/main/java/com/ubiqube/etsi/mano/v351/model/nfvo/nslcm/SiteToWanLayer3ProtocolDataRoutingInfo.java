@@ -26,6 +26,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.nslcm.SiteToWanLayer3ProtocolDataRo
 import com.ubiqube.etsi.mano.v351.model.nfvo.nslcm.SiteToWanLayer3ProtocolDataRoutingInfoStaticRouting;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -133,7 +134,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfo   {
    * The routing protocol that is activated on the connectivity service endpoint. Permitted values: - BGP: used for dynamic routing BGPv4. - RIP: used for dynamic routing RIPv2. - OSPF: used for dynamic routing (OSPF version 2 for IPv4; and OSPF version 3 for IPv6). - STATIC: used for static routing. - DIRECT: used when the NFVI-PoP network is directly connected to the WAN provider network. - VRRP: used when the NFVI-PoP network is directly connected to the WAN provider network with virtual   router redundancy protocol support (VRRP). 
    * @return routingProtocol
    **/
-  @Schema(required = true, description = "The routing protocol that is activated on the connectivity service endpoint. Permitted values: - BGP: used for dynamic routing BGPv4. - RIP: used for dynamic routing RIPv2. - OSPF: used for dynamic routing (OSPF version 2 for IPv4; and OSPF version 3 for IPv6). - STATIC: used for static routing. - DIRECT: used when the NFVI-PoP network is directly connected to the WAN provider network. - VRRP: used when the NFVI-PoP network is directly connected to the WAN provider network with virtual   router redundancy protocol support (VRRP). ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The routing protocol that is activated on the connectivity service endpoint. Permitted values: - BGP: used for dynamic routing BGPv4. - RIP: used for dynamic routing RIPv2. - OSPF: used for dynamic routing (OSPF version 2 for IPv4; and OSPF version 3 for IPv6). - STATIC: used for static routing. - DIRECT: used when the NFVI-PoP network is directly connected to the WAN provider network. - VRRP: used when the NFVI-PoP network is directly connected to the WAN provider network with virtual   router redundancy protocol support (VRRP). ")
       @NotNull
 
     public RoutingProtocolEnum getRoutingProtocol() {
@@ -173,7 +174,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfo   {
    * The IP version applicable to the dynamic routing protocol. Shall be present for dynamic routing protocols. Permitted values: - IPV4 - IPV6 
    * @return routingAddressFamily
    **/
-  @Schema(required = true, description = "The IP version applicable to the dynamic routing protocol. Shall be present for dynamic routing protocols. Permitted values: - IPV4 - IPV6 ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The IP version applicable to the dynamic routing protocol. Shall be present for dynamic routing protocols. Permitted values: - IPV4 - IPV6 ")
       @NotNull
 
     public RoutingAddressFamilyEnum getRoutingAddressFamily() {

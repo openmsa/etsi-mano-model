@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.v351.model.em.vnfconfig.ProblemDetails;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents an LCM coordination result.
@@ -77,7 +78,7 @@ public class LcmCoord {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -98,7 +99,7 @@ public class LcmCoord {
 	 *
 	 * @return coordinationResult
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -120,7 +121,7 @@ public class LcmCoord {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -141,7 +142,7 @@ public class LcmCoord {
 	 *
 	 * @return vnfLcmOpOccId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfLcmOpOccId() {
@@ -162,7 +163,7 @@ public class LcmCoord {
 	 *
 	 * @return lcmOperationType
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -185,7 +186,7 @@ public class LcmCoord {
 	 *
 	 * @return coordinationActionName
 	 **/
-	@Schema(required = true, description = "Indicates the actual LCM coordination action. The coordination actions that a VNF supports are declared in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the actual LCM coordination action. The coordination actions that a VNF supports are declared in the VNFD. ")
 	@NotNull
 
 	public String getCoordinationActionName() {
@@ -268,7 +269,7 @@ public class LcmCoord {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

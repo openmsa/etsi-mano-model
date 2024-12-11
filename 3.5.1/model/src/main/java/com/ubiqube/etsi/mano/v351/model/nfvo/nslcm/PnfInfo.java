@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.nslcm.PnfExtCpInfo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -61,7 +62,7 @@ public class PnfInfo   {
    * Get pnfId
    * @return pnfId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getPnfId() {
@@ -100,7 +101,7 @@ public class PnfInfo   {
    * Get pnfdId
    * @return pnfdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getPnfdId() {
@@ -120,7 +121,7 @@ public class PnfInfo   {
    * Get pnfdInfoId
    * @return pnfdInfoId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getPnfdInfoId() {
@@ -140,7 +141,7 @@ public class PnfInfo   {
    * Get pnfProfileId
    * @return pnfProfileId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getPnfProfileId() {

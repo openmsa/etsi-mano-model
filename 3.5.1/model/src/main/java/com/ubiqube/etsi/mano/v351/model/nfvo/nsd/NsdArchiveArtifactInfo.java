@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.v351.model.nfvo.vnfsnapshotpkgm.Checksum;
 import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents an artifact contained in an NSD archive. It shall comply
@@ -57,7 +58,7 @@ public class NsdArchiveArtifactInfo {
 	 *
 	 * @return artifactPath
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getArtifactPath() {
@@ -78,7 +79,7 @@ public class NsdArchiveArtifactInfo {
 	 *
 	 * @return checksum
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
