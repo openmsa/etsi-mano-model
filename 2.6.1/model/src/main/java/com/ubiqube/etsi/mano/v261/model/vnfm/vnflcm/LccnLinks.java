@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.vnf.NotificationLink;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
@@ -53,7 +54,7 @@ public class LccnLinks {
 	 *
 	 * @return vnfInstance
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid
@@ -75,7 +76,7 @@ public class LccnLinks {
 	 *
 	 * @return subscription
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

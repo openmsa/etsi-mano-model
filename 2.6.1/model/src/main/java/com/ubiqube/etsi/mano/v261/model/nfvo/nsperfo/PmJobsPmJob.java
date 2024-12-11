@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 import jakarta.validation.Valid;
@@ -31,19 +32,19 @@ import java.util.List;
 @Schema(description="This type represents a PM job. ")
 public class PmJobsPmJob  {
   
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
  /**
    * An identifier with the intention of being globally unique. 
   **/
   private String id = null;
 
-  @Schema(required = true, description = "Identifiers of the NS instances for which performance information is collected. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifiers of the NS instances for which performance information is collected. ")
  /**
    * Identifiers of the NS instances for which performance information is collected. 
   **/
   private List<String> objectInstanceIds = new ArrayList<String>();
 
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
   @Valid
   private PmJobsPmJobCriteria criteria = null;
 

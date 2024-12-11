@@ -27,6 +27,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -58,7 +59,7 @@ public class VnfcConfigurationData {
 	 *
 	 * @return vnfcInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of a VNFC instance to which this set of configuration data applies. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of a VNFC instance to which this set of configuration data applies. ")
 	@Nonnull
 
 	public String getVnfcInstanceId() {

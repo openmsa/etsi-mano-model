@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -78,7 +79,7 @@ public class VnfLcmOpOccLinks {
 	 *
 	 * @return self
 	 **/
-	@Schema(required = true, description = "URI of this resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "URI of this resource. ")
 	@Nonnull
 	@Valid
 	public Link getSelf() {
@@ -99,7 +100,7 @@ public class VnfLcmOpOccLinks {
 	 *
 	 * @return vnfInstance
 	 **/
-	@Schema(required = true, description = "Link to the VNF instance that the operation applies to. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Link to the VNF instance that the operation applies to. ")
 	@Nonnull
 	@Valid
 	public Link getVnfInstance() {

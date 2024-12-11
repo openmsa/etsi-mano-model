@@ -19,6 +19,7 @@ package com.ubiqube.etsi.mano.v261.model.nfvo.vnf;
 import org.springframework.validation.annotation.Validated;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import lombok.Getter;
 import lombok.Setter;
 

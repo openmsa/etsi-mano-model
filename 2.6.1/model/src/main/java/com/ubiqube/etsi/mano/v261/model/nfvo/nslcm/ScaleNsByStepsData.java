@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -92,7 +93,7 @@ public class ScaleNsByStepsData {
 	 * 
 	 * @return scalingDirection
 	 **/
-	@Schema(required = true, description = "The scaling direction. Possible values are: - SCALE_IN - SCALE_OUT. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The scaling direction. Possible values are: - SCALE_IN - SCALE_OUT. ")
 	@Nonnull
 
 	public ScalingDirectionEnum getScalingDirection() {
@@ -113,7 +114,7 @@ public class ScaleNsByStepsData {
 	 * 
 	 * @return aspectId
 	 **/
-	@Schema(required = true, description = "The aspect of the NS that is requested to be scaled, as declared in the NSD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The aspect of the NS that is requested to be scaled, as declared in the NSD. ")
 	@Nonnull
 
 	public String getAspectId() {

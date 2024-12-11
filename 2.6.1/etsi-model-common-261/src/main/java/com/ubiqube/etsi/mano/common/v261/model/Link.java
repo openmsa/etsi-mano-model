@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -47,7 +48,7 @@ public class Link {
 	 *
 	 * @return href
 	 **/
-	@Schema(required = true, description = "URI of another resource referenced from a resource. Shall be an absolute URI (i.e. a UTI that contains {apiRoot}). ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "URI of another resource referenced from a resource. Shall be an absolute URI (i.e. a UTI that contains {apiRoot}). ")
 	@NotNull
 
 	public String getHref() {

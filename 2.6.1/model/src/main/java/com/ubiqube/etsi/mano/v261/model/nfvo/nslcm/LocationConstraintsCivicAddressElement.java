@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * LocationConstraintsCivicAddressElement
@@ -48,7 +49,7 @@ public class LocationConstraintsCivicAddressElement {
 	 *
 	 * @return caType
 	 **/
-	@Schema(required = true, description = "Describe the content type of caValue. The value of caType shall comply with Section 3.4 of IETF RFC 4776 [13]. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Describe the content type of caValue. The value of caType shall comply with Section 3.4 of IETF RFC 4776 [13]. ")
 	@Nonnull
 
 	public Integer getCaType() {
@@ -69,7 +70,7 @@ public class LocationConstraintsCivicAddressElement {
 	 *
 	 * @return caValue
 	 **/
-	@Schema(required = true, description = "Content of civic address element corresponding to the caType. The format caValue shall comply with Section 3.4 of IETF RFC 4776 [13]. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Content of civic address element corresponding to the caType. The format caValue shall comply with Section 3.4 of IETF RFC 4776 [13]. ")
 	@Nonnull
 
 	public String getCaValue() {

@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.VnfExtCpData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -132,7 +133,7 @@ public class ExtVirtualLinkData {
 	 *
 	 * @return resourceId
 	 **/
-	@Schema(required = true, description = "The identifier of the resource in the scope of the VIM or the resource provider. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The identifier of the resource in the scope of the VIM or the resource provider. ")
 	@NotNull
 
 	public String getResourceId() {
@@ -158,7 +159,7 @@ public class ExtVirtualLinkData {
 	 *
 	 * @return extCps
 	 **/
-	@Schema(required = true, description = "External CPs of the VNF to be connected to this external VL. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "External CPs of the VNF to be connected to this external VL. ")
 	@NotNull
 
 	@Valid

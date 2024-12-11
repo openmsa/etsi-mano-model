@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -132,7 +133,7 @@ public class AffectedVl {
 	 *
 	 * @return nsVirtualLinkInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the VL Instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VL Instance. ")
 	@Nonnull
 
 	public String getNsVirtualLinkInstanceId() {
@@ -153,7 +154,7 @@ public class AffectedVl {
 	 *
 	 * @return nsVirtualLinkDescId
 	 **/
-	@Schema(required = true, description = "Identifier of the VLD in the NSD for this VL. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VLD in the NSD for this VL. ")
 	@Nonnull
 
 	public String getNsVirtualLinkDescId() {
@@ -174,7 +175,7 @@ public class AffectedVl {
 	 *
 	 * @return vlProfileId
 	 **/
-	@Schema(required = true, description = "Identifier of the VLD in the NSD for this VL. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VLD in the NSD for this VL. ")
 	@Nonnull
 
 	public UUID getVlProfileId() {

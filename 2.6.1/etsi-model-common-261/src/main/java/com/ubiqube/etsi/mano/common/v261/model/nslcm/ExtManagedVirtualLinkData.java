@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents an externally-managed internal VL. It shall comply with
@@ -139,7 +140,7 @@ public class ExtManagedVirtualLinkData {
 	 *
 	 * @return resourceId
 	 **/
-	@Schema(required = true, description = "The identifier of the resource in the scope of the VIM or the resource provider. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The identifier of the resource in the scope of the VIM or the resource provider. ")
 	@NotNull
 
 	public String getResourceId() {

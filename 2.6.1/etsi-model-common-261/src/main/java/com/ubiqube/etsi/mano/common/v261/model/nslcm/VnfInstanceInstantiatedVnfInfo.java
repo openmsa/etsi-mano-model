@@ -29,6 +29,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -89,7 +90,7 @@ public class VnfInstanceInstantiatedVnfInfo {
 	 *
 	 * @return flavourId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF deployment flavor applied to this VNF instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF deployment flavor applied to this VNF instance. ")
 	@NotNull
 
 	public String getFlavourId() {
@@ -110,7 +111,7 @@ public class VnfInstanceInstantiatedVnfInfo {
 	 *
 	 * @return vnfState
 	 **/
-	@Schema(required = true, description = "The state of the VNF instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The state of the VNF instance. ")
 	@NotNull
 
 	@Valid

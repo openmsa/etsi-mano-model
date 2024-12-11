@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.LcmOperationStateType;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.NsInstanceSubscriptionFilter;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 
 /**

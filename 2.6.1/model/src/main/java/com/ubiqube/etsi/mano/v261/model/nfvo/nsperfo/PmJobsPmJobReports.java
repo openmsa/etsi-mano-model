@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 import jakarta.validation.Valid;
@@ -30,13 +31,13 @@ import java.util.Date;
 @Schema(description="Information about available reports collected by this PM job. ")
 public class PmJobsPmJobReports  {
   
-  @Schema(required = true, description = "String formatted according to IETF RFC 3986. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "String formatted according to IETF RFC 3986. ")
  /**
    * String formatted according to IETF RFC 3986. 
   **/
   private String href = null;
 
-  @Schema(required = true, description = "Date-time stamp.  Representation: String formatted according to IETF RFC 3339. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time stamp.  Representation: String formatted according to IETF RFC 3339. ")
  /**
    * Date-time stamp.  Representation: String formatted according to IETF RFC 3339. 
   **/
@@ -54,7 +55,7 @@ public class PmJobsPmJobReports  {
   **/
   private Integer fileSize = null;
 
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
   @Valid
   private PmJobsPmJobReportsLinks links = null;
  /**

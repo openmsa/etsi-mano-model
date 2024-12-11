@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 import jakarta.validation.Valid;
@@ -31,13 +32,13 @@ import java.util.List;
 @Schema(description="This type represents a request to create a PM job.  It shall comply with the provisions defined in Table 7.5.2.6-1. ")
 public class PmJobsCreatePmJobRequest  {
   
-  @Schema(required = true, description = "Identifiers of the NS instances for which performance information is requested to be collected. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifiers of the NS instances for which performance information is requested to be collected. ")
  /**
    * Identifiers of the NS instances for which performance information is requested to be collected. 
   **/
   private List<String> objectInstanceIds = new ArrayList<String>();
 
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
   @Valid
   private PmJobsPmJobCriteria criteria = null;
  /**

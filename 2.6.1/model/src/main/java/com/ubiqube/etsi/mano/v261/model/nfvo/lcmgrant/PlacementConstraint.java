@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
@@ -139,7 +140,7 @@ public class PlacementConstraint {
 	 *
 	 * @return affinityOrAntiAffinity
 	 **/
-	@Schema(required = true, description = "The type of the constraint. Permitted values: * AFFINITY * ANTI_AFFINITY ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of the constraint. Permitted values: * AFFINITY * ANTI_AFFINITY ")
 	@Nonnull
 
 	public AffinityOrAntiAffinityEnum getAffinityOrAntiAffinity() {
@@ -162,7 +163,7 @@ public class PlacementConstraint {
 	 *
 	 * @return scope
 	 **/
-	@Schema(required = true, description = "The scope of the placement constraint indicating the category of the \"place\" where the constraint applies. Permitted values: * NFVI_POP * ZONE * ZONE_GROUP * NFVI_NODE ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The scope of the placement constraint indicating the category of the \"place\" where the constraint applies. Permitted values: * NFVI_POP * ZONE * ZONE_GROUP * NFVI_NODE ")
 	@Nonnull
 
 	public ScopeEnum getScope() {
@@ -188,7 +189,7 @@ public class PlacementConstraint {
 	 *
 	 * @return resource
 	 **/
-	@Schema(required = true, description = "References to resources in the constraint rule. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "References to resources in the constraint rule. ")
 	@Nonnull
 
 	@Valid

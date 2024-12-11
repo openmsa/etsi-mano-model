@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.PerceivedSeverityType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
@@ -47,7 +48,7 @@ public class PerceivedSeverityRequest {
 	 *
 	 * @return proposedPerceivedSeverity
 	 **/
-	@Schema(required = true, description = "Indicates the proposed escalated perceived severity for an alarm. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the proposed escalated perceived severity for an alarm. ")
 	@Nonnull
 
 	@Valid

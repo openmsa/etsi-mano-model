@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 import jakarta.validation.Valid;
@@ -29,7 +30,7 @@ import jakarta.annotation.Nonnull;
 @Schema(description="Links to resources related to this resource. ")
 public class SubscriptionsPmSubscriptionLinks  {
   
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
   @Valid
   private PmJobsPmJobReportsLinksSelf self = null;
  /**

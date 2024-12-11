@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -54,7 +55,7 @@ public class GrantLinks {
 	 *
 	 * @return self
 	 **/
-	@Schema(required = true, description = "URI of this resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "URI of this resource. ")
 	@NotNull
 
 	@Valid
@@ -77,7 +78,7 @@ public class GrantLinks {
 	 *
 	 * @return vnfLcmOpOcc
 	 **/
-	@Schema(required = true, description = "Related VNF lifecycle management operation occurrence. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Related VNF lifecycle management operation occurrence. ")
 	@NotNull
 
 	@Valid
@@ -100,7 +101,7 @@ public class GrantLinks {
 	 *
 	 * @return vnfInstance
 	 **/
-	@Schema(required = true, description = "Related VNF instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Related VNF instance. ")
 	@NotNull
 
 	@Valid

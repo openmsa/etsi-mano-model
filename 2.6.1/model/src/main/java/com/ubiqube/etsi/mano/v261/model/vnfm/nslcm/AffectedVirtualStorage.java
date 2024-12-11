@@ -37,6 +37,7 @@ import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.ChangeTypeEnum;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -74,7 +75,7 @@ public class AffectedVirtualStorage {
 	 * @return id
 	 **/
 	@JsonProperty("id")
-	@Schema(required = true, description = "Identifier of the storage instance, identifying the applicable \"virtualStorageResourceInfo\" entry in the \"VnfInstance\" data type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the storage instance, identifying the applicable \"virtualStorageResourceInfo\" entry in the \"VnfInstance\" data type. ")
 	@Nonnull
 	public String getId() {
 		return id;
@@ -95,7 +96,7 @@ public class AffectedVirtualStorage {
 	 * @return virtualStorageDescId
 	 **/
 	@JsonProperty("virtualStorageDescId")
-	@Schema(required = true, description = "Identifier of the related VirtualStorage descriptor in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the related VirtualStorage descriptor in the VNFD. ")
 	@Nonnull
 	public String getVirtualStorageDescId() {
 		return virtualStorageDescId;
@@ -118,7 +119,7 @@ public class AffectedVirtualStorage {
 	 * @return changeType
 	 **/
 	@JsonProperty("changeType")
-	@Schema(required = true, description = "Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVirtualStorage structure exists as long as the temporary resource exists. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVirtualStorage structure exists as long as the temporary resource exists. ")
 	@Nonnull
 	public ChangeTypeEnum getChangeType() {
 		return changeType;
@@ -141,7 +142,7 @@ public class AffectedVirtualStorage {
 	 * @return storageResource
 	 **/
 	@JsonProperty("storageResource")
-	@Schema(required = true, description = "Reference to the VirtualStorage resource. Detailed information is  (for new and modified resources) or has been (for removed resources) available from the VIM. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the VirtualStorage resource. Detailed information is  (for new and modified resources) or has been (for removed resources) available from the VIM. ")
 	@Nonnull
 	public ResourceHandle getStorageResource() {
 		return storageResource;

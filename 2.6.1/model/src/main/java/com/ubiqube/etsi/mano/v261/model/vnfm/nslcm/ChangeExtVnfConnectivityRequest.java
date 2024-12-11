@@ -39,6 +39,7 @@ import com.ubiqube.etsi.mano.common.v261.model.VimConnectionInfo;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -74,7 +75,7 @@ public class ChangeExtVnfConnectivityRequest {
 	 * @return extVirtualLinks
 	 **/
 	@JsonProperty("extVirtualLinks")
-	@Schema(required = true, description = "Information about external VLs to change (e.g. connect the VNF to). ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about external VLs to change (e.g. connect the VNF to). ")
 	@Nonnull
 	public List<ExtVirtualLinkData> getExtVirtualLinks() {
 		return extVirtualLinks;

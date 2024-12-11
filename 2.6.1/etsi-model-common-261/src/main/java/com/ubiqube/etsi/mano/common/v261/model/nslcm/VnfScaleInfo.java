@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * VnfScaleInfo
@@ -47,7 +48,7 @@ public class VnfScaleInfo {
 	 *
 	 * @return aspectId
 	 **/
-	@Schema(required = true, description = "Identifier of the scaling aspect. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the scaling aspect. ")
 	@NotNull
 
 	public String getAspectId() {
@@ -68,7 +69,7 @@ public class VnfScaleInfo {
 	 *
 	 * @return scaleLevel
 	 **/
-	@Schema(required = true, description = "Indicates the scale level. The minimum value shall be 0 and the maximum value shall be <= maxScaleLevel as described in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the scale level. The minimum value shall be 0 and the maximum value shall be <= maxScaleLevel as described in the VNFD. ")
 	@NotNull
 
 	public Integer getScaleLevel() {

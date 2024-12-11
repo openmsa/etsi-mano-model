@@ -30,6 +30,7 @@ import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.AlarmLinks;
 import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.FaultyResourceInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
@@ -135,7 +136,7 @@ public class Alarm {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of this Alarm information element. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this Alarm information element. ")
 	@Nonnull
 
 	public String getId() {
@@ -156,7 +157,7 @@ public class Alarm {
 	 *
 	 * @return managedObjectId
 	 **/
-	@Schema(required = true, description = "Identifier of the affected VNF instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the affected VNF instance. ")
 	@Nonnull
 
 	public String getManagedObjectId() {
@@ -177,7 +178,7 @@ public class Alarm {
 	 *
 	 * @return rootCauseFaultyComponent
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid
@@ -220,7 +221,7 @@ public class Alarm {
 	 *
 	 * @return alarmRaisedTime
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid
@@ -285,7 +286,7 @@ public class Alarm {
 	 *
 	 * @return ackState
 	 **/
-	@Schema(required = true, description = "Acknowledgment state of the alarm. Permitted values: UNACKNOWLEDGED ACKNOWLEDGED ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Acknowledgment state of the alarm. Permitted values: UNACKNOWLEDGED ACKNOWLEDGED ")
 	@Nonnull
 
 	public AckStateEnum getAckState() {
@@ -306,7 +307,7 @@ public class Alarm {
 	 *
 	 * @return perceivedSeverity
 	 **/
-	@Schema(required = true, description = "Perceived severity of the managed object failure. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Perceived severity of the managed object failure. ")
 	@Nonnull
 
 	@Valid
@@ -328,7 +329,7 @@ public class Alarm {
 	 *
 	 * @return eventTime
 	 **/
-	@Schema(required = true, description = "Time stamp indicating when the fault was observed. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Time stamp indicating when the fault was observed. ")
 	@Nonnull
 
 	@Valid
@@ -350,7 +351,7 @@ public class Alarm {
 	 *
 	 * @return eventType
 	 **/
-	@Schema(required = true, description = "Type of event. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of event. ")
 	@Nonnull
 
 	@Valid
@@ -392,7 +393,7 @@ public class Alarm {
 	 *
 	 * @return probableCause
 	 **/
-	@Schema(required = true, description = "Information about the probable cause of the fault. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about the probable cause of the fault. ")
 	@Nonnull
 
 	public String getProbableCause() {
@@ -415,7 +416,7 @@ public class Alarm {
 	 *
 	 * @return isRootCause
 	 **/
-	@Schema(required = true, description = "Attribute indicating if this fault is the root for other correlated alarms. If TRUE, then the alarms listed in the attribute CorrelatedAlarmId are caused by this fault. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Attribute indicating if this fault is the root for other correlated alarms. If TRUE, then the alarms listed in the attribute CorrelatedAlarmId are caused by this fault. ")
 	@Nonnull
 
 	public Boolean isIsRootCause() {
@@ -492,7 +493,7 @@ public class Alarm {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfExtCpConfig;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -55,7 +56,7 @@ public class VnfExtCpData {
 	 *
 	 * @return cpdId
 	 **/
-	@Schema(required = true, description = "The identifier of the CPD in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The identifier of the CPD in the VNFD. ")
 	@NotNull
 
 	public String getCpdId() {

@@ -22,6 +22,7 @@ import jakarta.annotation.Nonnull;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -31,7 +32,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "Details of the subscription to be created.             ")
 public class SubscriptionsPostQuery {
 
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Valid
 	private SubscriptionsPmSubscriptionRequest pmSubscriptionRequest = null;
 

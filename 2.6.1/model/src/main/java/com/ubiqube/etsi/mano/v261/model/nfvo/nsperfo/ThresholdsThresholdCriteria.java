@@ -19,6 +19,7 @@ package com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
@@ -28,7 +29,7 @@ import jakarta.validation.Valid;
 @Schema(description = "This type represents criteria that define a threshold. ")
 public class ThresholdsThresholdCriteria {
 
-	@Schema(required = true, description = "Defines the performance metric associated with the threshold, as specified in ETSI GS NFV-IFA 027). ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Defines the performance metric associated with the threshold, as specified in ETSI GS NFV-IFA 027). ")
 	/**
 	 * Defines the performance metric associated with the threshold, as specified in
 	 * ETSI GS NFV-IFA 027).
@@ -64,7 +65,7 @@ public class ThresholdsThresholdCriteria {
 		}
 	}
 
-	@Schema(required = true, description = "Type of threshold. This attribute determines which other attributes are present in the data structure. Permitted values: * SIMPLE: Single-valued static threshold In the present document, simple thresholds are defined. The definition of additional threshold types is left for future specification. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of threshold. This attribute determines which other attributes are present in the data structure. Permitted values: * SIMPLE: Single-valued static threshold In the present document, simple thresholds are defined. The definition of additional threshold types is left for future specification. ")
 	/**
 	 * Type of threshold. This attribute determines which other attributes are
 	 * present in the data structure. Permitted values: * SIMPLE: Single-valued

@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -98,7 +99,7 @@ public class AlarmClearedNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of this notification. If a notification is sent multiple times due to multiple subscriptions, the \"id\" attribute of all these notifications shall have the same value. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this notification. If a notification is sent multiple times due to multiple subscriptions, the \"id\" attribute of all these notifications shall have the same value. ")
 	@Nonnull
 
 	public String getId() {
@@ -119,7 +120,7 @@ public class AlarmClearedNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"AlarmClearedNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"AlarmClearedNotification\" for this notification type. ")
 	@Nonnull
 
 	public NotificationTypeEnum getNotificationType() {
@@ -140,7 +141,7 @@ public class AlarmClearedNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "Identifier of the subscription that this notification relates to. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the subscription that this notification relates to. ")
 	@Nonnull
 
 	public String getSubscriptionId() {
@@ -161,7 +162,7 @@ public class AlarmClearedNotification {
 	 *
 	 * @return timeStamp
 	 **/
-	@Schema(required = true, description = "Date-time of the generation of the notification. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time of the generation of the notification. ")
 	@Nonnull
 
 	public String getTimeStamp() {
@@ -182,7 +183,7 @@ public class AlarmClearedNotification {
 	 *
 	 * @return alarmId
 	 **/
-	@Schema(required = true, description = "Alarm identifier. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Alarm identifier. ")
 	@Nonnull
 
 	public String getAlarmId() {
@@ -203,7 +204,7 @@ public class AlarmClearedNotification {
 	 *
 	 * @return alarmClearedTime
 	 **/
-	@Schema(required = true, description = "The time stamp indicating when the alarm was cleared. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The time stamp indicating when the alarm was cleared. ")
 	@Nonnull
 
 	@Valid
@@ -226,7 +227,7 @@ public class AlarmClearedNotification {
 	 *
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

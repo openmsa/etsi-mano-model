@@ -31,6 +31,7 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.LcmOperationStateType;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents a request a NS lifecycle operation occurrence. It shall
@@ -89,7 +90,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of this NS lifecycle operation occurrence. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this NS lifecycle operation occurrence. ")
 	@Nonnull
 
 	public String getId() {
@@ -110,7 +111,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return operationState
 	 **/
-	@Schema(required = true, description = "The state of the NS LCM operation. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The state of the NS LCM operation. ")
 	@Nonnull
 
 	@Valid
@@ -154,7 +155,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return nsInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the NS instance to which the operation applies. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the NS instance to which the operation applies. ")
 	@Nonnull
 
 	public UUID getNsInstanceId() {
@@ -176,7 +177,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return lcmOperationType
 	 **/
-	@Schema(required = true, description = "Type of the actual LCM operation represented by this lcm operation occurrence. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the actual LCM operation represented by this lcm operation occurrence. ")
 	@Nonnull
 
 	@Valid
@@ -198,7 +199,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return startTime
 	 **/
-	@Schema(required = true, description = "Date-time of the start of the operation. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time of the start of the operation. ")
 	@Nonnull
 
 	@Valid
@@ -223,7 +224,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return isAutomaticInvocation
 	 **/
-	@Schema(required = true, description = "Set to true if this NS LCM operation occurrence has been automatically triggered by the NFVO. This occurs in the case of auto-scaling, auto-healing and when a nested NS is modified as a result of an operation on its composite NS. Set to false otherwise. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Set to true if this NS LCM operation occurrence has been automatically triggered by the NFVO. This occurs in the case of auto-scaling, auto-healing and when a nested NS is modified as a result of an operation on its composite NS. Set to false otherwise. ")
 	@Nonnull
 
 	public Boolean isIsAutomaticInvocation() {
@@ -274,7 +275,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return isCancelPending
 	 **/
-	@Schema(required = true, description = "If the LCM operation occurrence is in \"PROCESSING\" or \"ROLLING_BACK\" state and the operation is being cancelled, this attribute shall be set to true. Otherwise, it shall be set to false. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "If the LCM operation occurrence is in \"PROCESSING\" or \"ROLLING_BACK\" state and the operation is being cancelled, this attribute shall be set to true. Otherwise, it shall be set to false. ")
 	@Nonnull
 
 	public Boolean isIsCancelPending() {
@@ -363,7 +364,7 @@ public class NsLcmOpOcc {
 	 *
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

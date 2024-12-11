@@ -30,6 +30,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents information about an external CP of a VNF. It shall
@@ -70,7 +71,7 @@ public class VnfExtCpInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of the external CP instance and the related information instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the external CP instance and the related information instance. ")
 	@NotNull
 
 	public String getId() {
@@ -91,7 +92,7 @@ public class VnfExtCpInfo {
 	 *
 	 * @return cpdId
 	 **/
-	@Schema(required = true, description = "Identifier of the external CPD, VnfExtCpd, in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the external CPD, VnfExtCpd, in the VNFD. ")
 	@NotNull
 
 	public String getCpdId() {

@@ -31,6 +31,7 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.InstantiationStateEnum;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfInstance;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -110,7 +111,7 @@ public class NsInstance {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of the NS instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the NS instance. ")
 	@Nonnull
 
 	public String getId() {
@@ -131,7 +132,7 @@ public class NsInstance {
 	 *
 	 * @return nsInstanceName
 	 **/
-	@Schema(required = true, description = "Human readable name of the NS instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable name of the NS instance. ")
 	@Nonnull
 
 	public String getNsInstanceName() {
@@ -152,7 +153,7 @@ public class NsInstance {
 	 *
 	 * @return nsInstanceDescription
 	 **/
-	@Schema(required = true, description = "Human readable description of the NS instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable description of the NS instance. ")
 	@Nonnull
 
 	public String getNsInstanceDescription() {
@@ -173,7 +174,7 @@ public class NsInstance {
 	 *
 	 * @return nsdId
 	 **/
-	@Schema(required = true, description = "Identifier of the NSD on which the NS instance is based. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the NSD on which the NS instance is based. ")
 	@Nonnull
 
 	public String getNsdId() {
@@ -194,7 +195,7 @@ public class NsInstance {
 	 *
 	 * @return nsdInfoId
 	 **/
-	@Schema(required = true, description = "Identifier of the NSD information object on which the NS instance is based. This identifier has been allocated by the NFVO. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the NSD information object on which the NS instance is based. This identifier has been allocated by the NFVO. ")
 	@Nonnull
 
 	public UUID getNsdInfoId() {
@@ -413,7 +414,7 @@ public class NsInstance {
 	 *
 	 * @return nsState
 	 **/
-	@Schema(required = true, description = "The state of the NS instance. Permitted values: NOT_INSTANTIATED: The NS instance is terminated or not instantiated. INSTANTIATED: The NS instance is instantiated. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The state of the NS instance. Permitted values: NOT_INSTANTIATED: The NS instance is terminated or not instantiated. INSTANTIATED: The NS instance is instantiated. ")
 	@Nonnull
 
 	public InstantiationStateEnum getNsState() {

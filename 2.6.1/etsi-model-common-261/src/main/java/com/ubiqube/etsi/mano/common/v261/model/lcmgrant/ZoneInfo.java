@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -56,7 +57,7 @@ public class ZoneInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "The identifier of this ZoneInfo instance, for the purpose of referencing it from other structures in the \"Grant\" structure. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The identifier of this ZoneInfo instance, for the purpose of referencing it from other structures in the \"Grant\" structure. ")
 	@NotNull
 
 	public String getId() {
@@ -78,7 +79,7 @@ public class ZoneInfo {
 	 *
 	 * @return zoneId
 	 **/
-	@Schema(required = true, description = "The identifier of the resource zone, as managed by the resource management layer (typically, the VIM). ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The identifier of the resource zone, as managed by the resource management layer (typically, the VIM). ")
 	@NotNull
 
 	public String getZoneId() {

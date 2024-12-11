@@ -29,6 +29,7 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -111,7 +112,7 @@ public class Grant {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of the grant. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the grant. ")
 	@NotNull
 
 	public String getId() {
@@ -132,7 +133,7 @@ public class Grant {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the related VNF instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the related VNF instance. ")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -153,7 +154,7 @@ public class Grant {
 	 *
 	 * @return vnfLcmOpOccId
 	 **/
-	@Schema(required = true, description = "Identifier of the related VNF lifecycle management operation occurrence. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the related VNF lifecycle management operation occurrence. ")
 	@NotNull
 
 	public String getVnfLcmOpOccId() {
@@ -600,7 +601,7 @@ public class Grant {
 	 *
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

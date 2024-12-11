@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -76,7 +77,7 @@ public class PnfdOnBoardingFailureNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	public String getId() {
@@ -98,7 +99,7 @@ public class PnfdOnBoardingFailureNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"PnfdOnboardingFailureNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"PnfdOnboardingFailureNotification\" for this notification type. ")
 	@Nonnull
 
 	public String getNotificationType() {
@@ -119,7 +120,7 @@ public class PnfdOnBoardingFailureNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	public String getSubscriptionId() {
@@ -140,7 +141,7 @@ public class PnfdOnBoardingFailureNotification {
 	 *
 	 * @return timeStamp
 	 **/
-	@Schema(required = true, description = "Date-time of the generation of the notification. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time of the generation of the notification. ")
 	@Nonnull
 
 	@Valid
@@ -163,7 +164,7 @@ public class PnfdOnBoardingFailureNotification {
 	 *
 	 * @return pnfdInfoId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	public String getPnfdInfoId() {
@@ -205,7 +206,7 @@ public class PnfdOnBoardingFailureNotification {
 	 *
 	 * @return onboardingFailureDetails
 	 **/
-	@Schema(required = true, description = "Failure details of current onboarding procedure. See clause 6.3 of ETSI GS NFV-SOL 013 for the details of \"ProblemDetails\" structure. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Failure details of current onboarding procedure. See clause 6.3 of ETSI GS NFV-SOL 013 for the details of \"ProblemDetails\" structure. ")
 	@Nonnull
 
 	@Valid
@@ -228,7 +229,7 @@ public class PnfdOnBoardingFailureNotification {
 	 *
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

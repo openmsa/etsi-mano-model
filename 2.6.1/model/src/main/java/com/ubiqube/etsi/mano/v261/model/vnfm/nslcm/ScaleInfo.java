@@ -33,6 +33,7 @@ import jakarta.annotation.Nonnull;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * ScaleInfo
@@ -56,7 +57,7 @@ public class ScaleInfo {
 	 * @return aspectId
 	 **/
 	@JsonProperty("aspectId")
-	@Schema(required = true, description = "Identifier of the scaling aspect. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the scaling aspect. ")
 	@Nonnull
 	public String getAspectId() {
 		return aspectId;
@@ -77,7 +78,7 @@ public class ScaleInfo {
 	 * @return scaleLevel
 	 **/
 	@JsonProperty("scaleLevel")
-	@Schema(required = true, description = "Indicates the scale level. The minimum value shall be 0 and the maximum value shall be <= maxScaleLevel as described in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the scale level. The minimum value shall be 0 and the maximum value shall be <= maxScaleLevel as described in the VNFD. ")
 	@Nonnull
 	public Integer getScaleLevel() {
 		return scaleLevel;

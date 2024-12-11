@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 import jakarta.validation.Valid;
@@ -29,13 +30,13 @@ import jakarta.annotation.Nonnull;
 @Schema(description="This type represents a request to create a threshold. ")
 public class ThresholdsCreateThresholdRequest  {
   
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
  /**
    * An identifier with the intention of being globally unique. 
   **/
   private String objectInstanceId = null;
 
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
   @Valid
   private ThresholdsThresholdCriteria criteria = null;
  /**

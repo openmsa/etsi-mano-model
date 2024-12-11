@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v261.model.vnfm.faultmngt.AlarmLinks;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
@@ -56,7 +57,7 @@ public class FmNsSubscription {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	public String getId() {
@@ -98,7 +99,7 @@ public class FmNsSubscription {
 	 *
 	 * @return callbackUri
 	 **/
-	@Schema(required = true, description = "The URI of the endpoint to send the notification to. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The URI of the endpoint to send the notification to. ")
 	@Nonnull
 
 	public String getCallbackUri() {
@@ -119,7 +120,7 @@ public class FmNsSubscription {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

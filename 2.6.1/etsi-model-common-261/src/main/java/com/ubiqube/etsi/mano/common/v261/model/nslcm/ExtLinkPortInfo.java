@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -56,7 +57,7 @@ public class ExtLinkPortInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of this link port as provided by the entity that has created the link port. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this link port as provided by the entity that has created the link port. ")
 	@NotNull
 
 	public String getId() {
@@ -77,7 +78,7 @@ public class ExtLinkPortInfo {
 	 *
 	 * @return resourceHandle
 	 **/
-	@Schema(required = true, description = "Reference to the virtualised resource realizing this link port. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the virtualised resource realizing this link port. ")
 	@NotNull
 
 	@Valid

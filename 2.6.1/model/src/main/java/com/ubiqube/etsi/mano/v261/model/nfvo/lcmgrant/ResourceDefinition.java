@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
@@ -99,7 +100,7 @@ public class ResourceDefinition {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of this \"ResourceDefinition\" structure, unique at least within the scope of the \"GrantRequest\" structure. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this \"ResourceDefinition\" structure, unique at least within the scope of the \"GrantRequest\" structure. ")
 	@Nonnull
 
 	public String getId() {
@@ -121,7 +122,7 @@ public class ResourceDefinition {
 	 *
 	 * @return type
 	 **/
-	@Schema(required = true, description = "Type of the resource definition referenced. Permitted values: * COMPUTE * VL * STORAGE * LINKPORT ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the resource definition referenced. Permitted values: * COMPUTE * VL * STORAGE * LINKPORT ")
 	@Nonnull
 
 	public TypeEnum getType() {

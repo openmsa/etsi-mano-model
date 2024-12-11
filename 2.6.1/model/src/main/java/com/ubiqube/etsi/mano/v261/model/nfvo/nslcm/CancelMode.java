@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.CancelModeType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -52,7 +53,7 @@ public class CancelMode {
 	 * 
 	 * @return cancelMode
 	 **/
-	@Schema(required = true, description = "Cancellation mode to apply. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Cancellation mode to apply. ")
 	@Nonnull
 
 	@Valid

@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * CreateNsRequest
@@ -51,7 +52,7 @@ public class CreateNsRequest {
 	 *
 	 * @return nsdId
 	 **/
-	@Schema(required = true, description = "Identifier of the NSD that defines the NS instance to be created. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the NSD that defines the NS instance to be created. ")
 	public String getNsdId() {
 		return nsdId;
 	}
@@ -70,7 +71,7 @@ public class CreateNsRequest {
 	 *
 	 * @return nsName
 	 **/
-	@Schema(required = true, description = "Human-readable name of the NS instance to be created. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the NS instance to be created. ")
 	@Nonnull
 
 	public String getNsName() {
@@ -91,7 +92,7 @@ public class CreateNsRequest {
 	 *
 	 * @return nsDescription
 	 **/
-	@Schema(required = true, description = "Human-readable description of the NS instance to be created. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable description of the NS instance to be created. ")
 	@Nonnull
 
 	public String getNsDescription() {

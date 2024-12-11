@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -140,7 +141,7 @@ public class AffectedPnf {
 	 * 
 	 * @return pnfId
 	 **/
-	@Schema(required = true, description = "Identifier of the affected PNF. This identifier is allocated by the OSS/BSS. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the affected PNF. This identifier is allocated by the OSS/BSS. ")
 	@Nonnull
 
 	public String getPnfId() {
@@ -161,7 +162,7 @@ public class AffectedPnf {
 	 * 
 	 * @return pnfdId
 	 **/
-	@Schema(required = true, description = "Identifier of the PNFD on which the PNF is based. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the PNFD on which the PNF is based. ")
 	@Nonnull
 
 	public String getPnfdId() {
@@ -182,7 +183,7 @@ public class AffectedPnf {
 	 * 
 	 * @return pnfProfileId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF profile of the NSD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF profile of the NSD. ")
 	@Nonnull
 
 	public String getPnfProfileId() {
@@ -228,7 +229,7 @@ public class AffectedPnf {
 	 * 
 	 * @return cpInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the CP in the scope of the PNF. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the CP in the scope of the PNF. ")
 	@Nonnull
 
 	public List<String> getCpInstanceId() {

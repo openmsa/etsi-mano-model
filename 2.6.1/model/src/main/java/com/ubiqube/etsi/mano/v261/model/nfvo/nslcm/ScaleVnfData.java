@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -99,7 +100,7 @@ public class ScaleVnfData {
 	 * 
 	 * @return vnfInstanceid
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF instance being scaled. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF instance being scaled. ")
 	@Nonnull
 
 	public String getVnfInstanceid() {
@@ -123,7 +124,7 @@ public class ScaleVnfData {
 	 * 
 	 * @return scaleVnfType
 	 **/
-	@Schema(required = true, description = "Type of the scale VNF operation requested. Allowed values are: - SCALE_OUT - SCALE_IN - SCALE_TO_INSTANTIATION_LEVEL - SCALE_TO_SCALE_LEVEL(S) The set of types actually supported depends on the capabilities of the VNF being managed. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the scale VNF operation requested. Allowed values are: - SCALE_OUT - SCALE_IN - SCALE_TO_INSTANTIATION_LEVEL - SCALE_TO_SCALE_LEVEL(S) The set of types actually supported depends on the capabilities of the VNF being managed. ")
 	@Nonnull
 
 	public ScaleVnfTypeEnum getScaleVnfType() {

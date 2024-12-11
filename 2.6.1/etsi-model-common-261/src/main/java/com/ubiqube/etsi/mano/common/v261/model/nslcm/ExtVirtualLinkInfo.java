@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * ExtVirtualLinkInfo
@@ -62,7 +63,7 @@ public class ExtVirtualLinkInfo {
 	 * @return id
 	 **/
 	@JsonProperty("id")
-	@Schema(required = true, description = "Identifier of the external VL and the related external VL information instance. The identifier is assigned by the NFV-MANO entity that manages this VL instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the external VL and the related external VL information instance. The identifier is assigned by the NFV-MANO entity that manages this VL instance. ")
 	@NotNull
 	public String getId() {
 		return id;
@@ -83,7 +84,7 @@ public class ExtVirtualLinkInfo {
 	 * @return resourceHandle
 	 **/
 	@JsonProperty("resourceHandle")
-	@Schema(required = true, description = "Reference to the resource realizing this VL. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the resource realizing this VL. ")
 	@NotNull
 	public ResourceHandle getResourceHandle() {
 		return resourceHandle;

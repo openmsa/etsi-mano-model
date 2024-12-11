@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -233,7 +234,7 @@ public class AffinityOrAntiAffinityRule {
 	 * 
 	 * @return affinityOrAntiAffiinty
 	 **/
-	@Schema(required = true, description = "The type of the constraint. Permitted values: AFFINITY ANTI_AFFINITY. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of the constraint. Permitted values: AFFINITY ANTI_AFFINITY. ")
 	@Nonnull
 
 	public AffinityOrAntiAffiintyEnum getAffinityOrAntiAffiinty() {
@@ -255,7 +256,7 @@ public class AffinityOrAntiAffinityRule {
 	 * 
 	 * @return scope
 	 **/
-	@Schema(required = true, description = "Specifies the scope of the rule where the placement constraint applies. Permitted values: NFVI_POP ZONE ZONE_GROUP NFVI_NODE. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Specifies the scope of the rule where the placement constraint applies. Permitted values: NFVI_POP ZONE ZONE_GROUP NFVI_NODE. ")
 	@Nonnull
 
 	public ScopeEnum getScope() {

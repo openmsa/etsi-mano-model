@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 import jakarta.annotation.Nonnull;
@@ -28,7 +29,7 @@ import jakarta.annotation.Nonnull;
 @Schema(description="This type represents a link to a resource. ")
 public class PmJobsPmJobReportsLinksSelf  {
   
-  @Schema(required = true, description = "URI of the referenced resource. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "URI of the referenced resource. ")
  /**
    * URI of the referenced resource. 
   **/

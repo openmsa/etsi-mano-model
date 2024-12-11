@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -109,7 +110,7 @@ public class VimComputeResourceFlavour {
 	 *
 	 * @return vnfdVirtualComputeDescId
 	 **/
-	@Schema(required = true, description = "Identifier which references the virtual compute descriptor in the VNFD that maps to this flavour. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier which references the virtual compute descriptor in the VNFD that maps to this flavour. ")
 	@NotNull
 
 	public String getVnfdVirtualComputeDescId() {
@@ -131,7 +132,7 @@ public class VimComputeResourceFlavour {
 	 *
 	 * @return vimFlavourId
 	 **/
-	@Schema(required = true, description = "Identifier of the compute resource flavour in the resource management layer (i.e. VIM). ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the compute resource flavour in the resource management layer (i.e. VIM). ")
 	@NotNull
 
 	public String getVimFlavourId() {

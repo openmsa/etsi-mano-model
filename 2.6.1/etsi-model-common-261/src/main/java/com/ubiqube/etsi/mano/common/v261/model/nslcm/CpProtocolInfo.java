@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -85,7 +86,7 @@ public class CpProtocolInfo {
 	 *
 	 * @return layerProtocol
 	 **/
-	@Schema(required = true, description = "The identifier of layer(s) and protocol(s) associated to the network address information. Permitted values: IP_OVER_ETHERNET See note. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The identifier of layer(s) and protocol(s) associated to the network address information. Permitted values: IP_OVER_ETHERNET See note. ")
 	@NotNull
 
 	public LayerProtocolEnum getLayerProtocol() {
@@ -108,7 +109,7 @@ public class CpProtocolInfo {
 	 *
 	 * @return ipOverEthernet
 	 **/
-	@Schema(required = true, description = "IP addresses over Ethernet to assign to the CP or SAP instance. Shall be present if layerProtocol is equal to \" IP_OVER_ETHERNET\", and shall be absent otherwise. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "IP addresses over Ethernet to assign to the CP or SAP instance. Shall be present if layerProtocol is equal to \" IP_OVER_ETHERNET\", and shall be absent otherwise. ")
 	@NotNull
 
 	@Valid

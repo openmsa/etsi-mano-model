@@ -27,6 +27,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * ApiVersionInformationApiVersions
@@ -52,7 +53,7 @@ public class ApiVersionInformationApiVersions {
 	 *
 	 * @return version
 	 **/
-	@Schema(required = true, description = "Identifies a supported version. The value of the version attribute shall be a version identifier as specified in clause 4.6.1. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifies a supported version. The value of the version attribute shall be a version identifier as specified in clause 4.6.1. ")
 	@Nonnull
 
 	public String getVersion() {

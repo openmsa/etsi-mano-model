@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -50,7 +51,7 @@ public class Checksum {
 	 *
 	 * @return algorithm
 	 **/
-	@Schema(required = true, description = "Name of the algorithm used to generate the checksum, as defined in ETSI GS NFV-SOL 004 [5]. For example, SHA-256, SHA-512. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the algorithm used to generate the checksum, as defined in ETSI GS NFV-SOL 004 [5]. For example, SHA-256, SHA-512. ")
 	@NotNull
 
 	public String getAlgorithm() {
@@ -71,7 +72,7 @@ public class Checksum {
 	 *
 	 * @return hash
 	 **/
-	@Schema(required = true, description = "The hexadecimal value of the checksum. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The hexadecimal value of the checksum. ")
 	@NotNull
 
 	public String getHash() {

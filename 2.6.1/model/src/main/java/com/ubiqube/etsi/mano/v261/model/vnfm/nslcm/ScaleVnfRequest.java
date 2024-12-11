@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * ScaleVnfRequest
@@ -97,7 +98,7 @@ public class ScaleVnfRequest {
 	 * @return type
 	 **/
 	@JsonProperty("type")
-	@Schema(required = true, description = "Indicates the type of the scale operation requested. Permitted values: * SCALE_OUT: adding additional VNFC instances to the VNF to increase   capacity * SCALE_IN: removing VNFC instances from the VNF in order to release   unused capacity. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the type of the scale operation requested. Permitted values: * SCALE_OUT: adding additional VNFC instances to the VNF to increase   capacity * SCALE_IN: removing VNFC instances from the VNF in order to release   unused capacity. ")
 	@Nonnull
 	public TypeEnum getType() {
 		return type;
@@ -118,7 +119,7 @@ public class ScaleVnfRequest {
 	 * @return aspectId
 	 **/
 	@JsonProperty("aspectId")
-	@Schema(required = true, description = "Identifier of the scaling aspect. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the scaling aspect. ")
 	@Nonnull
 	public String getAspectId() {
 		return aspectId;

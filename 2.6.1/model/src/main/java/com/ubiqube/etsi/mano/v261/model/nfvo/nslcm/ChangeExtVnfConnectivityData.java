@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -69,7 +70,7 @@ public class ChangeExtVnfConnectivityData {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF instance. ")
 	@Nonnull
 
 	public String getVnfInstanceId() {
@@ -95,7 +96,7 @@ public class ChangeExtVnfConnectivityData {
 	 *
 	 * @return extVirtualLink
 	 **/
-	@Schema(required = true, description = "Information about external VLs to change (e.g. connect the VNF to). ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about external VLs to change (e.g. connect the VNF to). ")
 	@Nonnull
 
 	@Valid

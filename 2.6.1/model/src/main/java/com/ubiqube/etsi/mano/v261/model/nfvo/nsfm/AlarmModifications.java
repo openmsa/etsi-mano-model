@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -85,7 +86,7 @@ public class AlarmModifications {
 	 *
 	 * @return ackState
 	 **/
-	@Schema(required = true, description = "New value of the \"ackState\" attribute in \"Alarm\". Permitted values: - ACKNOWLEDGED ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "New value of the \"ackState\" attribute in \"Alarm\". Permitted values: - ACKNOWLEDGED ")
 	@Nonnull
 
 	public AckStateEnum getAckState() {

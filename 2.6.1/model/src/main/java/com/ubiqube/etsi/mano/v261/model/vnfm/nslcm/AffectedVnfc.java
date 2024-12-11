@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -123,7 +124,7 @@ public class AffectedVnfc {
 	 * @return id
 	 **/
 	@JsonProperty("id")
-	@Schema(required = true, description = "Identifier of the Vnfc instance, identifying the applicable \"vnfcResourceInfo\" entry in the \"VnfInstance\" data type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the Vnfc instance, identifying the applicable \"vnfcResourceInfo\" entry in the \"VnfInstance\" data type. ")
 	@Nonnull
 	public String getId() {
 		return id;
@@ -144,7 +145,7 @@ public class AffectedVnfc {
 	 * @return vduId
 	 **/
 	@JsonProperty("vduId")
-	@Schema(required = true, description = "Identifier of the related VDU in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the related VDU in the VNFD. ")
 	@Nonnull
 	public String getVduId() {
 		return vduId;
@@ -167,7 +168,7 @@ public class AffectedVnfc {
 	 * @return changeType
 	 **/
 	@JsonProperty("changeType")
-	@Schema(required = true, description = "Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVnfc structure exists as long as the temporary resource exists. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the type of change. Permitted values: * ADDED * REMOVED * MODIFIED * TEMPORARY For a temporary resource, an AffectedVnfc structure exists as long as the temporary resource exists. ")
 	@Nonnull
 	public ChangeTypeEnum getChangeType() {
 		return changeType;
@@ -190,7 +191,7 @@ public class AffectedVnfc {
 	 * @return computeResource
 	 **/
 	@JsonProperty("computeResource")
-	@Schema(required = true, description = "Reference to the VirtualCompute resource. Detailed information is (for new and modified resources) or has been (for removed resources) available from the VIM. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the VirtualCompute resource. Detailed information is (for new and modified resources) or has been (for removed resources) available from the VIM. ")
 	@Nonnull
 	public ResourceHandle getComputeResource() {
 		return computeResource;

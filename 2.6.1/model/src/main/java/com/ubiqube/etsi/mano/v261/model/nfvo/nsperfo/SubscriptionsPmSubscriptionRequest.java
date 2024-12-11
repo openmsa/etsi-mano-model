@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.SubscriptionAuthentication;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 import jakarta.validation.Valid;
@@ -35,7 +36,7 @@ public class SubscriptionsPmSubscriptionRequest  {
   @Valid
   private SubscriptionsPmSubscriptionFilter filter = null;
 
-  @Schema(required = true, description = "String formatted according to IETF RFC 3986. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "String formatted according to IETF RFC 3986. ")
  /**
    * String formatted according to IETF RFC 3986. 
   **/

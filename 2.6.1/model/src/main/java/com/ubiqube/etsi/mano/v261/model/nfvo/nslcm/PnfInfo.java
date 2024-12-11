@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -65,7 +66,7 @@ public class PnfInfo {
 	 * 
 	 * @return pnfId
 	 **/
-	@Schema(required = true, description = "Identifier of the PNF. This identifier is allocated by the OSS/BSS. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the PNF. This identifier is allocated by the OSS/BSS. ")
 	@Nonnull
 
 	public String getPnfId() {
@@ -106,7 +107,7 @@ public class PnfInfo {
 	 * 
 	 * @return pnfdId
 	 **/
-	@Schema(required = true, description = "Identifier of the PNFD on which the PNF is based. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the PNFD on which the PNF is based. ")
 	@Nonnull
 
 	public String getPnfdId() {
@@ -128,7 +129,7 @@ public class PnfInfo {
 	 * 
 	 * @return pnfdInfoId
 	 **/
-	@Schema(required = true, description = "Identifier of the PNFD information onject related to this PNF. This identifier is allocated by the NFVO ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the PNFD information onject related to this PNF. This identifier is allocated by the NFVO ")
 	@Nonnull
 
 	public String getPnfdInfoId() {
@@ -149,7 +150,7 @@ public class PnfInfo {
 	 * 
 	 * @return pnfProfileId
 	 **/
-	@Schema(required = true, description = "Identifier of the related PnfProfile in the NSD on which the PNF is based. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the related PnfProfile in the NSD on which the PNF is based. ")
 	@Nonnull
 
 	public String getPnfProfileId() {

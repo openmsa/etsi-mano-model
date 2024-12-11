@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v261.model.vnfm.VnfInstanceSubscriptionFilterVnfProducts;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
@@ -52,7 +53,7 @@ public class VnfInstanceSubscriptionFilterVnfProductsFromProviders {
 	 *
 	 * @return vnfProvider
 	 **/
-	@Schema(required = true, description = "Name of the VNF provider to match. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the VNF provider to match. ")
 	@Nonnull
 
 	public String getVnfProvider() {

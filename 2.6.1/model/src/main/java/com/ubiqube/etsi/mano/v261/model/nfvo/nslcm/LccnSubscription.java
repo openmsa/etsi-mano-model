@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -60,7 +61,7 @@ public class LccnSubscription {
 	 * 
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of this subscription resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this subscription resource. ")
 	@Nonnull
 
 	public String getId() {
@@ -105,7 +106,7 @@ public class LccnSubscription {
 	 * 
 	 * @return callbackUri
 	 **/
-	@Schema(required = true, description = "The URI of the endpoint to send the notification to. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The URI of the endpoint to send the notification to. ")
 	@Nonnull
 
 	public String getCallbackUri() {
@@ -126,7 +127,7 @@ public class LccnSubscription {
 	 * 
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.v261.model.nfvo.nsperfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 import jakarta.validation.Valid;
@@ -29,7 +30,7 @@ import jakarta.annotation.Nonnull;
 @Schema(description="This type represents a subscription. ")
 public class SubscriptionsPmSubscription  {
   
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
  /**
    * An identifier with the intention of being globally unique. 
   **/
@@ -39,13 +40,13 @@ public class SubscriptionsPmSubscription  {
   @Valid
   private SubscriptionsPmSubscriptionFilter filter = null;
 
-  @Schema(required = true, description = "String formatted according to IETF RFC 3986. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "String formatted according to IETF RFC 3986. ")
  /**
    * String formatted according to IETF RFC 3986. 
   **/
   private String callbackUri = null;
 
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
   @Valid
   private SubscriptionsPmSubscriptionLinks links = null;
  /**

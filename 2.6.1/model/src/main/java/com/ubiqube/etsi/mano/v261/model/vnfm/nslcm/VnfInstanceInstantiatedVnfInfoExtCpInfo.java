@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.CpProtocolInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * VnfInstanceInstantiatedVnfInfoExtCpInfo
@@ -66,7 +67,7 @@ public class VnfInstanceInstantiatedVnfInfoExtCpInfo {
 	 * @return id
 	 **/
 	@JsonProperty("id")
-	@Schema(required = true, description = "Identifier of the external CP instance and the related information instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the external CP instance and the related information instance. ")
 	@Nonnull
 	public String getId() {
 		return id;
@@ -87,7 +88,7 @@ public class VnfInstanceInstantiatedVnfInfoExtCpInfo {
 	 * @return cpdId
 	 **/
 	@JsonProperty("cpdId")
-	@Schema(required = true, description = "Identifier of the external CPD, VnfExtCpd, in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the external CPD, VnfExtCpd, in the VNFD. ")
 	@Nonnull
 	public String getCpdId() {
 		return cpdId;

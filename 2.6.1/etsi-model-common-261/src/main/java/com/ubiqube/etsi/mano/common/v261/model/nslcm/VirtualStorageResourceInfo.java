@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -70,7 +71,7 @@ public class VirtualStorageResourceInfo {
 	 * @return id
 	 **/
 	@JsonProperty("id")
-	@Schema(required = true, description = "Identifier of this VirtualStorageResourceInfo instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this VirtualStorageResourceInfo instance. ")
 	@NotNull
 	public String getId() {
 		return id;
@@ -91,7 +92,7 @@ public class VirtualStorageResourceInfo {
 	 * @return virtualStorageDescId
 	 **/
 	@JsonProperty("virtualStorageDescId")
-	@Schema(required = true, description = "Identifier of the VirtualStorageDesc in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VirtualStorageDesc in the VNFD. ")
 	@NotNull
 	public String getVirtualStorageDescId() {
 		return virtualStorageDescId;
@@ -112,7 +113,7 @@ public class VirtualStorageResourceInfo {
 	 * @return storageResource
 	 **/
 	@JsonProperty("storageResource")
-	@Schema(required = true, description = "Reference to the VirtualStorage resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the VirtualStorage resource. ")
 	@NotNull
 	public ResourceHandle getStorageResource() {
 		return storageResource;

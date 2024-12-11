@@ -49,6 +49,7 @@ import com.ubiqube.etsi.mano.model.ProblemDetails;
 import com.ubiqube.etsi.mano.v261.service.VnfLcmOpOcc261Deserializer;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents a VNF lifecycle management operation occurrence.
@@ -116,7 +117,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of this VNF lifecycle management operation occurrence. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this VNF lifecycle management operation occurrence. ")
 	@Nonnull
 	public String getId() {
 		return id;
@@ -136,7 +137,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return operationState
 	 **/
-	@Schema(required = true, description = "The state of the LCM operation. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The state of the LCM operation. ")
 	@Nonnull
 	@Valid
 	public LcmOperationStateType getOperationState() {
@@ -157,7 +158,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return stateEnteredTime
 	 **/
-	@Schema(required = true, description = "Date-time when the current state was entered. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time when the current state was entered. ")
 	@Nonnull
 	public OffsetDateTime getStateEnteredTime() {
 		return stateEnteredTime;
@@ -177,7 +178,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return startTime
 	 **/
-	@Schema(required = true, description = "Date-time of the start of the operation. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time of the start of the operation. ")
 	@Nonnull
 	public OffsetDateTime getStartTime() {
 		return startTime;
@@ -197,7 +198,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF instance to which the operation applies ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF instance to which the operation applies ")
 	@Nonnull
 	public String getVnfInstanceId() {
 		return vnfInstanceId;
@@ -238,7 +239,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return operation
 	 **/
-	@Schema(required = true, description = "Type of the actual LCM operation represented by this VNF LCM operation occurrence. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the actual LCM operation represented by this VNF LCM operation occurrence. ")
 	@Nonnull
 	@Valid
 	public LcmOperationType getOperation() {
@@ -262,7 +263,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return isAutomaticInvocation
 	 **/
-	@Schema(required = true, description = "Set to true if this VNF LCM operation occurrence has been triggered by an automated procedure inside the VNFM (i.e. ScaleVnf / ScaleVnfToLevel triggered by auto-scale, or HealVnf triggered by auto-heal). Set to false otherwise. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Set to true if this VNF LCM operation occurrence has been triggered by an automated procedure inside the VNFM (i.e. ScaleVnf / ScaleVnfToLevel triggered by auto-scale, or HealVnf triggered by auto-heal). Set to false otherwise. ")
 	@Nonnull
 	public Boolean isIsAutomaticInvocation() {
 		return isAutomaticInvocation;
@@ -289,7 +290,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return operationParams
 	 **/
-	@Schema(required = true, description = "Input parameters of the LCM operation. This attribute shall be formatted according to the request data type of the related LCM operation. The following mapping between operationType and the data type of this attribute shall apply: * INSTANTIATE: InstantiateVnfRequest * SCALE: ScaleVnfRequest * SCALE_TO_LEVEL: ScaleVnfToLevelRequest * CHANGE_FLAVOUR: ChangeVnfFlavourRequest * OPERATE: OperateVnfRequest * HEAL: HealVnfRequest * CHANGE_EXT_CONN: ChangeExtVnfConnectivityRequest * TERMINATE: TerminateVnfRequest * MODIFY_INFO: VnfInfoModificationRequest ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Input parameters of the LCM operation. This attribute shall be formatted according to the request data type of the related LCM operation. The following mapping between operationType and the data type of this attribute shall apply: * INSTANTIATE: InstantiateVnfRequest * SCALE: ScaleVnfRequest * SCALE_TO_LEVEL: ScaleVnfToLevelRequest * CHANGE_FLAVOUR: ChangeVnfFlavourRequest * OPERATE: OperateVnfRequest * HEAL: HealVnfRequest * CHANGE_EXT_CONN: ChangeExtVnfConnectivityRequest * TERMINATE: TerminateVnfRequest * MODIFY_INFO: VnfInfoModificationRequest ")
 	@Nonnull
 	public Object getOperationParams() {
 		return operationParams;
@@ -311,7 +312,7 @@ public class VnfLcmOpOcc {
 	 *
 	 * @return isCancelPending
 	 **/
-	@Schema(required = true, description = "If the VNF LCM operation occurrence is in \"STARTING\", \"PROCESSING\" or \"ROLLING_BACK\" state and the operation is being cancelled, this attribute shall be set to true. Otherwise, it shall be set to false. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "If the VNF LCM operation occurrence is in \"STARTING\", \"PROCESSING\" or \"ROLLING_BACK\" state and the operation is being cancelled, this attribute shall be set to true. Otherwise, it shall be set to false. ")
 	@Nonnull
 	public Boolean isIsCancelPending() {
 		return isCancelPending;

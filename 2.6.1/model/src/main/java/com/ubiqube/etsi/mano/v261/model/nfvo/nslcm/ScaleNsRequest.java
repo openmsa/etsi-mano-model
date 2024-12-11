@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -97,7 +98,7 @@ public class ScaleNsRequest {
 	 * 
 	 * @return scaleType
 	 **/
-	@Schema(required = true, description = "Indicates the type of scaling to be performed. Possible values: - SCALE_NS - SCALE_VNF ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the type of scaling to be performed. Possible values: - SCALE_NS - SCALE_VNF ")
 	@Nonnull
 
 	public ScaleTypeEnum getScaleType() {

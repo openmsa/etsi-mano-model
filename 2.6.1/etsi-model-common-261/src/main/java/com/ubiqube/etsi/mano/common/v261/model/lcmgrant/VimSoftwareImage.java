@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -105,7 +106,7 @@ public class VimSoftwareImage {
 	 *
 	 * @return vnfdSoftwareImageId
 	 **/
-	@Schema(required = true, description = "Identifier which references the software image descriptor in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier which references the software image descriptor in the VNFD. ")
 	@NotNull
 
 	public String getVnfdSoftwareImageId() {
@@ -126,7 +127,7 @@ public class VimSoftwareImage {
 	 *
 	 * @return vimSoftwareImageId
 	 **/
-	@Schema(required = true, description = "Identifier of the software image in the resource management layer (i.e. VIM). ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the software image in the resource management layer (i.e. VIM). ")
 	@NotNull
 
 	public String getVimSoftwareImageId() {

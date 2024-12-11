@@ -27,6 +27,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -58,7 +59,7 @@ public class ScaleByStepData {
 	 *
 	 * @return aspectId
 	 **/
-	@Schema(required = true, description = "Identifier of (reference to) the aspect of the VNF that is requested to be scaled, as declared in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of (reference to) the aspect of the VNF that is requested to be scaled, as declared in the VNFD. ")
 	@Nonnull
 
 	public String getAspectId() {

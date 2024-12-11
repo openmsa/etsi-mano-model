@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * PkgmNotificationsFilterVersions
@@ -51,7 +52,7 @@ public class PkgmNotificationsFilterVersions {
 	 *
 	 * @return vnfSoftwareVersion
 	 **/
-	@Schema(required = true, description = "VNF software version to match ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "VNF software version to match ")
 	@NotNull
 
 	public String getVnfSoftwareVersion() {

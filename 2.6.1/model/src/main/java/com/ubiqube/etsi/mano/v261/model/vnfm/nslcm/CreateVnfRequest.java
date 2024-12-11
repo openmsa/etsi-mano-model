@@ -31,6 +31,7 @@ package com.ubiqube.etsi.mano.v261.model.vnfm.nslcm;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 
 /**
@@ -60,7 +61,7 @@ public class CreateVnfRequest {
 	 * @return vnfdId
 	 **/
 	@JsonProperty("vnfdId")
-	@Schema(required = true, description = "Identifier that identifies the VNFD which defines the VNF instance to be created. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier that identifies the VNFD which defines the VNF instance to be created. ")
 	@Nonnull
 	public String getVnfdId() {
 		return vnfdId;

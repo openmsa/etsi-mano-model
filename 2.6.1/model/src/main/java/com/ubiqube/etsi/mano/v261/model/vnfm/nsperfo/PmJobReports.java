@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -57,7 +58,7 @@ public class PmJobReports {
 	 * 
 	 * @return href
 	 **/
-	@Schema(required = true, description = "The Uri where the report can be obtained. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The Uri where the report can be obtained. ")
 	@Nonnull
 
 	public String getHref() {
@@ -78,7 +79,7 @@ public class PmJobReports {
 	 * 
 	 * @return readyTime
 	 **/
-	@Schema(required = true, description = "The time when the report was made available. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The time when the report was made available. ")
 	@Nonnull
 
 	public String getReadyTime() {

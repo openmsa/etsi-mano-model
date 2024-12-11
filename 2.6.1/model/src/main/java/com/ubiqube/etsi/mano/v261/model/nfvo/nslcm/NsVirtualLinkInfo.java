@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -67,7 +68,7 @@ public class NsVirtualLinkInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of the VL instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VL instance. ")
 	@Nonnull
 
 	public String getId() {
@@ -88,7 +89,7 @@ public class NsVirtualLinkInfo {
 	 *
 	 * @return nsVirtualLinkDescId
 	 **/
-	@Schema(required = true, description = "Identifier of the VLD in the NSD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VLD in the NSD. ")
 	@Nonnull
 
 	public String getNsVirtualLinkDescId() {
@@ -109,7 +110,7 @@ public class NsVirtualLinkInfo {
 	 *
 	 * @return nsVirtualLinkProfileId
 	 **/
-	@Schema(required = true, description = "Identifier of the VL profile in the NSD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VL profile in the NSD. ")
 	@Nonnull
 
 	public String getNsVirtualLinkProfileId() {

@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -59,7 +60,7 @@ public class MoveVnfInstanceData {
 	 * 
 	 * @return targetNsInstanceId
 	 **/
-	@Schema(required = true, description = "Specify the target NS instance where the VNF instances are moved to. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Specify the target NS instance where the VNF instances are moved to. ")
 	@Nonnull
 
 	public String getTargetNsInstanceId() {

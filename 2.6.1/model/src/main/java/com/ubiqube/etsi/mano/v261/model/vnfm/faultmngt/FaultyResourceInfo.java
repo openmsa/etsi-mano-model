@@ -25,6 +25,7 @@ import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsfm.FaultyResourceType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
@@ -53,7 +54,7 @@ public class FaultyResourceInfo {
 	 *
 	 * @return faultyResource
 	 **/
-	@Schema(required = true, description = "Information that identifies the faulty resource instance and its managing entity. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information that identifies the faulty resource instance and its managing entity. ")
 	@Nonnull
 
 	@Valid
@@ -76,7 +77,7 @@ public class FaultyResourceInfo {
 	 *
 	 * @return faultyResourceType
 	 **/
-	@Schema(required = true, description = "Type of the faulty resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the faulty resource. ")
 	@Nonnull
 
 	@Valid

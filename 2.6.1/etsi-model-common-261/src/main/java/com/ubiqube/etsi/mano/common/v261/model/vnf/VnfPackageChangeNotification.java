@@ -27,6 +27,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -85,7 +86,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of this notification. If a notification is sent multiple times due to multiple subscriptions, the \"id\" attribute of all these notifications shall have the same value. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this notification. If a notification is sent multiple times due to multiple subscriptions, the \"id\" attribute of all these notifications shall have the same value. ")
 	@NotNull
 
 	public String getId() {
@@ -107,7 +108,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"VnfPackageChangeNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"VnfPackageChangeNotification\" for this notification type. ")
 	@NotNull
 
 	public String getNotificationType() {
@@ -128,7 +129,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "Identifier of the subscription that this notification relates to. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the subscription that this notification relates to. ")
 	@NotNull
 
 	public String getSubscriptionId() {
@@ -149,7 +150,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return timeStamp
 	 **/
-	@Schema(required = true, description = "Date and time of the generation of the notification. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date and time of the generation of the notification. ")
 	@NotNull
 
 	@Valid
@@ -174,7 +175,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return vnfPkgId
 	 **/
-	@Schema(required = true, description = "Identifier of the on-boarded VNF package. This identifier is allocated by the NFVO. Its value is the same as the value of the \"id\" attribute of the related \"Individual VNF package\" resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the on-boarded VNF package. This identifier is allocated by the NFVO. Its value is the same as the value of the \"id\" attribute of the related \"Individual VNF package\" resource. ")
 	@NotNull
 
 	public String getVnfPkgId() {
@@ -197,7 +198,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNFD contained in the VNF package, which also identifies the VNF package. This identifier is allocated by the VNF provider and copied from the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNFD contained in the VNF package, which also identifies the VNF package. This identifier is allocated by the VNF provider and copied from the VNFD. ")
 	@NotNull
 
 	public String getVnfdId() {
@@ -218,7 +219,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return changeType
 	 **/
-	@Schema(required = true, description = "The type of change of the VNF package. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of change of the VNF package. ")
 	@NotNull
 
 	@Valid
@@ -264,7 +265,7 @@ public class VnfPackageChangeNotification {
 	 *
 	 * @return links
 	 **/
-	@Schema(required = true, description = "Links to resources related to this notification. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Links to resources related to this notification. ")
 	@NotNull
 
 	@Valid

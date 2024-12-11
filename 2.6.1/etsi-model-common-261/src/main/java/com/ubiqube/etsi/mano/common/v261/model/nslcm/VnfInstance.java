@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.VimConnectionInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -94,7 +95,7 @@ public class VnfInstance {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF instance. ")
 	@NotNull
 
 	public String getId() {
@@ -157,7 +158,7 @@ public class VnfInstance {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNFD on which the VNF instance is based. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNFD on which the VNF instance is based. ")
 	@NotNull
 
 	public String getVnfdId() {
@@ -178,7 +179,7 @@ public class VnfInstance {
 	 *
 	 * @return vnfProvider
 	 **/
-	@Schema(required = true, description = "Provider of the VNF and the VNFD. The value is copied from the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Provider of the VNF and the VNFD. The value is copied from the VNFD. ")
 	@NotNull
 
 	public String getVnfProvider() {
@@ -199,7 +200,7 @@ public class VnfInstance {
 	 *
 	 * @return vnfProductName
 	 **/
-	@Schema(required = true, description = "Name to identify the VNF Product. The value is copied from the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Name to identify the VNF Product. The value is copied from the VNFD. ")
 	@NotNull
 
 	public String getVnfProductName() {
@@ -220,7 +221,7 @@ public class VnfInstance {
 	 *
 	 * @return vnfSoftwareVersion
 	 **/
-	@Schema(required = true, description = "Software version of the VNF. The value is copied from the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Software version of the VNF. The value is copied from the VNFD. ")
 	@NotNull
 
 	public String getVnfSoftwareVersion() {
@@ -241,7 +242,7 @@ public class VnfInstance {
 	 *
 	 * @return vnfdVersion
 	 **/
-	@Schema(required = true, description = "Identifies the version of the VNFD. The value is copied from the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifies the version of the VNFD. The value is copied from the VNFD. ")
 	@NotNull
 
 	public String getVnfdVersion() {
@@ -264,7 +265,7 @@ public class VnfInstance {
 	 *
 	 * @return vnfPkgId
 	 **/
-	@Schema(required = true, description = "Identifier of information held by the NFVO about the specific VNF package on which the VNF is based. This identifier has been allocated by the NFVO. This attribute can be modified with the PATCH method. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of information held by the NFVO about the specific VNF package on which the VNF is based. This identifier has been allocated by the NFVO. This attribute can be modified with the PATCH method. ")
 	@NotNull
 
 	public UUID getVnfPkgId() {
@@ -351,7 +352,7 @@ public class VnfInstance {
 	 *
 	 * @return instantiationState
 	 **/
-	@Schema(required = true, description = "The instantiation state of the VNF. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The instantiation state of the VNF. ")
 	@NotNull
 
 	public InstantiationStateEnum getInstantiationState() {

@@ -32,6 +32,7 @@ import com.ubiqube.etsi.mano.model.ProblemDetails;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nsd.NsdOnboardingStateType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -99,7 +100,7 @@ public class NsdInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of the on boarded individual NS descriptor resource. This identifier is allocated by the NFVO. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the on boarded individual NS descriptor resource. This identifier is allocated by the NFVO. ")
 	@Nonnull
 
 	public String getId() {
@@ -304,7 +305,7 @@ public class NsdInfo {
 	 *
 	 * @return nsdOnboardingState
 	 **/
-	@Schema(required = true, description = "On boarding state of the individual NS descriptor resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "On boarding state of the individual NS descriptor resource. ")
 	@Nonnull
 
 	@Valid
@@ -349,7 +350,7 @@ public class NsdInfo {
 	 *
 	 * @return nsdOperationalState
 	 **/
-	@Schema(required = true, description = "Operational state of the individual NS descriptor resource. This attribute can be modified with the PATCH method. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Operational state of the individual NS descriptor resource. This attribute can be modified with the PATCH method. ")
 	@Nonnull
 
 	@Valid
@@ -372,7 +373,7 @@ public class NsdInfo {
 	 *
 	 * @return nsdUsageState
 	 **/
-	@Schema(required = true, description = "Usage state of the individual NS descriptor resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Usage state of the individual NS descriptor resource. ")
 	@Nonnull
 
 	@Valid
@@ -417,7 +418,7 @@ public class NsdInfo {
 	 *
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

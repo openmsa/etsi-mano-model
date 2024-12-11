@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -58,7 +59,7 @@ public class Threshold {
 	 * 
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of this threshold resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this threshold resource. ")
 	@Nonnull
 
 	public String getId() {
@@ -79,7 +80,7 @@ public class Threshold {
 	 * 
 	 * @return objectInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF instance associated with the threshold. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF instance associated with the threshold. ")
 	@Nonnull
 
 	public String getObjectInstanceId() {
@@ -100,7 +101,7 @@ public class Threshold {
 	 * 
 	 * @return criteria
 	 **/
-	@Schema(required = true, description = "Criteria that define this threshold. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Criteria that define this threshold. ")
 	@Nonnull
 
 	@Valid
@@ -123,7 +124,7 @@ public class Threshold {
 	 * 
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

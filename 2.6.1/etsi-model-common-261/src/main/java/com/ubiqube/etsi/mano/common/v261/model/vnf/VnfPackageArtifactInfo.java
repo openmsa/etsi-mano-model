@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -60,7 +61,7 @@ public class VnfPackageArtifactInfo {
 	 *
 	 * @return artifactPath
 	 **/
-	@Schema(required = true, description = "Path in the VNF package, which identifies the artifact and also allows to access a copy of the artifact. The value of this attribute shall start with the name of the first segment in the path, i.e. it shall not be prefixed by path separator characters such as \".\" and \"/\". EXAMPLE: foo/bar/run.sh ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Path in the VNF package, which identifies the artifact and also allows to access a copy of the artifact. The value of this attribute shall start with the name of the first segment in the path, i.e. it shall not be prefixed by path separator characters such as \".\" and \"/\". EXAMPLE: foo/bar/run.sh ")
 	@NotNull
 
 	public String getArtifactPath() {
@@ -81,7 +82,7 @@ public class VnfPackageArtifactInfo {
 	 *
 	 * @return checksum
 	 **/
-	@Schema(required = true, description = "Checksum of the artifact file. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Checksum of the artifact file. ")
 	@NotNull
 
 	@Valid

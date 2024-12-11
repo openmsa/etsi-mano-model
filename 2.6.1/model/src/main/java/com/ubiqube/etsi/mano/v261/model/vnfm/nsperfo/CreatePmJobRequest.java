@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -84,7 +85,7 @@ public class CreatePmJobRequest {
 	 * 
 	 * @return criteria
 	 **/
-	@Schema(required = true, description = "Criteria of the collection of performance information. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Criteria of the collection of performance information. ")
 	@Nonnull
 
 	@Valid

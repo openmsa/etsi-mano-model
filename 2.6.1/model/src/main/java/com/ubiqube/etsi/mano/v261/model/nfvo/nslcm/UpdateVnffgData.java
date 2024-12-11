@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -60,7 +61,7 @@ public class UpdateVnffgData {
 	 * 
 	 * @return vnffgInfoId
 	 **/
-	@Schema(required = true, description = "Identifier of an existing VNFFG to be updated for the NS Instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of an existing VNFFG to be updated for the NS Instance. ")
 	@Nonnull
 
 	public String getVnffgInfoId() {

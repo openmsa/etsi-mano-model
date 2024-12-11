@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * ExtManagedVirtualLinkInfo
@@ -65,7 +66,7 @@ public class ExtManagedVirtualLinkInfo {
 	 * @return id
 	 **/
 	@JsonProperty("id")
-	@Schema(required = true, description = "Identifier of the externally-managed internal VL and the related externally-managed VL information instance. The identifier is assigned by the NFV-MANO entity that manages this VL instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the externally-managed internal VL and the related externally-managed VL information instance. The identifier is assigned by the NFV-MANO entity that manages this VL instance. ")
 	@NotNull
 	public String getId() {
 		return id;
@@ -86,7 +87,7 @@ public class ExtManagedVirtualLinkInfo {
 	 * @return vnfVirtualLinkDescId
 	 **/
 	@JsonProperty("vnfVirtualLinkDescId")
-	@Schema(required = true, description = "Identifier of the VNF Virtual Link Descriptor (VLD) in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF Virtual Link Descriptor (VLD) in the VNFD. ")
 	@NotNull
 	public String getVnfVirtualLinkDescId() {
 		return vnfVirtualLinkDescId;

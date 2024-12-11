@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type provides information about added, deleted and modified VNFs. It
@@ -150,7 +151,7 @@ public class AffectedVnf {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF instance.  ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF instance.  ")
 	@Nonnull
 
 	public String getVnfInstanceId() {
@@ -171,7 +172,7 @@ public class AffectedVnf {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNFD of the VNF Instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNFD of the VNF Instance. ")
 	@Nonnull
 
 	public String getVnfdId() {
@@ -192,7 +193,7 @@ public class AffectedVnf {
 	 *
 	 * @return vnfProfileId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF profile of the NSD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF profile of the NSD. ")
 	@Nonnull
 
 	public String getVnfProfileId() {

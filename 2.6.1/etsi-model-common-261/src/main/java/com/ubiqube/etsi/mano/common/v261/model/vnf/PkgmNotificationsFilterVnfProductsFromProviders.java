@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * PkgmNotificationsFilterVnfProductsFromProviders
@@ -67,7 +68,7 @@ public class PkgmNotificationsFilterVnfProductsFromProviders {
 	 *
 	 * @return vnfProvider
 	 **/
-	@Schema(required = true, description = "Name of the VNFprovider to match. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the VNFprovider to match. ")
 	@NotNull
 
 	public String getVnfProvider() {

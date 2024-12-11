@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -52,7 +53,7 @@ public class AlarmListRebuiltNotificationLinks {
 	 *
 	 * @return subscription
 	 **/
-	@Schema(required = true, description = "Link to the related subscription. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Link to the related subscription. ")
 	@Nonnull
 
 	@Valid
@@ -75,7 +76,7 @@ public class AlarmListRebuiltNotificationLinks {
 	 *
 	 * @return alarms
 	 **/
-	@Schema(required = true, description = "Link to the alarm list, i.e. the \"Alarms\" resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Link to the alarm list, i.e. the \"Alarms\" resource. ")
 	@Nonnull
 
 	@Valid

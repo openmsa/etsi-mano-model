@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -127,7 +128,7 @@ public class AffectedVnffg {
 	 * 
 	 * @return vnffgInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNFFG instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNFFG instance. ")
 	@Nonnull
 
 	public String getVnffgInstanceId() {
@@ -148,7 +149,7 @@ public class AffectedVnffg {
 	 * 
 	 * @return vnffgdId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNFFGD of the VNFFG instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNFFGD of the VNFFG instance. ")
 	@Nonnull
 
 	public String getVnffgdId() {

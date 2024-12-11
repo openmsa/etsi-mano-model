@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.CpProtocolData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -63,7 +64,7 @@ public class SapData {
 	 *
 	 * @return sapdId
 	 **/
-	@Schema(required = true, description = "Reference to the SAPD for this SAP. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the SAPD for this SAP. ")
 	@Nonnull
 
 	public String getSapdId() {
@@ -84,7 +85,7 @@ public class SapData {
 	 *
 	 * @return sapName
 	 **/
-	@Schema(required = true, description = "Human readable name for the SAP. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable name for the SAP. ")
 	@Nonnull
 
 	public String getSapName() {
@@ -105,7 +106,7 @@ public class SapData {
 	 *
 	 * @return description
 	 **/
-	@Schema(required = true, description = "Human readable description for the SAP. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable description for the SAP. ")
 	@Nonnull
 
 	public String getDescription() {

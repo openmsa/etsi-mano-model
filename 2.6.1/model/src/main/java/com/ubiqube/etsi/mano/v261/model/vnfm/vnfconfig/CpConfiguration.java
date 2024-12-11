@@ -43,6 +43,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -73,7 +74,7 @@ public class CpConfiguration {
 	 *
 	 * @return cpId
 	 **/
-	@Schema(required = true, description = "Identifier of a CP instance within the namespace of a specific VNF instance or a VNFC instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of a CP instance within the namespace of a specific VNF instance or a VNFC instance. ")
 	@Nonnull
 
 	public String getCpId() {
@@ -94,7 +95,7 @@ public class CpConfiguration {
 	 *
 	 * @return cpdId
 	 **/
-	@Schema(required = true, description = "Identifier of the CPD in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the CPD in the VNFD. ")
 	@Nonnull
 
 	public String getCpdId() {
@@ -120,7 +121,7 @@ public class CpConfiguration {
 	 *
 	 * @return addresses
 	 **/
-	@Schema(required = true, description = "Network address and port assigned to the CP. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Network address and port assigned to the CP. ")
 	@Nonnull
 
 	@Valid

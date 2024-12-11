@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -58,7 +59,7 @@ public class LocationConstraints {
 	 * 
 	 * @return countryCode
 	 **/
-	@Schema(required = true, description = "The two-letter ISO 3166 [29] country code in capital letters. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The two-letter ISO 3166 [29] country code in capital letters. ")
 	@Nonnull
 
 	public String getCountryCode() {

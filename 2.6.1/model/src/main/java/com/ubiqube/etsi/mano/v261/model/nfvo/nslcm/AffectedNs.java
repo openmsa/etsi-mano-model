@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -138,7 +139,7 @@ public class AffectedNs {
 	 * 
 	 * @return nsInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the nested NS instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the nested NS instance. ")
 	@Nonnull
 
 	public String getNsInstanceId() {
@@ -159,7 +160,7 @@ public class AffectedNs {
 	 * 
 	 * @return nsdId
 	 **/
-	@Schema(required = true, description = "Identifier of the NSD of the nested NS instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the NSD of the nested NS instance. ")
 	@Nonnull
 
 	public String getNsdId() {
@@ -181,7 +182,7 @@ public class AffectedNs {
 	 * 
 	 * @return changeType
 	 **/
-	@Schema(required = true, description = "Signals the type of lifecycle change. Permitted values: - ADD - REMOVE - INSTANTIATE - SCALE - UPDATE - HEAL - TERMINATE ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the type of lifecycle change. Permitted values: - ADD - REMOVE - INSTANTIATE - SCALE - UPDATE - HEAL - TERMINATE ")
 	@Nonnull
 
 	public ChangeTypeEnum getChangeType() {
@@ -203,7 +204,7 @@ public class AffectedNs {
 	 * 
 	 * @return changeResult
 	 **/
-	@Schema(required = true, description = "Signals the result of change identified by the \"changeType\" attribute. Permitted values: - COMPLETED - ROLLED_BACK - FAILED - PARTIALLY_COMPLETED ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the result of change identified by the \"changeType\" attribute. Permitted values: - COMPLETED - ROLLED_BACK - FAILED - PARTIALLY_COMPLETED ")
 	@Nonnull
 
 	public ChangeResultEnum getChangeResult() {

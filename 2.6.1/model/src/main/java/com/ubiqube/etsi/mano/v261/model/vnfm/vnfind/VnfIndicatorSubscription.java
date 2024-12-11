@@ -23,6 +23,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
@@ -56,7 +57,7 @@ public class VnfIndicatorSubscription {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of this \"Individual subscription\" resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this \"Individual subscription\" resource. ")
 	@Nonnull
 
 	public String getId() {
@@ -101,7 +102,7 @@ public class VnfIndicatorSubscription {
 	 *
 	 * @return callbackUri
 	 **/
-	@Schema(required = true, description = "The URI of the endpoint to send the notification to. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The URI of the endpoint to send the notification to. ")
 	@Nonnull
 
 	public String getCallbackUri() {
@@ -122,7 +123,7 @@ public class VnfIndicatorSubscription {
 	 *
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

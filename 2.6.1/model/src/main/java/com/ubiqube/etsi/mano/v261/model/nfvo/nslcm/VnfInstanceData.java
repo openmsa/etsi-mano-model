@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -53,7 +54,7 @@ public class VnfInstanceData {
 	 * 
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the existing VNF instance to be used in the NS. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the existing VNF instance to be used in the NS. ")
 	@Nonnull
 
 	public String getVnfInstanceId() {
@@ -76,7 +77,7 @@ public class VnfInstanceData {
 	 * 
 	 * @return vnfProfileId
 	 **/
-	@Schema(required = true, description = "Identifier of (Reference to) a vnfProfile defined in the NSD which the existing VNF instance shall be matched with. If not present, the NFVO will select the VnfProfile matching the information in the VNF instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of (Reference to) a vnfProfile defined in the NSD which the existing VNF instance shall be matched with. If not present, the NFVO will select the VnfProfile matching the information in the VNF instance. ")
 	@Nonnull
 
 	public String getVnfProfileId() {

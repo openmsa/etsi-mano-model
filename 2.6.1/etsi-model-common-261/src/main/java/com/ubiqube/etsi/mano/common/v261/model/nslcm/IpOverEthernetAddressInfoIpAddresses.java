@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * IpOverEthernetAddressInfoIpAddresses
@@ -100,7 +101,7 @@ public class IpOverEthernetAddressInfoIpAddresses {
 	 * @return type
 	 **/
 	@JsonProperty("type")
-	@Schema(required = true, description = "The type of the IP addresses. Permitted values: IPV4, IPV6. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of the IP addresses. Permitted values: IPV4, IPV6. ")
 	@NotNull
 	public TypeEnum getType() {
 		return type;

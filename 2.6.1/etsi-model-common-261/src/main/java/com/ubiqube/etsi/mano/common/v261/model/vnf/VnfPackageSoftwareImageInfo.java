@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents an artifact contained in a VNF package which represents
@@ -190,7 +191,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Name of the algorithm used to generate the checksum, as defined in ETSI GS NFV-SOL 004 [5]. For example, SHA-256, SHA-512. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the algorithm used to generate the checksum, as defined in ETSI GS NFV-SOL 004 [5]. For example, SHA-256, SHA-512. ")
 	@NotNull
 
 	public String getId() {
@@ -211,7 +212,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return name
 	 **/
-	@Schema(required = true, description = "Name of the software image. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the software image. ")
 	@NotNull
 
 	public String getName() {
@@ -232,7 +233,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return provider
 	 **/
-	@Schema(required = true, description = "Provider of the software image. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Provider of the software image. ")
 	@NotNull
 
 	public String getProvider() {
@@ -253,7 +254,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return version
 	 **/
-	@Schema(required = true, description = "Version of the software image. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Version of the software image. ")
 	@NotNull
 
 	public String getVersion() {
@@ -274,7 +275,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return checksum
 	 **/
-	@Schema(required = true, description = "Checksum of the software image file. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Checksum of the software image file. ")
 	@NotNull
 
 	@Valid
@@ -302,7 +303,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return containerFormat
 	 **/
-	@Schema(required = true, description = "Container format indicates whether the software image is in a file format that also contains meta-data about the actual software. Permitted values: - AKI: a kernel image format - AMI: a machine image format - ARI: a ram disk image format - BARE: the image does not have a container or meta-data envelope - DOCKER: docker container format - OVA: OVF package in a tar file - OVF: OVF container format ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Container format indicates whether the software image is in a file format that also contains meta-data about the actual software. Permitted values: - AKI: a kernel image format - AMI: a machine image format - ARI: a ram disk image format - BARE: the image does not have a container or meta-data envelope - DOCKER: docker container format - OVA: OVF package in a tar file - OVF: OVF container format ")
 	@NotNull
 
 	public ContainerFormatEnum getContainerFormat() {
@@ -330,7 +331,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return diskFormat
 	 **/
-	@Schema(required = true, description = "Disk format of a software image is the format of the underlying disk image. Permitted values: - AKI: a kernel image format - AMI: a machine image format - ARI: a ramdisk image format - ISO: an archive format for the data contents of an optical disc, such as CD-ROM - QCOW2: a common disk image format, which can expand dynamically and supports copy on write - RAW: an unstructured disk image format - VDI: a common disk image format - VHD: a common disk image format - VHDX: enhanced version of VHD format - VMDK: a common disk image format ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Disk format of a software image is the format of the underlying disk image. Permitted values: - AKI: a kernel image format - AMI: a machine image format - ARI: a ramdisk image format - ISO: an archive format for the data contents of an optical disc, such as CD-ROM - QCOW2: a common disk image format, which can expand dynamically and supports copy on write - RAW: an unstructured disk image format - VDI: a common disk image format - VHD: a common disk image format - VHDX: enhanced version of VHD format - VMDK: a common disk image format ")
 	@NotNull
 
 	public DiskFormatEnum getDiskFormat() {
@@ -351,7 +352,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return createdAt
 	 **/
-	@Schema(required = true, description = "Time when this software image was created. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Time when this software image was created. ")
 	@NotNull
 
 	@Valid
@@ -374,7 +375,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return minDisk
 	 **/
-	@Schema(required = true, description = "The minimal disk for this software image in bytes. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The minimal disk for this software image in bytes. ")
 	@NotNull
 
 	@Min(0)
@@ -396,7 +397,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return minRam
 	 **/
-	@Schema(required = true, description = "The minimal RAM for this software image in bytes. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The minimal RAM for this software image in bytes. ")
 	@NotNull
 
 	@Min(0)
@@ -418,7 +419,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return size
 	 **/
-	@Schema(required = true, description = "Size of this software image in bytes. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Size of this software image in bytes. ")
 	@NotNull
 
 	@Min(0)
@@ -463,7 +464,7 @@ public class VnfPackageSoftwareImageInfo {
 	 *
 	 * @return imagePath
 	 **/
-	@Schema(required = true, description = "Path in the VNF package, which identifies the image artifact and also allows to access a copy of the image artifact. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Path in the VNF package, which identifies the image artifact and also allows to access a copy of the image artifact. ")
 	@NotNull
 
 	public String getImagePath() {

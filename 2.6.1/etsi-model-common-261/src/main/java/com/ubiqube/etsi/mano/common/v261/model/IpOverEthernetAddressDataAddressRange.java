@@ -18,14 +18,14 @@ package com.ubiqube.etsi.mano.common.v261.model;
 
 import java.util.Objects;
 
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * An IP address range to be used, e.g. in case of egress connections. In case
@@ -50,7 +50,7 @@ public class IpOverEthernetAddressDataAddressRange {
 	 *
 	 * @return minAddress
 	 **/
-	@Schema(required = true, description = "Lowest IP address belonging to the range. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Lowest IP address belonging to the range. ")
 	@NotNull
 
 	public String getMinAddress() {
@@ -71,7 +71,7 @@ public class IpOverEthernetAddressDataAddressRange {
 	 *
 	 * @return maxAddress
 	 **/
-	@Schema(required = true, description = "Highest IP address belonging to the range. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Highest IP address belonging to the range. ")
 	@NotNull
 
 	public String getMaxAddress() {

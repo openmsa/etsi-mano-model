@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -52,7 +53,7 @@ public class NsScaleInfo {
 	 * 
 	 * @return nsScalingAspectId
 	 **/
-	@Schema(required = true, description = "Identifier of the NS scaling aspect. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the NS scaling aspect. ")
 	@Nonnull
 
 	public String getNsScalingAspectId() {
@@ -73,7 +74,7 @@ public class NsScaleInfo {
 	 * 
 	 * @return nsScaleLevelId
 	 **/
-	@Schema(required = true, description = "Identifier of the NS scale level. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the NS scale level. ")
 	@Nonnull
 
 	public String getNsScaleLevelId() {

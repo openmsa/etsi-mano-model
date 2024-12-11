@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -62,7 +63,7 @@ public class ZoneGroupInfo {
 	 *
 	 * @return zoneId
 	 **/
-	@Schema(required = true, description = "References of identifiers of \"ZoneInfo\" structures, each of which provides information about a resource zone that belongs to this group. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "References of identifiers of \"ZoneInfo\" structures, each of which provides information about a resource zone that belongs to this group. ")
 	@NotNull
 
 	public List<String> getZoneId() {

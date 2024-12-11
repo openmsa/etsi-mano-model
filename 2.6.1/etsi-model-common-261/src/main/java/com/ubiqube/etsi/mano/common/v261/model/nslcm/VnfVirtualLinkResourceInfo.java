@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents the information that allows addressing a virtualised
@@ -74,7 +75,7 @@ public class VnfVirtualLinkResourceInfo {
 	 * @return id
 	 **/
 	@JsonProperty("id")
-	@Schema(required = true, description = "Identifier of this VnfVirtualLinkResourceInfo instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of this VnfVirtualLinkResourceInfo instance. ")
 	@NotNull
 	public String getId() {
 		return id;
@@ -95,7 +96,7 @@ public class VnfVirtualLinkResourceInfo {
 	 * @return vnfVirtualLinkDescId
 	 **/
 	@JsonProperty("vnfVirtualLinkDescId")
-	@Schema(required = true, description = "Identifier of the VNF Virtual Link Descriptor (VLD) in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF Virtual Link Descriptor (VLD) in the VNFD. ")
 	@NotNull
 	public String getVnfVirtualLinkDescId() {
 		return vnfVirtualLinkDescId;
@@ -116,7 +117,7 @@ public class VnfVirtualLinkResourceInfo {
 	 * @return networkResource
 	 **/
 	@JsonProperty("networkResource")
-	@Schema(required = true, description = "Reference to the VirtualNetwork resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the VirtualNetwork resource. ")
 	@NotNull
 	public ResourceHandle getNetworkResource() {
 		return networkResource;

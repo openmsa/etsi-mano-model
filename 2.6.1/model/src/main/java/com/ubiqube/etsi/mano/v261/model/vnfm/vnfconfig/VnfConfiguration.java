@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -54,7 +55,7 @@ public class VnfConfiguration {
 	 *
 	 * @return vnfConfigurationData
 	 **/
-	@Schema(required = true, description = "Configuration parameters of the VNF instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Configuration parameters of the VNF instance. ")
 	@Nonnull
 
 	@Valid

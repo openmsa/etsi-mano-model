@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -131,7 +132,7 @@ public class AffectedSap {
 	 * 
 	 * @return sapInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the nested NS instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the nested NS instance. ")
 	@Nonnull
 
 	public String getSapInstanceId() {
@@ -152,7 +153,7 @@ public class AffectedSap {
 	 * 
 	 * @return sapdId
 	 **/
-	@Schema(required = true, description = "Identifier of the NSD of the nested NS instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the NSD of the nested NS instance. ")
 	@Nonnull
 
 	public String getSapdId() {

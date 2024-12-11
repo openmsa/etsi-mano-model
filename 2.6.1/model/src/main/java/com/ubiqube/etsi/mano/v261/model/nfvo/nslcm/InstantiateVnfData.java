@@ -31,6 +31,7 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -93,7 +94,7 @@ public class InstantiateVnfData {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true, description = "Information sufficient to identify the VNFD which defines the VNF to be instantiated. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information sufficient to identify the VNFD which defines the VNF to be instantiated. ")
 	@Nonnull
 
 	public String getVnfdId() {
@@ -114,7 +115,7 @@ public class InstantiateVnfData {
 	 *
 	 * @return vnfFlavourId
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF deployment flavor to be instantiated. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF deployment flavor to be instantiated. ")
 	@Nonnull
 
 	public String getVnfFlavourId() {

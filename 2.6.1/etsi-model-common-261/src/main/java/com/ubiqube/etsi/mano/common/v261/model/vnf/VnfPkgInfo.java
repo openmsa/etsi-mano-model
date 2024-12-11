@@ -29,6 +29,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * VnfPkgInfo
@@ -89,7 +90,7 @@ public class VnfPkgInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of the VNF package. This identifier is allocated by the NFVO. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF package. This identifier is allocated by the NFVO. ")
 	@NotNull
 
 	public String getId() {
@@ -292,7 +293,7 @@ public class VnfPkgInfo {
 	 *
 	 * @return onboardingState
 	 **/
-	@Schema(required = true, description = "On-boarding state of the VNF package. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "On-boarding state of the VNF package. ")
 	@NotNull
 
 	@Valid
@@ -315,7 +316,7 @@ public class VnfPkgInfo {
 	 *
 	 * @return operationalState
 	 **/
-	@Schema(required = true, description = "Operational state of the VNF package. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Operational state of the VNF package. ")
 	@NotNull
 
 	@Valid
@@ -338,7 +339,7 @@ public class VnfPkgInfo {
 	 *
 	 * @return usageState
 	 **/
-	@Schema(required = true, description = "Usage state of the VNF package. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Usage state of the VNF package. ")
 	@NotNull
 
 	@Valid

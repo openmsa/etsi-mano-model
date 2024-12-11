@@ -35,6 +35,7 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.VnfOperationalStateType;
 import com.ubiqube.etsi.mano.v261.model.nfvo.nslcm.StopType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 
 /**
@@ -67,7 +68,7 @@ public class OperateVnfRequest {
 	 * @return changeStateTo
 	 **/
 	@JsonProperty("changeStateTo")
-	@Schema(required = true, description = "The desired operational state (i.e. started or stopped) to change the VNF to. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The desired operational state (i.e. started or stopped) to change the VNF to. ")
 	@Nonnull
 	public VnfOperationalStateType getChangeStateTo() {
 		return changeStateTo;

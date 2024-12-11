@@ -33,6 +33,7 @@ import jakarta.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -58,7 +59,7 @@ public class IpOverEthernetAddressInfoAddressRange {
 	 * @return minAddress
 	 **/
 	@JsonProperty("minAddress")
-	@Schema(required = true, description = "Lowest IP address belonging to the range. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Lowest IP address belonging to the range. ")
 	@NotNull
 	public String getMinAddress() {
 		return minAddress;
@@ -79,7 +80,7 @@ public class IpOverEthernetAddressInfoAddressRange {
 	 * @return maxAddress
 	 **/
 	@JsonProperty("maxAddress")
-	@Schema(required = true, description = "Highest IP address belonging to the range ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Highest IP address belonging to the range ")
 	@NotNull
 	public String getMaxAddress() {
 		return maxAddress;

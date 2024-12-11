@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.CpProtocolData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -60,7 +61,7 @@ public class PnfExtCpInfo {
 	 *
 	 * @return cpInstanceId
 	 **/
-	@Schema(required = true, description = "Identifier of the CP in the scope of the PNF. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the CP in the scope of the PNF. ")
 	@Nonnull
 
 	public String getCpInstanceId() {
@@ -82,7 +83,7 @@ public class PnfExtCpInfo {
 	 *
 	 * @return cpdId
 	 **/
-	@Schema(required = true, description = "Identifier of (reference to) the Connection Point Descriptor (CPD) for this CP. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of (reference to) the Connection Point Descriptor (CPD) for this CP. ")
 	@Nonnull
 
 	public String getCpdId() {

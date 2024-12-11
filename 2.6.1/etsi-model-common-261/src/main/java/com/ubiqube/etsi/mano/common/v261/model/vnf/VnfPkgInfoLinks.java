@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.common.v261.model.Link;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -54,7 +55,7 @@ public class VnfPkgInfoLinks {
 	 *
 	 * @return self
 	 **/
-	@Schema(required = true, description = "URI of this resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "URI of this resource. ")
 	@NotNull
 
 	@Valid
@@ -99,7 +100,7 @@ public class VnfPkgInfoLinks {
 	 *
 	 * @return packageContent
 	 **/
-	@Schema(required = true, description = "Link to the \"VNF package content\" resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Link to the \"VNF package content\" resource. ")
 	@NotNull
 
 	@Valid

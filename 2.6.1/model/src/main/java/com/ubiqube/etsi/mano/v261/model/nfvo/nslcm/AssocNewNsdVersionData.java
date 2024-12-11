@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -61,7 +62,7 @@ public class AssocNewNsdVersionData {
 	 * 
 	 * @return newNsdId
 	 **/
-	@Schema(required = true, description = "Identifier of the new NSD version that is to be associated to the NS instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the new NSD version that is to be associated to the NS instance. ")
 	@Nonnull
 
 	public String getNewNsdId() {

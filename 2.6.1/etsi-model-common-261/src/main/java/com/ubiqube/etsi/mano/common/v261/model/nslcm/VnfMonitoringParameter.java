@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -54,7 +55,7 @@ public class VnfMonitoringParameter {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of the monitoring parameter defined in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the monitoring parameter defined in the VNFD. ")
 	@NotNull
 
 	public String getId() {
@@ -97,7 +98,7 @@ public class VnfMonitoringParameter {
 	 *
 	 * @return performanceMetric
 	 **/
-	@Schema(required = true, description = "Performance metric that is monitored. This attribute shall contain the related  \"Measurement Name\" value as defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Performance metric that is monitored. This attribute shall contain the related  \"Measurement Name\" value as defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
 	@NotNull
 
 	public String getPerformanceMetric() {

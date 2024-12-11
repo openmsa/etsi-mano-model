@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -75,7 +76,7 @@ public class AddVnffgData {
 	 * 
 	 * @return vnffgName
 	 **/
-	@Schema(required = true, description = "Human readable name for the VNFFG. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable name for the VNFFG. ")
 	@Nonnull
 
 	public String getVnffgName() {
@@ -96,7 +97,7 @@ public class AddVnffgData {
 	 * 
 	 * @return description
 	 **/
-	@Schema(required = true, description = "Human readable description for the VNFFG. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable description for the VNFFG. ")
 	@Nonnull
 
 	public String getDescription() {

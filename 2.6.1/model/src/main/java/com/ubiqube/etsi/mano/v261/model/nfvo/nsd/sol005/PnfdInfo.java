@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.model.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 
@@ -79,7 +80,7 @@ public class PnfdInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "Identifier of the on-boarded individual PNF descriptor resource. This identifier is allocated by the NFVO. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the on-boarded individual PNF descriptor resource. This identifier is allocated by the NFVO. ")
 	@Nonnull
 
 	public String getId() {
@@ -205,7 +206,7 @@ public class PnfdInfo {
 	 *
 	 * @return pnfdOnboardingState
 	 **/
-	@Schema(required = true, description = "On-boarding state of the individual PNF descriptor resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "On-boarding state of the individual PNF descriptor resource. ")
 	@Nonnull
 
 	@Valid
@@ -253,7 +254,7 @@ public class PnfdInfo {
 	 *
 	 * @return pnfdUsageState
 	 **/
-	@Schema(required = true, description = "Usage state of the individual PNF descriptor resource. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Usage state of the individual PNF descriptor resource. ")
 	@Nonnull
 
 	@Valid
@@ -299,7 +300,7 @@ public class PnfdInfo {
 	 *
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

@@ -27,6 +27,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -71,7 +72,7 @@ public class PnfdOnBoardingNotification {
 	 * 
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	public String getId() {
@@ -93,7 +94,7 @@ public class PnfdOnBoardingNotification {
 	 * 
 	 * @return notificationType
 	 **/
-	@Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"PnfdOnboardingNotification\" for this notification type. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"PnfdOnboardingNotification\" for this notification type. ")
 	@Nonnull
 
 	public String getNotificationType() {
@@ -114,7 +115,7 @@ public class PnfdOnBoardingNotification {
 	 * 
 	 * @return subscriptionId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	public String getSubscriptionId() {
@@ -135,7 +136,7 @@ public class PnfdOnBoardingNotification {
 	 * 
 	 * @return timeStamp
 	 **/
-	@Schema(required = true, description = "Date-time of the generation of the notification. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time of the generation of the notification. ")
 	@Nonnull
 
 	@Valid
@@ -158,7 +159,7 @@ public class PnfdOnBoardingNotification {
 	 * 
 	 * @return pnfdInfoId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	public String getPnfdInfoId() {
@@ -179,7 +180,7 @@ public class PnfdOnBoardingNotification {
 	 * 
 	 * @return pnfdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	public String getPnfdId() {
@@ -200,7 +201,7 @@ public class PnfdOnBoardingNotification {
 	 * 
 	 * @return links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@Nonnull
 
 	@Valid

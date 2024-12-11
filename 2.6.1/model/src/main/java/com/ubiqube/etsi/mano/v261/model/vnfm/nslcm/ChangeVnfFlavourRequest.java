@@ -40,6 +40,7 @@ import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtManagedVirtualLinkData;
 import com.ubiqube.etsi.mano.common.v261.model.nslcm.ExtVirtualLinkData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 
 /**
@@ -78,7 +79,7 @@ public class ChangeVnfFlavourRequest {
 	 * @return newFlavourId
 	 **/
 	@JsonProperty("newFlavourId")
-	@Schema(required = true, description = "Identifier of the VNF deployment flavour to be instantiated. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of the VNF deployment flavour to be instantiated. ")
 	@Nonnull
 	public String getNewFlavourId() {
 		return newFlavourId;

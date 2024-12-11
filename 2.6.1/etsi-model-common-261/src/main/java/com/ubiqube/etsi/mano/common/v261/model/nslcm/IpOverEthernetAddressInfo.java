@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -52,7 +53,7 @@ public class IpOverEthernetAddressInfo {
 	 *
 	 * @return macAddress
 	 **/
-	@Schema(required = true, description = "Assigned MAC address. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Assigned MAC address. ")
 	@NotNull
 
 	public String getMacAddress() {
@@ -79,7 +80,7 @@ public class IpOverEthernetAddressInfo {
 	 *
 	 * @return ipAddresses
 	 **/
-	@Schema(required = true, description = "Addresses assigned to the CP instance. Each entry represents IP addresses assigned by fixed or dynamic IP address assignment per subnet. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Addresses assigned to the CP instance. Each entry represents IP addresses assigned by fixed or dynamic IP address assignment per subnet. ")
 	@NotNull
 
 	@Valid

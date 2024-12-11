@@ -28,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * PerformanceReportEntries
@@ -60,7 +61,7 @@ public class PerformanceReportEntries {
 	 *
 	 * @return objectType
 	 **/
-	@Schema(required = true, description = "Defines the object type for which performance information is reported (i.e. VNF type). The string value shall be set to the vnfdId of the VNF instance to which the performance information relates. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Defines the object type for which performance information is reported (i.e. VNF type). The string value shall be set to the vnfdId of the VNF instance to which the performance information relates. ")
 	@NotNull
 
 	public String getObjectType() {
@@ -81,7 +82,7 @@ public class PerformanceReportEntries {
 	 *
 	 * @return objectInstanceId
 	 **/
-	@Schema(required = true, description = "The object instance (i.e. VNF instance) for which the performance metric is reported. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The object instance (i.e. VNF instance) for which the performance metric is reported. ")
 	@NotNull
 
 	public String getObjectInstanceId() {
@@ -123,7 +124,7 @@ public class PerformanceReportEntries {
 	 *
 	 * @return performanceMetric
 	 **/
-	@Schema(required = true, description = "Name of the metric collected. This attribute shall contain the related \"Measurement Name\" value as defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the metric collected. This attribute shall contain the related \"Measurement Name\" value as defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
 	@NotNull
 
 	public String getPerformanceMetric() {
