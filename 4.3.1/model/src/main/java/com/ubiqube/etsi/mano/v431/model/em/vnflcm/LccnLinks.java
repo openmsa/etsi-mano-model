@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v431.model.em.vnflcm.NotificationLink;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -52,7 +53,7 @@ public class LccnLinks   {
    * Get vnfInstance
    * @return vnfInstance
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -73,7 +74,7 @@ public class LccnLinks   {
    * Get subscription
    * @return subscription
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanocim.ServerInterfaceSecurity
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -77,7 +78,7 @@ public class ServerInterfaceSecurityInfoOauthServerInfo   {
    * Get providedConfiguration
    * @return providedConfiguration
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -103,7 +104,7 @@ public class ServerInterfaceSecurityInfoOauthServerInfo   {
    * List of cipher suites that shall be declared as supported by the API producer when performing the SSL or TLS negotiation with the authorization server. Valid values of cipher suites are defined in IETF RFC 8447. 
    * @return tlsCipherSuites
    **/
-  @Schema(required = true, description = "List of cipher suites that shall be declared as supported by the API producer when performing the SSL or TLS negotiation with the authorization server. Valid values of cipher suites are defined in IETF RFC 8447. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "List of cipher suites that shall be declared as supported by the API producer when performing the SSL or TLS negotiation with the authorization server. Valid values of cipher suites are defined in IETF RFC 8447. ")
       @NotNull
 
     public List<String> getTlsCipherSuites() {

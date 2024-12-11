@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.CpProtocolData;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -102,7 +103,7 @@ public class PnfExtCpData {
 	 *
 	 * @return cpProtocolData
 	 **/
-	@Schema(required = true, description = "Address assigned for this CP. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Address assigned for this CP. ")
 	@NotNull
 	@Valid
 	public List<CpProtocolData> getCpProtocolData() {

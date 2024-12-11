@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -91,7 +92,7 @@ public class VimComputeResourceFlavour   {
    * Get vnfdVirtualComputeDescId
    * @return vnfdVirtualComputeDescId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfdVirtualComputeDescId() {
@@ -111,7 +112,7 @@ public class VimComputeResourceFlavour   {
    * Get vimFlavourId
    * @return vimFlavourId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVimFlavourId() {

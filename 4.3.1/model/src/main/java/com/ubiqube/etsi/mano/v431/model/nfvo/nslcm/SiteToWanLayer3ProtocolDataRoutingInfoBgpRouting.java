@@ -24,6 +24,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 
 /**
@@ -54,7 +55,7 @@ public class SiteToWanLayer3ProtocolDataRoutingInfoBgpRouting {
 	 *
 	 * @return bgpAs
 	 **/
-	@Schema(required = true, description = "The Autonomous System (AS) identification applicable to the BGP routing info entry. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The Autonomous System (AS) identification applicable to the BGP routing info entry. ")
 	public int getBgpAs() {
 		return bgpAs;
 	}

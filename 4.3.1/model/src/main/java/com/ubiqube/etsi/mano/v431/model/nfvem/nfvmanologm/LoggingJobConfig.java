@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanologm.LoggingJobConfigSecuri
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -104,7 +105,7 @@ public class LoggingJobConfig   {
    * Get reportingCondition
    * @return reportingCondition
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -163,7 +164,7 @@ public class LoggingJobConfig   {
    * Get securityConf
    * @return securityConf
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

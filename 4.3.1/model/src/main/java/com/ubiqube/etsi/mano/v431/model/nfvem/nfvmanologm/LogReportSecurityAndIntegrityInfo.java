@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -60,7 +61,7 @@ public class LogReportSecurityAndIntegrityInfo   {
    * Algorithm used to generate the hash of the compiled log file. Only SHA-256 and SHA-512 shall be used
    * @return algorithm
    **/
-  @Schema(required = true, description = "Algorithm used to generate the hash of the compiled log file. Only SHA-256 and SHA-512 shall be used")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Algorithm used to generate the hash of the compiled log file. Only SHA-256 and SHA-512 shall be used")
       @NotNull
 
     public String getAlgorithm() {
@@ -80,7 +81,7 @@ public class LogReportSecurityAndIntegrityInfo   {
    * The hexadecimal value of the hash of the compiled log file. The hash shall be computed from the encrypted compiled log file, in case the encryption applies.
    * @return hash
    **/
-  @Schema(required = true, description = "The hexadecimal value of the hash of the compiled log file. The hash shall be computed from the encrypted compiled log file, in case the encryption applies.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The hexadecimal value of the hash of the compiled log file. The hash shall be computed from the encrypted compiled log file, in case the encryption applies.")
       @NotNull
 
     public String getHash() {
@@ -138,7 +139,7 @@ public class LogReportSecurityAndIntegrityInfo   {
    * Signature to the compiled log file generated with the NFV-MANO functional entity’s private key, which is used to ensure the authenticity of the compiled log file. The signature shall be applied according to the \"encryptAndSignOrder\" of the \"LoggingJobConfig\". See note.
    * @return logFileSignature
    **/
-  @Schema(required = true, description = "Signature to the compiled log file generated with the NFV-MANO functional entity’s private key, which is used to ensure the authenticity of the compiled log file. The signature shall be applied according to the \"encryptAndSignOrder\" of the \"LoggingJobConfig\". See note.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Signature to the compiled log file generated with the NFV-MANO functional entity’s private key, which is used to ensure the authenticity of the compiled log file. The signature shall be applied according to the \"encryptAndSignOrder\" of the \"LoggingJobConfig\". See note.")
       @NotNull
 
     public String getLogFileSignature() {
@@ -158,7 +159,7 @@ public class LogReportSecurityAndIntegrityInfo   {
    * X.509 certificate with the NFV-MANO functional entity’s public key used for verifying the log report and compiled log file signatures.
    * @return signingCertificate
    **/
-  @Schema(required = true, description = "X.509 certificate with the NFV-MANO functional entity’s public key used for verifying the log report and compiled log file signatures.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "X.509 certificate with the NFV-MANO functional entity’s public key used for verifying the log report and compiled log file signatures.")
       @NotNull
 
     public String getSigningCertificate() {

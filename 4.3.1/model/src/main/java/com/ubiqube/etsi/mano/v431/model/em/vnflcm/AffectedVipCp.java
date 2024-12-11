@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -86,7 +87,7 @@ public class AffectedVipCp   {
    * Get cpInstanceId
    * @return cpInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getCpInstanceId() {
@@ -106,7 +107,7 @@ public class AffectedVipCp   {
    * Get cpdId
    * @return cpdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getCpdId() {
@@ -145,7 +146,7 @@ public class AffectedVipCp   {
    * Signals the type of change. Permitted values: - ADDED - REMOVED - MODIFIED 
    * @return changeType
    **/
-  @Schema(required = true, description = "Signals the type of change. Permitted values: - ADDED - REMOVED - MODIFIED ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the type of change. Permitted values: - ADDED - REMOVED - MODIFIED ")
       @NotNull
 
     public ChangeTypeEnum getChangeType() {

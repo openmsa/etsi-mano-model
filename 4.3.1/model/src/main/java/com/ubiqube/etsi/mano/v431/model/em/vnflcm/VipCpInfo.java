@@ -29,6 +29,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type provides information related to virtual IP (VIP) CP. NOTE 1: It is
@@ -80,7 +81,7 @@ public class VipCpInfo {
 	 *
 	 * @return cpInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCpInstanceId() {
@@ -101,7 +102,7 @@ public class VipCpInfo {
 	 *
 	 * @return cpdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCpdId() {

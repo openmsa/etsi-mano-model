@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ResourceHandle;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -59,7 +60,7 @@ public class NetAttDefResourceInfo   {
    * Get netAttDefResourceInfoId
    * @return netAttDefResourceInfoId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getNetAttDefResourceInfoId() {
@@ -79,7 +80,7 @@ public class NetAttDefResourceInfo   {
    * Get netAttDefResource
    * @return netAttDefResource
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

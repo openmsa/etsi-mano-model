@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -88,7 +89,7 @@ public class AffectedExtLinkPort   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -108,7 +109,7 @@ public class AffectedExtLinkPort   {
    * Signals the type of change. Permitted values: - ADDED - MODIFIED - REMOVED 
    * @return changeType
    **/
-  @Schema(required = true, description = "Signals the type of change. Permitted values: - ADDED - MODIFIED - REMOVED ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the type of change. Permitted values: - ADDED - MODIFIED - REMOVED ")
       @NotNull
 
     public ChangeTypeEnum getChangeType() {
@@ -128,7 +129,7 @@ public class AffectedExtLinkPort   {
    * Get extCpInstanceId
    * @return extCpInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getExtCpInstanceId() {
@@ -148,7 +149,7 @@ public class AffectedExtLinkPort   {
    * Get resourceHandle
    * @return resourceHandle
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -101,7 +102,7 @@ public class ManoServiceInterface {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "An identifier that is unique for the respective type within a NFV-MANO functional entity, but that need not be globally unique. Representation: string of variable length.. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier that is unique for the respective type within a NFV-MANO functional entity, but that need not be globally unique. Representation: string of variable length.. ")
 	@NotNull
 
 	public String getId() {
@@ -123,7 +124,7 @@ public class ManoServiceInterface {
 	 *
 	 * @return name
 	 **/
-	@Schema(required = true, description = "Human-readable name of the NFV-MANO functional entity interface. This attribute can be modified with the PATCH method. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the NFV-MANO functional entity interface. This attribute can be modified with the PATCH method. ")
 	@NotNull
 
 	public String getName() {
@@ -145,7 +146,7 @@ public class ManoServiceInterface {
 	 *
 	 * @return type
 	 **/
-	@Schema(required = true, description = "Type of the NFV-MANO service interface produced by the NFV-MANO functional entity. Valid values are defined in clause 5.6.4.3. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the NFV-MANO service interface produced by the NFV-MANO functional entity. Valid values are defined in clause 5.6.4.3. ")
 	@NotNull
 
 	public String getType() {
@@ -166,7 +167,7 @@ public class ManoServiceInterface {
 	 *
 	 * @return standardVersion
 	 **/
-	@Schema(required = true, description = "A version. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "A version. ")
 	@NotNull
 
 	public String getStandardVersion() {
@@ -187,7 +188,7 @@ public class ManoServiceInterface {
 	 *
 	 * @return providerSpecificApiVersion
 	 **/
-	@Schema(required = true, description = "A version. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "A version. ")
 	@NotNull
 
 	public String getProviderSpecificApiVersion() {
@@ -208,7 +209,7 @@ public class ManoServiceInterface {
 	 *
 	 * @return apiVersion
 	 **/
-	@Schema(required = true, description = "A version. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "A version. ")
 	@NotNull
 
 	public String getApiVersion() {
@@ -229,7 +230,7 @@ public class ManoServiceInterface {
 	 *
 	 * @return apiEndpoint
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -277,7 +278,7 @@ public class ManoServiceInterface {
 	 *
 	 * @return supportedOperations
 	 **/
-	@Schema(required = true, description = "Information about supported operations of this interface. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about supported operations of this interface. ")
 	@NotNull
 	@Valid
 	@Size(min = 1)
@@ -299,7 +300,7 @@ public class ManoServiceInterface {
 	 *
 	 * @return interfaceState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

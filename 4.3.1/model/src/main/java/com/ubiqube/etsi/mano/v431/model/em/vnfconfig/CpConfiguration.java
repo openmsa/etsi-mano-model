@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v431.model.em.vnfconfig.CpAddress;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -55,7 +56,7 @@ public class CpConfiguration   {
    * Get cpId
    * @return cpId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getCpId() {
@@ -75,7 +76,7 @@ public class CpConfiguration   {
    * Get cpdId
    * @return cpdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getCpdId() {
@@ -100,7 +101,7 @@ public class CpConfiguration   {
    * Network address and port assigned to the CP. 
    * @return addresses
    **/
-  @Schema(required = true, description = "Network address and port assigned to the CP. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Network address and port assigned to the CP. ")
       @NotNull
     @Valid
     public List<CpAddress> getAddresses() {

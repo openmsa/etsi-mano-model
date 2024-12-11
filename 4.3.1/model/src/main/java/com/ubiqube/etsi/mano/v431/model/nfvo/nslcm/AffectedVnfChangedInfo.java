@@ -27,6 +27,7 @@ import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ExtVirtualLinkInfo;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ModificationsTriggeredByVnfPkgChange;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 
 /**

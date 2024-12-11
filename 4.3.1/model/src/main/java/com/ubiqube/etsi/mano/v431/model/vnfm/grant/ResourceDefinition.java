@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ResourceHandle;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -122,7 +123,7 @@ public class ResourceDefinition {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -144,7 +145,7 @@ public class ResourceDefinition {
 	 *
 	 * @return type
 	 **/
-	@Schema(required = true, description = "Type of the resource definition referenced. Permitted values: * COMPUTE * VL * STORAGE * LINKPORT * OSCONTAINER * VIRTUALCP ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the resource definition referenced. Permitted values: * COMPUTE * VL * STORAGE * LINKPORT * OSCONTAINER * VIRTUALCP ")
 	@NotNull
 
 	public TypeEnum getType() {
@@ -211,7 +212,7 @@ public class ResourceDefinition {
 	 *
 	 * @return resourceTemplateId
 	 **/
-	@Schema(required = true, description = "Reference to the applicable resource template in the VNFD as follows:   - if type=\"VL\" : VnfVirtualLinkDesc   - if type=\"COMPUTE\": VirtualComputeDesc   - if type=\"LINKPORT\" : VnfExtCpd   - if type=\"STORAGE\" : VirtualStorageDesc   - If type=\"OSCONTAINER\": OsContainerDesc - Cardinality may be greater than \"1\" when type=\"OSCONTAINER\" and multiple references to OsContainerDesc are present in the VDU indicated by the \"vduId\". Cardinality shall be \"1\" otherwise. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the applicable resource template in the VNFD as follows:   - if type=\"VL\" : VnfVirtualLinkDesc   - if type=\"COMPUTE\": VirtualComputeDesc   - if type=\"LINKPORT\" : VnfExtCpd   - if type=\"STORAGE\" : VirtualStorageDesc   - If type=\"OSCONTAINER\": OsContainerDesc - Cardinality may be greater than \"1\" when type=\"OSCONTAINER\" and multiple references to OsContainerDesc are present in the VDU indicated by the \"vduId\". Cardinality shall be \"1\" otherwise. ")
 	@NotNull
 
 	@Size(min = 1)

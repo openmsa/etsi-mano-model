@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanopm.ManoManagedObjectReference;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -113,7 +114,7 @@ public class LogReport {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getId() {
@@ -134,7 +135,7 @@ public class LogReport {
 	 *
 	 * @return objectInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -158,7 +159,7 @@ public class LogReport {
 	 *
 	 * @return compilationTrigger
 	 **/
-	@Schema(required = true, description = "The trigger for the compilation of the log file. Permitted values: - ON_DEMAND: created based on explicit request by a client. - AUTOMATIC: created according to the logging job compilation configuration.")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The trigger for the compilation of the log file. Permitted values: - ON_DEMAND: created based on explicit request by a client. - AUTOMATIC: created according to the logging job compilation configuration.")
 	@NotNull
 
 	public CompilationTriggerEnum getCompilationTrigger() {
@@ -179,7 +180,7 @@ public class LogReport {
 	 *
 	 * @return readyTime
 	 **/
-	@Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
 	@NotNull
 
 	@Valid
@@ -242,7 +243,7 @@ public class LogReport {
 	 *
 	 * @return fileFormat
 	 **/
-	@Schema(required = true, description = "The encoding used by the file.")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The encoding used by the file.")
 	@NotNull
 
 	public String getFileFormat() {
@@ -263,7 +264,7 @@ public class LogReport {
 	 *
 	 * @return fileLocationInfo
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -285,7 +286,7 @@ public class LogReport {
 	 *
 	 * @return securityAndIntegrityInfo
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -307,7 +308,7 @@ public class LogReport {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

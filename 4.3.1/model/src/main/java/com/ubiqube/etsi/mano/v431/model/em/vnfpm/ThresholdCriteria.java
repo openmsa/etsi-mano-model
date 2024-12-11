@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v431.model.em.vnfpm.ThresholdCriteriaSimpleThresholdDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -81,7 +82,7 @@ public class ThresholdCriteria   {
    * Defines the performance metric associated with the threshold. Valid values are specified as \"Measurement Name\" values in clause 7.2 of ETSI GS NFV-IFA 027. 
    * @return performanceMetric
    **/
-  @Schema(required = true, description = "Defines the performance metric associated with the threshold. Valid values are specified as \"Measurement Name\" values in clause 7.2 of ETSI GS NFV-IFA 027. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Defines the performance metric associated with the threshold. Valid values are specified as \"Measurement Name\" values in clause 7.2 of ETSI GS NFV-IFA 027. ")
       @NotNull
 
     public String getPerformanceMetric() {
@@ -101,7 +102,7 @@ public class ThresholdCriteria   {
    * Type of threshold. This attribute determines which other attributes are present in the data structure. Permitted values: - SIMPLE: Single-valued static threshold. See note 1. 
    * @return thresholdType
    **/
-  @Schema(required = true, description = "Type of threshold. This attribute determines which other attributes are present in the data structure. Permitted values: - SIMPLE: Single-valued static threshold. See note 1. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of threshold. This attribute determines which other attributes are present in the data structure. Permitted values: - SIMPLE: Single-valued static threshold. See note 1. ")
       @NotNull
 
     public ThresholdTypeEnum getThresholdType() {

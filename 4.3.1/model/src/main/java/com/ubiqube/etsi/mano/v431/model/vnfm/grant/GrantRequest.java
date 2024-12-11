@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.ScaleInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -146,7 +147,7 @@ public class GrantRequest implements AnyOfGrantRequest {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -167,7 +168,7 @@ public class GrantRequest implements AnyOfGrantRequest {
 	 *
 	 * @return vnfLcmOpOccId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfLcmOpOccId() {
@@ -188,7 +189,7 @@ public class GrantRequest implements AnyOfGrantRequest {
 	 *
 	 * @return vnfdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVnfdId() {
@@ -249,7 +250,7 @@ public class GrantRequest implements AnyOfGrantRequest {
 	 *
 	 * @return operation
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -274,7 +275,7 @@ public class GrantRequest implements AnyOfGrantRequest {
 	 *
 	 * @return isAutomaticInvocation
 	 **/
-	@Schema(required = true, description = "Set to true if this VNF LCM operation occurrence has been triggered by an automated procedure inside the VNFM (i.e. ScaleVnf / ScaleVnfToLevel triggered by auto-scale, or HealVnf triggered by auto-heal). Set to false otherwise. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Set to true if this VNF LCM operation occurrence has been triggered by an automated procedure inside the VNFM (i.e. ScaleVnf / ScaleVnfToLevel triggered by auto-scale, or HealVnf triggered by auto-heal). Set to false otherwise. ")
 	@NotNull
 
 	public Boolean isIsAutomaticInvocation() {
@@ -552,7 +553,7 @@ public class GrantRequest implements AnyOfGrantRequest {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

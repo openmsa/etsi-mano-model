@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -78,7 +79,7 @@ public class VnfmSpecificInfoSupportedVnfdFormats   {
    * Name of the VNFD format. Permitted values:   - TOSCA: The VNFD follows TOSCA definition, according to ETSI   GS NFV-SOL 001 standard.   - YANG: The VNFD follows YANG definition according to ETSI   GS NFV-SOL 006 standard. 
    * @return vnfdFormat
    **/
-  @Schema(required = true, description = "Name of the VNFD format. Permitted values:   - TOSCA: The VNFD follows TOSCA definition, according to ETSI   GS NFV-SOL 001 standard.   - YANG: The VNFD follows YANG definition according to ETSI   GS NFV-SOL 006 standard. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the VNFD format. Permitted values:   - TOSCA: The VNFD follows TOSCA definition, according to ETSI   GS NFV-SOL 001 standard.   - YANG: The VNFD follows YANG definition according to ETSI   GS NFV-SOL 006 standard. ")
       @NotNull
 
     public VnfdFormatEnum getVnfdFormat() {
@@ -98,7 +99,7 @@ public class VnfmSpecificInfoSupportedVnfdFormats   {
    * A version. 
    * @return standardVersion
    **/
-  @Schema(required = true, description = "A version. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "A version. ")
       @NotNull
 
     public String getStandardVersion() {

@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -106,7 +107,7 @@ public class WanLayer2ProtocolData   {
    * Indicates the requirement of whether to ensure network segment (e.g., VLAN id) preservation across the MSCS endpoints (i.e., from/to the NFVI-PoPs). If \"TRUE\", segment identifiers shall be preserved, \"FALSE\" otherwise. Default value is \"FALSE\". 
    * @return isSegmentPreservation
    **/
-  @Schema(required = true, description = "Indicates the requirement of whether to ensure network segment (e.g., VLAN id) preservation across the MSCS endpoints (i.e., from/to the NFVI-PoPs). If \"TRUE\", segment identifiers shall be preserved, \"FALSE\" otherwise. Default value is \"FALSE\". ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the requirement of whether to ensure network segment (e.g., VLAN id) preservation across the MSCS endpoints (i.e., from/to the NFVI-PoPs). If \"TRUE\", segment identifiers shall be preserved, \"FALSE\" otherwise. Default value is \"FALSE\". ")
       @NotNull
 
     public Boolean isIsSegmentPreservation() {
@@ -126,7 +127,7 @@ public class WanLayer2ProtocolData   {
    * Indicates the requirement of whether to ensure network segment class of service preservation across the MSCS endpoints (i.e., from/to the NFVI-PoPs). If \"TRUE\", segment class of service shall be preserved, \"FALSE\" otherwise. Default value is \"FALSE\". 
    * @return isSegmentCosPreservation
    **/
-  @Schema(required = true, description = "Indicates the requirement of whether to ensure network segment class of service preservation across the MSCS endpoints (i.e., from/to the NFVI-PoPs). If \"TRUE\", segment class of service shall be preserved, \"FALSE\" otherwise. Default value is \"FALSE\". ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the requirement of whether to ensure network segment class of service preservation across the MSCS endpoints (i.e., from/to the NFVI-PoPs). If \"TRUE\", segment class of service shall be preserved, \"FALSE\" otherwise. Default value is \"FALSE\". ")
       @NotNull
 
     public Boolean isIsSegmentCosPreservation() {

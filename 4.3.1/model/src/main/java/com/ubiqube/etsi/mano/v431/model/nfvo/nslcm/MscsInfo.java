@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.MscsEndpointInfo;
 import com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.MscsInfoSiteAccessProtectionSchemes;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -142,7 +143,7 @@ public class MscsInfo   {
    * Get mscsId
    * @return mscsId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getMscsId() {
@@ -200,7 +201,7 @@ public class MscsInfo   {
    * The type of connectivity that is provided to the virtualized networks in the NFVI-PoP and characterizes the connectivity service across the WAN. Permitted values: - L2 - L3 
    * @return mscsType
    **/
-  @Schema(required = true, description = "The type of connectivity that is provided to the virtualized networks in the NFVI-PoP and characterizes the connectivity service across the WAN. Permitted values: - L2 - L3 ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of connectivity that is provided to the virtualized networks in the NFVI-PoP and characterizes the connectivity service across the WAN. Permitted values: - L2 - L3 ")
       @NotNull
 
     public MscsTypeEnum getMscsType() {

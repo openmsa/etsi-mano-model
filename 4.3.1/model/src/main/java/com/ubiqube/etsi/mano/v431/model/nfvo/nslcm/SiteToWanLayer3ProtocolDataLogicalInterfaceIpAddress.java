@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -47,7 +48,7 @@ public class SiteToWanLayer3ProtocolDataLogicalInterfaceIpAddress   {
    * Get ipAddress
    * @return ipAddress
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getIpAddress() {
@@ -67,7 +68,7 @@ public class SiteToWanLayer3ProtocolDataLogicalInterfaceIpAddress   {
    * The associated segment identifier that has triggered the creation of the logical interface. The value shall be one of the values listed in the \"wanSegmentIds\" of the \"siteToWanLayer2ProtocolData\". 
    * @return associatedSegmentId
    **/
-  @Schema(required = true, description = "The associated segment identifier that has triggered the creation of the logical interface. The value shall be one of the values listed in the \"wanSegmentIds\" of the \"siteToWanLayer2ProtocolData\". ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The associated segment identifier that has triggered the creation of the logical interface. The value shall be one of the values listed in the \"wanSegmentIds\" of the \"siteToWanLayer2ProtocolData\". ")
       @NotNull
 
     public String getAssociatedSegmentId() {

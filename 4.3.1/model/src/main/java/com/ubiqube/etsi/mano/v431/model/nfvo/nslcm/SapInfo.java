@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.CpProtocolInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -63,7 +64,7 @@ public class SapInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -84,7 +85,7 @@ public class SapInfo {
 	 *
 	 * @return sapdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getSapdId() {
@@ -105,7 +106,7 @@ public class SapInfo {
 	 *
 	 * @return sapName
 	 **/
-	@Schema(required = true, description = "Human readable name for the SAP instance. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable name for the SAP instance. ")
 	@NotNull
 
 	public String getSapName() {
@@ -151,7 +152,7 @@ public class SapInfo {
 	 *
 	 * @return sapProtocolInfo
 	 **/
-	@Schema(required = true, description = "Network protocol information for this SAP. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Network protocol information for this SAP. ")
 	@NotNull
 	@Valid
 	public List<CpProtocolInfo> getSapProtocolInfo() {

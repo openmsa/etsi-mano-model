@@ -29,6 +29,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * VnfcResourceInfoVnfcCpInfo
@@ -72,7 +73,7 @@ public class VnfcResourceInfoVnfcCpInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -93,7 +94,7 @@ public class VnfcResourceInfoVnfcCpInfo {
 	 *
 	 * @return cpdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCpdId() {

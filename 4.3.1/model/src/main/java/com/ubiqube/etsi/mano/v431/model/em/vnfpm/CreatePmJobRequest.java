@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v431.model.vnfm.vrqan.SubscriptionAuthentication;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -67,7 +68,7 @@ public class CreatePmJobRequest {
 	 *
 	 * @return objectType
 	 **/
-	@Schema(required = true, description = "Type of the measured object. The applicable measured object type for a measurement is defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Type of the measured object. The applicable measured object type for a measurement is defined in clause 7.2 of ETSI GS NFV-IFA 027. ")
 	@NotNull
 
 	public String getObjectType() {
@@ -94,7 +95,7 @@ public class CreatePmJobRequest {
 	 *
 	 * @return objectInstanceIds
 	 **/
-	@Schema(required = true, description = "Identifiers of the measured object instances for which performance information is requested to be collected. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifiers of the measured object instances for which performance information is requested to be collected. ")
 	@NotNull
 
 	public List<String> getObjectInstanceIds() {
@@ -150,7 +151,7 @@ public class CreatePmJobRequest {
 	 *
 	 * @return criteria
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -172,7 +173,7 @@ public class CreatePmJobRequest {
 	 *
 	 * @return callbackUri
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCallbackUri() {

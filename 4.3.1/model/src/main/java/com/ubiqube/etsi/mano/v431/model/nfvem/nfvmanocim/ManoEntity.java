@@ -26,6 +26,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -112,7 +113,7 @@ public class ManoEntity {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getId() {
@@ -133,7 +134,7 @@ public class ManoEntity {
 	 *
 	 * @return type
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -156,7 +157,7 @@ public class ManoEntity {
 	 *
 	 * @return name
 	 **/
-	@Schema(required = true, description = "Human-readable name of the NFV-MANO functional entity. This attribute can be modified with the PATCH method. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the NFV-MANO functional entity. This attribute can be modified with the PATCH method. ")
 	@NotNull
 
 	public String getName() {
@@ -178,7 +179,7 @@ public class ManoEntity {
 	 *
 	 * @return description
 	 **/
-	@Schema(required = true, description = "Human-readable description of the NFV-MANO functional entity. This attribute can be modified with the PATCH method. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable description of the NFV-MANO functional entity. This attribute can be modified with the PATCH method. ")
 	@NotNull
 
 	public String getDescription() {
@@ -200,7 +201,7 @@ public class ManoEntity {
 	 *
 	 * @return provider
 	 **/
-	@Schema(required = true, description = "Information about the provider of the NFV-MANO functional entity. It typically includes the name of the provider. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about the provider of the NFV-MANO functional entity. It typically includes the name of the provider. ")
 	@NotNull
 
 	public String getProvider() {
@@ -221,7 +222,7 @@ public class ManoEntity {
 	 *
 	 * @return softwareVersion
 	 **/
-	@Schema(required = true, description = "A version. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "A version. ")
 	@NotNull
 
 	public String getSoftwareVersion() {
@@ -321,7 +322,7 @@ public class ManoEntity {
 	 *
 	 * @return manoConfigurableParams
 	 **/
-	@Schema(required = true, description = "# Warning: No definition found in the document ManoConfigurableParams ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "# Warning: No definition found in the document ManoConfigurableParams ")
 	@NotNull
 
 	@Valid
@@ -343,7 +344,7 @@ public class ManoEntity {
 	 *
 	 * @return manoApplicationState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -470,7 +471,7 @@ public class ManoEntity {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

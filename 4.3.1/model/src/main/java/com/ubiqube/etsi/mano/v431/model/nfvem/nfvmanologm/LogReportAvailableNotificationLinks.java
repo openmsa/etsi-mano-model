@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.NotificationLink;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -59,7 +60,7 @@ public class LogReportAvailableNotificationLinks {
 	 *
 	 * @return subscription
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -131,7 +132,7 @@ public class LogReportAvailableNotificationLinks {
 	 *
 	 * @return logReports
 	 **/
-	@Schema(required = true, description = "Link from which the available log report can be obtained. Due to the relationship of the logging job compilation and the logging information availability reporting, more than one logReport notification link can be provided.")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Link from which the available log report can be obtained. Due to the relationship of the logging job compilation and the logging information availability reporting, more than one logReport notification link can be provided.")
 	@NotNull
 	@Valid
 	public List<NotificationLink> getLogReports() {

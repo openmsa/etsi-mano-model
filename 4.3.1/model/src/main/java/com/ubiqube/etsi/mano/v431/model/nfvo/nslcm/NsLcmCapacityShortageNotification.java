@@ -25,6 +25,7 @@ import com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.NsLcmCapacityShortageNotifica
 import com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.NsLcmCapacityShortageNotificationLinks1;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -170,7 +171,7 @@ public class NsLcmCapacityShortageNotification   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -190,7 +191,7 @@ public class NsLcmCapacityShortageNotification   {
    * Discriminator for the different notification types. Shall be set to \"NsLcmCapacityShortageNotification\" for this notification type. 
    * @return notificationType
    **/
-  @Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"NsLcmCapacityShortageNotification\" for this notification type. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"NsLcmCapacityShortageNotification\" for this notification type. ")
       @NotNull
 
     public NotificationTypeEnum getNotificationType() {
@@ -210,7 +211,7 @@ public class NsLcmCapacityShortageNotification   {
    * Get subscriptionId
    * @return subscriptionId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getSubscriptionId() {
@@ -230,7 +231,7 @@ public class NsLcmCapacityShortageNotification   {
    * Get timestamp
    * @return timestamp
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -289,7 +290,7 @@ public class NsLcmCapacityShortageNotification   {
    * Indicates the situation of capacity shortage. Permitted values: - LCM_RESOURCES_NOT_AVAILABLE: the lifecycle operation identified by the nsLcmOpOccId attribute could not   be completed because necessary resources were not available. - LCM_SHORTAGE_END: the shortage situation which has caused the lifecycle management operation identified   by the nsLcmOpOccId attribute to fail has ended. 
    * @return status
    **/
-  @Schema(required = true, description = "Indicates the situation of capacity shortage. Permitted values: - LCM_RESOURCES_NOT_AVAILABLE: the lifecycle operation identified by the nsLcmOpOccId attribute could not   be completed because necessary resources were not available. - LCM_SHORTAGE_END: the shortage situation which has caused the lifecycle management operation identified   by the nsLcmOpOccId attribute to fail has ended. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the situation of capacity shortage. Permitted values: - LCM_RESOURCES_NOT_AVAILABLE: the lifecycle operation identified by the nsLcmOpOccId attribute could not   be completed because necessary resources were not available. - LCM_SHORTAGE_END: the shortage situation which has caused the lifecycle management operation identified   by the nsLcmOpOccId attribute to fail has ended. ")
       @NotNull
 
     public StatusEnum getStatus() {

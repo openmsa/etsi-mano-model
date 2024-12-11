@@ -30,6 +30,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type provides information related to a virtual CP instance of a VNF.
@@ -79,7 +80,7 @@ public class VirtualCpInfo {
 	 *
 	 * @return cpInstanceId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCpInstanceId() {
@@ -100,7 +101,7 @@ public class VirtualCpInfo {
 	 *
 	 * @return cpdId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCpdId() {
@@ -121,7 +122,7 @@ public class VirtualCpInfo {
 	 *
 	 * @return resourceHandle
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -198,7 +199,7 @@ public class VirtualCpInfo {
 	 *
 	 * @return vduIds
 	 **/
-	@Schema(required = true, description = "Reference to the VDU(s) which implement the service accessible via the virtual CP instance. See note. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Reference to the VDU(s) which implement the service accessible via the virtual CP instance. See note. ")
 	@NotNull
 
 	@Size(min = 1)

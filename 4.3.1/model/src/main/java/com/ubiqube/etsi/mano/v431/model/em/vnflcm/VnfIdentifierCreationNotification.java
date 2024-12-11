@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.LccnLinks;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
@@ -91,7 +92,7 @@ public class VnfIdentifierCreationNotification   {
    * Get id
    * @return id
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getId() {
@@ -111,7 +112,7 @@ public class VnfIdentifierCreationNotification   {
    * Discriminator for the different notification types. Shall be set to \"VnfIdentifierCreationNotification\" for this notification type. 
    * @return notificationType
    **/
-  @Schema(required = true, description = "Discriminator for the different notification types. Shall be set to \"VnfIdentifierCreationNotification\" for this notification type. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Discriminator for the different notification types. Shall be set to \"VnfIdentifierCreationNotification\" for this notification type. ")
       @NotNull
 
     public NotificationTypeEnum getNotificationType() {
@@ -131,7 +132,7 @@ public class VnfIdentifierCreationNotification   {
    * Get subscriptionId
    * @return subscriptionId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getSubscriptionId() {
@@ -151,7 +152,7 @@ public class VnfIdentifierCreationNotification   {
    * Get timeStamp
    * @return timeStamp
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -172,7 +173,7 @@ public class VnfIdentifierCreationNotification   {
    * Get vnfInstanceId
    * @return vnfInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfInstanceId() {
@@ -192,7 +193,7 @@ public class VnfIdentifierCreationNotification   {
    * Get _links
    * @return _links
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

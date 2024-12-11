@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanopm.ManoManagedObjectReference;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -66,7 +67,7 @@ public class CreateLoggingJobRequest {
 	 *
 	 * @return objectInstanceIds
 	 **/
-	@Schema(required = true, description = "Identifiers of the object instance for which logging information is requested to be collected. This attribute shall contain the identifier of the instance of the object to be logged according to their type. If more than one identifier is provided, values shall all refer to object instances of the same type, for which the same criteria is then applicable.")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifiers of the object instance for which logging information is requested to be collected. This attribute shall contain the identifier of the instance of the object to be logged according to their type. If more than one identifier is provided, values shall all refer to object instances of the same type, for which the same criteria is then applicable.")
 	@NotNull
 	@Valid
 	@Size(min = 1)
@@ -88,7 +89,7 @@ public class CreateLoggingJobRequest {
 	 *
 	 * @return jobCriteria
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -110,7 +111,7 @@ public class CreateLoggingJobRequest {
 	 *
 	 * @return jobConfig
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

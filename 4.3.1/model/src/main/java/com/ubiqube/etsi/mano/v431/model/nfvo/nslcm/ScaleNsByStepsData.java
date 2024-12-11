@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -81,7 +82,7 @@ public class ScaleNsByStepsData   {
    * The scaling direction. Possible values are: - SCALE_IN - SCALE_OUT. 
    * @return scalingDirection
    **/
-  @Schema(required = true, description = "The scaling direction. Possible values are: - SCALE_IN - SCALE_OUT. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The scaling direction. Possible values are: - SCALE_IN - SCALE_OUT. ")
       @NotNull
 
     public ScalingDirectionEnum getScalingDirection() {
@@ -101,7 +102,7 @@ public class ScaleNsByStepsData   {
    * Get aspectId
    * @return aspectId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getAspectId() {

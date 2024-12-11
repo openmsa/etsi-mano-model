@@ -23,6 +23,7 @@ import com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanocim.CimSubscriptionLinks;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -57,7 +58,7 @@ public class CimSubscription   {
    * An identifier with the intention of being globally unique. 
    * @return id
    **/
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
       @NotNull
 
     public String getId() {
@@ -97,7 +98,7 @@ public class CimSubscription   {
    * String formatted according to IETF RFC 3986. 
    * @return callbackUri
    **/
-  @Schema(required = true, description = "String formatted according to IETF RFC 3986. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "String formatted according to IETF RFC 3986. ")
       @NotNull
 
     public String getCallbackUri() {
@@ -117,7 +118,7 @@ public class CimSubscription   {
    * Get _links
    * @return _links
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

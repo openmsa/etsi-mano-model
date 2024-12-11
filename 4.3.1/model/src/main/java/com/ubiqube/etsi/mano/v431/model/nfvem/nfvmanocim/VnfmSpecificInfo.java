@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanocim.VnfmSpecificInfoSupportedVnfdFormats;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -90,7 +91,7 @@ public class VnfmSpecificInfo   {
    * The supported resource management modes of the VNFM. Permitted values:   - DIRECT: The VNFM supports direct mode only.   - INDIRECT: The VNFM supports indirect mode only.   - BOTH: The VNFM supports both direct and indirect mode. 
    * @return resoruceMgmtModeSupport
    **/
-  @Schema(required = true, description = "The supported resource management modes of the VNFM. Permitted values:   - DIRECT: The VNFM supports direct mode only.   - INDIRECT: The VNFM supports indirect mode only.   - BOTH: The VNFM supports both direct and indirect mode. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The supported resource management modes of the VNFM. Permitted values:   - DIRECT: The VNFM supports direct mode only.   - INDIRECT: The VNFM supports indirect mode only.   - BOTH: The VNFM supports both direct and indirect mode. ")
       @NotNull
 
     public ResoruceMgmtModeSupportEnum getResoruceMgmtModeSupport() {
@@ -115,7 +116,7 @@ public class VnfmSpecificInfo   {
    * The kinds of VNF instances that can be managed, e.g. to determine the compatibility of a VNF with certain VNFM according to the vnfmInfo attribute in the VNFD (see table 7.1.2.2-1 in ETSI GS NFV-IFA 011). 
    * @return managedVnfInstanceInfos
    **/
-  @Schema(required = true, description = "The kinds of VNF instances that can be managed, e.g. to determine the compatibility of a VNF with certain VNFM according to the vnfmInfo attribute in the VNFD (see table 7.1.2.2-1 in ETSI GS NFV-IFA 011). ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The kinds of VNF instances that can be managed, e.g. to determine the compatibility of a VNF with certain VNFM according to the vnfmInfo attribute in the VNFD (see table 7.1.2.2-1 in ETSI GS NFV-IFA 011). ")
       @NotNull
 
   @Size(min=1)   public List<String> getManagedVnfInstanceInfos() {
@@ -140,7 +141,7 @@ public class VnfmSpecificInfo   {
    * Supported VNFD data formats. 
    * @return supportedVnfdFormats
    **/
-  @Schema(required = true, description = "Supported VNFD data formats. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Supported VNFD data formats. ")
       @NotNull
     @Valid
   @Size(min=1)   public List<VnfmSpecificInfoSupportedVnfdFormats> getSupportedVnfdFormats() {

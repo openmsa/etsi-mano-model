@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -108,7 +109,7 @@ public class VnfInstanceInstantiatedVnfInfo {
 	 *
 	 * @return flavourId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getFlavourId() {
@@ -129,7 +130,7 @@ public class VnfInstanceInstantiatedVnfInfo {
 	 *
 	 * @return vnfState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -218,7 +219,7 @@ public class VnfInstanceInstantiatedVnfInfo {
 	 *
 	 * @return extCpInfo
 	 **/
-	@Schema(required = true, description = "Information about the external CPs exposed by the VNF instance. When trunking is enabled, the list of entries includes both, external CPs corresponding to parent ports of a trunk, and external CPs associated to sub-ports of a trunk. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about the external CPs exposed by the VNF instance. When trunking is enabled, the list of entries includes both, external CPs corresponding to parent ports of a trunk, and external CPs associated to sub-ports of a trunk. ")
 	@NotNull
 	@Valid
 	@Size(min = 1)

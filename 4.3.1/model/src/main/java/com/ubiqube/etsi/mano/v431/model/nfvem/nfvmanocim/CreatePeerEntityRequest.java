@@ -24,6 +24,7 @@ import com.ubiqube.etsi.mano.v431.model.nfvem.nfvmanocim.PeerEntityEnumType;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +69,7 @@ public class CreatePeerEntityRequest   {
    * An identifier with the intention of being globally unique. 
    * @return peerEntityId
    **/
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
       @NotNull
 
     public String getPeerEntityId() {
@@ -88,7 +89,7 @@ public class CreatePeerEntityRequest   {
    * Human-readable name of the peer functional entity. 
    * @return name
    **/
-  @Schema(required = true, description = "Human-readable name of the peer functional entity. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Human-readable name of the peer functional entity. ")
       @NotNull
 
     public String getName() {
@@ -108,7 +109,7 @@ public class CreatePeerEntityRequest   {
    * Get type
    * @return type
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

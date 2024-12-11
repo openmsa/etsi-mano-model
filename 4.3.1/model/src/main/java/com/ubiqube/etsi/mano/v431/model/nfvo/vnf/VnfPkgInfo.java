@@ -30,6 +30,7 @@ import com.ubiqube.etsi.mano.v431.model.em.vnfconfig.ProblemDetails;
 import com.ubiqube.etsi.mano.v431.model.nfvo.vnfsnapshotpkgm.Checksum;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -154,7 +155,7 @@ public class VnfPkgInfo {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -445,7 +446,7 @@ public class VnfPkgInfo {
 	 *
 	 * @return onboardingState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -467,7 +468,7 @@ public class VnfPkgInfo {
 	 *
 	 * @return operationalState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -489,7 +490,7 @@ public class VnfPkgInfo {
 	 *
 	 * @return usageState
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -517,7 +518,7 @@ public class VnfPkgInfo {
 	 *
 	 * @return vnfmInfo
 	 **/
-	@Schema(required = true, description = "Specifies VNFMs compatible with the VNF. This information is copied from the VNFD. See note 4. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Specifies VNFMs compatible with the VNF. This information is copied from the VNFD. See note 4. ")
 	@NotNull
 
 	public List<String> getVnfmInfo() {
@@ -580,7 +581,7 @@ public class VnfPkgInfo {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

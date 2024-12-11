@@ -26,6 +26,7 @@ import com.ubiqube.etsi.mano.v431.model.em.vnffm.FaultyResourceInfo;
 import com.ubiqube.etsi.mano.v431.model.em.vnffm.PerceivedSeverityType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -137,7 +138,7 @@ public class Alarm2   {
    * An identifier with the intention of being globally unique. 
    * @return id
    **/
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
       @NotNull
 
     public String getId() {
@@ -157,7 +158,7 @@ public class Alarm2   {
    * An identifier with the intention of being globally unique. 
    * @return managedObjectId
    **/
-  @Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
       @NotNull
 
     public String getManagedObjectId() {
@@ -224,7 +225,7 @@ public class Alarm2   {
    * Date-time stamp. Representation: String formatted according to IETF RFC 3339. 
    * @return alarmRaisedTime
    **/
-  @Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
       @NotNull
 
     @Valid
@@ -305,7 +306,7 @@ public class Alarm2   {
    * Acknowledgement state of the alarm.  Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. 
    * @return ackState
    **/
-  @Schema(required = true, description = "Acknowledgement state of the alarm.  Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Acknowledgement state of the alarm.  Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. ")
       @NotNull
 
     public AckStateEnum getAckState() {
@@ -325,7 +326,7 @@ public class Alarm2   {
    * Get perceivedSeverity
    * @return perceivedSeverity
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -346,7 +347,7 @@ public class Alarm2   {
    * Date-time stamp. Representation: String formatted according to IETF RFC 3339. 
    * @return eventTime
    **/
-  @Schema(required = true, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Date-time stamp. Representation: String formatted according to IETF RFC 3339. ")
       @NotNull
 
     @Valid
@@ -367,7 +368,7 @@ public class Alarm2   {
    * Get eventType
    * @return eventType
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid
@@ -407,7 +408,7 @@ public class Alarm2   {
    * Information about the probable cause of the fault. 
    * @return probableCause
    **/
-  @Schema(required = true, description = "Information about the probable cause of the fault. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about the probable cause of the fault. ")
       @NotNull
 
     public String getProbableCause() {
@@ -427,7 +428,7 @@ public class Alarm2   {
    * The Boolean is a data type having two values (true and false). 
    * @return isRootCause
    **/
-  @Schema(required = true, description = "The Boolean is a data type having two values (true and false). ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "The Boolean is a data type having two values (true and false). ")
       @NotNull
 
     public Boolean isIsRootCause() {
@@ -501,7 +502,7 @@ public class Alarm2   {
    * Get _links
    * @return _links
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

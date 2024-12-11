@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type provides information about an MCIO representing the set of VNFC
@@ -137,7 +138,7 @@ public class McioInfo {
 	 *
 	 * @return mcioId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getMcioId() {
@@ -158,7 +159,7 @@ public class McioInfo {
 	 *
 	 * @return mcioName
 	 **/
-	@Schema(required = true, description = "Human readable name of this MCIO. See note 4. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Human readable name of this MCIO. See note 4. ")
 	@NotNull
 
 	public String getMcioName() {
@@ -179,7 +180,7 @@ public class McioInfo {
 	 *
 	 * @return mcioNamespace
 	 **/
-	@Schema(required = true, description = "Namespace of this MCIO. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Namespace of this MCIO. ")
 	@NotNull
 
 	public String getMcioNamespace() {
@@ -200,7 +201,7 @@ public class McioInfo {
 	 *
 	 * @return vduId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getVduId() {
@@ -221,7 +222,7 @@ public class McioInfo {
 	 *
 	 * @return cismId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getCismId() {
@@ -244,7 +245,7 @@ public class McioInfo {
 	 *
 	 * @return mcioType
 	 **/
-	@Schema(required = true, description = "The type of MCIO. Specific values, their semantics and associated MCIO types are defined in clause  5.5.4.9. Additional values are also permitted. See note 1. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The type of MCIO. Specific values, their semantics and associated MCIO types are defined in clause  5.5.4.9. Additional values are also permitted. See note 1. ")
 	@NotNull
 
 	public McioTypeEnum getMcioType() {
@@ -265,7 +266,7 @@ public class McioInfo {
 	 *
 	 * @return desiredInstances
 	 **/
-	@Schema(required = true, description = "Number of desired MCIO instances. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Number of desired MCIO instances. ")
 	@NotNull
 
 	public Integer getDesiredInstances() {
@@ -286,7 +287,7 @@ public class McioInfo {
 	 *
 	 * @return availableInstances
 	 **/
-	@Schema(required = true, description = "Number of available MCIO instances. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Number of available MCIO instances. ")
 	@NotNull
 
 	public Integer getAvailableInstances() {

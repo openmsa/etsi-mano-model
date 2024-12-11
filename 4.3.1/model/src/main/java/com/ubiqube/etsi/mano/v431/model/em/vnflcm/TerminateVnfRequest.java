@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents request parameters for the \&quot;Terminate VNF\&quot;
@@ -105,7 +106,7 @@ public class TerminateVnfRequest {
 	 *
 	 * @return terminationType
 	 **/
-	@Schema(required = true, description = "Indicates the type of termination is requested. See note. Permitted values: * FORCEFUL: The VNFM will shut down the VNF and release the resources immediately after accepting the request. * GRACEFUL: The VNFM will first arrange to take the VNF out of service after accepting the request. Once the   operation of taking the VNF out of service finishes (irrespective of whether it has succeeded or failed) or   once the timer value specified in the \"gracefulTerminationTimeout\" attribute expires, the VNFM will shut down   the VNF and release the resources. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the type of termination is requested. See note. Permitted values: * FORCEFUL: The VNFM will shut down the VNF and release the resources immediately after accepting the request. * GRACEFUL: The VNFM will first arrange to take the VNF out of service after accepting the request. Once the   operation of taking the VNF out of service finishes (irrespective of whether it has succeeded or failed) or   once the timer value specified in the \"gracefulTerminationTimeout\" attribute expires, the VNFM will shut down   the VNF and release the resources. ")
 	@NotNull
 
 	public TerminationTypeEnum getTerminationType() {

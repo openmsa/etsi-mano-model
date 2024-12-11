@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -167,7 +168,7 @@ public class Alarm {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getId() {
@@ -188,7 +189,7 @@ public class Alarm {
 	 *
 	 * @return managedObjectId
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public String getManagedObjectId() {
@@ -260,7 +261,7 @@ public class Alarm {
 	 *
 	 * @return alarmRaisedTime
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -346,7 +347,7 @@ public class Alarm {
 	 *
 	 * @return ackState
 	 **/
-	@Schema(required = true, description = "Acknowledgement state of the alarm.  Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Acknowledgement state of the alarm.  Permitted values: * UNACKNOWLEDGED * ACKNOWLEDGED. ")
 	@NotNull
 
 	public AckStateEnum getAckState() {
@@ -367,7 +368,7 @@ public class Alarm {
 	 *
 	 * @return perceivedSeverity
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -389,7 +390,7 @@ public class Alarm {
 	 *
 	 * @return eventTime
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -411,7 +412,7 @@ public class Alarm {
 	 *
 	 * @return eventType
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
@@ -462,7 +463,7 @@ public class Alarm {
 	 *
 	 * @return probableCause
 	 **/
-	@Schema(required = true, description = "Information about the probable cause of the fault. If the attribute \"faultType\" has the value “NFVI_OAM_VIRTUALISED_RESOURCE_STATE_CHANGE”, the  permitted values are:    - \"NFVI_COMPONENT_MAINTENANCE\": Maintenance of NFVI components, e.g. physical maintenance/repair,      hypervisor software updates, etc.   - \"NFVI_COMPONENT_EVACUATION\": Evacuation of physical hosts.   - \"NFVI_COMPONENT_OPTIMIZATION\": Operation and management of NFVI resources, e.g. to support energy     efficiency or resource usage optimization. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Information about the probable cause of the fault. If the attribute \"faultType\" has the value “NFVI_OAM_VIRTUALISED_RESOURCE_STATE_CHANGE”, the  permitted values are:    - \"NFVI_COMPONENT_MAINTENANCE\": Maintenance of NFVI components, e.g. physical maintenance/repair,      hypervisor software updates, etc.   - \"NFVI_COMPONENT_EVACUATION\": Evacuation of physical hosts.   - \"NFVI_COMPONENT_OPTIMIZATION\": Operation and management of NFVI resources, e.g. to support energy     efficiency or resource usage optimization. ")
 	@NotNull
 
 	public String getProbableCause() {
@@ -483,7 +484,7 @@ public class Alarm {
 	 *
 	 * @return isRootCause
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	public Boolean getIsRootCause() {
@@ -560,7 +561,7 @@ public class Alarm {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

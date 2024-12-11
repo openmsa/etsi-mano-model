@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ubiqube.etsi.mano.v431.model.em.vnflcm.Link;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -49,7 +50,7 @@ public class LoggingJobLogReports {
 	 *
 	 * @return logReportId
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getLogReportId() {
@@ -70,7 +71,7 @@ public class LoggingJobLogReports {
 	 *
 	 * @return logReportLoc
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid

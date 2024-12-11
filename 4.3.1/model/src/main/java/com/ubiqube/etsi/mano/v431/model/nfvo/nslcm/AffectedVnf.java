@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.AffectedVnfChangedInfo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -145,7 +146,7 @@ public class AffectedVnf  implements AnyOfAffectedVnf {
    * Get vnfInstanceId
    * @return vnfInstanceId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfInstanceId() {
@@ -165,7 +166,7 @@ public class AffectedVnf  implements AnyOfAffectedVnf {
    * Get vnfdId
    * @return vnfdId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfdId() {
@@ -185,7 +186,7 @@ public class AffectedVnf  implements AnyOfAffectedVnf {
    * Get vnfProfileId
    * @return vnfProfileId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getVnfProfileId() {
@@ -205,7 +206,7 @@ public class AffectedVnf  implements AnyOfAffectedVnf {
    * Name of the VNF Instance. 
    * @return vnfName
    **/
-  @Schema(required = true, description = "Name of the VNF Instance. ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Name of the VNF Instance. ")
       @NotNull
 
     public String getVnfName() {
@@ -225,7 +226,7 @@ public class AffectedVnf  implements AnyOfAffectedVnf {
    * Signals the type of change Permitted values: - ADD - REMOVE - INSTANTIATE - TERMINATE - SCALE - CHANGE_FLAVOUR - HEAL - OPERATE - MODIFY_INFORMATION - CHANGE_EXTERNAL_VNF_CONNECTIVITY - CHANGE_VNFPKG 
    * @return changeType
    **/
-  @Schema(required = true, description = "Signals the type of change Permitted values: - ADD - REMOVE - INSTANTIATE - TERMINATE - SCALE - CHANGE_FLAVOUR - HEAL - OPERATE - MODIFY_INFORMATION - CHANGE_EXTERNAL_VNF_CONNECTIVITY - CHANGE_VNFPKG ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the type of change Permitted values: - ADD - REMOVE - INSTANTIATE - TERMINATE - SCALE - CHANGE_FLAVOUR - HEAL - OPERATE - MODIFY_INFORMATION - CHANGE_EXTERNAL_VNF_CONNECTIVITY - CHANGE_VNFPKG ")
       @NotNull
 
     public ChangeTypeEnum getChangeType() {
@@ -245,7 +246,7 @@ public class AffectedVnf  implements AnyOfAffectedVnf {
    * Signals the result of change identified by the \"changeType\" attribute. Permitted values: - COMPLETED - ROLLED_BACK - FAILED 
    * @return changeResult
    **/
-  @Schema(required = true, description = "Signals the result of change identified by the \"changeType\" attribute. Permitted values: - COMPLETED - ROLLED_BACK - FAILED ")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Signals the result of change identified by the \"changeType\" attribute. Permitted values: - COMPLETED - ROLLED_BACK - FAILED ")
       @NotNull
 
     public ChangeResultEnum getChangeResult() {

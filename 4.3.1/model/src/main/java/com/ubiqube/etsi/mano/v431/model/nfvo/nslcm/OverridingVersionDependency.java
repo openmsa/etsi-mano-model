@@ -22,6 +22,7 @@ import com.ubiqube.etsi.mano.v431.model.nfvo.nslcm.VersionDependency;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -49,7 +50,7 @@ public class OverridingVersionDependency   {
    * Get profileId
    * @return profileId
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     public String getProfileId() {
@@ -69,7 +70,7 @@ public class OverridingVersionDependency   {
    * Get versionDependency
    * @return versionDependency
    **/
-  @Schema(required = true, description = "")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "")
       @NotNull
 
     @Valid

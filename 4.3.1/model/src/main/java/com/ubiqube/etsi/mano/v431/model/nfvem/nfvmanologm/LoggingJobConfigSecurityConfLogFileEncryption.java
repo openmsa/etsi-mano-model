@@ -20,6 +20,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -54,7 +55,7 @@ public class LoggingJobConfigSecurityConfLogFileEncryption   {
    * X.509 certificate with the public key to use for the encryption of the compiled log file.
    * @return encryptionCertificate
    **/
-  @Schema(required = true, description = "X.509 certificate with the public key to use for the encryption of the compiled log file.")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "X.509 certificate with the public key to use for the encryption of the compiled log file.")
       @NotNull
 
     public String getEncryptionCertificate() {
@@ -79,7 +80,7 @@ public class LoggingJobConfigSecurityConfLogFileEncryption   {
    * Cryptographic algorithm to be used for the encryption of the compiled log file. More than one algorithm can be provided from higher (lower array index) to lower (higher array index) precedence. Valid values are: \"AES-CBC-128\", \"AES-GCM-128\", \"AES-CBC-256\", and \"AES-GCM-256\", as specified in clause 6.5 of ETSI GS NFV-SEC 012
    * @return cipherAlgorithm
    **/
-  @Schema(required = true, description = "Cryptographic algorithm to be used for the encryption of the compiled log file. More than one algorithm can be provided from higher (lower array index) to lower (higher array index) precedence. Valid values are: \"AES-CBC-128\", \"AES-GCM-128\", \"AES-CBC-256\", and \"AES-GCM-256\", as specified in clause 6.5 of ETSI GS NFV-SEC 012")
+  @Schema(requiredMode = RequiredMode.REQUIRED, description = "Cryptographic algorithm to be used for the encryption of the compiled log file. More than one algorithm can be provided from higher (lower array index) to lower (higher array index) precedence. Valid values are: \"AES-CBC-128\", \"AES-GCM-128\", \"AES-CBC-256\", and \"AES-GCM-256\", as specified in clause 6.5 of ETSI GS NFV-SEC 012")
       @NotNull
 
     public List<String> getCipherAlgorithm() {

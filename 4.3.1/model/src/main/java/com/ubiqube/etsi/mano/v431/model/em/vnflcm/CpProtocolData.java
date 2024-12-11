@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
 /**
  * This type represents network protocol data. * NOTE: This attribute allows to
@@ -91,7 +92,7 @@ public class CpProtocolData {
 	 *
 	 * @return layerProtocol
 	 **/
-	@Schema(required = true, description = "Identifier of layer(s) and protocol(s). Permitted values:   - IP_OVER_ETHERNET.   - IP_FOR_VIRTUAL_CP See note ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Identifier of layer(s) and protocol(s). Permitted values:   - IP_OVER_ETHERNET.   - IP_FOR_VIRTUAL_CP See note ")
 	@NotNull
 
 	public LayerProtocolEnum getLayerProtocol() {

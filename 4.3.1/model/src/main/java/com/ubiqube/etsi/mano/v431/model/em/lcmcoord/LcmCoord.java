@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.ubiqube.etsi.mano.v431.model.em.vnfconfig.ProblemDetails;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -181,7 +182,7 @@ public class LcmCoord {
 	 *
 	 * @return id
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getId() {
@@ -210,7 +211,7 @@ public class LcmCoord {
 	 *
 	 * @return coordinationResult
 	 **/
-	@Schema(required = true, description = "The enumeration LcmCoordResultType defines the permitted values to represent the result of executing an LCM coordination action. The coordination result also implies the action to be performed by the VNFM as the follow-up to this coordination. Value | Description ------|------------ CONTINUE | The related LCM operation shall be continued, staying in the state \"PROCESSING\". ABORT | The related LCM operation shall be aborted by transitioning into the state \"FAILED_TEMP\". CANCELLED | The coordination action has been cancelled upon request of the API consumer, i.e. the VNFM. The related LCM operation shall be aborted by transitioning into the state \"FAILED_TEMP\". ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The enumeration LcmCoordResultType defines the permitted values to represent the result of executing an LCM coordination action. The coordination result also implies the action to be performed by the VNFM as the follow-up to this coordination. Value | Description ------|------------ CONTINUE | The related LCM operation shall be continued, staying in the state \"PROCESSING\". ABORT | The related LCM operation shall be aborted by transitioning into the state \"FAILED_TEMP\". CANCELLED | The coordination action has been cancelled upon request of the API consumer, i.e. the VNFM. The related LCM operation shall be aborted by transitioning into the state \"FAILED_TEMP\". ")
 	@NotNull
 
 	public CoordinationResultEnum getCoordinationResult() {
@@ -231,7 +232,7 @@ public class LcmCoord {
 	 *
 	 * @return vnfInstanceId
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getVnfInstanceId() {
@@ -252,7 +253,7 @@ public class LcmCoord {
 	 *
 	 * @return vnfLcmOpOccId
 	 **/
-	@Schema(required = true, description = "An identifier with the intention of being globally unique. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "An identifier with the intention of being globally unique. ")
 	@NotNull
 
 	public String getVnfLcmOpOccId() {
@@ -286,7 +287,7 @@ public class LcmCoord {
 	 *
 	 * @return lcmOperationType
 	 **/
-	@Schema(required = true, description = "The enumeration LcmOperationForCoordType defines the permitted values to represent VNF lifecycle operation types in VNF LCM operation coordination actions. * INSTANTIATE: Represents the \"Instantiate VNF\" LCM operation. * SCALE: Represents the \"Scale VNF\" LCM operation. * SCALE_TO_LEVEL: Represents the \"Scale VNF to Level\" LCM operation. * CHANGE_FLAVOUR: Represents the \"Change VNF Flavour\" LCM operation. * TERMINATE: Represents the \"Terminate VNF\" LCM operation. * HEAL: Represents the \"Heal VNF\" LCM operation. * OPERATE: Represents the \"Operate VNF\" LCM operation. * CHANGE_EXT_CONN: Represents the \"Change external VNF connectivity\" LCM operation. * MODIFY_INFO: Represents the \"Modify VNF Information\" LCM operation. * CREATE_SNAPSHOT: Represents the \"Create VNF Snapshot\" LCM operation. * REVERT_TO_SNAPSHOT: Represents the \"Revert To VNF Snapshot\" LCM operation. * CHANGE_VNFPKG: Represents the \"Change current VNF package\" LCM operation. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "The enumeration LcmOperationForCoordType defines the permitted values to represent VNF lifecycle operation types in VNF LCM operation coordination actions. * INSTANTIATE: Represents the \"Instantiate VNF\" LCM operation. * SCALE: Represents the \"Scale VNF\" LCM operation. * SCALE_TO_LEVEL: Represents the \"Scale VNF to Level\" LCM operation. * CHANGE_FLAVOUR: Represents the \"Change VNF Flavour\" LCM operation. * TERMINATE: Represents the \"Terminate VNF\" LCM operation. * HEAL: Represents the \"Heal VNF\" LCM operation. * OPERATE: Represents the \"Operate VNF\" LCM operation. * CHANGE_EXT_CONN: Represents the \"Change external VNF connectivity\" LCM operation. * MODIFY_INFO: Represents the \"Modify VNF Information\" LCM operation. * CREATE_SNAPSHOT: Represents the \"Create VNF Snapshot\" LCM operation. * REVERT_TO_SNAPSHOT: Represents the \"Revert To VNF Snapshot\" LCM operation. * CHANGE_VNFPKG: Represents the \"Change current VNF package\" LCM operation. ")
 	@NotNull
 
 	public LcmOperationTypeEnum getLcmOperationType() {
@@ -308,7 +309,7 @@ public class LcmCoord {
 	 *
 	 * @return coordinationActionName
 	 **/
-	@Schema(required = true, description = "Indicates the actual LCM coordination action. The coordination actions that a VNF supports are declared in the VNFD. ")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Indicates the actual LCM coordination action. The coordination actions that a VNF supports are declared in the VNFD. ")
 	@NotNull
 
 	public String getCoordinationActionName() {
@@ -396,7 +397,7 @@ public class LcmCoord {
 	 *
 	 * @return _links
 	 **/
-	@Schema(required = true, description = "")
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "")
 	@NotNull
 
 	@Valid
