@@ -67,6 +67,14 @@
 			<artifactId>mano-orika</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.github.classgraph</groupId>
+			<artifactId>classgraph</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>nl.jqno.equalsverifier</groupId>
+			<artifactId>equalsverifier</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

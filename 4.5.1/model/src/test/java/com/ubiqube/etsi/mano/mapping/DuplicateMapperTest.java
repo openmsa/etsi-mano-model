@@ -18,34 +18,42 @@ package com.ubiqube.etsi.mano.mapping;
 
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
-import org.reflections.Reflections;
-import org.reflections.scanners.SubTypesScanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ClassInfo;
+import io.github.classgraph.ClassInfoList;
+import io.github.classgraph.ScanResult;
+
 class DuplicateMapperTest {
 	/** Logger. */
 	private static final Logger LOG = LoggerFactory.getLogger(DuplicateMapperTest.class);
 
-	private final Reflections reflections;
 	private final MultiValueMap<Key, Method> cache = new LinkedMultiValueMap<>();
 
+	private ClassInfoList allClasses;
+
 	public DuplicateMapperTest() {
-		reflections = new Reflections("com.ubiqube.etsi.mano.service.pkg.tosca.vnf.mapping", new SubTypesScanner(false));
+		try (ScanResult scanResult = new ClassGraph()
+				.enableAllInfo()
+				.acceptPackages("com.ubiqube.etsi.mano.v451")
+				.scan()) {
+			allClasses = scanResult.getAllClasses();
+		}
 	}
 
 	@Test
 	void test() {
-		final Set<Class<? extends Object>> set = reflections.getSubTypesOf(Object.class);
-		final Map<String, Set<String>> subtype = reflections.getStore().get("SubTypes");
-		subtype.forEach((x, y) -> {
+		final Set<String> set = allClasses.stream().map(ClassInfo::getName).collect(Collectors.toSet());
+		set.forEach(x -> {
 			handle(x);
 		});
 		renderResult();
@@ -75,7 +83,7 @@ class DuplicateMapperTest {
 		try {
 			realHandle(x);
 		} catch (final Exception e) {
-			throw new RuntimeException(e);
+			throw new RuntimeException(x, e);
 		}
 
 	}
@@ -84,8 +92,11 @@ class DuplicateMapperTest {
 		final Class<?> clazz = Class.forName(x);
 		final Method[] meths = clazz.getDeclaredMethods();
 		for (final Method method : meths) {
-			final Key k = new Key(method.getReturnType().getCanonicalName(), method.getParameters()[0].getType().getCanonicalName());
-			cache.add(k, method);
+			LOG.info(method.toString());
+			if (method.getParameters().length > 0) {
+				final Key k = new Key(method.getReturnType().getCanonicalName(), method.getParameters()[0].getType().getCanonicalName());
+				cache.add(k, method);
+			}
 		}
 	}
 

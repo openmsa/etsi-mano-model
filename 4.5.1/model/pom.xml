@@ -80,8 +80,8 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.reflections</groupId>
-			<artifactId>reflections</artifactId>
+			<groupId>com.ubiqube.mano</groupId>
+			<artifactId>mano-test-helper</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
