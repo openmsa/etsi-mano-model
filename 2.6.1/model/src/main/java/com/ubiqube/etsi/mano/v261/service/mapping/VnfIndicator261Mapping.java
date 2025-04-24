@@ -38,5 +38,6 @@ public interface VnfIndicator261Mapping {
 
 	@Mapping(target = "links", ignore = true)
 	@Mapping(target = "value", ignore = true)
+	@Mapping(target = "name", source = "toscaName")
 	com.ubiqube.etsi.mano.v261.model.vnfm.vnfind.VnfIndicator map(VnfIndicator o);
 }
