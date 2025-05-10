@@ -33,13 +33,13 @@ import com.ubiqube.etsi.mano.dao.mano.ExtManagedVirtualLinkDataEntity;
 import com.ubiqube.etsi.mano.dao.mano.GrantInformationExt;
 import com.ubiqube.etsi.mano.dao.mano.GrantResponse;
 import com.ubiqube.etsi.mano.dao.mano.GrantVimAssetsEntity;
-import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.ScaleInfo;
 import com.ubiqube.etsi.mano.dao.mano.ZoneGroupInformation;
 import com.ubiqube.etsi.mano.dao.mano.ZoneInfoEntity;
 import com.ubiqube.etsi.mano.dao.mano.grant.ConstraintResourceRef;
 import com.ubiqube.etsi.mano.dao.mano.grant.PlacementConstraint;
 import com.ubiqube.etsi.mano.dao.mano.grant.VimConstraint;
+import com.ubiqube.etsi.mano.dao.mano.vim.ResourceTypeEnum;
 import com.ubiqube.etsi.mano.v261.model.nfvo.lcmgrant.GrantRequest;
 import com.ubiqube.etsi.mano.v261.model.nfvo.lcmgrant.ResourceDefinition;
 

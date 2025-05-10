@@ -22,8 +22,8 @@ import org.mapstruct.MappingConstants;
 import org.mapstruct.ValueMapping;
 
 import com.ubiqube.etsi.mano.dao.mano.AdditionalResourceInfo;
-import com.ubiqube.etsi.mano.dao.mano.ResourceTypeEnum;
 import com.ubiqube.etsi.mano.dao.mano.alarm.Alarms;
+import com.ubiqube.etsi.mano.dao.mano.vim.ResourceTypeEnum;
 import com.ubiqube.etsi.mano.service.mapping.DateTimeMapping;
 import com.ubiqube.etsi.mano.v451.model.em.vnffm.Alarm;
 import com.ubiqube.etsi.mano.v451.model.em.vnffm.AlarmModifications;
